@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<states>
+	<state name="ALABAMA" abbreviation="AL" />
+	<state name="ALASKA" abbreviation="AK" />
+	<state name="AMERICAN SAMOA" abbreviation="AS" />
+	<state name="ARIZONA" abbreviation="AZ" />
+	<state name="ARKANSAS" abbreviation="AR" />
+	<state name="CALIFORNIA" abbreviation="CA" />
+	<state name="COLORADO" abbreviation="CO" />
+	<state name="CONNECTICUT" abbreviation="CT" />
+	<state name="DELAWARE" abbreviation="DE" />
+	<state name="DISTRICT OF COLUMBIA" abbreviation="DC" />
+	<state name="FEDERATED STATES OF MICRONESIA" abbreviation="FM" />
+	<state name="FLORIDA" abbreviation="FL" />
+	<state name="GEORGIA" abbreviation="GA" />
+	<state name="GUAM" abbreviation="GU" />
+	<state name="HAWAII" abbreviation="HI" />
+	<state name="IDAHO" abbreviation="ID" />
+	<state name="ILLINOIS" abbreviation="IL" />
+	<state name="INDIANA" abbreviation="IN" />
+	<state name="IOWA" abbreviation="IA" />
+	<state name="KANSAS" abbreviation="KS" />
+	<state name="KENTUCKY" abbreviation="KY" />
+	<state name="LOUISIANA" abbreviation="LA" />
+	<state name="MAINE" abbreviation="ME" />
+	<state name="MARSHALL ISLANDS" abbreviation="MH" />
+	<state name="MARYLAND" abbreviation="MD" />
+	<state name="MASSACHUSETTS" abbreviation="MA" />
+	<state name="MICHIGAN" abbreviation="MI" />
+	<state name="MINNESOTA" abbreviation="MN" />
+	<state name="MISSISSIPPI" abbreviation="MS" />
+	<state name="MISSOURI" abbreviation="MO" />
+	<state name="MONTANA" abbreviation="MT" />
+	<state name="NEBRASKA" abbreviation="NE" />
+	<state name="NEVADA" abbreviation="NV" />
+	<state name="NEW HAMPSHIRE" abbreviation="NH" />
+	<state name="NEW JERSEY" abbreviation="NJ" />
+	<state name="NEW MEXICO" abbreviation="NM" />
+	<state name="NEW YORK" abbreviation="NY" />
+	<state name="NORTH CAROLINA" abbreviation="NC" />
+	<state name="NORTH DAKOTA" abbreviation="ND" />
+	<state name="NORTHERN MARIANA ISLANDS" abbreviation="MP" />
+	<state name="OHIO" abbreviation="OH" />
+	<state name="OKLAHOMA" abbreviation="OK" />
+	<state name="OREGON" abbreviation="OR" />
+	<state name="PALAU" abbreviation="PW" />
+	<state name="PENNSYLVANIA" abbreviation="PA" />
+	<state name="PUERTO RICO" abbreviation="PR" />
+	<state name="RHODE ISLAND" abbreviation="RI" />
+	<state name="SOUTH CAROLINA" abbreviation="SC" />
+	<state name="SOUTH DAKOTA" abbreviation="SD" />
+	<state name="TENNESSEE" abbreviation="TN" />
+	<state name="TEXAS" abbreviation="TX" />
+	<state name="UTAH" abbreviation="UT" />
+	<state name="VERMONT" abbreviation="VT" />
+	<state name="VIRGIN ISLANDS" abbreviation="VI" />
+	<state name="VIRGINIA" abbreviation="VA" />
+	<state name="WASHINGTON" abbreviation="WA" />
+	<state name="WEST VIRGINIA" abbreviation="WV" />
+	<state name="WISCONSIN" abbreviation="WI" />
+	<state name="WYOMING" abbreviation="WY" />
+</states>

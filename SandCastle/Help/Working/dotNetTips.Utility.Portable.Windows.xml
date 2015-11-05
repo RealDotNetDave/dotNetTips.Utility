@@ -1,0 +1,364 @@
+﻿<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>dotNetTips.Utility.Portable.Windows.Contracts</name>
+  </assembly>
+  <members>
+    <member name="M:dotNetTips.Utility.Portable.Windows.General.ToFourDigitYear(System.Int32)">
+      <requires exception="T:System.ArgumentNullException" csharp="year &gt;= 0" vb="year &gt;= 0">year &gt;= 0</requires>
+      <exception cref="T:System.ArgumentNullException">year &lt; 0</exception>
+      <ensures csharp="result &gt;= 0" vb="result &gt;= 0">result &gt;= 0</ensures>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.General.GetInstanceHashCode(System.Object)">
+      <requires exception="T:System.ArgumentNullException" csharp="instance != null" vb="instance &lt;&gt; Nothing">instance != null</requires>
+      <exception cref="T:System.ArgumentNullException">instance == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.General.DoesObjectEqualInstance(System.Object,System.Object)">
+      <requires exception="T:System.ArgumentNullException" csharp="value != null" vb="value &lt;&gt; Nothing">value != null</requires>
+      <exception cref="T:System.ArgumentNullException">value == null</exception>
+      <requires exception="T:System.ArgumentNullException" csharp="instance != null" vb="instance &lt;&gt; Nothing">instance != null</requires>
+      <exception cref="T:System.ArgumentNullException">instance == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.StringHelper.Compare(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(original)" vb="Not IsNullOrEmpty(original)">!string.IsNullOrEmpty(original)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(original)</exception>
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(compareTo)" vb="Not IsNullOrEmpty(compareTo)">!string.IsNullOrEmpty(compareTo)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(compareTo)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.StringHelper.Space(System.Int32)">
+      <requires exception="T:System.ArgumentNullException" csharp="number &gt;= 0" vb="number &gt;= 0">number &gt;= 0</requires>
+      <exception cref="T:System.ArgumentNullException">number &lt; 0</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.StringHelper.RemoveSpaces(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="input != null" vb="input &lt;&gt; Nothing">input != null</requires>
+      <exception cref="T:System.ArgumentNullException">input == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.StringHelper.RemoveCharacter(System.String,System.Char)">
+      <requires exception="T:System.ArgumentNullException" csharp="input != null" vb="input &lt;&gt; Nothing">input != null</requires>
+      <exception cref="T:System.ArgumentNullException">input == null</exception>
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrWhiteSpace(character.ToString())" vb="Not IsNullOrWhiteSpace(character.ToString())">!string.IsNullOrWhiteSpace(character.ToString())</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrWhiteSpace(character.ToString())</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Data.UsStates.ConvertNameOrCode(System.String)">
+      <requires description="Argument cannot be null." csharp="!IsNullOrEmpty(nameOrCode)" vb="Not IsNullOrEmpty(nameOrCode)">!string.IsNullOrEmpty(nameOrCode)</requires>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Data.Countries.ConvertNameOrCode(System.String)">
+      <requires description="Argument cannot be null." csharp="!IsNullOrEmpty(nameOrCode)" vb="Not IsNullOrEmpty(nameOrCode)">!string.IsNullOrEmpty(nameOrCode)</requires>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Math.MathHelper.CalculateKilobytes(System.Decimal,System.Int32)">
+      <requires description="Must be in range 0-15" exception="T:System.ArgumentOutOfRangeException" csharp="(digits &gt;= 0 &amp;&amp; digits &lt;= 15 ? 1 : 0) != 0" vb="(digits &gt;= 0 AndAlso digits &lt;= 15 ? 1 : 0) &lt;&gt; 0">(digits &gt;= 0 &amp;&amp; digits &lt;= 15 ? 1 : 0) != 0</requires>
+      <exception cref="T:System.ArgumentOutOfRangeException">(digits &gt;= 0 &amp;&amp; digits &lt;= 15 ? 1 : 0) == 0</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.StringExtensions.JoinStrings(System.Collections.Generic.IEnumerable{System.String},System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="values != null" vb="values &lt;&gt; Nothing">values != null</requires>
+      <exception cref="T:System.ArgumentNullException">values == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.StringExtensions.JoinStrings(System.Collections.Generic.IEnumerable{System.String})">
+      <requires exception="T:System.ArgumentNullException" csharp="values != null" vb="values &lt;&gt; Nothing">values != null</requires>
+      <exception cref="T:System.ArgumentNullException">values == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.StringExtensions.ToStringJoin``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="values != null" vb="values &lt;&gt; Nothing">values != null</requires>
+      <exception cref="T:System.ArgumentNullException">values == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.StringExtensions.ToStringJoin``1(System.Collections.Generic.IEnumerable{``0})">
+      <requires exception="T:System.ArgumentNullException" csharp="values != null" vb="values &lt;&gt; Nothing">values != null</requires>
+      <exception cref="T:System.ArgumentNullException">values == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.StringExtensions.RemoveFromEnd(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(oldValue)" vb="Not IsNullOrEmpty(oldValue)">!string.IsNullOrEmpty(oldValue)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(oldValue)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.StringExtensions.ToBytes(System.String,System.Text.Encoding)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+      <requires exception="T:System.ArgumentNullException" csharp="encoding != null" vb="encoding &lt;&gt; Nothing">encoding != null</requires>
+      <exception cref="T:System.ArgumentNullException">encoding == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.StringExtensions.ToString(System.Byte[],System.Text.Encoding)">
+      <requires exception="T:System.ArgumentNullException" csharp="input != null" vb="input &lt;&gt; Nothing">input != null</requires>
+      <exception cref="T:System.ArgumentNullException">input == null</exception>
+      <requires exception="T:System.ArgumentNullException" csharp="encoding != null" vb="encoding &lt;&gt; Nothing">encoding != null</requires>
+      <exception cref="T:System.ArgumentNullException">encoding == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.EnumerableExtensions.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+      <requires exception="T:System.ArgumentNullException" csharp="values != null" vb="values &lt;&gt; Nothing">values != null</requires>
+      <exception cref="T:System.ArgumentNullException">values == null</exception>
+      <requires exception="T:System.ArgumentNullException" csharp="action != null" vb="action &lt;&gt; Nothing">action != null</requires>
+      <exception cref="T:System.ArgumentNullException">action == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.CollectionExtensions.Split(System.Collections.IList,System.Int32)">
+      <requires exception="T:System.ArgumentNullException" csharp="list != null" vb="list &lt;&gt; Nothing">list != null</requires>
+      <exception cref="T:System.ArgumentNullException">list == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.CollectionExtensions.SplitList``1(System.Collections.Generic.List{``0},System.Int32)">
+      <requires exception="T:System.ArgumentNullException" csharp="items != null" vb="items &lt;&gt; Nothing">items != null</requires>
+      <exception cref="T:System.ArgumentNullException">items == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.CheckLength(System.String,System.Int32,System.Int32)">
+      <requires description="Must supply a non-empty input string." csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <requires description="Value for minimum is invalid." csharp="minimum &lt; 0 | minimum &gt; int.MaxValue" vb=" Or minimum &gt; int.MaxValue">minimum &lt; 0 | minimum &gt; int.MaxValue</requires>
+      <requires description="Value for maximum is invalid." csharp="maximum &lt; 0 | maximum &gt; int.MaxValue" vb=" Or maximum &gt; int.MaxValue">maximum &lt; 0 | maximum &gt; int.MaxValue</requires>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.CheckLength(System.String,System.Int32)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+      <requires exception="T:System.ArgumentOutOfRangeException" csharp="maximum &lt; 0 | maximum &gt; int.MaxValue" vb=" Or maximum &gt; int.MaxValue">maximum &lt; 0 | maximum &gt; int.MaxValue</requires>
+      <exception cref="T:System.ArgumentOutOfRangeException">!(maximum &lt; 0 | maximum &gt; int.MaxValue)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidDate(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidEmail(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidEmail(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidSocialSecurity(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidSocialSecurity(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidPhone(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidPhone(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidPostalCode(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidPostalCode(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidUrl(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidUrl(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidDomain(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidDomain(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidFilePath(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidFilePath(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidFirstLastName(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidFirstLastName(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidTemperature(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidTemperature(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidScientific(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidScientific(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidIsbn(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidIsbn(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidCreditCard(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidCreditCard(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidString(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidString(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidString(System.String,System.Boolean)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.Extensions.ValidationHelper.IsValidString(System.String,System.Boolean,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.CheckLength(System.String,System.Int32,System.Int32)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+      <requires exception="T:System.ArgumentOutOfRangeException" csharp="minimum &lt; 0 | minimum &gt; int.MaxValue" vb=" Or minimum &gt; int.MaxValue">minimum &lt; 0 | minimum &gt; int.MaxValue</requires>
+      <exception cref="T:System.ArgumentOutOfRangeException">!(minimum &lt; 0 | minimum &gt; int.MaxValue)</exception>
+      <requires exception="T:System.ArgumentOutOfRangeException" csharp="maximum &lt; 0 | maximum &gt; int.MaxValue" vb=" Or maximum &gt; int.MaxValue">maximum &lt; 0 | maximum &gt; int.MaxValue</requires>
+      <exception cref="T:System.ArgumentOutOfRangeException">!(maximum &lt; 0 | maximum &gt; int.MaxValue)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.CheckLength(System.String,System.Int32)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+      <requires exception="T:System.ArgumentOutOfRangeException" csharp="maximum &lt; 0 | maximum &gt; int.MaxValue" vb=" Or maximum &gt; int.MaxValue">maximum &lt; 0 | maximum &gt; int.MaxValue</requires>
+      <exception cref="T:System.ArgumentOutOfRangeException">!(maximum &lt; 0 | maximum &gt; int.MaxValue)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidDate(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidEmail(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidEmail(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidSocialSecurity(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidSocialSecurity(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidPhone(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidPhone(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidPostalCode(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidPostalCode(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidUrl(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidUrl(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidDomain(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidDomain(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidFilePath(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidFilePath(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidFirstLastName(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidFirstLastName(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidTemperature(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidTemperature(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidScientific(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidScientific(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidIsbn(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidIsbn(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidCreditCard(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidCreditCard(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidString(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidString(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidString(System.String,System.Boolean)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidString(System.String,System.Boolean,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Portable.Windows.ValidationHelper.ValidateString(System.String,System.String)">
+      <requires description="Must send in valid input string." exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+      <requires description="Must send in valid regular expression" exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(expression)" vb="Not IsNullOrEmpty(expression)">!string.IsNullOrEmpty(expression)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(expression)</exception>
+    </member>
+  </members>
+</doc>

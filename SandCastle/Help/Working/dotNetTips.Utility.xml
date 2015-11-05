@@ -1,0 +1,457 @@
+﻿<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>dotNetTips.Utility.Contracts</name>
+  </assembly>
+  <members>
+    <member name="M:dotNetTips.Utility.ValidationHelper.IsValidNumber(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.IO.DriveHelper.GetDriveSerialNumber(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrWhiteSpace(drive)" vb="Not IsNullOrWhiteSpace(drive)">!string.IsNullOrWhiteSpace(drive)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrWhiteSpace(drive)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.IIsServerHelper.ManageIISWebService(System.String,System.String,System.Security.SecureString,System.String,System.String,dotNetTips.Utility.Web.WebServiceAction)">
+      <requires exception="T:System.ArgumentNullException" csharp="password != null" vb="password &lt;&gt; Nothing">password != null</requires>
+      <exception cref="T:System.ArgumentNullException">password == null</exception>
+      <requires exception="T:System.ArgumentOutOfRangeException" csharp="IsDefined(typeof(dotNetTips.Utility.Web.WebServiceAction), (object)action)" vb="IsDefined(typeof(dotNetTips.Utility.Web.WebServiceAction), ((Object)action))">System.Enum.IsDefined(typeof(dotNetTips.Utility.Web.WebServiceAction), (object)action)</requires>
+      <exception cref="T:System.ArgumentOutOfRangeException">!System.Enum.IsDefined(typeof(dotNetTips.Utility.Web.WebServiceAction), (object)action)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.WebHelper.CallWebService(System.Uri,System.String,System.String,System.Object[])">
+      <requires exception="T:System.ArgumentNullException" csharp="(() =&gt; {&#xD;&#xA;    {&#xD;&#xA;        if (webServiceAsmxUrl != default(System.Uri))&#xD;&#xA;        {&#xD;&#xA;            if (IsNullOrEmpty(webServiceAsmxUrl.ToString()))&#xD;&#xA;            else            goto IL_001c;&#xD;&#xA;        }&#xD;&#xA;        push 0;&#xD;&#xA;        goto IL_001d;&#xD;&#xA;    IL_001c:&#xD;&#xA;        push 1;&#xD;&#xA;    IL_001d:&#xD;&#xA;    }&#xD;&#xA;    return pop != 0; })()" vb="(() =&gt; {&#xD;&#xA;    If webServiceAsmxUrl &lt;&gt; Nothing Then&#xD;&#xA;    If IsNullOrEmpty(webServiceAsmxUrl.ToString()) Then&#xD;&#xA;&#xD;&#xA;    else    goto IL_001c;&#xD;&#xA;    push 0;&#xD;&#xA;    goto IL_001d;&#xD;&#xA;IL_001c:&#xD;&#xA;    push 1;&#xD;&#xA;IL_001d:&#xD;&#xA;    return pop &lt;&gt; 0; })()">(() =&gt; {
+    {
+        if (webServiceAsmxUrl != default(System.Uri))
+        {
+            if (string.IsNullOrEmpty(webServiceAsmxUrl.ToString()))
+            else            goto IL_001c;
+        }
+        push 0;
+        goto IL_001d;
+    IL_001c:
+        push 1;
+    IL_001d:
+    }
+    return pop != 0; })()</requires>
+      <exception cref="T:System.ArgumentNullException">!(() =&gt; {
+    {
+        if ((webServiceAsmxUrl != default(System.Uri)))
+        {
+            if (string.IsNullOrEmpty(webServiceAsmxUrl.ToString()))
+            else            goto IL_001c;
+        }
+        push 0;
+        goto IL_001d;
+    IL_001c:
+        push 1;
+    IL_001d:
+    }
+    return (pop != 0); })()</exception>
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrWhiteSpace(serviceName)" vb="Not IsNullOrWhiteSpace(serviceName)">!string.IsNullOrWhiteSpace(serviceName)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrWhiteSpace(serviceName)</exception>
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrWhiteSpace(methodName)" vb="Not IsNullOrWhiteSpace(methodName)">!string.IsNullOrWhiteSpace(methodName)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrWhiteSpace(methodName)</exception>
+      <ensures csharp="result != null" vb="result &lt;&gt; Nothing">result != null</ensures>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.WebHelper.HtmlDecode(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrWhiteSpace(input)" vb="Not IsNullOrWhiteSpace(input)">!string.IsNullOrWhiteSpace(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrWhiteSpace(input)</exception>
+      <ensures csharp="!IsNullOrWhiteSpace(result)" vb="Not IsNullOrWhiteSpace(result)">!string.IsNullOrWhiteSpace(result)</ensures>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.WebHelper.UrlDecode(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrWhiteSpace(input)" vb="Not IsNullOrWhiteSpace(input)">!string.IsNullOrWhiteSpace(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrWhiteSpace(input)</exception>
+      <ensures csharp="result != null" vb="result &lt;&gt; Nothing">result != null</ensures>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.WebHelper.CurrentUsersIP(System.Web.HttpContext)">
+      <requires exception="T:System.ArgumentNullException" csharp="currentContext != null" vb="currentContext &lt;&gt; Nothing">currentContext != null</requires>
+      <exception cref="T:System.ArgumentNullException">currentContext == null</exception>
+      <ensures csharp="!IsNullOrWhiteSpace(result)" vb="Not IsNullOrWhiteSpace(result)">!string.IsNullOrWhiteSpace(result)</ensures>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.WebHelper.DownloadWebPage(System.Uri)">
+      <requires exception="T:System.ArgumentNullException" csharp="(() =&gt; {&#xD;&#xA;    {&#xD;&#xA;        if (address != default(System.Uri))&#xD;&#xA;        {&#xD;&#xA;            if (IsNullOrEmpty(address.ToString()))&#xD;&#xA;            else            goto IL_001c;&#xD;&#xA;        }&#xD;&#xA;        push 0;&#xD;&#xA;        goto IL_001d;&#xD;&#xA;    IL_001c:&#xD;&#xA;        push 1;&#xD;&#xA;    IL_001d:&#xD;&#xA;    }&#xD;&#xA;    return pop != 0; })()" vb="(() =&gt; {&#xD;&#xA;    If address &lt;&gt; Nothing Then&#xD;&#xA;    If IsNullOrEmpty(address.ToString()) Then&#xD;&#xA;&#xD;&#xA;    else    goto IL_001c;&#xD;&#xA;    push 0;&#xD;&#xA;    goto IL_001d;&#xD;&#xA;IL_001c:&#xD;&#xA;    push 1;&#xD;&#xA;IL_001d:&#xD;&#xA;    return pop &lt;&gt; 0; })()">(() =&gt; {
+    {
+        if (address != default(System.Uri))
+        {
+            if (string.IsNullOrEmpty(address.ToString()))
+            else            goto IL_001c;
+        }
+        push 0;
+        goto IL_001d;
+    IL_001c:
+        push 1;
+    IL_001d:
+    }
+    return pop != 0; })()</requires>
+      <exception cref="T:System.ArgumentNullException">!(() =&gt; {
+    {
+        if ((address != default(System.Uri)))
+        {
+            if (string.IsNullOrEmpty(address.ToString()))
+            else            goto IL_001c;
+        }
+        push 0;
+        goto IL_001d;
+    IL_001c:
+        push 1;
+    IL_001d:
+    }
+    return (pop != 0); })()</exception>
+      <ensures csharp="!IsNullOrWhiteSpace(result)" vb="Not IsNullOrWhiteSpace(result)">!string.IsNullOrWhiteSpace(result)</ensures>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.WebHelper.DownloadWebPage(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrWhiteSpace(address)" vb="Not IsNullOrWhiteSpace(address)">!string.IsNullOrWhiteSpace(address)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrWhiteSpace(address)</exception>
+      <ensures csharp="!IsNullOrWhiteSpace(result)" vb="Not IsNullOrWhiteSpace(result)">!string.IsNullOrWhiteSpace(result)</ensures>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.WebHelper.DownloadOnlineImage(System.Uri)">
+      <requires exception="T:System.ArgumentNullException" csharp="(() =&gt; {&#xD;&#xA;    {&#xD;&#xA;        if (address != default(System.Uri))&#xD;&#xA;        {&#xD;&#xA;            if (IsNullOrEmpty(address.ToString()))&#xD;&#xA;            else            goto IL_001c;&#xD;&#xA;        }&#xD;&#xA;        push 0;&#xD;&#xA;        goto IL_001d;&#xD;&#xA;    IL_001c:&#xD;&#xA;        push 1;&#xD;&#xA;    IL_001d:&#xD;&#xA;    }&#xD;&#xA;    return pop != 0; })()" vb="(() =&gt; {&#xD;&#xA;    If address &lt;&gt; Nothing Then&#xD;&#xA;    If IsNullOrEmpty(address.ToString()) Then&#xD;&#xA;&#xD;&#xA;    else    goto IL_001c;&#xD;&#xA;    push 0;&#xD;&#xA;    goto IL_001d;&#xD;&#xA;IL_001c:&#xD;&#xA;    push 1;&#xD;&#xA;IL_001d:&#xD;&#xA;    return pop &lt;&gt; 0; })()">(() =&gt; {
+    {
+        if (address != default(System.Uri))
+        {
+            if (string.IsNullOrEmpty(address.ToString()))
+            else            goto IL_001c;
+        }
+        push 0;
+        goto IL_001d;
+    IL_001c:
+        push 1;
+    IL_001d:
+    }
+    return pop != 0; })()</requires>
+      <exception cref="T:System.ArgumentNullException">!(() =&gt; {
+    {
+        if ((address != default(System.Uri)))
+        {
+            if (string.IsNullOrEmpty(address.ToString()))
+            else            goto IL_001c;
+        }
+        push 0;
+        goto IL_001d;
+    IL_001c:
+        push 1;
+    IL_001d:
+    }
+    return (pop != 0); })()</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.WebHelper.DownloadString(System.Uri)">
+      <requires exception="T:System.ArgumentNullException" csharp="(() =&gt; {&#xD;&#xA;    {&#xD;&#xA;        if (address != default(System.Uri))&#xD;&#xA;        {&#xD;&#xA;            if (IsNullOrEmpty(address.ToString()))&#xD;&#xA;            else            goto IL_001c;&#xD;&#xA;        }&#xD;&#xA;        push 0;&#xD;&#xA;        goto IL_001d;&#xD;&#xA;    IL_001c:&#xD;&#xA;        push 1;&#xD;&#xA;    IL_001d:&#xD;&#xA;    }&#xD;&#xA;    return pop != 0; })()" vb="(() =&gt; {&#xD;&#xA;    If address &lt;&gt; Nothing Then&#xD;&#xA;    If IsNullOrEmpty(address.ToString()) Then&#xD;&#xA;&#xD;&#xA;    else    goto IL_001c;&#xD;&#xA;    push 0;&#xD;&#xA;    goto IL_001d;&#xD;&#xA;IL_001c:&#xD;&#xA;    push 1;&#xD;&#xA;IL_001d:&#xD;&#xA;    return pop &lt;&gt; 0; })()">(() =&gt; {
+    {
+        if (address != default(System.Uri))
+        {
+            if (string.IsNullOrEmpty(address.ToString()))
+            else            goto IL_001c;
+        }
+        push 0;
+        goto IL_001d;
+    IL_001c:
+        push 1;
+    IL_001d:
+    }
+    return pop != 0; })()</requires>
+      <exception cref="T:System.ArgumentNullException">!(() =&gt; {
+    {
+        if ((address != default(System.Uri)))
+        {
+            if (string.IsNullOrEmpty(address.ToString()))
+            else            goto IL_001c;
+        }
+        push 0;
+        goto IL_001d;
+    IL_001c:
+        push 1;
+    IL_001d:
+    }
+    return (pop != 0); })()</exception>
+      <ensures csharp="!IsNullOrWhiteSpace(result)" vb="Not IsNullOrWhiteSpace(result)">!string.IsNullOrWhiteSpace(result)</ensures>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.WebHelper.DownloadFile(System.Uri,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="(() =&gt; {&#xD;&#xA;    {&#xD;&#xA;        if (address != default(System.Uri))&#xD;&#xA;        {&#xD;&#xA;            if (IsNullOrEmpty(address.ToString()))&#xD;&#xA;            else            goto IL_001c;&#xD;&#xA;        }&#xD;&#xA;        push 0;&#xD;&#xA;        goto IL_001d;&#xD;&#xA;    IL_001c:&#xD;&#xA;        push 1;&#xD;&#xA;    IL_001d:&#xD;&#xA;    }&#xD;&#xA;    return pop != 0; })()" vb="(() =&gt; {&#xD;&#xA;    If address &lt;&gt; Nothing Then&#xD;&#xA;    If IsNullOrEmpty(address.ToString()) Then&#xD;&#xA;&#xD;&#xA;    else    goto IL_001c;&#xD;&#xA;    push 0;&#xD;&#xA;    goto IL_001d;&#xD;&#xA;IL_001c:&#xD;&#xA;    push 1;&#xD;&#xA;IL_001d:&#xD;&#xA;    return pop &lt;&gt; 0; })()">(() =&gt; {
+    {
+        if (address != default(System.Uri))
+        {
+            if (string.IsNullOrEmpty(address.ToString()))
+            else            goto IL_001c;
+        }
+        push 0;
+        goto IL_001d;
+    IL_001c:
+        push 1;
+    IL_001d:
+    }
+    return pop != 0; })()</requires>
+      <exception cref="T:System.ArgumentNullException">!(() =&gt; {
+    {
+        if ((address != default(System.Uri)))
+        {
+            if (string.IsNullOrEmpty(address.ToString()))
+            else            goto IL_001c;
+        }
+        push 0;
+        goto IL_001d;
+    IL_001c:
+        push 1;
+    IL_001d:
+    }
+    return (pop != 0); })()</exception>
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrWhiteSpace(fileName)" vb="Not IsNullOrWhiteSpace(fileName)">!string.IsNullOrWhiteSpace(fileName)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrWhiteSpace(fileName)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.WebHelper.HtmlEncode(System.Data.DataTable)">
+      <requires exception="T:System.ArgumentNullException" csharp="table != null" vb="table &lt;&gt; Nothing">table != null</requires>
+      <exception cref="T:System.ArgumentNullException">table == null</exception>
+      <ensures csharp="result != null" vb="result &lt;&gt; Nothing">result != null</ensures>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.WebHelper.HtmlEncode(System.Data.DataSet)">
+      <requires exception="T:System.ArgumentNullException" csharp="data != null" vb="data &lt;&gt; Nothing">data != null</requires>
+      <exception cref="T:System.ArgumentNullException">data == null</exception>
+      <ensures csharp="result != null" vb="result &lt;&gt; Nothing">result != null</ensures>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.WebHelper.HtmlEncode(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrWhiteSpace(input)" vb="Not IsNullOrWhiteSpace(input)">!string.IsNullOrWhiteSpace(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrWhiteSpace(input)</exception>
+      <ensures csharp="!IsNullOrWhiteSpace(result)" vb="Not IsNullOrWhiteSpace(result)">!string.IsNullOrWhiteSpace(result)</ensures>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.WebHelper.HtmlAttributeEncode(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrWhiteSpace(input)" vb="Not IsNullOrWhiteSpace(input)">!string.IsNullOrWhiteSpace(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrWhiteSpace(input)</exception>
+      <ensures csharp="!IsNullOrWhiteSpace(result)" vb="Not IsNullOrWhiteSpace(result)">!string.IsNullOrWhiteSpace(result)</ensures>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.WebHelper.UrlEncode(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrWhiteSpace(input)" vb="Not IsNullOrWhiteSpace(input)">!string.IsNullOrWhiteSpace(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrWhiteSpace(input)</exception>
+      <ensures csharp="result != null" vb="result &lt;&gt; Nothing">result != null</ensures>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.WebHelper.JavaScriptEncode(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrWhiteSpace(input)" vb="Not IsNullOrWhiteSpace(input)">!string.IsNullOrWhiteSpace(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrWhiteSpace(input)</exception>
+      <ensures csharp="!IsNullOrWhiteSpace(result)" vb="Not IsNullOrWhiteSpace(result)">!string.IsNullOrWhiteSpace(result)</ensures>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.WebHelper.VisualBasicScriptEncode(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrWhiteSpace(input)" vb="Not IsNullOrWhiteSpace(input)">!string.IsNullOrWhiteSpace(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrWhiteSpace(input)</exception>
+      <ensures csharp="!IsNullOrWhiteSpace(result)" vb="Not IsNullOrWhiteSpace(result)">!string.IsNullOrWhiteSpace(result)</ensures>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.WebHelper.XmlAttributeEncode(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrWhiteSpace(input)" vb="Not IsNullOrWhiteSpace(input)">!string.IsNullOrWhiteSpace(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrWhiteSpace(input)</exception>
+      <ensures csharp="!IsNullOrWhiteSpace(result)" vb="Not IsNullOrWhiteSpace(result)">!string.IsNullOrWhiteSpace(result)</ensures>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.WebHelper.XmlEncode(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrWhiteSpace(input)" vb="Not IsNullOrWhiteSpace(input)">!string.IsNullOrWhiteSpace(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrWhiteSpace(input)</exception>
+      <ensures csharp="!IsNullOrWhiteSpace(result)" vb="Not IsNullOrWhiteSpace(result)">!string.IsNullOrWhiteSpace(result)</ensures>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.WebHelper.JsonEncode(System.Object)">
+      <requires exception="T:System.ArgumentNullException" csharp="input != null" vb="input &lt;&gt; Nothing">input != null</requires>
+      <exception cref="T:System.ArgumentNullException">input == null</exception>
+      <requires exception="T:System.ArgumentOutOfRangeException" csharp="!(input is object)" vb="Not input Is Object">!(input is object)</requires>
+      <exception cref="T:System.ArgumentOutOfRangeException">input is object</exception>
+      <ensures csharp="!IsNullOrWhiteSpace(result)" vb="Not IsNullOrWhiteSpace(result)">!string.IsNullOrWhiteSpace(result)</ensures>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.WebHelper.JsonDecode``1(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrWhiteSpace(input)" vb="Not IsNullOrWhiteSpace(input)">!string.IsNullOrWhiteSpace(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrWhiteSpace(input)</exception>
+      <ensures csharp="(object)result != null" vb="((Object)result) &lt;&gt; Nothing">(object)result != null</ensures>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.WebHelper.LookupGeoLocationInfo(System.Net.IPAddress)">
+      <requires exception="T:System.ArgumentNullException" csharp="ipaddress != null" vb="ipaddress &lt;&gt; Nothing">ipaddress != null</requires>
+      <exception cref="T:System.ArgumentNullException">ipaddress == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.WebHelper.ExtractHttpHeaderValue(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrWhiteSpace(key)" vb="Not IsNullOrWhiteSpace(key)">!string.IsNullOrWhiteSpace(key)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrWhiteSpace(key)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.WebHelper.ExtractHttpQueryValue(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrWhiteSpace(key)" vb="Not IsNullOrWhiteSpace(key)">!string.IsNullOrWhiteSpace(key)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrWhiteSpace(key)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.WebHelper.ExecuteODataQueryFull``1(System.Uri,System.Data.Services.Client.DataServiceContext)">
+      <requires exception="T:System.ArgumentNullException" csharp="context != null" vb="context &lt;&gt; Nothing">context != null</requires>
+      <exception cref="T:System.ArgumentNullException">context == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.UrlBuilder.#ctor(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrWhiteSpace(uri)" vb="Not IsNullOrWhiteSpace(uri)">!string.IsNullOrWhiteSpace(uri)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrWhiteSpace(uri)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Web.UrlBuilder.ToString">
+      <ensures inheritedFrom="M:System.Object.ToString" inheritedFromTypeName="Object" csharp="result != null" vb="result &lt;&gt; Nothing">result != null</ensures>
+    </member>
+    <member name="M:dotNetTips.Utility.My.MyProject.MyWebServices.ToString">
+      <ensures inheritedFrom="M:System.Object.ToString" inheritedFromTypeName="Object" csharp="result != null" vb="result &lt;&gt; Nothing">result != null</ensures>
+    </member>
+    <member name="M:dotNetTips.Utility.Extensions.ResponseExtensions.Redirect(System.Web.HttpResponse,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="value != null" vb="value &lt;&gt; Nothing">value != null</requires>
+      <exception cref="T:System.ArgumentNullException">value == null</exception>
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrWhiteSpace(page)" vb="Not IsNullOrWhiteSpace(page)">!string.IsNullOrWhiteSpace(page)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrWhiteSpace(page)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Extensions.ColorExtensions.Average(System.Collections.Generic.IEnumerable{System.Drawing.Color})">
+      <requires exception="T:System.ArgumentNullException" csharp="colors != null" vb="colors &lt;&gt; Nothing">colors != null</requires>
+      <exception cref="T:System.ArgumentNullException">colors == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Extensions.CollectionExtensions.ToImage(System.Byte[])">
+      <requires exception="T:System.ArgumentNullException" csharp="(value != default(byte[]) &amp;&amp; value.Length &gt; 0 ? 1 : 0) != 0" vb="(value &lt;&gt; Nothing AndAlso value.Length &gt; 0 ? 1 : 0) &lt;&gt; 0">(value != default(byte[]) &amp;&amp; value.Length &gt; 0 ? 1 : 0) != 0</requires>
+      <exception cref="T:System.ArgumentNullException">(value != default(byte[]) &amp;&amp; value.Length &gt; 0 ? 1 : 0) == 0</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Extensions.DirectoryInfoExtensions.DeleteFiles(System.IO.DirectoryInfo,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="di != null" vb="di &lt;&gt; Nothing">di != null</requires>
+      <exception cref="T:System.ArgumentNullException">di == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Extensions.DirectoryInfoExtensions.GetSize(System.IO.DirectoryInfo)">
+      <requires exception="T:System.ArgumentNullException" csharp="info != null" vb="info &lt;&gt; Nothing">info != null</requires>
+      <exception cref="T:System.ArgumentNullException">info == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Extensions.DirectoryInfoExtensions.DeleteFiles(System.IO.DirectoryInfo,System.String,dotNetTips.Utility.Tristate)">
+      <requires exception="T:System.ArgumentNullException" csharp="info != null" vb="info &lt;&gt; Nothing">info != null</requires>
+      <exception cref="T:System.ArgumentNullException">info == null</exception>
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrWhiteSpace(searchPattern)" vb="Not IsNullOrWhiteSpace(searchPattern)">!string.IsNullOrWhiteSpace(searchPattern)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrWhiteSpace(searchPattern)</exception>
+      <requires exception="T:System.ArgumentNullException" csharp="IsDefined(typeof(dotNetTips.Utility.Tristate), (object)includeSubdirectories)" vb="IsDefined(typeof(dotNetTips.Utility.Tristate), ((Object)includeSubdirectories))">System.Enum.IsDefined(typeof(dotNetTips.Utility.Tristate), (object)includeSubdirectories)</requires>
+      <exception cref="T:System.ArgumentNullException">!System.Enum.IsDefined(typeof(dotNetTips.Utility.Tristate), (object)includeSubdirectories)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Extensions.StringExtensions.DefaultIfNullOrEmpty(System.String,System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(defaultValue)" vb="Not IsNullOrEmpty(defaultValue)">!string.IsNullOrEmpty(defaultValue)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(defaultValue)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Extensions.StringExtensions.GetSHA1Hash(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Extensions.StringExtensions.ToImage(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrWhiteSpace(base64)" vb="Not IsNullOrWhiteSpace(base64)">!string.IsNullOrWhiteSpace(base64)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrWhiteSpace(base64)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Extensions.DataServicesExtensions.CopyRequestHeaderValues(System.Data.Services.ProcessRequestArgs)">
+      <requires exception="T:System.ArgumentNullException" csharp="args != null" vb="args &lt;&gt; Nothing">args != null</requires>
+      <exception cref="T:System.ArgumentNullException">args == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Extensions.ImageExtensions.ToBytes(System.Drawing.Image,System.Drawing.Imaging.ImageFormat)">
+      <requires exception="T:System.ArgumentNullException" csharp="format != null" vb="format &lt;&gt; Nothing">format != null</requires>
+      <exception cref="T:System.ArgumentNullException">format == null</exception>
+      <requires exception="T:System.ArgumentNullException" csharp="image != null" vb="image &lt;&gt; Nothing">image != null</requires>
+      <exception cref="T:System.ArgumentNullException">image == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Extensions.ImageExtensions.ToByteArray(System.Drawing.Image,System.Drawing.Imaging.ImageFormat)">
+      <requires exception="T:System.ArgumentNullException" csharp="image != null" vb="image &lt;&gt; Nothing">image != null</requires>
+      <exception cref="T:System.ArgumentNullException">image == null</exception>
+      <requires exception="T:System.ArgumentNullException" csharp="imageFormat != null" vb="imageFormat &lt;&gt; Nothing">imageFormat != null</requires>
+      <exception cref="T:System.ArgumentNullException">imageFormat == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Extensions.ImageExtensions.CodecInfo(System.Drawing.Image)">
+      <requires exception="T:System.ArgumentNullException" csharp="new dotNetTips.Utility.Extensions.ImageExtensions._Closure$__1(){&#xD;&#xA;    $VB$Local_image = image, &#xD;&#xA;}.$VB$Local_image != null" vb="(() =&gt; {&#xD;&#xA;    dotNetTips.Utility.Extensions.ImageExtensions._Closure$__1 local_1_prime = New dotNetTips.Utility.Extensions.ImageExtensions._Closure$__1();&#xD;&#xA;    (local_1_prime.$VB$Local_image = image)&#xD;&#xA;    return local_1_prime; })().$VB$Local_image &lt;&gt; Nothing">new dotNetTips.Utility.Extensions.ImageExtensions._Closure$__1(){
+    $VB$Local_image = image, 
+}.$VB$Local_image != null</requires>
+      <exception cref="T:System.ArgumentNullException">new dotNetTips.Utility.Extensions.ImageExtensions._Closure$__1(){
+    $VB$Local_image = image, 
+}.$VB$Local_image == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Extensions.ImageExtensions.Bounds(System.Drawing.Image)">
+      <requires exception="T:System.ArgumentNullException" csharp="image != null" vb="image &lt;&gt; Nothing">image != null</requires>
+      <exception cref="T:System.ArgumentNullException">image == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Extensions.ImageExtensions.Crop(System.Drawing.Image,System.Drawing.Rectangle)">
+      <requires exception="T:System.ArgumentNullException" csharp="image != null" vb="image &lt;&gt; Nothing">image != null</requires>
+      <exception cref="T:System.ArgumentNullException">image == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Extensions.ImageExtensions.Resize(System.Drawing.Image,System.Drawing.Size)">
+      <requires exception="T:System.ArgumentNullException" csharp="value != null" vb="value &lt;&gt; Nothing">value != null</requires>
+      <exception cref="T:System.ArgumentNullException">value == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Extensions.EntityExtensions.ForeignKey(System.Data.Objects.DataClasses.EntityReference)">
+      <requires exception="T:System.ArgumentNullException" csharp="ref != null" vb="ref &lt;&gt; Nothing">ref != null</requires>
+      <exception cref="T:System.ArgumentNullException">ref == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Extensions.ObjectExtensions.ToString(System.Object,System.String,System.Int32)">
+      <requires exception="T:System.ArgumentNullException" csharp="value != null" vb="value &lt;&gt; Nothing">value != null</requires>
+      <exception cref="T:System.ArgumentNullException">value == null</exception>
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(prefix)" vb="Not IsNullOrEmpty(prefix)">!string.IsNullOrEmpty(prefix)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(prefix)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Extensions.ObjectExtensions.Clone``1(System.Object)">
+      <requires description="Object is required." exception="T:System.ArgumentNullException" csharp="value != null" vb="value &lt;&gt; Nothing">value != null</requires>
+      <exception cref="T:System.ArgumentNullException">value == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Extensions.ObjectExtensions.DisposeFields(System.Object)">
+      <requires exception="T:System.ArgumentNullException" csharp="value != null" vb="value &lt;&gt; Nothing">value != null</requires>
+      <exception cref="T:System.ArgumentNullException">value == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.General.WriteToEventLog(System.String,System.Diagnostics.EventLogEntryType)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(message)" vb="Not IsNullOrEmpty(message)">!string.IsNullOrEmpty(message)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(message)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.UI.Web.TextBox.LoadPostData(System.String,System.Collections.Specialized.NameValueCollection)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrWhiteSpace(postDataKey)" vb="Not IsNullOrWhiteSpace(postDataKey)">!string.IsNullOrWhiteSpace(postDataKey)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrWhiteSpace(postDataKey)</exception>
+      <requires exception="T:System.ArgumentNullException" csharp="postCollection != null" vb="postCollection &lt;&gt; Nothing">postCollection != null</requires>
+      <exception cref="T:System.ArgumentNullException">postCollection == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.UI.Windows.FormHelper.ClearTextBoxes(System.Windows.Forms.Control)">
+      <requires exception="T:System.ArgumentNullException" csharp="parent != null" vb="parent &lt;&gt; Nothing">parent != null</requires>
+      <exception cref="T:System.ArgumentNullException">parent == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.UI.Windows.FormHelper.SelectControlText(System.Windows.Forms.TextBox)">
+      <requires exception="T:System.ArgumentNullException" csharp="control != null" vb="control &lt;&gt; Nothing">control != null</requires>
+      <exception cref="T:System.ArgumentNullException">control == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.UI.Windows.ControlsHelper.ClearControls(System.Windows.Forms.Control,System.Boolean)">
+      <requires exception="T:System.ArgumentNullException" csharp="parent != null" vb="parent &lt;&gt; Nothing">parent != null</requires>
+      <exception cref="T:System.ArgumentNullException">parent == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.UI.Windows.ControlsHelper.ClearControls(System.Windows.Forms.Control,System.String,System.Boolean)">
+      <requires exception="T:System.ArgumentNullException" csharp="parent != null" vb="parent &lt;&gt; Nothing">parent != null</requires>
+      <exception cref="T:System.ArgumentNullException">parent == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.UI.Windows.ControlsHelper.SelectFirstEmptyControl(System.Windows.Forms.Control,System.String,System.Boolean)">
+      <requires exception="T:System.ArgumentNullException" csharp="parent != null" vb="parent &lt;&gt; Nothing">parent != null</requires>
+      <exception cref="T:System.ArgumentNullException">parent == null</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.UI.Windows.ControlsHelper.FindEditableControls(System.Windows.Forms.Control,System.String,System.Boolean)">
+      <requires exception="T:System.ArgumentNullException" csharp="(() =&gt; {&#xD;&#xA;    {&#xD;&#xA;        dotNetTips.Utility.UI.Windows.ControlsHelper._Closure$__3 local_1 = new dotNetTips.Utility.UI.Windows.ControlsHelper._Closure$__3();&#xD;&#xA;        local_1.$VB$Local_tag = tag;&#xD;&#xA;        local_1.$VB$Local_includeChildren = includeChildren;&#xD;&#xA;    }&#xD;&#xA;    return parent != null; })()" vb="(() =&gt; {&#xD;&#xA;    dotNetTips.Utility.UI.Windows.ControlsHelper._Closure$__3 local_1 = New dotNetTips.Utility.UI.Windows.ControlsHelper._Closure$__3();&#xD;&#xA;    local_1.$VB$Local_tag = tag&#xD;&#xA;    local_1.$VB$Local_includeChildren = includeChildren&#xD;&#xA;    return parent &lt;&gt; Nothing; })()">(() =&gt; {
+    {
+        dotNetTips.Utility.UI.Windows.ControlsHelper._Closure$__3 local_1 = new dotNetTips.Utility.UI.Windows.ControlsHelper._Closure$__3();
+        local_1.$VB$Local_tag = tag;
+        local_1.$VB$Local_includeChildren = includeChildren;
+    }
+    return parent != null; })()</requires>
+      <exception cref="T:System.ArgumentNullException">!(() =&gt; {
+    {
+        dotNetTips.Utility.UI.Windows.ControlsHelper._Closure$__3 local_1 = new dotNetTips.Utility.UI.Windows.ControlsHelper._Closure$__3();
+        (local_1.$VB$Local_tag = tag);
+        (local_1.$VB$Local_includeChildren = includeChildren);
+    }
+    return (parent != null); })()</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.UI.Windows.ControlsHelper.FindControls``1(System.Windows.Forms.Control,System.Boolean)">
+      <requires exception="T:System.ArgumentNullException" csharp="(() =&gt; {&#xD;&#xA;    {&#xD;&#xA;        new dotNetTips.Utility.UI.Windows.ControlsHelper._Closure$__4&lt;T&gt;().$VB$Local_includeChildren = includeChildren;&#xD;&#xA;    }&#xD;&#xA;    return parent != null; })()" vb="(() =&gt; {&#xD;&#xA;    New dotNetTips.Utility.UI.Windows.ControlsHelper._Closure$__4(Of T)().$VB$Local_includeChildren = includeChildren&#xD;&#xA;    return parent &lt;&gt; Nothing; })()">(() =&gt; {
+    {
+        new dotNetTips.Utility.UI.Windows.ControlsHelper._Closure$__4&lt;T&gt;().$VB$Local_includeChildren = includeChildren;
+    }
+    return parent != null; })()</requires>
+      <exception cref="T:System.ArgumentNullException">!(() =&gt; {
+    {
+        (new dotNetTips.Utility.UI.Windows.ControlsHelper._Closure$__4&lt;T&gt;().$VB$Local_includeChildren = includeChildren);
+    }
+    return (parent != null); })()</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.Security.SecurityHelper.EncodeUrl(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(input)" vb="Not IsNullOrEmpty(input)">!string.IsNullOrEmpty(input)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(input)</exception>
+    </member>
+    <member name="M:dotNetTips.Utility.StringHelper.HtmlEncode(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="IsNullOrEmpty(value)" vb="IsNullOrEmpty(value)">string.IsNullOrEmpty(value)</requires>
+      <exception cref="T:System.ArgumentNullException">!string.IsNullOrEmpty(value)</exception>
+      <ensures csharp="result != null" vb="result &lt;&gt; Nothing">result != null</ensures>
+    </member>
+    <member name="M:dotNetTips.Utility.StringHelper.UrlEncode(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(value)" vb="Not IsNullOrEmpty(value)">!string.IsNullOrEmpty(value)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(value)</exception>
+      <ensures csharp="result != null" vb="result &lt;&gt; Nothing">result != null</ensures>
+    </member>
+    <member name="M:dotNetTips.Utility.StringHelper.ConvertRtfToText(System.String)">
+      <requires exception="T:System.ArgumentNullException" csharp="!IsNullOrEmpty(value)" vb="Not IsNullOrEmpty(value)">!string.IsNullOrEmpty(value)</requires>
+      <exception cref="T:System.ArgumentNullException">string.IsNullOrEmpty(value)</exception>
+      <ensures csharp="result != null" vb="result &lt;&gt; Nothing">result != null</ensures>
+    </member>
+  </members>
+</doc>

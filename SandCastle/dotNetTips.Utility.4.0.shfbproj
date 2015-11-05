@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <!-- The configuration and platform will be used to determine which
+         assemblies to include from solution and project documentation
+         sources -->
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4c7043ed-d254-4934-b3f3-a9de1b516e6a}</ProjectGuid>
+    <SHFBSchemaVersion>1.9.5.0</SHFBSchemaVersion>
+    <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual
+         Studio adds them anyway -->
+    <AssemblyName>Documentation</AssemblyName>
+    <RootNamespace>Documentation</RootNamespace>
+    <Name>Documentation</Name>
+    <!-- SHFB properties -->
+    <OutputPath>.\Help\</OutputPath>
+    <HtmlHelpName>dotNetTips.Utility</HtmlHelpName>
+    <FrameworkVersion>.NET Framework 4.5.1</FrameworkVersion>
+    <NewProperty1>
+    </NewProperty1>
+    <DocumentationSources>
+      <DocumentationSource sourceFile="..\dotNetTips.Utility\bin\dotNetTips.Utility.dll" />
+<DocumentationSource sourceFile="..\dotNetTips.Utility\bin\dotNetTips.Utility.Portable.dll" />
+<DocumentationSource sourceFile="..\dotNetTips.Utility\bin\dotNetTips.Utility.Portable.xml" />
+<DocumentationSource sourceFile="..\dotNetTips.Utility\bin\dotNetTips.Utility.xml" /></DocumentationSources>
+    <PlugInConfigurations>
+      <PlugInConfig id="Hierarchical Table of Contents" enabled="True">
+        <configuration>
+          <toc minParts="1" insertBelow="True" />
+        </configuration>
+      </PlugInConfig>
+<PlugInConfig id="Bibliography Support" enabled="False"><configuration /></PlugInConfig></PlugInConfigurations>
+    <ProjectSummary>This is assembly is a collection of common helper classes for .NET projects.</ProjectSummary>
+    <CopyrightText>Copytright 2015 dotNetTips.com - David McCarter</CopyrightText>
+    <CopyrightHref>http://dotNetTips.com</CopyrightHref>
+    <FeedbackEMailLinkText>Feedback</FeedbackEMailLinkText>
+    <FooterText>David McCarter - Microsoft MVP</FooterText>
+    <HeaderText>dotNetTips.com</HeaderText>
+    <HelpTitle>dotNetTips.Utility</HelpTitle>
+    <FeedbackEMailAddress>dotnetdave%40live.com</FeedbackEMailAddress>
+    <ShowFeedbackControl>False</ShowFeedbackControl>
+    <SdkLinkType>Msdn</SdkLinkType>
+    <SyntaxFilters>CSharp, VisualBasic</SyntaxFilters>
+    <IncludeFavorites>True</IncludeFavorites>
+    <HelpFileVersion>4.0.2011.1</HelpFileVersion>
+    <NamespaceSummaries>
+      <NamespaceSummaryItem name="(global)" isDocumented="False" />
+      <NamespaceSummaryItem name="dotNetTips.Utility.Collections" isDocumented="True">Collection helper classes.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="dotNetTips.Utility" isDocumented="True">Root namespace for the assembly.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="dotNetTips.Utility.Data" isDocumented="True">Collections such as Countries and US States including helper classes. Used by the ComboBox control.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="dotNetTips.Utility.DirectoryServices" isDocumented="True">Helper classes for Directory Services (Active Directory)</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="dotNetTips.Utility.Drawing" isDocumented="True">Helper classes for Drawing (GDI+)</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="dotNetTips.Utility.Encryption" isDocumented="True">Helper classes for encription.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="dotNetTips.Utility.Extensions" isDocumented="True">Extension classes.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="dotNetTips.Utility.IO" isDocumented="True">Helper classes for IO.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="dotNetTips.Utility.Logging" isDocumented="True">Custom logging classes including custom TraceListeners.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="dotNetTips.Utility.Math" isDocumented="True">Math helper classes.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="dotNetTips.Utility.My.Resources" isDocumented="True">Public resources.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="dotNetTips.Utility.Net" isDocumented="True">Helper classes for network access.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="dotNetTips.Utility.Security" isDocumented="True">Security helper classes.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="dotNetTips.Utility.Threading" isDocumented="True">Threading helper classes.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="dotNetTips.Utility.UI.Web" isDocumented="True">Helper classes and custom UI controls for ASP.NET.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="dotNetTips.Utility.UI.Windows" isDocumented="True">Helper classes and custom UI controls for  Windows UI.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="dotNetTips.Utility.Web" isDocumented="True">Helper classes for web access.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="dotNetTips.Utility.Xml" isDocumented="True">Helper classes for xml elements and xml serilization.</NamespaceSummaryItem>
+    </NamespaceSummaries>
+    <HelpFileFormat>HtmlHelp1</HelpFileFormat>
+    <IndentHtml>True</IndentHtml>
+    <PresentationStyle>VS2010</PresentationStyle>
+    <RootNamespaceContainer>True</RootNamespaceContainer>
+    <RootNamespaceTitle>Namespaces</RootNamespaceTitle>
+    <ComponentConfigurations>
+      <ComponentConfig id="Cached MSDN URL References" enabled="False">
+        <component id="Cached MSDN URL References" type="SandcastleBuilder.Components.CachedResolveReferenceLinksComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll" locale="{@Locale}" linkTarget="{@SdkLinkTarget}">
+          <cache filename="{@LocalDataFolder}Cache\MsdnUrl.cache" />
+          <targets base="{@SandcastlePath}Data\Reflection" recurse="true" files="*.xml" type="{@SDKLinks}" />
+          <targets files="reflection.xml" type="{@ProjectLinks}" />
+        </component>
+      </ComponentConfig>
+      <ComponentConfig id="IntelliSense Component" enabled="False">
+        <component id="IntelliSense Component" type="SandcastleBuilder.Components.IntelliSenseComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll">
+          <!-- Output options (optional)
+                 Attributes:
+                    Include Namespaces (false by default)
+                    Namespaces filename ("Namespaces" if not specified or empty)
+                    Directory (current folder if not specified or empty) -->
+          <output includeNamespaces="true" namespacesFile="Namespaces" folder="{@OutputFolder}" />
+        </component>
+      </ComponentConfig>
+      <ComponentConfig id="Cached Framework Comments Index Data" enabled="False">
+        <component id="Cached Framework Comments Index Data" type="SandcastleBuilder.Components.CachedCopyFromIndexComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll">
+          <index name="comments" value="/doc/members/member" key="@name" cache="100">
+{@CachedFrameworkCommentList}
+{@CommentFileList}
+            </index>
+          <copy name="comments" source="*" target="/document/comments" />
+        </component>
+      </ComponentConfig>
+      <ComponentConfig id="Code Block Component" enabled="False">
+        <component id="Code Block Component" type="SandcastleBuilder.Components.CodeBlockComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll">
+          <basePath value="{@HtmlEncProjectFolder}" />
+          <languageFilter value="true" />
+          <allowMissingSource value="false" />
+          <removeRegionMarkers value="false" />
+          <colorizer syntaxFile="{@SHFBFolder}Colorizer\highlight.xml" styleFile="{@SHFBFolder}Colorizer\highlight.xsl" copyImageUrl="../icons/CopyCode.gif" language="cs" tabSize="0" numberLines="true" outlining="true" keepSeeTags="true" defaultTitle="true" />
+        </component>
+      </ComponentConfig>
+      <ComponentConfig id="Cached Reflection Index Data" enabled="False">
+        <component id="Cached Reflection Index Data" type="SandcastleBuilder.Components.CachedCopyFromIndexComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll">
+          <index name="reflection" value="/reflection/apis/api" key="@id" cache="10">
+            <cache base="{@SandcastlePath}Data\Reflection" recurse="true" files="*.xml" cacheFile="{@LocalDataFolder}Cache\Reflection.cache" />
+            <data files="reflection.xml" />
+          </index>
+          <copy name="reflection" source="*" target="/document/reference" />
+        </component>
+      </ComponentConfig>
+      <ComponentConfig id="Post-transform Component" enabled="False">
+        <component id="Post-transform Component" type="SandcastleBuilder.Components.PostTransformComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll">
+          <!-- Code colorizer files (required).
+                 Attributes:
+                    Stylesheet file (required)
+                    Script file (required)
+                    "Copy" image file (required) -->
+          <colorizer stylesheet="{@SHFBFolder}Colorizer\highlight.css" scriptFile="{@SHFBFolder}Colorizer\highlight.js" copyImage="{@SHFBFolder}Colorizer\CopyCode.gif" />
+          <!-- Base output path for the files (required).  This should match
+                 the parent folder of the output path of the HTML files (see
+                 SaveComponent). -->
+          <outputPaths>{@HelpFormatOutputPaths}</outputPaths>
+          <!-- Logo image file (optional).  Filename is required. The height,
+                 width, altText, placement, and alignment attributes are
+                 optional. -->
+          <logoFile filename="F:\Development\dotNetTips\dotNetTips.Utility\4.0\SandCastle\dotNetTips-350-T.png" height="0" width="0" altText="dotNetTips.com" placement="right" alignment="left" />
+        </component>
+      </ComponentConfig>
+    </ComponentConfigurations>
+    <MissingTags>AutoDocumentCtors, AutoDocumentDispose</MissingTags>
+    <VisibleItems>Attributes, ExplicitInterfaceImplementations, InheritedMembers, InheritedFrameworkMembers, Protected, ProtectedInternalAsProtected, SealedProtected</VisibleItems>
+    <BuildLogFile>
+    </BuildLogFile>
+    <HtmlHelp1xCompilerPath>
+    </HtmlHelp1xCompilerPath>
+    <HtmlHelp2xCompilerPath>
+    </HtmlHelp2xCompilerPath>
+    <SandcastlePath>
+    </SandcastlePath>
+    <WorkingPath>
+    </WorkingPath>
+    <SdkLinkTarget>Blank</SdkLinkTarget>
+    <Preliminary>True</Preliminary>
+    <NamingMethod>Guid</NamingMethod>
+    <Language>en-US</Language>
+    <ContentPlacement>AboveNamespaces</ContentPlacement>
+    <BuildAssemblerVerbosity>AllMessages</BuildAssemblerVerbosity>
+    <KeepLogFile>True</KeepLogFile>
+    <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
+    <CppCommentsFixup>False</CppCommentsFixup>
+    <CleanIntermediates>True</CleanIntermediates>
+    <TransformComponentArguments>
+      <Argument Key="logoFile" Value="dotNetTips-350-T.png" xmlns="" />
+      <Argument Key="logoHeight" Value="" xmlns="" />
+      <Argument Key="logoWidth" Value="" xmlns="" />
+      <Argument Key="logoAltText" Value="" xmlns="" />
+      <Argument Key="logoPlacement" Value="left" xmlns="" />
+      <Argument Key="logoAlignment" Value="left" xmlns="" />
+    </TransformComponentArguments>
+  </PropertyGroup>
+  <!-- There are no properties for these two groups but they need to appear in
+       order for Visual Studio to perform the build. -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  </PropertyGroup>
+  <!-- Import the SHFB build targets -->
+  <Import Project="$(SHFBROOT)\SandcastleHelpFileBuilder.targets" />
+</Project>

@@ -1,0 +1,1203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Countries" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?&gt;
+&lt;ISO_3166-1_List_en xml:lang="en"&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;AFGHANISTAN&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;AF&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;ÅLAND ISLANDS&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;AX&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;ALBANIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;AL&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;ALGERIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;DZ&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;AMERICAN SAMOA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;AS&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;ANDORRA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;AD&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;ANGOLA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;AO&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;ANGUILLA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;AI&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;ANTARCTICA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;AQ&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;ANTIGUA AND BARBUDA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;AG&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;ARGENTINA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;AR&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;ARMENIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;AM&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;ARUBA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;AW&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;AUSTRALIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;AU&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;AUSTRIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;AT&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;AZERBAIJAN&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;AZ&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;BAHAMAS&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;BS&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;BAHRAIN&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;BH&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;BANGLADESH&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;BD&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;BARBADOS&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;BB&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;BELARUS&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;BY&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;BELGIUM&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;BE&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;BELIZE&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;BZ&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;BENIN&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;BJ&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;BERMUDA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;BM&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;BHUTAN&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;BT&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;BOLIVIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;BO&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;BOSNIA AND HERZEGOVINA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;BA&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;BOTSWANA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;BW&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;BOUVET ISLAND&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;BV&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;BRAZIL&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;BR&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;BRITISH INDIAN OCEAN TERRITORY&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;IO&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;BRUNEI DARUSSALAM&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;BN&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;BULGARIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;BG&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;BURKINA FASO&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;BF&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;BURUNDI&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;BI&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;CAMBODIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;KH&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;CAMEROON&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;CM&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;CANADA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;CA&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;CAPE VERDE&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;CV&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;CAYMAN ISLANDS&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;KY&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;CENTRAL AFRICAN REPUBLIC&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;CF&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;CHAD&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;TD&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;CHILE&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;CL&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;CHINA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;CN&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;CHRISTMAS ISLAND&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;CX&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;COCOS (KEELING) ISLANDS&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;CC&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;COLOMBIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;CO&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;COMOROS&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;KM&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;CONGO&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;CG&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;CONGO, THE DEMOCRATIC REPUBLIC OF THE&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;CD&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;COOK ISLANDS&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;CK&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;COSTA RICA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;CR&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;COTE D'IVOIRE&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;CI&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;CROATIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;HR&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;CUBA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;CU&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;CYPRUS&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;CY&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;CZECH REPUBLIC&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;CZ&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;DENMARK&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;DK&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;DJIBOUTI&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;DJ&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;DOMINICA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;DM&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;DOMINICAN REPUBLIC&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;DO&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;ECUADOR&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;EC&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;EGYPT&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;EG&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;EL SALVADOR&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;SV&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;EQUATORIAL GUINEA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;GQ&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;ERITREA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;ER&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;ESTONIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;EE&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;ETHIOPIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;ET&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;FALKLAND ISLANDS (MALVINAS)&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;FK&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;FAROE ISLANDS&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;FO&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;FIJI&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;FJ&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;FINLAND&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;FI&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;FRANCE&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;FR&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;FRENCH GUIANA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;GF&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;FRENCH POLYNESIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;PF&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;FRENCH SOUTHERN TERRITORIES&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;TF&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;GABON&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;GA&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;GAMBIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;GM&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;GEORGIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;GE&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;GERMANY&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;DE&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;GHANA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;GH&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;GIBRALTAR&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;GI&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;GREECE&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;GR&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;GREENLAND&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;GL&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;GRENADA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;GD&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;GUADELOUPE&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;GP&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;GUAM&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;GU&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;GUATEMALA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;GT&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Country_name&gt;GUERNSEY&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;GG&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;GUINEA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;GN&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;GUINEA-BISSAU&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;GW&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;GUYANA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;GY&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;HAITI&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;HT&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;HEARD ISLAND AND MCDONALD ISLANDS&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;HM&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;HOLY SEE (VATICAN CITY STATE)&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;VA&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;HONDURAS&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;HN&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;HONG KONG&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;HK&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;HUNGARY&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;HU&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;ICELAND&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;IS&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;INDIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;IN&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;INDONESIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;ID&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;IRAN, ISLAMIC REPUBLIC OF&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;IR&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;IRAQ&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;IQ&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;IRELAND&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;IE&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Country_name&gt;ISLE OF MAN&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;IM&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;ISRAEL&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;IL&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;ITALY&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;IT&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;JAMAICA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;JM&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;JAPAN&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;JP&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Country_name&gt;JERSEY&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;JE&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;JORDAN&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;JO&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;KAZAKHSTAN&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;KZ&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;KENYA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;KE&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;KIRIBATI&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;KI&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;KOREA, DEMOCRATIC PEOPLE'S REPUBLIC OF&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;KP&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;KOREA, REPUBLIC OF&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;KR&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;KUWAIT&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;KW&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;KYRGYZSTAN&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;KG&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;LAO PEOPLE'S DEMOCRATIC REPUBLIC&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;LA&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;LATVIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;LV&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;LEBANON&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;LB&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;LESOTHO&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;LS&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;LIBERIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;LR&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;LIBYAN ARAB JAMAHIRIYA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;LY&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;LIECHTENSTEIN&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;LI&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;LITHUANIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;LT&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;LUXEMBOURG&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;LU&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;MACAO&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;MO&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;MACEDONIA, THE FORMER YUGOSLAV REPUBLIC OF&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;MK&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;MADAGASCAR&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;MG&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;MALAWI&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;MW&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;MALAYSIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;MY&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;MALDIVES&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;MV&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;MALI&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;ML&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;MALTA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;MT&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;MARSHALL ISLANDS&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;MH&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;MARTINIQUE&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;MQ&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;MAURITANIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;MR&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;MAURITIUS&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;MU&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;MAYOTTE&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;YT&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;MEXICO&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;MX&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;MICRONESIA, FEDERATED STATES OF&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;FM&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;MOLDOVA, REPUBLIC OF&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;MD&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;MONACO&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;MC&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;MONGOLIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;MN&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;MONTSERRAT&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;MS&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;MOROCCO&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;MA&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;MOZAMBIQUE&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;MZ&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;MYANMAR&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;MM&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;NAMIBIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;NA&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;NAURU&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;NR&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;NEPAL&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;NP&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;NETHERLANDS&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;NL&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;NETHERLANDS ANTILLES&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;AN&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;NEW CALEDONIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;NC&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;NEW ZEALAND&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;NZ&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;NICARAGUA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;NI&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;NIGER&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;NE&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;NIGERIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;NG&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;NIUE&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;NU&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;NORFOLK ISLAND&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;NF&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;NORTHERN MARIANA ISLANDS&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;MP&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;NORWAY&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;NO&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;OMAN&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;OM&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;PAKISTAN&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;PK&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;PALAU&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;PW&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;PALESTINIAN TERRITORY, OCCUPIED&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;PS&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;PANAMA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;PA&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;PAPUA NEW GUINEA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;PG&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;PARAGUAY&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;PY&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;PERU&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;PE&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;PHILIPPINES&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;PH&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;PITCAIRN&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;PN&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;POLAND&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;PL&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;PORTUGAL&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;PT&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;PUERTO RICO&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;PR&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;QATAR&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;QA&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;REUNION&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;RE&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;ROMANIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;RO&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;RUSSIAN FEDERATION&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;RU&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;RWANDA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;RW&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SAINT HELENA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;SH&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SAINT KITTS AND NEVIS&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;KN&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SAINT LUCIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;LC&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SAINT PIERRE AND MIQUELON&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;PM&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SAINT VINCENT AND THE GRENADINES&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;VC&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SAMOA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;WS&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SAN MARINO&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;SM&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SAO TOME AND PRINCIPE&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;ST&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SAUDI ARABIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;SA&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SENEGAL&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;SN&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SERBIA AND MONTENEGRO&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;CS&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SEYCHELLES&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;SC&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SIERRA LEONE&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;SL&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SINGAPORE&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;SG&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SLOVAKIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;SK&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SLOVENIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;SI&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SOLOMON ISLANDS&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;SB&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SOMALIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;SO&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SOUTH AFRICA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;ZA&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;GS&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SPAIN&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;ES&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SRI LANKA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;LK&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SUDAN&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;SD&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SURINAME&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;SR&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SVALBARD AND JAN MAYEN&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;SJ&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SWAZILAND&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;SZ&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SWEDEN&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;SE&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SWITZERLAND&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;CH&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;SYRIAN ARAB REPUBLIC&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;SY&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;TAIWAN, PROVINCE OF CHINA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;TW&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;TAJIKISTAN&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;TJ&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;TANZANIA, UNITED REPUBLIC OF&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;TZ&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;THAILAND&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;TH&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;TIMOR-LESTE&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;TL&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;TOGO&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;TG&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;TOKELAU&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;TK&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;TONGA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;TO&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;TRINIDAD AND TOBAGO&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;TT&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;TUNISIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;TN&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;TURKEY&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;TR&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;TURKMENISTAN&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;TM&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;TURKS AND CAICOS ISLANDS&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;TC&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;TUVALU&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;TV&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;UGANDA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;UG&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;UKRAINE&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;UA&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;UNITED ARAB EMIRATES&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;AE&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;UNITED KINGDOM&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;GB&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;UNITED STATES&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;US&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;UNITED STATES MINOR OUTLYING ISLANDS&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;UM&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;URUGUAY&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;UY&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;UZBEKISTAN&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;UZ&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;VANUATU&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;VU&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;VENEZUELA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;VE&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;VIET NAM&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;VN&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;VIRGIN ISLANDS, BRITISH&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;VG&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;VIRGIN ISLANDS, U.S.&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;VI&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;WALLIS AND FUTUNA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;WF&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;WESTERN SAHARA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;EH&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;YEMEN&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;YE&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;ZAMBIA&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;ZM&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+   &lt;ISO_3166-1_Entry&gt;
+      &lt;ISO_3166-1_Country_name&gt;ZIMBABWE&lt;/ISO_3166-1_Country_name&gt;
+      &lt;ISO_3166-1_Alpha-2_Code_element&gt;ZW&lt;/ISO_3166-1_Alpha-2_Code_element&gt;
+   &lt;/ISO_3166-1_Entry&gt;
+&lt;/ISO_3166-1_List_en&gt;</value>
+  </data>
+  <data name="REGEXP_CREDIT_CARD" xml:space="preserve">
+    <value>^((4\d{3})|(5[1-5]\d{2})|(6011))-?\d{4}-?\d{4}-?\d{4}|3[4,7]\d{13}$</value>
+  </data>
+  <data name="REGEXP_DOMAIN" xml:space="preserve">
+    <value>^[a-zA-Z0-9\-\.]+\.(com|org|net|mil|edu|COM|ORG|NET|MIL|EDU)$</value>
+  </data>
+  <data name="REGEXP_EMAIL" xml:space="preserve">
+    <value>\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*</value>
+  </data>
+  <data name="REGEXP_FILE_PATH" xml:space="preserve">
+    <value>([A-Z]:\\[^/:\*\?&lt;&gt;\|]+\.\w{2,6})|(\\{2}[^/:\*\?&lt;&gt;\|]+\.\w{2,6})</value>
+  </data>
+  <data name="REGEXP_FIRST_LAST_NAME" xml:space="preserve">
+    <value>^(?n:(?&lt;lastname&gt;(St\.\ )?(?-i:[A-Z]\'?\w+?\-?)+)(?&lt;suffix&gt;\ (?i:([JS]R)|((X(X{1,2})?)?((I((I{1,2})|V|X)?)|(V(I{0,3})))?)))?,((?&lt;prefix&gt;Dr|Prof|M(r?|(is)?)s)\ )?(?&lt;firstname&gt;(?-i:[A-Z]\'?(\w+?|\.)\ ??){1,2})?(\ (?&lt;mname&gt;(?-i:[A-Z])(\'?\w+?|\.))){0,2})$</value>
+  </data>
+  <data name="REGEXP_ISBN" xml:space="preserve">
+    <value>ISBN(-1(?:(0)|3))?:?\x20+(?(1)(?(2)(?:(?=.{13}$)\d{1,5}([ -])\d{1,7}\3\d{1,6}\3(?:\d|x)$)|(?:(?=.{17}$)97(?:8|9)([ -])\d{1,5}\4\d{1,7}\4\d{1,6}\4\d$))|(?(.{13}$)(?:\d{1,5}([ -])\d{1,7}\5\d{1,6}\5(?:\d|x)$)|(?:(?=.{17}$)97(?:8|9)([ -])\d{1,5}\6\d{1,7}\6\d{1,6}\6\d$)))</value>
+  </data>
+  <data name="REGEXP_SCIENENTIFIC" xml:space="preserve">
+    <value>\b-?[1-9](?:\.\d+)?[Ee][-+]?\d+\b</value>
+  </data>
+  <data name="REGEXP_STRING" xml:space="preserve">
+    <value>^(\w|\W)+$</value>
+  </data>
+  <data name="REGEXP_STRING_WEB_SAFE" xml:space="preserve">
+    <value>(\&lt;|\&gt;)</value>
+  </data>
+  <data name="REGEXP_TEMP" xml:space="preserve">
+    <value>^(?n:(?!-[\d\,]*K) (?!-((\d{1,3},)*((([3-9]\d\d|2[89]\d|27[4-9])\xB0C)|(((4[6-9]|[5-9]\d)\d)\xB0F)))) -?\d{1,3}(,\d{3})*(\xB0[CF]|K) )$</value>
+  </data>
+  <data name="REGEXP_URL" xml:space="preserve">
+    <value>(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;amp;:/~\+#]*[\w\-\@?^=%&amp;amp;/~\+#])?</value>
+  </data>
+  <data name="REGEXP_US_PHONE_NUMBER" xml:space="preserve">
+    <value>((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}</value>
+  </data>
+  <data name="REGEXP_US_SSN" xml:space="preserve">
+    <value>\d{3}-\d{2}-\d{4}</value>
+  </data>
+  <data name="REGEXP_US_ZIP_CODE" xml:space="preserve">
+    <value>\d{5}(-\d{4})?</value>
+  </data>
+  <data name="States" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;states&gt;
+	&lt;state name="ALABAMA" abbreviation="AL" /&gt;
+	&lt;state name="ALASKA" abbreviation="AK" /&gt;
+	&lt;state name="AMERICAN SAMOA" abbreviation="AS" /&gt;
+	&lt;state name="ARIZONA" abbreviation="AZ" /&gt;
+	&lt;state name="ARKANSAS" abbreviation="AR" /&gt;
+	&lt;state name="CALIFORNIA" abbreviation="CA" /&gt;
+	&lt;state name="COLORADO" abbreviation="CO" /&gt;
+	&lt;state name="CONNECTICUT" abbreviation="CT" /&gt;
+	&lt;state name="DELAWARE" abbreviation="DE" /&gt;
+	&lt;state name="DISTRICT OF COLUMBIA" abbreviation="DC" /&gt;
+	&lt;state name="FEDERATED STATES OF MICRONESIA" abbreviation="FM" /&gt;
+	&lt;state name="FLORIDA" abbreviation="FL" /&gt;
+	&lt;state name="GEORGIA" abbreviation="GA" /&gt;
+	&lt;state name="GUAM" abbreviation="GU" /&gt;
+	&lt;state name="HAWAII" abbreviation="HI" /&gt;
+	&lt;state name="IDAHO" abbreviation="ID" /&gt;
+	&lt;state name="ILLINOIS" abbreviation="IL" /&gt;
+	&lt;state name="INDIANA" abbreviation="IN" /&gt;
+	&lt;state name="IOWA" abbreviation="IA" /&gt;
+	&lt;state name="KANSAS" abbreviation="KS" /&gt;
+	&lt;state name="KENTUCKY" abbreviation="KY" /&gt;
+	&lt;state name="LOUISIANA" abbreviation="LA" /&gt;
+	&lt;state name="MAINE" abbreviation="ME" /&gt;
+	&lt;state name="MARSHALL ISLANDS" abbreviation="MH" /&gt;
+	&lt;state name="MARYLAND" abbreviation="MD" /&gt;
+	&lt;state name="MASSACHUSETTS" abbreviation="MA" /&gt;
+	&lt;state name="MICHIGAN" abbreviation="MI" /&gt;
+	&lt;state name="MINNESOTA" abbreviation="MN" /&gt;
+	&lt;state name="MISSISSIPPI" abbreviation="MS" /&gt;
+	&lt;state name="MISSOURI" abbreviation="MO" /&gt;
+	&lt;state name="MONTANA" abbreviation="MT" /&gt;
+	&lt;state name="NEBRASKA" abbreviation="NE" /&gt;
+	&lt;state name="NEVADA" abbreviation="NV" /&gt;
+	&lt;state name="NEW HAMPSHIRE" abbreviation="NH" /&gt;
+	&lt;state name="NEW JERSEY" abbreviation="NJ" /&gt;
+	&lt;state name="NEW MEXICO" abbreviation="NM" /&gt;
+	&lt;state name="NEW YORK" abbreviation="NY" /&gt;
+	&lt;state name="NORTH CAROLINA" abbreviation="NC" /&gt;
+	&lt;state name="NORTH DAKOTA" abbreviation="ND" /&gt;
+	&lt;state name="NORTHERN MARIANA ISLANDS" abbreviation="MP" /&gt;
+	&lt;state name="OHIO" abbreviation="OH" /&gt;
+	&lt;state name="OKLAHOMA" abbreviation="OK" /&gt;
+	&lt;state name="OREGON" abbreviation="OR" /&gt;
+	&lt;state name="PALAU" abbreviation="PW" /&gt;
+	&lt;state name="PENNSYLVANIA" abbreviation="PA" /&gt;
+	&lt;state name="PUERTO RICO" abbreviation="PR" /&gt;
+	&lt;state name="RHODE ISLAND" abbreviation="RI" /&gt;
+	&lt;state name="SOUTH CAROLINA" abbreviation="SC" /&gt;
+	&lt;state name="SOUTH DAKOTA" abbreviation="SD" /&gt;
+	&lt;state name="TENNESSEE" abbreviation="TN" /&gt;
+	&lt;state name="TEXAS" abbreviation="TX" /&gt;
+	&lt;state name="UTAH" abbreviation="UT" /&gt;
+	&lt;state name="VERMONT" abbreviation="VT" /&gt;
+	&lt;state name="VIRGIN ISLANDS" abbreviation="VI" /&gt;
+	&lt;state name="VIRGINIA" abbreviation="VA" /&gt;
+	&lt;state name="WASHINGTON" abbreviation="WA" /&gt;
+	&lt;state name="WEST VIRGINIA" abbreviation="WV" /&gt;
+	&lt;state name="WISCONSIN" abbreviation="WI" /&gt;
+	&lt;state name="WYOMING" abbreviation="WY" /&gt;
+&lt;/states&gt;</value>
+  </data>
+</root>
