@@ -1,16 +1,14 @@
-﻿// ***********************************************************************
-// Assembly         : dotNetTips.Utility.Portable
-// Author           : davidmccarter
-// Created          : 04-07-2015
+﻿// *********************************************************************** Assembly :
+// dotNetTips.Utility.Portable Author : David McCarter Created : 06-01-2016
 //
-// Last Modified By : davidmccarter
-// Last Modified On : 04-17-2015
-// ***********************************************************************
-// <copyright file="ControlChars.cs" company="">
-//     . All rights reserved.
+// Last Modified By : David McCarter Last Modified On : 06-05-2016 ***********************************************************************
+// <copyright file="ControlChars.cs" company="dotNetTips.com">
+//     Copyright Â© 2015
 // </copyright>
-// <summary></summary>
+// <summary>
+// </summary>
 // ***********************************************************************
+
 namespace dotNetTips.Utility.Portable
 {
     /// <summary>
@@ -24,6 +22,16 @@ namespace dotNetTips.Utility.Portable
         public const char Back = '\b';
 
         /// <summary>
+        /// Back Slash
+        /// </summary>
+        public const char BackSlash = '\\';
+
+        /// <summary>
+        /// Comma
+        /// </summary>
+        public const char Comma = ',';
+
+        /// <summary>
         /// CR
         /// </summary>
         public const char Cr = '\r';
@@ -34,9 +42,19 @@ namespace dotNetTips.Utility.Portable
         public const string CRLF = "\r\n";
 
         /// <summary>
+        /// The double quote
+        /// </summary>
+        public const string DoubleQuote = "''";
+
+        /// <summary>
         /// Form feed
         /// </summary>
         public const char FormFeed = '\f';
+
+        /// <summary>
+        /// Forward slash
+        /// </summary>
+        public const char ForwardSlash = '/';
 
         /// <summary>
         /// LF
@@ -59,34 +77,9 @@ namespace dotNetTips.Utility.Portable
         public const char Quote = '"';
 
         /// <summary>
-        /// Tab
-        /// </summary>
-        public const char Tab = '\t';
-
-        /// <summary>
-        /// Vertical tab
-        /// </summary>
-        public const char VerticalTab = '\v';
-
-        /// <summary>
-        /// Comma
-        /// </summary>
-        public const char Comma = ',';
-
-        /// <summary>
-        /// Forward slash
-        /// </summary>
-        public const char ForwardSlash = '/';
-
-        /// <summary>
         /// The single quote
         /// </summary>
         public const char SingleQuote = '\'';
-
-        /// <summary>
-        /// The double quote
-        /// </summary>
-        public const string DoubleQuote = "''";
 
         /// <summary>
         /// Space
@@ -94,8 +87,18 @@ namespace dotNetTips.Utility.Portable
         public const char Space = ' ';
 
         /// <summary>
+        /// Tab
+        /// </summary>
+        public const char Tab = '\t';
+
+        /// <summary>
         /// Underscore
         /// </summary>
         public const char Underscore = '_';
+
+        /// <summary>
+        /// Vertical tab
+        /// </summary>
+        public const char VerticalTab = '\v';
     }
 }

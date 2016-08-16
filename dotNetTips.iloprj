@@ -11,7 +11,7 @@
           </SoftwareWatermark>
         </NineRays.ILOMD.Options.Options>
       </ObfuscationOptions>
-      <Name>dotNetTips.Utility\bin\dotNetTips.Utility.dll</Name>
+      <Name>bin\dotNetTips.Utility.Portable.dll</Name>
     </NineRays.ILOMD.Options.AssemblyFileName>
     <NineRays.ILOMD.Options.AssemblyFileName>
       <Flags>VSProject</Flags>
@@ -21,7 +21,7 @@
           </SoftwareWatermark>
         </NineRays.ILOMD.Options.Options>
       </ObfuscationOptions>
-      <Name>dotNetTips.Utility.Portable.Windows\bin\dotNetTips.Utility.Portable.Windows.dll</Name>
+      <Name>bin\dotNetTips.Utility.dll</Name>
     </NineRays.ILOMD.Options.AssemblyFileName>
     <NineRays.ILOMD.Options.AssemblyFileName>
       <Flags>VSProject</Flags>
@@ -31,7 +31,7 @@
           </SoftwareWatermark>
         </NineRays.ILOMD.Options.Options>
       </ObfuscationOptions>
-      <Name>dotNEtTips.Utility.Portable\bin\dotNetTips.Utility.Portable.dll</Name>
+      <Name>bin\dotNetTips.Utility.Portable.Windows.dll</Name>
     </NineRays.ILOMD.Options.AssemblyFileName>
     <NineRays.ILOMD.Options.AssemblyFileName>
       <Flags>VSProject</Flags>
@@ -41,7 +41,7 @@
           </SoftwareWatermark>
         </NineRays.ILOMD.Options.Options>
       </ObfuscationOptions>
-      <Name>dotNetTips.Utility.Portable.Logger\bin\Release\dotNetTips.Utility.Portable.Logger.dll</Name>
+      <Name>bin\dotNetTips.Utility.Windows.Logger.dll</Name>
     </NineRays.ILOMD.Options.AssemblyFileName>
   </AssemblyList>
   <SaveToDirectory>.\Spices_output</SaveToDirectory>

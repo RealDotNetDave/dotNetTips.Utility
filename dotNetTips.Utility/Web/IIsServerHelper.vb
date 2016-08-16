@@ -10,6 +10,7 @@
 ' Copyright        : (c) dotNetTips.com. All rights reserved.
 '***********************************************************************
 Imports System.Management
+Imports System.ServiceProcess
 
 Namespace Web
     ''' <summary>
@@ -68,7 +69,7 @@ Namespace Web
                 'Run the command
                 Using parameters As ManagementBaseObject = classInstance.InvokeMethod(action.ToString, Nothing, Nothing)
 
-                    If Not Int32.TryParse(parameters("result").ToString, result) Then
+                    If Not Int32.TryParse(parameters(NameOf(result)).ToString, result) Then
                         result = -1
                     End If
 
@@ -79,6 +80,34 @@ Namespace Web
             Return result
 
         End Function
+
+        ''' <summary>
+        ''' Stops the IIS.
+        ''' </summary>
+        ''' <remarks></remarks>
+        Public Sub StopIIS()
+
+            Dim service = ServiceController.GetServices().Where(Function(p) p.ServiceName = "W3SVC").FirstOrDefault
+
+            If (service IsNot Nothing AndAlso service.Status = ServiceControllerStatus.Running) Then
+                service.Stop()
+            End If
+
+        End Sub
+
+        ''' <summary>
+        ''' Starts the IIS.
+        ''' </summary>
+        ''' <remarks></remarks>
+        Public Sub StartIIS()
+
+            Dim service = ServiceController.GetServices().Where(Function(p) p.ServiceName = "W3SVC").FirstOrDefault
+
+            If (service IsNot Nothing AndAlso service.Status = ServiceControllerStatus.Stopped) Then
+                service.Start()
+            End If
+
+        End Sub
 
     End Module
 End Namespace

@@ -11,7 +11,7 @@
 ' </copyright>
 ' <summary></summary>
 ' ***********************************************************************
-Imports System.Text.RegularExpressions
+Imports dotNetTips.Utility.Core
 
 ''' <summary>
 ''' Text helper class.
@@ -42,12 +42,7 @@ Public Module StringHelper
     ''' <returns></returns>
     Public Function PrintableOnly(ByVal input As String) As String
 
-        If String.IsNullOrEmpty(input) Then
-            Return String.Empty
-        Else
-            'Return only characters in the range from space to tilde, plus tab and cr/lf
-            Return New Regex("[^ -~" & vbTab & vbCr & vbLf & "]").Replace(input, String.Empty)
-        End If
+        Return If(String.IsNullOrEmpty(input), String.Empty, New Text.RegularExpressions.Regex("[^ -~" & vbTab & vbCr & vbLf & "]").Replace(input, String.Empty))
 
     End Function
 

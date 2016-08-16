@@ -1,43 +1,37 @@
-﻿Imports System.Collections.Generic
+﻿' ***********************************************************************
+' Assembly         : dotNetTips.Utility
+' Author           : David McCarter
+' Created          : 08-03-2015
+'
+' Last Modified By : David McCarter
+' Last Modified On : 04-12-2016
+' ***********************************************************************
+' <copyright file="DataTableExtensions.vb" company="dotNetTips.com">
+'     '     '     dotNetTips.com. All rights reserved.
+'
+'
+' </copyright>
+' <summary></summary>
+' *************************************************************************
+Imports System.Collections.Generic
 Imports System.IO
 Imports System.Reflection
+Imports System.Runtime.CompilerServices
 Imports System.Text
+Imports System.Diagnostics.Contracts
 ''' <summary>
-''' Extension methods for <see cref="DataTable"/>.
+''' Class DataTableExtensions.
 ''' </summary>
-''' <remarks></remarks>
 Public Module DataTableExtensions
 
     ''' <summary>
-    ''' Determines whether the specified <see cref="DataTable"/> has rows.
+    ''' Determines whether the specified <see cref="DataTable" /> has rows.
     ''' </summary>
     ''' <param name="table">The table.</param>
-    ''' <returns>
-    '''     <c>true</c> if the specified table has rows; otherwise, <c>false</c>.
-    ''' </returns>
-    <System.Runtime.CompilerServices.Extension()>
+    ''' <returns><c>true</c> if the specified table has rows; otherwise, <c>false</c>.</returns>
+    <Extension>
     Public Function HasRows(ByVal table As DataTable) As Boolean
         Return ((table IsNot Nothing) AndAlso (table.Rows IsNot Nothing) AndAlso (table.Rows.Count > 0))
-    End Function
-
-    ''' <summary>
-    ''' Saves string to file.
-    ''' </summary>
-    ''' <param name="Expression">The expression.</param>
-    ''' <param name="Filename">The filename.</param>
-    ''' <returns></returns>
-    ''' <remarks>Original code by: Massimo Da Frassini</remarks>
-    <System.Runtime.CompilerServices.Extension()>
-    Public Function SaveToFile(ByVal Expression As String, ByVal Filename As String) As Boolean
-        Try
-            Using sw As New System.IO.StreamWriter(Filename, False, System.Text.Encoding.Default)
-                sw.Write(Expression)
-                sw.Flush()
-            End Using
-            Return True
-        Catch ex As Exception
-            Return False
-        End Try
     End Function
 
     ''' <summary>
@@ -45,9 +39,9 @@ Public Module DataTableExtensions
     ''' </summary>
     ''' <typeparam name="T"></typeparam>
     ''' <param name="dt">The dt.</param>
-    ''' <returns></returns>
+    ''' <returns>IEnumerable(Of T).</returns>
     ''' <remarks>Original code by: Leo Shih</remarks>
-    <System.Runtime.CompilerServices.Extension()>
+    <Extension>
     Public Function CopyToEntityList(Of T As New)(ByVal dt As DataTable) As IEnumerable(Of T)
         Dim properties = New T().GetType().GetProperties()
         Dim columns = From col In dt.Columns.Cast(Of DataColumn)()
@@ -71,8 +65,15 @@ Public Module DataTableExtensions
         Return returnList
     End Function
 
-    <System.Runtime.CompilerServices.Extension>
-    Public Sub ToCSV(table As DataTable, delimiter As String, includeHeader As Boolean)
+    ''' <summary>
+    ''' To the CSV.
+    ''' </summary>
+    ''' <param name="table">The table.</param>
+    ''' <param name="delimiter">The delimiter.</param>
+    ''' <param name="includeHeader">if set to <c>true</c> [include header].</param>
+    <Extension>
+    Public Sub ToCsv(table As DataTable, delimiter As String, includeHeader As Boolean)
+        Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(delimiter) = False, "delimiter is nothing or empty.")
 
         Dim result As New StringBuilder()
 
@@ -81,7 +82,6 @@ Public Module DataTableExtensions
             For Each column As DataColumn In table.Columns
 
                 result.Append(column.ColumnName)
-
                 result.Append(delimiter)
             Next
 
@@ -111,7 +111,7 @@ Public Module DataTableExtensions
 
                     ' and which cases they're not.
 
-                    itemAsString = (Convert.ToString("""") & itemAsString) + """"
+                    itemAsString = (Convert.ToString("""", CultureInfo.InvariantCulture) & itemAsString) + """"
 
                     result.Append(itemAsString & delimiter)
 

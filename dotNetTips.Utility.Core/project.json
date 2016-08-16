@@ -1,0 +1,29 @@
+{
+    "title": "dotNetTips.com Utility Core",
+    "copyright": "NicheWare (David McCarter)",
+    "description": "dotNetTips.com Utility Core",
+    "language": "en",
+    "version": "2015.2.0.00",
+    "dependencies": {
+        "DotNet.Contracts": "1.10.20606.1",
+        "Microsoft.VisualBasic": "10.0.1",
+        "NETStandard.Library": "1.6.0",
+        "System.Diagnostics.Contracts": "4.0.1",
+        "System.Linq.Parallel": "4.0.1"
+    },
+    "frameworks": {
+        "net461": {
+            "compilationOptions": { "platform": "anycpu" },
+            "dependencies": {
+                "System.Runtime": "4.1.0"
+            }
+        },
+        "netstandard1.5": {
+            "imports": "dnxcore50"
+        }
+    },
+    "buildOptions": {
+        "optimize": true,
+        "xmlDoc": true
+    }
+}

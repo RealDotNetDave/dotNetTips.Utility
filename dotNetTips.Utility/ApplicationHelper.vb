@@ -1,40 +1,49 @@
 ' ***********************************************************************
 ' Assembly         : dotNetTips.Utility
-' Author           : davidmccarter
+' Author           : David McCarter
 ' Created          : 12-31-2014
 '
-' Last Modified By : davidmccarter
-' Last Modified On : 04-27-2015
+' Last Modified By : David McCarter
+' Last Modified On : 08-02-2016
 ' ***********************************************************************
 ' <copyright file="ApplicationHelper.vb" company="dotNetTips.com">
-'     dotNetTips.com. All rights reserved.
+'     '     '     dotNetTips.com. All rights reserved.
+'
+'
 ' </copyright>
 ' <summary></summary>
-' ***********************************************************************
+' *************************************************************************
 Imports System.Collections.Generic
+Imports System.IO
 Imports System.Reflection
+Imports System.Diagnostics.Contracts
+Imports System.Security.Principal
 ''' <summary>
-''' Application Helper Class
+''' Class ApplicationHelper.
 ''' </summary>
-''' <remarks></remarks>
 Public Module ApplicationHelper
 
+    ''' <summary>
+    ''' The temporary ASP files
+    ''' </summary>
     Private Const TempAspFiles As String = "\Temporary ASP.NET Files\"
 
     ''' <summary>
-    ''' Checks to see if the current application is ASP.NET
+    ''' Available cultures.
     ''' </summary>
-    ''' <returns>True if running ASP.NET</returns>
-    ''' <remarks></remarks>
-    Public Function IsAspNet() As Boolean
-        Return If(Not String.IsNullOrEmpty(System.AppDomain.CurrentDomain.DynamicDirectory), System.AppDomain.CurrentDomain.DynamicDirectory.Contains(TempAspFiles), False)
+    ''' <param name="binDirectory">The bin directory.</param>
+    ''' <returns>IEnumerable(Of CultureInfo).</returns>
+    Public Function AvailableCultures(binDirectory As String) As IEnumerable(Of CultureInfo)
+
+        Dim cultures As IEnumerable(Of CultureInfo) = CultureInfo.GetCultures(CultureTypes.NeutralCultures).Where(Function(c) System.IO.Directory.Exists(System.IO.Path.Combine(binDirectory, c.TwoLetterISOLanguageName)))
+
+        Return cultures
     End Function
 
     ''' <summary>
     ''' Gets the calling assembly name.
     ''' </summary>
     ''' <returns>Assembly name.</returns>
-    ''' <remarks></remarks>
     Public Function CurrentAssemblyName() As String
         Return System.Reflection.Assembly.GetEntryAssembly.GetName.Name
     End Function
@@ -42,8 +51,7 @@ Public Module ApplicationHelper
     ''' <summary>
     ''' Loads a list of the running assembly referenced assemblies.
     ''' </summary>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
+    ''' <returns>IEnumerable(Of System.String).</returns>
     Public Function CurrentAssemblyReferencedAssemblies() As IEnumerable(Of String)
         Dim referencedAssemblies As New List(Of String)
 
@@ -59,7 +67,6 @@ Public Module ApplicationHelper
     ''' Verifies the current user on the current thread is an administrator.
     ''' </summary>
     ''' <returns><see cref="Boolean">True</see> if current user is administrator.</returns>
-    ''' <remarks></remarks>
     Public Function CurrentUserIsAdministrator() As Boolean
         Dim currentDomain As AppDomain = System.Threading.Thread.GetDomain()
 
@@ -71,17 +78,75 @@ Public Module ApplicationHelper
     End Function
 
     ''' <summary>
-    ''' Availables the cultures.
+    ''' Checks to see if the current application is ASP.NET
     ''' </summary>
-    ''' <param name="binDirectory">The bin directory.</param>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
-    Public Function AvailableCultures(binDirectory As String) As IEnumerable(Of CultureInfo)
-        Dim neutralCulture = Assembly.GetExecutingAssembly().GetName.CultureInfo
-
-        Dim cultures As IEnumerable(Of CultureInfo) = CultureInfo.GetCultures(CultureTypes.NeutralCultures).Where(Function(c) System.IO.Directory.Exists(System.IO.Path.Combine(binDirectory, c.TwoLetterISOLanguageName)))
-
-        Return cultures
+    ''' <returns>True if running ASP.NET</returns>
+    Public Function IsAspNet() As Boolean
+        Return If(Not String.IsNullOrEmpty(AppDomain.CurrentDomain.DynamicDirectory), AppDomain.CurrentDomain.DynamicDirectory.Contains(TempAspFiles), False)
     End Function
 
+    ''' <summary>
+    ''' Check to see if the current app is already running.
+    ''' </summary>
+    ''' <returns><c>true</c> if app is not running, <c>false</c> otherwise.</returns>
+    Public Function IsProcessRunning() As Boolean
+
+        Return If(Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location)).Count() > 1, True, False)
+
+    End Function
+    ''' <summary>
+    ''' Determines whether [is application already running] [the specified process name].
+    ''' </summary>
+    ''' <param name="processName">Name of the process.</param>
+    ''' <returns><c>true</c> if [is application already running] [the specified process name]; otherwise, <c>false</c>.</returns>
+    Public Function IsProcessRunning(processName As String) As Boolean
+        Contract.Requires(Of ArgumentNullException)(Not String.IsNullOrEmpty(processName), "processName is nothing or empty.")
+        Return If(Process.GetProcessesByName(processName).Count() > 0, True, False)
+    End Function
+
+    ''' <summary>
+    ''' Determines whether [is run as administrator].
+    ''' </summary>
+    ''' <returns><c>true</c> if [is run as administrator]; otherwise, <c>false</c>.</returns>
+    Public Function IsRunAsAdministrator() As Boolean
+        Dim wi = WindowsIdentity.GetCurrent()
+        Dim wp = New WindowsPrincipal(wi)
+
+        Return wp.IsInRole(WindowsBuiltInRole.Administrator)
+    End Function
+
+    ''' <summary>
+    ''' Kills the current process.
+    ''' </summary>
+    Public Sub KillProcess()
+        KillProcess(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location))
+    End Sub
+
+    ''' <summary>
+    ''' Kills the process.
+    ''' </summary>
+    ''' <param name="processName">Name of the process.</param>
+    Public Sub KillProcess(processName As String)
+        Contract.Requires(Of ArgumentNullException)(Not String.IsNullOrEmpty(processName), "processName is nothing or empty.")
+        Dim app = System.Diagnostics.Process.GetProcessesByName(processName).FirstOrDefault
+
+        If app IsNot Nothing Then
+            app.Kill()
+            app.WaitForExit()
+        End If
+    End Sub
+
+    ''' <summary>
+    ''' Restarts an app as administrator.
+    ''' </summary>
+    Public Sub RunAsAdministrator()
+        If Not IsRunAsAdministrator() Then
+
+            Dim processInfo = New ProcessStartInfo(Assembly.GetExecutingAssembly().CodeBase) With {.UseShellExecute = True, .Verb = "runas"}
+
+            Process.Start(processInfo)
+
+            Process.GetCurrentProcess.Kill()
+        End If
+    End Sub
 End Module

@@ -1,15 +1,12 @@
-﻿// ***********************************************************************
-// Assembly         : dotNetTips.Utility.Portable
-// Author           : David McCarter
-// Created          : 10-27-2014
+﻿// *********************************************************************** Assembly :
+// dotNetTips.Utility.Portable Author : David McCarter Created : 04-15-2016
 //
-// Last Modified By : David McCarter
-// Last Modified On : 10-27-2014
-// ***********************************************************************
-// <copyright file="TypeExtensions.cs" company="David McCarter Consulting">
-//     David McCarter Consulting. All rights reserved.
+// Last Modified By : David McCarter Last Modified On : 06-02-2016 ***********************************************************************
+// <copyright file="TypeExtensions.cs" company="dotNetTips.com">
+//     Copyright Â© 2015
 // </copyright>
-// <summary></summary>
+// <summary>
+// </summary>
 // ***********************************************************************
 using System;
 using System.Diagnostics.Contracts;
@@ -29,7 +26,8 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <param name="obj2">The obj2.</param>
         /// <returns>T.</returns>
         /// <remarks>Original code by: Jeremy Clark</remarks>
-        public static T Max<T>(this T obj1, T obj2) where T : IComparable
+        public static T Max<T>(this T obj1, T obj2)
+            where T : IComparable
         {
             Contract.Requires<ArgumentNullException>(obj1 != null);
             Contract.Requires<ArgumentNullException>(obj2 != null);

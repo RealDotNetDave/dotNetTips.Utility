@@ -29,11 +29,7 @@ Namespace Extensions
             Contract.Requires((minimum < 0) Or (minimum > Int32.MaxValue), "Value for minimum is invalid.")
             Contract.Requires((maximum < 0) Or (maximum > Int32.MaxValue), "Value for maximum is invalid.")
 
-            If (input.Length >= minimum) And (input.Length <= maximum) Then
-                Return True
-            Else
-                Return False
-            End If
+            Return If((input.Length >= minimum) And (input.Length <= maximum), True, False)
 
         End Function
 
@@ -62,37 +58,6 @@ Namespace Extensions
             Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             Return IsDate(input)
-
-        End Function
-
-        ''' <summary>
-        ''' Validates if value is valid email address.
-        ''' </summary>
-        ''' <param name="input">Address to validate.</param>
-        ''' <returns>True if valid.</returns>
-        ''' <remarks></remarks>
-        Public Function IsValidEmail(ByVal input As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
-
-            Return ValidateString(input, My.Resources.REGEXP_EMAIL)
-
-        End Function
-
-        ''' <summary>
-        ''' Validates if value is valid email address.
-        ''' </summary>
-        ''' <param name="input">Address to validate.</param>
-        ''' <param name="expression">RegEx expression to use to validate.</param>
-        ''' <returns>True if valid.</returns>
-        ''' <remarks></remarks>
-        Public Function IsValidEmail(ByVal input As String, ByVal expression As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
-
-            If String.IsNullOrEmpty(expression) Then
-                expression = My.Resources.REGEXP_EMAIL
-            End If
-
-            Return ValidateString(input, expression)
 
         End Function
 
@@ -493,11 +458,7 @@ Namespace Extensions
         Public Function IsValidString(ByVal input As String, ByVal safeForWeb As Boolean) As Boolean
             Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
-            If safeForWeb AndAlso ValidateString(input, My.Resources.REGEXP_STRING) Then
-                Return Not ValidateString(input, My.Resources.REGEXP_STRING_WEB_SAFE)
-            Else
-                Return ValidateString(input, My.Resources.REGEXP_STRING)
-            End If
+            Return If(safeForWeb AndAlso ValidateString(input, My.Resources.REGEXP_STRING), Not ValidateString(input, My.Resources.REGEXP_STRING_WEB_SAFE), ValidateString(input, My.Resources.REGEXP_STRING))
 
         End Function
 
@@ -516,11 +477,7 @@ Namespace Extensions
             If String.IsNullOrEmpty(expression) Then
                 expression = My.Resources.REGEXP_STRING
             End If
-            If safeForWeb AndAlso ValidateString(input, expression) Then
-                Return Not ValidateString(input, My.Resources.REGEXP_STRING_WEB_SAFE)
-            Else
-                Return ValidateString(input, expression)
-            End If
+            Return If(safeForWeb AndAlso ValidateString(input, expression), Not ValidateString(input, My.Resources.REGEXP_STRING_WEB_SAFE), ValidateString(input, expression))
 
         End Function
 

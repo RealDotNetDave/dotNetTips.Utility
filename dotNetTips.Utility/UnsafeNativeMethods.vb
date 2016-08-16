@@ -56,12 +56,12 @@ Friend Module UnsafeNativeMethods
         Public PBData As IntPtr
 
         Public Overloads Overrides Function GetHashCode() As Integer
-			'  dotNetTips.Utility.Portable.Windows.General.GetInstanceHashCode(Me)
-		End Function
+            '  dotNetTips.Utility.Portable.Windows.General.GetInstanceHashCode(Me)
+        End Function
 
         Public Overloads Overrides Function Equals(obj As [Object]) As Boolean
-			'  dotNetTips.Utility.Portable.Windows.General.DoesObjectEqualInstance(obj, Me)
-		End Function
+            '  dotNetTips.Utility.Portable.Windows.General.DoesObjectEqualInstance(obj, Me)
+        End Function
     End Structure
 
     Friend Const SwpNosize As Integer = 1
@@ -77,8 +77,12 @@ Friend Module UnsafeNativeMethods
     Friend Function GetModuleHandle(ByVal moduleName As String) As IntPtr
     End Function
 
-    <DllImport("kernel32.dll", CharSet:=CharSet.Unicode, SetLastError:=True)> _
+    <DllImport("kernel32.dll", CharSet:=CharSet.Unicode, SetLastError:=True)>
     Friend Function GetModuleFileName(<[In]()> ByVal hModule As IntPtr, <Out()> ByVal lpFilename As System.Text.StringBuilder, <[In](), MarshalAs(UnmanagedType.U4)> ByVal nSize As Integer) As Integer
+    End Function
+
+    <DllImport("kernel32.dll", BestFitMapping:=False, ThrowOnUnmappableChar:=True)>
+    Friend Function GetShortPathName(ByVal lpszLongPath As String, ByVal lpszShortPath As System.Text.StringBuilder, ByVal cchBuffer As Integer) As Integer
     End Function
 
 End Module

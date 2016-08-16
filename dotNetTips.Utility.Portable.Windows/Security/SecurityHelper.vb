@@ -4,13 +4,14 @@
 ' Created          : 12-04-2013
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 12-04-2013
+' Last Modified On : 01-23-2016
 ' ***********************************************************************
 ' <copyright file="SecurityHelper.vb" company="David McCarter Consulting">
-'     David McCarter Consulting. All rights reserved.
+'     '     David McCarter Consulting. All rights reserved.
+'
 ' </copyright>
 ' <summary></summary>
-' ***********************************************************************
+' *************************************************************************
 Imports System.Text
 Imports System.Globalization
 
@@ -18,13 +19,12 @@ Namespace Security
     ''' <summary>
     ''' Security helper class.
     ''' </summary>
-    ''' <remarks></remarks>
     Public Module SecurityHelper
         ''' <summary>
         ''' Encodes the HTML.
         ''' </summary>
         ''' <param name="input">The input.</param>
-        ''' <returns></returns>
+        ''' <returns>System.String.</returns>
         Public Function EncodeHtml(ByVal input As String) As String
             If (input Is Nothing) Then
                 Return Nothing
@@ -48,17 +48,16 @@ Namespace Security
         ''' Encodes the HTML attribute.
         ''' </summary>
         ''' <param name="input">The input.</param>
-        ''' <returns></returns>
+        ''' <returns>System.String.</returns>
         Public Function EncodeHtmlAttribute(ByVal input As String) As String
             Return EncodeHtml(input)
         End Function
-
 
         ''' <summary>
         ''' Encodes the URL.
         ''' </summary>
         ''' <param name="input">The input.</param>
-        ''' <returns></returns>
+        ''' <returns>System.String.</returns>
         Public Function EncodeUrl(ByVal input As String) As String
             If (input Is Nothing) Then
                 Return Nothing
@@ -80,12 +79,11 @@ Namespace Security
             Return builder.ToString
         End Function
 
-
         ''' <summary>
         ''' Encodes the VBS.
         ''' </summary>
         ''' <param name="input">The input.</param>
-        ''' <returns></returns>
+        ''' <returns>System.String.</returns>
         Public Function EncodeVbs(ByVal input As String) As String
             If (input Is Nothing) Then
                 Return Nothing
@@ -123,12 +121,11 @@ Namespace Security
             Return builder.ToString
         End Function
 
-
         ''' <summary>
         ''' Encodes the JS.
         ''' </summary>
         ''' <param name="input">The input.</param>
-        ''' <returns></returns>
+        ''' <returns>System.String.</returns>
         Public Function EncodeJS(ByVal input As String) As String
             If (input Is Nothing) Then
                 Return Nothing
@@ -151,11 +148,21 @@ Namespace Security
             Return builder.ToString
         End Function
 
+        ''' <summary>
+        ''' Singles the byte hexadecimal.
+        ''' </summary>
+        ''' <param name="c">The c.</param>
+        ''' <returns>System.String.</returns>
         Private Function SingleByteHex(ByVal c As Char) As String
             Dim num As UInt32 = CUInt(AscW(c))
             Return num.ToString("x", CultureInfo.InvariantCulture).PadLeft(2, "0"c)
         End Function
 
+        ''' <summary>
+        ''' Twoes the byte hexadecimal.
+        ''' </summary>
+        ''' <param name="c">The c.</param>
+        ''' <returns>System.String.</returns>
         Private Function TwoByteHex(ByVal c As Char) As String
             Dim num As UInt32 = CUInt(AscW(c))
             Return num.ToString("x", CultureInfo.InvariantCulture).PadLeft(4, "0"c)

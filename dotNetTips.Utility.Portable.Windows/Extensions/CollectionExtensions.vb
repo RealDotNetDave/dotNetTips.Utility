@@ -11,6 +11,8 @@
 ' </copyright>
 ' <summary></summary>
 ' ***********************************************************************
+Imports System.Runtime.CompilerServices
+
 Namespace Extensions
     ''' <summary>
     '''
@@ -24,10 +26,8 @@ Namespace Extensions
         ''' <param name="groupCount">The group count.</param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        <System.Runtime.CompilerServices.Extension()>
+        <Extension>
         Public Function Split(list As IList, groupCount As Integer) As IEnumerable
-            Contract.Requires(Of ArgumentNullException)(list IsNot Nothing)
-
             Return SplitList(Of IList)(CType(list, Global.System.Collections.Generic.List(Of Global.System.Collections.IList)), groupCount)
         End Function
 
@@ -37,7 +37,7 @@ Namespace Extensions
         ''' <param name="list">The list.</param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        <System.Runtime.CompilerServices.Extension()>
+        <Extension>
         Public Function IsValid(list As IList) As Boolean
             Return list IsNot Nothing AndAlso list.Count > 0
         End Function
@@ -48,13 +48,12 @@ Namespace Extensions
         ''' <param name="list">The list.</param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        <System.Runtime.CompilerServices.Extension()>
+        <Extension>
         Public Function IsValid(list As IEnumerable) As Boolean
             Return list.IsValid()
         End Function
 
         Private Function SplitList(Of T)(items As List(Of T), groupCount As Integer) As IEnumerable(Of IEnumerable(Of T))
-            Contract.Requires(Of ArgumentNullException)(items IsNot Nothing)
 
             Dim allGroups As New List(Of List(Of T))()
 

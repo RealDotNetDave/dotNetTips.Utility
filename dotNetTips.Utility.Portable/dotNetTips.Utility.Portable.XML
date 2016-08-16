@@ -1,0 +1,840 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>dotNetTips.Utility.Portable</name>
+    </assembly>
+    <members>
+        <member name="T:dotNetTips.Utility.Portable.ArgumentIsReadOnlyException">
+            <summary>
+            Class ArgumentIsReadOnlyException.
+            </summary>
+            <seealso cref="T:System.Exception"/>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.ArgumentIsReadOnlyException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentIsReadOnlyException"/> class.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.ArgumentIsReadOnlyException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentIsReadOnlyException"/> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.ArgumentIsReadOnlyException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentIsReadOnlyException"/> class.
+            </summary>
+            <param name="message">       The error message that explains the reason for the exception.</param>
+            <param name="innerException">
+            The exception that is the cause of the current exception, or a null reference (Nothing in
+            Visual Basic) if no inner exception is specified.
+            </param>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.ControlChars">
+            <summary>
+            Control Characters
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.ControlChars.Back">
+            <summary>
+            Back
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.ControlChars.BackSlash">
+            <summary>
+            Back Slash
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.ControlChars.Comma">
+            <summary>
+            Comma
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.ControlChars.Cr">
+            <summary>
+            CR
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.ControlChars.CRLF">
+            <summary>
+            CRLF
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.ControlChars.DoubleQuote">
+            <summary>
+            The double quote
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.ControlChars.FormFeed">
+            <summary>
+            Form feed
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.ControlChars.ForwardSlash">
+            <summary>
+            Forward slash
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.ControlChars.Lf">
+            <summary>
+            LF
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.ControlChars.NewLine">
+            <summary>
+            New line
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.ControlChars.NullChar">
+            <summary>
+            Null character
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.ControlChars.Quote">
+            <summary>
+            Quote
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.ControlChars.SingleQuote">
+            <summary>
+            The single quote
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.ControlChars.Space">
+            <summary>
+            Space
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.ControlChars.Tab">
+            <summary>
+            Tab
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.ControlChars.Underscore">
+            <summary>
+            Underscore
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.ControlChars.VerticalTab">
+            <summary>
+            Vertical tab
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.DateFormat">
+            <summary>
+            Enum DateFormat
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.DateFormat.GeneralDate">
+            <summary>
+            The general date
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.DateFormat.LongDate">
+            <summary>
+            The long date
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.DateFormat.ShortDate">
+            <summary>
+            The short date
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.DateFormat.LongTime">
+            <summary>
+            The long time
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.DateFormat.ShortTime">
+            <summary>
+            The short time
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.DateInterval">
+            <summary>
+            Enum DateInterval
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.DateInterval.Year">
+            <summary>
+            Year
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.DateInterval.Quarter">
+            <summary>
+            Quarter
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.DateInterval.Month">
+            <summary>
+            Month
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.DateInterval.DayOfYear">
+            <summary>
+            Day of year
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.DateInterval.Day">
+            <summary>
+            Day
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.DateInterval.WeekOfYear">
+            <summary>
+            Week of year
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.DateInterval.Weekday">
+            <summary>
+            Weekday
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.DateInterval.Hour">
+            <summary>
+            Hour
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.DateInterval.Minute">
+            <summary>
+            Minute
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.DateInterval.Second">
+            <summary>
+            Second
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.Diagnostics.PerformanceStopwatch">
+            <summary>
+            Class PerformanceStopwatch.
+            </summary>
+            <seealso cref="T:System.Diagnostics.Stopwatch"/>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Diagnostics.PerformanceStopwatch.StopReset">
+            <summary>
+            Stops the reset.
+            </summary>
+            <returns>TimeSpan.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Diagnostics.PerformanceStopwatch.StartNew">
+            <summary>
+            Starts the new.
+            </summary>
+            <returns>PerformanceStopwatch.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.Extensions.ExceptionExtension">
+            <summary>
+            Class ExceptionExtension.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.TraverseFor``1(System.Exception)">
+            <summary>
+            Traverses Exception.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="ex">The ex.</param>
+            <returns>T.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions">
+            <summary>
+            Extensions for DateTime
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.GetLast(System.DateTime,System.DayOfWeek)">
+            <summary>
+            Gets the last.
+            </summary>
+            <param name="input">    The date/ time.</param>
+            <param name="dayOfWeek">The day of week.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.GetNext(System.DateTime,System.DayOfWeek)">
+            <summary>
+            Gets the next.
+            </summary>
+            <param name="input">    The date/ time.</param>
+            <param name="dayOfWeek">The day of week.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.Intersects(System.DateTime,System.DateTime,System.DateTime,System.DateTime)">
+            <summary>
+            Intersects the specified start date.
+            </summary>
+            <param name="startDate">            The start date.</param>
+            <param name="endDate">              The end date.</param>
+            <param name="intersectingStartDate">The intersecting start date.</param>
+            <param name="intersectingEndDate">  The intersecting end date.</param>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+            <remarks>Code by: Walter Quesada</remarks>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.ToFriendlyDateString(System.DateTime)">
+            <summary>
+            To the friendly date string.
+            </summary>
+            <param name="input">The date.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.Extensions.CollectionExtensions">
+            <summary>
+            Class CollectionExtensions.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.AddIfNotExists``1(System.Collections.Generic.ICollection{``0},``0)">
+            <summary>
+            Adds if not exists.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"> The list.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.AddIfNotExists``1(System.Collections.Generic.ICollection{``0},``0[])">
+            <summary>
+            Adds if not exists.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list">  The list.</param>
+            <param name="values">The values.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.Count(System.Collections.IEnumerable)">
+            <summary>
+            Counts the specified source.
+            </summary>
+            <param name="source">The source.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.FirstOrNull``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Finds first item or returns null.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source">The source.</param>
+            <param name="match"> The match.</param>
+            <returns>System.Nullable&lt;T&gt;.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.IsValid``1(System.Collections.ObjectModel.ObservableCollection{``0})">
+            <summary>
+            Returns true if ... is valid.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list">The list.</param>
+            <returns><c>true</c> if the specified list is valid; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.IsValid(System.Collections.IEnumerable)">
+            <summary>
+            Determines whether the specified source is valid.
+            </summary>
+            <param name="source">The source.</param>
+            <returns><count>true</count> if the specified source is valid; otherwise, <count>false</count>.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.NoDuplicates(System.String[])">
+            <summary>
+            Returns no duplicates.
+            </summary>
+            <param name="source">The source values.</param>
+            <returns>System.String[].</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.Page``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+            Pages the specified source.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source">  The source.</param>
+            <param name="pageSize">Size of the page.</param>
+            <returns>IEnumerable&lt;IEnumerable&lt;T&gt;&gt;.</returns>
+            <remarks>Original code by: Lukazoid</remarks>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.PickRandom``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+            Picks random items out of the collection.
+            </summary>
+            <typeparam name="T">Collection type.</typeparam>
+            <param name="source">The source collection.</param>
+            <param name="count"> The selection count.</param>
+            <returns>IEnumerable collection.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.Pivot``4(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Func{``0,``2},System.Func{System.Collections.Generic.IEnumerable{``0},``3})">
+            <summary>
+            Groups the elements of a sequence according to a specified firstKey selector function and
+            rotates the unique values from the secondKey selector function into multiple values in
+            the output, and performs aggregations.
+            </summary>
+            <typeparam name="TSource">The type of the t source.</typeparam>
+            <typeparam name="TFirstKey">The type of the t first key.</typeparam>
+            <typeparam name="TSecondKey">The type of the t second key.</typeparam>
+            <typeparam name="TValue">The type of the t value.</typeparam>
+            <param name="source">           The source.</param>
+            <param name="firstKeySelector"> The first key selector.</param>
+            <param name="secondKeySelector">The second key selector.</param>
+            <param name="aggregate">        The aggregate.</param>
+            <returns>Dictionary&lt;TFirstKey, Dictionary&lt;TSecondKey, TValue&gt;&gt;.</returns>
+            <remarks>Original code by: Fons Sonnemans</remarks>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.Randomize``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Randomizes the specified source.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source">The source.</param>
+            <returns>IEnumerable&lt;T&gt;.</returns>
+            <remarks>Original code by: Phil Campbell</remarks>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.ToDelimitedString``1(System.Collections.Generic.IEnumerable{``0},System.Char)">
+            <summary>
+            Converts collection to a delimited string.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source">   The source.</param>
+            <param name="delimiter">The delimiter (default is comma if not supplied).</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.ToDictionary``2(System.Collections.Generic.IEnumerable{System.Linq.IGrouping{``0,``1}})">
+            <summary>
+            Converts an enumeration of groupings into a Dictionary of those groupings.
+            </summary>
+            <typeparam name="TKey">Key type of the grouping and dictionary.</typeparam>
+            <typeparam name="TValue">Element type of the grouping and dictionary list.</typeparam>
+            <param name="source">The enumeration of groupings from a GroupBy() clause.</param>
+            <returns>
+            A dictionary of groupings such that the key of the dictionary is TKey type and the value
+            is List of TValue type.
+            </returns>
+            <remarks>Original code by: James Michael Hare</remarks>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.ToListAsync``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Creates a Generic.List.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source">The list.</param>
+            <returns>Task&lt;List&lt;T&gt;&gt;.</returns>
+            <remarks>Original code by: Fons Sonnemans</remarks>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.ToObservableCollection``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            To the observable collection.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source">The source collection.</param>
+            <returns>ObservableCollection&lt;T&gt;.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.ToReadOnlyCollection``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Creates a read only collection.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source">The source.</param>
+            <returns>ReadOnlyCollection&lt;T&gt;.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.WhereIf``1(System.Collections.Generic.IEnumerable{``0},System.Boolean,System.Func{``0,System.Boolean})">
+            <summary>
+            Returns collection based on function.
+            </summary>
+            <typeparam name="TSource">The type of the source.</typeparam>
+            <param name="source">   The source.</param>
+            <param name="condition">if set to <c>true</c> [condition].</param>
+            <param name="predicate">The predicate.</param>
+            <returns>IEnumerable&lt;TSource&gt;.</returns>
+            <remarks>Original code by: Phil Campbell</remarks>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.WhereIf``1(System.Collections.Generic.IEnumerable{``0},System.Boolean,System.Func{``0,System.Int32,System.Boolean})">
+            <summary>
+            Returns collection based on function.
+            </summary>
+            <typeparam name="TSource">The type of the source.</typeparam>
+            <param name="source">   The source.</param>
+            <param name="condition">if set to <c>true</c> [condition].</param>
+            <param name="predicate">The predicate.</param>
+            <returns>IEnumerable&lt;TSource&gt;.</returns>
+            <remarks>Original code by: Phil Campbell</remarks>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.Extensions.MathExtensions">
+            <summary>
+            Class MathExtensions.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.MathExtensions.Round(System.Double)">
+            <summary>
+            Rounds the specified value.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>System.Int32.</returns>
+            <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.MathExtensions.Round(System.Double,System.Int32)">
+            <summary>
+            Rounds the specified value.
+            </summary>
+            <param name="value"> The value.</param>
+            <param name="digits">The digits.</param>
+            <returns>System.Int32.</returns>
+            <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.MathExtensions.Round(System.Double,System.MidpointRounding)">
+            <summary>
+            Rounds the specified value.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="mode"> The mode.</param>
+            <returns>System.Int32.</returns>
+            <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.MathExtensions.Round(System.Double,System.Int32,System.MidpointRounding)">
+            <summary>
+            Rounds the specified value.
+            </summary>
+            <param name="value"> The value.</param>
+            <param name="digits">The digits.</param>
+            <param name="mode">  The mode.</param>
+            <returns>System.Int32.</returns>
+            <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.MathExtensions.Round(System.Decimal)">
+            <summary>
+            Rounds the specified value.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>System.Int32.</returns>
+            <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.MathExtensions.Round(System.Decimal,System.Int32)">
+            <summary>
+            Rounds the specified value.
+            </summary>
+            <param name="value"> The value.</param>
+            <param name="digits">The digits.</param>
+            <returns>System.Int32.</returns>
+            <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.MathExtensions.Round(System.Decimal,System.MidpointRounding)">
+            <summary>
+            Rounds the specified value.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="mode"> The mode.</param>
+            <returns>System.Int32.</returns>
+            <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.MathExtensions.Round(System.Decimal,System.Int32,System.MidpointRounding)">
+            <summary>
+            Rounds the specified value.
+            </summary>
+            <param name="value"> The value.</param>
+            <param name="digits">The digits.</param>
+            <param name="mode">  The mode.</param>
+            <returns>System.Int32.</returns>
+            <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.Extensions.ObjectExtensions">
+            <summary>
+            Class ObjectExtensions.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.As``1(System.Object)">
+            <summary>
+            Returns the specified value.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value">The value.</param>
+            <returns>T.</returns>
+            <remarks>Original code by: Shimmy Weitzhandler</remarks>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.In``1(``0,``0[])">
+            <summary>
+            Ins the specified source.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source">The source.</param>
+            <param name="list">  The list.</param>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+            <remarks>Original code by: Rory Becker</remarks>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.IsNotNull(System.Object)">
+            <summary>
+            Determines whether [is not null] [the specified object].
+            </summary>
+            <param name="obj">The obj.</param>
+            <returns>
+            <count>true</count> if [is not null] [the specified object]; otherwise, <count>false</count>.
+            </returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.IsNull(System.Object)">
+            <summary>
+            Determines whether the specified object is null.
+            </summary>
+            <param name="obj">The object.</param>
+            <returns><count>true</count> if the specified object is null; otherwise, <count>false</count>.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.TryDispose(System.IDisposable,System.Boolean)">
+            <summary>
+            Tries to Dispose the object.
+            </summary>
+            <param name="obj">           The obj.</param>
+            <param name="throwException">if set to <count>true</count> [throw exception].</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.TryDispose(System.IDisposable)">
+            <summary>
+            Tries the to call Dispose.
+            </summary>
+            <param name="obj">The obj.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.HasProperty(System.Object,System.String)">
+            <summary>
+            Determines whether the specified object has the property.
+            </summary>
+            <param name="instance">    The instance.</param>
+            <param name="propertyName">Name of the property.</param>
+            <returns><c>true</c> if the specified property name has property; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.Extensions.StringExtensions">
+            <summary>
+            Class StringExtensions.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.StringExtensions.ContainsAny(System.String,System.String[])">
+            <summary>
+            Determines whether the specified the string contains any.
+            </summary>
+            <param name="input">     The string.</param>
+            <param name="characters">The characters.</param>
+            <returns><c>true</c> if the specified characters contains any; otherwise, <c>false</c>.</returns>
+            <exception cref="T:System.ArgumentNullException">Null character.</exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.StringExtensions.DefaultIfNull(System.String)">
+            <summary>
+            Defaults if null.
+            </summary>
+            <param name="s">The s.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.StringExtensions.DefaultIfNull(System.String,System.String)">
+            <summary>
+            Defaults if null.
+            </summary>
+            <param name="s">           The s.</param>
+            <param name="defaultValue">The default value.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.StringExtensions.DefaultIfNullOrEmpty(System.String,System.String)">
+            <summary>
+            Defaults if null or empty.
+            </summary>
+            <param name="value">       The value.</param>
+            <param name="defaultValue">The default value.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.StringExtensions.FormatFileSize(System.Int64)">
+            <summary>
+            Formats the size of the file.
+            </summary>
+            <param name="fileSize">Size of the file.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.StringExtensions.Indent(System.String,System.Int32,System.Char)">
+            <summary>
+            Indents the specified length.
+            </summary>
+            <param name="str">                 The string.</param>
+            <param name="length">              The length.</param>
+            <param name="indentationCharacter">The indentation character.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.Extensions.TypeExtensions">
+            <summary>
+            Class TypeExtensions.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.TypeExtensions.Max``1(``0,``0)">
+            <summary>
+            Return maximum type. Works with value and reference types.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj1">The obj1.</param>
+            <param name="obj2">The obj2.</param>
+            <returns>T.</returns>
+            <remarks>Original code by: Jeremy Clark</remarks>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.DueDate">
+            <summary>
+            Enum DueDate
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.DueDate.EndOfPeriod">
+            <summary>
+            The end of period
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.DueDate.BeggingOfPeriod">
+            <summary>
+            The begging of period
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.FileAttributes">
+            <summary>
+            Enum FileAttributes
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.FileAttributes.Archive">
+            <summary>
+            Archive
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.FileAttributes.Directory">
+            <summary>
+            Directory
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.FileAttributes.Hidden">
+            <summary>
+            Hidden
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.FileAttributes.Normal">
+            <summary>
+            Normal
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.FileAttributes.ReadOnly">
+            <summary>
+            Read only
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.FileAttributes.System">
+            <summary>
+            System
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.FileAttributes.Volume">
+            <summary>
+            Volume
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.FirstDayOfWeek">
+            <summary>
+            Enum FirstDayOfWeek
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.FirstDayOfWeek.System">
+            <summary>
+            The system date
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.FirstDayOfWeek.Sunday">
+            <summary>
+            Sunday
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.FirstDayOfWeek.Monday">
+            <summary>
+            Monday
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.FirstDayOfWeek.Tuesday">
+            <summary>
+            Tuesday
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.FirstDayOfWeek.Wednesday">
+            <summary>
+            Wednesday
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.FirstDayOfWeek.Thursday">
+            <summary>
+            Thursday
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.FirstDayOfWeek.Friday">
+            <summary>
+            Friday
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.FirstDayOfWeek.Saturday">
+            <summary>
+            Saturday
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.FirstWeekOfYear">
+            <summary>
+            Enum FirstWeekOfYear
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.FirstWeekOfYear.System">
+            <summary>
+            The system
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.FirstWeekOfYear.Jan1">
+            <summary>
+            The Janurary 1st
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.FirstWeekOfYear.FirstFourDays">
+            <summary>
+            The first four days
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.FirstWeekOfYear.FirstFullWeek">
+            <summary>
+            The first full week
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.ICloneable`1">
+            <summary>
+            Interface ICloneable
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.ICloneable`1.Cone">
+            <summary>
+            Cones this instance.
+            </summary>
+            <returns>T.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.IO.DirectoryHelper">
+            <summary>
+            Class DirectoryHelper.
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.ISingleton`1">
+            <summary>
+            Interface ISingleton
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.Tristate">
+            <summary>
+            Enum TriState
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.Tristate.False">
+            <summary>
+            False
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.Tristate.True">
+            <summary>
+            True
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Portable.Tristate.UseDefault">
+            <summary>
+            Use default
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.TypeHelper">
+            <summary>
+            Class TypeHelper.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.TypeHelper.Create``1">
+            <summary>
+            Creates type instance.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns>T.</returns>
+            <remarks>Original code by: Jeremy Clark</remarks>
+        </member>
+    </members>
+</doc>

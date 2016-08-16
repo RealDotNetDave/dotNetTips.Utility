@@ -25,7 +25,7 @@ Namespace Extensions
         ''' <param name="value">The value.</param>
         ''' <param name="placesAfter">The places after.</param>
         ''' <returns></returns>
-        <Extension()> _
+        <Extension> _
         Public Function ConvertDecimal(ByVal value As Decimal, ByVal placesAfter As Int32) As Decimal
             Return Math.MathHelper.ConvertDecimal(value, placesAfter)
         End Function

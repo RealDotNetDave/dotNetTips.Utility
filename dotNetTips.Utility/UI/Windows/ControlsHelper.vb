@@ -61,7 +61,7 @@ Namespace UI.Windows
         Public Sub ClearControls(ByVal parent As Control, ByVal tag As String, ByVal clearChildren As Boolean)
 
             If parent Is Nothing Then
-                Throw New ArgumentNullException("parent")
+                Throw New ArgumentNullException(NameOf(parent))
             End If
 
             parent.SuspendLayout()
@@ -84,7 +84,7 @@ Namespace UI.Windows
         Public Sub SelectFirstEmptyControl(ByVal parent As Control, ByVal tag As String, ByVal includeChildren As Boolean)
 
             If parent Is Nothing Then
-                Throw New ArgumentNullException("parent")
+                Throw New ArgumentNullException(NameOf(parent))
             End If
 
             parent.SuspendLayout()
@@ -106,7 +106,7 @@ Namespace UI.Windows
         Public Function FindEditableControls(ByVal parent As Control, ByVal tag As String, ByVal includeChildren As Boolean) As IReadOnlyCollection(Of Control)
 
             If parent Is Nothing Then
-                Throw New ArgumentNullException("parent")
+                Throw New ArgumentNullException(NameOf(parent))
             End If
 
             Dim controls As New List(Of Control)(From c In parent.Controls.Cast(Of Control)() Where c.TabStop = True And (String.IsNullOrEmpty(tag) OrElse (CStr(c.Tag) = tag)))
@@ -129,7 +129,7 @@ Namespace UI.Windows
         Public Function FindControls(Of T As Control)(ByVal parent As Control, ByVal includeChildren As Boolean) As IReadOnlyCollection(Of T)
 
             If parent Is Nothing Then
-                Throw New ArgumentNullException("parent")
+                Throw New ArgumentNullException(NameOf(parent))
             End If
 
             Dim controls As New List(Of T)(From c In parent.Controls.OfType(Of T)())
@@ -160,9 +160,9 @@ Namespace UI.Windows
         Private Sub CheckControl(ByVal controlToClear As Control, ByVal controlType As Type, ByRef shouldReturn As Boolean)
             shouldReturn = False
             'Check to see if we need to ignore the control
-            Static ignore As String() = My.Resources.ClearControlsToIgnore.ToUpper(CultureInfo.CurrentCulture).Split(New Char() {Char.Parse(";")})
+            Static ignore As String() = CultureInfo.CurrentCulture.TextInfo.ToUpper(My.Resources.ClearControlsToIgnore).Split(New Char() {Char.Parse(";")})
             If (ignore IsNot Nothing AndAlso ignore.Length > 0) Then
-                If (ignore.Contains(controlType.Name.ToUpper(CultureInfo.CurrentCulture))) Then
+                If (ignore.Contains(CultureInfo.CurrentCulture.TextInfo.ToUpper(controlType.Name))) Then
                     shouldReturn = True
                     Exit Sub
                 End If
@@ -217,35 +217,35 @@ Namespace UI.Windows
             End If
 
             Select Case controlType.Name
-                Case Is = "CheckedListBox"
+                Case Is = NameOf(CheckedListBox)
                     ClearCheckBox(controlToClear)
 
-                Case Is = "ComboBox"
+                Case Is = NameOf(ComboBox)
                     DirectCast(controlToClear, System.Windows.Forms.ComboBox).SelectedIndex = -1
 
-                Case Is = "DateTimePicker"
+                Case Is = NameOf(DateTimePicker)
                     ClearDateTimeControl(controlToClear)
 
-                Case Is = "CheckBox"
+                Case Is = NameOf(CheckBox)
                     DirectCast(controlToClear, System.Windows.Forms.CheckBox).Checked = False
 
-                Case Is = "RadioButton"
+                Case Is = NameOf(RadioButton)
                     DirectCast(controlToClear, System.Windows.Forms.RadioButton).Checked = False
 
-                Case Is = "ListBox"
+                Case Is = NameOf(ListBox)
                     DirectCast(controlToClear, System.Windows.Forms.ListBox).SelectedIndex = -1
 
-                Case Is = "ListView"
+                Case Is = NameOf(ListView)
                     ClearListControl(controlToClear)
 
-                Case Is = "MonthCalendar"
+                Case Is = NameOf(MonthCalendar)
                     DirectCast(controlToClear, MonthCalendar).SetDate(Now)
 
-                Case Is = "NumericUpDown"
+                Case Is = NameOf(NumericUpDown)
                     Dim tempNumericUpDown As NumericUpDown = DirectCast(controlToClear, NumericUpDown)
                     tempNumericUpDown.Value = tempNumericUpDown.Minimum
 
-                Case Is = "ProgressBar"
+                Case Is = NameOf(ProgressBar)
                     Dim tempProgress As ProgressBar = DirectCast(controlToClear, ProgressBar)
                     tempProgress.Value = tempProgress.Minimum
 

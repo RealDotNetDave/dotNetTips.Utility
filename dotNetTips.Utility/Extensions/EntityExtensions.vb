@@ -1,41 +1,35 @@
-﻿'***********************************************************************
-' Assembly         : dotNetTips
+﻿' ***********************************************************************
+' Assembly         : dotNetTips.Utility
 ' Author           : David McCarter
-' Created          : 12-10-2008
+' Created          : 03-29-2016
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 06-09-2009
-' Description      :
-'
-' Copyright        : (c) dotNetTips.com. All rights reserved.
-'***********************************************************************
+' Last Modified On : 01-26-2016
+' ***********************************************************************
+' <copyright file="EntityExtensions.vb" company="NicheWare - David McCarter">
+'     NicheWare - David McCarter
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
 Imports System.Runtime.CompilerServices
 Imports System.Data.Objects.DataClasses
-Imports System.Diagnostics.Contracts
 
 Namespace Extensions
 
     ''' <summary>
     ''' Extensions for the Entity Framework
     ''' </summary>
-    ''' <remarks></remarks>
     Public Module EntityExtensions
         ''' <summary>
         ''' Retrieves the foreign key.
         ''' </summary>
         ''' <param name="ref">The Entity reference.</param>
-        ''' <returns></returns>
-        <Extension()> _
+        ''' <returns>System.Int32.</returns>
+        <Extension> _
         Public Function ForeignKey(ByVal ref As EntityReference) As Integer
-            Contract.Requires(Of ArgumentNullException)(ref IsNot Nothing)
-
             Dim key As Integer = 0
 
-            If Integer.TryParse(ref.EntityKey.EntityKeyValues(0).Value.ToString(), key) Then
-                Return key
-            Else
-                Return 0
-            End If
+            Return If(Integer.TryParse(ref.EntityKey.EntityKeyValues(0).Value.ToString(), key), key, 0)
         End Function
 
         ''' <summary>
@@ -44,7 +38,7 @@ Namespace Extensions
         ''' <typeparam name="T">Type of entity collection</typeparam>
         ''' <param name="entityCollection">Entity collection to potentially load entities into</param>
         ''' <param name="entitySource">The source entity which has the entity collection relationship (modified or unchanged only)</param>
-        <System.Runtime.CompilerServices.Extension> _
+        <Extension>
         Public Sub EnsureLoaded(Of T As {Class, IEntityWithRelationships})(entityCollection As EntityCollection(Of T), entitySource As EntityObject)
             If entitySource IsNot Nothing AndAlso entityCollection IsNot Nothing AndAlso Not entityCollection.IsLoaded Then
                 If entitySource.EntityState = System.Data.EntityState.Modified OrElse entitySource.EntityState = System.Data.EntityState.Unchanged Then
@@ -56,7 +50,10 @@ Namespace Extensions
         ''' <summary>
         ''' Whether or not the entity reference has an entity key with a value present
         ''' </summary>
-        <System.Runtime.CompilerServices.Extension> _
+        ''' <typeparam name="T"></typeparam>
+        ''' <param name="entityReference">The entity reference.</param>
+        ''' <returns><c>true</c> if [has entity key first value] [the specified entity reference]; otherwise, <c>false</c>.</returns>
+        <Extension>
         Public Function HasEntityKeyFirstValue(Of T As {Class, IEntityWithRelationships})(entityReference As EntityReference(Of T)) As Boolean
             Return entityReference IsNot Nothing AndAlso entityReference.EntityKey.HasFirstValue(Of Integer)()
         End Function
@@ -64,7 +61,10 @@ Namespace Extensions
         ''' <summary>
         ''' Get entity key with a value present
         ''' </summary>
-        <System.Runtime.CompilerServices.Extension> _
+        ''' <typeparam name="T"></typeparam>
+        ''' <param name="entityReference">The entity reference.</param>
+        ''' <returns>System.Int32.</returns>
+        <Extension>
         Public Function GetEntityKeyFirstValue(Of T As {Class, IEntityWithRelationships})(entityReference As EntityReference(Of T)) As Integer
             If entityReference IsNot Nothing Then
                 Return entityReference.EntityKey.GetFirstValue(Of Integer)()
@@ -75,8 +75,10 @@ Namespace Extensions
         ''' <summary>
         ''' Gets the first entity key value
         ''' </summary>
+        ''' <typeparam name="T"></typeparam>
+        ''' <param name="entityKey">The entity key.</param>
         ''' <returns>the first entity key value</returns>
-        <System.Runtime.CompilerServices.Extension> _
+        <Extension> _
         Public Function GetFirstValue(Of T)(entityKey As EntityKey) As T
             If entityKey IsNot Nothing AndAlso entityKey.EntityKeyValues IsNot Nothing AndAlso entityKey.EntityKeyValues.Length > 0 Then
                 Return DirectCast(entityKey.EntityKeyValues.First().Value, T)
@@ -87,7 +89,10 @@ Namespace Extensions
         ''' <summary>
         ''' Sets the first entity key value
         ''' </summary>
-        <System.Runtime.CompilerServices.Extension> _
+        ''' <typeparam name="T"></typeparam>
+        ''' <param name="entityKey">The entity key.</param>
+        ''' <param name="value">The value.</param>
+        <Extension>
         Public Sub SetFirstValue(Of T)(entityKey As EntityKey, value As T)
             If entityKey IsNot Nothing AndAlso entityKey.EntityKeyValues IsNot Nothing AndAlso entityKey.EntityKeyValues.Length > 0 Then
                 entityKey.EntityKeyValues.First().Value = value
@@ -98,7 +103,10 @@ Namespace Extensions
         ''' <summary>
         ''' Whether or not the entity key has a first value
         ''' </summary>
-        <System.Runtime.CompilerServices.Extension> _
+        ''' <typeparam name="T"></typeparam>
+        ''' <param name="entityKey">The entity key.</param>
+        ''' <returns><c>true</c> if [has first value] [the specified entity key]; otherwise, <c>false</c>.</returns>
+        <Extension>
         Public Function HasFirstValue(Of T)(entityKey As EntityKey) As Boolean
             Return (Not GetFirstValue(Of T)(entityKey).Equals(Nothing))
         End Function

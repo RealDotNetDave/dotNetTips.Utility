@@ -14,6 +14,8 @@
 <HelpConfigurations selected="HelpFile">
   <HelpConfiguration name="HelpFile">
     <OutputPath>..\..\..\Help</OutputPath>
+    <CleanupOutputPath>true</CleanupOutputPath>
+    <HelpFileNamingMethod>MemberName</HelpFileNamingMethod>
     <ImageFolderPath />
     <HtmlFormats>
       <HtmlHelp>true</HtmlHelp>
@@ -31,6 +33,11 @@
       <EnableTags>false</EnableTags>
       <TagList />
     </IncludeScopes>
+    <SyntaxLanguages>
+      <CSharp>true</CSharp>
+      <VisualBasic>true</VisualBasic>
+      <CPlusPlus>true</CPlusPlus>
+    </SyntaxLanguages>
     <ResolveCrefLinks>true</ResolveCrefLinks>
     <HeaderText>dotNetTips.com</HeaderText>
     <FooterText>David McCarter</FooterText>
@@ -41,4 +48,7 @@
     </SelectedProjects>
   </HelpConfiguration>
 </HelpConfigurations>
+<GeneralProperties>
+  <SearchInheritedCommentsOnlyWithinProject>False</SearchInheritedCommentsOnlyWithinProject>
+</GeneralProperties>
 </GhostDoc>

@@ -13,6 +13,7 @@
 ' ***********************************************************************
 Imports System.Runtime.CompilerServices
 Imports System.Text
+Imports System.Globalization
 
 Namespace Extensions
     ''' <summary>
@@ -25,7 +26,7 @@ Namespace Extensions
         ''' Clears the specified StringBuilder text.
         ''' </summary>
         ''' <param name="sb">The StringBuilder object.</param>
-        <Extension()>
+        <Extension>
         Public Sub Clear(ByVal sb As StringBuilder)
             sb.Remove(0, sb.ToString().Length)
         End Sub
@@ -38,9 +39,9 @@ Namespace Extensions
         ''' <param name="args">The arguments.</param>
         ''' <returns></returns>
         ''' <remarks>Code by: Koen Rouwhorst</remarks>
-        <Extension()>
+        <Extension>
         Public Function AppendLineFormat(ByVal builder As StringBuilder, ByVal format As String, ByVal ParamArray args As Object()) As StringBuilder
-            Dim value As String = String.Format(format, args)
+            Dim value As String = String.Format(CultureInfo.CurrentCulture, format, args)
 
             builder.AppendLine(value)
 

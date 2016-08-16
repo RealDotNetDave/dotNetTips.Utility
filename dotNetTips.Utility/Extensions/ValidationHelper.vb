@@ -25,11 +25,7 @@ Namespace Extensions
         ''' <remarks></remarks>
         Public Function IsValidNumber(ByVal input As String) As Boolean
 
-            If String.IsNullOrEmpty(input) Then
-                Return False
-            Else
-                Return IsNumeric(input)
-            End If
+            Return If(String.IsNullOrEmpty(input), False, IsNumeric(input))
 
         End Function
     End Module

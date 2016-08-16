@@ -1,24 +1,25 @@
-﻿'***********************************************************************
-' Assembly         : dotNetTips
+﻿' ***********************************************************************
+' Assembly         : dotNetTips.Utility
 ' Author           : David McCarter
-' Created          : 12-10-2008
+' Created          : 03-29-2016
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 06-09-2009
-' Description      :
-'
-' Copyright        : (c) dotNetTips.com. All rights reserved.
-'***********************************************************************
-Imports System
+' Last Modified On : 04-11-2016
+' ***********************************************************************
+' <copyright file="ColorExtensions.vb" company="NicheWare - David McCarter">
+'     NicheWare - David McCarter
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
 Imports System.Collections.Generic
 Imports System.Drawing
 Imports System.Diagnostics.Contracts
-
+Imports System.Runtime.CompilerServices
+Imports dotNetTips.Utility.Core.Extensions
 Namespace Extensions
     ''' <summary>
     ''' Extension methods for color values.
     ''' </summary>
-    ''' <remarks></remarks>
     Public Module ColorExtensions
 
         ''' <summary>
@@ -26,11 +27,9 @@ Namespace Extensions
         ''' </summary>
         ''' <param name="color">The color.</param>
         ''' <returns>HTML string color representation.</returns>
-        ''' <remarks>
-        ''' Code by: Lucas
-        ''' http://code.msdn.microsoft.com/LucasExtensions
-        ''' </remarks>
-        <System.Runtime.CompilerServices.Extension()> _
+        ''' <remarks>Code by: Lucas
+        ''' http://code.msdn.microsoft.com/LucasExtensions</remarks>
+        <Extension> _
         Public Function ToHtml(ByVal color As Color) As String
             Return ColorTranslator.ToHtml(color)
         End Function
@@ -40,11 +39,9 @@ Namespace Extensions
         ''' </summary>
         ''' <param name="htmlColor">Color of the HTML.</param>
         ''' <returns>CGI+ Color structure.</returns>
-        ''' <remarks>
-        ''' Code by: Lucas
-        ''' http://code.msdn.microsoft.com/LucasExtensions
-        ''' </remarks>
-        <System.Runtime.CompilerServices.Extension()> _
+        ''' <remarks>Code by: Lucas
+        ''' http://code.msdn.microsoft.com/LucasExtensions</remarks>
+        <Extension> _
         Public Function ToHtmlColor(ByVal htmlColor As String) As Color
             Return ColorTranslator.FromHtml(htmlColor)
         End Function
@@ -54,13 +51,11 @@ Namespace Extensions
         ''' </summary>
         ''' <param name="colors">The colors.</param>
         ''' <returns>CGI+ Color structure.</returns>
-        ''' <remarks>
-        ''' Code by: Lucas
-        ''' http://code.msdn.microsoft.com/LucasExtensions
-        ''' </remarks>
-        <System.Runtime.CompilerServices.Extension()> _
+        ''' <remarks>Code by: Lucas
+        ''' http://code.msdn.microsoft.com/LucasExtensions</remarks>
+        <Extension> _
         Public Function Average(ByVal colors As IEnumerable(Of Color)) As Color
-            Contract.Requires(Of ArgumentNullException)(colors IsNot Nothing)
+            Contract.Requires(Of ArgumentNullException)(colors.Count > 0)
 
             Dim r As Integer = colors.Average(Function(c) c.R).Round()
             Dim g As Integer = colors.Average(Function(c) c.G).Round()

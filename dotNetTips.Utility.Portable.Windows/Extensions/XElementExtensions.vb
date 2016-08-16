@@ -27,7 +27,7 @@ Namespace Extensions
         ''' <param name="xml">The XML.</param>
         ''' <returns></returns>
         ''' <remarks>Original code by: Joacim Anderson</remarks>
-        <Extension()> _
+        <Extension> _
         Public Function TrimmedValue(ByVal xml As XElement) As String
             Return String.Join(vbLf, (String.Join(vbLf, ( _
                  From s In xml.Value.Split(New Char() {Convert.ToChar(10)}) _
@@ -42,7 +42,7 @@ Namespace Extensions
         ''' <param name="elementName">Name of the element.</param>
         ''' <param name="defaultValue">The default value.</param>
         ''' <returns></returns>
-        <Extension()> _
+        <Extension> _
         Public Function ExtractElementValue(ByVal parent As XElement, ByVal elementName As String, ByVal defaultValue As String) As String
             Dim el = parent.Element(elementName)
             Return If(el IsNot Nothing, el.Value, defaultValue)
@@ -55,7 +55,7 @@ Namespace Extensions
         ''' <param name="elementName">Name of the element.</param>
         ''' <param name="attributeName">Name of the attribute.</param>
         ''' <returns></returns>
-        <Extension()> _
+        <Extension> _
         Public Function ExtractElementAttributeValue(ByVal parent As XElement, ByVal elementName As String, ByVal attributeName As String) As String
             Return ExtractElementAttributeValue(parent, elementName, attributeName, String.Empty)
         End Function
@@ -68,7 +68,7 @@ Namespace Extensions
         ''' <param name="attributeName">Name of the attribute.</param>
         ''' <param name="defaultValue">The default value.</param>
         ''' <returns></returns>
-        <Extension()> _
+        <Extension> _
         Public Function ExtractElementAttributeValue(ByVal parent As XElement, ByVal elementName As String, ByVal attributeName As String, ByVal defaultValue As String) As String
             Dim returnValue = defaultValue
 

@@ -1,14 +1,16 @@
-﻿'***********************************************************************
+﻿' ***********************************************************************
 ' Assembly         : dotNetTips.Utility
-' Author           : dm11086
-' Created          : 10-13-2010
+' Author           : David McCarter
+' Created          : 03-29-2016
 '
-' Last Modified By : dm11086
-' Last Modified On : 10-13-2010
-' Description      :
-'
-' Copyright        : (c) . All rights reserved.
-'***********************************************************************
+' Last Modified By : David McCarter
+' Last Modified On : 01-23-2016
+' ***********************************************************************
+' <copyright file="ResponseExtensions.vb" company="NicheWare - David McCarter">
+'     NicheWare - David McCarter
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
 Imports System.Runtime.CompilerServices
 Imports System.Web
 
@@ -16,17 +18,14 @@ Namespace Extensions
     ''' <summary>
     ''' Extensions for HttpResponse objects.
     ''' </summary>
-    ''' <remarks></remarks>
     Public Module ResponseExtensions
         ''' <summary>
         ''' Redirects the specified ref.
         ''' </summary>
         ''' <param name="value">The ref.</param>
         ''' <param name="page">The page.</param>
-        ''' <remarks></remarks>
-        <Extension()> _
+        <Extension>
         Public Sub Redirect(ByVal value As System.Web.HttpResponse, ByVal page As String)
-            Contracts.Contract.Requires(Of ArgumentNullException)(value IsNot Nothing)
             Contracts.Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(page) = False)
 
             value.Redirect(page, False)

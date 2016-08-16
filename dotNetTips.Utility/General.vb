@@ -12,9 +12,7 @@
 ' <summary></summary>
 ' ***********************************************************************
 Imports System.Diagnostics.Contracts
-Imports System
 Imports System.Reflection
-Imports System.Linq
 
 ''' <summary>
 ''' General helper functions.
@@ -40,6 +38,7 @@ Public Module General
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public Function DoesObjectEqualInstance(ByVal value As [Object], ByVal instance As Object) As Boolean
+
         Contract.Requires(Of ArgumentNullException)(value IsNot Nothing)
         Contract.Requires(Of ArgumentNullException)(instance IsNot Nothing)
 
@@ -56,6 +55,7 @@ Public Module General
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public Function GetInstanceHashCode(ByVal instance As Object) As Int32
+
         Contract.Requires(Of ArgumentNullException)(instance IsNot Nothing)
 
         Dim hash As Int32
@@ -69,5 +69,36 @@ Public Module General
 
         Return hash
     End Function
+
+    ''' <summary>
+    ''' Starts a process.
+    ''' </summary>
+    ''' <param name="fileName">Name of the file.</param>
+    ''' <param name="arguments">The arguments.</param>
+    ''' <param name="windowsStyle">The windows style.</param>
+    ''' <remarks></remarks>
+    Public Sub StartProcess(fileName As String, arguments As String, windowsStyle As ProcessWindowStyle, wait As Boolean)
+
+        Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(fileName) = False)
+
+        Using process As New Process()
+            Dim processInfo As New System.Diagnostics.ProcessStartInfo() With
+                {
+                    .FileName = fileName,
+                    .Arguments = arguments,
+                    .UseShellExecute = True,
+                    .WindowStyle = windowsStyle
+                }
+            process.StartInfo = processInfo
+            Dim result = Process.Start(processInfo)
+
+            If (wait) Then
+                Do Until result.HasExited
+                    System.Threading.Thread.Sleep(500)
+                Loop
+            End If
+
+        End Using
+    End Sub
 
 End Module

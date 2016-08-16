@@ -14,6 +14,8 @@
 
 Imports System.Collections.Generic
 Imports System.Data.Services
+Imports System.Runtime.CompilerServices
+
 Namespace Extensions
     ''' <summary>
     '''
@@ -25,9 +27,8 @@ Namespace Extensions
         ''' <param name="args">The args.</param>
         ''' <returns></returns>
         ''' <remarks></remarks>
-        <System.Runtime.CompilerServices.Extension()> _
+        <Extension>
         Public Function CopyRequestHeaderValues(args As ProcessRequestArgs) As SortedDictionary(Of String, String)
-            Contracts.Contract.Requires(Of ArgumentNullException)(args IsNot Nothing)
 
             Dim requestHeaderValues As New SortedDictionary(Of String, String)
 

@@ -1,17 +1,13 @@
-﻿// ***********************************************************************
-// Assembly         : dotNetTips.Utility.Portable
-// Author           : David McCarter
-// Created          : 05-16-2014
+﻿// *********************************************************************** Assembly :
+// dotNetTips.Utility.Portable Author : David McCarter Created : 06-01-2016
 //
-// Last Modified By : David McCarter
-// Last Modified On : 05-16-2014
-// ***********************************************************************
-// <copyright file="DueDate.cs" company="David McCarter Consulting">
-//     David McCarter Consulting. All rights reserved.
+// Last Modified By : David McCarter Last Modified On : 06-02-2016 ***********************************************************************
+// <copyright file="DueDate.cs" company="dotNetTips.com">
+//     Copyright Â© 2015
 // </copyright>
-// <summary></summary>
+// <summary>
+// </summary>
 // ***********************************************************************
-
 namespace dotNetTips.Utility.Portable
 {
     /// <summary>
@@ -23,6 +19,7 @@ namespace dotNetTips.Utility.Portable
         /// The end of period
         /// </summary>
         EndOfPeriod,
+
         /// <summary>
         /// The begging of period
         /// </summary>

@@ -69,7 +69,7 @@ Namespace My
         ''' <value>The battery percent.</value>
         ''' <remarks></remarks>
         <CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")>
-         <CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1505:AvoidUnmaintainableCode")>
+        <CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1505:AvoidUnmaintainableCode")>
         Public ReadOnly Property BatteryPercent() As String
             ' This code will retrieve the BatteryLifePercent property and convert it to a percent.
             Get
@@ -288,11 +288,7 @@ Namespace My
         ''' <remarks></remarks>
         Public ReadOnly Property PowerLineStatus() As String
             Get
-                If SystemInformation.PowerStatus.PowerLineStatus = 1 Then
-                    Return "Plugged In"
-                Else
-                    Return "On Battery"
-                End If
+                Return If(SystemInformation.PowerStatus.PowerLineStatus = 1, "Plugged In", "On Battery")
             End Get
         End Property
 

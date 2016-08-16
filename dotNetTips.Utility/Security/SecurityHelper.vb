@@ -5,18 +5,18 @@
 '
 ' Last Modified By : David McCarter
 ' Last Modified On : 09-26-2008
-' Description      : 
+' Description      :
 '
 ' Copyright        : (c) dotNetTips.com. All rights reserved.
 '***********************************************************************
 Imports System.Text
 
 Namespace Security
-   ''' <summary>
-   ''' Security helper class.
-   ''' </summary>
-   ''' <remarks></remarks>
-   Public Module SecurityHelper
+    ''' <summary>
+    ''' Security helper class.
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public Module SecurityHelper
 
         ''' <summary>
         ''' Encodes the HTML.
@@ -51,7 +51,6 @@ Namespace Security
             Return EncodeHtml(input)
         End Function
 
-
         ''' <summary>
         ''' Encodes the URL.
         ''' </summary>
@@ -77,7 +76,6 @@ Namespace Security
             Next
             Return builder.ToString
         End Function
-
 
         ''' <summary>
         ''' Encodes the VBS.
@@ -120,7 +118,6 @@ Namespace Security
             End If
             Return builder.ToString
         End Function
-
 
         ''' <summary>
         ''' Encodes the JS.

@@ -12,6 +12,7 @@
 ' <summary></summary>
 ' ***********************************************************************
 Imports System.Reflection
+Imports System.IO
 
 ''' <summary>
 ''' General helper functions.
@@ -19,32 +20,17 @@ Imports System.Reflection
 Public Module General
 
     ''' <summary>
-    ''' Modified IIf function that works properly!
+    ''' Does the object equal instance.
     ''' </summary>
-    ''' <typeparam name="T">Type to return.</typeparam>
-    ''' <param name="expression">if set to <c>true</c> [expression].</param>
-    ''' <param name="truePart">The true part.</param>
-    ''' <param name="falsePart">The false part.</param>
-    ''' <returns>Defined type.</returns>
-    Public Function IIf(Of T)(ByVal expression As Boolean, ByVal truePart As T, ByVal falsePart As T) As T
-        If expression Then
-            Return truePart
-        Else
-            Return falsePart
-        End If
-    End Function
-
-    ''' <summary>
-    ''' To the four digit year.
-    ''' </summary>
-    ''' <param name="year">The year.</param>
+    ''' <param name="value">The object.</param>
+    ''' <param name="instance">The instance.</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Function ToFourDigitYear(year As Int32) As Int32
-        Contract.Requires(Of ArgumentNullException)(year >= 0)
-        Contract.Ensures(Contract.Result(Of Int32)() >= 0)
+    Public Function DoesObjectEqualInstance(ByVal value As [Object], ByVal instance As Object) As Boolean
+        Contract.Requires(Of ArgumentNullException)(value IsNot Nothing)
+        Contract.Requires(Of ArgumentNullException)(instance IsNot Nothing)
 
-        Dim result As Int32 = If(year >= 100, year, (2 \ 100 - (If(year > 2 Mod 100, 1, 0))) * 100 + year)
+        Dim result = Object.ReferenceEquals(value, instance)
 
         Return result
 
@@ -71,20 +57,30 @@ Public Module General
     End Function
 
     ''' <summary>
-    ''' Does the object equal instance.
+    ''' Modified IIf function that works properly!
     ''' </summary>
-    ''' <param name="value">The object.</param>
-    ''' <param name="instance">The instance.</param>
+    ''' <typeparam name="T">Type to return.</typeparam>
+    ''' <param name="expression">if set to <c>true</c> [expression].</param>
+    ''' <param name="truePart">The true part.</param>
+    ''' <param name="falsePart">The false part.</param>
+    ''' <returns>Defined type.</returns>
+    Public Function IIf(Of T)(ByVal expression As Boolean, ByVal truePart As T, ByVal falsePart As T) As T
+        Return If(expression, truePart, falsePart)
+    End Function
+
+    ''' <summary>
+    ''' To the four digit year.
+    ''' </summary>
+    ''' <param name="year">The year.</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Function DoesObjectEqualInstance(ByVal value As [Object], ByVal instance As Object) As Boolean
-        Contract.Requires(Of ArgumentNullException)(value IsNot Nothing)
-        Contract.Requires(Of ArgumentNullException)(instance IsNot Nothing)
+    Public Function ToFourDigitYear(year As Int32) As Int32
+        Contract.Requires(Of ArgumentNullException)(year >= 0)
+        Contract.Ensures(Contract.Result(Of Int32)() >= 0)
 
-        Dim result = Object.ReferenceEquals(value, instance)
+        Dim result As Int32 = If(year >= 100, year, (2 \ 100 - (If(year > 2 Mod 100, 1, 0))) * 100 + year)
 
         Return result
 
     End Function
-
 End Module
