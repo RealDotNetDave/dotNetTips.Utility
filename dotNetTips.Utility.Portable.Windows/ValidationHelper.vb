@@ -67,6 +67,7 @@ Public Module ValidationHelper
         End If
 
         Dim str As String = TryCast(expression, String)
+
         Return ((Not str Is Nothing) AndAlso Date.TryParse(str, (time)))
     End Function
 

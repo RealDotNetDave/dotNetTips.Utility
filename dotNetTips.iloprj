@@ -11,16 +11,6 @@
           </SoftwareWatermark>
         </NineRays.ILOMD.Options.Options>
       </ObfuscationOptions>
-      <Name>bin\dotNetTips.Utility.Portable.dll</Name>
-    </NineRays.ILOMD.Options.AssemblyFileName>
-    <NineRays.ILOMD.Options.AssemblyFileName>
-      <Flags>VSProject</Flags>
-      <ObfuscationOptions>
-        <NineRays.ILOMD.Options.Options>
-          <SoftwareWatermark>
-          </SoftwareWatermark>
-        </NineRays.ILOMD.Options.Options>
-      </ObfuscationOptions>
       <Name>bin\dotNetTips.Utility.dll</Name>
     </NineRays.ILOMD.Options.AssemblyFileName>
     <NineRays.ILOMD.Options.AssemblyFileName>
@@ -42,6 +32,16 @@
         </NineRays.ILOMD.Options.Options>
       </ObfuscationOptions>
       <Name>bin\dotNetTips.Utility.Windows.Logger.dll</Name>
+    </NineRays.ILOMD.Options.AssemblyFileName>
+    <NineRays.ILOMD.Options.AssemblyFileName>
+      <Flags>VSProject</Flags>
+      <ObfuscationOptions>
+        <NineRays.ILOMD.Options.Options>
+          <SoftwareWatermark>
+          </SoftwareWatermark>
+        </NineRays.ILOMD.Options.Options>
+      </ObfuscationOptions>
+      <Name>bin\dotNetTips.Utility.Portable.dll</Name>
     </NineRays.ILOMD.Options.AssemblyFileName>
   </AssemblyList>
   <SaveToDirectory>.\Spices_output</SaveToDirectory>

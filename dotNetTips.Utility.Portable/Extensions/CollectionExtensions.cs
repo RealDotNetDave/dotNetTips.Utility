@@ -1,14 +1,15 @@
-﻿// *********************************************************************** Assembly :
-// dotNetTips.Utility.Portable Author : David McCarter Created : 04-15-2016 Created : 04-15-2016
+﻿// ***********************************************************************
+// Assembly         : dotNetTips.Utility.Portable
+// Author           : David McCarter Created : 04-15-2016 Created : 04-15-2016
+// Created          : 04-15-2016 Created : 04-15-2016
 //
 // Last Modified By : David McCarter Last Modified On : 06-12-2016
-// *********************************************************************** Last Modified On :
-// 07-05-2016 ***********************************************************************
+// Last Modified On : 08-16-2016
+// ***********************************************************************
 // <copyright file="CollectionExtensions.cs" company="dotNetTips.com">
 //     Copyright Â© 2015
 // </copyright>
-// <summary>
-// </summary>
+// <summary></summary>
 // ***********************************************************************
 using System;
 using System.Collections;
@@ -30,7 +31,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// Adds if not exists.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="list"> The list.</param>
+        /// <param name="list">The list.</param>
         /// <param name="value">The value.</param>
         public static void AddIfNotExists<T>(this ICollection<T> list, T value)
         {
@@ -48,7 +49,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// Adds if not exists.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="list">  The list.</param>
+        /// <param name="list">The list.</param>
         /// <param name="values">The values.</param>
         public static void AddIfNotExists<T>(this ICollection<T> list, params T[] values)
         {
@@ -93,7 +94,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="source">The source.</param>
-        /// <param name="match"> The match.</param>
+        /// <param name="match">The match.</param>
         /// <returns>System.Nullable&lt;T&gt;.</returns>
         public static T? FirstOrNull<T>(this IEnumerable<T> source, Func<T, bool> match)
             where T : struct
@@ -149,7 +150,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// Pages the specified source.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="source">  The source.</param>
+        /// <param name="source">The source.</param>
         /// <param name="pageSize">Size of the page.</param>
         /// <returns>IEnumerable&lt;IEnumerable&lt;T&gt;&gt;.</returns>
         /// <remarks>Original code by: Lukazoid</remarks>
@@ -182,7 +183,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// </summary>
         /// <typeparam name="T">Collection type.</typeparam>
         /// <param name="source">The source collection.</param>
-        /// <param name="count"> The selection count.</param>
+        /// <param name="count">The selection count.</param>
         /// <returns>IEnumerable collection.</returns>
         public static IEnumerable<T> PickRandom<T>(this IEnumerable<T> source, int count)
         {
@@ -201,10 +202,10 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <typeparam name="TFirstKey">The type of the t first key.</typeparam>
         /// <typeparam name="TSecondKey">The type of the t second key.</typeparam>
         /// <typeparam name="TValue">The type of the t value.</typeparam>
-        /// <param name="source">           The source.</param>
-        /// <param name="firstKeySelector"> The first key selector.</param>
+        /// <param name="source">The source.</param>
+        /// <param name="firstKeySelector">The first key selector.</param>
         /// <param name="secondKeySelector">The second key selector.</param>
-        /// <param name="aggregate">        The aggregate.</param>
+        /// <param name="aggregate">The aggregate.</param>
         /// <returns>Dictionary&lt;TFirstKey, Dictionary&lt;TSecondKey, TValue&gt;&gt;.</returns>
         /// <remarks>Original code by: Fons Sonnemans</remarks>
         public static Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>> Pivot<TSource, TFirstKey, TSecondKey, TValue>(this IEnumerable<TSource> source, Func<TSource, TFirstKey> firstKeySelector, Func<TSource, TSecondKey> secondKeySelector, Func<IEnumerable<TSource>, TValue> aggregate)
@@ -253,7 +254,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// Converts collection to a delimited string.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="source">   The source.</param>
+        /// <param name="source">The source.</param>
         /// <param name="delimiter">The delimiter (default is comma if not supplied).</param>
         /// <returns>System.String.</returns>
         public static string ToDelimitedString<T>(this IEnumerable<T> source, char delimiter)
@@ -286,10 +287,8 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <typeparam name="TKey">Key type of the grouping and dictionary.</typeparam>
         /// <typeparam name="TValue">Element type of the grouping and dictionary list.</typeparam>
         /// <param name="source">The enumeration of groupings from a GroupBy() clause.</param>
-        /// <returns>
-        /// A dictionary of groupings such that the key of the dictionary is TKey type and the value
-        /// is List of TValue type.
-        /// </returns>
+        /// <returns>A dictionary of groupings such that the key of the dictionary is TKey type and the value
+        /// is List of TValue type.</returns>
         /// <remarks>Original code by: James Michael Hare</remarks>
         public static Dictionary<TKey, List<TValue>> ToDictionary<TKey, TValue>(this IEnumerable<IGrouping<TKey, TValue>> source)
         {
@@ -310,6 +309,19 @@ namespace dotNetTips.Utility.Portable.Extensions
             Contract.Requires<ArgumentNullException>(source != null && source.Count() >= 0);
 
             return Task.Run(() => source.ToList());
+        }
+
+            /// <summary>
+            /// Makes copy of the collection.
+            /// </summary>
+            /// <typeparam name="T"></typeparam>
+            /// <param name="list">The list.</param>
+            /// <returns>System.Collections.Generic.List&lt;T&gt;.</returns>
+        public static List<T> CopyToList<T>(this List<T> list)
+        {
+            Contract.Requires<ArgumentNullException>(list != null);
+
+            return new List<T>(list);
         }
 
         /// <summary>

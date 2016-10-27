@@ -286,7 +286,7 @@
             Adds if not exists.
             </summary>
             <typeparam name="T"></typeparam>
-            <param name="list"> The list.</param>
+            <param name="list">The list.</param>
             <param name="value">The value.</param>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.AddIfNotExists``1(System.Collections.Generic.ICollection{``0},``0[])">
@@ -294,7 +294,7 @@
             Adds if not exists.
             </summary>
             <typeparam name="T"></typeparam>
-            <param name="list">  The list.</param>
+            <param name="list">The list.</param>
             <param name="values">The values.</param>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.Count(System.Collections.IEnumerable)">
@@ -310,7 +310,7 @@
             </summary>
             <typeparam name="T"></typeparam>
             <param name="source">The source.</param>
-            <param name="match"> The match.</param>
+            <param name="match">The match.</param>
             <returns>System.Nullable&lt;T&gt;.</returns>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.IsValid``1(System.Collections.ObjectModel.ObservableCollection{``0})">
@@ -340,7 +340,7 @@
             Pages the specified source.
             </summary>
             <typeparam name="T"></typeparam>
-            <param name="source">  The source.</param>
+            <param name="source">The source.</param>
             <param name="pageSize">Size of the page.</param>
             <returns>IEnumerable&lt;IEnumerable&lt;T&gt;&gt;.</returns>
             <remarks>Original code by: Lukazoid</remarks>
@@ -351,7 +351,7 @@
             </summary>
             <typeparam name="T">Collection type.</typeparam>
             <param name="source">The source collection.</param>
-            <param name="count"> The selection count.</param>
+            <param name="count">The selection count.</param>
             <returns>IEnumerable collection.</returns>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.Pivot``4(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Func{``0,``2},System.Func{System.Collections.Generic.IEnumerable{``0},``3})">
@@ -364,10 +364,10 @@
             <typeparam name="TFirstKey">The type of the t first key.</typeparam>
             <typeparam name="TSecondKey">The type of the t second key.</typeparam>
             <typeparam name="TValue">The type of the t value.</typeparam>
-            <param name="source">           The source.</param>
-            <param name="firstKeySelector"> The first key selector.</param>
+            <param name="source">The source.</param>
+            <param name="firstKeySelector">The first key selector.</param>
             <param name="secondKeySelector">The second key selector.</param>
-            <param name="aggregate">        The aggregate.</param>
+            <param name="aggregate">The aggregate.</param>
             <returns>Dictionary&lt;TFirstKey, Dictionary&lt;TSecondKey, TValue&gt;&gt;.</returns>
             <remarks>Original code by: Fons Sonnemans</remarks>
         </member>
@@ -385,7 +385,7 @@
             Converts collection to a delimited string.
             </summary>
             <typeparam name="T"></typeparam>
-            <param name="source">   The source.</param>
+            <param name="source">The source.</param>
             <param name="delimiter">The delimiter (default is comma if not supplied).</param>
             <returns>System.String.</returns>
         </member>
@@ -396,10 +396,8 @@
             <typeparam name="TKey">Key type of the grouping and dictionary.</typeparam>
             <typeparam name="TValue">Element type of the grouping and dictionary list.</typeparam>
             <param name="source">The enumeration of groupings from a GroupBy() clause.</param>
-            <returns>
-            A dictionary of groupings such that the key of the dictionary is TKey type and the value
-            is List of TValue type.
-            </returns>
+            <returns>A dictionary of groupings such that the key of the dictionary is TKey type and the value
+            is List of TValue type.</returns>
             <remarks>Original code by: James Michael Hare</remarks>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.ToListAsync``1(System.Collections.Generic.IEnumerable{``0})">
@@ -410,6 +408,14 @@
             <param name="source">The list.</param>
             <returns>Task&lt;List&lt;T&gt;&gt;.</returns>
             <remarks>Original code by: Fons Sonnemans</remarks>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.CopyToList``1(System.Collections.Generic.List{``0})">
+            <summary>
+            Makes copy of the collection.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list">The list.</param>
+            <returns>System.Collections.Generic.List&lt;T&gt;.</returns>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.ToObservableCollection``1(System.Collections.Generic.IEnumerable{``0})">
             <summary>
@@ -592,13 +598,21 @@
             Class StringExtensions.
             </summary>
         </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.StringExtensions.IsValidCreditCardNumber(System.String)">
+            <summary>
+            Determines whether [is valid credit card number] [the specified number].
+            </summary>
+            <param name="number">The number.</param>
+            <returns><c>true</c> if [is valid credit card number] [the specified number]; otherwise, <c>false</c>.</returns>
+        </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.StringExtensions.ContainsAny(System.String,System.String[])">
             <summary>
-            Determines whether the specified the string contains any.
+            Determines whether the specified the string contains any of the characters.
             </summary>
-            <param name="input">     The string.</param>
+            <param name="input">The string.</param>
             <param name="characters">The characters.</param>
             <returns><c>true</c> if the specified characters contains any; otherwise, <c>false</c>.</returns>
+            <exception cref="T:System.ArgumentNullException">Null character.</exception>
             <exception cref="T:System.ArgumentNullException">Null character.</exception>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.StringExtensions.DefaultIfNull(System.String)">
@@ -612,7 +626,7 @@
             <summary>
             Defaults if null.
             </summary>
-            <param name="s">           The s.</param>
+            <param name="s">The s.</param>
             <param name="defaultValue">The default value.</param>
             <returns>System.String.</returns>
         </member>
@@ -620,7 +634,7 @@
             <summary>
             Defaults if null or empty.
             </summary>
-            <param name="value">       The value.</param>
+            <param name="value">The value.</param>
             <param name="defaultValue">The default value.</param>
             <returns>System.String.</returns>
         </member>
@@ -635,8 +649,8 @@
             <summary>
             Indents the specified length.
             </summary>
-            <param name="str">                 The string.</param>
-            <param name="length">              The length.</param>
+            <param name="str">The string.</param>
+            <param name="length">The length.</param>
             <param name="indentationCharacter">The indentation character.</param>
             <returns>System.String.</returns>
         </member>

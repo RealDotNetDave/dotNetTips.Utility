@@ -29,7 +29,7 @@ Public Module ObjectExtensions
     ''' <param name="item">Object to be copied.</param>
     ''' <returns>Returns the copied object.</returns>
     ''' <exception cref="System.InvalidOperationException">The provided object is not serializable.</exception>
-    ''' <remarks>Original code by: Carlos Alessandro Ribeiro</remarks>
+    ''' <remarks>Original code by: Carlos Alessandro Ribeiro. Do not use this for collections. Instead use .Copy().</remarks>
     <Extension>
     Public Function Clone(Of T As New)(item As T) As T
 

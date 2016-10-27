@@ -32,3 +32,4 @@
 <Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CC0033:Dispose Fields Properly", Justification:="<Pending>", Scope:="member", Target:="~F:dotNetTips.Utility.Synthesis._speach")>
 <Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CC0033:Dispose Fields Properly", Justification:="<Pending>", Scope:="member", Target:="~F:dotNetTips.Utility.Speech.Synthesis._speech")>
 <Assembly: CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2213:DisposableFieldsShouldBeDisposed", MessageId:="_mailServer", Scope:="member", Target:="dotNetTips.Utility.Net.Mailer.#Dispose(System.Boolean)")>
+<Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CC0057:Unused parameters.", Justification:="<Pending>", Scope:="member", Target:="~M:dotNetTips.Utility.Threading.WorkItem.AbortWorkItem(System.Object)")>

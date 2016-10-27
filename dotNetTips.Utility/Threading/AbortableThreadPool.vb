@@ -151,12 +151,7 @@ Namespace Threading
             SyncLock _callbacks
                 Dim wi As WorkItem = _threads.SingleOrDefault(Function(i) i.Key.Id = itemId).Key
 
-                If wi IsNot Nothing Then
-                    Return Cancel(wi, allowAbort)
-                Else
-                    Return WorkItemStatus.Undetermined
-
-                End If
+                Return If(wi IsNot Nothing, Cancel(wi, allowAbort), WorkItemStatus.Undetermined)
             End SyncLock
         End Function
 
@@ -169,7 +164,7 @@ Namespace Threading
         ''' <exception cref="ArgumentNullException">item</exception>
         Public Shared Function Cancel(item As WorkItem, allowAbort As Boolean) As WorkItemStatus
             If item Is Nothing Then
-                Throw New ArgumentNullException("item")
+                Throw New ArgumentNullException(NameOf(item))
             End If
 
             Dim returnStatus = WorkItemStatus.Undetermined

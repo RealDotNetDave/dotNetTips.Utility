@@ -48,22 +48,13 @@ Namespace IO
         ''' full source file name of the one going to be zipped</param>
         ''' <param name="destinationFileName">This represents the
         ''' full source file name of the one going to be unziped</param>
-        ''' <param name="action">Choose between zip or unzip mode</param>
-        Public Sub New(sourceFileName As String, destinationFileName As String, action As CompressionAction)
+        Public Sub New(sourceFileName As String, destinationFileName As String)
 
             _zipperStream = Nothing
 
             Me.SourceFileName = sourceFileName
 
             Me.DestinationFileName = destinationFileName
-
-            If action = CompressionAction.Zip Then
-                Me.CompressFile()
-            End If
-
-            If action = CompressionAction.UnZip Then
-                Me.DecompressFile()
-            End If
         End Sub
 
         ''' <summary>
@@ -83,7 +74,7 @@ Namespace IO
         ''' as protected because we use it is called at the constructor
         ''' level when a compression mode is chosen instead of using it directly
         ''' </summary>
-        Protected Sub CompressFile()
+        Public Sub CompressFile()
 
             If File.Exists(SourceFileName) Then
 
@@ -114,7 +105,7 @@ Namespace IO
         ''' as protected because we use it is called at the constructor
         ''' level when a decompression mode is chosen instead of using it directly
         ''' </summary>
-        Protected Sub DecompressFile()
+        Public Sub DecompressFile()
             If File.Exists(SourceFileName) Then
                 Using inputFile As FileStream = File.Open(SourceFileName, FileMode.Open), outputFile As FileStream = File.Create(DestinationFileName)
 

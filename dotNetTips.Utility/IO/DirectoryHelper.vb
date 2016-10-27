@@ -54,5 +54,19 @@ Namespace IO
             Return files.Distinct.AsEnumerable
 
         End Function
+
+        Public Async Function DeleteDirectoryAsync(directory As DirectoryInfo) As Task(Of Boolean)
+            If directory Is Nothing Then
+                Throw New ArgumentNullException(NameOf(directory))
+            End If
+
+            If directory.Exists Then
+                Await Task.Factory.StartNew(Function()
+                                                directory.Delete(recursive:=True)
+                                                Return True
+                                            End Function).ConfigureAwait(True)
+            End If
+            Return False
+        End Function
     End Module
 End Namespace
