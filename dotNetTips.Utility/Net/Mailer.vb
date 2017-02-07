@@ -13,7 +13,7 @@
 ' ***********************************************************************
 
 Imports System.Net.Mail
-Imports dotNetTips.Utility.Core.Extensions
+Imports dotNetTips.Utility.Portable.Extensions
 
 Namespace Net
     ''' <summary>
@@ -169,10 +169,11 @@ Namespace Net
                 Throw New ArgumentException(NameOf(sendToAddress))
             Else
                 Using mailProcess As New Process()
-                    Dim processInfo As New ProcessStartInfo()
-                    processInfo.FileName = String.Format(CultureInfo.InvariantCulture, "mailto:{0}?subject={1}&body={2}", sendToAddress.Address, subject, message)
-                    processInfo.UseShellExecute = True
-                    processInfo.WindowStyle = ProcessWindowStyle.Normal
+                    Dim processInfo As New ProcessStartInfo() With {
+                        .FileName = String.Format(CultureInfo.InvariantCulture, "mailto:{0}?subject={1}&body={2}", sendToAddress.Address, subject, message),
+                        .UseShellExecute = True,
+                        .WindowStyle = ProcessWindowStyle.Normal
+                    }
                     mailProcess.StartInfo = processInfo
                     Process.Start(processInfo)
                 End Using

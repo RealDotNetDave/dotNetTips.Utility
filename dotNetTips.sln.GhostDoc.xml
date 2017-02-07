@@ -41,6 +41,10 @@
     <ResolveCrefLinks>true</ResolveCrefLinks>
     <HeaderText>dotNetTips.com</HeaderText>
     <FooterText>David McCarter</FooterText>
+    <ConceptualContent>
+      <ContentLayout />
+      <MediaContent />
+    </ConceptualContent>
     <SelectedProjects>
       <SelectedProject>dotNetTips.Utility.Portable</SelectedProject>
       <SelectedProject>dotNetTips.Utility.Portable.Windows</SelectedProject>

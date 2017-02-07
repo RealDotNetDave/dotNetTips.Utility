@@ -69,62 +69,7 @@ Public Class LogEntry
     ''' </summary>
     Private _information As New InfoItemCollection()
 
-    ''' <summary>
-    ''' is logged
-    ''' </summary>
-    Private _isLogged As Boolean
 
-    ''' <summary>
-    ''' machine name
-    ''' </summary>
-    Private _machineName As String
-
-    ''' <summary>
-    ''' _message
-    ''' </summary>
-    Private _message As String
-    ''' <summary>
-    ''' process identifier
-    ''' </summary>
-    Private _processId As Integer
-    ''' <summary>
-    ''' process name
-    ''' </summary>
-    Private _processName As String
-
-    ''' <summary>
-    ''' _severity
-    ''' </summary>
-    Private _severity As TraceEventType
-
-    ''' <summary>
-    ''' _source
-    ''' </summary>
-    Private _source As String
-
-    ''' <summary>
-    ''' source version
-    ''' </summary>
-    Private _sourceVersion As String
-    ''' <summary>
-    ''' thread identifier
-    ''' </summary>
-    Private _threadId As Integer
-
-    ''' <summary>
-    ''' _timestamp
-    ''' </summary>
-    Private _timestamp As DateTime
-
-    ''' <summary>
-    ''' _title
-    ''' </summary>
-    Private _title As String
-
-    ''' <summary>
-    ''' _user
-    ''' </summary>
-    Private _user As String
 
 #Region "Constructors"
     ''' <summary>
@@ -279,81 +224,43 @@ Public Class LogEntry
             Return Me._information
         End Get
     End Property
+
     ''' <summary>
     ''' Gets or sets a value indicating whether this instance is written to data source (i.e. database).
     ''' </summary>
     ''' <value><c>true</c> if this instance is logged; otherwise, <c>false</c>.</value>
     <XmlIgnore()>
     Public Property IsLogged() As Boolean
-        Get
-            Return _isLogged
-        End Get
-        Set(ByVal value As Boolean)
-            _isLogged = value
-        End Set
-    End Property
+
     ''' <summary>
     ''' Gets or sets the name of the machine.
     ''' </summary>
     ''' <value>The name of the machine.</value>
     Public Property MachineName() As String
-        Get
-            Return _machineName
-        End Get
-        Set(ByVal value As String)
-            _machineName = value
-        End Set
-    End Property
+
     ''' <summary>
     ''' Gets or sets the event message.
     ''' </summary>
     ''' <value>The message.</value>
     Public Property Message() As String
-        Get
-            Return _message
-        End Get
-        Set(ByVal value As String)
-            _message = value
-        End Set
-    End Property
-
     ''' <summary>
     ''' Gets or sets the process id.
     ''' </summary>
     ''' <value>The process id.</value>
     Public Property ProcessId() As Integer
-        Get
-            Return _processId
-        End Get
-        Set(value As Integer)
-            _processId = value
-        End Set
-    End Property
 
     ''' <summary>
     ''' Gets or sets the name of the process.
     ''' </summary>
     ''' <value>The name of the process.</value>
     Public Property ProcessName() As String
-        Get
-            Return _processName
-        End Get
-        Set(value As String)
-            _processName = value
-        End Set
-    End Property
+
     ''' <summary>
     ''' Gets or sets the event severity.
     ''' </summary>
     ''' <value>The severity.</value>
     Public Property Severity() As TraceEventType
-        Get
-            Return _severity
-        End Get
-        Set(ByVal value As TraceEventType)
-            _severity = value
-        End Set
-    End Property
+
 
     ''' <summary>
     ''' Gets the name of the severity.
@@ -370,75 +277,37 @@ Public Class LogEntry
     ''' </summary>
     ''' <value>The source.</value>
     Public Property Source() As String
-        Get
-            Return _source
-        End Get
-        Set(ByVal value As String)
-            _source = value
-        End Set
-    End Property
+
     ''' <summary>
     ''' Gets or sets the source version (usually the assembly version).
     ''' </summary>
     ''' <value>The source version.</value>
     Public Property SourceVersion() As String
-        Get
-            Return _sourceVersion
-        End Get
-        Set(ByVal value As String)
-            _sourceVersion = value
-        End Set
-    End Property
 
     ''' <summary>
     ''' Gets or sets the thread id.
     ''' </summary>
     ''' <value>The thread id.</value>
     Public Property ThreadId() As Integer
-        Get
-            Return _threadId
-        End Get
-        Set(value As Integer)
-            _threadId = value
-        End Set
-    End Property
+
     ''' <summary>
     ''' Gets or sets the time stamp.
     ''' </summary>
     ''' <value>The time stamp.</value>
     ''' <remarks>Default to current UTC time.</remarks>
     Public Property TimeStamp() As DateTime
-        Get
-            Return _timestamp
-        End Get
-        Set(ByVal value As DateTime)
-            _timestamp = value
-        End Set
-    End Property
+
     ''' <summary>
     ''' Gets or sets the event title.
     ''' </summary>
     ''' <value>The title.</value>
     Public Property Title() As String
-        Get
-            Return _title
-        End Get
-        Set(ByVal value As String)
-            _title = value
-        End Set
-    End Property
     ''' <summary>
     ''' Gets or sets the user.
     ''' </summary>
     ''' <value>The user.</value>
     Public Property User() As String
-        Get
-            Return _user
-        End Get
-        Set(ByVal value As String)
-            _user = value
-        End Set
-    End Property
+
 #End Region
 
 #Region "Private Properties"
@@ -483,7 +352,9 @@ Public Class LogEntry
         If ex Is Nothing Then
             Throw New ArgumentNullException(NameOf(ex))
         End If
-        Me.LogExceptionMessages(ex)
+
+        Me.Exception = ex
+        Me.LogExceptionMessage(ex)
     End Sub
 
 #Region "Serialization"
@@ -506,12 +377,23 @@ Public Class LogEntry
 
 #Region "Public Methods"
 
+    Private _exception As Exception
+
+    Public Property Exception() As Exception
+        Get
+            Return Me._exception
+        End Get
+        Private Set(value As Exception)
+            Me._exception = value
+        End Set
+    End Property
+
     ''' <summary>
     ''' Logs the exception messages.
     ''' </summary>
     ''' <param name="ex">The ex.</param>
     ''' <exception cref="System.ArgumentNullException"></exception>
-    Public Overridable Sub LogExceptionMessages(ByVal ex As Exception)
+    Public Overridable Sub LogExceptionMessage(ByVal ex As Exception)
         If ex Is Nothing Then
             Throw New ArgumentNullException(NameOf(ex))
         End If

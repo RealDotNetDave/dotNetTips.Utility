@@ -25,6 +25,7 @@ namespace dotNetTips.Utility.Portable.Extensions
     /// <summary>
     /// Class CollectionExtensions.
     /// </summary>
+    [Obsolete("Use CollectionExtentions from dotNetTips.Utility.Standard.")]
     public static class CollectionExtensions
     {
         /// <summary>

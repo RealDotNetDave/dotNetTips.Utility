@@ -11,7 +11,7 @@
 ' </copyright>
 ' <summary></summary>
 ' ***********************************************************************
-Imports dotNetTips.Utility.Core
+Imports dotNetTips.Utility.Portable
 
 ''' <summary>
 ''' Text helper class.

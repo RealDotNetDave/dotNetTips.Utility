@@ -199,10 +199,6 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="dotNetTips.Utility.Core, Version=2016.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\bin\dotNetTips.Utility.Core\bin\Debug\net461\dotNetTips.Utility.Core.dll</HintPath>
-    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
@@ -427,6 +423,10 @@
     <ProjectReference Include="..\dotNetTips.Utility.Portable.Windows\dotNetTips.Utility.Portable.Windows.vbproj">
       <Project>{a1d2c465-bf98-47e1-80f0-8f005028615b}</Project>
       <Name>dotNetTips.Utility.Portable.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dotNetTips.Utility.Portable\dotNetTips.Utility.Portable.csproj">
+      <Project>{0c07f36a-cb82-47b3-bc4b-601fadd18a71}</Project>
+      <Name>dotNetTips.Utility.Portable</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />

@@ -232,9 +232,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="dotNetTips.Utility.Core">
-      <HintPath>..\bin\dotNetTips.Utility.Core\bin\Debug\net461\dotNetTips.Utility.Core.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\dotNetTips.Utility.Portable\dotNetTips.Utility.Portable.csproj">
+      <Project>{0c07f36a-cb82-47b3-bc4b-601fadd18a71}</Project>
+      <Name>dotNetTips.Utility.Portable</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

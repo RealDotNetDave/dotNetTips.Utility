@@ -21,18 +21,18 @@ Imports dotNetTips.Utility.Net
 ''' TraceListener that sends email.
 ''' </summary>
 ''' <seealso cref="dotNetTips.Utility.Windows.Logger.LoggingTraceListener" />
-Public Class EmailTraceListener
+Public Class StackifyTraceListener
     Inherits LoggingTraceListener
 #Region "Constructors"
     ''' <summary>
-    ''' Initializes a new instance of the <see cref="EmailTraceListener" /> class.
+    ''' Initializes a new instance of the <see cref="StackifyTraceListener" /> class.
     ''' </summary>
     Public Sub New()
         MyBase.New()
     End Sub
 
     ''' <summary>
-    ''' Initializes a new instance of the <see cref="EmailTraceListener" /> class.
+    ''' Initializes a new instance of the <see cref="StackifyTraceListener" /> class.
     ''' </summary>
     ''' <param name="toAddress">To address.</param>
     ''' <param name="fromAddress">From address.</param>
@@ -43,7 +43,7 @@ Public Class EmailTraceListener
     End Sub
 
     ''' <summary>
-    ''' Initializes a new instance of the <see cref="EmailTraceListener" /> class.
+    ''' Initializes a new instance of the <see cref="StackifyTraceListener" /> class.
     ''' </summary>
     ''' <param name="toAddress">To address.</param>
     ''' <param name="fromAddress">From address.</param>
@@ -55,7 +55,7 @@ Public Class EmailTraceListener
     End Sub
 
     ''' <summary>
-    ''' Initializes a new instance of the <see cref="EmailTraceListener" /> class.
+    ''' Initializes a new instance of the <see cref="StackifyTraceListener" /> class.
     ''' </summary>
     ''' <param name="name">The name.</param>
     ''' <param name="toAddress">To address.</param>
@@ -69,7 +69,7 @@ Public Class EmailTraceListener
     End Sub
 
     ''' <summary>
-    ''' Initializes a new instance of the <see cref="EmailTraceListener" /> class.
+    ''' Initializes a new instance of the <see cref="StackifyTraceListener" /> class.
     ''' </summary>
     ''' <param name="name">The name.</param>
     ''' <param name="toAddress">To address.</param>
@@ -89,7 +89,7 @@ Public Class EmailTraceListener
     End Sub
 
     ''' <summary>
-    ''' Initializes a new instance of the <see cref="EmailTraceListener" /> class.
+    ''' Initializes a new instance of the <see cref="StackifyTraceListener" /> class.
     ''' </summary>
     ''' <param name="name">The name.</param>
     ''' <param name="toAddress">To address.</param>
