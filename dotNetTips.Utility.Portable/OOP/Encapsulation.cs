@@ -15,8 +15,7 @@ using System;
 using System.Collections;
 using dotNetTips.Utility.Portable.Extensions;
 
-namespace dotNetTips.Utility.Portable.OOP
-{
+namespace dotNetTips.Utility.Portable.OOP {
     /// <summary>
     /// Class Encapsulation.
     /// </summary>

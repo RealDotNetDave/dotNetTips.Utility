@@ -2,8 +2,7 @@
 using System;
 using System.Diagnostics;
 
-namespace dotNetTips.Utility.Standard.Diagnostics
-{
+namespace dotNetTips.Utility.Standard.Diagnostics {
     /// <summary>
     /// Class PerformanceStopwatch.
     /// </summary>

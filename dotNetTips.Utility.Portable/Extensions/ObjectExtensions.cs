@@ -13,8 +13,7 @@ using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Reflection;
 
-namespace dotNetTips.Utility.Portable.Extensions
-{
+namespace dotNetTips.Utility.Portable.Extensions {
     /// <summary>
     /// Class ObjectExtensions.
     /// </summary>

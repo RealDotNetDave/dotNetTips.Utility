@@ -11,8 +11,7 @@
 using System;
 using System.Diagnostics.Contracts;
 
-namespace dotNetTips.Utility.Portable.Extensions
-{
+namespace dotNetTips.Utility.Portable.Extensions {
     /// <summary>
     /// Class MathExtensions.
     /// </summary>

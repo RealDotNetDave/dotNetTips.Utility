@@ -8,8 +8,7 @@
 // <summary>
 // </summary>
 // ***********************************************************************
-namespace dotNetTips.Utility.Portable.IO
-{
+namespace dotNetTips.Utility.Portable.IO {
     /// <summary>
     /// Class DirectoryHelper.
     /// </summary>

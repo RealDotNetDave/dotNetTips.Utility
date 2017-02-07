@@ -15,8 +15,7 @@ using System;
 using System.Diagnostics.Contracts;
 using System.Globalization;
 
-namespace dotNetTips.Utility.Portable.Extensions
-{
+namespace dotNetTips.Utility.Portable.Extensions {
     /// <summary>
     /// Extensions for DateTime
     /// </summary>

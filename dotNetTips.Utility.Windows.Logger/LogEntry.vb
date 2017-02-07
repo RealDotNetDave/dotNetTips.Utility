@@ -12,7 +12,6 @@
 ' <summary></summary>
 ' ***********************************************************************
 Imports System.Collections.ObjectModel
-Imports System.Diagnostics.Contracts
 Imports System.Globalization
 Imports System.Reflection
 Imports System.Security
@@ -68,8 +67,6 @@ Public Class LogEntry
     ''' _information
     ''' </summary>
     Private _information As New InfoItemCollection()
-
-
 
 #Region "Constructors"
     ''' <summary>
@@ -260,7 +257,6 @@ Public Class LogEntry
     ''' </summary>
     ''' <value>The severity.</value>
     Public Property Severity() As TraceEventType
-
 
     ''' <summary>
     ''' Gets the name of the severity.
