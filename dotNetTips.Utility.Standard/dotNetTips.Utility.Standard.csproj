@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0"  xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+    <DocumentationFile>
+    </DocumentationFile>
+    <OutputPath>C:\Users\david\Source\Repos\dotNetTips.Utility\bin\</OutputPath>
+    <AssemblyVersion>2017.0.0.1</AssemblyVersion>
+    <FileVersion>2017.0.0.1</FileVersion>
+    <NeutralLanguage>en</NeutralLanguage>
+    <Version>2017.0.0.1</Version>
+    <Authors>David McCarter</Authors>
+    <Company>dotNetTips.com - David McCarter</Company>
+    <Description>Common .NET Standard Code</Description>
+    <Copyright>dotNetTips.com - David McCarter</Copyright>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <PackageProjectUrl>https://github.com/RealDotNetDave/dotNetTips.Utility</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/RealDotNetDave/dotNetTips.Utility</RepositoryUrl>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <SignAssembly>False</SignAssembly>
+    <DelaySign>False</DelaySign>
+    <AssemblyOriginatorKeyFile>dotNetTips.Utility.Standard.pfx</AssemblyOriginatorKeyFile>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Diagnostics.Process" Version="4.3.0" />
+    <PackageReference Include="System.Threading.Tasks.Parallel" Version="4.3.0" />
+  </ItemGroup>
+</Project>

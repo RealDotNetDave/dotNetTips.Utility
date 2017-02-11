@@ -254,10 +254,10 @@ Namespace DirectoryServices
         Public Sub SplitLogin(ByRef logIn As String, ByRef domain As String, ByRef accountName As String)
             Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(login) = False, "login is nothing or empty.")
 
-            logIn = logIn.Replace(Core.ControlChars.ForwardSlash, Core.ControlChars.BackSlash)
+            logIn = logIn.Replace(Portable.ControlChars.ForwardSlash, Portable.ControlChars.BackSlash)
 
-            If logIn.Contains(Core.ControlChars.BackSlash) Then
-                With logIn.Split(Core.ControlChars.BackSlash)
+            If logIn.Contains(Portable.ControlChars.BackSlash) Then
+                With logIn.Split(Portable.ControlChars.BackSlash)
                     If Not domain Is Nothing Then
                         domain = .GetValue(0).ToString
                     End If
@@ -500,8 +500,8 @@ Namespace DirectoryServices
             Dim managerName As String = String.Empty
 
             If Not String.IsNullOrEmpty(name) Then
-                If name.Split(Core.ControlChars.Comma).Length > 0 Then
-                    managerName = name.Split(Core.ControlChars.Comma)(0).Remove(0, 3)
+                If name.Split(Portable.ControlChars.Comma).Length > 0 Then
+                    managerName = name.Split(Portable.ControlChars.Comma)(0).Remove(0, 3)
                 End If
             End If
 

@@ -26,7 +26,7 @@ Imports System.ServiceModel.Web
 Imports System.Text
 Imports System.Web.Services.Description
 Imports System.Xml
-Imports dotNetTips.Utility.Core.Extensions
+Imports dotNetTips.Utility.Portable.Extensions
 Imports dotNetTips.Utility.Security
 
 Namespace Web
@@ -617,7 +617,7 @@ Namespace Web
             For Each key In items.AsParallel()
                 Dim value = String.Empty
 
-                value = If(includeSensitiveValues = False AndAlso key.ToLower().ContainsAny(My.Resources.HttpHeadersToIgnore.Split(dotNetTips.Utility.Core.ControlChars.Comma)), If(String.IsNullOrWhiteSpace(currentRequest.Headers(key).ToString(CultureInfo.InvariantCulture)), False.ToString(), True.ToString()), currentRequest.Headers(key).ToString(CultureInfo.InvariantCulture))
+                value = If(includeSensitiveValues = False AndAlso key.ToLower().ContainsAny(My.Resources.HttpHeadersToIgnore.Split(dotNetTips.Utility.Portable.ControlChars.Comma)), If(String.IsNullOrWhiteSpace(currentRequest.Headers(key).ToString(CultureInfo.InvariantCulture)), False.ToString(), True.ToString()), currentRequest.Headers(key).ToString(CultureInfo.InvariantCulture))
 
                 headerValues.Add(key.ToString, value)
             Next

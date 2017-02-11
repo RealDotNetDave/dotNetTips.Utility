@@ -8,8 +8,7 @@
 // <summary>
 // </summary>
 // ***********************************************************************
-namespace dotNetTips.Utility.Portable
-{
+namespace dotNetTips.Utility.Portable {
     /// <summary>
     /// Enum FirstDayOfWeek
     /// </summary>

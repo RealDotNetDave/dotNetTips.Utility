@@ -14,13 +14,11 @@
 ' <summary></summary>
 ' *************************************************************************
 Imports System.Diagnostics.Contracts
-Imports System.Linq
-Imports dotNetTips.Utility.Core.Extensions
 
 ''' <summary>
 ''' Class InfoItemCollection. This class cannot be inherited.
 ''' </summary>
-''' <seealso cref="System.Collections.Generic.List{dotNetTips.Utility.Windows.Logger.InfoItem}" />
+''' <seealso cref="System.Collections.Generic.List(Of dotNetTips.Utility.Windows.Logger.InfoItem)" />
 <Serializable>
 Public NotInheritable Class InfoItemCollection
     Inherits List(Of InfoItem)

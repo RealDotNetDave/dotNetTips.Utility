@@ -4,11 +4,10 @@
 ' Created          : 05-31-2016
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 07-22-2016
+' Last Modified On : 12-07-2016
 ' ***********************************************************************
 ' <copyright file="Synthesis.vb" company="NicheWare - David McCarter">
-'     '     '     NicheWare - David McCarter
-'
+'     '     '     '     NicheWare - David McCarter
 '
 ' </copyright>
 ' <summary></summary>
