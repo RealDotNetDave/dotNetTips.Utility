@@ -55,13 +55,13 @@ Public Module StringHelper
     ''' Speak text as an asynchronous operation.
     ''' </summary>
     ''' <param name="text">The text.</param>
-    Public Sub SpeakAsync(ByVal text As String)
+    Public Async Sub SpeakAsync(ByVal text As String)
 
         If String.IsNullOrWhiteSpace(text) Then
             Exit Sub
         End If
 
-        Speech.SpeakAsync(text)
+        Await Speech.SpeakAsync(text)
     End Sub
 
     ''' <summary>

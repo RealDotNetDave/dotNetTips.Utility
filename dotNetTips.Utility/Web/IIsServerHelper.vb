@@ -86,13 +86,13 @@ Namespace Web
         ''' </summary>
         ''' <remarks></remarks>
         Public Sub StopIIS()
+            If ApplicationHelper.IsProcessRunning("W3SVC") Then
+                Dim service = ServiceController.GetServices().Where(Function(p) p.ServiceName = "W3SVC").FirstOrDefault
 
-            Dim service = ServiceController.GetServices().Where(Function(p) p.ServiceName = "W3SVC").FirstOrDefault
-
-            If (service IsNot Nothing AndAlso service.Status = ServiceControllerStatus.Running) Then
-                service.Stop()
+                If (service IsNot Nothing AndAlso service.Status = ServiceControllerStatus.Running) Then
+                    service.Stop()
+                End If
             End If
-
         End Sub
 
         ''' <summary>

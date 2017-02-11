@@ -22,13 +22,13 @@ Public Module ServicesHelper
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub StopSQLServer()
+        If ApplicationHelper.IsProcessRunning("MSSQLSERVER") Then
+            Dim service = ServiceController.GetServices().Where(Function(p) p.ServiceName = "MSSQLSERVER").FirstOrDefault
 
-        Dim service = ServiceController.GetServices().Where(Function(p) p.ServiceName = "MSSQLSERVER").FirstOrDefault
-
-        If (service IsNot Nothing AndAlso service.Status = ServiceControllerStatus.Running) Then
-            service.Stop()
+            If (service IsNot Nothing AndAlso service.Status = ServiceControllerStatus.Running) Then
+                service.Stop()
+            End If
         End If
-
     End Sub
 
     ''' <summary>

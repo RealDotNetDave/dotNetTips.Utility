@@ -195,8 +195,8 @@ Namespace Extensions
         <Extension>
         Public Sub Speak(ByVal text As String)
             Using synth As New SpeechSynthesizer()
-                If synth.GetInstalledVoices.Count > 0
-                    synth.SpeakAsyncCancelAll
+                If synth.GetInstalledVoices.Count > 0 Then
+                    synth.SpeakAsyncCancelAll()
                     synth.Speak(text)
                 End If
             End Using
@@ -207,8 +207,12 @@ Namespace Extensions
         ''' </summary>
         ''' <param name="text">The text to speak.</param>
         <Extension>
-        Public Sub SpeakAsync(ByVal text As String)
-            StringHelper.SpeakAsync(text)
+        Public Async Sub SpeakAsync(ByVal text As String)
+            If String.IsNullOrWhiteSpace(text) Then
+                Exit Sub
+            End If
+
+            Await Speech.SpeakAsync(text)
         End Sub
 
         ''' <summary>
