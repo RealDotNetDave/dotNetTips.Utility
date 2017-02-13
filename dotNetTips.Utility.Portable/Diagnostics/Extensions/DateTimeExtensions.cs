@@ -15,7 +15,8 @@ using System;
 using System.Diagnostics.Contracts;
 using System.Globalization;
 
-namespace dotNetTips.Utility.Portable.Extensions {
+namespace dotNetTips.Utility.Portable.Extensions
+{
     /// <summary>
     /// Extensions for DateTime
     /// </summary>
@@ -85,6 +86,26 @@ namespace dotNetTips.Utility.Portable.Extensions {
             formattedDate += " @ " + input.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern, CultureInfo.CurrentCulture).ToLower();
 
             return formattedDate;
+        }
+
+        /// <summary>
+        /// Yesterdays the specified input.
+        /// </summary>
+        /// <param name="input">The input.</param>
+        /// <returns>DateTime.</returns>
+        public static DateTime Yesterday(this DateTime input)
+        {
+            return input.Subtract(new TimeSpan(1, 0, 0, 0));
+        }
+
+        /// <summary>
+        /// Tomorrows the specified input.
+        /// </summary>
+        /// <param name="input">The input.</param>
+        /// <returns>DateTime.</returns>
+        public static DateTime Tomorrow(this DateTime input)
+        {
+            return input.AddDays(1);
         }
     }
 }
