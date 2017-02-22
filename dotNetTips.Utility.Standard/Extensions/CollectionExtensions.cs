@@ -48,8 +48,8 @@ namespace dotNetTips.Utility.Standard.Extensions
         public static void AddIfNotExists<T>(this ICollection<T> list, T value)
         {
             Encapsulation.TryValidateParam(list, nameof(list));
-            Encapsulation.TryValidateParam<ArgumentNullException>(value == null, nameof(value) + " is requried.");
-            Encapsulation.TryValidateParam<ArgumentNullException>(list.IsReadOnly, nameof(value) + "  cannot be read-only.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(value == null, "Value is requried.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(list.IsReadOnly, "List cannot be read-only.");
 
             if (list.Contains(value) == false)
             {
@@ -530,57 +530,6 @@ namespace dotNetTips.Utility.Standard.Extensions
         }
 
         /// <summary>
-        /// Determines whether [is not in collection] [the specified item].
-        /// </summary>
-        /// <param name="collection">The collection.</param>
-        /// <param name="item">The item.</param>
-        /// <returns><c>true</c> if [is not in collection] [the specified item]; otherwise, <c>false</c>.</returns>
-        public static bool IsNotInCollection<T>(this T collection, object item)
-        {
-            return (item == null && collection.In(item) == false);
-        }
-
-        /// <summary>
-        /// Tries to add item to collection.
-        /// </summary>
-        /// <param name="collection">The collection.</param>
-        /// <param name="item">The item.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        public static bool TryAdd(this IList collection, object item)
-        {
-            if (collection.IsNotInCollection(item))
-            {
-                collection.Add(item);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Tries the item to the collection.
-        /// </summary>
-        /// <typeparam name="TKey">The type of the t key.</typeparam>
-        /// <typeparam name="TValue">The type of the t value.</typeparam>
-        /// <param name="collection">The collection.</param>
-        /// <param name="item">The item.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        public static bool TryAdd<TKey, TValue>(this IDictionary collection, TKey key, TValue value)
-        {
-            if (collection.Contains(key))
-            {
-                collection.Add(key, value);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        /// <summary>
         /// Adds the range.
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -599,10 +548,10 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
         public static void AddRange<T, TKey, TValue>(this IDictionary<TKey, TValue> list, IEnumerable<T> items, Func<T, TKey> key, Func<T, TValue> value)
         {
-            Encapsulation.TryValidateParam(list, nameof(list));
+            Encapsulation.TryValidateParam(list, nameof(list)); 
             Encapsulation.TryValidateParam(items, nameof(items));
             Encapsulation.TryValidateParam<ArgumentNullException>(key == null, "Key cannot be null.");
-            Encapsulation.TryValidateParam<ArgumentNullException>(value == null, "Value cannot be null.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(value==null, "Value cannot be null.");
 
             foreach (T item in items)
             {

@@ -258,6 +258,20 @@
             <param name="input">The date.</param>
             <returns>System.String.</returns>
         </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.Yesterday(System.DateTime)">
+            <summary>
+            Yesterdays the specified input.
+            </summary>
+            <param name="input">The input.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.Tomorrow(System.DateTime)">
+            <summary>
+            Tomorrows the specified input.
+            </summary>
+            <param name="input">The input.</param>
+            <returns>DateTime.</returns>
+        </member>
         <member name="T:dotNetTips.Utility.Portable.Extensions.CollectionExtensions">
             <summary>
             Class CollectionExtensions.
