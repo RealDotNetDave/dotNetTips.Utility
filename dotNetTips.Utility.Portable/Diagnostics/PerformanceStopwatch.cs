@@ -1,24 +1,13 @@
-﻿// *********************************************************************** Assembly :
-// dotNetTips.Utility.Portable Author : David McCarter Created : 04-15-2016 Created : 04-15-2016
-//
-// Last Modified By : David McCarter Last Modified On : 06-02-2016
-// *********************************************************************** Last Modified On :
-// 07-22-2016 ***********************************************************************
-// <copyright file="PerformanceStopwatch.cs" company="dotNetTips.com">
-//     Copyright Â© 2015
-// </copyright>
-// <summary>
-// </summary>
-// ***********************************************************************
+﻿
 using System;
 using System.Diagnostics;
 
-namespace dotNetTips.Utility.Portable.Diagnostics
-{
+namespace dotNetTips.Utility.Standard.Diagnostics {
     /// <summary>
     /// Class PerformanceStopwatch.
     /// </summary>
     /// <seealso cref="System.Diagnostics.Stopwatch"/>
+    [Obsolete("Use PerformanceStopwatch from dotNetTips.Utility.Standard.")]
     public class PerformanceStopwatch : Stopwatch
     {
         /// <summary>

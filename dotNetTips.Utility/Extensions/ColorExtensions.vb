@@ -15,7 +15,7 @@ Imports System.Collections.Generic
 Imports System.Drawing
 Imports System.Diagnostics.Contracts
 Imports System.Runtime.CompilerServices
-Imports dotNetTips.Utility.Core.Extensions
+Imports dotNetTips.Utility.Portable.Extensions
 Namespace Extensions
     ''' <summary>
     ''' Extension methods for color values.

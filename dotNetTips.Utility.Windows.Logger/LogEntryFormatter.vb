@@ -9,12 +9,9 @@
 '
 ' Copyright        : (c) dotNetTips.com. All rights reserved.
 '***********************************************************************
-Imports System
 Imports System.Collections.ObjectModel
 Imports System.Collections.Specialized
-Imports System.Diagnostics
 Imports System.Globalization
-Imports System.Linq
 Imports System.Reflection
 Imports System.Text
 
@@ -112,12 +109,12 @@ Friend Class LogEntryFormatter
     ''' <summary>
     ''' Determines if the property needs to be ignored.
     ''' </summary>
-    ''' <param name="propinfo">The propinfo.</param>
+    ''' <param name="propInfo">The property information.</param>
     ''' <returns></returns>
-    Private Shared Function IgnoreProperty(ByVal propinfo As PropertyInfo) As Boolean
+    Private Shared Function IgnoreProperty(ByVal propInfo As PropertyInfo) As Boolean
         Dim ignore = False
 
-        For Each attrib In propinfo.GetCustomAttributes(True)
+        For Each attrib In propInfo.GetCustomAttributes(True)
             If attrib.GetType Is GetType(System.Xml.Serialization.XmlIgnoreAttribute) Then
                 ignore = True
                 Exit For
@@ -130,12 +127,12 @@ Friend Class LogEntryFormatter
     ''' <summary>
     ''' Processes the additional info.
     ''' </summary>
-    ''' <param name="propinfo">The prop info.</param>
+    ''' <param name="propInfo">The prop info.</param>
     ''' <param name="propValue">The prop value.</param>
     ''' <param name="builder">The StringBuilder.</param>
-    Private Shared Sub ProcessAdditionalInfo(ByVal propinfo As PropertyInfo, ByVal propValue As Object, ByVal builder As StringBuilder)
+    Private Shared Sub ProcessAdditionalInfo(ByVal propInfo As PropertyInfo, ByVal propValue As Object, ByVal builder As StringBuilder)
         ' Loop through the collection of AdditionalInformation if the exception type is a BaseApplicationException.
-        If propinfo.Name = "AdditionalInformation" Then
+        If propInfo.Name = "AdditionalInformation" Then
             If propValue IsNot Nothing Then
                 ' Cast the collection into a local variable.
                 Dim currAdditionalInfo = DirectCast(propValue, Collection(Of InfoItem))
@@ -155,7 +152,7 @@ Friend Class LogEntryFormatter
             End If
         Else
             ' Otherwise just write the ToString() value of the property.
-            builder.AppendLine([String].Format(CultureInfo.InvariantCulture, "{0}: {1}", propinfo.Name, FormatType(propValue)))
+            builder.AppendLine([String].Format(CultureInfo.InvariantCulture, "{0}: {1}", propInfo.Name, FormatType(propValue)))
         End If
     End Sub
 

@@ -1,5 +1,4 @@
 {
-  "locked": false,
   "version": 2,
   "targets": {
     ".NETPortable,Version=v4.5,Profile=Profile7": {
@@ -12,7 +11,7 @@
     "DotNet.Contracts/1.10.20606.1": {
       "sha512": "qfKJqT8z8Ps3EuErgHxG4z9K1LC6Y7lFzVPg1bNrNp9ecQlN3zXPKIHgUTgxJek4oTFLyQcl5slt0RnKVF7VjA==",
       "type": "package",
-      "path": "DotNet.Contracts/1.10.20606.1",
+      "path": "dotnet.contracts/1.10.20606.1",
       "files": [
         "Bin/CCCheck.exe.config",
         "Bin/CodeContractsVSPropertyPane.dll",
@@ -151,8 +150,6 @@
         "Contracts/v3.5/WindowsBase.Contracts.dll",
         "Contracts/v3.5/mscorlib.Contracts.dll",
         "Documentation/ContractsManual.pdf",
-        "DotNet.Contracts.1.10.20606.1.nupkg.sha512",
-        "DotNet.Contracts.nuspec",
         "Languages/CSharp/Code Contract Snippets/contractassert.snippet",
         "Languages/CSharp/Code Contract Snippets/contractassume.snippet",
         "Languages/CSharp/Code Contract Snippets/contractensures.snippet",
@@ -210,6 +207,8 @@
         "PublicAssemblies/v3.5/Redist.txt",
         "Samples/Samples.zip",
         "Sandcastle/Sandcastle.zip",
+        "dotnet.contracts.1.10.20606.1.nupkg.sha512",
+        "dotnet.contracts.nuspec",
         "tools/CCCheck.exe.config",
         "tools/CodeContractsVSPropertyPane.dll",
         "tools/CodeToolsUpdate.exe",
@@ -231,6 +230,22 @@
     ],
     ".NETPortable,Version=v4.5,Profile=Profile7": []
   },
-  "tools": {},
-  "projectFileToolGroups": {}
+  "packageFolders": {
+    "C:\\Users\\david\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "restore": {
+      "projectUniqueName": "C:\\Development\\Source\\Repros\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj",
+      "projectName": "dotNetTips.Utility.Portable",
+      "projectPath": "C:\\Development\\Source\\Repros\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj",
+      "projectJsonPath": "C:\\Development\\Source\\Repros\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\project.json",
+      "projectStyle": "ProjectJson"
+    },
+    "dependencies": {
+      "DotNet.Contracts": "1.10.20606.1"
+    },
+    "frameworks": {
+      "portable45-net45+win8": {}
+    }
+  }
 }

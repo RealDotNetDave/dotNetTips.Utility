@@ -137,13 +137,19 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="dotNetTips.Utility.Core, Version=2016.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\bin\dotNetTips.Utility.Core\bin\Debug\net461\dotNetTips.Utility.Core.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StackifyLib, Version=1.25.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackifyLib.1.25.4\lib\net45\StackifyLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -172,6 +178,7 @@
     <Compile Include="InfoItem.vb" />
     <Compile Include="InfoItemCollection.vb" />
     <Compile Include="InvalidEnumTypeException.vb" />
+    <Compile Include="Listeners\StackifyTraceListener.vb" />
     <Compile Include="LogEntry.vb" />
     <Compile Include="LogEntryFormatter.vb" />
     <Compile Include="LoggableException.vb" />

@@ -4,11 +4,10 @@
 ' Created          : 05-31-2016
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 07-22-2016
+' Last Modified On : 12-07-2016
 ' ***********************************************************************
 ' <copyright file="Synthesis.vb" company="NicheWare - David McCarter">
-'     '     '     NicheWare - David McCarter
-'
+'     '     '     '     NicheWare - David McCarter
 '
 ' </copyright>
 ' <summary></summary>
@@ -29,17 +28,17 @@ Namespace Speech
         ''' </summary>
         ''' <param name="textToSpeak">The text to speak.</param>
         ''' <returns>Task(Of System.Speech.Synthesis.Prompt).</returns>
-        Public Function SpeakAsync(ByVal textToSpeak As String) As Task(Of System.Speech.Synthesis.Prompt)
+        Public Async Function SpeakAsync(ByVal textToSpeak As String) As Task(Of System.Speech.Synthesis.Prompt)
             If _speech.GetInstalledVoices.Count > 0 Then
                 _speech.SpeakAsyncCancelAll()
-                Return Task(Of System.Speech.Synthesis.Prompt).Factory.StartNew(Function() _speech.SpeakAsync(textToSpeak))
+                Return Await Task(Of System.Speech.Synthesis.Prompt).Factory.StartNew(Function() _speech.SpeakAsync(textToSpeak))
             Else
                 Return Nothing
             End If
         End Function
 
         ''' <summary>
-        ''' Speaks the specified textxt to speak.
+        ''' Speaks the specified text to speak.
         ''' </summary>
         ''' <param name="textToSpeak">The text to speak.</param>
         Public Sub Speak(ByVal textToSpeak As String)
