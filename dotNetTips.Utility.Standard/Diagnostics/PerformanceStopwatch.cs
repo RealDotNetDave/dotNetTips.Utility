@@ -44,8 +44,8 @@ namespace dotNetTips.Utility.Standard.Diagnostics
         /// </summary>
         /// <returns>PerformanceStopwatch.</returns>
         public new static PerformanceStopwatch StartNew()
-        {
-            var sw = new PerformanceStopwatch();
+        { 
+            var sw = TypeHelper.Create<PerformanceStopwatch>();
             sw.Start();
             return sw;
         }

@@ -13,35 +13,39 @@
 // ***********************************************************************
 using System;
 using System.Collections;
-using System.Diagnostics.Contracts;
 using dotNetTips.Utility.Portable.Extensions;
 
 namespace dotNetTips.Utility.Portable.OOP {
     /// <summary>
     /// Class Encapsulation.
     /// </summary>
-    public static class Encapsulation {
+    public static class Encapsulation
+    {
         /// <summary>
         /// Tries the validate parameter.
         /// </summary>
         /// <typeparam name="TException">The type of the t exception.</typeparam>
         /// <param name="condition">The condition.</param>
         /// <param name="message">The message.</param>
-        public static void TryValidateParam<TException>(bool condition, string message = "") where TException : ArgumentException, new() {
+        public static void TryValidateParam<TException>(bool condition, string message = "") where TException : ArgumentException, new()
+        {
             //Validate proper Exception type
             var t = typeof(TException);
 
-            if (t.Name == nameof(Exception)) {
+            if (t.Name == nameof(Exception))
+            {
                 throw new InvalidCastException("TException cannot be of type Exception. Use a more specific exception from the framework or a custom Exception inheriting type Exception (only)");
             }
 
             var defaultMessage = "Parameter is invalid.";
 
-            if (string.IsNullOrEmpty(message)) {
+            if (string.IsNullOrEmpty(message))
+            {
                 defaultMessage = message;
             }
 
-            if (condition == false) {
+            if (condition == false)
+            {
                 var ex = Activator.CreateInstance(typeof(TException), message).As<TException>();
                 throw ex;
             }
@@ -54,9 +58,12 @@ namespace dotNetTips.Utility.Portable.OOP {
         /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
         /// <exception cref="ArgumentNullException"></exception>
-        public static void TryValidateParam(IEnumerable collection, string paramName, string message = "") {
-            if (collection.IsValid() == false) {
-                if (message.IsNull()) {
+        public static void TryValidateParam(IEnumerable collection, string paramName, string message = "")
+        {
+            if (collection.IsValid() == false)
+            {
+                if (message.IsNull())
+                {
                     message = "Collection is null or has no items.";
                 }
 
@@ -70,11 +77,15 @@ namespace dotNetTips.Utility.Portable.OOP {
         /// <param name="value">The value.</param>
         /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
-        public static void TryValidateParam(Enum value, string paramName, string message = "The value is not defined in the enum.") {
-            Contract.Requires<ArgumentNullException>(string.IsNullOrEmpty(paramName) == false, "paramName cannot be null or empty.");
-            Contract.Requires<ArgumentNullException>(string.IsNullOrEmpty(message) == false, "message cannot be null or empty.");
+        public static void TryValidateParam(Enum value, string paramName, string message = "")
+        {
+            if (Enum.IsDefined(value.GetType(), value) == false)
+            {
+                if (message.IsNull())
+                {
+                    message = "The value is not defined in the enum.";
+                }
 
-            if (Enum.IsDefined(value.GetType(), value) == false) {
                 throw new ArgumentOutOfRangeException(paramName, message);
             }
         }

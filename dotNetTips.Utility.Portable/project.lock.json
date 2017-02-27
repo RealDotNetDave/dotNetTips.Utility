@@ -235,10 +235,10 @@
   },
   "project": {
     "restore": {
-      "projectUniqueName": "C:\\Users\\david\\Source\\Repos\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj",
+      "projectUniqueName": "C:\\Development\\Source\\Repros\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj",
       "projectName": "dotNetTips.Utility.Portable",
-      "projectPath": "C:\\Users\\david\\Source\\Repos\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj",
-      "projectJsonPath": "C:\\Users\\david\\Source\\Repos\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\project.json",
+      "projectPath": "C:\\Development\\Source\\Repros\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj",
+      "projectJsonPath": "C:\\Development\\Source\\Repros\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\project.json",
       "projectStyle": "ProjectJson"
     },
     "dependencies": {

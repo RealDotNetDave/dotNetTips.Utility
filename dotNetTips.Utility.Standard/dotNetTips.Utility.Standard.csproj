@@ -1,8 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0"  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
     <DocumentationFile>
     </DocumentationFile>
-    <OutputPath>C:\Users\david\Source\Repos\dotNetTips.Utility\bin\</OutputPath>
+    <OutputPath>..\bin\netstandard</OutputPath>
     <AssemblyVersion>2017.0.0.1</AssemblyVersion>
     <FileVersion>2017.0.0.1</FileVersion>
     <NeutralLanguage>en</NeutralLanguage>
@@ -19,6 +20,9 @@
     <DelaySign>False</DelaySign>
     <AssemblyOriginatorKeyFile>dotNetTips.Utility.Standard.pfx</AssemblyOriginatorKeyFile>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="System.Diagnostics.Process" Version="4.3.0" />
