@@ -4,17 +4,21 @@
 // Created          : 01-22-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-22-2017
+// Last Modified On : 02-26-2017
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="dotNetTips.Utility.Standard">
 //     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
 // </copyright>
 // <summary></summary>
-// ***********************************************************************
+// ************************************************************************
 
+using dotNetTips.Utility.Standard.OOP;
+using dotNetTips.Utility.Standard.Serialization;
 using System;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 
 /// <summary>
 /// The Extensions namespace.
@@ -38,11 +42,6 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <remarks>Original code by: Shimmy Weitzhandler</remarks>
         public static T As<T>(this object value)
         {
-            if (value == null)
-            {
-                throw new ArgumentNullException(nameof(value), "Value cannot be null.");
-            }
-
             return (T)value;
         }
 
@@ -53,11 +52,9 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="source">The source.</param>
         /// <param name="list">The list.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        /// <exception cref="ArgumentNullException">
-        /// source - Source cannot be null.
+        /// <exception cref="ArgumentNullException">source - Source cannot be null.
         /// or
-        /// list - List cannot be null or have a 0 length.
-        /// </exception>
+        /// list - List cannot be null or have a 0 length.</exception>
         /// <remarks>Original code by: Rory Becker</remarks>
         public static bool In<T>(this T source, params T[] list)
         {
@@ -142,14 +139,65 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentNullException">propertyName - Source cannot be null.</exception>
         public static bool HasProperty(this object instance, string propertyName)
         {
-            if (string.IsNullOrWhiteSpace(propertyName))
-            {
-                throw new ArgumentNullException(nameof(propertyName), "Source cannot be null.");
-            }
+            Encapsulation.TryValidateParam(propertyName);
 
             var propertyInfo = instance.GetType().GetRuntimeProperties().FirstOrDefault(p => p.Name == propertyName);
 
             return (propertyInfo != null);
+        }
+
+        /// <summary>
+        /// Serializes object to Json.
+        /// </summary>
+        /// <param name="instance">The instance.</param>
+        /// <returns>System.String.</returns>
+        public static string ToJson(this object instance)
+        {
+            return JsonSerializer.Serialize(instance);
+        }
+
+        /// <summary>
+        /// Saves object to Json file.
+        /// </summary>
+        /// <param name="instance">The instance.</param>
+        /// <param name="file">The file.</param>
+        public static void ToJsonFile(this object instance, string file)
+        {
+            var json = JsonSerializer.Serialize(instance);
+
+            File.WriteAllText(file, json, Encoding.UTF8);
+        }
+
+        /// <summary>
+        /// Creates object from Json.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="json">The json.</param>
+        /// <returns>T.</returns>
+        public static T FromJson<T>(this string json) where T : class
+        {
+            return JsonSerializer.Deserialize<T>(json);
+        }
+
+        /// <summary>
+        /// Creates object from a Json file.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="file">The file.</param>
+        /// <returns>T.</returns>
+        /// <exception cref="FileNotFoundException">File not found.</exception>
+        public static T FromJsonFile<T>(string file) where T : class
+        {
+            Encapsulation.TryValidateParam(file);
+
+            if (File.Exists(file) == false)
+            {
+                throw new FileNotFoundException("File not found.", file);
+            }
+
+            var json = File.ReadAllText(file, Encoding.UTF8);
+
+            return JsonSerializer.Deserialize<T>(json);
         }
 
         #endregion Public Methods

@@ -206,71 +206,20 @@
             Second
             </summary>
         </member>
-        <member name="T:dotNetTips.Utility.Portable.Extensions.ExceptionExtension">
+        <member name="T:dotNetTips.Utility.Portable.DueDate">
             <summary>
-            Class ExceptionExtension.
+            Enum DueDate
             </summary>
         </member>
-        <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.TraverseFor``1(System.Exception)">
+        <member name="F:dotNetTips.Utility.Portable.DueDate.EndOfPeriod">
             <summary>
-            Traverses Exception.
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="ex">The ex.</param>
-            <returns>T.</returns>
-        </member>
-        <member name="T:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions">
-            <summary>
-            Extensions for DateTime
+            The end of period
             </summary>
         </member>
-        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.GetLast(System.DateTime,System.DayOfWeek)">
+        <member name="F:dotNetTips.Utility.Portable.DueDate.BeggingOfPeriod">
             <summary>
-            Gets the last.
+            The begging of period
             </summary>
-            <param name="input">The date/ time.</param>
-            <param name="dayOfWeek">The day of week.</param>
-            <returns>DateTime.</returns>
-        </member>
-        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.GetNext(System.DateTime,System.DayOfWeek)">
-            <summary>
-            Gets the next.
-            </summary>
-            <param name="input">The date/ time.</param>
-            <param name="dayOfWeek">The day of week.</param>
-            <returns>DateTime.</returns>
-        </member>
-        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.Intersects(System.DateTime,System.DateTime,System.DateTime,System.DateTime)">
-            <summary>
-            Intersects the specified start date.
-            </summary>
-            <param name="startDate">The start date.</param>
-            <param name="endDate">The end date.</param>
-            <param name="intersectingStartDate">The intersecting start date.</param>
-            <param name="intersectingEndDate">The intersecting end date.</param>
-            <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-            <remarks>Code by: Walter Quesada</remarks>
-        </member>
-        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.ToFriendlyDateString(System.DateTime)">
-            <summary>
-            To the friendly date string.
-            </summary>
-            <param name="input">The date.</param>
-            <returns>System.String.</returns>
-        </member>
-        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.Yesterday(System.DateTime)">
-            <summary>
-            Yesterdays the specified input.
-            </summary>
-            <param name="input">The input.</param>
-            <returns>DateTime.</returns>
-        </member>
-        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.Tomorrow(System.DateTime)">
-            <summary>
-            Tomorrows the specified input.
-            </summary>
-            <param name="input">The input.</param>
-            <returns>DateTime.</returns>
         </member>
         <member name="T:dotNetTips.Utility.Portable.Extensions.CollectionExtensions">
             <summary>
@@ -450,6 +399,72 @@
             <param name="predicate">The predicate.</param>
             <returns>IEnumerable&lt;TSource&gt;.</returns>
             <remarks>Original code by: Phil Campbell</remarks>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions">
+            <summary>
+            Extensions for DateTime
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.GetLast(System.DateTime,System.DayOfWeek)">
+            <summary>
+            Gets the last.
+            </summary>
+            <param name="input">The date/ time.</param>
+            <param name="dayOfWeek">The day of week.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.GetNext(System.DateTime,System.DayOfWeek)">
+            <summary>
+            Gets the next.
+            </summary>
+            <param name="input">The date/ time.</param>
+            <param name="dayOfWeek">The day of week.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.Intersects(System.DateTime,System.DateTime,System.DateTime,System.DateTime)">
+            <summary>
+            Intersects the specified start date.
+            </summary>
+            <param name="startDate">The start date.</param>
+            <param name="endDate">The end date.</param>
+            <param name="intersectingStartDate">The intersecting start date.</param>
+            <param name="intersectingEndDate">The intersecting end date.</param>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+            <remarks>Code by: Walter Quesada</remarks>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.ToFriendlyDateString(System.DateTime)">
+            <summary>
+            To the friendly date string.
+            </summary>
+            <param name="input">The date.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.Yesterday(System.DateTime)">
+            <summary>
+            Yesterdays the specified input.
+            </summary>
+            <param name="input">The input.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.Tomorrow(System.DateTime)">
+            <summary>
+            Tomorrows the specified input.
+            </summary>
+            <param name="input">The input.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.Extensions.ExceptionExtension">
+            <summary>
+            Class ExceptionExtension.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.TraverseFor``1(System.Exception)">
+            <summary>
+            Traverses Exception.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="ex">The ex.</param>
+            <returns>T.</returns>
         </member>
         <member name="T:dotNetTips.Utility.Portable.Extensions.MathExtensions">
             <summary>
@@ -664,21 +679,6 @@
             <param name="obj2">The obj2.</param>
             <returns>T.</returns>
             <remarks>Original code by: Jeremy Clark</remarks>
-        </member>
-        <member name="T:dotNetTips.Utility.Portable.DueDate">
-            <summary>
-            Enum DueDate
-            </summary>
-        </member>
-        <member name="F:dotNetTips.Utility.Portable.DueDate.EndOfPeriod">
-            <summary>
-            The end of period
-            </summary>
-        </member>
-        <member name="F:dotNetTips.Utility.Portable.DueDate.BeggingOfPeriod">
-            <summary>
-            The begging of period
-            </summary>
         </member>
         <member name="T:dotNetTips.Utility.Portable.FileAttributes">
             <summary>

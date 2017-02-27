@@ -23,33 +23,38 @@ namespace dotNetTips.Utility.Standard
     /// Class ArgumentIsReadOnlyException.
     /// </summary>
     /// <seealso cref="System.Exception" />
-    public class ArgumentIsReadOnlyException : Exception
+    public class ArgumentReadOnlyException : ArgumentException
     {
         #region Public Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ArgumentIsReadOnlyException" /> class.
+        /// Initializes a new instance of the <see cref="ArgumentReadOnlyException" /> class.
         /// </summary>
-        public ArgumentIsReadOnlyException()
+        public ArgumentReadOnlyException()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ArgumentIsReadOnlyException" /> class.
+        /// Initializes a new instance of the <see cref="ArgumentReadOnlyException" /> class.
         /// </summary>
         /// <param name="message">The message that describes the error.</param>
-        public ArgumentIsReadOnlyException(string message)
+        public ArgumentReadOnlyException(string message)
             : base(message)
         {
         }
 
+        public ArgumentReadOnlyException(string parmName, string message)
+    : base(parmName,  message)
+        {
+        }
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="ArgumentIsReadOnlyException" /> class.
+        /// Initializes a new instance of the <see cref="ArgumentReadOnlyException" /> class.
         /// </summary>
         /// <param name="message">The error message that explains the reason for the exception.</param>
         /// <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in
         /// Visual Basic) if no inner exception is specified.</param>
-        public ArgumentIsReadOnlyException(string message, Exception innerException)
+        public ArgumentReadOnlyException(string message, Exception innerException)
             : base(message, innerException)
         {
         }
