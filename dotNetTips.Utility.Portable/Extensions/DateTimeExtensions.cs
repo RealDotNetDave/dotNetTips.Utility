@@ -80,7 +80,7 @@ namespace dotNetTips.Utility.Portable.Extensions
             }
             else
             {
-                formattedDate = input.Date == DateTime.Today.AddDays(-1) ? "Yesterday" : input.Date > DateTime.Today.AddDays(-6) ? input.ToString("dddd").ToString() : input.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern, CultureInfo.CurrentCulture);
+                formattedDate = input.Date == DateTime.Today.AddDays(-1) ? nameof(Yesterday) : input.Date > DateTime.Today.AddDays(-6) ? input.ToString("dddd").ToString() : input.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern, CultureInfo.CurrentCulture);
             }
 
             formattedDate += " @ " + input.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern, CultureInfo.CurrentCulture).ToLower();
