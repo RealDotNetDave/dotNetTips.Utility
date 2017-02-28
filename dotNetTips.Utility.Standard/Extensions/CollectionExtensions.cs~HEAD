@@ -20,7 +20,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-
+using dotNetTips.Utility.Standard.OOP;
 /// <summary>
 /// The Extensions namespace.
 /// </summary>
@@ -47,18 +47,9 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentException">list - List cannot be read-only.</exception>
         public static void AddIfNotExists<T>(this ICollection<T> list, T value)
         {
-            if (list == null)
-            {
-                throw new ArgumentNullException(nameof(list), "List cannot be null.");
-            }
-            if (value == null)
-            {
-                throw new ArgumentNullException(nameof(value), "Value cannot be null.");
-            }
-            if (list.IsReadOnly)
-            {
-                throw new ArgumentException(nameof(list), "List cannot be read-only.");
-            }
+            Encapsulation.TryValidateParam(list, nameof(list));
+            Encapsulation.TryValidateParam<ArgumentNullException>(value == null, nameof(value) + " is requried.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(list.IsReadOnly, nameof(value) + "  cannot be read-only.");
 
             if (list.Contains(value) == false)
             {
@@ -80,18 +71,9 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentException">list - List cannot be read-only.</exception>
         public static void AddIfNotExists<T>(this ICollection<T> list, params T[] values)
         {
-            if (list == null)
-            {
-                throw new ArgumentNullException(nameof(list), "List cannot be null.");
-            }
-            if (values == null)
-            {
-                throw new ArgumentNullException(nameof(values), "Values cannot be null.");
-            }
-            if (list.IsReadOnly)
-            {
-                throw new ArgumentException(nameof(list), "List cannot be read-only.");
-            }
+            Encapsulation.TryValidateParam(list, nameof(list));
+            Encapsulation.TryValidateParam(values, nameof(values));
+            Encapsulation.TryValidateParam<ArgumentNullException>(list.IsReadOnly, "List cannot be read-only.");
 
             foreach (var value in values)
             {
@@ -115,21 +97,12 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="System.ArgumentNullException">Null character.</exception>
         public static bool ContainsAny(this string input, params string[] characters)
         {
-            if (string.IsNullOrWhiteSpace(input))
-            {
-                throw new ArgumentNullException(nameof(input), "List cannot be null.");
-            }
-            if (characters == null || characters.Length == 0)
-            {
-                throw new ArgumentNullException(nameof(characters), "Characters cannot be null or 0 length.");
-            }
+            Encapsulation.TryValidateParam<ArgumentNullException>(input.IsNull(), "Input is requried.");
+            Encapsulation.TryValidateParam(characters, nameof(characters));
 
             foreach (var character in characters)
             {
-                if (string.IsNullOrEmpty(character))
-                {
-                    throw new ArgumentNullException("Null character.");
-                }
+                Encapsulation.TryValidateParam(characters, "Null character.");
 
                 if (input.Contains(character))
                 {
@@ -141,19 +114,16 @@ namespace dotNetTips.Utility.Standard.Extensions
         }
 
         /// <summary>
-        /// Counts the specified source.
+        /// Counts the specified list.
         /// </summary>
-        /// <param name="source">The source.</param>
+        /// <param name="source">The list.</param>
         /// <returns>System.Int32.</returns>
-        /// <exception cref="ArgumentNullException">source - Source cannot be null.</exception>
-        public static int Count(this IEnumerable source)
+        /// <exception cref="ArgumentNullException">list - Source cannot be null.</exception>
+        public static int Count(this IEnumerable list)
         {
-            if (source == null)
-            {
-                throw new ArgumentNullException(nameof(source), "Source cannot be null.");
-            }
+            Encapsulation.TryValidateParam(list, nameof(list));
 
-            var collection = source as ICollection;
+            var collection = list as ICollection;
 
             if (collection != null)
             {
@@ -162,7 +132,7 @@ namespace dotNetTips.Utility.Standard.Extensions
 
             var count = 0;
 
-            while (source.GetEnumerator().MoveNext()) count++;
+            while (list.GetEnumerator().MoveNext()) count++;
 
             return count;
         }
@@ -171,26 +141,20 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// Finds first item or returns null.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="source">The source.</param>
+        /// <param name="source">The list.</param>
         /// <param name="match">The match.</param>
         /// <returns>System.Nullable&lt;T&gt;.</returns>
         /// <exception cref="ArgumentNullException">
-        /// source - Source cannot be null.
+        /// list - Source cannot be null.
         /// or
         /// match - Match cannot be null.
         /// </exception>
-        public static T? FirstOrNull<T>(this IEnumerable<T> source, Func<T, bool> match) where T : struct
+        public static T? FirstOrNull<T>(this IEnumerable<T> list, Func<T, bool> match) where T : struct
         {
-            if (source == null)
-            {
-                throw new ArgumentNullException(nameof(source), "Source cannot be null.");
-            }
-            if (match == null)
-            {
-                throw new ArgumentNullException(nameof(match), "Match cannot be null.");
-            }
+            Encapsulation.TryValidateParam(list, nameof(list));
+            Encapsulation.TryValidateParam<ArgumentNullException>(match == null, "Match cannot be null.");
 
-            foreach (T local in source)
+            foreach (T local in list)
             {
                 if (match?.Invoke(local) ?? default(bool))
                 {
@@ -213,10 +177,10 @@ namespace dotNetTips.Utility.Standard.Extensions
         }
 
         /// <summary>
-        /// Determines whether the specified source is valid.
+        /// Determines whether the specified list is valid.
         /// </summary>
-        /// <param name="source">The source.</param>
-        /// <returns><count>true</count> if the specified source is valid; otherwise, <count>false</count>.</returns>
+        /// <param name="source">The list.</param>
+        /// <returns><count>true</count> if the specified list is valid; otherwise, <count>false</count>.</returns>
         public static bool IsValid(this IEnumerable source)
         {
             //DO NOT ADD CONTRACT HERE
@@ -226,44 +190,34 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <summary>
         /// Returns no duplicates.
         /// </summary>
-        /// <param name="source">The source values.</param>
+        /// <param name="source">The list values.</param>
         /// <returns>System.String[].</returns>
-        /// <exception cref="ArgumentNullException">source - Source cannot be null or have a 0 length.</exception>
-        public static string[] NoDuplicates(this string[] source)
+        /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 length.</exception>
+        public static string[] NoDuplicates(this string[] list)
         {
-            if (source == null && source.Length == 0)
-            {
-                throw new ArgumentNullException(nameof(source), "Source cannot be null or have a 0 length.");
-            }
+            Encapsulation.TryValidateParam(list, nameof(list));
 
-            return source.Distinct().ToArray();
+            return list.Distinct().ToArray();
         }
 
         /// <summary>
-        /// Pages the specified source.
+        /// Pages the specified list.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="source">The source.</param>
+        /// <param name="source">The list.</param>
         /// <param name="pageSize">Size of the page.</param>
         /// <returns>IEnumerable&lt;IEnumerable&lt;T&gt;&gt;.</returns>
         /// <exception cref="ArgumentNullException">
-        /// source - Source cannot be null.
+        /// list - Source cannot be null.
         /// or
-        /// source - Page size cannot be 0 length.
+        /// list - Page size cannot be 0 length.
         /// </exception>
         /// <remarks>Original code by: Lukazoid</remarks>
-        public static IEnumerable<IEnumerable<T>> Page<T>(this IEnumerable<T> source, int pageSize)
+        public static IEnumerable<IEnumerable<T>> Page<T>(this IEnumerable<T> list, int pageSize)
         {
-            if (source == null )
-            {
-                throw new ArgumentNullException(nameof(source), "Source cannot be null.");
-            }
-            if (pageSize == 0)
-            {
-                throw new ArgumentNullException(nameof(source), "Page size cannot be 0 length.");
-            }
+            Encapsulation.TryValidateParam(list, nameof(list));
 
-            using (var enumerator = source.GetEnumerator())
+            using (var enumerator = list.GetEnumerator())
             {
                 while (enumerator.MoveNext())
                 {
@@ -283,29 +237,27 @@ namespace dotNetTips.Utility.Standard.Extensions
         }
 
         /// <summary>
-        /// Picks random items out of the collection.
+        /// Picks random items out of the list.
         /// </summary>
         /// <typeparam name="T">Collection type.</typeparam>
-        /// <param name="source">The source collection.</param>
+        /// <param name="source">The list list.</param>
         /// <param name="count">The selection count.</param>
-        /// <returns>IEnumerable collection.</returns>
+        /// <returns>IEnumerable list.</returns>
         /// <exception cref="ArgumentNullException">
-        /// source - Source cannot be null or have a 0 value.
+        /// list - Source cannot be null or have a 0 value.
         /// or
-        /// source - Count cannot be 0.
+        /// list - Count cannot be 0.
         /// </exception>
-        public static IEnumerable<T> PickRandom<T>(this IEnumerable<T> source, int count)
+        public static IEnumerable<T> PickRandom<T>(this IEnumerable<T> list, int count)
         {
-            if (source == null && source.Count() == 0)
-            {
-                throw new ArgumentNullException(nameof(source), "Source cannot be null or have a 0 value.");
-            }
+            Encapsulation.TryValidateParam(list, nameof(list));
+
             if (count == 0)
             {
-                throw new ArgumentNullException(nameof(source), "Count cannot be 0.");
+                throw new ArgumentNullException(nameof(list), "Count cannot be 0.");
             }
 
-            return source.Randomize().Take(count);
+            return list.Randomize().Take(count);
         }
 
         /// <summary>
@@ -313,47 +265,35 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// rotates the unique values from the secondKey selector function into multiple values in
         /// the output, and performs aggregations.
         /// </summary>
-        /// <typeparam name="TSource">The type of the t source.</typeparam>
+        /// <typeparam name="TSource">The type of the t list.</typeparam>
         /// <typeparam name="TFirstKey">The type of the t first key.</typeparam>
         /// <typeparam name="TSecondKey">The type of the t second key.</typeparam>
         /// <typeparam name="TValue">The type of the t value.</typeparam>
-        /// <param name="source">The source.</param>
+        /// <param name="source">The list.</param>
         /// <param name="firstKeySelector">The first key selector.</param>
         /// <param name="secondKeySelector">The second key selector.</param>
         /// <param name="aggregate">The aggregate.</param>
         /// <returns>Dictionary&lt;TFirstKey, Dictionary&lt;TSecondKey, TValue&gt;&gt;.</returns>
         /// <exception cref="ArgumentNullException">
-        /// source - Source cannot be null or have a 0 value.
+        /// list - Source cannot be null or have a 0 value.
         /// or
-        /// source - Aggregate cannot be null.
+        /// list - Aggregate cannot be null.
         /// or
         /// firstKeySelector - First key selector cannot be null.
         /// or
         /// secondKeySelector - Second key selector cannot be null.
         /// </exception>
         /// <remarks>Original code by: Fons Sonnemans</remarks>
-        public static Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>> Pivot<TSource, TFirstKey, TSecondKey, TValue>(this IEnumerable<TSource> source, Func<TSource, TFirstKey> firstKeySelector, Func<TSource, TSecondKey> secondKeySelector, Func<IEnumerable<TSource>, TValue> aggregate)
+        public static Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>> Pivot<TSource, TFirstKey, TSecondKey, TValue>(this IEnumerable<TSource> list, Func<TSource, TFirstKey> firstKeySelector, Func<TSource, TSecondKey> secondKeySelector, Func<IEnumerable<TSource>, TValue> aggregate)
         {
-            if (source == null && source.Count() == 0)
-            {
-                throw new ArgumentNullException(nameof(source), "Source cannot be null or have a 0 value.");
-            }
-            if (aggregate == null)
-            {
-                throw new ArgumentNullException(nameof(source), "Aggregate cannot be null.");
-            }
-            if (firstKeySelector==null)
-            {
-                throw new ArgumentNullException(nameof(firstKeySelector), "First key selector cannot be null.");
-            }
-            if (secondKeySelector == null)
-            {
-                throw new ArgumentNullException(nameof(secondKeySelector), "Second key selector cannot be null.");
-            }
+            Encapsulation.TryValidateParam(list, nameof(list));
+            Encapsulation.TryValidateParam<ArgumentNullException>(aggregate == null, "Aggregate cannot be null.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(firstKeySelector == null, "First key selector cannot be null.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(secondKeySelector == null, "Second key selector cannot be null.");
 
             var returnValue = new Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>>();
 
-            var lookup = source.ToLookup(firstKeySelector);
+            var lookup = list.ToLookup(firstKeySelector);
 
             foreach (var item in lookup)
             {
@@ -373,37 +313,31 @@ namespace dotNetTips.Utility.Standard.Extensions
         }
 
         /// <summary>
-        /// Randomizes the specified source.
+        /// Randomizes the specified list.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="source">The source.</param>
+        /// <param name="source">The list.</param>
         /// <returns>IEnumerable&lt;T&gt;.</returns>
-        /// <exception cref="ArgumentNullException">source - Source cannot be null or have a 0 value.</exception>
+        /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
         /// <remarks>Original code by: Phil Campbell</remarks>
-        public static IEnumerable<T> Randomize<T>(this IEnumerable<T> source)
+        public static IEnumerable<T> Randomize<T>(this IEnumerable<T> list)
         {
-            if (source == null && source.Count() == 0)
-            {
-                throw new ArgumentNullException(nameof(source), "Source cannot be null or have a 0 value.");
-            }
+            Encapsulation.TryValidateParam(list, nameof(list));
 
-            return source.OrderBy(x => (new Random().Next()));
+            return list.OrderBy(x => (new Random().Next()));
         }
 
         /// <summary>
-        /// Converts collection to a delimited string.
+        /// Converts list to a delimited string.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="source">The source.</param>
+        /// <param name="source">The list.</param>
         /// <param name="delimiter">The delimiter (default is comma if not supplied).</param>
         /// <returns>System.String.</returns>
-        /// <exception cref="ArgumentNullException">source - Source cannot be null or have a 0 value.</exception>
-        public static string ToDelimitedString<T>(this IEnumerable<T> source, char delimiter)
+        /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
+        public static string ToDelimitedString<T>(this IEnumerable<T> list, char delimiter)
         {
-            if (source == null && source.Count() == 0)
-            {
-                throw new ArgumentNullException(nameof(source), "Source cannot be null or have a 0 value.");
-            }
+            Encapsulation.TryValidateParam(list, nameof(list));
 
             if (string.IsNullOrEmpty(delimiter.ToString()))
             {
@@ -412,7 +346,7 @@ namespace dotNetTips.Utility.Standard.Extensions
 
             var sb = new StringBuilder();
 
-            foreach (var item in source)
+            foreach (var item in list)
             {
                 if (sb.Length > 0)
                 {
@@ -427,21 +361,18 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <summary>
         /// Converts an enumeration of groupings into a Dictionary of those groupings.
         /// </summary>
-        /// <typeparam name="TKey">Key type of the grouping and dictionary.</typeparam>
-        /// <typeparam name="TValue">Element type of the grouping and dictionary list.</typeparam>
+        /// <typeparam name="TKey">Key type of the grouping and list.</typeparam>
+        /// <typeparam name="TValue">Element type of the grouping and list list.</typeparam>
         /// <param name="source">The enumeration of groupings from a GroupBy() clause.</param>
-        /// <returns>A dictionary of groupings such that the key of the dictionary is TKey type and the value
+        /// <returns>A list of groupings such that the key of the list is TKey type and the value
         /// is List of TValue type.</returns>
-        /// <exception cref="ArgumentNullException">source - Source cannot be null or have a 0 value.</exception>
+        /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
         /// <remarks>Original code by: James Michael Hare</remarks>
-        public static Dictionary<TKey, List<TValue>> ToDictionary<TKey, TValue>(this IEnumerable<IGrouping<TKey, TValue>> source)
+        public static Dictionary<TKey, List<TValue>> ToDictionary<TKey, TValue>(this IEnumerable<IGrouping<TKey, TValue>> list)
         {
-            if (source == null && source.Count() == 0)
-            {
-                throw new ArgumentNullException(nameof(source), "Source cannot be null or have a 0 value.");
-            }
+            Encapsulation.TryValidateParam(list, nameof(list));
 
-            return source.ToDictionary(group => group.Key, group => group.ToList());
+            return list.ToDictionary(group => group.Key, group => group.ToList());
         }
 
         /// <summary>
@@ -450,94 +381,79 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="source">The list.</param>
         /// <returns>Task&lt;List&lt;T&gt;&gt;.</returns>
-        /// <exception cref="ArgumentNullException">source - Source cannot be null or have a 0 value.</exception>
+        /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
         /// <remarks>Original code by: Fons Sonnemans</remarks>
-        public static Task<List<T>> ToListAsync<T>(this IEnumerable<T> source)
+        public static Task<List<T>> ToListAsync<T>(this IEnumerable<T> list)
         {
-            if (source == null && source.Count() == 0)
-            {
-                throw new ArgumentNullException(nameof(source), "Source cannot be null or have a 0 value.");
-            }
+            Encapsulation.TryValidateParam(list, nameof(list));
 
-            return Task.Run(() => source.ToList());
+            return Task.Run(() => list.ToList());
         }
 
         /// <summary>
-        /// To the observable collection.
+        /// To the observable list.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="source">The source collection.</param>
+        /// <param name="source">The list list.</param>
         /// <returns>ObservableCollection&lt;T&gt;.</returns>
-        /// <exception cref="ArgumentNullException">source - Source cannot be null or have a 0 value.</exception>
-        public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> source)
+        /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
+        public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> list)
         {
-            if (source == null && source.Count() == 0)
-            {
-                throw new ArgumentNullException(nameof(source), "Source cannot be null or have a 0 value.");
-            }
+            Encapsulation.TryValidateParam(list, nameof(list));
 
-            return new ObservableCollection<T>(source);
+            return new ObservableCollection<T>(list);
         }
 
         /// <summary>
-        /// Creates a read only collection.
+        /// Creates a read only list.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="source">The source.</param>
+        /// <param name="source">The list.</param>
         /// <returns>ReadOnlyCollection&lt;T&gt;.</returns>
-        /// <exception cref="ArgumentNullException">source - Source cannot be null or have a 0 value.</exception>
-        public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(this IList<T> source)
+        /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
+        public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(this IList<T> list)
         {
-            if (source == null && source.Count() == 0)
-            {
-                throw new ArgumentNullException(nameof(source), "Source cannot be null or have a 0 value.");
-            }
+            Encapsulation.TryValidateParam(list, nameof(list));
 
-            return new ReadOnlyCollection<T>(source);
+            return new ReadOnlyCollection<T>(list);
         }
 
         /// <summary>
-        /// Returns collection based on function.
+        /// Returns list based on function.
         /// </summary>
-        /// <typeparam name="TSource">The type of the source.</typeparam>
-        /// <param name="source">The source.</param>
+        /// <typeparam name="TSource">The type of the list.</typeparam>
+        /// <param name="source">The list.</param>
         /// <param name="condition">if set to <c>true</c> [condition].</param>
         /// <param name="predicate">The predicate.</param>
         /// <returns>IEnumerable&lt;TSource&gt;.</returns>
-        /// <exception cref="ArgumentNullException">source - Source cannot be null or have a 0 value.</exception>
+        /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
         /// <remarks>Original code by: Phil Campbell</remarks>
-        public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> source, bool condition, Func<TSource, bool> predicate)
+        public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> list, bool condition, Func<TSource, bool> predicate)
         {
-            if (source == null && source.Count() == 0)
-            {
-                throw new ArgumentNullException(nameof(source), "Source cannot be null or have a 0 value.");
-            }
+            Encapsulation.TryValidateParam(list, nameof(list));
 
-            return condition ? source.Where(predicate) : source;
+            return condition ? list.Where(predicate) : list;
         }
 
         /// <summary>
-        /// Returns collection based on function.
+        /// Returns list based on function.
         /// </summary>
-        /// <typeparam name="TSource">The type of the source.</typeparam>
-        /// <param name="source">The source.</param>
+        /// <typeparam name="TSource">The type of the list.</typeparam>
+        /// <param name="source">The list.</param>
         /// <param name="condition">if set to <c>true</c> [condition].</param>
         /// <param name="predicate">The predicate.</param>
         /// <returns>IEnumerable&lt;TSource&gt;.</returns>
-        /// <exception cref="ArgumentNullException">source - Source cannot be null or have a 0 value.</exception>
+        /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
         /// <remarks>Original code by: Phil Campbell</remarks>
-        public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> source, bool condition, Func<TSource, int, bool> predicate)
+        public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> list, bool condition, Func<TSource, int, bool> predicate)
         {
-            if (source == null && source.Count() == 0)
-            {
-                throw new ArgumentNullException(nameof(source), "Source cannot be null or have a 0 value.");
-            }
+            Encapsulation.TryValidateParam(list, nameof(list));
 
-            return condition ? source.Where(predicate) : source;
+            return condition ? list.Where(predicate) : list;
         }
 
         /// <summary>
-        /// Converts delimited string to collection.
+        /// Converts delimited string to list.
         /// </summary>
         /// <param name="delimitedInput">The string buffer.</param>
         /// <param name="delimiter">The delimiter.</param>
@@ -565,10 +481,8 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <remarks>Code by: C.F.Meijers</remarks>
         public static IEnumerable<T> OrderBy<T>(this IEnumerable<T> list, string sortExpression)
         {
-            if (string.IsNullOrWhiteSpace(sortExpression))
-            {
-                throw new ArgumentNullException(nameof(sortExpression), "Sort expression cannot be null.");
-            }
+            Encapsulation.TryValidateParam(list, nameof(list));
+            Encapsulation.TryValidateParam<ArgumentNullException>(string.IsNullOrEmpty(sortExpression), "Sort expression cannot be null.");
 
             sortExpression += string.Empty;
             var parts = sortExpression.Split(ControlChars.Space);
@@ -601,15 +515,69 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// Adds the range.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="collection">The collection.</param>
+        /// <param name="collection">The list.</param>
         /// <param name="newItems">The new items.</param>
         /// <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
-        public static void AddRange<T>(this ICollection<T> collection, IEnumerable<T> newItems)
+        public static void AddRange<T>(this ICollection<T> list, IEnumerable<T> newItems)
         {
+            Encapsulation.TryValidateParam(list, nameof(list));
+            Encapsulation.TryValidateParam(newItems, nameof(newItems));
+
             Parallel.ForEach(newItems, (item) =>
              {
-                 collection.Add(item);
+                 list.Add(item);
              });
+        }
+
+        /// <summary>
+        /// Determines whether [is not in collection] [the specified item].
+        /// </summary>
+        /// <param name="collection">The collection.</param>
+        /// <param name="item">The item.</param>
+        /// <returns><c>true</c> if [is not in collection] [the specified item]; otherwise, <c>false</c>.</returns>
+        public static bool IsNotInCollection<T>(this T collection, object item)
+        {
+            return (item == null && collection.In(item) == false);
+        }
+
+        /// <summary>
+        /// Tries to add item to collection.
+        /// </summary>
+        /// <param name="collection">The collection.</param>
+        /// <param name="item">The item.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        public static bool TryAdd(this IList collection, object item)
+        {
+            if (collection.IsNotInCollection(item))
+            {
+                collection.Add(item);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Tries the item to the collection.
+        /// </summary>
+        /// <typeparam name="TKey">The type of the t key.</typeparam>
+        /// <typeparam name="TValue">The type of the t value.</typeparam>
+        /// <param name="collection">The collection.</param>
+        /// <param name="item">The item.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        public static bool TryAdd<TKey, TValue>(this IDictionary collection, TKey key, TValue value)
+        {
+            if (collection.Contains(key))
+            {
+                collection.Add(key, value);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -618,35 +586,27 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <typeparam name="T"></typeparam>
         /// <typeparam name="TKey">The type of the key.</typeparam>
         /// <typeparam name="TValue">The type of the value.</typeparam>
-        /// <param name="dictionary">The dictionary.</param>
+        /// <param name="dictionary">The list.</param>
         /// <param name="items">The items.</param>
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
         /// <exception cref="ArgumentNullException">
-        /// dictionary - Dictionary cannot be null.
+        /// list - Dictionary cannot be null.
         /// or
         /// key - Key cannot be null.
         /// </exception>
         /// <exception cref="ArgumentException">value - Value cannot be null.</exception>
         /// <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
-        public static void AddRange<T, TKey, TValue>(this IDictionary<TKey, TValue> dictionary, IEnumerable<T> items, Func<T, TKey> key, Func<T, TValue> value)
+        public static void AddRange<T, TKey, TValue>(this IDictionary<TKey, TValue> list, IEnumerable<T> items, Func<T, TKey> key, Func<T, TValue> value)
         {
-            if (dictionary == null)
-            {
-                throw new ArgumentNullException(nameof(dictionary), "Dictionary cannot be null.");
-            }
-            if (key == null)
-            {
-                throw new ArgumentNullException(nameof(key), "Key cannot be null.");
-            }
-            if (value == null)
-            {
-                throw new ArgumentException(nameof(value), "Value cannot be null.");
-            }
+            Encapsulation.TryValidateParam(list, nameof(list));
+            Encapsulation.TryValidateParam(items, nameof(items));
+            Encapsulation.TryValidateParam<ArgumentNullException>(key == null, "Key cannot be null.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(value == null, "Value cannot be null.");
 
             foreach (T item in items)
             {
-                dictionary.Add(key(item), value(item));
+                list.Add(key(item), value(item));
             }
         }
 

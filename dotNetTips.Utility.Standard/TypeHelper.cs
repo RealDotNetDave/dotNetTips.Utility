@@ -12,6 +12,8 @@
 // <summary></summary>
 // ***********************************************************************
 using System;
+using System.Linq;
+using System.Reflection;
 
 /// <summary>
 /// The dotNetTips.Utility.Standard namespace.
@@ -37,6 +39,44 @@ namespace dotNetTips.Utility.Standard
             var result = instance is T ? (T)instance : null;
 
             return result;
+        }
+
+        /// <summary>
+        /// Does the object equal instance.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <param name="instance">The instance.</param>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        public static bool DoesObjectEqualInstance(Object value, object instance)
+        {
+            var result = object.ReferenceEquals(value, instance);
+
+            return result;
+
+        }
+
+        /// <summary>
+        /// Gets the instance hash code.
+        /// </summary>
+        /// <param name="instance">The instance.</param>
+        /// <returns></returns>
+        /// <remarks></remarks>
+        public static Int32 GetInstanceHashCode(object instance)
+        {
+            Int32 hash = -1;
+
+            foreach (PropertyInfo prop in instance.GetType().GetRuntimeProperties().Where(p => p != null))
+            {
+                object value = prop.GetValue(instance);
+
+                if (value != null)
+                {
+                    hash = hash ^ value.GetHashCode();
+                }
+            }
+
+            return hash;
         }
     }
 }

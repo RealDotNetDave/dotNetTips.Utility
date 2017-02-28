@@ -31,7 +31,7 @@ Public Module General
     End Sub
 
     ''' <summary>
-    ''' Doeses the object equal instance.
+    ''' Does the object equal instance.
     ''' </summary>
     ''' <param name="value">The value.</param>
     ''' <param name="instance">The instance.</param>
@@ -55,9 +55,6 @@ Public Module General
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public Function GetInstanceHashCode(ByVal instance As Object) As Int32
-
-        Contract.Requires(Of ArgumentNullException)(instance IsNot Nothing)
-
         Dim hash As Int32
 
         For Each prop As PropertyInfo In instance.GetType.GetRuntimeProperties().Where(Function(p) p IsNot Nothing).AsParallel

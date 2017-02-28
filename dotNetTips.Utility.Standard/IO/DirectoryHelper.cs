@@ -80,7 +80,7 @@ namespace dotNetTips.Utility.Standard.IO
         {
             if (directory == null)
                 throw new ArgumentNullException(nameof(directory));
-
+           
             if (directory.Exists)
                 await Task.Factory.StartNew(() =>
                 {
