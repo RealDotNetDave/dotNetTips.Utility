@@ -93,7 +93,7 @@ namespace dotNetTips.Utility.Standard
         public static bool IsProcessRunning(string processName)
         {
 
-            Encapsulation.TryValidateParam<ArgumentNullException>(String.IsNullOrEmpty(processName), "Process name is required.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(String.IsNullOrEmpty(processName)==false, "Process name is required.");
 
             return Process.GetProcessesByName(processName).Count() > 0 ? true : false;
         }

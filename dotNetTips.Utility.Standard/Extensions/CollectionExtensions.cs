@@ -48,12 +48,18 @@ namespace dotNetTips.Utility.Standard.Extensions
         public static void AddIfNotExists<T>(this ICollection<T> list, T value)
         {
             Encapsulation.TryValidateParam<ArgumentNullException>(value != null, "Value is required.");
-            Encapsulation.TryValidateParam<ArgumentNullException>(list.IsReadOnly==false, "List cannot be read-only.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(list.IsReadOnly == false, "List cannot be read-only.");
 
-            if (list.Contains(value) == false)
+            //TODO: MULTITHREAD
+            foreach (var item in list)
             {
-                list.Add(value);
+                if (TypeHelper.GetInstanceHashCode(item)== TypeHelper.GetInstanceHashCode(value))
+                {
+                    return;
+                }
             }
+
+            list.Add(value);
         }
 
         /// <summary>
@@ -404,7 +410,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <remarks>Original code by: Phil Campbell</remarks>
         public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> list, bool condition, Func<TSource, bool> predicate)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(predicate!= null);
+            Encapsulation.TryValidateParam<ArgumentNullException>(predicate != null);
 
             return condition ? list.Where(predicate) : list;
         }
@@ -420,8 +426,8 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
         /// <remarks>Original code by: Phil Campbell</remarks>
         public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> list, bool condition, Func<TSource, int, bool> predicate)
-        { 
-            Encapsulation.TryValidateParam<ArgumentNullException>(predicate!= null);
+        {
+            Encapsulation.TryValidateParam<ArgumentNullException>(predicate != null);
 
             return condition ? list.Where(predicate) : list;
         }
@@ -522,7 +528,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         {
             Encapsulation.TryValidateParam(items, nameof(items));
             Encapsulation.TryValidateParam<ArgumentNullException>(key == null, "Key cannot be null.");
-            Encapsulation.TryValidateParam<ArgumentNullException>(value==null, "Value cannot be null.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(value == null, "Value cannot be null.");
 
             foreach (T item in items)
             {
