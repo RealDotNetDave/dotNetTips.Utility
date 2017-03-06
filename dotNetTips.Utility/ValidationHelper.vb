@@ -9,7 +9,8 @@
 '
 ' Copyright        : (c) dotNetTips.com. All rights reserved.
 '***********************************************************************
-Imports System.Diagnostics.Contracts
+
+Imports dotNetTips.Utility.Portable.OOP
 ''' <summary>
 ''' Validation helper class.
 ''' </summary>
@@ -23,7 +24,7 @@ Public Module ValidationHelper
     ''' <returns>True if valid.</returns>
     ''' <remarks></remarks>
     Public Function IsValidNumber(ByVal input As String) As Boolean
-        Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
         Return IsNumeric(input)
 

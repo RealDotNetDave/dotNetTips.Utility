@@ -11,8 +11,9 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using dotNetTips.Utility.Portable.OOP;
 using System;
-using System.Diagnostics.Contracts;
+
 using System.Globalization;
 
 namespace dotNetTips.Utility.Portable.Extensions
@@ -30,7 +31,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <returns>DateTime.</returns>
         public static DateTime GetLast(this DateTime input, DayOfWeek dayOfWeek)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(Enum.IsDefined(typeof(DayOfWeek), input));
+            Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(Enum.IsDefined(typeof(DayOfWeek), input));
 
             var daysToSubtract = input.DayOfWeek > dayOfWeek ? input.DayOfWeek - dayOfWeek : (7 - (int)dayOfWeek) + (int)input.DayOfWeek;
             return input.AddDays(daysToSubtract * -1);
@@ -44,7 +45,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <returns>DateTime.</returns>
         public static DateTime GetNext(this DateTime input, DayOfWeek dayOfWeek)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(Enum.IsDefined(typeof(DayOfWeek), input));
+            Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(Enum.IsDefined(typeof(DayOfWeek), input));
 
             var daysToAdd = 0;
             daysToAdd = input.DayOfWeek < dayOfWeek ? dayOfWeek - input.DayOfWeek : (7 - (int)input.DayOfWeek) + (int)dayOfWeek;

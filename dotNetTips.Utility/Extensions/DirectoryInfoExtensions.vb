@@ -12,8 +12,9 @@
 ' <summary></summary>
 ' ***********************************************************************
 Imports System.IO
-Imports System.Diagnostics.Contracts
+
 Imports System.Runtime.CompilerServices
+Imports dotNetTips.Utility.Portable.OOP
 
 Namespace Extensions
     ''' <summary>
@@ -33,7 +34,7 @@ Namespace Extensions
         ''' </example></remarks>
         <Extension>
         Public Function DeleteFiles(ByVal directory As DirectoryInfo, ByVal searchPattern As String) As Integer
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(searchPattern) = False, "searchPattern is nothing or empty.")
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(searchPattern) = False, "searchPattern is nothing or empty.")
 
             Return DeleteFiles(directory, searchPattern, Tristate.False)
         End Function
@@ -75,8 +76,8 @@ Namespace Extensions
         ''' </example></remarks>
         <Extension>
         Public Function DeleteFiles(ByVal info As DirectoryInfo, ByVal searchPattern As String, ByVal includeSubdirectories As Tristate) As Integer
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(searchPattern) = False)
-            Contract.Requires(Of ArgumentNullException)([Enum].IsDefined(GetType(Tristate), includeSubdirectories))
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(searchPattern) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)([Enum].IsDefined(GetType(Tristate), includeSubdirectories))
 
             Dim deleted As Integer = 0
             For Each fi As FileInfo In info.GetFiles(searchPattern, If(includeSubdirectories = Tristate.True, SearchOption.AllDirectories, SearchOption.TopDirectoryOnly)).AsParallel

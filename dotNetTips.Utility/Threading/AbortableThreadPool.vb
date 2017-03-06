@@ -13,6 +13,7 @@
 ' ***********************************************************************
 Imports System.Collections.Generic
 Imports System.Threading
+Imports dotNetTips.Utility.Portable.OOP
 
 Namespace Threading
     ''' <summary>
@@ -49,7 +50,7 @@ Namespace Threading
         ''' <param name="state">The state.</param>
         ''' <returns>WorkItem.</returns>
         Public Shared Function QueueUserWorkItem(callback As AsyncCallback, state As Object) As WorkItem
-            Contracts.Contract.Requires(Of ArgumentNullException)(callback IsNot Nothing)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(callback IsNot Nothing)
 
             Dim item As New WorkItem(callback, state, ExecutionContext.Capture())
 

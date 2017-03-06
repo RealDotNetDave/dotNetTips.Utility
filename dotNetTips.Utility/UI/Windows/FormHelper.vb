@@ -10,6 +10,8 @@
 ' Copyright        : (c) dotNetTips.com. All rights reserved.
 '***********************************************************************
 Imports System.Windows.Forms
+Imports dotNetTips.Utility.Portable.OOP
+
 Namespace UI.Windows
 
     ''' <summary>
@@ -22,7 +24,7 @@ Namespace UI.Windows
         ''' </summary>
         ''' <param name="parent">The parent Control.</param>
         Public Shared Sub ClearTextBoxes(ByVal parent As Control)
-            Contracts.Contract.Requires(Of ArgumentNullException)(parent IsNot Nothing)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(parent IsNot Nothing)
 
             For Each tempControl As Control In parent.Controls
                 If tempControl.Controls.Count > 0 Then
@@ -38,7 +40,7 @@ Namespace UI.Windows
         ''' </summary>
         ''' <param name="control">The control to select.</param>
         Public Shared Sub SelectControlText(ByVal control As System.Windows.Forms.TextBox)
-            Contracts.Contract.Requires(Of ArgumentNullException)(control IsNot Nothing)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(control IsNot Nothing)
 
             If control.Text.Length > 0 Then
                 control.Select(0, control.Text.Length)

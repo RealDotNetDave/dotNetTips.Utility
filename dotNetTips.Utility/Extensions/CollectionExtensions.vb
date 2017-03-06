@@ -12,11 +12,13 @@
 ' <summary></summary>
 ' ***********************************************************************
 Imports System.Collections.Generic
-Imports System.Diagnostics.Contracts
+
 Imports System.Drawing
 Imports System.IO
 Imports System.Reflection
 Imports System.Runtime.CompilerServices
+Imports dotNetTips.Utility.Portable.OOP
+
 Namespace Extensions
     ''' <summary>
     '''
@@ -31,7 +33,6 @@ Namespace Extensions
         ''' <remarks></remarks>
         <Extension>
         Public Function ToImage(value As Byte()) As Image
-            Contracts.Contract.Requires(Of ArgumentNullException)(value.Length > 0)
 
             Dim image As Image
 

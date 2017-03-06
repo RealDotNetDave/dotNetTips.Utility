@@ -13,10 +13,11 @@
 ' <summary></summary>
 ' *************************************************************************
 
-Imports System.Diagnostics.Contracts
+
 Imports System.Globalization
 Imports System.Text
 Imports dotNetTips.Utility.Net
+Imports dotNetTips.Utility.Portable.OOP
 Imports StackifyLib
 
 Namespace Listeners
@@ -40,7 +41,7 @@ Namespace Listeners
         ''' <param name="eventLog">The event log.</param>
         Public Sub New(ByVal logEntry As LogEntry)
             MyBase.New(CStr(If((Not logEntry Is Nothing), logEntry.Source, String.Empty)))
-            Contract.Requires(Of ArgumentNullException)(logEntry IsNot Nothing)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(logEntry IsNot Nothing)
 
             Me._logEntry = logEntry
 

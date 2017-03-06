@@ -8,8 +8,9 @@
 // <summary>
 // </summary>
 // ***********************************************************************
+using dotNetTips.Utility.Portable.OOP;
 using System;
-using System.Diagnostics.Contracts;
+
 
 namespace dotNetTips.Utility.Portable.Extensions {
     /// <summary>
@@ -26,7 +27,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         public static T TraverseFor<T>(this Exception ex)
             where T : class
         {
-            Contract.Requires<ArgumentNullException>(ex != null);
+            Encapsulation.TryValidateParam<ArgumentNullException>(ex != null);
 
             if (ReferenceEquals(ex.GetType(), typeof(T)))
             {

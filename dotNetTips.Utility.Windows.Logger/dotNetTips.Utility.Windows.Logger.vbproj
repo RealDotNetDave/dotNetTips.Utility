@@ -226,6 +226,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\dotNetTips.Utility.Portable\dotNetTips.Utility.Portable.csproj">
+      <Project>{0C07F36A-CB82-47B3-BC4B-601FADD18A71}</Project>
+      <Name>dotNetTips.Utility.Portable</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dotNetTips.Utility\dotNetTips.Utility.vbproj">
       <Project>{0AC67571-8E1F-4048-88B0-C2A00FFE5D93}</Project>
       <Name>dotNetTips.Utility</Name>

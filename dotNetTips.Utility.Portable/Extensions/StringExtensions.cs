@@ -11,8 +11,9 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using dotNetTips.Utility.Portable.OOP;
 using System;
-using System.Diagnostics.Contracts;
+
 using System.Text;
 
 namespace dotNetTips.Utility.Portable.Extensions {
@@ -29,7 +30,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <returns><c>true</c> if [is valid credit card number] [the specified number]; otherwise, <c>false</c>.</returns>
         public static bool IsValidCreditCardNumber(this string number)
         {
-            Contract.Requires<ArgumentNullException>(string.IsNullOrEmpty(number) == false);
+            Encapsulation.TryValidateParam<ArgumentNullException>(string.IsNullOrEmpty(number) == false);
 
             var deltas = new int[] { 0, 1, 2, 3, 4, -4, -3, -2, -1, 0 };
             var checksum = 0;
@@ -58,7 +59,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <exception cref="System.ArgumentNullException">Null character.</exception>
         public static bool ContainsAny(this string input, params string[] characters)
         {
-            Contract.Requires<ArgumentNullException>(characters != null && characters.Length > 0);
+            Encapsulation.TryValidateParam<ArgumentNullException>(characters != null && characters.Length > 0);
 
             if (string.IsNullOrEmpty(input))
             {
@@ -120,7 +121,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <returns>System.String.</returns>
         public static string FormatFileSize(this long fileSize)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(fileSize >= 0 && fileSize >= long.MinValue && fileSize <= long.MaxValue);
+            Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(fileSize >= 0 && fileSize >= long.MinValue && fileSize <= long.MaxValue);
 
             var size = 0L;
 
@@ -147,7 +148,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <returns>System.String.</returns>
         public static string Indent(this string str, int length, char indentationCharacter = ControlChars.Space)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(length > 0);
+            Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(length > 0);
 
             var sb = new StringBuilder();
 

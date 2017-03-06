@@ -17,7 +17,7 @@ Imports System.CodeDom.Compiler
 Imports System.Collections.Generic
 Imports System.Collections.ObjectModel
 Imports System.Data.Services.Client
-Imports System.Diagnostics.Contracts
+
 Imports System.Drawing
 Imports System.IO
 Imports System.Reflection
@@ -27,6 +27,7 @@ Imports System.Text
 Imports System.Web.Services.Description
 Imports System.Xml
 Imports dotNetTips.Utility.Portable.Extensions
+Imports dotNetTips.Utility.Portable.OOP
 Imports dotNetTips.Utility.Security
 
 Namespace Web
@@ -53,10 +54,9 @@ Namespace Web
         ''' <remarks>Original Code By: Aslam.Iqbal@electoralreform.co.uk
         ''' Modified By: David McCarter</remarks>
         Public Function CallWebService(ByVal webServiceAsmxUrl As Uri, ByVal serviceName As String, ByVal methodName As String, ByVal args() As Object) As Object
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(webServiceAsmxUrl.ToString()) = False)
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(serviceName) = False)
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(methodName) = False)
-            Contract.Ensures(Contract.Result(Of Object)() IsNot Nothing)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(webServiceAsmxUrl.ToString()) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(serviceName) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(methodName) = False)
 
             Static wsdlCache As Dictionary(Of String, String)
 
@@ -141,8 +141,7 @@ Namespace Web
         ''' <returns>System.String.</returns>
         ''' <remarks>Original code by: Jason Robert Karns</remarks>
         Public Function CurrentUsersIP(ByVal currentContext As System.Web.HttpContext) As String
-            Contract.Requires(Of ArgumentNullException)(currentContext Is Nothing)
-            Contract.Ensures(String.IsNullOrWhiteSpace(Contract.Result(Of String)()) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(currentContext Is Nothing)
 
             Dim address As String = currentContext?.Request.ServerVariables("HTTP_CLIENT_IP")
 
@@ -167,8 +166,8 @@ Namespace Web
         ''' <param name="address">The HTTP address.</param>
         ''' <param name="fileName">Name of the local file.</param>
         Public Sub DownloadFile(ByVal address As Uri, ByVal fileName As String)
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(address.ToString) = False)
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(fileName) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(address.ToString) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(fileName) = False)
 
             'Try
             Using request As New System.Net.WebClient()
@@ -187,8 +186,8 @@ Namespace Web
         ''' <param name="address">The HTTP address.</param>
         ''' <param name="fileName">Name of the local file.</param>
         Public Sub DownloadFile(ByVal address As String, ByVal fileName As String)
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(address) = False)
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(fileName) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(address) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(fileName) = False)
 
             DownloadFile(New Uri(address), fileName)
 
@@ -224,8 +223,7 @@ Namespace Web
         ''' <param name="address">The address.</param>
         ''' <returns>Image.</returns>
         Public Function DownloadOnlineImage(ByVal address As String) As Image
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(address) = False)
-            Contract.Ensures(Contract.Result(Of Image)() IsNot Nothing)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(address) = False)
 
             Return DownloadOnlineImage(New Uri(address))
 
@@ -237,8 +235,7 @@ Namespace Web
         ''' <param name="address">The HTTP address.</param>
         ''' <returns>System.String.</returns>
         Public Function DownloadString(ByVal address As Uri) As String
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(address.ToString) = False)
-            Contract.Ensures(String.IsNullOrWhiteSpace(Contract.Result(Of String)()) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(address.ToString) = False)
 
             Using request As New System.Net.WebClient()
                 'Download the data
@@ -262,8 +259,7 @@ Namespace Web
         ''' <param name="address">The URL of the page to download.</param>
         ''' <returns>Web page as <seealso cref="String" /></returns>
         Public Function DownloadWebpage(ByVal address As Uri) As String
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(address.ToString) = False)
-            Contract.Ensures(String.IsNullOrWhiteSpace(Contract.Result(Of String)()) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(address.ToString) = False)
 
             Using request As New System.Net.WebClient()
                 Dim requestData As Byte()
@@ -284,8 +280,7 @@ Namespace Web
         ''' <param name="address">The URL of the page to download.</param>
         ''' <returns>Web page as <seealso cref="String" /></returns>
         Public Function DownloadWebPage(ByVal address As String) As String
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(address) = False)
-            Contract.Ensures(String.IsNullOrWhiteSpace(Contract.Result(Of String)()) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(address) = False)
 
             Return DownloadWebpage(New Uri(address))
         End Function
@@ -323,7 +318,7 @@ Namespace Web
         ''' <param name="key">The key.</param>
         ''' <returns>System.String.</returns>
         Public Function ExtractHttpHeaderValue(key As String) As String
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(key) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(key) = False)
 
             Dim request = System.Web.HttpContext.Current.Request
 
@@ -336,7 +331,7 @@ Namespace Web
         ''' <param name="key">The key.</param>
         ''' <returns>System.String.</returns>
         Public Function ExtractHttpQueryValue(key As String) As String
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(key) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(key) = False)
 
             Dim request = System.Web.HttpContext.Current.Request
 
@@ -349,8 +344,7 @@ Namespace Web
         ''' <param name="input">The text to encode.</param>
         ''' <returns>Encoded text as <seealso cref="String" /></returns>
         Public Function HtmlAttributeEncode(ByVal input As String) As String
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(input) = False)
-            Contract.Ensures(String.IsNullOrWhiteSpace(Contract.Result(Of String)()) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(input) = False)
 
             Return SecurityHelper.EncodeHtmlAttribute(input)
 
@@ -362,8 +356,7 @@ Namespace Web
         ''' <param name="input">The HTML to decode.</param>
         ''' <returns>Decoded text as <seealso cref="String" /></returns>
         Public Function HtmlDecode(ByVal input As String) As String
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(input) = False)
-            Contract.Ensures(String.IsNullOrWhiteSpace(Contract.Result(Of String)()) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(input) = False)
 
             Return System.Web.HttpUtility.HtmlDecode(input)
 
@@ -375,8 +368,7 @@ Namespace Web
         ''' <param name="table">The DataTable to encode.</param>
         ''' <returns>Cloned <seealso cref="DataTable" /> with it's data encoded.</returns>
         Public Function HtmlEncode(ByVal table As DataTable) As DataTable
-            Contract.Requires(Of ArgumentNullException)(table IsNot Nothing = False)
-            Contract.Ensures(Contract.Result(Of DataTable)() IsNot Nothing)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(table IsNot Nothing = False)
 
             Dim tempTable As DataTable = table.Clone
             Dim columnCount As Int32 = tempTable.Columns.Count()
@@ -405,8 +397,7 @@ Namespace Web
         ''' <param name="data">The DataSet to encode.</param>
         ''' <returns>Cloned <seealso cref="DataSet" /> with it's data encoded.</returns>
         Public Function HtmlEncode(ByVal data As DataSet) As DataSet
-            Contract.Requires(Of ArgumentNullException)(data IsNot Nothing = False)
-            Contract.Ensures(Contract.Result(Of DataSet)() IsNot Nothing)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(data IsNot Nothing = False)
 
             Dim tempDataSet As DataSet = data.Clone
 
@@ -435,8 +426,7 @@ Namespace Web
         ''' <param name="input">The text to encode.</param>
         ''' <returns>Encoded text as <seealso cref="String" /></returns>
         Public Function JavaScriptEncode(ByVal input As String) As String
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(input) = False)
-            Contract.Ensures(String.IsNullOrWhiteSpace(Contract.Result(Of String)()) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(input) = False)
 
             Return SecurityHelper.EncodeJS(input)
 
@@ -452,8 +442,7 @@ Namespace Web
         ''' Dim temp = dotNetTips.Utility.Web.WebHelper.JsonDecode(Of ReadOnlyCollection(Of System.IO.DriveInfo))(Me.TextBox1.Text)
         ''' </example></remarks>
         Public Function JsonDecode(Of T)(ByVal input As String) As T
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(input) = False)
-            Contract.Ensures(Contract.Result(Of T)() IsNot Nothing)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(input) = False)
 
             Using ms = New MemoryStream(Encoding.Unicode.GetBytes(input))
                 Dim serilizer = New DataContractJsonSerializer(GetType(T))
@@ -468,13 +457,12 @@ Namespace Web
         ''' <param name="input">The input.</param>
         ''' <returns>System.String.</returns>
         Public Function JsonEncode(ByVal input As Object) As String
-            Contract.Requires(Of ArgumentNullException)(input Is Nothing = False)
-            Contract.Ensures(Contract.Result(Of String)() IsNot Nothing)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(input Is Nothing = False)
 
-            Dim serilizer = New DataContractJsonSerializer(input.GetType)
+            Dim serializer = New DataContractJsonSerializer(input.GetType)
 
             Using ms = New MemoryStream()
-                serilizer.WriteObject(ms, input)
+                serializer.WriteObject(ms, input)
                 Return Encoding.Default.GetString(ms.ToArray())
             End Using
 
@@ -487,7 +475,7 @@ Namespace Web
         '' <returns></returns>
         '' <remarks>Original code by: Viper.</remarks>
         'Public Function LookupGeoLocationInfo(ByVal ipAddress As String) As GeoLocationInfo
-        '    Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(ipAddress) = False)
+        '    Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(ipAddress) = False)
 
         '    Dim result As GeoLocationInfo = Nothing
 
@@ -524,8 +512,7 @@ Namespace Web
         ''' <param name="input">The URL text to decode.</param>
         ''' <returns>Decoded text as <seealso cref="String" /></returns>
         Public Function UrlDecode(ByVal input As String) As String
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(input) = False)
-            Contract.Ensures(String.IsNullOrWhiteSpace(Contract.Result(Of String)()) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(input) = False)
 
             Return System.Web.HttpUtility.UrlDecode(input)
 
@@ -537,8 +524,7 @@ Namespace Web
         ''' <param name="input">The URL text to encode.</param>
         ''' <returns>Encoded URL as <seealso cref="String" /></returns>
         Public Function UrlEncode(ByVal input As String) As String
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(input) = False)
-            Contract.Ensures(String.IsNullOrWhiteSpace(Contract.Result(Of String)()) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(input) = False)
 
             Return SecurityHelper.EncodeUrl(input)
 
@@ -550,8 +536,7 @@ Namespace Web
         ''' <param name="input">The text to encode.</param>
         ''' <returns>Encoded text as <seealso cref="String" /></returns>
         Public Function VisualBasicScriptEncode(ByVal input As String) As String
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(input) = False)
-            Contract.Ensures(String.IsNullOrWhiteSpace(Contract.Result(Of String)()) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(input) = False)
 
             Return Security.SecurityHelper.EncodeVbs(input)
 
@@ -563,8 +548,7 @@ Namespace Web
         ''' <param name="input">The text to encode.</param>
         ''' <returns>Encoded text as <seealso cref="String" /></returns>
         Public Function XmlAttributeEncode(ByVal input As String) As String
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(input) = False)
-            Contract.Ensures(String.IsNullOrWhiteSpace(Contract.Result(Of String)()) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(input) = False)
 
             Return SecurityHelper.EncodeHtmlAttribute(input)
 
@@ -576,8 +560,7 @@ Namespace Web
         ''' <param name="input">The string to encode.</param>
         ''' <returns>Encoded text as <seealso cref="String" /></returns>
         Public Function XmlEncode(ByVal input As String) As String
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(input) = False)
-            Contract.Ensures(String.IsNullOrWhiteSpace(Contract.Result(Of String)()) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(input) = False)
 
             Return Security.SecurityHelper.EncodeHtml(input)
 

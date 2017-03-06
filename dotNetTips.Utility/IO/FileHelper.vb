@@ -14,7 +14,7 @@
 Imports System.IO
 Imports System.IO.Compression
 Imports System.Text
-Imports System.Diagnostics.Contracts
+Imports dotNetTips.Utility.Portable.OOP
 
 Namespace IO
     ''' <summary>
@@ -33,8 +33,8 @@ Namespace IO
         ''' <param name="sourceFileName">Name of the source file.</param>
         ''' <param name="destinationFileName">Name of the destination file including extension.</param>
         Public Sub CompressFile(sourceFileName As String, destinationFileName As String)
-            Contract.Requires(Of ArgumentNullException)(Not String.IsNullOrEmpty(sourceFileName), "sourceFileName is nothing or empty.")
-            Contract.Requires(Of ArgumentNullException)(Not String.IsNullOrEmpty(destinationFileName), "destinationFileName is nothing or empty.")
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(Not String.IsNullOrEmpty(sourceFileName), "sourceFileName is nothing or empty.")
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(Not String.IsNullOrEmpty(destinationFileName), "destinationFileName is nothing or empty.")
             If File.Exists(sourceFileName) Then
                 Using archive = ZipFile.Open(destinationFileName, ZipArchiveMode.Create)
                     Dim file = archive.CreateEntryFromFile(sourceFileName, Path.GetFileName(destinationFileName), CompressionLevel.Optimal)

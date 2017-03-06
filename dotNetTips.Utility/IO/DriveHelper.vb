@@ -10,6 +10,8 @@
 ' Copyright        : (c) dotNetTips.com. All rights reserved.
 '***********************************************************************
 Imports System.Management
+Imports dotNetTips.Utility.Portable.OOP
+
 Namespace IO
     ''' <summary>
     ''' Drive helper methods.
@@ -23,7 +25,7 @@ Namespace IO
         ''' <returns>Serial number.</returns>
         ''' <remarks>This call could take some time. Recommend multi-threading.</remarks>
         Public Function GetDriveSerialNumber(ByVal drive As String) As String
-            Contracts.Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(drive) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(drive) = False)
 
             Dim driveSerial As String = String.Empty
 

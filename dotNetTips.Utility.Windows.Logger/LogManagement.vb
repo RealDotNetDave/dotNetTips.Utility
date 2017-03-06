@@ -16,7 +16,8 @@ Imports System.Diagnostics
 Imports Microsoft.VisualBasic.Logging
 Imports System.Reflection
 Imports System.Globalization
-Imports System.Diagnostics.Contracts
+Imports dotNetTips.Utility.Portable.OOP
+
 
 ''' <summary>
 ''' Trace listener log manager.
@@ -72,7 +73,7 @@ Public Module LogManagement
     ''' <returns>Enum values.</returns>
     ''' Added on: 6/11/2009 By: dm11086
     Public Function GetEnumerationValues(enumType As Type, fixNames As Boolean, useXmlNames As Boolean) As Dictionary(Of Integer, String)
-        Contract.Requires(Of ArgumentNullException)(enumType IsNot Nothing)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(enumType IsNot Nothing)
 
         If enumType Is Nothing Then
             Throw New InvalidEnumTypeException([String].Format(CultureInfo.InvariantCulture, "Failed to find type {0}", enumType.Name))
@@ -104,7 +105,7 @@ Public Module LogManagement
     ''' <param name="level">The source level.</param>
     ''' <returns>List of values.</returns>
     Public Function TracingLevelValues(ByVal level As SourceLevels) As ReadOnlyCollection(Of Integer)
-        Contract.Requires(Of ArgumentOutOfRangeException)([Enum].IsDefined(GetType(SourceLevels), level))
+        Encapsulation.TryValidateParam(Of ArgumentOutOfRangeException)([Enum].IsDefined(GetType(SourceLevels), level))
 
         Dim valuesNew = New List(Of Integer)()
 

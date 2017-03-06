@@ -37,8 +37,10 @@ namespace dotNetTips.Utility.Standard.Serialization
 
             using (var ms = new MemoryStream())
             {
-                var ser = new DataContractJsonSerializer(obj.GetType());
+                var ser = new DataContractJsonSerializer(obj.GetType(), new DataContractJsonSerializerSettings { SerializeReadOnlyTypes = true, UseSimpleDictionaryFormat = true, EmitTypeInformation=System.Runtime.Serialization.EmitTypeInformation.AsNeeded });
+
                 ser.WriteObject(ms, obj);
+               
                 json = Encoding.UTF8.GetString(ms.ToArray());
             }
 

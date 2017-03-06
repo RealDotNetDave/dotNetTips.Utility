@@ -11,8 +11,9 @@
 ' </copyright>
 ' <summary></summary>
 ' ***********************************************************************
-Imports System.Diagnostics.Contracts
+
 Imports System.Reflection
+Imports dotNetTips.Utility.Portable.OOP
 
 ''' <summary>
 ''' General helper functions.
@@ -24,7 +25,7 @@ Public Module General
     ''' <param name="message">The message to write.</param>
     ''' <param name="type">The event type.</param>
     Public Sub WriteToEventLog(ByVal message As String, ByVal type As EventLogEntryType)
-        Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(message) = False)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(message) = False)
 
         EventLog.WriteEntry(My.Application.Info.Title.ToString(CultureInfo.CurrentCulture), message, type)
 
@@ -39,8 +40,8 @@ Public Module General
     ''' <remarks></remarks>
     Public Function DoesObjectEqualInstance(ByVal value As [Object], ByVal instance As Object) As Boolean
 
-        Contract.Requires(Of ArgumentNullException)(value IsNot Nothing)
-        Contract.Requires(Of ArgumentNullException)(instance IsNot Nothing)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(value IsNot Nothing)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(instance IsNot Nothing)
 
         Dim result = Object.ReferenceEquals(value, instance)
 
@@ -76,7 +77,7 @@ Public Module General
     ''' <remarks></remarks>
     Public Sub StartProcess(fileName As String, arguments As String, windowsStyle As ProcessWindowStyle, wait As Boolean)
 
-        Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(fileName) = False)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(fileName) = False)
 
         Using process As New Process()
             Dim processInfo As New System.Diagnostics.ProcessStartInfo() With

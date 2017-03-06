@@ -198,7 +198,7 @@ namespace dotNetTips.Utility.Standard
         public string Description { get; internal set; }
         public string FileVersion { get; internal set; }
         public string AssemblyVersion { get; internal set; }
-        public object AssemblyProduct { get; internal set; }
-        public object AssemblyTitle { get; internal set; }
+        public string AssemblyProduct { get; internal set; }
+        public string AssemblyTitle { get; internal set; }
     }
 }

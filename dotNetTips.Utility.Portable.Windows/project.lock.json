@@ -4,13 +4,6 @@
     ".NETPortable,Version=v4.6,Profile=Profile44": {
       "DotNet.Contracts/1.10.20606.1": {
         "type": "package"
-      },
-      "dotNetTips.Utility.Portable/1.0.0": {
-        "type": "project",
-        "framework": ".NETPortable,Version=v4.5,Profile=Profile7",
-        "dependencies": {
-          "DotNet.Contracts": "1.10.20606.1"
-        }
       }
     }
   },
@@ -229,11 +222,6 @@
         "tools/ccrewrite.exe",
         "tools/ccrewrite.exe.config"
       ]
-    },
-    "dotNetTips.Utility.Portable/1.0.0": {
-      "type": "project",
-      "path": "../dotNetTips.Utility.Portable/project.json",
-      "msbuildProject": "../dotNetTips.Utility.Portable/dotNetTips.Utility.Portable.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -251,16 +239,7 @@
       "projectName": "dotNetTips.Utility.Portable.Windows",
       "projectPath": "C:\\Development\\Source\\Repros\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\dotNetTips.Utility.Portable.Windows.vbproj",
       "projectJsonPath": "C:\\Development\\Source\\Repros\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\project.json",
-      "projectStyle": "ProjectJson",
-      "frameworks": {
-        "portable46-net451+win81": {
-          "projectReferences": {
-            "C:\\Development\\Source\\Repros\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj": {
-              "projectPath": "C:\\Development\\Source\\Repros\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj"
-            }
-          }
-        }
-      }
+      "projectStyle": "ProjectJson"
     },
     "dependencies": {
       "DotNet.Contracts": "1.10.20606.1"

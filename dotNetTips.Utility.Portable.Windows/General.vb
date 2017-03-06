@@ -13,6 +13,7 @@
 ' ***********************************************************************
 Imports System.Reflection
 Imports System.IO
+Imports dotNetTips.Utility.Portable.OOP
 
 ''' <summary>
 ''' General helper functions.
@@ -27,8 +28,8 @@ Public Module General
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public Function DoesObjectEqualInstance(ByVal value As [Object], ByVal instance As Object) As Boolean
-        Contract.Requires(Of ArgumentNullException)(value IsNot Nothing)
-        Contract.Requires(Of ArgumentNullException)(instance IsNot Nothing)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(value IsNot Nothing)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(instance IsNot Nothing)
 
         Dim result = Object.ReferenceEquals(value, instance)
 
@@ -42,7 +43,7 @@ Public Module General
     ''' <param name="instance">The instance.</param>
     ''' <returns>Int32.</returns>
     Public Function GetInstanceHashCode(ByVal instance As Object) As Int32
-        Contract.Requires(Of ArgumentNullException)(instance IsNot Nothing)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(instance IsNot Nothing)
 
         Dim hash As Int32
 
@@ -75,8 +76,7 @@ Public Module General
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public Function ToFourDigitYear(year As Int32) As Int32
-        Contract.Requires(Of ArgumentNullException)(year >= 0)
-        Contract.Ensures(Contract.Result(Of Int32)() >= 0)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(year >= 0)
 
         Dim result As Int32 = If(year >= 100, year, (2 \ 100 - (If(year > 2 Mod 100, 1, 0))) * 100 + year)
 

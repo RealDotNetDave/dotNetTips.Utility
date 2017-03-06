@@ -12,6 +12,8 @@
 ' <summary></summary>
 ' ***********************************************************************
 
+Imports dotNetTips.Utility.Portable.OOP
+
 Namespace Data
     ''' <summary>
     ''' List of countries.
@@ -27,7 +29,7 @@ Namespace Data
         ''' <returns><see cref="String">Country name or code</see>.</returns>
         ''' <remarks></remarks>
         Public Shared Function ConvertNameOrCode(ByVal nameOrCode As String) As String
-            Contracts.Contract.Requires(String.IsNullOrEmpty(nameOrCode) = False, "Argument cannot be null.")
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(nameOrCode) = False, "Argument cannot be null.")
 
             nameOrCode = nameOrCode.Trim
 

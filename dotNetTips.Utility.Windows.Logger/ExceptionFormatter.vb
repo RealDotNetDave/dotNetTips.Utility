@@ -18,6 +18,7 @@ Imports System.Reflection
 Imports System.Security
 Imports System.Security.Principal
 Imports System.Text
+Imports dotNetTips.Utility.Portable.OOP
 
 ''' <summary>
 ''' Formats an Exception
@@ -160,8 +161,8 @@ Friend Class ExceptionFormatter
     ''' <param name="propValue">The property value.</param>
     ''' <param name="builder">The builder.</param>
     Private Shared Sub ProcessInformation(ByVal propInfo As PropertyInfo, ByVal propValue As Object, ByVal builder As StringBuilder)
-        Contracts.Contract.Requires(Of ArgumentNullException)(propInfo IsNot Nothing)
-        Contracts.Contract.Requires(Of ArgumentNullException)(builder IsNot Nothing)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(propInfo IsNot Nothing)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(builder IsNot Nothing)
 
         ' Loop through the collection of Information if the exception type is a BaseApplicationException.
         If propInfo.Name = NameOf(InfoItem) Then

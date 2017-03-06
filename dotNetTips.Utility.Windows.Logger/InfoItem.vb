@@ -12,7 +12,7 @@
 ' <summary></summary>
 ' *************************************************************************
 Imports System
-Imports System.Diagnostics.Contracts
+
 
 ''' <summary>
 ''' Additional Information for a <see cref="LogEntry"></see> item.
@@ -74,14 +74,5 @@ Public NotInheritable Class InfoItem
     Public Overloads Overrides Function GetHashCode() As Integer
         Return General.GetInstanceHashCode(Me)
     End Function
-
-    ''' <summary>
-    ''' Objects the invariant.
-    ''' </summary>
-    <Contracts.ContractInvariantMethod>
-    Private Sub ObjectInvariant()
-        Contract.Invariant(String.IsNullOrWhiteSpace(Me.Property) = False)
-        Contract.Invariant(String.IsNullOrWhiteSpace(Me.Text) = False)
-    End Sub
 
 End Class

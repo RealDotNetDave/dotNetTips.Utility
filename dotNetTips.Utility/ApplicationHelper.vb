@@ -16,8 +16,9 @@
 Imports System.Collections.Generic
 Imports System.IO
 Imports System.Reflection
-Imports System.Diagnostics.Contracts
+
 Imports System.Security.Principal
+Imports dotNetTips.Utility.Portable.OOP
 ''' <summary>
 ''' Class ApplicationHelper.
 ''' </summary>
@@ -100,7 +101,7 @@ Public Module ApplicationHelper
     ''' <param name="processName">Name of the process.</param>
     ''' <returns><c>true</c> if [is application already running] [the specified process name]; otherwise, <c>false</c>.</returns>
     Public Function IsProcessRunning(processName As String) As Boolean
-        Contract.Requires(Of ArgumentNullException)(Not String.IsNullOrEmpty(processName), "processName is nothing or empty.")
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(Not String.IsNullOrEmpty(processName), "processName is nothing or empty.")
         Return If(Process.GetProcessesByName(processName).Count() > 0, True, False)
     End Function
 
@@ -127,7 +128,7 @@ Public Module ApplicationHelper
     ''' </summary>
     ''' <param name="processName">Name of the process.</param>
     Public Sub KillProcess(processName As String)
-        Contract.Requires(Of ArgumentNullException)(Not String.IsNullOrEmpty(processName), "processName is nothing or empty.")
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(Not String.IsNullOrEmpty(processName), "processName is nothing or empty.")
         Dim app = System.Diagnostics.Process.GetProcessesByName(processName).FirstOrDefault
 
         If app IsNot Nothing Then

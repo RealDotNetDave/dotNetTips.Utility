@@ -8,8 +8,9 @@
 // <summary>
 // </summary>
 // ***********************************************************************
+using dotNetTips.Utility.Portable.OOP;
 using System;
-using System.Diagnostics.Contracts;
+
 using System.Linq;
 using System.Reflection;
 
@@ -28,7 +29,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <remarks>Original code by: Shimmy Weitzhandler</remarks>
         public static T As<T>(this object value)
         {
-            Contract.Requires<ArgumentNullException>(value != null);
+            Encapsulation.TryValidateParam<ArgumentNullException>(value != null);
 
             return (T)value;
         }
@@ -43,8 +44,8 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <remarks>Original code by: Rory Becker</remarks>
         public static bool In<T>(this T source, params T[] list)
         {
-            Contract.Requires<ArgumentNullException>(source != null);
-            Contract.Requires<ArgumentOutOfRangeException>(list != null && list.Length != 0, "list is null or empty.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(source != null);
+            Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(list != null && list.Length != 0, "list is null or empty.");
 
             foreach (T value in list)
             {
@@ -119,7 +120,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <returns><c>true</c> if the specified property name has property; otherwise, <c>false</c>.</returns>
         public static bool HasProperty(this object instance, string propertyName)
         {
-            Contract.Requires<ArgumentNullException>(string.IsNullOrWhiteSpace(propertyName) == false);
+            Encapsulation.TryValidateParam<ArgumentNullException>(string.IsNullOrWhiteSpace(propertyName) == false);
 
             var propertyInfo = instance.GetType().GetRuntimeProperties().FirstOrDefault(p => p.Name == propertyName);
 

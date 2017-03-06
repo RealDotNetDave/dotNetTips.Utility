@@ -11,12 +11,13 @@
 ' </copyright>
 ' <summary></summary>
 ' ***********************************************************************
-Imports System.Diagnostics.Contracts
+
 Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports System.Drawing.Imaging
 Imports System.IO
 Imports System.Runtime.CompilerServices
+Imports dotNetTips.Utility.Portable.OOP
 
 Namespace Extensions
     ''' <summary>
@@ -33,7 +34,7 @@ Namespace Extensions
         ''' http://code.msdn.microsoft.com/LucasExtensions</remarks>
         <Extension>
         Public Function ToBytes(ByVal image As Image, ByVal format As ImageFormat) As Byte()
-            Contracts.Contract.Requires(Of ArgumentNullException)(format IsNot Nothing)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(format IsNot Nothing)
 
             Using stream As New MemoryStream()
                 image.Save(stream, format)
@@ -60,7 +61,7 @@ Namespace Extensions
         ''' <returns>System.Byte().</returns>
         <Extension>
         Public Function ToByteArray(image As Image, imageFormat As ImageFormat) As Byte()
-            Contract.Requires(Of ArgumentNullException)(imageFormat IsNot Nothing)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(imageFormat IsNot Nothing)
 
             Using ms As New MemoryStream
                 image.Save(ms, imageFormat)
@@ -87,7 +88,7 @@ Namespace Extensions
         ''' <returns>System.String.</returns>
         <Extension>
         Public Function ToBase64(image As Image, imageFormat As ImageFormat) As String
-            Contract.Requires(Of ArgumentNullException)(imageFormat IsNot Nothing)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(imageFormat IsNot Nothing)
 
             Return Convert.ToBase64String(image.ToByteArray(imageFormat))
         End Function

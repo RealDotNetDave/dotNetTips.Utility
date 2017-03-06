@@ -8,8 +8,9 @@
 // <summary>
 // </summary>
 // ***********************************************************************
+using dotNetTips.Utility.Portable.OOP;
 using System;
-using System.Diagnostics.Contracts;
+
 
 namespace dotNetTips.Utility.Portable.Extensions {
     /// <summary>
@@ -28,8 +29,8 @@ namespace dotNetTips.Utility.Portable.Extensions {
         public static T Max<T>(this T obj1, T obj2)
             where T : IComparable
         {
-            Contract.Requires<ArgumentNullException>(obj1 != null);
-            Contract.Requires<ArgumentNullException>(obj2 != null);
+            Encapsulation.TryValidateParam<ArgumentNullException>(obj1 != null);
+            Encapsulation.TryValidateParam<ArgumentNullException>(obj2 != null);
 
             return obj1.CompareTo(obj2) >= 0 ? obj1 : obj2;
         }

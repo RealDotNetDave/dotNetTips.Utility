@@ -11,6 +11,7 @@
 '***********************************************************************
 Imports System.Management
 Imports System.ServiceProcess
+Imports dotNetTips.Utility.Portable.OOP
 
 Namespace Web
     ''' <summary>
@@ -32,8 +33,8 @@ Namespace Web
         ''' <remarks></remarks>
         Public Function ManageIISWebService(ByVal server As String, ByVal userName As String, ByVal password As System.Security.SecureString, ByVal domain As String, ByVal instance As String, ByVal action As WebServiceAction) As Int32
             Dim result As Int32
-            Contracts.Contract.Requires(Of ArgumentNullException)(password IsNot Nothing)
-            Contracts.Contract.Requires(Of ArgumentOutOfRangeException)(WebServiceAction.IsDefined(GetType(WebServiceAction), action))
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(password IsNot Nothing)
+            Encapsulation.TryValidateParam(Of ArgumentOutOfRangeException)(WebServiceAction.IsDefined(GetType(WebServiceAction), action))
 
             'Default to the local system
             Dim path As String = String.Format(CultureInfo.CurrentCulture, "\\{0}\root\MicrosoftIISv2", server)

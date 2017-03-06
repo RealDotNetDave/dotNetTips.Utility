@@ -11,11 +11,12 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using dotNetTips.Utility.Portable.OOP;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics.Contracts;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,9 +36,9 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <param name="value">The value.</param>
         public static void AddIfNotExists<T>(this ICollection<T> list, T value)
         {
-            Contract.Requires<ArgumentNullException>(list != null);
-            Contract.Requires<ArgumentNullException>(value != null);
-            Contract.Requires<ArgumentIsReadOnlyException>(list.IsReadOnly == false);
+            Encapsulation.TryValidateParam<ArgumentNullException>(list != null);
+            Encapsulation.TryValidateParam<ArgumentNullException>(value != null);
+            Encapsulation.TryValidateParam<ArgumentIsReadOnlyException>(list.IsReadOnly == false);
 
             if (list.Contains(value) == false)
             {
@@ -53,9 +54,9 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <param name="values">The values.</param>
         public static void AddIfNotExists<T>(this ICollection<T> list, params T[] values)
         {
-            Contract.Requires<ArgumentNullException>(list != null);
-            Contract.Requires<ArgumentNullException>(values != null);
-            Contract.Requires<ArgumentIsReadOnlyException>(list.IsReadOnly == false);
+            Encapsulation.TryValidateParam<ArgumentNullException>(list != null);
+            Encapsulation.TryValidateParam<ArgumentNullException>(values != null);
+            Encapsulation.TryValidateParam<ArgumentIsReadOnlyException>(list.IsReadOnly == false);
 
             foreach (var value in values)
             {
@@ -70,7 +71,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <returns>System.Int32.</returns>
         public static int Count(this IEnumerable source)
         {
-            Contract.Requires<ArgumentNullException>(source != null);
+            Encapsulation.TryValidateParam<ArgumentNullException>(source != null);
 
             var collection = source as ICollection;
 
@@ -99,8 +100,8 @@ namespace dotNetTips.Utility.Portable.Extensions {
         public static T? FirstOrNull<T>(this IEnumerable<T> source, Func<T, bool> match)
             where T : struct
         {
-            Contract.Requires<ArgumentNullException>(source != null);
-            Contract.Requires<ArgumentNullException>(match != null);
+            Encapsulation.TryValidateParam<ArgumentNullException>(source != null);
+            Encapsulation.TryValidateParam<ArgumentNullException>(match != null);
 
             foreach (T local in source)
             {
@@ -141,7 +142,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <returns>System.String[].</returns>
         public static string[] NoDuplicates(this string[] source)
         {
-            Contract.Requires<ArgumentNullException>(source != null && source.Length != 0);
+            Encapsulation.TryValidateParam<ArgumentNullException>(source != null && source.Length != 0);
 
             return source.Distinct().ToArray();
         }
@@ -156,8 +157,8 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <remarks>Original code by: Lukazoid</remarks>
         public static IEnumerable<IEnumerable<T>> Page<T>(this IEnumerable<T> source, int pageSize)
         {
-            Contract.Requires<ArgumentNullException>(source != null);
-            Contract.Requires<ArgumentNullException>(pageSize >= 0);
+            Encapsulation.TryValidateParam<ArgumentNullException>(source != null);
+            Encapsulation.TryValidateParam<ArgumentNullException>(pageSize >= 0);
 
             using (var enumerator = source.GetEnumerator())
             {
@@ -187,8 +188,8 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <returns>IEnumerable collection.</returns>
         public static IEnumerable<T> PickRandom<T>(this IEnumerable<T> source, int count)
         {
-            Contract.Requires<ArgumentNullException>(source != null && source.Count() >= 0);
-            Contract.Requires<ArgumentNullException>(count >= 0);
+            Encapsulation.TryValidateParam<ArgumentNullException>(source != null && source.Count() >= 0);
+            Encapsulation.TryValidateParam<ArgumentNullException>(count >= 0);
 
             return source.Randomize().Take(count);
         }
@@ -210,10 +211,10 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <remarks>Original code by: Fons Sonnemans</remarks>
         public static Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>> Pivot<TSource, TFirstKey, TSecondKey, TValue>(this IEnumerable<TSource> source, Func<TSource, TFirstKey> firstKeySelector, Func<TSource, TSecondKey> secondKeySelector, Func<IEnumerable<TSource>, TValue> aggregate)
         {
-            Contract.Requires<ArgumentNullException>(source != null && source.Count() >= 0);
-            Contract.Requires<ArgumentNullException>(aggregate != null);
-            Contract.Requires<ArgumentNullException>(firstKeySelector != null);
-            Contract.Requires<ArgumentNullException>(secondKeySelector != null);
+            Encapsulation.TryValidateParam<ArgumentNullException>(source != null && source.Count() >= 0);
+            Encapsulation.TryValidateParam<ArgumentNullException>(aggregate != null);
+            Encapsulation.TryValidateParam<ArgumentNullException>(firstKeySelector != null);
+            Encapsulation.TryValidateParam<ArgumentNullException>(secondKeySelector != null);
 
             var returnValue = new Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>>();
 
@@ -245,7 +246,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <remarks>Original code by: Phil Campbell</remarks>
         public static IEnumerable<T> Randomize<T>(this IEnumerable<T> source)
         {
-            Contract.Requires<ArgumentNullException>(source != null && source.Count() >= 0);
+            Encapsulation.TryValidateParam<ArgumentNullException>(source != null && source.Count() >= 0);
 
             return source.OrderBy(x => new Random().Next());
         }
@@ -259,7 +260,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <returns>System.String.</returns>
         public static string ToDelimitedString<T>(this IEnumerable<T> source, char delimiter)
         {
-            Contract.Requires<ArgumentNullException>(source != null && source.Count() >= 0);
+            Encapsulation.TryValidateParam<ArgumentNullException>(source != null && source.Count() >= 0);
 
             if (string.IsNullOrEmpty(delimiter.ToString()))
             {
@@ -292,7 +293,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <remarks>Original code by: James Michael Hare</remarks>
         public static Dictionary<TKey, List<TValue>> ToDictionary<TKey, TValue>(this IEnumerable<IGrouping<TKey, TValue>> source)
         {
-            Contract.Requires<ArgumentNullException>(source != null && source.Count() >= 0);
+            Encapsulation.TryValidateParam<ArgumentNullException>(source != null && source.Count() >= 0);
 
             return source.ToDictionary(group => group.Key, group => group.ToList());
         }
@@ -306,7 +307,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <remarks>Original code by: Fons Sonnemans</remarks>
         public static Task<List<T>> ToListAsync<T>(this IEnumerable<T> source)
         {
-            Contract.Requires<ArgumentNullException>(source != null && source.Count() >= 0);
+            Encapsulation.TryValidateParam<ArgumentNullException>(source != null && source.Count() >= 0);
 
             return Task.Run(() => source.ToList());
         }
@@ -319,7 +320,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
             /// <returns>System.Collections.Generic.List&lt;T&gt;.</returns>
         public static List<T> CopyToList<T>(this List<T> list)
         {
-            Contract.Requires<ArgumentNullException>(list != null);
+            Encapsulation.TryValidateParam<ArgumentNullException>(list != null);
 
             return new List<T>(list);
         }
@@ -332,7 +333,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <returns>ObservableCollection&lt;T&gt;.</returns>
         public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> source)
         {
-            Contract.Requires<ArgumentNullException>(source != null && source.Count() >= 0);
+            Encapsulation.TryValidateParam<ArgumentNullException>(source != null && source.Count() >= 0);
 
             return new ObservableCollection<T>(source);
         }
@@ -345,7 +346,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <returns>ReadOnlyCollection&lt;T&gt;.</returns>
         public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(this IList<T> source)
         {
-            Contract.Requires<ArgumentNullException>(source != null && source.Count() >= 0);
+            Encapsulation.TryValidateParam<ArgumentNullException>(source != null && source.Count() >= 0);
 
             return new ReadOnlyCollection<T>(source);
         }
@@ -361,7 +362,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <remarks>Original code by: Phil Campbell</remarks>
         public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> source, bool condition, Func<TSource, bool> predicate)
         {
-            Contract.Requires<ArgumentNullException>(source != null && source.Count() >= 0);
+            Encapsulation.TryValidateParam<ArgumentNullException>(source != null && source.Count() >= 0);
 
             return condition ? source.Where(predicate) : source;
         }
@@ -377,7 +378,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <remarks>Original code by: Phil Campbell</remarks>
         public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> source, bool condition, Func<TSource, int, bool> predicate)
         {
-            Contract.Requires<ArgumentNullException>(source != null && source.Count() >= 0);
+            Encapsulation.TryValidateParam<ArgumentNullException>(source != null && source.Count() >= 0);
 
             return condition ? source.Where(predicate) : source;
         }

@@ -11,10 +11,11 @@
 ' </copyright>
 ' <summary></summary>
 ' ***********************************************************************
-Imports System.Diagnostics.Contracts
+
 Imports System.Globalization
 Imports System.Security.Permissions
 Imports System.Text
+Imports dotNetTips.Utility.Portable.OOP
 Imports dotNetTips.Utility.Xml
 
 ''' <summary>
@@ -48,7 +49,7 @@ Public Class EventLogTraceListener
     ''' <param name="eventLog">The event log.</param>
     Public Sub New(ByVal eventLog As EventLog)
         MyBase.New(CStr(If((Not eventLog Is Nothing), eventLog.Source, String.Empty)))
-        Contract.Requires(Of ArgumentNullException)(eventLog IsNot Nothing)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(eventLog IsNot Nothing)
 
         Me.EventLog = eventLog
 

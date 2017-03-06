@@ -15,6 +15,7 @@ Imports System
 Imports System.Collections.Specialized
 Imports System.Threading
 Imports dotNetTips.Utility.Extensions
+Imports dotNetTips.Utility.Portable.OOP
 
 Namespace Web
     ''' <summary>
@@ -77,7 +78,7 @@ Namespace Web
         ''' <remarks></remarks>
         Public Sub New(uri As String)
             MyBase.New(uri)
-            Contracts.Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(uri) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(uri) = False)
 
             PopulateQueryString()
         End Sub

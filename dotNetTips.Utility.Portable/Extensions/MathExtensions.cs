@@ -8,8 +8,9 @@
 // <summary>
 // </summary>
 // ***********************************************************************
+using dotNetTips.Utility.Portable.OOP;
 using System;
-using System.Diagnostics.Contracts;
+
 
 namespace dotNetTips.Utility.Portable.Extensions {
     /// <summary>
@@ -25,7 +26,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
         public static int Round(this double value)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(value >= double.MinValue && value <= double.MaxValue);
+            Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(value >= double.MinValue && value <= double.MaxValue);
 
             return Convert.ToInt32(System.Math.Round(value));
         }
@@ -39,7 +40,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
         public static int Round(this double value, int digits)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(value >= double.MinValue && value <= double.MaxValue);
+            Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(value >= double.MinValue && value <= double.MaxValue);
 
             return Convert.ToInt32(System.Math.Round(value, digits));
         }
@@ -53,7 +54,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
         public static int Round(this double value, MidpointRounding mode)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(value >= double.MinValue && value <= double.MaxValue);
+            Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(value >= double.MinValue && value <= double.MaxValue);
 
             return Convert.ToInt32(System.Math.Round(value, mode));
         }
@@ -68,7 +69,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
         public static int Round(this double value, int digits, MidpointRounding mode)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(value >= double.MinValue && value <= double.MaxValue);
+            Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(value >= double.MinValue && value <= double.MaxValue);
 
             return Convert.ToInt32(System.Math.Round(value, digits, mode));
         }
@@ -81,7 +82,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
         public static int Round(this decimal value)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(value >= decimal.MinValue && value <= decimal.MaxValue);
+            Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(value >= decimal.MinValue && value <= decimal.MaxValue);
 
             return Convert.ToInt32(System.Math.Round(value));
         }
@@ -95,7 +96,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
         public static int Round(this decimal value, int digits)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(value >= decimal.MinValue && value <= decimal.MaxValue);
+            Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(value >= decimal.MinValue && value <= decimal.MaxValue);
 
             return Convert.ToInt32(System.Math.Round(value, digits));
         }
@@ -109,7 +110,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
         public static int Round(this decimal value, MidpointRounding mode)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(value >= decimal.MinValue && value <= decimal.MaxValue);
+            Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(value >= decimal.MinValue && value <= decimal.MaxValue);
 
             return Convert.ToInt32(System.Math.Round(value, mode));
         }
@@ -124,7 +125,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
         public static int Round(this decimal value, int digits, MidpointRounding mode)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(value >= decimal.MinValue && value <= decimal.MaxValue);
+            Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(value >= decimal.MinValue && value <= decimal.MaxValue);
 
             return Convert.ToInt32(System.Math.Round(value, digits, mode));
         }

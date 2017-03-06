@@ -13,9 +13,11 @@
 ' ***********************************************************************
 Imports System.Collections.Generic
 Imports System.Drawing
-Imports System.Diagnostics.Contracts
+
 Imports System.Runtime.CompilerServices
 Imports dotNetTips.Utility.Portable.Extensions
+Imports dotNetTips.Utility.Portable.OOP
+
 Namespace Extensions
     ''' <summary>
     ''' Extension methods for color values.
@@ -29,7 +31,7 @@ Namespace Extensions
         ''' <returns>HTML string color representation.</returns>
         ''' <remarks>Code by: Lucas
         ''' http://code.msdn.microsoft.com/LucasExtensions</remarks>
-        <Extension> _
+        <Extension>
         Public Function ToHtml(ByVal color As Color) As String
             Return ColorTranslator.ToHtml(color)
         End Function
@@ -41,7 +43,7 @@ Namespace Extensions
         ''' <returns>CGI+ Color structure.</returns>
         ''' <remarks>Code by: Lucas
         ''' http://code.msdn.microsoft.com/LucasExtensions</remarks>
-        <Extension> _
+        <Extension>
         Public Function ToHtmlColor(ByVal htmlColor As String) As Color
             Return ColorTranslator.FromHtml(htmlColor)
         End Function
@@ -53,9 +55,8 @@ Namespace Extensions
         ''' <returns>CGI+ Color structure.</returns>
         ''' <remarks>Code by: Lucas
         ''' http://code.msdn.microsoft.com/LucasExtensions</remarks>
-        <Extension> _
+        <Extension>
         Public Function Average(ByVal colors As IEnumerable(Of Color)) As Color
-            Contract.Requires(Of ArgumentNullException)(colors.Count > 0)
 
             Dim r As Integer = colors.Average(Function(c) c.R).Round()
             Dim g As Integer = colors.Average(Function(c) c.G).Round()

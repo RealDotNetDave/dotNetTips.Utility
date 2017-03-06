@@ -9,6 +9,8 @@
 '
 ' Copyright        : (c) dotNetTips.com. All rights reserved.
 '***********************************************************************
+Imports dotNetTips.Utility.Portable.OOP
+
 Namespace Extensions
     ''' <summary>
     ''' Validation helper class.
@@ -25,9 +27,9 @@ Namespace Extensions
         ''' <remarks></remarks>
         Public Function CheckLength(ByVal input As String, ByVal minimum As Int32, ByVal maximum As Int32) As Boolean
 
-            Contract.Requires(String.IsNullOrEmpty(input) = False, "Must supply a non-empty input string.")
-            Contract.Requires((minimum < 0) Or (minimum > Int32.MaxValue), "Value for minimum is invalid.")
-            Contract.Requires((maximum < 0) Or (maximum > Int32.MaxValue), "Value for maximum is invalid.")
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False, "Must supply a non-empty input string.")
+            Encapsulation.TryValidateParam(Of ArgumentNullException)((minimum < 0) Or (minimum > Int32.MaxValue), "Value for minimum is invalid.")
+            Encapsulation.TryValidateParam(Of ArgumentNullException)((maximum < 0) Or (maximum > Int32.MaxValue), "Value for maximum is invalid.")
 
             Return If((input.Length >= minimum) And (input.Length <= maximum), True, False)
 
@@ -41,8 +43,8 @@ Namespace Extensions
         ''' <returns>True if valid.</returns>
         ''' <remarks></remarks>
         Public Function CheckLength(ByVal input As String, ByVal maximum As Int32) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
-            Contract.Requires(Of ArgumentOutOfRangeException)((maximum < 0) Or (maximum > Int32.MaxValue))
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentOutOfRangeException)((maximum < 0) Or (maximum > Int32.MaxValue))
 
             Return If((input.Length > maximum), False, True)
 
@@ -55,7 +57,7 @@ Namespace Extensions
         ''' <returns>True if valid.</returns>
         ''' <remarks></remarks>
         Public Function IsValidDate(ByVal input As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             Return IsDate(input)
 
@@ -68,7 +70,7 @@ Namespace Extensions
         ''' <returns>True if valid Social Security number.</returns>
         ''' <remarks></remarks>
         Public Function IsValidSocialSecurity(ByVal input As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             Return ValidateString(input, My.Resources.REGEXP_US_SSN)
 
@@ -82,7 +84,7 @@ Namespace Extensions
         ''' <returns>True if valid.</returns>
         ''' <remarks></remarks>
         Public Function IsValidSocialSecurity(ByVal input As String, ByVal expression As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             If String.IsNullOrEmpty(expression) Then
                 expression = My.Resources.REGEXP_US_SSN
@@ -99,7 +101,7 @@ Namespace Extensions
         ''' <returns>True if valid.</returns>
         ''' <remarks></remarks>
         Public Function IsValidPhone(ByVal input As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             Return ValidateString(input, My.Resources.REGEXP_US_PHONE_NUMBER)
         End Function
@@ -112,7 +114,7 @@ Namespace Extensions
         ''' <returns>True if valid.</returns>
         ''' <remarks></remarks>
         Public Function IsValidPhone(ByVal input As String, ByVal expression As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             If String.IsNullOrEmpty(expression) Then
                 expression = My.Resources.REGEXP_US_PHONE_NUMBER
@@ -129,7 +131,7 @@ Namespace Extensions
         ''' <returns>True if valid.</returns>
         ''' <remarks></remarks>
         Public Function IsValidPostalCode(ByVal input As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             Return ValidateString(input, My.Resources.REGEXP_US_ZIP_CODE)
         End Function
@@ -142,7 +144,7 @@ Namespace Extensions
         ''' <returns>True if valid.</returns>
         ''' <remarks></remarks>
         Public Function IsValidPostalCode(ByVal input As String, ByVal expression As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             If String.IsNullOrEmpty(expression) Then
                 expression = My.Resources.REGEXP_US_ZIP_CODE
@@ -159,7 +161,7 @@ Namespace Extensions
         ''' <returns>True if valid.</returns>
         ''' <remarks></remarks>
         Public Function IsValidUrl(ByVal input As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             Return ValidateString(input, My.Resources.REGEXP_URL)
 
@@ -173,7 +175,7 @@ Namespace Extensions
         ''' <returns>True if valid.</returns>
         ''' <remarks></remarks>
         Public Function IsValidUrl(ByVal input As String, ByVal expression As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             If String.IsNullOrEmpty(expression) Then
                 expression = My.Resources.REGEXP_URL
@@ -191,7 +193,7 @@ Namespace Extensions
         ''' <c>true</c> if [is valid domain] [the specified input]; otherwise, <c>false</c>.
         ''' </returns>
         Public Function IsValidDomain(ByVal input As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             Return ValidateString(input, My.Resources.REGEXP_DOMAIN)
 
@@ -206,7 +208,7 @@ Namespace Extensions
         ''' <c>true</c> if [is valid domain] [the specified input]; otherwise, <c>false</c>.
         ''' </returns>
         Public Function IsValidDomain(ByVal input As String, ByVal expression As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             If String.IsNullOrEmpty(expression) Then
                 expression = My.Resources.REGEXP_DOMAIN
@@ -224,7 +226,7 @@ Namespace Extensions
         ''' <c>true</c> if [is valid file path] [the specified input]; otherwise, <c>false</c>.
         ''' </returns>
         Public Function IsValidFilePath(ByVal input As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             Return ValidateString(input, My.Resources.REGEXP_FILE_PATH)
 
@@ -239,7 +241,7 @@ Namespace Extensions
         ''' <c>true</c> if [is valid file path] [the specified input]; otherwise, <c>false</c>.
         ''' </returns>
         Public Function IsValidFilePath(ByVal input As String, ByVal expression As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             If String.IsNullOrEmpty(expression) Then
                 expression = My.Resources.REGEXP_FILE_PATH
@@ -257,7 +259,7 @@ Namespace Extensions
         ''' <c>true</c> if [is valid first last name] [the specified input]; otherwise, <c>false</c>.
         ''' </returns>
         Public Function IsValidFirstLastName(ByVal input As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             Return ValidateString(input, My.Resources.REGEXP_FIRST_LAST_NAME)
 
@@ -272,7 +274,7 @@ Namespace Extensions
         ''' <c>true</c> if [is valid first last name] [the specified input]; otherwise, <c>false</c>.
         ''' </returns>
         Public Function IsValidFirstLastName(ByVal input As String, ByVal expression As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             If String.IsNullOrEmpty(expression) Then
                 expression = My.Resources.REGEXP_FIRST_LAST_NAME
@@ -290,7 +292,7 @@ Namespace Extensions
         ''' <c>true</c> if [is valid temperature] [the specified input]; otherwise, <c>false</c>.
         ''' </returns>
         Public Function IsValidTemperature(ByVal input As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             Return ValidateString(input, My.Resources.REGEXP_TEMP)
 
@@ -305,7 +307,7 @@ Namespace Extensions
         ''' <c>true</c> if [is valid temperature] [the specified input]; otherwise, <c>false</c>.
         ''' </returns>
         Public Function IsValidTemperature(ByVal input As String, ByVal expression As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             If String.IsNullOrEmpty(expression) Then
                 expression = My.Resources.REGEXP_TEMP
@@ -323,7 +325,7 @@ Namespace Extensions
         ''' <c>true</c> if [is valid scientific] [the specified input]; otherwise, <c>false</c>.
         ''' </returns>
         Public Function IsValidScientific(ByVal input As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             Return ValidateString(input, My.Resources.REGEXP_SCIENENTIFIC)
 
@@ -338,7 +340,7 @@ Namespace Extensions
         ''' <c>true</c> if [is valid scientific] [the specified input]; otherwise, <c>false</c>.
         ''' </returns>
         Public Function IsValidScientific(ByVal input As String, ByVal expression As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             If String.IsNullOrEmpty(expression) Then
                 expression = My.Resources.REGEXP_SCIENENTIFIC
@@ -356,7 +358,7 @@ Namespace Extensions
         ''' <c>true</c> if [is valid isbn] [the specified input]; otherwise, <c>false</c>.
         ''' </returns>
         Public Function IsValidIsbn(ByVal input As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             Return ValidateString(input, My.Resources.REGEXP_ISBN)
 
@@ -371,7 +373,7 @@ Namespace Extensions
         ''' <c>true</c> if [is valid isbn] [the specified input]; otherwise, <c>false</c>.
         ''' </returns>
         Public Function IsValidIsbn(ByVal input As String, ByVal expression As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             If String.IsNullOrEmpty(expression) Then
                 expression = My.Resources.REGEXP_ISBN
@@ -389,7 +391,7 @@ Namespace Extensions
         ''' <c>true</c> if [is valid credit card] [the specified input]; otherwise, <c>false</c>.
         ''' </returns>
         Public Function IsValidCreditCard(ByVal input As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             Return ValidateString(input, My.Resources.REGEXP_CREDIT_CARD)
 
@@ -404,7 +406,7 @@ Namespace Extensions
         ''' <c>true</c> if [is valid credit card] [the specified input]; otherwise, <c>false</c>.
         ''' </returns>
         Public Function IsValidCreditCard(ByVal input As String, ByVal expression As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             If String.IsNullOrEmpty(expression) Then
                 expression = My.Resources.REGEXP_CREDIT_CARD
@@ -422,7 +424,7 @@ Namespace Extensions
         ''' <c>true</c> if [is valid string] [the specified input]; otherwise, <c>false</c>.
         ''' </returns>
         Public Function IsValidString(ByVal input As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             Return ValidateString(input, My.Resources.REGEXP_STRING)
 
@@ -437,7 +439,7 @@ Namespace Extensions
         ''' <c>true</c> if [is valid string] [the specified input]; otherwise, <c>false</c>.
         ''' </returns>
         Public Function IsValidString(ByVal input As String, ByVal expression As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             If String.IsNullOrEmpty(expression) Then
                 expression = My.Resources.REGEXP_STRING
@@ -456,7 +458,7 @@ Namespace Extensions
         ''' <c>true</c> if [is valid string] [the specified input]; otherwise, <c>false</c>.
         ''' </returns>
         Public Function IsValidString(ByVal input As String, ByVal safeForWeb As Boolean) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             Return If(safeForWeb AndAlso ValidateString(input, My.Resources.REGEXP_STRING), Not ValidateString(input, My.Resources.REGEXP_STRING_WEB_SAFE), ValidateString(input, My.Resources.REGEXP_STRING))
 
@@ -472,7 +474,7 @@ Namespace Extensions
         ''' <c>true</c> if [is valid string] [the specified input]; otherwise, <c>false</c>.
         ''' </returns>
         Public Function IsValidString(ByVal input As String, ByVal safeForWeb As Boolean, ByVal expression As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
             If String.IsNullOrEmpty(expression) Then
                 expression = My.Resources.REGEXP_STRING

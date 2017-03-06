@@ -12,8 +12,9 @@
 ' <summary></summary>
 ' ***********************************************************************
 Imports System.DirectoryServices
-Imports System.Diagnostics.Contracts
+
 Imports System.Collections.Generic
+Imports dotNetTips.Utility.Portable.OOP
 
 Namespace DirectoryServices
     ''' <summary>
@@ -100,8 +101,8 @@ Namespace DirectoryServices
         ''' <returns>System.String.</returns>
         ''' <remarks></remarks>
         Public Function ExtractADPropertyValue(ByVal propertyName As String, ByVal result As SearchResult) As String
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(propertyName) = False, "propertyName is nothing or empty.")
-            Contract.Requires(Of ArgumentNullException)(result IsNot nothing, "result is nothing.")
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(propertyName) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(result IsNot Nothing)
 
             Return If(result.Properties.Contains(propertyName), result.Properties(propertyName).Item(0).ToString(), String.Empty)
 
@@ -115,8 +116,8 @@ Namespace DirectoryServices
         ''' <returns>System.String.</returns>
         ''' <remarks></remarks>
         Public Function ExtractADPropertyValue(ByVal propertyName As String, ByVal entry As DirectoryEntry) As String
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(propertyName) = False, "propertyName is nothing or empty.")
-            Contract.Requires(Of ArgumentNullException)(entry Isnot Nothing, "entry is nothing.")
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(propertyName) = False, "propertyName is nothing or empty.")
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(entry IsNot Nothing, "entry is nothing.")
 
             Return If(entry.Properties.Contains(propertyName), entry.Properties(propertyName).Item(0).ToString(), String.Empty)
 
@@ -129,7 +130,7 @@ Namespace DirectoryServices
         ''' <returns>True if in group</returns>
         ''' <remarks></remarks>
         Public Function IsUserInGroup(ByVal group As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(group) = False, "group is nothing or empty.")
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(group) = False)
 
             Return If(ApplicationHelper.IsAspNet, System.Web.HttpContext.Current.User.IsInRole(group), My.User.IsInRole(group))
 
@@ -144,8 +145,8 @@ Namespace DirectoryServices
         ''' <exception cref="System.ArgumentNullException">logIn</exception>
         ''' <remarks></remarks>
         Public Function IsUserInGroup(ByVal userLogin As String, ByVal ParamArray groups As String()) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(userLogin) = False, "userLogin is nothing or empty.")
-            Contract.Requires(groups IsNot Nothing AndAlso groups.Length <> 0, "groups is nothing or empty.")
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(userLogin) = False)
+            Encapsulation.TryValidateParam(groups, NameOf(groups))
 
             Using searcher = New DirectorySearcher()
 
@@ -212,7 +213,7 @@ Namespace DirectoryServices
         ''' <returns>List of <see cref="System.Collections.ObjectModel.ReadOnlyCollection(Of UserInfo)"></see></returns>
         ''' <remarks></remarks>
         Public Function LoadAllUsers(ByVal domain As String) As System.Collections.ObjectModel.ReadOnlyCollection(Of UserInfo)
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(domain) = False, "domain is nothing or empty.")
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(domain) = False, "domain is nothing or empty.")
 
             Dim users As New System.Collections.Generic.List(Of UserInfo)
 
@@ -252,7 +253,7 @@ Namespace DirectoryServices
         ''' <param name="accountName">Name of the account.</param>
         ''' <remarks></remarks>
         Public Sub SplitLogin(ByRef logIn As String, ByRef domain As String, ByRef accountName As String)
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(login) = False, "login is nothing or empty.")
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(logIn) = False, "login is nothing or empty.")
 
             logIn = logIn.Replace(Portable.ControlChars.ForwardSlash, Portable.ControlChars.BackSlash)
 
@@ -277,7 +278,7 @@ Namespace DirectoryServices
         ''' <returns>String</returns>
         ''' <remarks></remarks>
         Public Function UserContactName(ByVal accountName As String) As String
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(accountName) = False, "accountName is nothing or empty.")
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(accountName) = False, "accountName is nothing or empty.")
 
             Return UserInfo(accountName).ContactName
 
@@ -290,7 +291,7 @@ Namespace DirectoryServices
         ''' <returns>DirectoryEntry.</returns>
         ''' <remarks></remarks>
         Public Function UserDirectoryEntry(ByVal distinguishedName As String) As DirectoryEntry
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(distinguishedName) = False, "distringuised is nothing or empty.")
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(distinguishedName) = False, "distringuised is nothing or empty.")
 
             Return New DirectoryEntry(LDAPPrefix + distinguishedName)
 
@@ -303,7 +304,7 @@ Namespace DirectoryServices
         ''' <returns><see cref="String"></see><example>Distinguished name similar to: CN=mylogin,CN=Users,DC=mycompany,DC=com</example></returns>
         ''' <remarks></remarks>
         Public Function UserDistinguishedName(ByVal userLogin As String) As String
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(userLogin) = False, "userLogin is nothing or empty.")
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(userLogin) = False, "userLogin is nothing or empty.")
 
             Dim name As String = String.Empty
 
@@ -338,7 +339,7 @@ Namespace DirectoryServices
         ''' <returns>String</returns>
         ''' <remarks></remarks>
         Public Function UserEmail(ByVal accountName As String) As String
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(accountName) = False, "accountName is nothing or empty.")
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(accountName) = False, "accountName is nothing or empty.")
 
             Return UserInfo(accountName).Email
 
@@ -351,7 +352,7 @@ Namespace DirectoryServices
         ''' <returns>UserInfo</returns>
         ''' <remarks></remarks>
         Public Function UserInfo(ByVal userLogin As String) As UserInfo
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(userLogin) = False, "userLogin is nothing or empty.")
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(userLogin) = False, "userLogin is nothing or empty.")
 
             Dim info As New UserInfo
 
@@ -397,8 +398,8 @@ Namespace DirectoryServices
         ''' <returns>System.Collections.ObjectModel.ReadOnlyCollection(Of UserInfo).</returns>
         ''' <remarks></remarks>
         Public Function UsersInGroup(ByVal domain As String, ByVal group As String) As IEnumerable(Of UserInfo)
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(domain) = False, "domain is nothing or empty.")
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(group) = False, "group is nothing or empty.")
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(domain) = False, "domain is nothing or empty.")
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(group) = False, "group is nothing or empty.")
 
             Dim users As New Generic.List(Of UserInfo)
 
@@ -435,7 +436,7 @@ Namespace DirectoryServices
         ''' <returns>True if Account Name is active in the current domain.</returns>
         ''' <remarks></remarks>
         Public Function ValidateAccountName(ByVal userLogin As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(userLogin) = False, "userLogin is nothing or empty.")
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(userLogin) = False, "userLogin is nothing or empty.")
 
             Dim valid As Boolean
 

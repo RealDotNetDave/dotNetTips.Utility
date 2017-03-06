@@ -16,7 +16,7 @@ namespace dotNetTips.Utility.Portable {
     /// Class ArgumentIsReadOnlyException.
     /// </summary>
     /// <seealso cref="System.Exception"/>
-    public class ArgumentIsReadOnlyException : Exception
+    public class ArgumentIsReadOnlyException : ArgumentException
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ArgumentIsReadOnlyException"/> class.

@@ -13,8 +13,9 @@
 ' </copyright>
 ' <summary></summary>
 ' *************************************************************************
-Imports System.Diagnostics.Contracts
 
+
+Imports dotNetTips.Utility.Portable.OOP
 ''' <summary>
 ''' Class InfoItemCollection. This class cannot be inherited.
 ''' </summary>
@@ -28,7 +29,7 @@ Public NotInheritable Class InfoItemCollection
     ''' </summary>
     ''' <param name="item">The item to be added to the collection. The value can be a null reference.</param>
     Public Shadows Sub Add(item As InfoItem)
-        Contract.Requires(Of ArgumentNullException)(item IsNot Nothing)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(item IsNot Nothing)
 
         If String.IsNullOrWhiteSpace(item.[Property]) OrElse String.IsNullOrWhiteSpace(item.Text) Then
             Exit Sub
@@ -46,8 +47,8 @@ Public NotInheritable Class InfoItemCollection
     ''' <param name="itemProperty">The item property.</param>
     ''' <param name="itemText">The item text.</param>
     Public Shadows Sub Add(itemProperty As String, itemText As String)
-        Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(itemProperty) = False)
-        Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(itemText))
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(itemProperty) = False)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(itemText))
 
         Add(New InfoItem(itemProperty, itemText))
     End Sub
@@ -57,7 +58,7 @@ Public NotInheritable Class InfoItemCollection
     ''' </summary>
     ''' <param name="collection">The collection.</param>
     Public Shadows Sub AddRange(collection As IEnumerable(Of InfoItem))
-        Contract.Requires(Of ArgumentNullException)(collection IsNot Nothing)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(collection IsNot Nothing)
 
         For Each adi In collection
             Me.Add(adi)
@@ -70,7 +71,7 @@ Public NotInheritable Class InfoItemCollection
     ''' </summary>
     ''' <param name="collection">The collection.</param>
     Public Shadows Sub AddRange(collection As IDictionary(Of String, String))
-        Contract.Requires(Of ArgumentNullException)(collection IsNot Nothing)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(collection IsNot Nothing)
 
         For Each adi In collection
             Me.Add(adi.Key, adi.Value)
