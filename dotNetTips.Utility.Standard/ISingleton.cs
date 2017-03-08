@@ -20,9 +20,9 @@ namespace dotNetTips.Utility.Standard
     /// <typeparam name="T"></typeparam>
     internal interface ISingleton<T> where T : class
     {
-        #region Public Properties
 
-        T Instance { get; }
+        #region Public Properties
+        T Instance();
 
         #endregion Public Properties
     }

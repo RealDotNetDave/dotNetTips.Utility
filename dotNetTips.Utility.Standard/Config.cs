@@ -1,47 +1,95 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// ***********************************************************************
+// Assembly         : dotNetTips.Utility.Standard
+// Author           : David McCarter
+// Created          : 03-06-2017
+//
+// Last Modified By : David McCarter
+// Last Modified On : 03-06-2017
+// ***********************************************************************
+// <copyright file="Config.cs" company="dotNetTips.com - David McCarter">
+//     dotNetTips.com - David McCarter
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 using dotNetTips.Utility.Standard.Extensions;
-using dotNetTips.Utility.Standard.OOP;
-using System.IO;
 using dotNetTips.Utility.Standard.IO;
+using System.IO;
 
 namespace dotNetTips.Utility.Standard
 {
-    public abstract class Config
+    /// <summary>
+    /// Class Config.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <seealso cref="dotNetTips.Utility.Standard.ISingleton{T}" />
+    public class Config<T> : ISingleton<T> where T : class
     {
-
-        protected Config(string configFileName)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Config{T}"/> class.
+        /// </summary>
+        protected Config()
         {
-            this.ConfigFileName = configFileName;
+            var fileName = $"{App.Info().AssemblyProduct}.config";
+            var folder = Path.Combine(DirectoryHelper.GetFolderPath(SpecialFolder.LocalApplicationData), App.Info().Company);
+
+            this.ConfigFileName = Path.Combine(folder, fileName);
         }
 
-        
-        public void Save()
+        /// <summary>
+        /// Saves this instance.
+        /// </summary>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        public virtual bool Save()
         {
-
-
             if (File.Exists(ConfigFileName))
             {
                 File.Delete(ConfigFileName);
-
-                this.ToJsonFile(ConfigFileName);
             }
+
+            _instance.ToJsonFile(ConfigFileName);
+
+            return true;
         }
 
-        public void Load()
+        /// <summary>
+        /// Loads this instance.
+        /// </summary>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        public virtual bool Load()
         {
-            if (File.Exists(ConfigFileName) == false)
+            if (File.Exists(ConfigFileName))
             {
-                ObjectExtensions.FromJsonFile<Config>(ConfigFileName, this);
+                _instance = ObjectExtensions.FromJsonFile<T>(ConfigFileName);
+
+                return true;
             }
+
+            return false;
         }
 
-        public string ConfigFileName { get; private set; }
+        /// <summary>
+        /// Gets or sets the name of the configuration file.
+        /// </summary>
+        /// <value>The name of the configuration file.</value>
+        public string ConfigFileName { get; protected set; }
 
-        private bool ConfigFileNameCheck()
+        /// <summary>
+        /// The instance
+        /// </summary>
+        private T _instance;
+
+        /// <summary>
+        /// Instances this instance.
+        /// </summary>
+        /// <returns>T.</returns>
+        public T Instance()
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(string.IsNullOrEmpty(ConfigFileName) == false);
+            if (_instance == null)
+            {
+                _instance = TypeHelper.Create<T>();
+            }
+
+            return _instance;
         }
     }
 }
