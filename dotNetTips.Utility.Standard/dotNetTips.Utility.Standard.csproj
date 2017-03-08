@@ -3,7 +3,7 @@
     <TargetFramework>netstandard1.6</TargetFramework>
     <DocumentationFile>
     </DocumentationFile>
-    <OutputPath>..\bin\netstandard</OutputPath>
+    <OutputPath>..\bin\</OutputPath>
     <AssemblyVersion>2017.0.0.1</AssemblyVersion>
     <FileVersion>2017.0.0.1</FileVersion>
     <NeutralLanguage>en</NeutralLanguage>
