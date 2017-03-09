@@ -139,7 +139,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentNullException">propertyName - Source cannot be null.</exception>
         public static bool HasProperty(this object instance, string propertyName)
         {
-            Encapsulation.TryValidateParam(propertyName);
+            Encapsulation.TryValidateParam(propertyName, nameof(propertyName));
 
             var propertyInfo = instance.GetType().GetRuntimeProperties().FirstOrDefault(p => p.Name == propertyName);
 
@@ -186,7 +186,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="file">The file.</param>
         /// <returns>T.</returns>
         /// <exception cref="FileNotFoundException">File not found.</exception>
-        public static T FromJsonFile<T>(string file, object instance) where T : class
+        public static T FromJsonFile<T>(string file) where T : class
         {
             Encapsulation.TryValidateParam(file);
 
