@@ -43,6 +43,33 @@ namespace dotNetTips.Utility.Standard.Extensions
         }
 
         /// <summary>
+        /// Given a date, it returns the next (specified) day of week 
+        /// </summary>
+        /// <param name="date">Date to process</param>
+        /// <param name="day">Day of week to find on calendar</param>
+        /// <returns>Future date</returns>
+        public static DateTime NextDayOfWeek(this DateTime date, DayOfWeek day = DayOfWeek.Monday)
+        {
+            while (true)
+            {
+                if (date.DayOfWeek == day)
+                    return date;
+                date = date.AddDays(1);
+            }
+        }
+
+        /// <summary>
+        /// Given a date, it returns the next (specified) day of week
+        /// </summary>
+        /// <param name="date">Date to process</param>
+        /// <param name="timezoneFromUtc">Hours of the timezone from UTC</param>
+        /// <returns>Future date</returns>
+        public static DateTime LocalTimeFromUtc(this DateTime date, Int32 timezoneFromUtc)
+        {
+            return date.ToUniversalTime().AddHours(timezoneFromUtc);
+        }
+
+        /// <summary>
         /// Gets the next.
         /// </summary>
         /// <param name="input">The date/ time.</param>
@@ -54,7 +81,9 @@ namespace dotNetTips.Utility.Standard.Extensions
             Encapsulation.TryValidateParam(dayOfWeek, nameof(dayOfWeek));
 
             var daysToAdd = 0;
+
             daysToAdd = input.DayOfWeek < dayOfWeek ? dayOfWeek - input.DayOfWeek : (7 - (int)input.DayOfWeek) + (int)dayOfWeek;
+
             return input.AddDays(daysToAdd);
         }
 
@@ -82,13 +111,9 @@ namespace dotNetTips.Utility.Standard.Extensions
             var formattedDate = string.Empty;
 
             if (input.Date == DateTime.Today)
-            {
                 formattedDate = nameof(DateTime.Today);
-            }
             else
-            {
                 formattedDate = input.Date == DateTime.Today.AddDays(-1) ? Properties.Resources.Yesterday : input.Date > DateTime.Today.AddDays(-6) ? input.ToString("dddd", CultureInfo.CurrentCulture).ToString() : input.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern, CultureInfo.CurrentCulture);
-            }
 
             // append the time portion to the output
             formattedDate += " @ " + input.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern, CultureInfo.CurrentCulture).ToLower();
