@@ -802,11 +802,6 @@
             </summary>
             <returns>T.</returns>
         </member>
-        <member name="T:dotNetTips.Utility.Portable.IO.DirectoryHelper">
-            <summary>
-            Class DirectoryHelper.
-            </summary>
-        </member>
         <member name="T:dotNetTips.Utility.Portable.OOP.Encapsulation">
             <summary>
             Class Encapsulation.

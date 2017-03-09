@@ -180,7 +180,6 @@
     <Compile Include="FirstWeekOfYear.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="ICloneable.cs" />
-    <Compile Include="IO\DirectoryHelper.cs" />
     <Compile Include="OOP\Encapsulation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ISingleton.cs" />
@@ -198,6 +197,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="IO\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
