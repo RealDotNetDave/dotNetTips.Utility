@@ -1,9 +1,20 @@
 {
   "version": 2,
   "targets": {
-    ".NETPortable,Version=v4.6,Profile=Profile44": {}
+    ".NETPortable,Version=v4.6,Profile=Profile44": {
+      "dotNetTips.Utility.Portable/1.0.0": {
+        "type": "project",
+        "framework": ".NETPortable,Version=v4.5,Profile=Profile7"
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "dotNetTips.Utility.Portable/1.0.0": {
+      "type": "project",
+      "path": "../dotNetTips.Utility.Portable/project.json",
+      "msbuildProject": "../dotNetTips.Utility.Portable/dotNetTips.Utility.Portable.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
     "": [],
     ".NETPortable,Version=v4.6,Profile=Profile44": []
@@ -17,7 +28,16 @@
       "projectName": "dotNetTips.Utility.Portable.Windows",
       "projectPath": "C:\\Users\\David\\Source\\Repos\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\dotNetTips.Utility.Portable.Windows.vbproj",
       "projectJsonPath": "C:\\Users\\David\\Source\\Repos\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\project.json",
-      "projectStyle": "ProjectJson"
+      "projectStyle": "ProjectJson",
+      "frameworks": {
+        "portable46-net451+win81": {
+          "projectReferences": {
+            "C:\\Users\\David\\Source\\Repos\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj": {
+              "projectPath": "C:\\Users\\David\\Source\\Repos\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj"
+            }
+          }
+        }
+      }
     },
     "frameworks": {
       "portable46-net451+win81": {}
