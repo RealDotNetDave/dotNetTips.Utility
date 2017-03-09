@@ -24,23 +24,22 @@ namespace dotNetTips.Utility.Standard.OOP
     /// </summary>
     public static class Encapsulation
     {
-
-        public static void TryValidateParam(string input, string message = "") 
+        public static void TryValidateParam(string input, string message = "")
         {
-            if(string.IsNullOrWhiteSpace(message))
+            if (string.IsNullOrWhiteSpace(message))
             {
                 message = "String is null or empty.";
             }
 
-            TryValidateParam<ArgumentNullException>(string.IsNullOrWhiteSpace(input)==false, message);
+            TryValidateParam<ArgumentNullException>(string.IsNullOrWhiteSpace(input) == false, message);
         }
-            /// <summary>
-            /// Tries the validate parameter.
-            /// </summary>
-            /// <typeparam name="TException">The type of the t exception.</typeparam>
-            /// <param name="condition">The condition.</param>
-            /// <param name="message">The message.</param>
-            public static void TryValidateParam<TException>(bool condition, string message = "") where TException : ArgumentException, new()
+        /// <summary>
+        /// Tries the validate parameter.
+        /// </summary>
+        /// <typeparam name="TException">The type of the t exception.</typeparam>
+        /// <param name="condition">The condition.</param>
+        /// <param name="message">The message.</param>
+        public static void TryValidateParam<TException>(bool condition, string message = "") where TException : ArgumentException, new()
         {
             if (condition)
             {

@@ -4,8 +4,8 @@
     <DocumentationFile>
     </DocumentationFile>
     <OutputPath>..\bin\</OutputPath>
-    <AssemblyVersion>2017.0.0.1</AssemblyVersion>
-    <FileVersion>2017.0.0.1</FileVersion>
+    <AssemblyVersion>2017.3.8.0</AssemblyVersion>
+    <FileVersion>2017.3.8.0</FileVersion>
     <NeutralLanguage>en</NeutralLanguage>
     <Version>2017.0.0.1</Version>
     <Authors>David McCarter</Authors>
