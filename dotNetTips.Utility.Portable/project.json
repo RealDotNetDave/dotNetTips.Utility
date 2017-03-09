@@ -5,7 +5,6 @@
     "dnxcore50.app": {}
   },
   "dependencies": {
-    "DotNet.Contracts": "1.10.20606.1",
     "Microsoft.NETCore": "5.0.0",
     "Microsoft.NETCore.Portable.Compatibility": "1.0.0"
   },
