@@ -79,6 +79,8 @@ namespace dotNetTips.Utility.Portable.OOP {
         /// <param name="message">The message.</param>
         public static void TryValidateParam(Enum value, string paramName, string message = "")
         {
+            TryValidateParam(paramName, nameof(paramName));
+
             if (Enum.IsDefined(value.GetType(), value) == false)
             {
                 if (message.IsNull())
