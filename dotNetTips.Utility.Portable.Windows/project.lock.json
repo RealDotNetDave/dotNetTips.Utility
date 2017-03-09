@@ -231,14 +231,14 @@
     ".NETPortable,Version=v4.6,Profile=Profile44": []
   },
   "packageFolders": {
-    "C:\\Users\\david\\.nuget\\packages\\": {}
+    "C:\\Users\\David\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
-      "projectUniqueName": "C:\\Development\\Source\\Repros\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\dotNetTips.Utility.Portable.Windows.vbproj",
+      "projectUniqueName": "C:\\Users\\David\\Source\\Repos\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\dotNetTips.Utility.Portable.Windows.vbproj",
       "projectName": "dotNetTips.Utility.Portable.Windows",
-      "projectPath": "C:\\Development\\Source\\Repros\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\dotNetTips.Utility.Portable.Windows.vbproj",
-      "projectJsonPath": "C:\\Development\\Source\\Repros\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\project.json",
+      "projectPath": "C:\\Users\\David\\Source\\Repos\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\dotNetTips.Utility.Portable.Windows.vbproj",
+      "projectJsonPath": "C:\\Users\\David\\Source\\Repos\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\project.json",
       "projectStyle": "ProjectJson"
     },
     "dependencies": {
