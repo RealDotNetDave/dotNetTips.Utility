@@ -77,15 +77,6 @@
       "Microsoft.NETCore.Platforms/1.0.0": {
         "type": "package"
       },
-      "Microsoft.NETCore.Portable.Compatibility/1.0.0": {
-        "type": "package",
-        "compile": {
-          "ref/net45/_._": {}
-        },
-        "runtime": {
-          "lib/net45/_._": {}
-        }
-      },
       "Microsoft.NETCore.Targets/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -803,15 +794,6 @@
       },
       "Microsoft.NETCore.Platforms/1.0.0": {
         "type": "package"
-      },
-      "Microsoft.NETCore.Portable.Compatibility/1.0.0": {
-        "type": "package",
-        "compile": {
-          "ref/net45/_._": {}
-        },
-        "runtime": {
-          "lib/net45/_._": {}
-        }
       },
       "Microsoft.NETCore.Targets/1.0.0": {
         "type": "package",
@@ -1567,15 +1549,6 @@
       },
       "Microsoft.NETCore.Platforms/1.0.0": {
         "type": "package"
-      },
-      "Microsoft.NETCore.Portable.Compatibility/1.0.0": {
-        "type": "package",
-        "compile": {
-          "ref/net45/_._": {}
-        },
-        "runtime": {
-          "lib/net45/_._": {}
-        }
       },
       "Microsoft.NETCore.Targets/1.0.0": {
         "type": "package",
@@ -2346,24 +2319,6 @@
       },
       "Microsoft.NETCore.Platforms/1.0.0": {
         "type": "package"
-      },
-      "Microsoft.NETCore.Portable.Compatibility/1.0.0": {
-        "type": "package",
-        "compile": {
-          "ref/dotnet/System.ComponentModel.DataAnnotations.dll": {},
-          "ref/dotnet/System.Core.dll": {},
-          "ref/dotnet/System.Net.dll": {},
-          "ref/dotnet/System.Numerics.dll": {},
-          "ref/dotnet/System.Runtime.Serialization.dll": {},
-          "ref/dotnet/System.ServiceModel.Web.dll": {},
-          "ref/dotnet/System.ServiceModel.dll": {},
-          "ref/dotnet/System.Windows.dll": {},
-          "ref/dotnet/System.Xml.Linq.dll": {},
-          "ref/dotnet/System.Xml.Serialization.dll": {},
-          "ref/dotnet/System.Xml.dll": {},
-          "ref/dotnet/System.dll": {},
-          "ref/dotnet/mscorlib.dll": {}
-        }
       },
       "Microsoft.NETCore.Targets/1.0.0": {
         "type": "package",
@@ -3195,44 +3150,6 @@
         }
       },
       "Microsoft.NETCore.Platforms/1.0.0": {
-        "type": "package"
-      },
-      "Microsoft.NETCore.Portable.Compatibility/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Runtime": "1.0.0"
-        },
-        "compile": {
-          "ref/dotnet/System.ComponentModel.DataAnnotations.dll": {},
-          "ref/dotnet/System.Core.dll": {},
-          "ref/dotnet/System.Net.dll": {},
-          "ref/dotnet/System.Numerics.dll": {},
-          "ref/dotnet/System.Runtime.Serialization.dll": {},
-          "ref/dotnet/System.ServiceModel.Web.dll": {},
-          "ref/dotnet/System.ServiceModel.dll": {},
-          "ref/dotnet/System.Windows.dll": {},
-          "ref/dotnet/System.Xml.Linq.dll": {},
-          "ref/dotnet/System.Xml.Serialization.dll": {},
-          "ref/dotnet/System.Xml.dll": {},
-          "ref/dotnet/System.dll": {},
-          "ref/dotnet/mscorlib.dll": {}
-        },
-        "runtime": {
-          "lib/dnxcore50/System.ComponentModel.DataAnnotations.dll": {},
-          "lib/dnxcore50/System.Core.dll": {},
-          "lib/dnxcore50/System.Net.dll": {},
-          "lib/dnxcore50/System.Numerics.dll": {},
-          "lib/dnxcore50/System.Runtime.Serialization.dll": {},
-          "lib/dnxcore50/System.ServiceModel.Web.dll": {},
-          "lib/dnxcore50/System.ServiceModel.dll": {},
-          "lib/dnxcore50/System.Windows.dll": {},
-          "lib/dnxcore50/System.Xml.Linq.dll": {},
-          "lib/dnxcore50/System.Xml.Serialization.dll": {},
-          "lib/dnxcore50/System.Xml.dll": {},
-          "lib/dnxcore50/System.dll": {}
-        }
-      },
-      "Microsoft.NETCore.Runtime/1.0.0": {
         "type": "package"
       },
       "Microsoft.NETCore.Targets/1.0.0": {
@@ -4330,92 +4247,6 @@
       "Microsoft.NETCore.Platforms/1.0.0": {
         "type": "package"
       },
-      "Microsoft.NETCore.Portable.Compatibility/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Runtime": "1.0.0"
-        },
-        "compile": {
-          "ref/dotnet/System.ComponentModel.DataAnnotations.dll": {},
-          "ref/dotnet/System.Core.dll": {},
-          "ref/dotnet/System.Net.dll": {},
-          "ref/dotnet/System.Numerics.dll": {},
-          "ref/dotnet/System.Runtime.Serialization.dll": {},
-          "ref/dotnet/System.ServiceModel.Web.dll": {},
-          "ref/dotnet/System.ServiceModel.dll": {},
-          "ref/dotnet/System.Windows.dll": {},
-          "ref/dotnet/System.Xml.Linq.dll": {},
-          "ref/dotnet/System.Xml.Serialization.dll": {},
-          "ref/dotnet/System.Xml.dll": {},
-          "ref/dotnet/System.dll": {},
-          "ref/dotnet/mscorlib.dll": {}
-        },
-        "runtime": {
-          "lib/dnxcore50/System.ComponentModel.DataAnnotations.dll": {},
-          "lib/dnxcore50/System.Core.dll": {},
-          "lib/dnxcore50/System.Net.dll": {},
-          "lib/dnxcore50/System.Numerics.dll": {},
-          "lib/dnxcore50/System.Runtime.Serialization.dll": {},
-          "lib/dnxcore50/System.ServiceModel.Web.dll": {},
-          "lib/dnxcore50/System.ServiceModel.dll": {},
-          "lib/dnxcore50/System.Windows.dll": {},
-          "lib/dnxcore50/System.Xml.Linq.dll": {},
-          "lib/dnxcore50/System.Xml.Serialization.dll": {},
-          "lib/dnxcore50/System.Xml.dll": {},
-          "lib/dnxcore50/System.dll": {}
-        }
-      },
-      "Microsoft.NETCore.Runtime/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Runtime.CoreCLR-x64": "1.0.0",
-          "Microsoft.NETCore.Windows.ApiSets-x64": "1.0.0"
-        }
-      },
-      "Microsoft.NETCore.Runtime.CoreCLR-x64/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Collections": "[4.0.10]",
-          "System.Diagnostics.Contracts": "[4.0.0]",
-          "System.Diagnostics.Debug": "[4.0.10]",
-          "System.Diagnostics.StackTrace": "[4.0.0]",
-          "System.Diagnostics.Tools": "[4.0.0]",
-          "System.Diagnostics.Tracing": "[4.0.20]",
-          "System.Globalization": "[4.0.10]",
-          "System.Globalization.Calendars": "[4.0.0]",
-          "System.IO": "[4.0.10]",
-          "System.ObjectModel": "[4.0.10]",
-          "System.Private.Uri": "[4.0.0]",
-          "System.Reflection": "[4.0.10]",
-          "System.Reflection.Extensions": "[4.0.0]",
-          "System.Reflection.Primitives": "[4.0.0]",
-          "System.Resources.ResourceManager": "[4.0.0]",
-          "System.Runtime": "[4.0.20]",
-          "System.Runtime.Extensions": "[4.0.10]",
-          "System.Runtime.Handles": "[4.0.0]",
-          "System.Runtime.InteropServices": "[4.0.20]",
-          "System.Text.Encoding": "[4.0.10]",
-          "System.Text.Encoding.Extensions": "[4.0.10]",
-          "System.Threading": "[4.0.10]",
-          "System.Threading.Tasks": "[4.0.10]",
-          "System.Threading.Timer": "[4.0.0]"
-        },
-        "compile": {
-          "ref/dotnet/_._": {}
-        },
-        "runtime": {
-          "runtimes/win7-x64/lib/dotnet/mscorlib.ni.dll": {}
-        },
-        "native": {
-          "runtimes/win7-x64/native/clretwrc.dll": {},
-          "runtimes/win7-x64/native/coreclr.dll": {},
-          "runtimes/win7-x64/native/dbgshim.dll": {},
-          "runtimes/win7-x64/native/mscordaccore.dll": {},
-          "runtimes/win7-x64/native/mscordbi.dll": {},
-          "runtimes/win7-x64/native/mscorrc.debug.dll": {},
-          "runtimes/win7-x64/native/mscorrc.dll": {}
-        }
-      },
       "Microsoft.NETCore.Targets/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -4425,133 +4256,6 @@
       },
       "Microsoft.NETCore.Targets.DNXCore/4.9.0": {
         "type": "package"
-      },
-      "Microsoft.NETCore.Windows.ApiSets-x64/1.0.0": {
-        "type": "package",
-        "native": {
-          "runtimes/win7-x64/native/API-MS-Win-Base-Util-L1-1-0.dll": {},
-          "runtimes/win7-x64/native/API-MS-Win-Core-Kernel32-Private-L1-1-0.dll": {},
-          "runtimes/win7-x64/native/API-MS-Win-Core-Kernel32-Private-L1-1-1.dll": {},
-          "runtimes/win7-x64/native/API-MS-Win-Core-Kernel32-Private-L1-1-2.dll": {},
-          "runtimes/win7-x64/native/API-MS-Win-Core-PrivateProfile-L1-1-0.dll": {},
-          "runtimes/win7-x64/native/API-MS-Win-Core-ProcessTopology-Obsolete-L1-1-0.dll": {},
-          "runtimes/win7-x64/native/API-MS-Win-Core-String-L2-1-0.dll": {},
-          "runtimes/win7-x64/native/API-MS-Win-Core-StringAnsi-L1-1-0.dll": {},
-          "runtimes/win7-x64/native/API-MS-Win-EventLog-Legacy-L1-1-0.dll": {},
-          "runtimes/win7-x64/native/API-MS-Win-Eventing-ClassicProvider-L1-1-0.dll": {},
-          "runtimes/win7-x64/native/API-MS-Win-Eventing-Consumer-L1-1-0.dll": {},
-          "runtimes/win7-x64/native/API-MS-Win-Eventing-Controller-L1-1-0.dll": {},
-          "runtimes/win7-x64/native/API-MS-Win-Eventing-Legacy-L1-1-0.dll": {},
-          "runtimes/win7-x64/native/API-MS-Win-Eventing-Provider-L1-1-0.dll": {},
-          "runtimes/win7-x64/native/API-MS-Win-Security-LsaPolicy-L1-1-0.dll": {},
-          "runtimes/win7-x64/native/API-MS-Win-devices-config-L1-1-0.dll": {},
-          "runtimes/win7-x64/native/API-MS-Win-devices-config-L1-1-1.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-com-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-com-private-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-comm-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-console-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-console-l2-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-datetime-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-datetime-l1-1-1.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-debug-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-debug-l1-1-1.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-delayload-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-errorhandling-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-errorhandling-l1-1-1.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-fibers-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-fibers-l1-1-1.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-file-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-file-l1-2-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-file-l1-2-1.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-file-l2-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-file-l2-1-1.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-handle-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-heap-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-heap-obsolete-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-interlocked-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-io-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-io-l1-1-1.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-kernel32-legacy-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-kernel32-legacy-l1-1-1.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-kernel32-legacy-l1-1-2.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-libraryloader-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-libraryloader-l1-1-1.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-localization-l1-2-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-localization-l1-2-1.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-localization-l2-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-localization-obsolete-l1-2-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-memory-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-memory-l1-1-1.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-memory-l1-1-2.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-memory-l1-1-3.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-namedpipe-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-namedpipe-l1-2-1.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-normalization-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-privateprofile-l1-1-1.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-processenvironment-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-processenvironment-l1-2-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-processsecurity-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-processthreads-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-processthreads-l1-1-1.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-processthreads-l1-1-2.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-profile-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-psapi-ansi-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-psapi-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-psapi-obsolete-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-realtime-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-registry-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-registry-l2-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-rtlsupport-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-shlwapi-legacy-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-shlwapi-obsolete-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-shutdown-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-shutdown-l1-1-1.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-string-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-string-obsolete-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-string-obsolete-l1-1-1.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-stringloader-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-stringloader-l1-1-1.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-synch-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-synch-l1-2-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-sysinfo-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-sysinfo-l1-2-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-sysinfo-l1-2-1.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-sysinfo-l1-2-2.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-sysinfo-l1-2-3.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-threadpool-l1-2-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-threadpool-legacy-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-threadpool-private-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-timezone-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-url-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-util-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-version-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-winrt-error-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-winrt-error-l1-1-1.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-winrt-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-winrt-registration-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-winrt-robuffer-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-winrt-roparameterizediid-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-winrt-string-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-wow64-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-xstate-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-core-xstate-l2-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-ro-typeresolution-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-security-base-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-security-cpwl-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-security-cryptoapi-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-security-lsalookup-l2-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-security-lsalookup-l2-1-1.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-security-provider-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-security-sddl-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-service-core-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-service-core-l1-1-1.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-service-management-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-service-management-l2-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-service-private-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-service-private-l1-1-1.dll": {},
-          "runtimes/win7-x64/native/api-ms-win-service-winsvc-l1-1-0.dll": {},
-          "runtimes/win7-x64/native/ext-ms-win-advapi32-encryptedfile-l1-1-0.dll": {}
-        }
       },
       "Microsoft.VisualBasic/10.0.0": {
         "type": "package",
@@ -4722,18 +4426,6 @@
           "lib/dotnet/System.ComponentModel.EventBasedAsync.dll": {}
         }
       },
-      "System.Diagnostics.Contracts/4.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Runtime": "4.0.0"
-        },
-        "compile": {
-          "ref/dotnet/System.Diagnostics.Contracts.dll": {}
-        },
-        "runtime": {
-          "lib/DNXCore50/System.Diagnostics.Contracts.dll": {}
-        }
-      },
       "System.Diagnostics.Debug/4.0.10": {
         "type": "package",
         "dependencies": {
@@ -4744,19 +4436,6 @@
         },
         "runtime": {
           "lib/DNXCore50/System.Diagnostics.Debug.dll": {}
-        }
-      },
-      "System.Diagnostics.StackTrace/4.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Reflection": "4.0.0",
-          "System.Runtime": "4.0.0"
-        },
-        "compile": {
-          "ref/dotnet/System.Diagnostics.StackTrace.dll": {}
-        },
-        "runtime": {
-          "lib/DNXCore50/System.Diagnostics.StackTrace.dll": {}
         }
       },
       "System.Diagnostics.Tools/4.0.0": {
@@ -5694,92 +5373,6 @@
       "Microsoft.NETCore.Platforms/1.0.0": {
         "type": "package"
       },
-      "Microsoft.NETCore.Portable.Compatibility/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Runtime": "1.0.0"
-        },
-        "compile": {
-          "ref/dotnet/System.ComponentModel.DataAnnotations.dll": {},
-          "ref/dotnet/System.Core.dll": {},
-          "ref/dotnet/System.Net.dll": {},
-          "ref/dotnet/System.Numerics.dll": {},
-          "ref/dotnet/System.Runtime.Serialization.dll": {},
-          "ref/dotnet/System.ServiceModel.Web.dll": {},
-          "ref/dotnet/System.ServiceModel.dll": {},
-          "ref/dotnet/System.Windows.dll": {},
-          "ref/dotnet/System.Xml.Linq.dll": {},
-          "ref/dotnet/System.Xml.Serialization.dll": {},
-          "ref/dotnet/System.Xml.dll": {},
-          "ref/dotnet/System.dll": {},
-          "ref/dotnet/mscorlib.dll": {}
-        },
-        "runtime": {
-          "lib/dnxcore50/System.ComponentModel.DataAnnotations.dll": {},
-          "lib/dnxcore50/System.Core.dll": {},
-          "lib/dnxcore50/System.Net.dll": {},
-          "lib/dnxcore50/System.Numerics.dll": {},
-          "lib/dnxcore50/System.Runtime.Serialization.dll": {},
-          "lib/dnxcore50/System.ServiceModel.Web.dll": {},
-          "lib/dnxcore50/System.ServiceModel.dll": {},
-          "lib/dnxcore50/System.Windows.dll": {},
-          "lib/dnxcore50/System.Xml.Linq.dll": {},
-          "lib/dnxcore50/System.Xml.Serialization.dll": {},
-          "lib/dnxcore50/System.Xml.dll": {},
-          "lib/dnxcore50/System.dll": {}
-        }
-      },
-      "Microsoft.NETCore.Runtime/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Runtime.CoreCLR-x86": "1.0.0",
-          "Microsoft.NETCore.Windows.ApiSets-x86": "1.0.0"
-        }
-      },
-      "Microsoft.NETCore.Runtime.CoreCLR-x86/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Collections": "[4.0.10]",
-          "System.Diagnostics.Contracts": "[4.0.0]",
-          "System.Diagnostics.Debug": "[4.0.10]",
-          "System.Diagnostics.StackTrace": "[4.0.0]",
-          "System.Diagnostics.Tools": "[4.0.0]",
-          "System.Diagnostics.Tracing": "[4.0.20]",
-          "System.Globalization": "[4.0.10]",
-          "System.Globalization.Calendars": "[4.0.0]",
-          "System.IO": "[4.0.10]",
-          "System.ObjectModel": "[4.0.10]",
-          "System.Private.Uri": "[4.0.0]",
-          "System.Reflection": "[4.0.10]",
-          "System.Reflection.Extensions": "[4.0.0]",
-          "System.Reflection.Primitives": "[4.0.0]",
-          "System.Resources.ResourceManager": "[4.0.0]",
-          "System.Runtime": "[4.0.20]",
-          "System.Runtime.Extensions": "[4.0.10]",
-          "System.Runtime.Handles": "[4.0.0]",
-          "System.Runtime.InteropServices": "[4.0.20]",
-          "System.Text.Encoding": "[4.0.10]",
-          "System.Text.Encoding.Extensions": "[4.0.10]",
-          "System.Threading": "[4.0.10]",
-          "System.Threading.Tasks": "[4.0.10]",
-          "System.Threading.Timer": "[4.0.0]"
-        },
-        "compile": {
-          "ref/dotnet/_._": {}
-        },
-        "runtime": {
-          "runtimes/win7-x86/lib/dotnet/mscorlib.ni.dll": {}
-        },
-        "native": {
-          "runtimes/win7-x86/native/clretwrc.dll": {},
-          "runtimes/win7-x86/native/coreclr.dll": {},
-          "runtimes/win7-x86/native/dbgshim.dll": {},
-          "runtimes/win7-x86/native/mscordaccore.dll": {},
-          "runtimes/win7-x86/native/mscordbi.dll": {},
-          "runtimes/win7-x86/native/mscorrc.debug.dll": {},
-          "runtimes/win7-x86/native/mscorrc.dll": {}
-        }
-      },
       "Microsoft.NETCore.Targets/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -5789,133 +5382,6 @@
       },
       "Microsoft.NETCore.Targets.DNXCore/4.9.0": {
         "type": "package"
-      },
-      "Microsoft.NETCore.Windows.ApiSets-x86/1.0.0": {
-        "type": "package",
-        "native": {
-          "runtimes/win7-x86/native/API-MS-Win-Base-Util-L1-1-0.dll": {},
-          "runtimes/win7-x86/native/API-MS-Win-Core-Kernel32-Private-L1-1-0.dll": {},
-          "runtimes/win7-x86/native/API-MS-Win-Core-Kernel32-Private-L1-1-1.dll": {},
-          "runtimes/win7-x86/native/API-MS-Win-Core-Kernel32-Private-L1-1-2.dll": {},
-          "runtimes/win7-x86/native/API-MS-Win-Core-PrivateProfile-L1-1-0.dll": {},
-          "runtimes/win7-x86/native/API-MS-Win-Core-ProcessTopology-Obsolete-L1-1-0.dll": {},
-          "runtimes/win7-x86/native/API-MS-Win-Core-String-L2-1-0.dll": {},
-          "runtimes/win7-x86/native/API-MS-Win-Core-StringAnsi-L1-1-0.dll": {},
-          "runtimes/win7-x86/native/API-MS-Win-EventLog-Legacy-L1-1-0.dll": {},
-          "runtimes/win7-x86/native/API-MS-Win-Eventing-ClassicProvider-L1-1-0.dll": {},
-          "runtimes/win7-x86/native/API-MS-Win-Eventing-Consumer-L1-1-0.dll": {},
-          "runtimes/win7-x86/native/API-MS-Win-Eventing-Controller-L1-1-0.dll": {},
-          "runtimes/win7-x86/native/API-MS-Win-Eventing-Legacy-L1-1-0.dll": {},
-          "runtimes/win7-x86/native/API-MS-Win-Eventing-Provider-L1-1-0.dll": {},
-          "runtimes/win7-x86/native/API-MS-Win-Security-LsaPolicy-L1-1-0.dll": {},
-          "runtimes/win7-x86/native/API-MS-Win-devices-config-L1-1-0.dll": {},
-          "runtimes/win7-x86/native/API-MS-Win-devices-config-L1-1-1.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-com-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-com-private-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-comm-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-console-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-console-l2-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-datetime-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-datetime-l1-1-1.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-debug-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-debug-l1-1-1.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-delayload-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-errorhandling-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-errorhandling-l1-1-1.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-fibers-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-fibers-l1-1-1.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-file-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-file-l1-2-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-file-l1-2-1.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-file-l2-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-file-l2-1-1.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-handle-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-heap-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-heap-obsolete-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-interlocked-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-io-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-io-l1-1-1.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-kernel32-legacy-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-kernel32-legacy-l1-1-1.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-kernel32-legacy-l1-1-2.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-libraryloader-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-libraryloader-l1-1-1.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-localization-l1-2-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-localization-l1-2-1.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-localization-l2-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-localization-obsolete-l1-2-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-memory-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-memory-l1-1-1.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-memory-l1-1-2.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-memory-l1-1-3.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-namedpipe-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-namedpipe-l1-2-1.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-normalization-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-privateprofile-l1-1-1.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-processenvironment-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-processenvironment-l1-2-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-processsecurity-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-processthreads-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-processthreads-l1-1-1.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-processthreads-l1-1-2.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-profile-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-psapi-ansi-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-psapi-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-psapi-obsolete-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-realtime-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-registry-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-registry-l2-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-rtlsupport-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-shlwapi-legacy-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-shlwapi-obsolete-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-shutdown-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-shutdown-l1-1-1.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-string-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-string-obsolete-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-string-obsolete-l1-1-1.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-stringloader-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-stringloader-l1-1-1.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-synch-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-synch-l1-2-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-sysinfo-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-sysinfo-l1-2-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-sysinfo-l1-2-1.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-sysinfo-l1-2-2.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-sysinfo-l1-2-3.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-threadpool-l1-2-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-threadpool-legacy-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-threadpool-private-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-timezone-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-url-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-util-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-version-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-winrt-error-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-winrt-error-l1-1-1.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-winrt-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-winrt-registration-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-winrt-robuffer-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-winrt-roparameterizediid-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-winrt-string-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-wow64-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-xstate-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-core-xstate-l2-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-ro-typeresolution-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-security-base-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-security-cpwl-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-security-cryptoapi-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-security-lsalookup-l2-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-security-lsalookup-l2-1-1.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-security-provider-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-security-sddl-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-service-core-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-service-core-l1-1-1.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-service-management-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-service-management-l2-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-service-private-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-service-private-l1-1-1.dll": {},
-          "runtimes/win7-x86/native/api-ms-win-service-winsvc-l1-1-0.dll": {},
-          "runtimes/win7-x86/native/ext-ms-win-advapi32-encryptedfile-l1-1-0.dll": {}
-        }
       },
       "Microsoft.VisualBasic/10.0.0": {
         "type": "package",
@@ -6086,18 +5552,6 @@
           "lib/dotnet/System.ComponentModel.EventBasedAsync.dll": {}
         }
       },
-      "System.Diagnostics.Contracts/4.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Runtime": "4.0.0"
-        },
-        "compile": {
-          "ref/dotnet/System.Diagnostics.Contracts.dll": {}
-        },
-        "runtime": {
-          "lib/DNXCore50/System.Diagnostics.Contracts.dll": {}
-        }
-      },
       "System.Diagnostics.Debug/4.0.10": {
         "type": "package",
         "dependencies": {
@@ -6108,19 +5562,6 @@
         },
         "runtime": {
           "lib/DNXCore50/System.Diagnostics.Debug.dll": {}
-        }
-      },
-      "System.Diagnostics.StackTrace/4.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Reflection": "4.0.0",
-          "System.Runtime": "4.0.0"
-        },
-        "compile": {
-          "ref/dotnet/System.Diagnostics.StackTrace.dll": {}
-        },
-        "runtime": {
-          "lib/DNXCore50/System.Diagnostics.StackTrace.dll": {}
         }
       },
       "System.Diagnostics.Tools/4.0.0": {
@@ -7056,98 +6497,6 @@
         }
       },
       "Microsoft.NETCore.Platforms/1.0.0": {
-        "type": "package"
-      },
-      "Microsoft.NETCore.Portable.Compatibility/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Runtime": "1.0.0"
-        },
-        "compile": {
-          "ref/netcore50/System.ComponentModel.DataAnnotations.dll": {},
-          "ref/netcore50/System.Core.dll": {},
-          "ref/netcore50/System.Net.dll": {},
-          "ref/netcore50/System.Numerics.dll": {},
-          "ref/netcore50/System.Runtime.Serialization.dll": {},
-          "ref/netcore50/System.ServiceModel.Web.dll": {},
-          "ref/netcore50/System.ServiceModel.dll": {},
-          "ref/netcore50/System.Windows.dll": {},
-          "ref/netcore50/System.Xml.Linq.dll": {},
-          "ref/netcore50/System.Xml.Serialization.dll": {},
-          "ref/netcore50/System.Xml.dll": {},
-          "ref/netcore50/System.dll": {},
-          "ref/netcore50/mscorlib.dll": {}
-        },
-        "runtime": {
-          "lib/netcore50/System.ComponentModel.DataAnnotations.dll": {},
-          "lib/netcore50/System.Core.dll": {},
-          "lib/netcore50/System.Net.dll": {},
-          "lib/netcore50/System.Numerics.dll": {},
-          "lib/netcore50/System.Runtime.Serialization.dll": {},
-          "lib/netcore50/System.ServiceModel.Web.dll": {},
-          "lib/netcore50/System.ServiceModel.dll": {},
-          "lib/netcore50/System.Windows.dll": {},
-          "lib/netcore50/System.Xml.Linq.dll": {},
-          "lib/netcore50/System.Xml.Serialization.dll": {},
-          "lib/netcore50/System.Xml.dll": {},
-          "lib/netcore50/System.dll": {}
-        },
-        "runtimeTargets": {
-          "runtimes/aot/lib/netcore50/System.ComponentModel.DataAnnotations.dll": {
-            "assetType": "runtime",
-            "rid": "aot"
-          },
-          "runtimes/aot/lib/netcore50/System.Core.dll": {
-            "assetType": "runtime",
-            "rid": "aot"
-          },
-          "runtimes/aot/lib/netcore50/System.Net.dll": {
-            "assetType": "runtime",
-            "rid": "aot"
-          },
-          "runtimes/aot/lib/netcore50/System.Numerics.dll": {
-            "assetType": "runtime",
-            "rid": "aot"
-          },
-          "runtimes/aot/lib/netcore50/System.Runtime.Serialization.dll": {
-            "assetType": "runtime",
-            "rid": "aot"
-          },
-          "runtimes/aot/lib/netcore50/System.ServiceModel.Web.dll": {
-            "assetType": "runtime",
-            "rid": "aot"
-          },
-          "runtimes/aot/lib/netcore50/System.ServiceModel.dll": {
-            "assetType": "runtime",
-            "rid": "aot"
-          },
-          "runtimes/aot/lib/netcore50/System.Windows.dll": {
-            "assetType": "runtime",
-            "rid": "aot"
-          },
-          "runtimes/aot/lib/netcore50/System.Xml.Linq.dll": {
-            "assetType": "runtime",
-            "rid": "aot"
-          },
-          "runtimes/aot/lib/netcore50/System.Xml.Serialization.dll": {
-            "assetType": "runtime",
-            "rid": "aot"
-          },
-          "runtimes/aot/lib/netcore50/System.Xml.dll": {
-            "assetType": "runtime",
-            "rid": "aot"
-          },
-          "runtimes/aot/lib/netcore50/System.dll": {
-            "assetType": "runtime",
-            "rid": "aot"
-          },
-          "runtimes/aot/lib/netcore50/mscorlib.dll": {
-            "assetType": "runtime",
-            "rid": "aot"
-          }
-        }
-      },
-      "Microsoft.NETCore.Runtime/1.0.0": {
         "type": "package"
       },
       "Microsoft.NETCore.Targets/1.0.0": {
@@ -8437,91 +7786,6 @@
       "Microsoft.NETCore.Platforms/1.0.0": {
         "type": "package"
       },
-      "Microsoft.NETCore.Portable.Compatibility/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Runtime": "1.0.0"
-        },
-        "compile": {
-          "ref/netcore50/System.ComponentModel.DataAnnotations.dll": {},
-          "ref/netcore50/System.Core.dll": {},
-          "ref/netcore50/System.Net.dll": {},
-          "ref/netcore50/System.Numerics.dll": {},
-          "ref/netcore50/System.Runtime.Serialization.dll": {},
-          "ref/netcore50/System.ServiceModel.Web.dll": {},
-          "ref/netcore50/System.ServiceModel.dll": {},
-          "ref/netcore50/System.Windows.dll": {},
-          "ref/netcore50/System.Xml.Linq.dll": {},
-          "ref/netcore50/System.Xml.Serialization.dll": {},
-          "ref/netcore50/System.Xml.dll": {},
-          "ref/netcore50/System.dll": {},
-          "ref/netcore50/mscorlib.dll": {}
-        },
-        "runtime": {
-          "lib/netcore50/System.ComponentModel.DataAnnotations.dll": {},
-          "lib/netcore50/System.Core.dll": {},
-          "lib/netcore50/System.Net.dll": {},
-          "lib/netcore50/System.Numerics.dll": {},
-          "lib/netcore50/System.Runtime.Serialization.dll": {},
-          "lib/netcore50/System.ServiceModel.Web.dll": {},
-          "lib/netcore50/System.ServiceModel.dll": {},
-          "lib/netcore50/System.Windows.dll": {},
-          "lib/netcore50/System.Xml.Linq.dll": {},
-          "lib/netcore50/System.Xml.Serialization.dll": {},
-          "lib/netcore50/System.Xml.dll": {},
-          "lib/netcore50/System.dll": {}
-        }
-      },
-      "Microsoft.NETCore.Runtime/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Runtime.CoreCLR-arm": "1.0.0"
-        }
-      },
-      "Microsoft.NETCore.Runtime.CoreCLR-arm/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Collections": "[4.0.10]",
-          "System.Diagnostics.Contracts": "[4.0.0]",
-          "System.Diagnostics.Debug": "[4.0.10]",
-          "System.Diagnostics.StackTrace": "[4.0.0]",
-          "System.Diagnostics.Tools": "[4.0.0]",
-          "System.Diagnostics.Tracing": "[4.0.20]",
-          "System.Globalization": "[4.0.10]",
-          "System.Globalization.Calendars": "[4.0.0]",
-          "System.IO": "[4.0.10]",
-          "System.ObjectModel": "[4.0.10]",
-          "System.Private.Uri": "[4.0.0]",
-          "System.Reflection": "[4.0.10]",
-          "System.Reflection.Extensions": "[4.0.0]",
-          "System.Reflection.Primitives": "[4.0.0]",
-          "System.Resources.ResourceManager": "[4.0.0]",
-          "System.Runtime": "[4.0.20]",
-          "System.Runtime.Extensions": "[4.0.10]",
-          "System.Runtime.Handles": "[4.0.0]",
-          "System.Runtime.InteropServices": "[4.0.20]",
-          "System.Text.Encoding": "[4.0.10]",
-          "System.Text.Encoding.Extensions": "[4.0.10]",
-          "System.Threading": "[4.0.10]",
-          "System.Threading.Tasks": "[4.0.10]",
-          "System.Threading.Timer": "[4.0.0]"
-        },
-        "compile": {
-          "ref/dotnet/_._": {}
-        },
-        "runtime": {
-          "runtimes/win8-arm/lib/dotnet/mscorlib.ni.dll": {}
-        },
-        "native": {
-          "runtimes/win8-arm/native/clretwrc.dll": {},
-          "runtimes/win8-arm/native/coreclr.dll": {},
-          "runtimes/win8-arm/native/dbgshim.dll": {},
-          "runtimes/win8-arm/native/mscordaccore.dll": {},
-          "runtimes/win8-arm/native/mscordbi.dll": {},
-          "runtimes/win8-arm/native/mscorrc.debug.dll": {},
-          "runtimes/win8-arm/native/mscorrc.dll": {}
-        }
-      },
       "Microsoft.NETCore.Targets/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -8712,18 +7976,6 @@
         },
         "runtime": {
           "lib/netcore50/System.Diagnostics.Debug.dll": {}
-        }
-      },
-      "System.Diagnostics.StackTrace/4.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Runtime": "4.0.20"
-        },
-        "compile": {
-          "ref/dotnet/System.Diagnostics.StackTrace.dll": {}
-        },
-        "runtime": {
-          "lib/netcore50/System.Diagnostics.StackTrace.dll": {}
         }
       },
       "System.Diagnostics.Tools/4.0.0": {
@@ -9711,77 +8963,6 @@
       "Microsoft.NETCore.Platforms/1.0.0": {
         "type": "package"
       },
-      "Microsoft.NETCore.Portable.Compatibility/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Runtime": "1.0.0"
-        },
-        "compile": {
-          "ref/netcore50/System.ComponentModel.DataAnnotations.dll": {},
-          "ref/netcore50/System.Core.dll": {},
-          "ref/netcore50/System.Net.dll": {},
-          "ref/netcore50/System.Numerics.dll": {},
-          "ref/netcore50/System.Runtime.Serialization.dll": {},
-          "ref/netcore50/System.ServiceModel.Web.dll": {},
-          "ref/netcore50/System.ServiceModel.dll": {},
-          "ref/netcore50/System.Windows.dll": {},
-          "ref/netcore50/System.Xml.Linq.dll": {},
-          "ref/netcore50/System.Xml.Serialization.dll": {},
-          "ref/netcore50/System.Xml.dll": {},
-          "ref/netcore50/System.dll": {},
-          "ref/netcore50/mscorlib.dll": {}
-        },
-        "runtime": {
-          "runtimes/aot/lib/netcore50/System.ComponentModel.DataAnnotations.dll": {},
-          "runtimes/aot/lib/netcore50/System.Core.dll": {},
-          "runtimes/aot/lib/netcore50/System.Net.dll": {},
-          "runtimes/aot/lib/netcore50/System.Numerics.dll": {},
-          "runtimes/aot/lib/netcore50/System.Runtime.Serialization.dll": {},
-          "runtimes/aot/lib/netcore50/System.ServiceModel.Web.dll": {},
-          "runtimes/aot/lib/netcore50/System.ServiceModel.dll": {},
-          "runtimes/aot/lib/netcore50/System.Windows.dll": {},
-          "runtimes/aot/lib/netcore50/System.Xml.Linq.dll": {},
-          "runtimes/aot/lib/netcore50/System.Xml.Serialization.dll": {},
-          "runtimes/aot/lib/netcore50/System.Xml.dll": {},
-          "runtimes/aot/lib/netcore50/System.dll": {},
-          "runtimes/aot/lib/netcore50/mscorlib.dll": {}
-        }
-      },
-      "Microsoft.NETCore.Runtime/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Runtime.Native": "1.0.0"
-        }
-      },
-      "Microsoft.NETCore.Runtime.Native/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Collections": "[4.0.10]",
-          "System.Diagnostics.Contracts": "[4.0.0]",
-          "System.Diagnostics.Debug": "[4.0.10]",
-          "System.Diagnostics.StackTrace": "[4.0.0]",
-          "System.Diagnostics.Tools": "[4.0.0]",
-          "System.Diagnostics.Tracing": "[4.0.20]",
-          "System.Globalization": "[4.0.10]",
-          "System.Globalization.Calendars": "[4.0.0]",
-          "System.IO": "[4.0.10]",
-          "System.ObjectModel": "[4.0.10]",
-          "System.Private.Uri": "[4.0.0]",
-          "System.Reflection": "[4.0.10]",
-          "System.Reflection.Extensions": "[4.0.0]",
-          "System.Reflection.Primitives": "[4.0.0]",
-          "System.Resources.ResourceManager": "[4.0.0]",
-          "System.Runtime": "[4.0.20]",
-          "System.Runtime.Extensions": "[4.0.10]",
-          "System.Runtime.Handles": "[4.0.0]",
-          "System.Runtime.InteropServices": "[4.0.20]",
-          "System.Text.Encoding": "[4.0.10]",
-          "System.Text.Encoding.Extensions": "[4.0.10]",
-          "System.Threading": "[4.0.10]",
-          "System.Threading.Tasks": "[4.0.10]",
-          "System.Threading.Timer": "[4.0.0]"
-        }
-      },
       "Microsoft.NETCore.Targets/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -9972,18 +9153,6 @@
         },
         "runtime": {
           "runtimes/win8-aot/lib/netcore50/System.Diagnostics.Debug.dll": {}
-        }
-      },
-      "System.Diagnostics.StackTrace/4.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Runtime": "4.0.20"
-        },
-        "compile": {
-          "ref/dotnet/System.Diagnostics.StackTrace.dll": {}
-        },
-        "runtime": {
-          "runtimes/win8-aot/lib/netcore50/System.Diagnostics.StackTrace.dll": {}
         }
       },
       "System.Diagnostics.Tools/4.0.0": {
@@ -10920,92 +10089,6 @@
       "Microsoft.NETCore.Platforms/1.0.0": {
         "type": "package"
       },
-      "Microsoft.NETCore.Portable.Compatibility/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Runtime": "1.0.0"
-        },
-        "compile": {
-          "ref/netcore50/System.ComponentModel.DataAnnotations.dll": {},
-          "ref/netcore50/System.Core.dll": {},
-          "ref/netcore50/System.Net.dll": {},
-          "ref/netcore50/System.Numerics.dll": {},
-          "ref/netcore50/System.Runtime.Serialization.dll": {},
-          "ref/netcore50/System.ServiceModel.Web.dll": {},
-          "ref/netcore50/System.ServiceModel.dll": {},
-          "ref/netcore50/System.Windows.dll": {},
-          "ref/netcore50/System.Xml.Linq.dll": {},
-          "ref/netcore50/System.Xml.Serialization.dll": {},
-          "ref/netcore50/System.Xml.dll": {},
-          "ref/netcore50/System.dll": {},
-          "ref/netcore50/mscorlib.dll": {}
-        },
-        "runtime": {
-          "lib/netcore50/System.ComponentModel.DataAnnotations.dll": {},
-          "lib/netcore50/System.Core.dll": {},
-          "lib/netcore50/System.Net.dll": {},
-          "lib/netcore50/System.Numerics.dll": {},
-          "lib/netcore50/System.Runtime.Serialization.dll": {},
-          "lib/netcore50/System.ServiceModel.Web.dll": {},
-          "lib/netcore50/System.ServiceModel.dll": {},
-          "lib/netcore50/System.Windows.dll": {},
-          "lib/netcore50/System.Xml.Linq.dll": {},
-          "lib/netcore50/System.Xml.Serialization.dll": {},
-          "lib/netcore50/System.Xml.dll": {},
-          "lib/netcore50/System.dll": {}
-        }
-      },
-      "Microsoft.NETCore.Runtime/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Runtime.CoreCLR-x64": "1.0.0",
-          "Microsoft.NETCore.Windows.ApiSets-x64": "1.0.0"
-        }
-      },
-      "Microsoft.NETCore.Runtime.CoreCLR-x64/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Collections": "[4.0.10]",
-          "System.Diagnostics.Contracts": "[4.0.0]",
-          "System.Diagnostics.Debug": "[4.0.10]",
-          "System.Diagnostics.StackTrace": "[4.0.0]",
-          "System.Diagnostics.Tools": "[4.0.0]",
-          "System.Diagnostics.Tracing": "[4.0.20]",
-          "System.Globalization": "[4.0.10]",
-          "System.Globalization.Calendars": "[4.0.0]",
-          "System.IO": "[4.0.10]",
-          "System.ObjectModel": "[4.0.10]",
-          "System.Private.Uri": "[4.0.0]",
-          "System.Reflection": "[4.0.10]",
-          "System.Reflection.Extensions": "[4.0.0]",
-          "System.Reflection.Primitives": "[4.0.0]",
-          "System.Resources.ResourceManager": "[4.0.0]",
-          "System.Runtime": "[4.0.20]",
-          "System.Runtime.Extensions": "[4.0.10]",
-          "System.Runtime.Handles": "[4.0.0]",
-          "System.Runtime.InteropServices": "[4.0.20]",
-          "System.Text.Encoding": "[4.0.10]",
-          "System.Text.Encoding.Extensions": "[4.0.10]",
-          "System.Threading": "[4.0.10]",
-          "System.Threading.Tasks": "[4.0.10]",
-          "System.Threading.Timer": "[4.0.0]"
-        },
-        "compile": {
-          "ref/dotnet/_._": {}
-        },
-        "runtime": {
-          "runtimes/win7-x64/lib/dotnet/mscorlib.ni.dll": {}
-        },
-        "native": {
-          "runtimes/win7-x64/native/clretwrc.dll": {},
-          "runtimes/win7-x64/native/coreclr.dll": {},
-          "runtimes/win7-x64/native/dbgshim.dll": {},
-          "runtimes/win7-x64/native/mscordaccore.dll": {},
-          "runtimes/win7-x64/native/mscordbi.dll": {},
-          "runtimes/win7-x64/native/mscorrc.debug.dll": {},
-          "runtimes/win7-x64/native/mscorrc.dll": {}
-        }
-      },
       "Microsoft.NETCore.Targets/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -11015,12 +10098,6 @@
       },
       "Microsoft.NETCore.Targets.UniversalWindowsPlatform/5.0.0": {
         "type": "package"
-      },
-      "Microsoft.NETCore.Windows.ApiSets-x64/1.0.0": {
-        "type": "package",
-        "native": {
-          "runtimes/win10-x64/native/_._": {}
-        }
       },
       "Microsoft.VisualBasic/10.0.0": {
         "type": "package",
@@ -11202,18 +10279,6 @@
         },
         "runtime": {
           "lib/netcore50/System.Diagnostics.Debug.dll": {}
-        }
-      },
-      "System.Diagnostics.StackTrace/4.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Runtime": "4.0.20"
-        },
-        "compile": {
-          "ref/dotnet/System.Diagnostics.StackTrace.dll": {}
-        },
-        "runtime": {
-          "lib/netcore50/System.Diagnostics.StackTrace.dll": {}
         }
       },
       "System.Diagnostics.Tools/4.0.0": {
@@ -12201,77 +11266,6 @@
       "Microsoft.NETCore.Platforms/1.0.0": {
         "type": "package"
       },
-      "Microsoft.NETCore.Portable.Compatibility/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Runtime": "1.0.0"
-        },
-        "compile": {
-          "ref/netcore50/System.ComponentModel.DataAnnotations.dll": {},
-          "ref/netcore50/System.Core.dll": {},
-          "ref/netcore50/System.Net.dll": {},
-          "ref/netcore50/System.Numerics.dll": {},
-          "ref/netcore50/System.Runtime.Serialization.dll": {},
-          "ref/netcore50/System.ServiceModel.Web.dll": {},
-          "ref/netcore50/System.ServiceModel.dll": {},
-          "ref/netcore50/System.Windows.dll": {},
-          "ref/netcore50/System.Xml.Linq.dll": {},
-          "ref/netcore50/System.Xml.Serialization.dll": {},
-          "ref/netcore50/System.Xml.dll": {},
-          "ref/netcore50/System.dll": {},
-          "ref/netcore50/mscorlib.dll": {}
-        },
-        "runtime": {
-          "runtimes/aot/lib/netcore50/System.ComponentModel.DataAnnotations.dll": {},
-          "runtimes/aot/lib/netcore50/System.Core.dll": {},
-          "runtimes/aot/lib/netcore50/System.Net.dll": {},
-          "runtimes/aot/lib/netcore50/System.Numerics.dll": {},
-          "runtimes/aot/lib/netcore50/System.Runtime.Serialization.dll": {},
-          "runtimes/aot/lib/netcore50/System.ServiceModel.Web.dll": {},
-          "runtimes/aot/lib/netcore50/System.ServiceModel.dll": {},
-          "runtimes/aot/lib/netcore50/System.Windows.dll": {},
-          "runtimes/aot/lib/netcore50/System.Xml.Linq.dll": {},
-          "runtimes/aot/lib/netcore50/System.Xml.Serialization.dll": {},
-          "runtimes/aot/lib/netcore50/System.Xml.dll": {},
-          "runtimes/aot/lib/netcore50/System.dll": {},
-          "runtimes/aot/lib/netcore50/mscorlib.dll": {}
-        }
-      },
-      "Microsoft.NETCore.Runtime/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Runtime.Native": "1.0.0"
-        }
-      },
-      "Microsoft.NETCore.Runtime.Native/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Collections": "[4.0.10]",
-          "System.Diagnostics.Contracts": "[4.0.0]",
-          "System.Diagnostics.Debug": "[4.0.10]",
-          "System.Diagnostics.StackTrace": "[4.0.0]",
-          "System.Diagnostics.Tools": "[4.0.0]",
-          "System.Diagnostics.Tracing": "[4.0.20]",
-          "System.Globalization": "[4.0.10]",
-          "System.Globalization.Calendars": "[4.0.0]",
-          "System.IO": "[4.0.10]",
-          "System.ObjectModel": "[4.0.10]",
-          "System.Private.Uri": "[4.0.0]",
-          "System.Reflection": "[4.0.10]",
-          "System.Reflection.Extensions": "[4.0.0]",
-          "System.Reflection.Primitives": "[4.0.0]",
-          "System.Resources.ResourceManager": "[4.0.0]",
-          "System.Runtime": "[4.0.20]",
-          "System.Runtime.Extensions": "[4.0.10]",
-          "System.Runtime.Handles": "[4.0.0]",
-          "System.Runtime.InteropServices": "[4.0.20]",
-          "System.Text.Encoding": "[4.0.10]",
-          "System.Text.Encoding.Extensions": "[4.0.10]",
-          "System.Threading": "[4.0.10]",
-          "System.Threading.Tasks": "[4.0.10]",
-          "System.Threading.Timer": "[4.0.0]"
-        }
-      },
       "Microsoft.NETCore.Targets/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -12462,18 +11456,6 @@
         },
         "runtime": {
           "runtimes/win8-aot/lib/netcore50/System.Diagnostics.Debug.dll": {}
-        }
-      },
-      "System.Diagnostics.StackTrace/4.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Runtime": "4.0.20"
-        },
-        "compile": {
-          "ref/dotnet/System.Diagnostics.StackTrace.dll": {}
-        },
-        "runtime": {
-          "runtimes/win8-aot/lib/netcore50/System.Diagnostics.StackTrace.dll": {}
         }
       },
       "System.Diagnostics.Tools/4.0.0": {
@@ -13410,92 +12392,6 @@
       "Microsoft.NETCore.Platforms/1.0.0": {
         "type": "package"
       },
-      "Microsoft.NETCore.Portable.Compatibility/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Runtime": "1.0.0"
-        },
-        "compile": {
-          "ref/netcore50/System.ComponentModel.DataAnnotations.dll": {},
-          "ref/netcore50/System.Core.dll": {},
-          "ref/netcore50/System.Net.dll": {},
-          "ref/netcore50/System.Numerics.dll": {},
-          "ref/netcore50/System.Runtime.Serialization.dll": {},
-          "ref/netcore50/System.ServiceModel.Web.dll": {},
-          "ref/netcore50/System.ServiceModel.dll": {},
-          "ref/netcore50/System.Windows.dll": {},
-          "ref/netcore50/System.Xml.Linq.dll": {},
-          "ref/netcore50/System.Xml.Serialization.dll": {},
-          "ref/netcore50/System.Xml.dll": {},
-          "ref/netcore50/System.dll": {},
-          "ref/netcore50/mscorlib.dll": {}
-        },
-        "runtime": {
-          "lib/netcore50/System.ComponentModel.DataAnnotations.dll": {},
-          "lib/netcore50/System.Core.dll": {},
-          "lib/netcore50/System.Net.dll": {},
-          "lib/netcore50/System.Numerics.dll": {},
-          "lib/netcore50/System.Runtime.Serialization.dll": {},
-          "lib/netcore50/System.ServiceModel.Web.dll": {},
-          "lib/netcore50/System.ServiceModel.dll": {},
-          "lib/netcore50/System.Windows.dll": {},
-          "lib/netcore50/System.Xml.Linq.dll": {},
-          "lib/netcore50/System.Xml.Serialization.dll": {},
-          "lib/netcore50/System.Xml.dll": {},
-          "lib/netcore50/System.dll": {}
-        }
-      },
-      "Microsoft.NETCore.Runtime/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Runtime.CoreCLR-x86": "1.0.0",
-          "Microsoft.NETCore.Windows.ApiSets-x86": "1.0.0"
-        }
-      },
-      "Microsoft.NETCore.Runtime.CoreCLR-x86/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Collections": "[4.0.10]",
-          "System.Diagnostics.Contracts": "[4.0.0]",
-          "System.Diagnostics.Debug": "[4.0.10]",
-          "System.Diagnostics.StackTrace": "[4.0.0]",
-          "System.Diagnostics.Tools": "[4.0.0]",
-          "System.Diagnostics.Tracing": "[4.0.20]",
-          "System.Globalization": "[4.0.10]",
-          "System.Globalization.Calendars": "[4.0.0]",
-          "System.IO": "[4.0.10]",
-          "System.ObjectModel": "[4.0.10]",
-          "System.Private.Uri": "[4.0.0]",
-          "System.Reflection": "[4.0.10]",
-          "System.Reflection.Extensions": "[4.0.0]",
-          "System.Reflection.Primitives": "[4.0.0]",
-          "System.Resources.ResourceManager": "[4.0.0]",
-          "System.Runtime": "[4.0.20]",
-          "System.Runtime.Extensions": "[4.0.10]",
-          "System.Runtime.Handles": "[4.0.0]",
-          "System.Runtime.InteropServices": "[4.0.20]",
-          "System.Text.Encoding": "[4.0.10]",
-          "System.Text.Encoding.Extensions": "[4.0.10]",
-          "System.Threading": "[4.0.10]",
-          "System.Threading.Tasks": "[4.0.10]",
-          "System.Threading.Timer": "[4.0.0]"
-        },
-        "compile": {
-          "ref/dotnet/_._": {}
-        },
-        "runtime": {
-          "runtimes/win7-x86/lib/dotnet/mscorlib.ni.dll": {}
-        },
-        "native": {
-          "runtimes/win7-x86/native/clretwrc.dll": {},
-          "runtimes/win7-x86/native/coreclr.dll": {},
-          "runtimes/win7-x86/native/dbgshim.dll": {},
-          "runtimes/win7-x86/native/mscordaccore.dll": {},
-          "runtimes/win7-x86/native/mscordbi.dll": {},
-          "runtimes/win7-x86/native/mscorrc.debug.dll": {},
-          "runtimes/win7-x86/native/mscorrc.dll": {}
-        }
-      },
       "Microsoft.NETCore.Targets/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -13505,12 +12401,6 @@
       },
       "Microsoft.NETCore.Targets.UniversalWindowsPlatform/5.0.0": {
         "type": "package"
-      },
-      "Microsoft.NETCore.Windows.ApiSets-x86/1.0.0": {
-        "type": "package",
-        "native": {
-          "runtimes/win10-x86/native/_._": {}
-        }
       },
       "Microsoft.VisualBasic/10.0.0": {
         "type": "package",
@@ -13692,18 +12582,6 @@
         },
         "runtime": {
           "lib/netcore50/System.Diagnostics.Debug.dll": {}
-        }
-      },
-      "System.Diagnostics.StackTrace/4.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Runtime": "4.0.20"
-        },
-        "compile": {
-          "ref/dotnet/System.Diagnostics.StackTrace.dll": {}
-        },
-        "runtime": {
-          "lib/netcore50/System.Diagnostics.StackTrace.dll": {}
         }
       },
       "System.Diagnostics.Tools/4.0.0": {
@@ -14691,77 +13569,6 @@
       "Microsoft.NETCore.Platforms/1.0.0": {
         "type": "package"
       },
-      "Microsoft.NETCore.Portable.Compatibility/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Runtime": "1.0.0"
-        },
-        "compile": {
-          "ref/netcore50/System.ComponentModel.DataAnnotations.dll": {},
-          "ref/netcore50/System.Core.dll": {},
-          "ref/netcore50/System.Net.dll": {},
-          "ref/netcore50/System.Numerics.dll": {},
-          "ref/netcore50/System.Runtime.Serialization.dll": {},
-          "ref/netcore50/System.ServiceModel.Web.dll": {},
-          "ref/netcore50/System.ServiceModel.dll": {},
-          "ref/netcore50/System.Windows.dll": {},
-          "ref/netcore50/System.Xml.Linq.dll": {},
-          "ref/netcore50/System.Xml.Serialization.dll": {},
-          "ref/netcore50/System.Xml.dll": {},
-          "ref/netcore50/System.dll": {},
-          "ref/netcore50/mscorlib.dll": {}
-        },
-        "runtime": {
-          "runtimes/aot/lib/netcore50/System.ComponentModel.DataAnnotations.dll": {},
-          "runtimes/aot/lib/netcore50/System.Core.dll": {},
-          "runtimes/aot/lib/netcore50/System.Net.dll": {},
-          "runtimes/aot/lib/netcore50/System.Numerics.dll": {},
-          "runtimes/aot/lib/netcore50/System.Runtime.Serialization.dll": {},
-          "runtimes/aot/lib/netcore50/System.ServiceModel.Web.dll": {},
-          "runtimes/aot/lib/netcore50/System.ServiceModel.dll": {},
-          "runtimes/aot/lib/netcore50/System.Windows.dll": {},
-          "runtimes/aot/lib/netcore50/System.Xml.Linq.dll": {},
-          "runtimes/aot/lib/netcore50/System.Xml.Serialization.dll": {},
-          "runtimes/aot/lib/netcore50/System.Xml.dll": {},
-          "runtimes/aot/lib/netcore50/System.dll": {},
-          "runtimes/aot/lib/netcore50/mscorlib.dll": {}
-        }
-      },
-      "Microsoft.NETCore.Runtime/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Runtime.Native": "1.0.0"
-        }
-      },
-      "Microsoft.NETCore.Runtime.Native/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Collections": "[4.0.10]",
-          "System.Diagnostics.Contracts": "[4.0.0]",
-          "System.Diagnostics.Debug": "[4.0.10]",
-          "System.Diagnostics.StackTrace": "[4.0.0]",
-          "System.Diagnostics.Tools": "[4.0.0]",
-          "System.Diagnostics.Tracing": "[4.0.20]",
-          "System.Globalization": "[4.0.10]",
-          "System.Globalization.Calendars": "[4.0.0]",
-          "System.IO": "[4.0.10]",
-          "System.ObjectModel": "[4.0.10]",
-          "System.Private.Uri": "[4.0.0]",
-          "System.Reflection": "[4.0.10]",
-          "System.Reflection.Extensions": "[4.0.0]",
-          "System.Reflection.Primitives": "[4.0.0]",
-          "System.Resources.ResourceManager": "[4.0.0]",
-          "System.Runtime": "[4.0.20]",
-          "System.Runtime.Extensions": "[4.0.10]",
-          "System.Runtime.Handles": "[4.0.0]",
-          "System.Runtime.InteropServices": "[4.0.20]",
-          "System.Text.Encoding": "[4.0.10]",
-          "System.Text.Encoding.Extensions": "[4.0.10]",
-          "System.Threading": "[4.0.10]",
-          "System.Threading.Tasks": "[4.0.10]",
-          "System.Threading.Timer": "[4.0.0]"
-        }
-      },
       "Microsoft.NETCore.Targets/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -14952,18 +13759,6 @@
         },
         "runtime": {
           "runtimes/win8-aot/lib/netcore50/System.Diagnostics.Debug.dll": {}
-        }
-      },
-      "System.Diagnostics.StackTrace/4.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Runtime": "4.0.20"
-        },
-        "compile": {
-          "ref/dotnet/System.Diagnostics.StackTrace.dll": {}
-        },
-        "runtime": {
-          "runtimes/win8-aot/lib/netcore50/System.Diagnostics.StackTrace.dll": {}
         }
       },
       "System.Diagnostics.Tools/4.0.0": {
@@ -15871,160 +14666,6 @@
         "runtime.json"
       ]
     },
-    "Microsoft.NETCore.Portable.Compatibility/1.0.0": {
-      "sha512": "5/IFqf2zN1jzktRJitxO+5kQ+0AilcIbPvSojSJwDG3cGNSMZg44LXLB5E9RkSETE0Wh4QoALdNh1koKoF7/mA==",
-      "type": "package",
-      "path": "microsoft.netcore.portable.compatibility/1.0.0",
-      "files": [
-        "lib/dnxcore50/System.ComponentModel.DataAnnotations.dll",
-        "lib/dnxcore50/System.Core.dll",
-        "lib/dnxcore50/System.Net.dll",
-        "lib/dnxcore50/System.Numerics.dll",
-        "lib/dnxcore50/System.Runtime.Serialization.dll",
-        "lib/dnxcore50/System.ServiceModel.Web.dll",
-        "lib/dnxcore50/System.ServiceModel.dll",
-        "lib/dnxcore50/System.Windows.dll",
-        "lib/dnxcore50/System.Xml.Linq.dll",
-        "lib/dnxcore50/System.Xml.Serialization.dll",
-        "lib/dnxcore50/System.Xml.dll",
-        "lib/dnxcore50/System.dll",
-        "lib/net45/_._",
-        "lib/netcore50/System.ComponentModel.DataAnnotations.dll",
-        "lib/netcore50/System.Core.dll",
-        "lib/netcore50/System.Net.dll",
-        "lib/netcore50/System.Numerics.dll",
-        "lib/netcore50/System.Runtime.Serialization.dll",
-        "lib/netcore50/System.ServiceModel.Web.dll",
-        "lib/netcore50/System.ServiceModel.dll",
-        "lib/netcore50/System.Windows.dll",
-        "lib/netcore50/System.Xml.Linq.dll",
-        "lib/netcore50/System.Xml.Serialization.dll",
-        "lib/netcore50/System.Xml.dll",
-        "lib/netcore50/System.dll",
-        "lib/win8/_._",
-        "lib/wp80/_._",
-        "lib/wpa81/_._",
-        "microsoft.netcore.portable.compatibility.1.0.0.nupkg.sha512",
-        "microsoft.netcore.portable.compatibility.nuspec",
-        "ref/dotnet/System.ComponentModel.DataAnnotations.dll",
-        "ref/dotnet/System.Core.dll",
-        "ref/dotnet/System.Net.dll",
-        "ref/dotnet/System.Numerics.dll",
-        "ref/dotnet/System.Runtime.Serialization.dll",
-        "ref/dotnet/System.ServiceModel.Web.dll",
-        "ref/dotnet/System.ServiceModel.dll",
-        "ref/dotnet/System.Windows.dll",
-        "ref/dotnet/System.Xml.Linq.dll",
-        "ref/dotnet/System.Xml.Serialization.dll",
-        "ref/dotnet/System.Xml.dll",
-        "ref/dotnet/System.dll",
-        "ref/dotnet/mscorlib.dll",
-        "ref/net45/_._",
-        "ref/netcore50/System.ComponentModel.DataAnnotations.dll",
-        "ref/netcore50/System.Core.dll",
-        "ref/netcore50/System.Net.dll",
-        "ref/netcore50/System.Numerics.dll",
-        "ref/netcore50/System.Runtime.Serialization.dll",
-        "ref/netcore50/System.ServiceModel.Web.dll",
-        "ref/netcore50/System.ServiceModel.dll",
-        "ref/netcore50/System.Windows.dll",
-        "ref/netcore50/System.Xml.Linq.dll",
-        "ref/netcore50/System.Xml.Serialization.dll",
-        "ref/netcore50/System.Xml.dll",
-        "ref/netcore50/System.dll",
-        "ref/netcore50/mscorlib.dll",
-        "ref/win8/_._",
-        "ref/wp80/_._",
-        "ref/wpa81/_._",
-        "runtimes/aot/lib/netcore50/System.ComponentModel.DataAnnotations.dll",
-        "runtimes/aot/lib/netcore50/System.Core.dll",
-        "runtimes/aot/lib/netcore50/System.Net.dll",
-        "runtimes/aot/lib/netcore50/System.Numerics.dll",
-        "runtimes/aot/lib/netcore50/System.Runtime.Serialization.dll",
-        "runtimes/aot/lib/netcore50/System.ServiceModel.Web.dll",
-        "runtimes/aot/lib/netcore50/System.ServiceModel.dll",
-        "runtimes/aot/lib/netcore50/System.Windows.dll",
-        "runtimes/aot/lib/netcore50/System.Xml.Linq.dll",
-        "runtimes/aot/lib/netcore50/System.Xml.Serialization.dll",
-        "runtimes/aot/lib/netcore50/System.Xml.dll",
-        "runtimes/aot/lib/netcore50/System.dll",
-        "runtimes/aot/lib/netcore50/mscorlib.dll"
-      ]
-    },
-    "Microsoft.NETCore.Runtime/1.0.0": {
-      "sha512": "AjaMNpXLW4miEQorIqyn6iQ+BZBId6qXkhwyeh1vl6kXLqosZusbwmLNlvj/xllSQrd3aImJbvlHusam85g+xQ==",
-      "type": "package",
-      "path": "microsoft.netcore.runtime/1.0.0",
-      "files": [
-        "microsoft.netcore.runtime.1.0.0.nupkg.sha512",
-        "microsoft.netcore.runtime.nuspec",
-        "runtime.json"
-      ]
-    },
-    "Microsoft.NETCore.Runtime.CoreCLR-arm/1.0.0": {
-      "sha512": "hoJfIl981eXwn9Tz8onO/J1xaYApIfp/YrhjSh9rRhml1U5Wj80LBgyp/6n+KI3VlvcAraThhnHnCTp+M3Uh+w==",
-      "type": "package",
-      "path": "microsoft.netcore.runtime.coreclr-arm/1.0.0",
-      "files": [
-        "microsoft.netcore.runtime.coreclr-arm.1.0.0.nupkg.sha512",
-        "microsoft.netcore.runtime.coreclr-arm.nuspec",
-        "ref/dotnet/_._",
-        "runtimes/win8-arm/lib/dotnet/mscorlib.ni.dll",
-        "runtimes/win8-arm/native/clretwrc.dll",
-        "runtimes/win8-arm/native/coreclr.dll",
-        "runtimes/win8-arm/native/dbgshim.dll",
-        "runtimes/win8-arm/native/mscordaccore.dll",
-        "runtimes/win8-arm/native/mscordbi.dll",
-        "runtimes/win8-arm/native/mscorrc.debug.dll",
-        "runtimes/win8-arm/native/mscorrc.dll"
-      ]
-    },
-    "Microsoft.NETCore.Runtime.CoreCLR-x64/1.0.0": {
-      "sha512": "DaY5Z13xCZpnVIGluC5sCo4/0wy1rl6mptBH7v3RYi3guAmG88aSeFoQzyZepo0H0jEixUxNFM0+MB6Jc+j0bw==",
-      "type": "package",
-      "path": "microsoft.netcore.runtime.coreclr-x64/1.0.0",
-      "files": [
-        "microsoft.netcore.runtime.coreclr-x64.1.0.0.nupkg.sha512",
-        "microsoft.netcore.runtime.coreclr-x64.nuspec",
-        "ref/dotnet/_._",
-        "runtimes/win7-x64/lib/dotnet/mscorlib.ni.dll",
-        "runtimes/win7-x64/native/clretwrc.dll",
-        "runtimes/win7-x64/native/coreclr.dll",
-        "runtimes/win7-x64/native/dbgshim.dll",
-        "runtimes/win7-x64/native/mscordaccore.dll",
-        "runtimes/win7-x64/native/mscordbi.dll",
-        "runtimes/win7-x64/native/mscorrc.debug.dll",
-        "runtimes/win7-x64/native/mscorrc.dll"
-      ]
-    },
-    "Microsoft.NETCore.Runtime.CoreCLR-x86/1.0.0": {
-      "sha512": "2LDffu5Is/X01GVPVuye4Wmz9/SyGDNq1Opgl5bXG3206cwNiCwsQgILOtfSWVp5mn4w401+8cjhBy3THW8HQQ==",
-      "type": "package",
-      "path": "microsoft.netcore.runtime.coreclr-x86/1.0.0",
-      "files": [
-        "microsoft.netcore.runtime.coreclr-x86.1.0.0.nupkg.sha512",
-        "microsoft.netcore.runtime.coreclr-x86.nuspec",
-        "ref/dotnet/_._",
-        "runtimes/win7-x86/lib/dotnet/mscorlib.ni.dll",
-        "runtimes/win7-x86/native/clretwrc.dll",
-        "runtimes/win7-x86/native/coreclr.dll",
-        "runtimes/win7-x86/native/dbgshim.dll",
-        "runtimes/win7-x86/native/mscordaccore.dll",
-        "runtimes/win7-x86/native/mscordbi.dll",
-        "runtimes/win7-x86/native/mscorrc.debug.dll",
-        "runtimes/win7-x86/native/mscorrc.dll"
-      ]
-    },
-    "Microsoft.NETCore.Runtime.Native/1.0.0": {
-      "sha512": "tMsWWrH1AJCguiM22zK/vr6COxqz62Q1F02B07IXAUN405R3HGk5SkD/DL0Hte+OTjNtW9LkKXpOggGBRwYFNg==",
-      "type": "package",
-      "path": "microsoft.netcore.runtime.native/1.0.0",
-      "files": [
-        "_._",
-        "microsoft.netcore.runtime.native.1.0.0.nupkg.sha512",
-        "microsoft.netcore.runtime.native.nuspec"
-      ]
-    },
     "Microsoft.NETCore.Targets/1.0.0": {
       "sha512": "XfITpPjYLYRmAeZtb9diw6P7ylLQsSC1U2a/xj10iQpnHxkiLEBXop/psw15qMPuNca7lqgxWvzZGpQxphuXaw==",
       "type": "package",
@@ -16063,338 +14704,6 @@
         "microsoft.netcore.targets.universalwindowsplatform.5.0.0.nupkg.sha512",
         "microsoft.netcore.targets.universalwindowsplatform.nuspec",
         "runtime.json"
-      ]
-    },
-    "Microsoft.NETCore.Windows.ApiSets-x64/1.0.0": {
-      "sha512": "NC+dpFMdhujz2sWAdJ8EmBk07p1zOlNi0FCCnZEbzftABpw9xZ99EMP/bUJrPTgCxHfzJAiuLPOtAauzVINk0w==",
-      "type": "package",
-      "path": "microsoft.netcore.windows.apisets-x64/1.0.0",
-      "files": [
-        "microsoft.netcore.windows.apisets-x64.1.0.0.nupkg.sha512",
-        "microsoft.netcore.windows.apisets-x64.nuspec",
-        "runtimes/win10-x64/native/_._",
-        "runtimes/win7-x64/native/API-MS-Win-Base-Util-L1-1-0.dll",
-        "runtimes/win7-x64/native/API-MS-Win-Core-Kernel32-Private-L1-1-0.dll",
-        "runtimes/win7-x64/native/API-MS-Win-Core-Kernel32-Private-L1-1-1.dll",
-        "runtimes/win7-x64/native/API-MS-Win-Core-Kernel32-Private-L1-1-2.dll",
-        "runtimes/win7-x64/native/API-MS-Win-Core-PrivateProfile-L1-1-0.dll",
-        "runtimes/win7-x64/native/API-MS-Win-Core-ProcessTopology-Obsolete-L1-1-0.dll",
-        "runtimes/win7-x64/native/API-MS-Win-Core-String-L2-1-0.dll",
-        "runtimes/win7-x64/native/API-MS-Win-Core-StringAnsi-L1-1-0.dll",
-        "runtimes/win7-x64/native/API-MS-Win-EventLog-Legacy-L1-1-0.dll",
-        "runtimes/win7-x64/native/API-MS-Win-Eventing-ClassicProvider-L1-1-0.dll",
-        "runtimes/win7-x64/native/API-MS-Win-Eventing-Consumer-L1-1-0.dll",
-        "runtimes/win7-x64/native/API-MS-Win-Eventing-Controller-L1-1-0.dll",
-        "runtimes/win7-x64/native/API-MS-Win-Eventing-Legacy-L1-1-0.dll",
-        "runtimes/win7-x64/native/API-MS-Win-Eventing-Provider-L1-1-0.dll",
-        "runtimes/win7-x64/native/API-MS-Win-Security-LsaPolicy-L1-1-0.dll",
-        "runtimes/win7-x64/native/API-MS-Win-devices-config-L1-1-0.dll",
-        "runtimes/win7-x64/native/API-MS-Win-devices-config-L1-1-1.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-com-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-com-private-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-comm-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-console-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-console-l2-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-datetime-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-datetime-l1-1-1.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-debug-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-debug-l1-1-1.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-delayload-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-errorhandling-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-errorhandling-l1-1-1.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-fibers-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-fibers-l1-1-1.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-file-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-file-l1-2-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-file-l1-2-1.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-file-l2-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-file-l2-1-1.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-handle-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-heap-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-heap-obsolete-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-interlocked-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-io-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-io-l1-1-1.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-kernel32-legacy-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-kernel32-legacy-l1-1-1.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-kernel32-legacy-l1-1-2.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-libraryloader-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-libraryloader-l1-1-1.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-localization-l1-2-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-localization-l1-2-1.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-localization-l2-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-localization-obsolete-l1-2-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-memory-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-memory-l1-1-1.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-memory-l1-1-2.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-memory-l1-1-3.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-namedpipe-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-namedpipe-l1-2-1.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-normalization-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-privateprofile-l1-1-1.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-processenvironment-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-processenvironment-l1-2-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-processsecurity-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-processthreads-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-processthreads-l1-1-1.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-processthreads-l1-1-2.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-profile-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-psapi-ansi-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-psapi-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-psapi-obsolete-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-realtime-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-registry-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-registry-l2-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-rtlsupport-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-shlwapi-legacy-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-shlwapi-obsolete-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-shutdown-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-shutdown-l1-1-1.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-string-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-string-obsolete-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-string-obsolete-l1-1-1.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-stringloader-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-stringloader-l1-1-1.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-synch-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-synch-l1-2-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-sysinfo-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-sysinfo-l1-2-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-sysinfo-l1-2-1.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-sysinfo-l1-2-2.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-sysinfo-l1-2-3.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-threadpool-l1-2-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-threadpool-legacy-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-threadpool-private-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-timezone-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-url-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-util-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-version-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-winrt-error-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-winrt-error-l1-1-1.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-winrt-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-winrt-registration-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-winrt-robuffer-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-winrt-roparameterizediid-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-winrt-string-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-wow64-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-xstate-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-core-xstate-l2-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-ro-typeresolution-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-security-base-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-security-cpwl-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-security-cryptoapi-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-security-lsalookup-l2-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-security-lsalookup-l2-1-1.dll",
-        "runtimes/win7-x64/native/api-ms-win-security-provider-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-security-sddl-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-service-core-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-service-core-l1-1-1.dll",
-        "runtimes/win7-x64/native/api-ms-win-service-management-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-service-management-l2-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-service-private-l1-1-0.dll",
-        "runtimes/win7-x64/native/api-ms-win-service-private-l1-1-1.dll",
-        "runtimes/win7-x64/native/api-ms-win-service-winsvc-l1-1-0.dll",
-        "runtimes/win7-x64/native/ext-ms-win-advapi32-encryptedfile-l1-1-0.dll",
-        "runtimes/win8-x64/native/API-MS-Win-Core-Kernel32-Private-L1-1-1.dll",
-        "runtimes/win8-x64/native/API-MS-Win-Core-Kernel32-Private-L1-1-2.dll",
-        "runtimes/win8-x64/native/API-MS-Win-devices-config-L1-1-1.dll",
-        "runtimes/win8-x64/native/api-ms-win-core-file-l1-2-1.dll",
-        "runtimes/win8-x64/native/api-ms-win-core-file-l2-1-1.dll",
-        "runtimes/win8-x64/native/api-ms-win-core-kernel32-legacy-l1-1-1.dll",
-        "runtimes/win8-x64/native/api-ms-win-core-kernel32-legacy-l1-1-2.dll",
-        "runtimes/win8-x64/native/api-ms-win-core-localization-l1-2-1.dll",
-        "runtimes/win8-x64/native/api-ms-win-core-localization-obsolete-l1-2-0.dll",
-        "runtimes/win8-x64/native/api-ms-win-core-memory-l1-1-2.dll",
-        "runtimes/win8-x64/native/api-ms-win-core-memory-l1-1-3.dll",
-        "runtimes/win8-x64/native/api-ms-win-core-namedpipe-l1-2-1.dll",
-        "runtimes/win8-x64/native/api-ms-win-core-privateprofile-l1-1-1.dll",
-        "runtimes/win8-x64/native/api-ms-win-core-processthreads-l1-1-2.dll",
-        "runtimes/win8-x64/native/api-ms-win-core-shutdown-l1-1-1.dll",
-        "runtimes/win8-x64/native/api-ms-win-core-string-obsolete-l1-1-1.dll",
-        "runtimes/win8-x64/native/api-ms-win-core-stringloader-l1-1-1.dll",
-        "runtimes/win8-x64/native/api-ms-win-core-sysinfo-l1-2-1.dll",
-        "runtimes/win8-x64/native/api-ms-win-core-sysinfo-l1-2-2.dll",
-        "runtimes/win8-x64/native/api-ms-win-core-sysinfo-l1-2-3.dll",
-        "runtimes/win8-x64/native/api-ms-win-core-winrt-error-l1-1-1.dll",
-        "runtimes/win8-x64/native/api-ms-win-core-xstate-l2-1-0.dll",
-        "runtimes/win8-x64/native/api-ms-win-security-cpwl-l1-1-0.dll",
-        "runtimes/win8-x64/native/api-ms-win-security-cryptoapi-l1-1-0.dll",
-        "runtimes/win8-x64/native/api-ms-win-security-lsalookup-l2-1-1.dll",
-        "runtimes/win8-x64/native/api-ms-win-service-private-l1-1-1.dll",
-        "runtimes/win81-x64/native/API-MS-Win-Core-Kernel32-Private-L1-1-2.dll",
-        "runtimes/win81-x64/native/api-ms-win-core-kernel32-legacy-l1-1-2.dll",
-        "runtimes/win81-x64/native/api-ms-win-core-memory-l1-1-3.dll",
-        "runtimes/win81-x64/native/api-ms-win-core-namedpipe-l1-2-1.dll",
-        "runtimes/win81-x64/native/api-ms-win-core-string-obsolete-l1-1-1.dll",
-        "runtimes/win81-x64/native/api-ms-win-core-sysinfo-l1-2-2.dll",
-        "runtimes/win81-x64/native/api-ms-win-core-sysinfo-l1-2-3.dll",
-        "runtimes/win81-x64/native/api-ms-win-security-cpwl-l1-1-0.dll"
-      ]
-    },
-    "Microsoft.NETCore.Windows.ApiSets-x86/1.0.0": {
-      "sha512": "/HDRdhz5bZyhHwQ/uk/IbnDIX5VDTsHntEZYkTYo57dM+U3Ttel9/OJv0mjL64wTO/QKUJJNKp9XO+m7nSVjJQ==",
-      "type": "package",
-      "path": "microsoft.netcore.windows.apisets-x86/1.0.0",
-      "files": [
-        "microsoft.netcore.windows.apisets-x86.1.0.0.nupkg.sha512",
-        "microsoft.netcore.windows.apisets-x86.nuspec",
-        "runtimes/win10-x86/native/_._",
-        "runtimes/win7-x86/native/API-MS-Win-Base-Util-L1-1-0.dll",
-        "runtimes/win7-x86/native/API-MS-Win-Core-Kernel32-Private-L1-1-0.dll",
-        "runtimes/win7-x86/native/API-MS-Win-Core-Kernel32-Private-L1-1-1.dll",
-        "runtimes/win7-x86/native/API-MS-Win-Core-Kernel32-Private-L1-1-2.dll",
-        "runtimes/win7-x86/native/API-MS-Win-Core-PrivateProfile-L1-1-0.dll",
-        "runtimes/win7-x86/native/API-MS-Win-Core-ProcessTopology-Obsolete-L1-1-0.dll",
-        "runtimes/win7-x86/native/API-MS-Win-Core-String-L2-1-0.dll",
-        "runtimes/win7-x86/native/API-MS-Win-Core-StringAnsi-L1-1-0.dll",
-        "runtimes/win7-x86/native/API-MS-Win-EventLog-Legacy-L1-1-0.dll",
-        "runtimes/win7-x86/native/API-MS-Win-Eventing-ClassicProvider-L1-1-0.dll",
-        "runtimes/win7-x86/native/API-MS-Win-Eventing-Consumer-L1-1-0.dll",
-        "runtimes/win7-x86/native/API-MS-Win-Eventing-Controller-L1-1-0.dll",
-        "runtimes/win7-x86/native/API-MS-Win-Eventing-Legacy-L1-1-0.dll",
-        "runtimes/win7-x86/native/API-MS-Win-Eventing-Provider-L1-1-0.dll",
-        "runtimes/win7-x86/native/API-MS-Win-Security-LsaPolicy-L1-1-0.dll",
-        "runtimes/win7-x86/native/API-MS-Win-devices-config-L1-1-0.dll",
-        "runtimes/win7-x86/native/API-MS-Win-devices-config-L1-1-1.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-com-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-com-private-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-comm-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-console-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-console-l2-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-datetime-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-datetime-l1-1-1.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-debug-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-debug-l1-1-1.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-delayload-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-errorhandling-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-errorhandling-l1-1-1.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-fibers-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-fibers-l1-1-1.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-file-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-file-l1-2-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-file-l1-2-1.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-file-l2-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-file-l2-1-1.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-handle-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-heap-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-heap-obsolete-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-interlocked-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-io-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-io-l1-1-1.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-kernel32-legacy-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-kernel32-legacy-l1-1-1.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-kernel32-legacy-l1-1-2.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-libraryloader-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-libraryloader-l1-1-1.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-localization-l1-2-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-localization-l1-2-1.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-localization-l2-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-localization-obsolete-l1-2-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-memory-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-memory-l1-1-1.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-memory-l1-1-2.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-memory-l1-1-3.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-namedpipe-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-namedpipe-l1-2-1.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-normalization-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-privateprofile-l1-1-1.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-processenvironment-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-processenvironment-l1-2-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-processsecurity-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-processthreads-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-processthreads-l1-1-1.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-processthreads-l1-1-2.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-profile-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-psapi-ansi-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-psapi-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-psapi-obsolete-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-realtime-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-registry-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-registry-l2-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-rtlsupport-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-shlwapi-legacy-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-shlwapi-obsolete-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-shutdown-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-shutdown-l1-1-1.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-string-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-string-obsolete-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-string-obsolete-l1-1-1.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-stringloader-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-stringloader-l1-1-1.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-synch-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-synch-l1-2-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-sysinfo-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-sysinfo-l1-2-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-sysinfo-l1-2-1.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-sysinfo-l1-2-2.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-sysinfo-l1-2-3.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-threadpool-l1-2-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-threadpool-legacy-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-threadpool-private-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-timezone-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-url-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-util-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-version-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-winrt-error-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-winrt-error-l1-1-1.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-winrt-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-winrt-registration-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-winrt-robuffer-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-winrt-roparameterizediid-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-winrt-string-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-wow64-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-xstate-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-core-xstate-l2-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-ro-typeresolution-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-security-base-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-security-cpwl-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-security-cryptoapi-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-security-lsalookup-l2-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-security-lsalookup-l2-1-1.dll",
-        "runtimes/win7-x86/native/api-ms-win-security-provider-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-security-sddl-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-service-core-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-service-core-l1-1-1.dll",
-        "runtimes/win7-x86/native/api-ms-win-service-management-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-service-management-l2-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-service-private-l1-1-0.dll",
-        "runtimes/win7-x86/native/api-ms-win-service-private-l1-1-1.dll",
-        "runtimes/win7-x86/native/api-ms-win-service-winsvc-l1-1-0.dll",
-        "runtimes/win7-x86/native/ext-ms-win-advapi32-encryptedfile-l1-1-0.dll",
-        "runtimes/win8-x86/native/API-MS-Win-Core-Kernel32-Private-L1-1-1.dll",
-        "runtimes/win8-x86/native/API-MS-Win-Core-Kernel32-Private-L1-1-2.dll",
-        "runtimes/win8-x86/native/API-MS-Win-devices-config-L1-1-1.dll",
-        "runtimes/win8-x86/native/api-ms-win-core-file-l1-2-1.dll",
-        "runtimes/win8-x86/native/api-ms-win-core-file-l2-1-1.dll",
-        "runtimes/win8-x86/native/api-ms-win-core-kernel32-legacy-l1-1-1.dll",
-        "runtimes/win8-x86/native/api-ms-win-core-kernel32-legacy-l1-1-2.dll",
-        "runtimes/win8-x86/native/api-ms-win-core-localization-l1-2-1.dll",
-        "runtimes/win8-x86/native/api-ms-win-core-localization-obsolete-l1-2-0.dll",
-        "runtimes/win8-x86/native/api-ms-win-core-memory-l1-1-2.dll",
-        "runtimes/win8-x86/native/api-ms-win-core-memory-l1-1-3.dll",
-        "runtimes/win8-x86/native/api-ms-win-core-namedpipe-l1-2-1.dll",
-        "runtimes/win8-x86/native/api-ms-win-core-privateprofile-l1-1-1.dll",
-        "runtimes/win8-x86/native/api-ms-win-core-processthreads-l1-1-2.dll",
-        "runtimes/win8-x86/native/api-ms-win-core-shutdown-l1-1-1.dll",
-        "runtimes/win8-x86/native/api-ms-win-core-string-obsolete-l1-1-1.dll",
-        "runtimes/win8-x86/native/api-ms-win-core-stringloader-l1-1-1.dll",
-        "runtimes/win8-x86/native/api-ms-win-core-sysinfo-l1-2-1.dll",
-        "runtimes/win8-x86/native/api-ms-win-core-sysinfo-l1-2-2.dll",
-        "runtimes/win8-x86/native/api-ms-win-core-sysinfo-l1-2-3.dll",
-        "runtimes/win8-x86/native/api-ms-win-core-winrt-error-l1-1-1.dll",
-        "runtimes/win8-x86/native/api-ms-win-core-xstate-l2-1-0.dll",
-        "runtimes/win8-x86/native/api-ms-win-security-cpwl-l1-1-0.dll",
-        "runtimes/win8-x86/native/api-ms-win-security-cryptoapi-l1-1-0.dll",
-        "runtimes/win8-x86/native/api-ms-win-security-lsalookup-l2-1-1.dll",
-        "runtimes/win8-x86/native/api-ms-win-service-private-l1-1-1.dll",
-        "runtimes/win81-x86/native/API-MS-Win-Core-Kernel32-Private-L1-1-2.dll",
-        "runtimes/win81-x86/native/api-ms-win-core-kernel32-legacy-l1-1-2.dll",
-        "runtimes/win81-x86/native/api-ms-win-core-memory-l1-1-3.dll",
-        "runtimes/win81-x86/native/api-ms-win-core-namedpipe-l1-2-1.dll",
-        "runtimes/win81-x86/native/api-ms-win-core-string-obsolete-l1-1-1.dll",
-        "runtimes/win81-x86/native/api-ms-win-core-sysinfo-l1-2-2.dll",
-        "runtimes/win81-x86/native/api-ms-win-core-sysinfo-l1-2-3.dll",
-        "runtimes/win81-x86/native/api-ms-win-security-cpwl-l1-1-0.dll"
       ]
     },
     "Microsoft.VisualBasic/10.0.0": {
@@ -16756,39 +15065,6 @@
         "runtimes/win8-aot/lib/netcore50/System.Diagnostics.Debug.dll",
         "system.diagnostics.debug.4.0.10.nupkg.sha512",
         "system.diagnostics.debug.nuspec"
-      ]
-    },
-    "System.Diagnostics.StackTrace/4.0.0": {
-      "sha512": "PItgenqpRiMqErvQONBlfDwctKpWVrcDSW5pppNZPJ6Bpiyz+KjsWoSiaqs5dt03HEbBTMNCrZb8KCkh7YfXmw==",
-      "type": "package",
-      "path": "system.diagnostics.stacktrace/4.0.0",
-      "files": [
-        "lib/DNXCore50/System.Diagnostics.StackTrace.dll",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net46/System.Diagnostics.StackTrace.dll",
-        "lib/netcore50/System.Diagnostics.StackTrace.dll",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/dotnet/System.Diagnostics.StackTrace.dll",
-        "ref/dotnet/System.Diagnostics.StackTrace.xml",
-        "ref/dotnet/de/System.Diagnostics.StackTrace.xml",
-        "ref/dotnet/es/System.Diagnostics.StackTrace.xml",
-        "ref/dotnet/fr/System.Diagnostics.StackTrace.xml",
-        "ref/dotnet/it/System.Diagnostics.StackTrace.xml",
-        "ref/dotnet/ja/System.Diagnostics.StackTrace.xml",
-        "ref/dotnet/ko/System.Diagnostics.StackTrace.xml",
-        "ref/dotnet/ru/System.Diagnostics.StackTrace.xml",
-        "ref/dotnet/zh-hans/System.Diagnostics.StackTrace.xml",
-        "ref/dotnet/zh-hant/System.Diagnostics.StackTrace.xml",
-        "ref/net46/System.Diagnostics.StackTrace.dll",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "runtimes/win8-aot/lib/netcore50/System.Diagnostics.StackTrace.dll",
-        "system.diagnostics.stacktrace.4.0.0.nupkg.sha512",
-        "system.diagnostics.stacktrace.nuspec"
       ]
     },
     "System.Diagnostics.Tools/4.0.0": {
@@ -18461,8 +16737,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "Microsoft.NETCore >= 5.0.0",
-      "Microsoft.NETCore.Portable.Compatibility >= 1.0.0"
+      "Microsoft.NETCore >= 5.0.0"
     ],
     ".NETPlatform,Version=v5.0": []
   },
@@ -18478,8 +16753,7 @@
       "projectStyle": "ProjectJson"
     },
     "dependencies": {
-      "Microsoft.NETCore": "5.0.0",
-      "Microsoft.NETCore.Portable.Compatibility": "1.0.0"
+      "Microsoft.NETCore": "5.0.0"
     },
     "frameworks": {
       "dotnet5.0": {
