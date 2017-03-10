@@ -85,7 +85,7 @@ namespace dotNetTips.Utility.Portable.OOP {
             {
                 if (message.IsNull())
                 {
-                    message = "The value is not defined in the enum.";
+                    message = "The value is not defined in the enumeration.";
                 }
 
                 throw new ArgumentOutOfRangeException(paramName, message);

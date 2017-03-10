@@ -45,8 +45,10 @@ Public Module DataTableExtensions
     <Extension>
     Public Function CopyToEntityList(Of T As New)(ByVal dt As DataTable) As IEnumerable(Of T)
         Dim properties = New T().GetType().GetProperties()
+
         Dim columns = From col In dt.Columns.Cast(Of DataColumn)()
                       Select col.ColumnName, col.DataType
+
         Dim pptList = (From ppt In properties
                        Where columns.Select(Function(p) p.ColumnName).Contains(ppt.Name) _
                        And columns.Select(Function(p) p.DataType).Contains(
@@ -55,6 +57,7 @@ Public Module DataTableExtensions
                        Select ppt)
 
         Dim returnList As New List(Of T)
+
         For Each dr As DataRow In dt.Rows
             Dim newT As New T()
             For Each entityItem As PropertyInfo In pptList

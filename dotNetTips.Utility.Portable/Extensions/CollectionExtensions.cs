@@ -25,7 +25,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
     /// <summary>
     /// Class CollectionExtensions.
     /// </summary>
-    [Obsolete("Use CollectionExtentions from dotNetTips.Utility.Standard.")]
+    [Obsolete("Use CollectionExtensions from dotNetTips.Utility.Standard.")]
     public static class CollectionExtensions
     {
         /// <summary>
@@ -36,7 +36,6 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <param name="value">The value.</param>
         public static void AddIfNotExists<T>(this ICollection<T> list, T value)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(list != null);
             Encapsulation.TryValidateParam<ArgumentNullException>(value != null);
             Encapsulation.TryValidateParam<ArgumentIsReadOnlyException>(list.IsReadOnly == false);
 
@@ -54,7 +53,6 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <param name="values">The values.</param>
         public static void AddIfNotExists<T>(this ICollection<T> list, params T[] values)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(list != null);
             Encapsulation.TryValidateParam<ArgumentNullException>(values != null);
             Encapsulation.TryValidateParam<ArgumentIsReadOnlyException>(list.IsReadOnly == false);
 
