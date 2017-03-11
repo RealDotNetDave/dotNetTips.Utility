@@ -38,7 +38,7 @@ Namespace Listeners
         ''' <summary>
         ''' Initializes a new instance of the <see cref="EventLogTraceListener"/> class.
         ''' </summary>
-        ''' <param name="eventLog">The event log.</param>
+        ''' <param name="logEntry">The event log.</param>
         Public Sub New(ByVal logEntry As LogEntry)
             MyBase.New(CStr(If((Not logEntry Is Nothing), logEntry.Source, String.Empty)))
             Encapsulation.TryValidateParam(Of ArgumentNullException)(logEntry IsNot Nothing)
@@ -73,7 +73,7 @@ Namespace Listeners
         '''   <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode" />
         ''' </PermissionSet>
         Public Overloads Overrides Sub TraceData(ByVal eventCache As TraceEventCache, ByVal source As String, ByVal eventType As TraceEventType, ByVal id As Integer, ByVal data As Object)
-            If Filter IsNot Nothing AndAlso Not Filter.ShouldTrace(Nothing, NameOf(Trace), eventType, 0, String.Empty, Nothing, data, Nothing) Then
+            If Me.Filter IsNot Nothing AndAlso Not Me.Filter.ShouldTrace(Nothing, NameOf(Trace), eventType, 0, String.Empty, Nothing, data, Nothing) Then
                 Exit Sub
             End If
 
@@ -105,7 +105,7 @@ Namespace Listeners
         '''   <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode" />
         ''' </PermissionSet>
         Public Overloads Overrides Sub TraceEvent(ByVal eventCache As TraceEventCache, ByVal source As String, ByVal eventType As TraceEventType, ByVal id As Integer, ByVal message As String)
-            If Filter IsNot Nothing AndAlso Not Filter.ShouldTrace(Nothing, NameOf(Trace), eventType, 0, message, Nothing,
+            If Me.Filter IsNot Nothing AndAlso Not Me.Filter.ShouldTrace(Nothing, NameOf(Trace), eventType, 0, message, Nothing,
         Nothing, Nothing) Then
                 Exit Sub
             End If

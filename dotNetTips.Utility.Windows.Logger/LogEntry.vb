@@ -397,7 +397,7 @@ Public Class LogEntry
         Dim eb As New StringBuilder()
 
         For Each tempException In Me.RetrieveAllExceptons(ex)
-            eb.AppendLine(If(ErrorMessages.Count = 0, My.Resources.ExceptionDetails, My.Resources.InnerExceptionDetails))
+            eb.AppendLine(If(Me.ErrorMessages.Count = 0, My.Resources.ExceptionDetails, My.Resources.InnerExceptionDetails))
             eb.AppendLine(My.Resources.LineSeparator)
             eb.AppendLine(String.Format(CultureInfo.InvariantCulture, "{0}: {1}", My.Resources.ExceptionType, tempException.[GetType]().FullName))
 
@@ -467,20 +467,20 @@ Public Class LogEntry
                                 For Each att As XAttribute In applicationInfoElement.Attributes()
                                     Select Case att.Name.LocalName
                                         Case NameOf(ProcessName)
-                                            ProcessName = att.Value
+                                            Me.ProcessName = att.Value
                                             Exit Select
 
                                         Case "ProcessID"
                                             Dim pid As Integer
                                             If Integer.TryParse(att.Value, pid) Then
-                                                ProcessId = pid
+                                                Me.ProcessId = pid
                                             End If
                                             Exit Select
 
                                         Case "ThreadID"
                                             Dim tid As Integer
                                             If Integer.TryParse(att.Value, tid) Then
-                                                ThreadId = tid
+                                                Me.ThreadId = tid
                                             End If
                                             Exit Select
                                     End Select
@@ -861,8 +861,10 @@ Public Class LogEntry
         Dim exceptions As IList(Of Exception) = Nothing
 
         If ex IsNot Nothing Then
-            exceptions = New List(Of Exception)()
-            exceptions.Add(ex)
+            exceptions = New List(Of Exception) From {
+                ex
+            }
+
             If ex.InnerException IsNot Nothing Then
                 For Each item In Me.RetrieveAllExceptons(ex.InnerException)
                     exceptions.Add(item)

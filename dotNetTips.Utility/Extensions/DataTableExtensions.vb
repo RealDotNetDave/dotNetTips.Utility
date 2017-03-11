@@ -52,8 +52,7 @@ Public Module DataTableExtensions
         Dim pptList = (From ppt In properties
                        Where columns.Select(Function(p) p.ColumnName).Contains(ppt.Name) _
                        And columns.Select(Function(p) p.DataType).Contains(
-                                        If(Nullable.GetUnderlyingType(ppt.PropertyType) Is Nothing,
-                                           ppt.PropertyType, Nullable.GetUnderlyingType(ppt.PropertyType)))
+If(Nullable.GetUnderlyingType(ppt.PropertyType), ppt.PropertyType))
                        Select ppt)
 
         Dim returnList As New List(Of T)

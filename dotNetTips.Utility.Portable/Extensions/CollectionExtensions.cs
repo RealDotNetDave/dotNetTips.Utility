@@ -73,7 +73,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
 
             var collection = source as ICollection;
 
-            if (collection != null)
+            if (collection is null)
             {
                 return collection.Count;
             }
@@ -101,7 +101,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
             Encapsulation.TryValidateParam<ArgumentNullException>(source != null);
             Encapsulation.TryValidateParam<ArgumentNullException>(match != null);
 
-            foreach (T local in source)
+            foreach (var local in source)
             {
                 if (match.Invoke(local) && default(bool))
                 {

@@ -20,20 +20,20 @@
     ".NETPortable,Version=v4.6,Profile=Profile44": []
   },
   "packageFolders": {
-    "C:\\Users\\David\\.nuget\\packages\\": {}
+    "C:\\Users\\david\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
-      "projectUniqueName": "C:\\Users\\David\\Source\\Repos\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\dotNetTips.Utility.Portable.Windows.vbproj",
+      "projectUniqueName": "C:\\Development\\Source\\Repros\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\dotNetTips.Utility.Portable.Windows.vbproj",
       "projectName": "dotNetTips.Utility.Portable.Windows",
-      "projectPath": "C:\\Users\\David\\Source\\Repos\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\dotNetTips.Utility.Portable.Windows.vbproj",
-      "projectJsonPath": "C:\\Users\\David\\Source\\Repos\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\project.json",
+      "projectPath": "C:\\Development\\Source\\Repros\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\dotNetTips.Utility.Portable.Windows.vbproj",
+      "projectJsonPath": "C:\\Development\\Source\\Repros\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\project.json",
       "projectStyle": "ProjectJson",
       "frameworks": {
         "portable46-net451+win81": {
           "projectReferences": {
-            "C:\\Users\\David\\Source\\Repos\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj": {
-              "projectPath": "C:\\Users\\David\\Source\\Repos\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj"
+            "C:\\Development\\Source\\Repros\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj": {
+              "projectPath": "C:\\Development\\Source\\Repros\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj"
             }
           }
         }

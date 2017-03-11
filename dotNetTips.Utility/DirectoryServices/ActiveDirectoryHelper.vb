@@ -145,7 +145,7 @@ Namespace DirectoryServices
         ''' <exception cref="System.ArgumentNullException">logIn</exception>
         ''' <remarks></remarks>
         Public Function IsUserInGroup(ByVal userLogin As String, ByVal ParamArray groups As String()) As Boolean
-            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(userLogin) = False)
+            Encapsulation.TryValidateParam(userLogin, NameOf(userLogin))
             Encapsulation.TryValidateParam(groups, NameOf(groups))
 
             Using searcher = New DirectorySearcher()
@@ -165,14 +165,12 @@ Namespace DirectoryServices
 
                         For Each members As Object In resultProperties(MemberName)
 
-                            Using memberEntry As DirectoryEntry = New DirectoryEntry(String.Format("{0}{1}", LDAPPrefix, members))
+                            Dim memberEntry As DirectoryEntry = New DirectoryEntry(String.Format("{0}{1}", LDAPPrefix, members))
 
-                                'Validate if user in the group
-                                If account = ExtractADPropertyValue(SAMAccountName, memberEntry) Then
-                                    Return True
-                                End If
-
-                            End Using
+                            'Validate if user in the group
+                            If account = ExtractADPropertyValue(SAMAccountName, memberEntry) Then
+                                Return True
+                            End If
 
                         Next
 

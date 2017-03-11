@@ -76,7 +76,7 @@ Namespace IO
         ''' </summary>
         Public Sub CompressFile()
 
-            If File.Exists(SourceFileName) Then
+            If File.Exists(Me.SourceFileName) Then
 
                 Using inputFile As FileStream = File.Open(SourceFileName, FileMode.Open), outputFile As FileStream = File.Create(DestinationFileName)
 
@@ -106,7 +106,7 @@ Namespace IO
         ''' level when a decompression mode is chosen instead of using it directly
         ''' </summary>
         Public Sub DecompressFile()
-            If File.Exists(SourceFileName) Then
+            If File.Exists(Me.SourceFileName) Then
                 Using inputFile As FileStream = File.Open(SourceFileName, FileMode.Open), outputFile As FileStream = File.Create(DestinationFileName)
 
                     Using zipper = New DeflateStream(inputFile, CompressionMode.Decompress)
@@ -169,7 +169,7 @@ Namespace IO
             End SyncLock
         End Sub
 
-        Public Overridable Sub Dispose() _
+        Public Sub Dispose() _
                 Implements IDisposable.Dispose
             Dispose(True)
             ' Unregister object for finalization.

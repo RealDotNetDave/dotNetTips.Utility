@@ -36,7 +36,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
             var checksum = 0;
             var chars = number.ToCharArray();
 
-            for (int i = chars.Length - 1; i > -1; i--)
+            for (var i = chars.Length - 1; i > -1; i--)
             {
                 var j = ((int)chars[i]) - 48;
                 checksum += j;

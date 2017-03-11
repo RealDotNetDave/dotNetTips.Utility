@@ -70,9 +70,8 @@ Namespace Xml
             End If
 
             Using reader = New StringReader(xml)
-                Using xmlReader = New XmlTextReader(reader)
-                    Return DirectCast(New XmlSerializer(GetType(T)).Deserialize(xmlReader), T)
-                End Using
+                Dim xmlReader = New XmlTextReader(reader)
+                Return DirectCast(New XmlSerializer(GetType(T)).Deserialize(xmlReader), T)
             End Using
         End Function
 

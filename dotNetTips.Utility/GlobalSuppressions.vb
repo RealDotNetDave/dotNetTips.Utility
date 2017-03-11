@@ -33,3 +33,6 @@
 <Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CC0033:Dispose Fields Properly", Justification:="<Pending>", Scope:="member", Target:="~F:dotNetTips.Utility.Speech.Synthesis._speech")>
 <Assembly: CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2213:DisposableFieldsShouldBeDisposed", MessageId:="_mailServer", Scope:="member", Target:="dotNetTips.Utility.Net.Mailer.#Dispose(System.Boolean)")>
 <Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CC0057:Unused parameters.", Justification:="<Pending>", Scope:="member", Target:="~M:dotNetTips.Utility.Threading.WorkItem.AbortWorkItem(System.Object)")>
+<Assembly: CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times", Scope:="member", Target:="dotNetTips.Utility.Xml.XmlHelper.#Serialize(System.Object)")>
+<Assembly: CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times", Scope:="member", Target:="dotNetTips.Utility.IO.Deflater.#CompressFile()")>
+<Assembly: CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times", Scope:="member", Target:="dotNetTips.Utility.IO.Deflater.#DecompressFile()")>

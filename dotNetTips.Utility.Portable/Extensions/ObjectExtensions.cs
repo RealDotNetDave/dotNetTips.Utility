@@ -47,7 +47,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
             Encapsulation.TryValidateParam<ArgumentNullException>(source != null);
             Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(list != null && list.Length != 0, "list is null or empty.");
 
-            foreach (T value in list)
+            foreach (var value in list)
             {
                 if (value.Equals(source))
                 {
