@@ -2,12 +2,12 @@ Imports System.Reflection
 Imports System.Resources
 Imports System.Runtime.InteropServices
 
-<Assembly: AssemblyTitle("dotNetTips.com Utility 2015")>
+<Assembly: AssemblyTitle("dotNetTips.com Utility")>
 <Assembly: AssemblyDescription("General .NET Utilities")>
-<Assembly: AssemblyCompany("NicheWare - David McCarter")>
-<Assembly: AssemblyProduct("dotNetTips.com Utility 2015")>
-<Assembly: AssemblyCopyright("NicheWare - David McCarter")>
-<Assembly: AssemblyTrademark("NicheWare - David McCarter")>
+<Assembly: AssemblyCompany("McCarter Consulting - David McCarter")>
+<Assembly: AssemblyProduct("dotNetTips.com Utility")>
+<Assembly: AssemblyCopyright("McCarter Consulting - David McCarter")>
+<Assembly: AssemblyTrademark("McCarter Consulting - David McCarter")>
 <Assembly: CLSCompliant(True)>
 <Assembly: AssemblyVersion("2017.3.6281.32942")>
 <Assembly: ComVisible(False)>

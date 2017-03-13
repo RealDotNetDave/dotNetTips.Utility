@@ -356,7 +356,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="dotNetTips.com.pfx" />
     <None Include="Resources\grip.png" />
     <None Include="HelpersClassDiagram.cd" />
   </ItemGroup>
