@@ -9,7 +9,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyCopyright("NicheWare - David McCarter")>
 <Assembly: AssemblyTrademark("NicheWare - David McCarter")>
 <Assembly: CLSCompliant(True)>
-<Assembly: AssemblyVersion("2015.2.0.00")>
+<Assembly: AssemblyVersion("2017.3.6281.32942")>
 <Assembly: ComVisible(False)>
 <Assembly: NeutralResourcesLanguageAttribute("en-US")>
-<Assembly: AssemblyFileVersion("2015.2.0.00")>
+<Assembly: AssemblyFileVersion("2017.3.6281.32942")>
