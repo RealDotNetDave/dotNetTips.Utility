@@ -74,7 +74,7 @@ namespace dotNetTips.Utility.Portable.Extensions
 
             var collection = source as ICollection;
 
-            if (collection is null)
+            if (collection != null)
             {
                 return collection.Count;
             }
