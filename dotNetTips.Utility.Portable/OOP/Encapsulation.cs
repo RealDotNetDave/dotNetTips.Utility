@@ -11,11 +11,12 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using dotNetTips.Utility.Portable.Extensions;
 using System;
 using System.Collections;
-using dotNetTips.Utility.Portable.Extensions;
 
-namespace dotNetTips.Utility.Portable.OOP {
+namespace dotNetTips.Utility.Portable.OOP
+{
     /// <summary>
     /// Class Encapsulation.
     /// </summary>
@@ -34,12 +35,12 @@ namespace dotNetTips.Utility.Portable.OOP {
 
             if (t.Name == nameof(Exception))
             {
-                throw new InvalidCastException("TException cannot be of type Exception. Use a more specific exception from the framework or a custom Exception inheriting type Exception (only)");
+                throw new InvalidCastException($"{nameof(TException)} cannot be of type Exception. Use a more specific exception from the framework or a custom Exception inheriting type Exception (only)");
             }
 
             var defaultMessage = "Parameter is invalid.";
 
-            if (string.IsNullOrEmpty(message))
+            if (string.IsNullOrEmpty(message) == false)
             {
                 defaultMessage = message;
             }

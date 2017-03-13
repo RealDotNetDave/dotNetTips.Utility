@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 
+using dotNetTips.Utility.Standard.OOP;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -78,8 +79,7 @@ namespace dotNetTips.Utility.Standard.IO
         /// <exception cref="ArgumentNullException">directory</exception>
         public static async Task<bool> DeleteDirectoryAsync(DirectoryInfo directory)
         {
-            if (directory == null)
-                throw new ArgumentNullException(nameof(directory));
+            Encapsulation.TryValidateParam<ArgumentNullException>(directory != null);
            
             if (directory.Exists)
                 await Task.Factory.StartNew(() =>

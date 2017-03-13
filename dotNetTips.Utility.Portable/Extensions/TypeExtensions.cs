@@ -12,7 +12,8 @@ using dotNetTips.Utility.Portable.OOP;
 using System;
 
 
-namespace dotNetTips.Utility.Portable.Extensions {
+namespace dotNetTips.Utility.Portable.Extensions
+{
     /// <summary>
     /// Class TypeExtensions.
     /// </summary>

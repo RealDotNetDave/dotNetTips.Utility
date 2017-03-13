@@ -8,7 +8,8 @@
 // <summary>
 // </summary>
 // ***********************************************************************
-namespace dotNetTips.Utility.Portable {
+namespace dotNetTips.Utility.Portable
+{
     /// <summary>
     /// Enum DueDate
     /// </summary>

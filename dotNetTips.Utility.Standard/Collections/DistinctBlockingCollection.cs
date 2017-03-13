@@ -60,7 +60,7 @@ namespace dotNetTips.Utility.Standard.Collections
         /// <param name="item">The item to be added to the collection. The value can be a null reference.</param>
         public new void Add(T item)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(item == null, "Item is requried.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(item != null, "Item is requried.");
 
             if ((ItemNotInCollection(item)))
             {
@@ -75,8 +75,8 @@ namespace dotNetTips.Utility.Standard.Collections
         /// <param name="cancellationToken">A cancellation token to observe.</param>
         public new void Add(T item, CancellationToken cancellationToken)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(item == null, "Item is requried.");
-            Encapsulation.TryValidateParam<ArgumentNullException>(cancellationToken == null, "Token is requried.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(item != null, "Item is requried.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(cancellationToken != null, "Token is requried.");
 
             if ((ItemNotInCollection(item)))
             {
@@ -154,7 +154,7 @@ namespace dotNetTips.Utility.Standard.Collections
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private bool ItemNotInCollection(T item)
         {
-            return (item == null && this.Contains(item) == false);
+            return (item != null && this.Contains(item) == false);
         }
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace dotNetTips.Utility.Standard.Collections
         /// <returns>System.Int32.</returns>
         public int RemoveAll(Predicate<T> match)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(match == null, "Match is requried.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(match != null, "Match is requried.");
 
             var itemsToRemove = new List<T>();
 

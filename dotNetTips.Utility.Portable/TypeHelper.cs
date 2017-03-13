@@ -10,7 +10,8 @@
 // ***********************************************************************
 using System;
 
-namespace dotNetTips.Utility.Portable {
+namespace dotNetTips.Utility.Portable
+{
     /// <summary>
     /// Class TypeHelper.
     /// </summary>

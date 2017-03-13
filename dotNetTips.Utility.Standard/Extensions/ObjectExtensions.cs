@@ -58,15 +58,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <remarks>Original code by: Rory Becker</remarks>
         public static bool In<T>(this T source, params T[] list)
         {
-            if (source == null)
-            {
-                throw new ArgumentNullException(nameof(source), "Source cannot be null.");
-            }
-
-            if (list == null || list.Length == 0)
-            {
-                throw new ArgumentNullException(nameof(list), "List cannot be null or have a 0 length.");
-            }
+            Encapsulation.TryValidateParam(list, nameof(list));
 
             foreach (T value in list)
             {
@@ -95,7 +87,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <returns><count>true</count> if the specified object is null; otherwise, <count>false</count>.</returns>
         public static bool IsNull(this object obj)
         {
-            return obj == null;
+            return obj is null;
         }
 
         /// <summary>

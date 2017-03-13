@@ -21,7 +21,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dotNetTips.Utility.Portable.Extensions {
+namespace dotNetTips.Utility.Portable.Extensions
+{
     /// <summary>
     /// Class CollectionExtensions.
     /// </summary>

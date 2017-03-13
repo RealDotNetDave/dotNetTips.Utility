@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using dotNetTips.Utility.Standard.OOP;
 using System;
 using System.IO;
 using System.Xml;
@@ -84,6 +85,9 @@ namespace dotNetTips.Utility.Standard.Xml
         /// <exception cref="ArgumentNullException">obj</exception>
         public string Serialize(object obj)
         {
+
+            Encapsulation.TryValidateParam<ArgumentNullException>(obj != null);
+
             if (obj == null)
             {
                 throw new ArgumentNullException(nameof(obj));

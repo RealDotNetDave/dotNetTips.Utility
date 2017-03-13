@@ -14,6 +14,9 @@
 using Microsoft.Extensions.Logging;
 using System;
 
+/// <summary>
+/// The dotNetTips.Utility.Standard namespace.{CC2D43FA-BBC4-448A-9D0B-7B57ADF2655C}
+/// </summary>
 namespace dotNetTips.Utility.Standard
 {
     /// <summary>
@@ -31,7 +34,7 @@ namespace dotNetTips.Utility.Standard
         /// Gets the logger factory.
         /// </summary>
         /// <value>The logger factory.</value>
-        public static ILoggerFactory LoggerFactory { get; } = new LoggerFactory();
+        public static ILoggerFactory LoggerFactory { get; private set; } = new LoggerFactory();
 
         /// <summary>
         /// Creates the logger.
@@ -40,6 +43,21 @@ namespace dotNetTips.Utility.Standard
         /// <returns>ILogger.</returns>
         public static ILogger CreateLogger<T>()
         {
+            Logger = LoggerFactory.CreateLogger<T>();
+
+            return Logger;
+        }
+
+        /// <summary>
+        /// Creates the logger.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="loggerFactory">The logger factory.</param>
+        /// <returns>Microsoft.Extensions.Logging.ILogger.</returns>
+        public static ILogger CreateLogger<T>(ILoggerFactory loggerFactory)
+        {
+            LoggerFactory = loggerFactory;
+
             Logger = LoggerFactory.CreateLogger<T>();
 
             return Logger;

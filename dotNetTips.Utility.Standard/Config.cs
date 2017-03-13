@@ -84,7 +84,7 @@ namespace dotNetTips.Utility.Standard
         /// <returns>T.</returns>
         public T Instance()
         {
-            if (_instance == null)
+            if (_instance is null)
             {
                 _instance = TypeHelper.Create<T>();
             }

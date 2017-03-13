@@ -9,7 +9,8 @@
 // </summary>
 // ***********************************************************************
 
-namespace dotNetTips.Utility.Portable {
+namespace dotNetTips.Utility.Portable
+{
     /// <summary>
     /// Control Characters
     /// </summary>

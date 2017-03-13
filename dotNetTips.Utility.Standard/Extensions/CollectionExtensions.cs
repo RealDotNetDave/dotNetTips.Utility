@@ -152,7 +152,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// </exception>
         public static T? FirstOrNull<T>(this IEnumerable<T> list, Func<T, bool> match) where T : struct
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(match == null, "Match cannot be null.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(match != null, "Match cannot be null.");
 
             foreach (T local in list)
             {
@@ -279,9 +279,9 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <remarks>Original code by: Fons Sonnemans</remarks>
         public static Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>> Pivot<TSource, TFirstKey, TSecondKey, TValue>(this IEnumerable<TSource> list, Func<TSource, TFirstKey> firstKeySelector, Func<TSource, TSecondKey> secondKeySelector, Func<IEnumerable<TSource>, TValue> aggregate)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(aggregate == null, "Aggregate cannot be null.");
-            Encapsulation.TryValidateParam<ArgumentNullException>(firstKeySelector == null, "First key selector cannot be null.");
-            Encapsulation.TryValidateParam<ArgumentNullException>(secondKeySelector == null, "Second key selector cannot be null.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(aggregate != null, "Aggregate cannot be null.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(firstKeySelector != null, "First key selector cannot be null.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(secondKeySelector != null, "Second key selector cannot be null.");
 
             var returnValue = new Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>>();
 
@@ -479,7 +479,7 @@ namespace dotNetTips.Utility.Standard.Extensions
 
                 var prop = typeof(T).GetRuntimeProperty(property);
 
-                if (prop == null)
+                if (prop is null)
                 {
                     throw new InvalidCastException(string.Format(CultureInfo.InvariantCulture, "{0}' in + {1}'", string.Format(CultureInfo.InvariantCulture, "{0}{1}", Convert.ToString("No property '", CultureInfo.InvariantCulture), property), typeof(T).Name));
                 }
@@ -527,8 +527,8 @@ namespace dotNetTips.Utility.Standard.Extensions
         public static void AddRange<T, TKey, TValue>(this IDictionary<TKey, TValue> list, IEnumerable<T> items, Func<T, TKey> key, Func<T, TValue> value)
         {
             Encapsulation.TryValidateParam(items, nameof(items));
-            Encapsulation.TryValidateParam<ArgumentNullException>(key == null, "Key cannot be null.");
-            Encapsulation.TryValidateParam<ArgumentNullException>(value == null, "Value cannot be null.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(key != null, "Key cannot be null.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(value != null, "Value cannot be null.");
 
             foreach (T item in items)
             {

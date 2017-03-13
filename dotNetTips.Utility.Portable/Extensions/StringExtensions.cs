@@ -16,7 +16,8 @@ using System;
 
 using System.Text;
 
-namespace dotNetTips.Utility.Portable.Extensions {
+namespace dotNetTips.Utility.Portable.Extensions
+{
     /// <summary>
     /// Class StringExtensions.
     /// </summary>
