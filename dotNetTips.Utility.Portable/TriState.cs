@@ -31,7 +31,5 @@ namespace dotNetTips.Utility.Portable
         /// Use default
         /// </summary>
         UseDefault = -2
-
-        ,
     }
 }
