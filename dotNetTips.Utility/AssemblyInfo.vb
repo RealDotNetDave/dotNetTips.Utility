@@ -9,7 +9,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyCopyright("McCarter Consulting - David McCarter")>
 <Assembly: AssemblyTrademark("McCarter Consulting - David McCarter")>
 <Assembly: CLSCompliant(True)>
-<Assembly: AssemblyVersion("2017.3.6281.32942")>
+<Assembly: AssemblyVersion("2017.3.6283.35199")>
 <Assembly: ComVisible(False)>
 <Assembly: NeutralResourcesLanguageAttribute("en-US")>
-<Assembly: AssemblyFileVersion("2017.3.6281.32942")>
+<Assembly: AssemblyFileVersion("2017.3.6283.35199")>
