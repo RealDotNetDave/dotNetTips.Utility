@@ -40,7 +40,7 @@ namespace dotNetTips.Utility.Portable.OOP
 
             var defaultMessage = "Parameter is invalid.";
 
-            if (string.IsNullOrEmpty(message) == false)
+            if (String.IsNullOrEmpty(message) == false)
             {
                 defaultMessage = message;
             }

@@ -17,6 +17,7 @@ namespace dotNetTips.Utility.Portable
     /// Class ArgumentIsReadOnlyException.
     /// </summary>
     /// <seealso cref="System.Exception"/>
+
     public class ArgumentIsReadOnlyException : ArgumentException
     {
         /// <summary>
