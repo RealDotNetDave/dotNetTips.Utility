@@ -563,7 +563,7 @@
             </summary>
             <typeparam name="T"></typeparam>
             <param name="source">The source.</param>
-            <param name="list">  The list.</param>
+            <param name="list">The list.</param>
             <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
             <remarks>Original code by: Rory Becker</remarks>
         </member>
@@ -572,9 +572,7 @@
             Determines whether [is not null] [the specified object].
             </summary>
             <param name="obj">The obj.</param>
-            <returns>
-            <count>true</count> if [is not null] [the specified object]; otherwise, <count>false</count>.
-            </returns>
+            <returns><count>true</count> if [is not null] [the specified object]; otherwise, <count>false</count>.</returns>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.IsNull(System.Object)">
             <summary>
@@ -587,7 +585,7 @@
             <summary>
             Tries to Dispose the object.
             </summary>
-            <param name="obj">           The obj.</param>
+            <param name="obj">The obj.</param>
             <param name="throwException">if set to <count>true</count> [throw exception].</param>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.TryDispose(System.IDisposable)">
@@ -600,7 +598,7 @@
             <summary>
             Determines whether the specified object has the property.
             </summary>
-            <param name="instance">    The instance.</param>
+            <param name="instance">The instance.</param>
             <param name="propertyName">Name of the property.</param>
             <returns><c>true</c> if the specified property name has property; otherwise, <c>false</c>.</returns>
         </member>
@@ -838,6 +836,37 @@
             </summary>
             <typeparam name="T"></typeparam>
         </member>
+        <member name="T:dotNetTips.Utility.Portable.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.CannotBeOfTypeException">
+            <summary>
+              Looks up a localized string similar to {0} cannot be of type Exception. Use a more specific exception from the framework or a custom Exception inheriting type Exception (only)..
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.CollectionIsNullOrHasNoItems">
+            <summary>
+              Looks up a localized string similar to Collection is null or has no items..
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.ParameterIsInvalid">
+            <summary>
+              Looks up a localized string similar to Parameter is invalid..
+            </summary>
+        </member>
         <member name="T:dotNetTips.Utility.Portable.Tristate">
             <summary>
             Enum TriState
@@ -875,7 +904,7 @@
             <summary>
             Class PerformanceStopwatch.
             </summary>
-            <seealso cref="T:System.Diagnostics.Stopwatch"/>
+            <seealso cref="T:System.Diagnostics.Stopwatch" />
         </member>
         <member name="M:dotNetTips.Utility.Standard.Diagnostics.PerformanceStopwatch.StopReset">
             <summary>

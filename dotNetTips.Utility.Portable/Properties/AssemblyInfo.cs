@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("dotNetTips.com")]
 [assembly: AssemblyProduct("dotNetTips.Utility.Portable")]
-[assembly: AssemblyCopyright("Copyright Â©  2015")]
+[assembly: AssemblyCopyright("Copyright © 2017")]
 [assembly: AssemblyTrademark("David McCarter")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]

@@ -35,10 +35,10 @@ namespace dotNetTips.Utility.Portable.OOP
 
             if (t.Name == nameof(Exception))
             {
-                throw new InvalidCastException($"{nameof(TException)} cannot be of type Exception. Use a more specific exception from the framework or a custom Exception inheriting type Exception (only)");
+                throw new InvalidCastException(string.Format(Properties.Resources.CannotBeOfTypeException, nameof(TException)));
             }
 
-            var defaultMessage = "Parameter is invalid.";
+            var defaultMessage = Properties.Resources.ParameterIsInvalid;
 
             if (String.IsNullOrEmpty(message) == false)
             {
@@ -65,7 +65,7 @@ namespace dotNetTips.Utility.Portable.OOP
             {
                 if (message.IsNull())
                 {
-                    message = "Collection is null or has no items.";
+                    message = Properties.Resources.CollectionIsNullOrHasNoItems;
                 }
 
                 throw new ArgumentNullException(paramName, message);
