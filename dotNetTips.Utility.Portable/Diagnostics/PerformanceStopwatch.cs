@@ -23,6 +23,17 @@ namespace dotNetTips.Utility.Standard.Diagnostics
     [Obsolete("Use PerformanceStopwatch from dotNetTips.Utility.Standard.")]
     public class PerformanceStopwatch : Stopwatch
     {
+
+        /// <summary>
+        /// Starts the new.
+        /// </summary>
+        /// <returns>PerformanceStopwatch.</returns>
+        public static new PerformanceStopwatch StartNew()
+        {
+            var sw = new PerformanceStopwatch();
+            sw.Start();
+            return sw;
+        }
         /// <summary>
         /// Stops the reset.
         /// </summary>
@@ -34,17 +45,6 @@ namespace dotNetTips.Utility.Standard.Diagnostics
             base.Reset();
 
             return result;
-        }
-
-        /// <summary>
-        /// Starts the new.
-        /// </summary>
-        /// <returns>PerformanceStopwatch.</returns>
-        public static new PerformanceStopwatch StartNew()
-        {
-            var sw = new PerformanceStopwatch();
-            sw.Start();
-            return sw;
         }
     }
 }

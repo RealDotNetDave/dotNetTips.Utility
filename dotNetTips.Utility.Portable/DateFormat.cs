@@ -1,13 +1,17 @@
-﻿// *********************************************************************** Assembly :
-// dotNetTips.Utility.Portable Author : David McCarter Created : 06-01-2016
+﻿// ***********************************************************************
+// Assembly         : dotNetTips.Utility.Portable
+// Author           : David McCarter
+// Created          : 12-07-2016
 //
-// Last Modified By : David McCarter Last Modified On : 06-02-2016 ***********************************************************************
-// <copyright file="DateFormat.cs" company="dotNetTips.com">
-//     Copyright Â© 2015
-// </copyright>
-// <summary>
-// </summary>
+// Last Modified By : David McCarter
+// Last Modified On : 03-13-2017
 // ***********************************************************************
+// <copyright file="DateFormat.cs" company="dotNetTips.com">
+//     David McCarter - dotNetTips.com © 2017
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
 namespace dotNetTips.Utility.Portable
 {
     /// <summary>

@@ -1,25 +1,25 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Portable
-// Author           : David McCarter Created : 04-15-2016 Created : 04-15-2016
-// Created          : 04-15-2016 Created : 04-15-2016
+// Author           : David McCarter
+// Created          : 02-28-2017
 //
-// Last Modified By : David McCarter Last Modified On : 06-12-2016
-// Last Modified On : 08-16-2016
+// Last Modified By : David McCarter
+// Last Modified On : 03-16-2017
 // ***********************************************************************
 // <copyright file="CollectionExtensions.cs" company="dotNetTips.com">
-//     Copyright Â© 2015
+//     David McCarter - dotNetTips.com © 2017
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using dotNetTips.Utility.Portable.OOP;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using dotNetTips.Utility.Portable.OOP;
 
 namespace dotNetTips.Utility.Portable.Extensions
 {
@@ -58,9 +58,20 @@ namespace dotNetTips.Utility.Portable.Extensions
             Encapsulation.TryValidateParam<ArgumentIsReadOnlyException>(list.IsReadOnly == false);
 
             foreach (var value in values)
-            {
                 list.AddIfNotExists(value);
-            }
+        }
+
+        /// <summary>
+        /// Makes copy of the collection.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list">The list.</param>
+        /// <returns>System.Collections.Generic.List&lt;T&gt;.</returns>
+        public static List<T> CopyToList<T>(this List<T> list)
+        {
+            Encapsulation.TryValidateParam<ArgumentNullException>(list != null);
+
+            return new List<T>(list);
         }
 
         /// <summary>
@@ -75,16 +86,12 @@ namespace dotNetTips.Utility.Portable.Extensions
             var collection = source as ICollection;
 
             if (collection != null)
-            {
                 return collection.Count;
-            }
 
             var count = 0;
 
             while (source.GetEnumerator().MoveNext())
-            {
                 count++;
-            }
 
             return count;
         }
@@ -103,12 +110,8 @@ namespace dotNetTips.Utility.Portable.Extensions
             Encapsulation.TryValidateParam<ArgumentNullException>(match != null);
 
             foreach (var local in source)
-            {
                 if (match.Invoke(local) && default(bool))
-                {
                     return new T?(local);
-                }
-            }
 
             return null;
         }
@@ -119,20 +122,14 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="list">The list.</param>
         /// <returns><c>true</c> if the specified list is valid; otherwise, <c>false</c>.</returns>
-        public static bool IsValid<T>(this ObservableCollection<T> list)
-        {
-            return (list != null) && (list.Count > 0);
-        }
+        public static bool IsValid<T>(this ObservableCollection<T> list) => (list != null) && (list.Count > 0);
 
         /// <summary>
         /// Determines whether the specified source is valid.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns><count>true</count> if the specified source is valid; otherwise, <count>false</count>.</returns>
-        public static bool IsValid(this IEnumerable source)
-        {
-            return source != null && source.Count() > 0;
-        }
+        public static bool IsValid(this IEnumerable source) => source != null && source.Count() > 0;
 
         /// <summary>
         /// Returns no duplicates.
@@ -160,7 +157,6 @@ namespace dotNetTips.Utility.Portable.Extensions
             Encapsulation.TryValidateParam<ArgumentNullException>(pageSize >= 0);
 
             using (var enumerator = source.GetEnumerator())
-            {
                 while (enumerator.MoveNext())
                 {
                     var currentPage = new List<T>(pageSize)
@@ -169,13 +165,10 @@ namespace dotNetTips.Utility.Portable.Extensions
                     };
 
                     while (currentPage.Count < pageSize && enumerator.MoveNext())
-                    {
                         currentPage.Add(enumerator.Current);
-                    }
 
                     yield return currentPage.AsEnumerable();
                 }
-            }
         }
 
         /// <summary>
@@ -228,9 +221,7 @@ namespace dotNetTips.Utility.Portable.Extensions
                 var secondLookup = item.ToLookup(secondKeySelector);
 
                 foreach (var subitem in secondLookup)
-                {
                     collection.Add(subitem.Key, aggregate(subitem));
-                }
             }
 
             return returnValue;
@@ -262,18 +253,14 @@ namespace dotNetTips.Utility.Portable.Extensions
             Encapsulation.TryValidateParam<ArgumentNullException>(source != null && source.Count() >= 0);
 
             if (string.IsNullOrEmpty(delimiter.ToString()))
-            {
                 delimiter = ControlChars.Comma;
-            }
 
             var sb = new StringBuilder();
 
             foreach (var item in source)
             {
                 if (sb.Length > 0)
-                {
                     sb.Append(delimiter.ToString());
-                }
 
                 sb.Append(item.ToString());
             }
@@ -311,19 +298,6 @@ namespace dotNetTips.Utility.Portable.Extensions
             return Task.Run(() => source.ToList());
         }
 
-            /// <summary>
-            /// Makes copy of the collection.
-            /// </summary>
-            /// <typeparam name="T"></typeparam>
-            /// <param name="list">The list.</param>
-            /// <returns>System.Collections.Generic.List&lt;T&gt;.</returns>
-        public static List<T> CopyToList<T>(this List<T> list)
-        {
-            Encapsulation.TryValidateParam<ArgumentNullException>(list != null);
-
-            return new List<T>(list);
-        }
-
         /// <summary>
         /// To the observable collection.
         /// </summary>
@@ -354,7 +328,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// Returns collection based on function.
         /// </summary>
         /// <typeparam name="TSource">The type of the source.</typeparam>
-        /// <param name="source">   The source.</param>
+        /// <param name="source">The source.</param>
         /// <param name="condition">if set to <c>true</c> [condition].</param>
         /// <param name="predicate">The predicate.</param>
         /// <returns>IEnumerable&lt;TSource&gt;.</returns>
@@ -370,7 +344,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// Returns collection based on function.
         /// </summary>
         /// <typeparam name="TSource">The type of the source.</typeparam>
-        /// <param name="source">   The source.</param>
+        /// <param name="source">The source.</param>
         /// <param name="condition">if set to <c>true</c> [condition].</param>
         /// <param name="predicate">The predicate.</param>
         /// <returns>IEnumerable&lt;TSource&gt;.</returns>

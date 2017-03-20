@@ -64,7 +64,7 @@ Namespace IO
         Public Property SourceFileName() As String = String.Empty
 
         ''' <summary>
-        ''' This is the destination full path property
+        ''' Gets or sets the name of the destination file.
         ''' </summary>
         ''' <value>The name of the destination file.</value>
         Public Property DestinationFileName() As String = String.Empty
@@ -145,8 +145,15 @@ Namespace IO
 
 #Region "IDisposable Implementation"
 
+        ''' <summary>
+        ''' The disposed value
+        ''' </summary>
         Protected disposed As Boolean
 
+        ''' <summary>
+        ''' Releases unmanaged and - optionally - managed resources.
+        ''' </summary>
+        ''' <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
         Protected Overridable Sub Dispose(ByVal disposing As Boolean)
             SyncLock Me
                 ' Do nothing if the object has already been disposed of.
@@ -169,6 +176,9 @@ Namespace IO
             End SyncLock
         End Sub
 
+        ''' <summary>
+        ''' Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        ''' </summary>
         Public Sub Dispose() _
                 Implements IDisposable.Dispose
             Dispose(True)

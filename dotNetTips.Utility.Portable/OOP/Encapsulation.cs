@@ -30,12 +30,12 @@ namespace dotNetTips.Utility.Portable.OOP
         /// <param name="message">The message.</param>
         public static void TryValidateParam<TException>(bool condition, string message = "") where TException : ArgumentException, new()
         {
-            //Validate proper Exception type
+            // Validate proper Exception type
             var t = typeof(TException);
 
             if (t.Name == nameof(Exception))
             {
-                throw new InvalidCastException(string.Format(Properties.Resources.CannotBeOfTypeException, nameof(TException)));
+                throw new InvalidCastException(String.Format(Properties.Resources.CannotBeOfTypeException, nameof(TException)));
             }
 
             var defaultMessage = Properties.Resources.ParameterIsInvalid;

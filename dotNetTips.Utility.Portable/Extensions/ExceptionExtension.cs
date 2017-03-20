@@ -1,12 +1,15 @@
-﻿// *********************************************************************** Assembly :
-// dotNetTips.Utility.Portable Author : David McCarter Created : 04-15-2016
+﻿// ***********************************************************************
+// Assembly         : dotNetTips.Utility.Portable
+// Author           : David McCarter Created : 04-15-2016
+// Created          : 04-15-2016
 //
 // Last Modified By : David McCarter Last Modified On : 06-02-2016 ***********************************************************************
+// Last Modified On : 03-13-2017
+// ***********************************************************************
 // <copyright file="ExceptionExtension.cs" company="dotNetTips.com">
 //     Copyright Â© 2015
 // </copyright>
-// <summary>
-// </summary>
+// <summary></summary>
 // ***********************************************************************
 using dotNetTips.Utility.Portable.OOP;
 using System;
