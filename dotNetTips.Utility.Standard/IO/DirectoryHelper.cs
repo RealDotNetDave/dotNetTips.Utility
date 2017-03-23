@@ -42,6 +42,8 @@ namespace dotNetTips.Utility.Standard.IO
 
             var companyName = Assembly.GetEntryAssembly().GetCustomAttributes<AssemblyCompanyAttribute>().FirstOrDefault().Company.Trim();
 
+            //TODO: VALIDATE COMPANYNAME
+
             var path = System.IO.Path.Combine(userPath, companyName);
 
             return path;
@@ -80,7 +82,7 @@ namespace dotNetTips.Utility.Standard.IO
         public static async Task<bool> DeleteDirectoryAsync(DirectoryInfo directory)
         {
             Encapsulation.TryValidateParam<ArgumentNullException>(directory != null);
-           
+
             if (directory.Exists)
                 await Task.Factory.StartNew(() =>
                 {

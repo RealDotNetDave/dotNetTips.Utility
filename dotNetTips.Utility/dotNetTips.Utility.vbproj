@@ -254,6 +254,7 @@
     <Compile Include="ComputerHelper.vb" />
     <Compile Include="ComputerInfo.vb" />
     <Compile Include="ComputerMemory.vb" />
+    <Compile Include="Config.vb" />
     <Compile Include="CriticalException.vb" />
     <Compile Include="ApplicationHelper.vb" />
     <Compile Include="AssemblyInfo.vb">

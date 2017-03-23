@@ -14,7 +14,7 @@ namespace dotNetTips.Utility.Portable
     /// Interface ISingleton
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    internal interface ISingleton<T>
+    public interface ISingleton<T>
         where T : class
     {
     }
