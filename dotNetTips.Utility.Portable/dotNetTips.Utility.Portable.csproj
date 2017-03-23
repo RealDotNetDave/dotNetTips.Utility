@@ -36,7 +36,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationVersion>2017.3.6283.35199</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -179,9 +179,15 @@
     <Compile Include="FirstWeekOfYear.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="ICloneable.cs" />
+    <Compile Include="ImageExtensions.cs" />
     <Compile Include="OOP\Encapsulation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ISingleton.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Tristate.cs" />
     <Compile Include="TypeHelper.cs" />
   </ItemGroup>
@@ -199,6 +205,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="IO\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Drawing">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6\System.Drawing.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

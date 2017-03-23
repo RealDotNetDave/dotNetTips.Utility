@@ -56,7 +56,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationVersion>2017.3.6283.35199</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -357,7 +357,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="dotNetTips.com.pfx" />
     <None Include="Resources\grip.png" />
     <None Include="HelpersClassDiagram.cd" />
   </ItemGroup>
@@ -415,7 +414,6 @@
     <None Include="Resources\States.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Collections\" />
     <Folder Include="Encryption\" />
     <Folder Include="Math\" />
   </ItemGroup>

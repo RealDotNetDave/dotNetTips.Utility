@@ -35,6 +35,7 @@ Namespace IO
         Public Sub CompressFile(sourceFileName As String, destinationFileName As String)
             Encapsulation.TryValidateParam(Of ArgumentNullException)(Not String.IsNullOrEmpty(sourceFileName), "sourceFileName is nothing or empty.")
             Encapsulation.TryValidateParam(Of ArgumentNullException)(Not String.IsNullOrEmpty(destinationFileName), "destinationFileName is nothing or empty.")
+
             If File.Exists(sourceFileName) Then
                 Using archive = ZipFile.Open(destinationFileName, ZipArchiveMode.Create)
                     Dim file = archive.CreateEntryFromFile(sourceFileName, Path.GetFileName(destinationFileName), CompressionLevel.Optimal)

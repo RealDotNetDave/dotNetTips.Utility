@@ -11,11 +11,11 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using dotNetTips.Utility.Standard.OOP;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Runtime.Serialization.Json;
 using System.IO;
+using System.Runtime.Serialization.Json;
+using System.Text;
 
 namespace dotNetTips.Utility.Standard.Serialization
 {
@@ -33,6 +33,8 @@ namespace dotNetTips.Utility.Standard.Serialization
         /// <returns>System.String.</returns>
         public static string Serialize(object obj)
         {
+            Encapsulation.TryValidateParam<ArgumentNullException>(obj != null);
+
             string json;
 
             using (var ms = new MemoryStream())
@@ -55,6 +57,8 @@ namespace dotNetTips.Utility.Standard.Serialization
         /// <returns>T.</returns>
         public static T Deserialize<T>(string json) where T : class
         {
+            Encapsulation.TryValidateParam(json, nameof(json));
+
             var obj = TypeHelper.Create<T>();
 
             using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(json)))

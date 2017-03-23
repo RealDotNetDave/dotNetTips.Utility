@@ -44,6 +44,7 @@ Public Module DataTableExtensions
     ''' <remarks>Original code by: Leo Shih</remarks>
     <Extension>
     Public Function CopyToEntityList(Of T As New)(ByVal dt As DataTable) As IEnumerable(Of T)
+
         Dim properties = New T().GetType().GetProperties()
 
         Dim columns = From col In dt.Columns.Cast(Of DataColumn)()

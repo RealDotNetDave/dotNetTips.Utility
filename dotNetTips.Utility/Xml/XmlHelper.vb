@@ -63,7 +63,8 @@ Namespace Xml
         ''' </summary>
         ''' <typeparam name="T">Type</typeparam>
         ''' <param name="xml">The XML.</param>
-        ''' <returns></returns>
+        ''' <returns>T.</returns>
+        ''' <exception cref="System.ArgumentNullException">xml</exception>
         Public Function Deserialize(Of T)(ByVal xml As String) As T
             If String.IsNullOrEmpty(xml) Then
                 Throw New ArgumentNullException(NameOf(xml))

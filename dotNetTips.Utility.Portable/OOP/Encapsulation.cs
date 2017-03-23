@@ -30,17 +30,17 @@ namespace dotNetTips.Utility.Portable.OOP
         /// <param name="message">The message.</param>
         public static void TryValidateParam<TException>(bool condition, string message = "") where TException : ArgumentException, new()
         {
-            //Validate proper Exception type
+            // Validate proper Exception type
             var t = typeof(TException);
 
             if (t.Name == nameof(Exception))
             {
-                throw new InvalidCastException($"{nameof(TException)} cannot be of type Exception. Use a more specific exception from the framework or a custom Exception inheriting type Exception (only)");
+                throw new InvalidCastException(String.Format(Properties.Resources.CannotBeOfTypeException, nameof(TException)));
             }
 
-            var defaultMessage = "Parameter is invalid.";
+            var defaultMessage = Properties.Resources.ParameterIsInvalid;
 
-            if (string.IsNullOrEmpty(message) == false)
+            if (String.IsNullOrEmpty(message) == false)
             {
                 defaultMessage = message;
             }
@@ -65,7 +65,7 @@ namespace dotNetTips.Utility.Portable.OOP
             {
                 if (message.IsNull())
                 {
-                    message = "Collection is null or has no items.";
+                    message = Properties.Resources.CollectionIsNullOrHasNoItems;
                 }
 
                 throw new ArgumentNullException(paramName, message);

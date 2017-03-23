@@ -59,7 +59,7 @@ Public Module ValidationHelper
     Friend Function IsDate(ByVal expression As Object) As Boolean
         Dim time As DateTime
 
-        If (expression Is Nothing) Then
+        If expression Is Nothing Then
             Return False
         End If
 

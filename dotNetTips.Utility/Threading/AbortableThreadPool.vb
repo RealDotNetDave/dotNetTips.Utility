@@ -1,16 +1,17 @@
 ﻿' ***********************************************************************
 ' Assembly         : dotNetTips.Utility
 ' Author           : David McCarter
-' Created          : 04-15-2016
+' Created          : 12-07-2016
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 07-30-2016
+' Last Modified On : 03-06-2017
 ' ***********************************************************************
-' <copyright file="AbortableThreadPool.vb" company="NicheWare - David McCarter">
-'     NicheWare - David McCarter
+' <copyright file="AbortableThreadPool.vb" company="McCarter Consulting - David McCarter">
+'     David McCarter - dotNetTips.com © 2017
 ' </copyright>
 ' <summary></summary>
 ' ***********************************************************************
+
 Imports System.Collections.Generic
 Imports System.Threading
 Imports dotNetTips.Utility.Portable.OOP
@@ -19,12 +20,13 @@ Namespace Threading
     ''' <summary>
     ''' The code originate from this MSDN article:
     ''' http://msdn.microsoft.com/msdnmag/issues/06/03/NETMatters/
-    ''' With improvemts.
+    ''' With improvements.
     ''' </summary>
+    ''' <seealso cref="System.IDisposable" />
     Public NotInheritable Class AbortableThreadPool
         Implements IDisposable
         ''' <summary>
-        ''' Prevents a default instance of the <see cref="AbortableThreadPool"/> class from being created.
+        ''' Prevents a default instance of the <see cref="AbortableThreadPool" /> class from being created.
         ''' </summary>
         Private Sub New()
         End Sub
@@ -120,6 +122,7 @@ Namespace Threading
         ''' </summary>
         ''' <param name="item">The item.</param>
         ''' <returns>WorkItemStatus.</returns>
+        ''' <exception cref="System.ArgumentNullException">item</exception>
         ''' <exception cref="ArgumentNullException"></exception>
         Public Shared Function GetStatus(item As WorkItem) As WorkItemStatus
             If item Is Nothing Then
@@ -162,6 +165,7 @@ Namespace Threading
         ''' <param name="item">The item.</param>
         ''' <param name="allowAbort">if set to <c>true</c> [allow abort].</param>
         ''' <returns>WorkItemStatus.</returns>
+        ''' <exception cref="System.ArgumentNullException">item</exception>
         ''' <exception cref="ArgumentNullException">item</exception>
         Public Shared Function Cancel(item As WorkItem, allowAbort As Boolean) As WorkItemStatus
             If item Is Nothing Then
@@ -235,8 +239,15 @@ Namespace Threading
 
 #Region "IDisposable Implementation"
 
+        ''' <summary>
+        ''' The disposed
+        ''' </summary>
         Private disposed As Boolean
 
+        ''' <summary>
+        ''' Releases unmanaged and - optionally - managed resources.
+        ''' </summary>
+        ''' <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
         Public Sub Dispose(ByVal disposing As Boolean)
             SyncLock Me
                 ' Do nothing if the object has already been disposed of.
@@ -259,6 +270,9 @@ Namespace Threading
             End SyncLock
         End Sub
 
+        ''' <summary>
+        ''' Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        ''' </summary>
         Public Sub Dispose() _
                 Implements IDisposable.Dispose
             Dispose(True)

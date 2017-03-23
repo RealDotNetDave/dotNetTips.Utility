@@ -4,19 +4,18 @@
 ' Created          : 03-29-2016
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 04-11-2016
+' Last Modified On : 03-06-2017
 ' ***********************************************************************
 ' <copyright file="ColorExtensions.vb" company="NicheWare - David McCarter">
-'     NicheWare - David McCarter
+'     '     NicheWare - David McCarter
+'
 ' </copyright>
 ' <summary></summary>
-' ***********************************************************************
+' *************************************************************************
 Imports System.Collections.Generic
 Imports System.Drawing
-
 Imports System.Runtime.CompilerServices
 Imports dotNetTips.Utility.Portable.Extensions
-Imports dotNetTips.Utility.Portable.OOP
 
 Namespace Extensions
     ''' <summary>

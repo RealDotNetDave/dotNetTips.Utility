@@ -8,28 +8,27 @@
             <summary>
             Class ArgumentIsReadOnlyException.
             </summary>
-            <seealso cref="T:System.Exception"/>
+            <seealso cref="T:System.ArgumentException" />
+            <seealso cref="T:System.Exception" />
         </member>
         <member name="M:dotNetTips.Utility.Portable.ArgumentIsReadOnlyException.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentIsReadOnlyException"/> class.
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentIsReadOnlyException" /> class.
             </summary>
         </member>
         <member name="M:dotNetTips.Utility.Portable.ArgumentIsReadOnlyException.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentIsReadOnlyException"/> class.
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentIsReadOnlyException" /> class.
             </summary>
             <param name="message">The message that describes the error.</param>
         </member>
         <member name="M:dotNetTips.Utility.Portable.ArgumentIsReadOnlyException.#ctor(System.String,System.Exception)">
             <summary>
-            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentIsReadOnlyException"/> class.
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentIsReadOnlyException" /> class.
             </summary>
-            <param name="message">       The error message that explains the reason for the exception.</param>
-            <param name="innerException">
-            The exception that is the cause of the current exception, or a null reference (Nothing in
-            Visual Basic) if no inner exception is specified.
-            </param>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in
+            Visual Basic) if no inner exception is specified.</param>
         </member>
         <member name="T:dotNetTips.Utility.Portable.ControlChars">
             <summary>
@@ -38,7 +37,7 @@
         </member>
         <member name="F:dotNetTips.Utility.Portable.ControlChars.Back">
             <summary>
-            Back
+            Back char
             </summary>
         </member>
         <member name="F:dotNetTips.Utility.Portable.ControlChars.BackSlash">
@@ -242,6 +241,14 @@
             <param name="list">The list.</param>
             <param name="values">The values.</param>
         </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.CopyToList``1(System.Collections.Generic.List{``0})">
+            <summary>
+            Makes copy of the collection.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list">The list.</param>
+            <returns>System.Collections.Generic.List&lt;T&gt;.</returns>
+        </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.Count(System.Collections.IEnumerable)">
             <summary>
             Counts the specified source.
@@ -354,14 +361,6 @@
             <returns>Task&lt;List&lt;T&gt;&gt;.</returns>
             <remarks>Original code by: Fons Sonnemans</remarks>
         </member>
-        <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.CopyToList``1(System.Collections.Generic.List{``0})">
-            <summary>
-            Makes copy of the collection.
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="list">The list.</param>
-            <returns>System.Collections.Generic.List&lt;T&gt;.</returns>
-        </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.ToObservableCollection``1(System.Collections.Generic.IEnumerable{``0})">
             <summary>
             To the observable collection.
@@ -383,7 +382,7 @@
             Returns collection based on function.
             </summary>
             <typeparam name="TSource">The type of the source.</typeparam>
-            <param name="source">   The source.</param>
+            <param name="source">The source.</param>
             <param name="condition">if set to <c>true</c> [condition].</param>
             <param name="predicate">The predicate.</param>
             <returns>IEnumerable&lt;TSource&gt;.</returns>
@@ -394,7 +393,7 @@
             Returns collection based on function.
             </summary>
             <typeparam name="TSource">The type of the source.</typeparam>
-            <param name="source">   The source.</param>
+            <param name="source">The source.</param>
             <param name="condition">if set to <c>true</c> [condition].</param>
             <param name="predicate">The predicate.</param>
             <returns>IEnumerable&lt;TSource&gt;.</returns>
@@ -557,13 +556,21 @@
             <returns>T.</returns>
             <remarks>Original code by: Shimmy Weitzhandler</remarks>
         </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.HasProperty(System.Object,System.String)">
+            <summary>
+            Determines whether the specified object has the property.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="propertyName">Name of the property.</param>
+            <returns><c>true</c> if the specified property name has property; otherwise, <c>false</c>.</returns>
+        </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.In``1(``0,``0[])">
             <summary>
             Ins the specified source.
             </summary>
             <typeparam name="T"></typeparam>
             <param name="source">The source.</param>
-            <param name="list">  The list.</param>
+            <param name="list">The list.</param>
             <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
             <remarks>Original code by: Rory Becker</remarks>
         </member>
@@ -572,9 +579,7 @@
             Determines whether [is not null] [the specified object].
             </summary>
             <param name="obj">The obj.</param>
-            <returns>
-            <count>true</count> if [is not null] [the specified object]; otherwise, <count>false</count>.
-            </returns>
+            <returns><count>true</count> if [is not null] [the specified object]; otherwise, <count>false</count>.</returns>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.IsNull(System.Object)">
             <summary>
@@ -583,26 +588,18 @@
             <param name="obj">The object.</param>
             <returns><count>true</count> if the specified object is null; otherwise, <count>false</count>.</returns>
         </member>
-        <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.TryDispose(System.IDisposable,System.Boolean)">
-            <summary>
-            Tries to Dispose the object.
-            </summary>
-            <param name="obj">           The obj.</param>
-            <param name="throwException">if set to <count>true</count> [throw exception].</param>
-        </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.TryDispose(System.IDisposable)">
             <summary>
             Tries the to call Dispose.
             </summary>
             <param name="obj">The obj.</param>
         </member>
-        <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.HasProperty(System.Object,System.String)">
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.TryDispose(System.IDisposable,System.Boolean)">
             <summary>
-            Determines whether the specified object has the property.
+            Tries to Dispose the object.
             </summary>
-            <param name="instance">    The instance.</param>
-            <param name="propertyName">Name of the property.</param>
-            <returns><c>true</c> if the specified property name has property; otherwise, <c>false</c>.</returns>
+            <param name="obj">The obj.</param>
+            <param name="throwException">if set to <count>true</count> [throw exception].</param>
         </member>
         <member name="T:dotNetTips.Utility.Portable.Extensions.StringExtensions">
             <summary>
@@ -802,6 +799,11 @@
             </summary>
             <returns>T.</returns>
         </member>
+        <member name="T:dotNetTips.Utility.Portable.ImageExtensions">
+            <summary>
+            Class ImageExtensions.
+            </summary>
+        </member>
         <member name="T:dotNetTips.Utility.Portable.OOP.Encapsulation">
             <summary>
             Class Encapsulation.
@@ -838,6 +840,37 @@
             </summary>
             <typeparam name="T"></typeparam>
         </member>
+        <member name="T:dotNetTips.Utility.Portable.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.CannotBeOfTypeException">
+            <summary>
+              Looks up a localized string similar to {0} cannot be of type Exception. Use a more specific exception from the framework or a custom Exception inheriting type Exception (only)..
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.CollectionIsNullOrHasNoItems">
+            <summary>
+              Looks up a localized string similar to Collection is null or has no items..
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.ParameterIsInvalid">
+            <summary>
+              Looks up a localized string similar to Parameter is invalid..
+            </summary>
+        </member>
         <member name="T:dotNetTips.Utility.Portable.Tristate">
             <summary>
             Enum TriState
@@ -869,25 +902,24 @@
             </summary>
             <typeparam name="T"></typeparam>
             <returns>T.</returns>
-            <remarks>Original code by: Jeremy Clark</remarks>
         </member>
         <member name="T:dotNetTips.Utility.Standard.Diagnostics.PerformanceStopwatch">
             <summary>
             Class PerformanceStopwatch.
             </summary>
-            <seealso cref="T:System.Diagnostics.Stopwatch"/>
-        </member>
-        <member name="M:dotNetTips.Utility.Standard.Diagnostics.PerformanceStopwatch.StopReset">
-            <summary>
-            Stops the reset.
-            </summary>
-            <returns>TimeSpan.</returns>
+            <seealso cref="T:System.Diagnostics.Stopwatch" />
         </member>
         <member name="M:dotNetTips.Utility.Standard.Diagnostics.PerformanceStopwatch.StartNew">
             <summary>
             Starts the new.
             </summary>
             <returns>PerformanceStopwatch.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Diagnostics.PerformanceStopwatch.StopReset">
+            <summary>
+            Stops the reset.
+            </summary>
+            <returns>TimeSpan.</returns>
         </member>
     </members>
 </doc>

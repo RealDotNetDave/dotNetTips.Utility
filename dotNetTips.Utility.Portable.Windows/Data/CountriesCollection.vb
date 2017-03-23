@@ -35,6 +35,13 @@ Namespace Data
 
             Dim countryResult As String = String.Empty
 
+            countryResult = ConvertCountries(nameOrCode, countryResult)
+
+            Return countryResult
+
+        End Function
+
+        Private Shared Function ConvertCountries(nameOrCode As String, countryResult As String) As String
             For Each country In DataLists.CountriesList
                 If nameOrCode.Length = 2 Then
                     If (country.Code.ToUpper = nameOrCode.ToUpper) Then
@@ -50,7 +57,6 @@ Namespace Data
             Next
 
             Return countryResult
-
         End Function
 
         ''' <summary>

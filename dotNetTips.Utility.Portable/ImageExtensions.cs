@@ -1,25 +1,22 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Portable
 // Author           : David McCarter
-// Created          : 12-07-2016
+// Created          : 03-20-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-13-2017
+// Last Modified On : 03-20-2017
 // ***********************************************************************
-// <copyright file="ISingleton.cs" company="dotNetTips.com">
+// <copyright file="ImageExtensions.cs" company="dotNetTips.com">
 //     David McCarter - dotNetTips.com © 2017
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-
 namespace dotNetTips.Utility.Portable
 {
     /// <summary>
-    /// Interface ISingleton
+    /// Class ImageExtensions.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public interface ISingleton<T>
-        where T : class
+    public static class ImageExtensions
     {
     }
 }
