@@ -161,6 +161,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArgumentIsInvalidException.cs" />
     <Compile Include="ArgumentIsReadOnlyException.cs" />
     <Compile Include="ControlChars.cs" />
     <Compile Include="DateFormat.cs" />
@@ -170,6 +171,7 @@
     <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\ExceptionExtension.cs" />
+    <Compile Include="Extensions\HttpExtensions.cs" />
     <Compile Include="Extensions\MathExtensions.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
@@ -181,6 +183,7 @@
     <Compile Include="ICloneable.cs" />
     <Compile Include="ImageExtensions.cs" />
     <Compile Include="OOP\Encapsulation.cs" />
+    <Compile Include="OOP\Validation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ISingleton.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -205,6 +208,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="IO\" />
+    <Folder Include="Net\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

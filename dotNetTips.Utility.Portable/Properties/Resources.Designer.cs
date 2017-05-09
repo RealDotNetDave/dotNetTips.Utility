@@ -87,5 +87,14 @@ namespace dotNetTips.Utility.Portable.Properties {
                 return ResourceManager.GetString("ParameterIsInvalid", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to String does not match maximum length..
+        /// </summary>
+        internal static string StringDoesNotMatchMaximumLength {
+            get {
+                return ResourceManager.GetString("StringDoesNotMatchMaximumLength", resourceCulture);
+            }
+        }
     }
 }
