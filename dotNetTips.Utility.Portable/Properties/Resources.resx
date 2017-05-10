@@ -129,4 +129,28 @@
   <data name="StringDoesNotMatchMaximumLength" xml:space="preserve">
     <value>String does not match maximum length.</value>
   </data>
+  <data name="TheValueIsNotDefinedInTheEnumeration" xml:space="preserve">
+    <value>The value is not defined in the enumeration.</value>
+  </data>
+  <data name="GuidIsEmpty" xml:space="preserve">
+    <value>Guid is empty.</value>
+  </data>
+  <data name="StringIsEmpty" xml:space="preserve">
+    <value>String is empty.</value>
+  </data>
+  <data name="CollectionSizeIsNotValid" xml:space="preserve">
+    <value>Collection size is not valid.</value>
+  </data>
+  <data name="StringIsNotValid" xml:space="preserve">
+    <value>String is not valid.</value>
+  </data>
+  <data name="StringDoesNotMatch" xml:space="preserve">
+    <value>String does not match.</value>
+  </data>
+  <data name="InvalidType" xml:space="preserve">
+    <value>Invalid type.</value>
+  </data>
+  <data name="StringDoesNotMatchMinimumLength" xml:space="preserve">
+    <value>String does not match minimum length.</value>
+  </data>
 </root>

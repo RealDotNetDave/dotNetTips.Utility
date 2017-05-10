@@ -4,7 +4,7 @@
 // Created          : 12-07-2016
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-16-2017
+// Last Modified On : 05-10-2017
 // ***********************************************************************
 // <copyright file="ICloneable.cs" company="dotNetTips.com">
 //     David McCarter - dotNetTips.com © 2017
@@ -12,19 +12,17 @@
 // <summary></summary>
 // ***********************************************************************
 
-
 namespace dotNetTips.Utility.Portable
 {
     /// <summary>
-    /// Interface ICloneable
+    /// Interface IValid
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public interface ICloneable<T> where T : new()
+    public interface IValid
     {
         /// <summary>
-        /// Cones this instance.
+        /// Returns true if ... is valid.
         /// </summary>
-        /// <returns>T.</returns>
-        T Clone();
+        /// <returns><c>true</c> if this instance is valid; otherwise, <c>false</c>.</returns>
+        bool IsValid();
     }
 }

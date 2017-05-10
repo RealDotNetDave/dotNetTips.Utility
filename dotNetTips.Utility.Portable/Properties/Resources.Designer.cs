@@ -80,6 +80,33 @@ namespace dotNetTips.Utility.Portable.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Collection size is not valid..
+        /// </summary>
+        internal static string CollectionSizeIsNotValid {
+            get {
+                return ResourceManager.GetString("CollectionSizeIsNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Guid is empty..
+        /// </summary>
+        internal static string GuidIsEmpty {
+            get {
+                return ResourceManager.GetString("GuidIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid type..
+        /// </summary>
+        internal static string InvalidType {
+            get {
+                return ResourceManager.GetString("InvalidType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Parameter is invalid..
         /// </summary>
         internal static string ParameterIsInvalid {
@@ -89,11 +116,56 @@ namespace dotNetTips.Utility.Portable.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to String does not match..
+        /// </summary>
+        internal static string StringDoesNotMatch {
+            get {
+                return ResourceManager.GetString("StringDoesNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to String does not match maximum length..
         /// </summary>
         internal static string StringDoesNotMatchMaximumLength {
             get {
                 return ResourceManager.GetString("StringDoesNotMatchMaximumLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to String does not match minimum length..
+        /// </summary>
+        internal static string StringDoesNotMatchMinimumLength {
+            get {
+                return ResourceManager.GetString("StringDoesNotMatchMinimumLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to String is empty..
+        /// </summary>
+        internal static string StringIsEmpty {
+            get {
+                return ResourceManager.GetString("StringIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to String is not valid..
+        /// </summary>
+        internal static string StringIsNotValid {
+            get {
+                return ResourceManager.GetString("StringIsNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The value is not defined in the enumeration..
+        /// </summary>
+        internal static string TheValueIsNotDefinedInTheEnumeration {
+            get {
+                return ResourceManager.GetString("TheValueIsNotDefinedInTheEnumeration", resourceCulture);
             }
         }
     }

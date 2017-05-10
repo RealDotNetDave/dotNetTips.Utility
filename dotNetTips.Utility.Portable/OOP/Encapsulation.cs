@@ -4,7 +4,7 @@
 // Created          : 02-02-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-09-2017
+// Last Modified On : 05-10-2017
 // ***********************************************************************
 // <copyright file="Encapsulation.cs" company="dotNetTips.Utility.Portable">
 //     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
@@ -15,12 +15,13 @@ using dotNetTips.Utility.Portable.Extensions;
 using dotNetTips.Utility.Portable.Properties;
 using System;
 using System.Collections;
+using System.Globalization;
 using System.Text.RegularExpressions;
 
 namespace dotNetTips.Utility.Portable.OOP
 {
     /// <summary>
-    /// Class Encapsulation.
+    /// Class for Encapsulation.
     /// </summary>
     public static class Encapsulation
     {
@@ -29,28 +30,29 @@ namespace dotNetTips.Utility.Portable.OOP
         /// </summary>
         /// <typeparam name="TException">The type of the t exception.</typeparam>
         /// <param name="condition">The condition.</param>
+        /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
         /// <exception cref="System.InvalidCastException"></exception>
-        public static void TryValidateParam<TException>(bool condition, string message = "") where TException : ArgumentException, new()
+        public static void TryValidateParam<TException>(bool condition, string paramName = "", string message = "") where TException : ArgumentException, new()
         {
             // Validate proper Exception type
             var t = typeof(TException);
 
             if (t.Name == nameof(Exception))
             {
-                throw new InvalidCastException(String.Format(Resources.CannotBeOfTypeException, nameof(TException)));
+                throw new InvalidCastException(string.Format(CultureInfo.CurrentUICulture, Resources.CannotBeOfTypeException, nameof(TException)));
             }
 
             var defaultMessage = Resources.ParameterIsInvalid;
 
-            if (String.IsNullOrEmpty(message) == false)
+            if (string.IsNullOrEmpty(message) == false)
             {
                 defaultMessage = message;
             }
 
             if (condition == false)
             {
-                var ex = Activator.CreateInstance(typeof(TException), message).As<TException>();
+                var ex = Activator.CreateInstance(typeof(TException), paramName, defaultMessage).As<TException>();
                 throw ex;
             }
         }
@@ -91,7 +93,7 @@ namespace dotNetTips.Utility.Portable.OOP
             {
                 if (message.IsNull())
                 {
-                    message = "The value is not defined in the enumeration.";
+                    message = Properties.Resources.TheValueIsNotDefinedInTheEnumeration;
                 }
 
                 throw new ArgumentOutOfRangeException(paramName, message);
@@ -104,6 +106,7 @@ namespace dotNetTips.Utility.Portable.OOP
         /// <param name="value">The value.</param>
         /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
+        /// <exception cref="ArgumentInvalidException"></exception>
         /// <exception cref="dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
         /// <exception cref="System.ArgumentException"></exception>
         public static void TryValidateParam(Guid value, string paramName, string message = "")
@@ -112,7 +115,7 @@ namespace dotNetTips.Utility.Portable.OOP
             {
                 if (message.IsNull())
                 {
-                    message = "Guid is empty.";
+                    message = Properties.Resources.GuidIsEmpty;
                 }
 
                 throw new ArgumentInvalidException(message, paramName);
@@ -124,6 +127,7 @@ namespace dotNetTips.Utility.Portable.OOP
         /// <param name="value">The value.</param>
         /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
+        /// <exception cref="ArgumentInvalidException"></exception>
         /// <exception cref="dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
         /// <exception cref="System.ArgumentException"></exception>
         public static void TryValidateParam(string value, string paramName, string message = "")
@@ -132,7 +136,7 @@ namespace dotNetTips.Utility.Portable.OOP
             {
                 if (message.IsNull())
                 {
-                    message = "String is empty.";
+                    message = Properties.Resources.StringIsEmpty;
                 }
 
                 throw new ArgumentInvalidException(message, paramName);
@@ -155,7 +159,7 @@ namespace dotNetTips.Utility.Portable.OOP
             {
                 if (message.IsNull())
                 {
-                    message = "Collection size is not valid.";
+                    message = Properties.Resources.CollectionSizeIsNotValid;
                 }
 
                 throw new ArgumentOutOfRangeException(paramName, message);
@@ -170,7 +174,8 @@ namespace dotNetTips.Utility.Portable.OOP
         /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
         /// <exception cref="System.ArgumentNullException">match</exception>
-        /// <exception cref="dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
+        /// <exception cref="ArgumentInvalidException"></exception>
+        /// <exception cref="dotNetTips.Utility.Portable.ArgumentInvalidException">match</exception>
         /// <exception cref="System.ArgumentException"></exception>
         public static void TryValidateParam(string value, Regex match, string paramName, string message = "")
         {
@@ -185,7 +190,7 @@ namespace dotNetTips.Utility.Portable.OOP
             {
                 if (message.IsNull())
                 {
-                    message = "String is not valid.";
+                    message = Properties.Resources.StringIsNotValid;
                 }
 
                 throw new ArgumentInvalidException(message, paramName);
@@ -199,17 +204,18 @@ namespace dotNetTips.Utility.Portable.OOP
         /// <param name="expected">The expected.</param>
         /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
+        /// <exception cref="ArgumentInvalidException"></exception>
         /// <exception cref="dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
         /// <exception cref="System.ArgumentException"></exception>
         public static void TryValidateParam(string value, string expected, string paramName, string message = "")
         {
             TryValidateParam(value, paramName, message);
 
-            if (value.Equals(expected) == false)
+            if (value.Equals(expected, StringComparison.CurrentCultureIgnoreCase) == false)
             {
                 if (message.IsNull())
                 {
-                    message = "String does not match.";
+                    message = Properties.Resources.StringDoesNotMatch;
                 }
 
                 throw new ArgumentInvalidException(message, paramName);
@@ -223,6 +229,7 @@ namespace dotNetTips.Utility.Portable.OOP
         /// <param name="expectedType">The expected type.</param>
         /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
+        /// <exception cref="ArgumentInvalidException"></exception>
         /// <exception cref="dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
         /// <exception cref="System.ArgumentException"></exception>
         public static void TryValidateParam(Type value, Type expectedType, string paramName, string message = "")
@@ -231,7 +238,7 @@ namespace dotNetTips.Utility.Portable.OOP
             {
                 if (message.IsNull())
                 {
-                    message = "Invalid type.";
+                    message = Properties.Resources.InvalidType;
                 }
 
                 throw new ArgumentInvalidException(message, paramName);
@@ -246,8 +253,9 @@ namespace dotNetTips.Utility.Portable.OOP
         /// <param name="maximumLength">The maximum length.</param>
         /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
-        /// <exception cref="dotNetTips.Utility.Portable.ArgumentInvalidException">
+        /// <exception cref="ArgumentInvalidException">
         /// </exception>
+        /// <exception cref="dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
         /// <exception cref="System.ArgumentException"></exception>
         public static void TryValidateParam(string value, int minimumLength, int maximumLength, string paramName, string message = "")
         {
@@ -258,7 +266,7 @@ namespace dotNetTips.Utility.Portable.OOP
             {
                 if (message.IsNull())
                 {
-                    message = "String does not match minimum length.";
+                    message = Properties.Resources.StringDoesNotMatchMinimumLength;
                 }
 
                 throw new ArgumentInvalidException(message, paramName);

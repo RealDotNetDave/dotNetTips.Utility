@@ -161,8 +161,8 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArgumentIsInvalidException.cs" />
-    <Compile Include="ArgumentIsReadOnlyException.cs" />
+    <Compile Include="ArgumentInvalidException.cs" />
+    <Compile Include="ArgumentReadOnlyException.cs" />
     <Compile Include="ControlChars.cs" />
     <Compile Include="DateFormat.cs" />
     <Compile Include="DateInterval.cs" />
@@ -181,6 +181,7 @@
     <Compile Include="FirstWeekOfYear.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="ICloneable.cs" />
+    <Compile Include="IValid.cs" />
     <Compile Include="ImageExtensions.cs" />
     <Compile Include="OOP\Encapsulation.cs" />
     <Compile Include="OOP\Validation.cs" />
