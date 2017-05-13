@@ -80,20 +80,38 @@ namespace dotNetTips.Utility.Portable.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Collection size is not valid..
+        /// </summary>
+        internal static string CollectionSizeIsNotValid {
+            get {
+                return ResourceManager.GetString("CollectionSizeIsNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Guid is empty..
+        /// </summary>
+        internal static string GuidIsEmpty {
+            get {
+                return ResourceManager.GetString("GuidIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid type..
+        /// </summary>
+        internal static string InvalidType {
+            get {
+                return ResourceManager.GetString("InvalidType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Parameter is invalid..
         /// </summary>
         internal static string ParameterIsInvalid {
             get {
                 return ResourceManager.GetString("ParameterIsInvalid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The string value is null or empty..
-        /// </summary>
-        internal static string StringIsNullOrEmpty {
-            get {
-                return ResourceManager.GetString("StringIsNullOrEmpty", resourceCulture);
             }
         }
     }

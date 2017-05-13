@@ -10,7 +10,7 @@ Imports System.Security.Permissions
 <Assembly: AssemblyCopyright("David McCarter - dotNetTips.com © 2017")>
 <Assembly: AssemblyTrademark("David McCarter - dotNetTips.com")>
 <Assembly: CLSCompliant(True)>
-<Assembly: AssemblyVersion("2017.3.6284.29905")>
+<Assembly: AssemblyVersion("2017.3.6333.39208")>
 <Assembly: ComVisible(False)>
 <Assembly: NeutralResourcesLanguageAttribute("en-US")>
-<Assembly: AssemblyFileVersion("2017.3.6284.29905")>
+<Assembly: AssemblyFileVersion("2017.3.6333.39208")>

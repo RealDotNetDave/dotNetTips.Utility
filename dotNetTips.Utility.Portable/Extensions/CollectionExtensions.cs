@@ -38,7 +38,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         public static void AddIfNotExists<T>(this ICollection<T> list, T value)
         {
             Encapsulation.TryValidateParam<ArgumentNullException>(value != null);
-            Encapsulation.TryValidateParam<ArgumentIsReadOnlyException>(list.IsReadOnly == false);
+            Encapsulation.TryValidateParam<ArgumentReadOnlyException>(list.IsReadOnly == false);
 
             if (list.Contains(value) == false)
             {
@@ -55,7 +55,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         public static void AddIfNotExists<T>(this ICollection<T> list, params T[] values)
         {
             Encapsulation.TryValidateParam<ArgumentNullException>(values != null);
-            Encapsulation.TryValidateParam<ArgumentIsReadOnlyException>(list.IsReadOnly == false);
+            Encapsulation.TryValidateParam<ArgumentReadOnlyException>(list.IsReadOnly == false);
 
             foreach (var value in values)
                 list.AddIfNotExists(value);
