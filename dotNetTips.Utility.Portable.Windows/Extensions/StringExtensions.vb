@@ -81,7 +81,7 @@ Namespace Extensions
         ''' <returns><c>true</c> if [is valid email] [the specified value]; otherwise, <c>false</c>.</returns>
         <Extension>
         Public Function IsValidEmail(ByVal value As String) As Boolean
-            Return dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidEmail(value)
+            Return Windows.IsValidEmail(value)
         End Function
 
         ''' <summary>

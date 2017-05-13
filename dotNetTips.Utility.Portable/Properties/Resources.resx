@@ -126,4 +126,8 @@
   <data name="CannotBeOfTypeException" xml:space="preserve">
     <value>{0} cannot be of type Exception. Use a more specific exception from the framework or a custom Exception inheriting type Exception (only).</value>
   </data>
+  <data name="StringIsNullOrEmpty" xml:space="preserve">
+    <value>The string value is null or empty.</value>
+    <comment> </comment>
+  </data>
 </root>

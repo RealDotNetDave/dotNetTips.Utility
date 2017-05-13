@@ -232,6 +232,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="System.ServiceProcess">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6\System.ServiceProcess.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\dotNetTips.Utility.Portable\dotNetTips.Utility.Portable.csproj">
       <Project>{0c07f36a-cb82-47b3-bc4b-601fadd18a71}</Project>
       <Name>dotNetTips.Utility.Portable</Name>

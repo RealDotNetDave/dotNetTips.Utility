@@ -87,5 +87,14 @@ namespace dotNetTips.Utility.Portable.Properties {
                 return ResourceManager.GetString("ParameterIsInvalid", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The string value is null or empty..
+        /// </summary>
+        internal static string StringIsNullOrEmpty {
+            get {
+                return ResourceManager.GetString("StringIsNullOrEmpty", resourceCulture);
+            }
+        }
     }
 }

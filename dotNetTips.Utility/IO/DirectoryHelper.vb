@@ -42,7 +42,7 @@ Namespace IO
 
             Dim files = New List(Of FileInfo)
 
-            For Each directory In directories.AsParallel
+            For Each directory As DirectoryInfo In directories.AsParallel
                 If (directory.Exists) Then
                     Dim foundFiles = directory.EnumerateFiles(searchPattern, searchOption)
                     SyncLock files

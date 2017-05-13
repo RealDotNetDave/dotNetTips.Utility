@@ -1,21 +1,22 @@
 ﻿' ***********************************************************************
 ' Assembly         : dotNetTips.Utility
-' Author           : David McCarfter
+' Author           : david
 ' Created          : 03-22-2017
 '
-' Last Modified By : David McCarfter
-' Last Modified On : 03-22-2017
+' Last Modified By : david
+' Last Modified On : 05-10-2017
 ' ***********************************************************************
-' <copyright file="Config.vb" company="NicheWare - David McCarter">
-'     NicheWare - David McCarter
+' <copyright file="Config.vb" company="McCarter Consulting - David McCarter">
+'     David McCarter - dotNetTips.com © 2017
 ' </copyright>
 ' <summary></summary>
 ' ***********************************************************************
+
 Imports System.Environment
 Imports System.IO
-Imports dotNetTips.Utility.IO
 Imports dotNetTips.Utility.Portable
 Imports dotNetTips.Utility.Xml
+
 ''' <summary>
 ''' Class Config.
 ''' </summary>
@@ -23,8 +24,15 @@ Imports dotNetTips.Utility.Xml
 ''' <seealso cref="dotNetTips.Utility.Portable.ISingleton(Of T)" />
 Public Class Config(Of T As Class)
     Implements ISingleton(Of T)
+
+    ''' <summary>
+    ''' Initializes a new instance of the class.
+    ''' </summary>
     Protected Sub New()
-        Me.ConfigFileName = Path.Combine(DirectoryHelper.AppApplicationDataFolder, "dotNetTips.Dev.Cleaner.config")
+        Dim fileName = My.Application.Info.ProductName.Trim() + ".config.xml"
+        Dim folder = Path.Combine(Environment.GetFolderPath(SpecialFolder.LocalApplicationData), My.Application.Info.CompanyName.Trim())
+
+        Me.ConfigFileName = Path.Combine(folder, fileName)
     End Sub
 
     ''' <summary>
@@ -32,11 +40,11 @@ Public Class Config(Of T As Class)
     ''' </summary>
     ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Overridable Function Save() As Boolean
-        If File.Exists(Me.ConfigFileName) Then
-            File.Delete(Me.ConfigFileName)
+        If File.Exists(ConfigFileName) Then
+            File.Delete(ConfigFileName)
         End If
 
-        XmlHelper.SerializeToXmlFile(_instance, Me.ConfigFileName)
+        XmlHelper.SerializeToXmlFile(_instance, ConfigFileName)
 
         Return True
     End Function
@@ -46,8 +54,8 @@ Public Class Config(Of T As Class)
     ''' </summary>
     ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Overridable Function Load() As Boolean
-        If File.Exists(Me.ConfigFileName) Then
-            _instance = dotNetTips.Utility.Xml.DeserializeFromXmlFile(Of T)(Me.ConfigFileName)
+        If File.Exists(ConfigFileName) Then
+            _instance = XmlHelper.DeserializeFromXmlFile(Of T)(ConfigFileName)
             Return True
         End If
 
@@ -60,17 +68,16 @@ Public Class Config(Of T As Class)
     ''' <value>The name of the configuration file.</value>
     Public Property ConfigFileName() As String
         Get
-            Return _configFileName
+            Return m_ConfigFileName
         End Get
         Protected Set
-            _configFileName = Value
+            m_ConfigFileName = Value
         End Set
     End Property
-
     ''' <summary>
-    ''' The configuration file name
+    ''' The m configuration file name
     ''' </summary>
-    Private _configFileName As String
+    Private m_ConfigFileName As String
 
     ''' <summary>
     ''' The instance
@@ -82,10 +89,12 @@ Public Class Config(Of T As Class)
     ''' </summary>
     ''' <returns>T.</returns>
     Public Function Instance() As T
+
         If _instance Is Nothing Then
             _instance = TypeHelper.Create(Of T)()
         End If
 
         Return _instance
+
     End Function
 End Class

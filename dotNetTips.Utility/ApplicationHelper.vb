@@ -16,7 +16,6 @@
 Imports System.Collections.Generic
 Imports System.IO
 Imports System.Reflection
-
 Imports System.Security.Principal
 Imports dotNetTips.Utility.Portable.OOP
 ''' <summary>
@@ -102,6 +101,7 @@ Public Module ApplicationHelper
     ''' <returns><c>true</c> if [is application already running] [the specified process name]; otherwise, <c>false</c>.</returns>
     Public Function IsProcessRunning(processName As String) As Boolean
         Encapsulation.TryValidateParam(Of ArgumentNullException)(Not String.IsNullOrEmpty(processName), "processName is nothing or empty.")
+
         Return If(Process.GetProcessesByName(processName).Count() > 0, True, False)
     End Function
 

@@ -111,7 +111,7 @@ Namespace UI.Windows
 
             Dim controls As New List(Of Control)(From c In parent.Controls.Cast(Of Control)() Where c.TabStop = True And (String.IsNullOrEmpty(tag) OrElse (CStr(c.Tag) = tag)))
 
-            For Each ctrl In From c In parent.Controls.Cast(Of Control)() Where c.HasChildren And includeChildren
+            For Each ctrl As Control In From c In parent.Controls.Cast(Of Control)() Where c.HasChildren And includeChildren
                 controls.AddRange(FindEditableControls(ctrl, tag, includeChildren))
             Next
 
@@ -134,7 +134,7 @@ Namespace UI.Windows
 
             Dim controls As New List(Of T)(From c In parent.Controls.OfType(Of T)())
 
-            For Each ctrl In From c In parent.Controls.Cast(Of Control)() Where c.HasChildren And includeChildren
+            For Each ctrl As Control In From c In parent.Controls.Cast(Of Control)() Where c.HasChildren And includeChildren
                 controls.AddRange(FindControls(Of T)(ctrl, includeChildren))
             Next
 

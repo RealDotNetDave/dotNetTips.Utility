@@ -84,14 +84,18 @@ namespace dotNetTips.Utility.Portable.Extensions
             Encapsulation.TryValidateParam<ArgumentNullException>(source != null);
 
             var collection = source as ICollection;
-
+          
             if (collection != null)
+            {
                 return collection.Count;
+            }
 
             var count = 0;
 
             while (source.GetEnumerator().MoveNext())
+            {
                 count++;
+            }
 
             return count;
         }
@@ -248,19 +252,16 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <param name="source">The source.</param>
         /// <param name="delimiter">The delimiter (default is comma if not supplied).</param>
         /// <returns>System.String.</returns>
-        public static string ToDelimitedString<T>(this IEnumerable<T> source, char delimiter)
+        public static string ToDelimitedString<T>(this IEnumerable<T> source, char delimiter= ControlChars.Comma)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(source != null && source.Count() >= 0);
-
-            if (string.IsNullOrEmpty(delimiter.ToString()))
-                delimiter = ControlChars.Comma;
-
             var sb = new StringBuilder();
 
             foreach (var item in source)
             {
                 if (sb.Length > 0)
+                {
                     sb.Append(delimiter.ToString());
+                }
 
                 sb.Append(item.ToString());
             }

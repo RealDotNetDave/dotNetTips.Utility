@@ -14,7 +14,6 @@
 
 using System;
 using System.Linq;
-
 using System.Reflection;
 using dotNetTips.Utility.Portable.OOP;
 

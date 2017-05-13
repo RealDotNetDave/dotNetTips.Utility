@@ -44,7 +44,7 @@ namespace dotNetTips.Utility.Standard
         public static ILogger CreateLogger<T>()
         {
             Logger = LoggerFactory.CreateLogger<T>();
-
+           
             return Logger;
         }
 

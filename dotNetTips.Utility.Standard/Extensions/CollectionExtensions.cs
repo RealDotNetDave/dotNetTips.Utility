@@ -325,13 +325,9 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="delimiter">The delimiter (default is comma if not supplied).</param>
         /// <returns>System.String.</returns>
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
-        public static string ToDelimitedString<T>(this IEnumerable<T> list, char delimiter)
+        public static string ToDelimitedString<T>(this IEnumerable<T> list, char delimiter= ControlChars.Comma)
         {
-            if (string.IsNullOrEmpty(delimiter.ToString()))
-            {
-                delimiter = ControlChars.Comma;
-            }
-
+      
             var sb = new StringBuilder();
 
             foreach (var item in list)

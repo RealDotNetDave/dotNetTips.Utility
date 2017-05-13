@@ -300,6 +300,7 @@
     <Compile Include="Net\Mailer.vb" />
     <Compile Include="Net\NetworkHelper.vb" />
     <Compile Include="ServerUptimeInformation.vb" />
+    <Compile Include="Services.vb" />
     <Compile Include="ServicesHelper.vb" />
     <Compile Include="Speech\Synthesis.vb" />
     <Compile Include="StringHelper.vb">
@@ -310,7 +311,6 @@
     <Compile Include="Threading\WorkItem.vb" />
     <Compile Include="Threading\WorkItemEventArgs.vb" />
     <Compile Include="Threading\WorkItemStatus.vb" />
-    <Compile Include="TriState.vb" />
     <Compile Include="UI\Web\TextBox.vb" />
     <Compile Include="UI\Windows\ComboBoxListType.vb" />
     <Compile Include="UI\Windows\TextBoxValidation.vb" />
