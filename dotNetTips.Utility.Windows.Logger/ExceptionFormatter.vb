@@ -4,13 +4,13 @@
 ' Created          : 04-15-2016
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 04-18-2016
+' Last Modified On : 03-06-2017
 ' ***********************************************************************
 ' <copyright file="ExceptionFormatter.vb" company="McCarter Consulting">
 '     Copyright © dotNetTips.com 2016
 ' </copyright>
 ' <summary></summary>
-' ***********************************************************************
+' *************************************************************************
 Imports System.Collections.ObjectModel
 Imports System.Collections.Specialized
 Imports System.Globalization
@@ -37,7 +37,7 @@ Friend Class ExceptionFormatter
 #Region "Constructors"
 
     ''' <summary>
-    ''' Initializes a new instance of the <see cref="ExceptionFormatter"/> class.
+    ''' Initializes a new instance of the <see cref="ExceptionFormatter" /> class.
     ''' </summary>
     ''' <param name="information">The information.</param>
     ''' <param name="applicationName">Name of the application.</param>

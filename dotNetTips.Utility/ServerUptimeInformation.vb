@@ -4,7 +4,7 @@
 ' Created          : 12-10-2008
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 04-15-2016
+' Last Modified On : 05-11-2017
 ' ***********************************************************************
 ' <copyright file="ServerUptimeInformation.vb" company="NicheWare - David McCarter">
 '     NicheWare - David McCarter
@@ -32,7 +32,7 @@ Public Structure ServerUptimeInformation
         End Set
     End Property
     ''' <summary>
-    ''' urrent time
+    ''' Current time
     ''' </summary>
     Private _currentTime As DateTime
     ''' <summary>
@@ -48,7 +48,7 @@ Public Structure ServerUptimeInformation
         End Set
     End Property
     ''' <summary>
-    ''' p time
+    ''' Up time
     ''' </summary>
     Private _upTime As TimeSpan
     ''' <summary>

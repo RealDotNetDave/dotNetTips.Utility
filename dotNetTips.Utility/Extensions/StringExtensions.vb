@@ -4,7 +4,7 @@
 ' Created          : 03-29-2016
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 05-16-2016
+' Last Modified On : 05-11-2017
 ' ***********************************************************************
 ' <copyright file="StringExtensions.vb" company="NicheWare - David McCarter">
 '     '     NicheWare - David McCarter
@@ -13,7 +13,6 @@
 ' <summary></summary>
 ' *************************************************************************
 Imports System.ComponentModel
-
 Imports System.Runtime.CompilerServices
 Imports System.Security.Cryptography
 Imports System.Speech.Synthesis
@@ -62,9 +61,7 @@ Namespace Extensions
         ''' Determines whether [is null or empty] [the specified value].
         ''' </summary>
         ''' <param name="value">The value.</param>
-        ''' <returns>
-        ''' <c>true</c> if [is null or empty] [the specified value]; otherwise, <c>false</c>.
-        ''' </returns>
+        ''' <returns><c>true</c> if [is null or empty] [the specified value]; otherwise, <c>false</c>.</returns>
         <Extension>
         Public Function IsNullOrEmpty(ByVal value As String) As Boolean
             Return String.IsNullOrEmpty(value)

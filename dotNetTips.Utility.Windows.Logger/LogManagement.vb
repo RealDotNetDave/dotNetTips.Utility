@@ -1,29 +1,30 @@
-﻿'***********************************************************************
+﻿' ***********************************************************************
 ' Assembly         : dotNetTips
 ' Author           : David McCarter
 ' Created          : 12-10-2008
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 06-09-2009
-' Description      :
-'
-' Copyright        : (c) dotNetTips.com. All rights reserved.
-'***********************************************************************
-Imports System
-Imports System.Collections.Generic
+' Last Modified On : 05-11-2017
+' ***********************************************************************
+' <copyright file="LogManagement.vb" company="NicheWare - David McCarter">
+'     David McCarter - dotNetTips.com © 2017
+' </copyright>
+' <summary></summary>
+' *************************************************************************
 Imports System.Collections.ObjectModel
-Imports System.Diagnostics
-Imports Microsoft.VisualBasic.Logging
-Imports System.Reflection
 Imports System.Globalization
+Imports System.Reflection
 Imports dotNetTips.Utility.Portable.OOP
+Imports Microsoft.VisualBasic.Logging
 
 
 ''' <summary>
 ''' Trace listener log manager.
 ''' </summary>
-''' <remarks></remarks>
 Public Module LogManagement
+    ''' <summary>
+    ''' The log
+    ''' </summary>
     Private _log As Log
 
 #Region "Public Methods"
@@ -33,8 +34,8 @@ Public Module LogManagement
     ''' </summary>
     ''' <typeparam name="T"></typeparam>
     ''' <param name="enumInputValue">The enum input value.</param>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
+    ''' <returns>Collection(Of T).</returns>
+    ''' <exception cref="System.ArgumentException">enumInputValue - Nothing</exception>
     Public Function GetSelectedEnumValues(Of T As Structure)(enumInputValue As T) As Collection(Of T)
         Dim enumType As Type = GetType(T)
 
@@ -71,6 +72,8 @@ Public Module LogManagement
     ''' <param name="fixNames">if set to <c>true</c> [fix names].</param>
     ''' <param name="useXmlNames">if set to <c>true</c> [use XML names].</param>
     ''' <returns>Enum values.</returns>
+    ''' <exception cref="InvalidEnumTypeException">
+    ''' </exception>
     ''' Added on: 6/11/2009 By: dm11086
     Public Function GetEnumerationValues(enumType As Type, fixNames As Boolean, useXmlNames As Boolean) As Dictionary(Of Integer, String)
         Encapsulation.TryValidateParam(Of ArgumentNullException)(enumType IsNot Nothing)
@@ -168,9 +171,7 @@ Public Module LogManagement
     ''' <summary>
     ''' Determines whether [is ASP app].
     ''' </summary>
-    ''' <returns>
-    ''' <c>true</c> if [is ASP app]; otherwise, <c>false</c>.
-    ''' </returns>
+    ''' <returns><c>true</c> if [is ASP app]; otherwise, <c>false</c>.</returns>
     Friend Function IsAspApp() As Boolean
         Dim directory = AppDomain.CurrentDomain.DynamicDirectory
 
@@ -236,8 +237,6 @@ Public Module LogManagement
     ''' </summary>
     ''' <param name="name">Name to adjust</param>
     ''' <returns>Amended name</returns>
-    ''' <remarks>
-    ''' </remarks>
     Private Function AdjustName(name As String) As String
         Return AdjustCamelCase(name.Replace("_", " ")).Replace(" ", " ")
     End Function
@@ -247,9 +246,7 @@ Public Module LogManagement
     ''' </summary>
     ''' <param name="name">Text to convert.</param>
     ''' <returns>Name with spaces added</returns>
-    ''' <remarks>
-    ''' Converts values such as 'ThisIsATest' to 'This Is A Test'
-    ''' </remarks>
+    ''' <remarks>Converts values such as 'ThisIsATest' to 'This Is A Test'</remarks>
     Private Function AdjustCamelCase(name As String) As String
         Const toTitleCase As String = "(\B[A-Z])"
         Return System.Text.RegularExpressions.Regex.Replace(name, toTitleCase, " $1")

@@ -4,7 +4,7 @@
 ' Created          : 12-04-2013
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 01-23-2016
+' Last Modified On : 03-06-2017
 ' ***********************************************************************
 ' <copyright file="SecurityHelper.vb" company="David McCarter Consulting">
 '     '     David McCarter Consulting. All rights reserved.
@@ -12,8 +12,8 @@
 ' </copyright>
 ' <summary></summary>
 ' *************************************************************************
-Imports System.Text
 Imports System.Globalization
+Imports System.Text
 
 Namespace Security
     ''' <summary>

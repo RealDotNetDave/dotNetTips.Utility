@@ -1,14 +1,16 @@
-'***********************************************************************
+' ***********************************************************************
 ' Assembly         : dotNetTips
 ' Author           : David McCarter
 ' Created          : 12-10-2008
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 06-16-2009
-' Description      :
-'
-' Copyright        : (c) dotNetTips.com. All rights reserved.
-'***********************************************************************
+' Last Modified On : 03-06-2017
+' ***********************************************************************
+' <copyright file="TempFileManager.vb" company="McCarter Consulting - David McCarter">
+'     David McCarter - dotNetTips.com © 2017
+' </copyright>
+' <summary></summary>
+' *************************************************************************
 Imports System.Collections.Generic
 Imports System.Collections.ObjectModel
 
@@ -17,17 +19,22 @@ Namespace IO
     ''' <summary>
     ''' Class to create and manage temporary files.
     ''' </summary>
-    ''' <remarks></remarks>
+    ''' <seealso cref="System.IDisposable" />
     Public Class TempFileManager
         Implements IDisposable
+        ''' <summary>
+        ''' The files
+        ''' </summary>
         Private _files As New System.Collections.Generic.List(Of String)
+        ''' <summary>
+        ''' The disposed
+        ''' </summary>
         Private _disposed As Boolean
 
         ''' <summary>
         ''' List of files currently being managed.
         ''' </summary>
         ''' <returns><see cref="System.Collections.ObjectModel.ReadOnlyCollection(Of String)">List</see> of files.</returns>
-        ''' <remarks></remarks>
         Public Function FilesList() As IReadOnlyCollection(Of String)
 
             Return New ReadOnlyCollection(Of String)(Me._files)
@@ -38,7 +45,6 @@ Namespace IO
         ''' Creates a new temporary file.
         ''' </summary>
         ''' <returns><see cref="String">Path</see> to new file.</returns>
-        ''' <remarks></remarks>
         Public Function CreateFile() As String
 
             Dim tempFile As String = My.Computer.FileSystem.GetTempFileName
@@ -53,7 +59,6 @@ Namespace IO
         ''' Deletes a temporary file.
         ''' </summary>
         ''' <param name="file"><see cref="String">Path</see> of the temporary file.</param>
-        ''' <remarks></remarks>
         Public Sub DeleteFile(ByVal file As String)
 
             If My.Computer.FileSystem.FileExists(file) Then
@@ -70,7 +75,6 @@ Namespace IO
         ''' <summary>
         ''' Deletes all temporary files.
         ''' </summary>
-        ''' <remarks></remarks>
         Public Sub DeleteAllFiles()
 
             Dim tempFiles() As String = New String(Me._files.Count - 1) {}
@@ -84,7 +88,6 @@ Namespace IO
         ''' <summary>
         ''' Releases resources used by the <see cref="TempFileManager">TempFileManager</see> object.
         ''' </summary>
-        ''' <remarks></remarks>
         Public Overloads Sub Dispose() Implements IDisposable.Dispose
             Dispose(True)
             GC.SuppressFinalize(Me)

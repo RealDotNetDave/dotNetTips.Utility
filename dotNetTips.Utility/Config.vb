@@ -1,17 +1,16 @@
 ﻿' ***********************************************************************
 ' Assembly         : dotNetTips.Utility
-' Author           : David McCarfter
+' Author           : David McCarter
 ' Created          : 03-22-2017
 '
-' Last Modified By : David McCarfter
-' Last Modified On : 03-22-2017
+' Last Modified By : David McCarter
+' Last Modified On : 05-11-2017
 ' ***********************************************************************
 ' <copyright file="Config.vb" company="NicheWare - David McCarter">
 '     NicheWare - David McCarter
 ' </copyright>
 ' <summary></summary>
-' ***********************************************************************
-Imports System.Environment
+' *************************************************************************
 Imports System.IO
 Imports dotNetTips.Utility.IO
 Imports dotNetTips.Utility.Portable
@@ -23,6 +22,9 @@ Imports dotNetTips.Utility.Xml
 ''' <seealso cref="dotNetTips.Utility.Portable.ISingleton(Of T)" />
 Public Class Config(Of T As Class)
     Implements ISingleton(Of T)
+    ''' <summary>
+    ''' Initializes a new instance of the class.
+    ''' </summary>
     Protected Sub New()
         Me.ConfigFileName = Path.Combine(DirectoryHelper.AppApplicationDataFolder, "dotNetTips.Dev.Cleaner.config")
     End Sub
@@ -63,6 +65,9 @@ Public Class Config(Of T As Class)
             Return _configFileName
         End Get
         Protected Set
+            If _configFileName Is Value Then
+                Return
+            End If
             _configFileName = Value
         End Set
     End Property

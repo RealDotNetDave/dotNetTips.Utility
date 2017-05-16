@@ -4,7 +4,7 @@
 // Created          : 02-28-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-15-2017
+// Last Modified On : 05-11-2017
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="dotNetTips.com">
 //     David McCarter - dotNetTips.com © 2017
@@ -12,11 +12,10 @@
 // <summary></summary>
 // ***********************************************************************
 
+using dotNetTips.Utility.Portable.OOP;
 using System;
 using System.Linq;
-
 using System.Reflection;
-using dotNetTips.Utility.Portable.OOP;
 
 namespace dotNetTips.Utility.Portable.Extensions
 {
@@ -32,11 +31,50 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <param name="value">The value.</param>
         /// <returns>T.</returns>
         /// <remarks>Original code by: Shimmy Weitzhandler</remarks>
-        public static T As<T>(this object value)
-        {
-            Encapsulation.TryValidateParam<ArgumentNullException>(value != null);
+        public static T As<T>(this object value) => (T)value;
 
-            return (T)value;
+        /// <summary>
+        /// Disposes the fields.
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        public static void DisposeFields(this IDisposable obj)
+        {
+            var fieldInfos = obj.GetType().GetRuntimeFields();
+
+            foreach (var fieldInfo in fieldInfos)
+            {
+                var value = fieldInfo.GetValue(null) as IDisposable;
+
+                if (value == null)
+                {
+                    continue;
+                }
+
+                value.Dispose();
+                fieldInfo.SetValue(obj, null);
+            }
+        }
+
+        /// <summary>
+        /// Initializes the fields.
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        public static void InitializeFields(this object obj)
+        {
+            var fieldInfos = obj.GetType().GetRuntimeFields();
+
+            foreach (var fieldInfo in fieldInfos)
+            {
+                var objectValue = fieldInfo.GetValue(obj);
+                var runtimeField = obj.GetType().GetRuntimeField(fieldInfo.Name);
+
+                if (runtimeField != null)
+                {
+                    var t = Nullable.GetUnderlyingType(runtimeField.FieldType) ?? runtimeField.FieldType;
+                    var safeValue = (objectValue == null) ? null : Convert.ChangeType(objectValue, t);
+                    runtimeField.SetValue(obj, safeValue);
+                }
+            }
         }
 
         /// <summary>
@@ -47,7 +85,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <returns><c>true</c> if the specified property name has property; otherwise, <c>false</c>.</returns>
         public static bool HasProperty(this object instance, string propertyName)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(String.IsNullOrWhiteSpace(propertyName) == false);
+            Encapsulation.TryValidateParam<ArgumentNullException>(string.IsNullOrWhiteSpace(propertyName) == false);
 
             var propertyInfo = instance.GetType().GetRuntimeProperties().FirstOrDefault(p => p.Name == propertyName);
 
@@ -67,8 +105,12 @@ namespace dotNetTips.Utility.Portable.Extensions
             Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(list != null && list.Length != 0, "list is null or empty.");
 
             foreach (var value in list)
+            {
                 if (value.Equals(source))
+                {
                     return true;
+                }
+            }
 
             return false;
         }
@@ -103,12 +145,16 @@ namespace dotNetTips.Utility.Portable.Extensions
             try
             {
                 if (IsNotNull(obj))
+                {
                     obj.Dispose();
+                }
             }
             catch
             {
                 if (throwException)
+                {
                     throw;
+                }
             }
         }
     }

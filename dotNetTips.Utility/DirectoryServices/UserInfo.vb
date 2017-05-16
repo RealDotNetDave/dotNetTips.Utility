@@ -4,7 +4,7 @@
 ' Created          : 12-07-2016
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 03-06-2017
+' Last Modified On : 05-11-2017
 ' ***********************************************************************
 ' <copyright file="UserInfo.vb" company="McCarter Consulting - David McCarter">
 '     '     David McCarter - dotNetTips.com © 2017
@@ -30,41 +30,49 @@ Namespace DirectoryServices
         ''' </summary>
         ''' <value>The email.</value>
         Public Property Email() As String
+
         ''' <summary>
         ''' Gets or sets the department.
         ''' </summary>
         ''' <value>The department.</value>
         Public Property Department() As String
+
         ''' <summary>
         ''' Gets or sets the manager.
         ''' </summary>
         ''' <value>The manager.</value>
         Public Property Manager() As String
+
         ''' <summary>
         ''' Gets or sets the telephone.
         ''' </summary>
         ''' <value>The telephone.</value>
         Public Property Telephone() As String
+
         ''' <summary>
         ''' Gets or sets the title.
         ''' </summary>
         ''' <value>The title.</value>
         Public Property Title() As String
+
         ''' <summary>
         ''' Gets or sets the fax.
         ''' </summary>
         ''' <value>The fax.</value>
         Public Property Fax() As String
+
         ''' <summary>
         ''' Gets or sets the first name.
         ''' </summary>
         ''' <value>The first name.</value>
         Public Property FirstName() As String
+
         ''' <summary>
         ''' Gets or sets the last name.
         ''' </summary>
         ''' <value>The last name.</value>
         Public Property LastName() As String
+
         ''' <summary>
         ''' Gets or sets the delivery office.
         ''' </summary>
