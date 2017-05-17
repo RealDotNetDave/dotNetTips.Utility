@@ -4,7 +4,7 @@
 ' Created          : 04-15-2016
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 08-16-2016
+' Last Modified On : 05-11-2017
 ' ***********************************************************************
 ' <copyright file="WorkItem.vb" company="dotNetTips.com">
 '     '     '     David McCarter
@@ -13,12 +13,12 @@
 ' </copyright>
 ' <summary></summary>
 ' *************************************************************************
-
 Imports System.Threading
+Imports dotNetTips.Utility.Portable.Extensions
 
 Namespace Threading
     ''' <summary>
-    ''' Work Item for ApportableThreadPool
+    ''' Work Item for AbortableThreadPool
     ''' </summary>
     ''' <seealso cref="System.IDisposable" />
     Public NotInheritable Class WorkItem
@@ -141,7 +141,6 @@ Namespace Threading
         ''' </summary>
         ''' <param name="state">The state.</param>
         Private Sub AbortWorkItem(state As Object)
-            System.Diagnostics.Debug.WriteLine("Aborting Work Item @ " & DateTime.Now.ToString())
 
             Me._timeoutTimer.Change(-1, 0)
 
@@ -177,8 +176,6 @@ Namespace Threading
         Public Sub OnAborted(id As Guid)
             Dim ea = New WorkItemEventArgs() With {.Id = id}
 
-            System.Diagnostics.Debug.WriteLine("Calling Aborted = " & Convert.ToString(id))
-
             RaiseEvent Aborted(Nothing, ea)
         End Sub
 
@@ -188,7 +185,7 @@ Namespace Threading
         ''' </summary>
         Protected Overrides Sub Finalize()
             Try
-                Me.Dispose(False)
+                Me.DisposeFields()
             Finally
                 MyBase.Finalize()
             End Try
@@ -210,11 +207,7 @@ Namespace Threading
         ''' <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
         Private Sub Dispose(disposing As Boolean)
             If disposing Then
-                If Me._timeoutTimer IsNot Nothing Then
-                    Me._timeoutTimer.Dispose()
-                End If
-                If Not _context Is Nothing Then _context.Dispose()
-
+                Me.DisposeFields()
             End If
         End Sub
 #End Region

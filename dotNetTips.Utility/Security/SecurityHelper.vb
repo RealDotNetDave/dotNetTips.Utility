@@ -1,87 +1,37 @@
-'***********************************************************************
+' ***********************************************************************
 ' Assembly         : dotNetTips
 ' Author           : David McCarter
 ' Created          : 12-10-2008
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 09-26-2008
-' Description      :
-'
-' Copyright        : (c) dotNetTips.com. All rights reserved.
-'***********************************************************************
+' Last Modified On : 05-11-2017
+' ***********************************************************************
+' <copyright file="SecurityHelper.vb" company="McCarter Consulting - David McCarter">
+'     David McCarter - dotNetTips.com © 2017
+' </copyright>
+' <summary></summary>
+' *************************************************************************
 Imports System.Text
 
 Namespace Security
     ''' <summary>
     ''' Security helper class.
     ''' </summary>
-    ''' <remarks></remarks>
     Public Module SecurityHelper
-
-        ''' <summary>
-        ''' Encodes the HTML.
-        ''' </summary>
-        ''' <param name="input">The input.</param>
-        ''' <returns></returns>
-        Public Function EncodeHtml(ByVal input As String) As String
-            If (input Is Nothing) Then
-                Return Nothing
-            End If
-            If (input.Length = 0) Then
-                Return String.Empty
-            End If
-            Dim builder As New Text.StringBuilder(String.Empty, (input.Length * 2))
-            Dim ch As Char
-            For Each ch In input
-                If ((((ch > "`"c) AndAlso (ch < "{"c)) OrElse ((ch > "@"c) AndAlso (ch < "["c))) OrElse (((ch = " "c) OrElse ((ch > "/"c) AndAlso (ch < ":"c))) OrElse (((ch = "."c) OrElse (ch = ","c)) OrElse ((ch = "-"c) OrElse (ch = "_"c))))) Then
-                    builder.Append(ch)
-                Else
-                    builder.Append((String.Format(CultureInfo.CurrentCulture, "&#{0};", CInt(AscW(ch)).ToString(CultureInfo.InvariantCulture))))
-                End If
-            Next
-            Return builder.ToString
-        End Function
-
         ''' <summary>
         ''' Encodes the HTML attribute.
         ''' </summary>
         ''' <param name="input">The input.</param>
-        ''' <returns></returns>
+        ''' <returns>System.String.</returns>
         Public Function EncodeHtmlAttribute(ByVal input As String) As String
-            Return EncodeHtml(input)
-        End Function
-
-        ''' <summary>
-        ''' Encodes the URL.
-        ''' </summary>
-        ''' <param name="input">The input.</param>
-        ''' <returns></returns>
-        Public Function EncodeUrl(ByVal input As String) As String
-            If (input Is Nothing) Then
-                Return Nothing
-            End If
-            If (input.Length = 0) Then
-                Return String.Empty
-            End If
-            Dim builder As New Text.StringBuilder(String.Empty, (input.Length * 2))
-            Dim ch As Char
-            For Each ch In input
-                If ((((ch > "`"c) AndAlso (ch < "{"c)) OrElse ((ch > "@"c) AndAlso (ch < "["c))) OrElse (((ch > "/"c) AndAlso (ch < ":"c)) OrElse (((ch = "."c) OrElse (ch = "-"c)) OrElse (ch = "_"c)))) Then
-                    builder.Append(ch)
-                ElseIf (ch > ""c) Then
-                    builder.Append((String.Format(CultureInfo.CurrentCulture, "%u{0}", TwoByteHex(ch))))
-                Else
-                    builder.Append((String.Format(CultureInfo.CurrentCulture, "%{0}", SingleByteHex(ch))))
-                End If
-            Next
-            Return builder.ToString
+            Return Portable.Windows.Security.EncodeHtml(input)
         End Function
 
         ''' <summary>
         ''' Encodes the VBS.
         ''' </summary>
         ''' <param name="input">The input.</param>
-        ''' <returns></returns>
+        ''' <returns>System.String.</returns>
         Public Function EncodeVbs(ByVal input As String) As String
             If (input Is Nothing) Then
                 Return Nothing
@@ -123,7 +73,7 @@ Namespace Security
         ''' Encodes the JS.
         ''' </summary>
         ''' <param name="input">The input.</param>
-        ''' <returns></returns>
+        ''' <returns>System.String.</returns>
         Public Function EncodeJS(ByVal input As String) As String
             If (input Is Nothing) Then
                 Return Nothing
@@ -146,11 +96,21 @@ Namespace Security
             Return builder.ToString
         End Function
 
+        ''' <summary>
+        ''' Singles the byte hexadecimal.
+        ''' </summary>
+        ''' <param name="c">The c.</param>
+        ''' <returns>System.String.</returns>
         Private Function SingleByteHex(ByVal c As Char) As String
             Dim num As UInt32 = CUInt(AscW(c))
             Return num.ToString("x", CultureInfo.InvariantCulture).PadLeft(2, "0"c)
         End Function
 
+        ''' <summary>
+        ''' Two's the byte hexadecimal.
+        ''' </summary>
+        ''' <param name="c">The c.</param>
+        ''' <returns>System.String.</returns>
         Private Function TwoByteHex(ByVal c As Char) As String
             Dim num As UInt32 = CUInt(AscW(c))
             Return num.ToString("x", CultureInfo.InvariantCulture).PadLeft(4, "0"c)
@@ -162,7 +122,6 @@ Namespace Security
         ''' <param name="input">Text to load.</param>
         ''' <param name="makeReadOnly">Make SecureString read-only.</param>
         ''' <returns>SecureString</returns>
-        ''' <remarks></remarks>
         Public Function LoadSecureString(ByVal input As String, ByVal makeReadOnly As Boolean) As System.Security.SecureString
             LoadSecureString = Nothing
 
@@ -184,7 +143,6 @@ Namespace Security
         ''' </summary>
         ''' <param name="input">Text to load.</param>
         ''' <returns>SecureString.</returns>
-        ''' <remarks></remarks>
         Public Function LoadSecureString(ByVal input As String) As System.Security.SecureString
             Return LoadSecureString(input, False)
         End Function
@@ -194,7 +152,6 @@ Namespace Security
         ''' </summary>
         ''' <param name="input">SecureString to read.</param>
         ''' <returns>String value of the SecureString.</returns>
-        ''' <remarks></remarks>
         Public Function ReadSecureString(ByVal input As System.Security.SecureString) As String
             Dim result As String = String.Empty
             Dim inputIntPtr As System.IntPtr
@@ -218,7 +175,6 @@ Namespace Security
         ''' <param name="value">Secure string value to compare.</param>
         ''' <param name="compare">Secure string value to validate.</param>
         ''' <returns>True/False</returns>
-        ''' <remarks></remarks>
         Public Function CompareSecureStrings(ByVal value As System.Security.SecureString, ByVal compare As System.Security.SecureString) As Boolean
             Dim valid As Boolean = False
             Dim inputIntPtr As System.IntPtr

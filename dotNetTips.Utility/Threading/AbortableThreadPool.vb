@@ -4,17 +4,18 @@
 ' Created          : 12-07-2016
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 03-06-2017
+' Last Modified On : 05-11-2017
 ' ***********************************************************************
 ' <copyright file="AbortableThreadPool.vb" company="McCarter Consulting - David McCarter">
 '     David McCarter - dotNetTips.com © 2017
 ' </copyright>
 ' <summary></summary>
-' ***********************************************************************
+' *************************************************************************
 
+Imports dotNetTips.Utility.Portable.Extensions
+Imports dotNetTips.Utility.Portable.OOP
 Imports System.Collections.Generic
 Imports System.Threading
-Imports dotNetTips.Utility.Portable.OOP
 
 Namespace Threading
     ''' <summary>
@@ -91,7 +92,7 @@ Namespace Threading
             Finally
                 SyncLock _callbacks
                     If item IsNot Nothing Then
-                        item.Dispose()
+                        item.TryDispose()
                         _threads.Remove(item)
 
                         item.OnComplete(item.Id)
@@ -123,7 +124,7 @@ Namespace Threading
         ''' <param name="item">The item.</param>
         ''' <returns>WorkItemStatus.</returns>
         ''' <exception cref="System.ArgumentNullException">item</exception>
-        ''' <exception cref="ArgumentNullException"></exception>
+        ''' <exception cref="ArgumentNullException">item</exception>
         Public Shared Function GetStatus(item As WorkItem) As WorkItemStatus
             If item Is Nothing Then
                 Throw New ArgumentNullException(NameOf(item))
@@ -181,7 +182,7 @@ Namespace Threading
                     returnStatus = WorkItemStatus.Queued
                 ElseIf _threads.ContainsKey(item) Then
                     If allowAbort Then
-                        item.Dispose()
+                        item.TryDispose()
                         '@@@ _threads(item).Abort()
                         _threads.Remove(item)
                         item.OnAborted(item.Id)
@@ -231,7 +232,7 @@ Namespace Threading
                 Try
                     _waitForAllThreadToComplete.WaitOne()
                 Finally
-                    _waitForAllThreadToComplete.Dispose()
+                    _waitForAllThreadToComplete.TryDispose()
                     _waitForAllThreadToComplete = Nothing
                 End Try
             End SyncLock
@@ -257,10 +258,7 @@ Namespace Threading
 
                 If disposing Then
                     ' Release disposable objects used by this instance here.
-
-                    If Not _waitForAllThreadToComplete Is Nothing Then
-                        _waitForAllThreadToComplete.Dispose()
-                    End If
+                    _waitForAllThreadToComplete.TryDispose()
                 End If
 
                 ' Release unmanaged resources here. Don't access reference type fields.

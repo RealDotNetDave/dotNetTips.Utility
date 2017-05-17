@@ -4,7 +4,7 @@
 // Created          : 12-07-2016
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-09-2017
+// Last Modified On : 05-10-2017
 // ***********************************************************************
 // <copyright file="ArgumentIsReadOnlyException.cs" company="dotNetTips.com">
 //     David McCarter - dotNetTips.com © 2017
@@ -53,7 +53,7 @@ namespace dotNetTips.Utility.Portable
         /// </summary>
         /// <param name="message">The error message that explains the reason for the exception.</param>
         /// <param name="paramName">The name of the parameter that caused the current exception.</param>
-        public ArgumentReadOnlyException(string message, string paramName): base(message, paramName)
+        public ArgumentReadOnlyException(string message, string paramName) : base(message, paramName)
         {
         }
 

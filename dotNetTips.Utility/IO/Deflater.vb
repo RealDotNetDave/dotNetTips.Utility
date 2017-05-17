@@ -4,21 +4,23 @@
 ' Created          : 05-20-2016
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 08-16-2016
+' Last Modified On : 05-11-2017
 ' ***********************************************************************
 ' <copyright file="Deflater.vb" company="NicheWare - David McCarter">
 '     NicheWare - David McCarter
 ' </copyright>
 ' <summary></summary>
-' ***********************************************************************
+' *************************************************************************
 Imports System.IO
 Imports System.IO.Compression
+Imports dotNetTips.Utility.Portable.Extensions
 
 Namespace IO
     ''' <summary>
     ''' This class performs files compression and decompression
     ''' <remarks>Original code by: Bechir Bejaoui</remarks>
     ''' </summary>
+    ''' <seealso cref="System.IDisposable" />
     Public Class Deflater
         Implements IDisposable
 
@@ -163,10 +165,7 @@ Namespace IO
 
                 If disposing Then
                     ' Release disposable objects used by this instance here.
-
-                    If Not _zipperStream Is Nothing Then
-                        _zipperStream.Dispose()
-                    End If
+                    Me.DisposeFields()
                 End If
 
                 ' Release unmanaged resources here. Don't access reference type fields.

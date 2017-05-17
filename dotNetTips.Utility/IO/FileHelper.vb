@@ -4,7 +4,7 @@
 ' Created          : 12-10-2008
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 05-20-2016
+' Last Modified On : 05-11-2017
 ' ***********************************************************************
 ' <copyright file="FileHelper.vb" company="NicheWare - David McCarter">
 '     NicheWare - David McCarter
@@ -33,8 +33,8 @@ Namespace IO
         ''' <param name="sourceFileName">Name of the source file.</param>
         ''' <param name="destinationFileName">Name of the destination file including extension.</param>
         Public Sub CompressFile(sourceFileName As String, destinationFileName As String)
-            Encapsulation.TryValidateParam(Of ArgumentNullException)(Not String.IsNullOrEmpty(sourceFileName), "sourceFileName is nothing or empty.")
-            Encapsulation.TryValidateParam(Of ArgumentNullException)(Not String.IsNullOrEmpty(destinationFileName), "destinationFileName is nothing or empty.")
+            Encapsulation.TryValidateParam(sourceFileName, NameOf(sourceFileName))
+            Encapsulation.TryValidateParam(destinationFileName, NameOf(destinationFileName))
 
             If File.Exists(sourceFileName) Then
                 Using archive = ZipFile.Open(destinationFileName, ZipArchiveMode.Create)
@@ -95,7 +95,7 @@ Namespace IO
         ''' </summary>
         ''' <param name="file">File name to delete.</param>
         ''' <param name="showUI">Shows UI during delete process.</param>
-        ''' <param name="recycle">Sends file to fecyle bin.</param>
+        ''' <param name="recycle">Sends file to recycle folder.</param>
         ''' <param name="onUserCancel">Allows user to cancel process.</param>
         Public Sub DeleteFile(ByVal file As String, ByVal showUI As Microsoft.VisualBasic.FileIO.UIOption, ByVal recycle As Microsoft.VisualBasic.FileIO.RecycleOption, ByVal onUserCancel As Microsoft.VisualBasic.FileIO.UICancelOption)
             My.Computer.FileSystem.DeleteFile(file, showUI, recycle, onUserCancel)
@@ -129,6 +129,9 @@ Namespace IO
         ''' <param name="encoding">Text encoding.</param>
         ''' <returns>File contents.</returns>
         ''' <exception cref="System.ArgumentNullException">
+        ''' fileName
+        ''' or
+        ''' encoding
         ''' </exception>
         Function ReadTextFile(ByVal fileName As String, ByVal encoding As Encoding) As String
             Dim fileText As New StringBuilder()

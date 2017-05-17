@@ -4,13 +4,13 @@
 ' Created          : 12-04-2013
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 02-01-2014
+' Last Modified On : 03-16-2017
 ' ***********************************************************************
 ' <copyright file="Countries.vb" company="David McCarter Consulting">
 '     David McCarter Consulting. All rights reserved.
 ' </copyright>
 ' <summary></summary>
-' ***********************************************************************
+' *************************************************************************
 
 Imports dotNetTips.Utility.Portable.OOP
 
@@ -18,6 +18,7 @@ Namespace Data
     ''' <summary>
     ''' List of countries.
     ''' </summary>
+    ''' <seealso cref="System.Linq.EnumerableQuery(Of dotNetTips.Utility.Portable.Windows.Data.Country)" />
     ''' <remarks>Data bindable.</remarks>
     Public NotInheritable Class CountriesCollection
         Inherits EnumerableQuery(Of Country)
@@ -27,7 +28,6 @@ Namespace Data
         ''' </summary>
         ''' <param name="nameOrCode">Value to convert.</param>
         ''' <returns><see cref="String">Country name or code</see>.</returns>
-        ''' <remarks></remarks>
         Public Shared Function ConvertNameOrCode(ByVal nameOrCode As String) As String
             Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(nameOrCode) = False, "Argument cannot be null.")
 
@@ -41,6 +41,12 @@ Namespace Data
 
         End Function
 
+        ''' <summary>
+        ''' Converts the countries.
+        ''' </summary>
+        ''' <param name="nameOrCode">The name or code.</param>
+        ''' <param name="countryResult">The country result.</param>
+        ''' <returns>System.String.</returns>
         Private Shared Function ConvertCountries(nameOrCode As String, countryResult As String) As String
             For Each country In DataLists.CountriesList
                 If nameOrCode.Length = 2 Then
@@ -62,7 +68,6 @@ Namespace Data
         ''' <summary>
         ''' Constructor that auto loads countries list.
         ''' </summary>
-        ''' <remarks></remarks>
         Public Sub New()
             MyBase.New(DataLists.CountriesList)
         End Sub
@@ -71,7 +76,6 @@ Namespace Data
         ''' Constructor that loads list of countries.
         ''' </summary>
         ''' <param name="list">List of <see cref="Country">Countries</see>.</param>
-        ''' <remarks></remarks>
         Public Sub New(ByVal list As IEnumerable(Of Country))
             MyBase.New(list)
         End Sub

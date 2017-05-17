@@ -4,7 +4,7 @@
 // Created          : 12-07-2016
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-20-2017
+// Last Modified On : 05-04-2017
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="dotNetTips.com">
 //     David McCarter - dotNetTips.com © 2017

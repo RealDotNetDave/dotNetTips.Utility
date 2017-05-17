@@ -1,13 +1,13 @@
 ' ***********************************************************************
 ' Assembly         : dotNetTips.Utility
-' Author           : dotnetdave
-' Created          : 04-15-2016
+' Author           : David McCarter
+' Created          : 01-20-2017
 '
-' Last Modified By : dotnetdave
-' Last Modified On : 06-05-2016
+' Last Modified By : David McCarter
+' Last Modified On : 05-11-2017
 ' ***********************************************************************
-' <copyright file="Mailer.vb" company="">
-'     . All rights reserved.
+' <copyright file="Mailer.vb" company="McCarter Consulting - David McCarter">
+'     David McCarter - dotNetTips.com © 2017
 ' </copyright>
 ' <summary></summary>
 ' ***********************************************************************
@@ -19,16 +19,18 @@ Namespace Net
     ''' <summary>
     ''' Mail helper class.
     ''' </summary>
-    ''' <remarks></remarks>
+    ''' <seealso cref="System.IDisposable" />
     Public Class Mailer
         Implements IDisposable
 
         ''' <summary>
         ''' Event fired when Async mail send completed.
         ''' </summary>
-        ''' <remarks></remarks>
         Public Event SendMailAsyncCompleted As EventHandler(Of System.ComponentModel.AsyncCompletedEventArgs)
 
+        ''' <summary>
+        ''' The mail server
+        ''' </summary>
         Private _mailServer As SmtpClient
 
 #Region "Public Methods"
@@ -36,9 +38,9 @@ Namespace Net
         ''' <summary>
         ''' Creates list of email addresses.
         ''' </summary>
+        ''' <param name="emailAddressType">Type of the email address.</param>
         ''' <param name="emailAddresses">Array of email addresses.</param>
         ''' <returns>Collection of <see cref="System.Collections.ObjectModel.ReadOnlyCollection(Of EmailAddress)"></see></returns>
-        ''' <remarks></remarks>
         Public Shared Function CreateEmailAddressList(ByVal emailAddressType As EmailAddressType, ByVal ParamArray emailAddresses() As String) As System.Collections.ObjectModel.Collection(Of EmailAddress)
             Dim addresses As New System.Collections.ObjectModel.Collection(Of EmailAddress)
 
@@ -57,7 +59,6 @@ Namespace Net
         ''' <param name="message">Message.</param>
         ''' <param name="bodyHtml">Sets message is HTML.</param>
         ''' <param name="sendAddresses">Send email addresses.</param>
-        ''' <remarks></remarks>
         Public Sub SendMail(ByVal fromAddress As EmailAddress, ByVal subject As String, ByVal message As String, ByVal bodyHtml As Boolean, ByVal sendAddresses As System.Collections.ObjectModel.Collection(Of EmailAddress))
 
             ''Set default types, just in case.
@@ -78,7 +79,6 @@ Namespace Net
         ''' <param name="message">Message.</param>
         ''' <param name="bodyHtml">Sets message is HTML.</param>
         ''' <param name="sendToAddress">Send to email address.</param>
-        ''' <remarks></remarks>
         Public Sub SendMail(ByVal fromAddress As EmailAddress, ByVal subject As String, ByVal message As String, ByVal bodyHtml As Boolean, ByVal sendToAddress As EmailAddress)
 
             ''Set default types, just in case.
@@ -96,7 +96,6 @@ Namespace Net
         ''' Sends mail.
         ''' </summary>
         ''' <param name="message">Message object.</param>
-        ''' <remarks></remarks>
         Public Sub SendMail(ByVal message As MailMessage)
 
             Me.SendMailMessage(message, Nothing)
@@ -112,7 +111,6 @@ Namespace Net
         ''' <param name="bodyHtml">Sets message is HTML.</param>
         ''' <param name="userToken">User token for async.</param>
         ''' <param name="sendAddresses">Send to email addresses.</param>
-        ''' <remarks></remarks>
         Public Sub SendMailAsync(ByVal fromAddress As EmailAddress, ByVal subject As String, ByVal message As String, ByVal bodyHtml As Boolean, ByVal userToken As Object, ByVal sendAddresses As System.Collections.ObjectModel.Collection(Of EmailAddress))
 
             ''Set default types, just in case.
@@ -133,7 +131,6 @@ Namespace Net
         ''' <param name="bodyHtml">Sets message is HTML.</param>
         ''' <param name="userToken">User token for async.</param>
         ''' <param name="sendToAddress">Send to email address.</param>
-        ''' <remarks></remarks>
         Public Sub SendMailAsync(ByVal fromAddress As EmailAddress, ByVal subject As String, ByVal message As String, ByVal bodyHtml As Boolean, ByVal userToken As Object, ByVal sendToAddress As EmailAddress)
 
             ''Set default types, just in case.
@@ -151,7 +148,6 @@ Namespace Net
         ''' </summary>
         ''' <param name="message">Message object.</param>
         ''' <param name="userToken">User token for async.</param>
-        ''' <remarks></remarks>
         Public Sub SendMailAsync(ByVal message As MailMessage, ByVal userToken As Object)
             Me.SendMailMessage(message, userToken)
         End Sub
@@ -162,7 +158,7 @@ Namespace Net
         ''' <param name="subject">Subject of the email.</param>
         ''' <param name="message">Email message</param>
         ''' <param name="sendToAddress">Email address to send to.</param>
-        ''' <remarks></remarks>
+        ''' <exception cref="System.ArgumentException">sendToAddress</exception>
         Public Shared Sub SendMailWithDefaultProgram(ByVal subject As String, ByVal message As String, ByVal sendToAddress As EmailAddress)
 
             If Not sendToAddress.IsAddressValid Then
@@ -184,6 +180,15 @@ Namespace Net
 
 #Region "Private Methods"
 
+        ''' <summary>
+        ''' Creates the mail message.
+        ''' </summary>
+        ''' <param name="fromAddress">From address.</param>
+        ''' <param name="subject">The subject.</param>
+        ''' <param name="message">The message.</param>
+        ''' <param name="bodyHtml">if set to <c>true</c> [body HTML].</param>
+        ''' <param name="sendAddresses">The send addresses.</param>
+        ''' <param name="tempMessage">The temporary message.</param>
         Private Shared Sub CreateMailMessage(ByVal fromAddress As EmailAddress, ByVal subject As String, ByVal message As String, ByVal bodyHtml As Boolean, ByVal sendAddresses As System.Collections.ObjectModel.Collection(Of EmailAddress), ByVal tempMessage As MailMessage)
 
             For Each tempSendTo As EmailAddress In From a In sendAddresses Where a.IsAddressValid
@@ -279,7 +284,7 @@ Namespace Net
                 ' and unmanaged resources.
                 If (disposing) Then
                     ' Dispose managed resources.
-                    Me.TryDispose()
+                    Me.DisposeFields()
                 End If
             End If
             Me._disposed = True

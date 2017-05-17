@@ -4,13 +4,13 @@
 ' Created          : 04-15-2016
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 07-29-2016
+' Last Modified On : 05-11-2017
 ' ***********************************************************************
 ' <copyright file="WebHelper.vb" company="NicheWare - David McCarter">
 '     NicheWare - David McCarter
 ' </copyright>
 ' <summary></summary>
-' ***********************************************************************
+' *************************************************************************
 
 Imports System.CodeDom
 Imports System.CodeDom.Compiler
@@ -50,6 +50,7 @@ Namespace Web
         ''' <param name="methodName">Name of the method.</param>
         ''' <param name="args">The args.</param>
         ''' <returns>System.Object.</returns>
+        ''' <exception cref="System.IO.InvalidDataException">Compile Error Occurred calling web service.</exception>
         ''' <exception cref="InvalidDataException">Compile Error Occurred calling web service.</exception>
         ''' <remarks>Original Code By: Aslam.Iqbal@electoralreform.co.uk
         ''' Modified By: David McCarter</remarks>
@@ -198,8 +199,8 @@ Namespace Web
         ''' </summary>
         ''' <param name="address">The address.</param>
         ''' <returns>Image.</returns>
+        ''' <exception cref="System.ArgumentNullException">address</exception>
         ''' <exception cref="ArgumentNullException"></exception>
-        ''' <exception cref="System.ArgumentNullException"></exception>
         Public Function DownloadOnlineImage(ByVal address As Uri) As Image
 
             If IsNothing(address) Then
@@ -416,7 +417,7 @@ Namespace Web
         ''' <returns>Encoded text as <seealso cref="String" /></returns>
         Public Function HtmlEncode(ByVal input As String) As String
 
-            Return SecurityHelper.EncodeHtml(input)
+            Return Portable.Windows.Security.EncodeHtml(input)
 
         End Function
 
@@ -526,7 +527,7 @@ Namespace Web
         Public Function UrlEncode(ByVal input As String) As String
             Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(input) = False)
 
-            Return SecurityHelper.EncodeUrl(input)
+            Return dotNetTips.Utility.Portable.Windows.Security.EncodeUrl(input)
 
         End Function
 
@@ -562,7 +563,7 @@ Namespace Web
         Public Function XmlEncode(ByVal input As String) As String
             Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(input) = False)
 
-            Return Security.SecurityHelper.EncodeHtml(input)
+            Return Portable.Windows.Security.EncodeHtml(input)
 
         End Function
 
