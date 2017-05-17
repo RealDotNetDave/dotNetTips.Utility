@@ -301,7 +301,7 @@
             Makes copy of the collection.
             </summary>
             <typeparam name="T"></typeparam>
-            <param name="list">The list.</param>
+            <param name="source">The source.</param>
             <returns>System.Collections.Generic.List&lt;T&gt;.</returns>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.Count(System.Collections.IEnumerable)">
@@ -459,15 +459,15 @@
             Extensions for DateTime
             </summary>
         </member>
-        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.GetLast(System.DateTime,System.DayOfWeek)">
+        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.GetLastDay(System.DateTime,System.DayOfWeek)">
             <summary>
-            Gets the last.
+            Gets the last date.
             </summary>
             <param name="input">The date/ time.</param>
             <param name="dayOfWeek">The day of week.</param>
             <returns>DateTime.</returns>
         </member>
-        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.GetNext(System.DateTime,System.DayOfWeek)">
+        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.GetNextDay(System.DateTime,System.DayOfWeek)">
             <summary>
             Gets the next.
             </summary>
@@ -511,6 +511,40 @@
             <summary>
             Class ExceptionExtension.
             </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.FromHierarchy``1(``0,System.Func{``0,``0})">
+            <summary>
+            Froms the hierarchy.
+            </summary>
+            <typeparam name="TSource">The type of the t source.</typeparam>
+            <param name="source">The source.</param>
+            <param name="nextItem">The next item.</param>
+            <returns>IEnumerable&lt;TSource&gt;.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.FromHierarchy``1(``0,System.Func{``0,``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Froms the hierarchy.
+            </summary>
+            <typeparam name="TSource">The type of the t source.</typeparam>
+            <param name="source">The source.</param>
+            <param name="nextItem">The next item.</param>
+            <param name="canContinue">The can continue.</param>
+            <returns>IEnumerable&lt;TSource&gt;.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.GetAllMessages(System.Exception,System.String)">
+            <summary>
+            Gets all messages.
+            </summary>
+            <param name="exception">The exception.</param>
+            <param name="separator">The separator.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.GetAllMessages(System.Exception)">
+            <summary>
+            Gets all messages.
+            </summary>
+            <param name="exception">The exception.</param>
+            <returns>System.String.</returns>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.TraverseFor``1(System.Exception)">
             <summary>
@@ -626,6 +660,12 @@
         <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.DisposeFields(System.IDisposable)">
             <summary>
             Disposes the fields.
+            </summary>
+            <param name="obj">The object.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.InitializeFields(System.Object)">
+            <summary>
+            Initializes the fields.
             </summary>
             <param name="obj">The object.</param>
         </member>
@@ -920,7 +960,6 @@
             <param name="value">The value.</param>
             <param name="paramName">Name of the parameter.</param>
             <param name="message">The message.</param>
-            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
         </member>
         <member name="M:dotNetTips.Utility.Portable.OOP.Encapsulation.TryValidateParam(System.Guid,System.String,System.String)">
             <summary>
@@ -1044,7 +1083,7 @@
         </member>
         <member name="P:dotNetTips.Utility.Portable.Properties.Resources.GuidIsEmpty">
             <summary>
-              Looks up a localized string similar to Guid is empty..
+              Looks up a localized string similar to Guid is Empth..
             </summary>
         </member>
         <member name="P:dotNetTips.Utility.Portable.Properties.Resources.InvalidType">
@@ -1059,12 +1098,12 @@
         </member>
         <member name="P:dotNetTips.Utility.Portable.Properties.Resources.StringDoesNotMatch">
             <summary>
-              Looks up a localized string similar to String does not match..
+              Looks up a localized string similar to Strings do not match..
             </summary>
         </member>
         <member name="P:dotNetTips.Utility.Portable.Properties.Resources.StringDoesNotMatchMaximumLength">
             <summary>
-              Looks up a localized string similar to String does not match maximum length..
+              Looks up a localized string similar to String does not matach maximum length..
             </summary>
         </member>
         <member name="P:dotNetTips.Utility.Portable.Properties.Resources.StringDoesNotMatchMinimumLength">
@@ -1084,7 +1123,7 @@
         </member>
         <member name="P:dotNetTips.Utility.Portable.Properties.Resources.TheValueIsNotDefinedInTheEnumeration">
             <summary>
-              Looks up a localized string similar to The value is not defined in the enumeration..
+              Looks up a localized string similar to The values are not defined in the enum..
             </summary>
         </member>
         <member name="T:dotNetTips.Utility.Portable.Tristate">

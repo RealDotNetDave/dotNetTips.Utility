@@ -16,6 +16,7 @@ using dotNetTips.Utility.Portable.OOP;
 using System;
 using System.Linq;
 using System.Reflection;
+using System.Globalization;
 
 namespace dotNetTips.Utility.Portable.Extensions
 {
@@ -71,7 +72,7 @@ namespace dotNetTips.Utility.Portable.Extensions
                 if (runtimeField != null)
                 {
                     var t = Nullable.GetUnderlyingType(runtimeField.FieldType) ?? runtimeField.FieldType;
-                    var safeValue = (objectValue == null) ? null : Convert.ChangeType(objectValue, t);
+                    var safeValue = (objectValue == null) ? null : Convert.ChangeType(objectValue, t, CultureInfo.InvariantCulture);
                     runtimeField.SetValue(obj, safeValue);
                 }
             }

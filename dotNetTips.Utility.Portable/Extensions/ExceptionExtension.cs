@@ -1,19 +1,21 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Portable
-// Author           : David McCarter Created : 04-15-2016
-// Created          : 04-15-2016
+// Author           : David McCarter
+// Created          : 02-28-2017
 //
-// Last Modified By : David McCarter Last Modified On : 06-02-2016 ***********************************************************************
-// Last Modified On : 03-13-2017
+// Last Modified By : David McCarter
+// Last Modified On : 03-16-2017
 // ***********************************************************************
 // <copyright file="ExceptionExtension.cs" company="dotNetTips.com">
-//     Copyright Â© 2015
+//     David McCarter - dotNetTips.com © 2017
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using dotNetTips.Utility.Portable.OOP;
 using System;
-
+using System.Collections.Generic;
+using System.Linq;
 
 namespace dotNetTips.Utility.Portable.Extensions
 {
@@ -22,6 +24,57 @@ namespace dotNetTips.Utility.Portable.Extensions
     /// </summary>
     public static class ExceptionExtension
     {
+
+        /// <summary>
+        /// Froms the hierarchy.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the t source.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <param name="nextItem">The next item.</param>
+        /// <returns>IEnumerable&lt;TSource&gt;.</returns>
+        public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItem) where TSource : class => FromHierarchy(source, nextItem, s => s != null);
+
+        /// <summary>
+        /// Froms the hierarchy.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the t source.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <param name="nextItem">The next item.</param>
+        /// <param name="canContinue">The can continue.</param>
+        /// <returns>IEnumerable&lt;TSource&gt;.</returns>
+        public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItem, Func<TSource, bool> canContinue)
+        {
+            for (var current = source; canContinue(current); current = nextItem(current))
+            {
+                yield return current;
+            }
+        }
+
+        /// <summary>
+        /// Gets all messages.
+        /// </summary>
+        /// <param name="exception">The exception.</param>
+        /// <param name="separator">The separator.</param>
+        /// <returns>System.String.</returns>
+        public static string GetAllMessages(this Exception exception, string separator = " ")
+        {
+            var messages = exception.FromHierarchy(ex => ex.InnerException).Select(ex => ex.Message);
+
+
+            return string.Join(separator, messages);
+        }
+
+        /// <summary>
+        /// Gets all messages.
+        /// </summary>
+        /// <param name="exception">The exception.</param>
+        /// <returns>System.String.</returns>
+        public static string GetAllMessages(this Exception exception)
+        {
+            return GetAllMessages(exception, Environment.NewLine);
+        }
+
+
         /// <summary>
         /// Traverses Exception.
         /// </summary>
@@ -38,7 +91,7 @@ namespace dotNetTips.Utility.Portable.Extensions
                 return ex as T;
             }
 
-            return ex.InnerException.TraverseFor<T>() as T;
+            return ex.InnerException.TraverseFor<T>();
         }
     }
 }
