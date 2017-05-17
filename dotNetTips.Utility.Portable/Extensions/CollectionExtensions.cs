@@ -37,8 +37,8 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <param name="value">The value.</param>
         public static void AddIfNotExists<T>(this ICollection<T> list, T value)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(value != null);
             Encapsulation.TryValidateParam<ArgumentReadOnlyException>(list.IsReadOnly == false);
+            Encapsulation.TryValidateParam<ArgumentNullException>(value != null);
 
             if (list.Contains(value) == false)
             {

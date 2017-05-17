@@ -46,7 +46,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <returns><c>true</c> if the specified property name has property; otherwise, <c>false</c>.</returns>
         public static bool HasProperty(this object instance, string propertyName)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(String.IsNullOrWhiteSpace(propertyName) == false);
+            Encapsulation.TryValidateParam<ArgumentNullException>(string.IsNullOrWhiteSpace(propertyName) == false);
 
             var propertyInfo = instance.GetType().GetRuntimeProperties().FirstOrDefault(p => p.Name == propertyName);
 

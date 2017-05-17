@@ -89,7 +89,7 @@ namespace dotNetTips.Utility.Portable.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Guid is empty..
+        ///   Looks up a localized string similar to Guid is Empth..
         /// </summary>
         internal static string GuidIsEmpty {
             get {
@@ -112,6 +112,60 @@ namespace dotNetTips.Utility.Portable.Properties {
         internal static string ParameterIsInvalid {
             get {
                 return ResourceManager.GetString("ParameterIsInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Strings do not match..
+        /// </summary>
+        internal static string StringDoesNotMatch {
+            get {
+                return ResourceManager.GetString("StringDoesNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to String does not matach maximum length..
+        /// </summary>
+        internal static string StringDoesNotMatchMaximumLength {
+            get {
+                return ResourceManager.GetString("StringDoesNotMatchMaximumLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to String does not match minimum length..
+        /// </summary>
+        internal static string StringDoesNotMatchMinimumLength {
+            get {
+                return ResourceManager.GetString("StringDoesNotMatchMinimumLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to String is empty..
+        /// </summary>
+        internal static string StringIsEmpty {
+            get {
+                return ResourceManager.GetString("StringIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to String is not valid..
+        /// </summary>
+        internal static string StringIsNotValid {
+            get {
+                return ResourceManager.GetString("StringIsNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The values are not defined in the enum..
+        /// </summary>
+        internal static string TheValueIsNotDefinedInTheEnumeration {
+            get {
+                return ResourceManager.GetString("TheValueIsNotDefinedInTheEnumeration", resourceCulture);
             }
         }
     }

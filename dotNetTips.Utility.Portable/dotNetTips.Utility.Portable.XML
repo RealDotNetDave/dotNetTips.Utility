@@ -31,14 +31,14 @@
         </member>
         <member name="M:dotNetTips.Utility.Portable.ArgumentInvalidException.#ctor(System.String,System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"/> class.
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException" /> class.
             </summary>
             <param name="message">The error message that explains the reason for the exception.</param>
             <param name="paramName">The name of the parameter that caused the current exception.</param>
         </member>
         <member name="M:dotNetTips.Utility.Portable.ArgumentInvalidException.#ctor(System.String,System.String,System.Exception)">
             <summary>
-            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"/> class.
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException" /> class.
             </summary>
             <param name="message">The error message that explains the reason for the exception.</param>
             <param name="paramName">The name of the parameter that caused the current exception.</param>
@@ -72,14 +72,14 @@
         </member>
         <member name="M:dotNetTips.Utility.Portable.ArgumentReadOnlyException.#ctor(System.String,System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentReadOnlyException"/> class.
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentReadOnlyException" /> class.
             </summary>
             <param name="message">The error message that explains the reason for the exception.</param>
             <param name="paramName">The name of the parameter that caused the current exception.</param>
         </member>
         <member name="M:dotNetTips.Utility.Portable.ArgumentReadOnlyException.#ctor(System.String,System.String,System.Exception)">
             <summary>
-            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentReadOnlyException"/> class.
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentReadOnlyException" /> class.
             </summary>
             <param name="message">The error message that explains the reason for the exception.</param>
             <param name="paramName">The name of the parameter that caused the current exception.</param>
@@ -860,11 +860,22 @@
             </summary>
             <typeparam name="T"></typeparam>
         </member>
-        <member name="M:dotNetTips.Utility.Portable.ICloneable`1.Cone">
+        <member name="M:dotNetTips.Utility.Portable.ICloneable`1.Clone">
             <summary>
             Cones this instance.
             </summary>
             <returns>T.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.IValid">
+            <summary>
+            Interface IValid
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.IValid.IsValid">
+            <summary>
+            Returns true if ... is valid.
+            </summary>
+            <returns><c>true</c> if this instance is valid; otherwise, <c>false</c>.</returns>
         </member>
         <member name="T:dotNetTips.Utility.Portable.ImageExtensions">
             <summary>
@@ -873,7 +884,7 @@
         </member>
         <member name="T:dotNetTips.Utility.Portable.OOP.Encapsulation">
             <summary>
-            Class Encapsulation.
+            Class for Encapsulation.
             </summary>
         </member>
         <member name="M:dotNetTips.Utility.Portable.OOP.Encapsulation.TryValidateParam``1(System.Boolean,System.String,System.String)">
@@ -894,6 +905,7 @@
             <param name="paramName">Name of the parameter.</param>
             <param name="message">The message.</param>
             <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentNullException"></exception>
         </member>
         <member name="M:dotNetTips.Utility.Portable.OOP.Encapsulation.TryValidateParam(System.Enum,System.String,System.String)">
             <summary>
@@ -902,7 +914,6 @@
             <param name="value">The value.</param>
             <param name="paramName">Name of the parameter.</param>
             <param name="message">The message.</param>
-            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
         </member>
         <member name="M:dotNetTips.Utility.Portable.OOP.Encapsulation.TryValidateParam(System.Guid,System.String,System.String)">
             <summary>
@@ -911,6 +922,7 @@
             <param name="value">The value.</param>
             <param name="paramName">Name of the parameter.</param>
             <param name="message">The message.</param>
+            <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
             <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
             <exception cref="T:System.ArgumentException"></exception>
         </member>
@@ -921,6 +933,7 @@
             <param name="value">The value.</param>
             <param name="paramName">Name of the parameter.</param>
             <param name="message">The message.</param>
+            <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
             <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
             <exception cref="T:System.ArgumentException"></exception>
         </member>
@@ -944,6 +957,7 @@
             <param name="message">The message.</param>
             <exception cref="T:System.ArgumentNullException">match</exception>
             <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
+            <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException">match</exception>
             <exception cref="T:System.ArgumentException"></exception>
         </member>
         <member name="M:dotNetTips.Utility.Portable.OOP.Encapsulation.TryValidateParam(System.String,System.String,System.String,System.String)">
@@ -954,6 +968,7 @@
             <param name="expected">The expected.</param>
             <param name="paramName">Name of the parameter.</param>
             <param name="message">The message.</param>
+            <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
             <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
             <exception cref="T:System.ArgumentException"></exception>
         </member>
@@ -966,6 +981,7 @@
             <param name="paramName">Name of the parameter.</param>
             <param name="message">The message.</param>
             <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
+            <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
             <exception cref="T:System.ArgumentException"></exception>
         </member>
         <member name="M:dotNetTips.Utility.Portable.OOP.Encapsulation.TryValidateParam(System.String,System.Int32,System.Int32,System.String,System.String)">
@@ -977,6 +993,10 @@
             <param name="maximumLength">The maximum length.</param>
             <param name="paramName">Name of the parameter.</param>
             <param name="message">The message.</param>
+            <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException">
+            </exception>
+            <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
         </member>
         <member name="T:dotNetTips.Utility.Portable.ISingleton`1">
             <summary>
@@ -1010,9 +1030,54 @@
               Looks up a localized string similar to Collection is null or has no items..
             </summary>
         </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.CollectionSizeIsNotValid">
+            <summary>
+              Looks up a localized string similar to Collection size is not valid..
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.GuidIsEmpty">
+            <summary>
+              Looks up a localized string similar to Guid is Empth..
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.InvalidType">
+            <summary>
+              Looks up a localized string similar to Invalid type..
+            </summary>
+        </member>
         <member name="P:dotNetTips.Utility.Portable.Properties.Resources.ParameterIsInvalid">
             <summary>
               Looks up a localized string similar to Parameter is invalid..
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.StringDoesNotMatch">
+            <summary>
+              Looks up a localized string similar to Strings do not match..
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.StringDoesNotMatchMaximumLength">
+            <summary>
+              Looks up a localized string similar to String does not matach maximum length..
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.StringDoesNotMatchMinimumLength">
+            <summary>
+              Looks up a localized string similar to String does not match minimum length..
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.StringIsEmpty">
+            <summary>
+              Looks up a localized string similar to String is empty..
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.StringIsNotValid">
+            <summary>
+              Looks up a localized string similar to String is not valid..
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.TheValueIsNotDefinedInTheEnumeration">
+            <summary>
+              Looks up a localized string similar to The values are not defined in the enum..
             </summary>
         </member>
         <member name="T:dotNetTips.Utility.Portable.Tristate">

@@ -386,7 +386,7 @@ Public Class XmlTraceListener
             Return
         End If
 
-        Using process As Process = Process.GetCurrentProcess()
+        Using process As Process = process.GetCurrentProcess()
             _processId = process.Id
             _processName = process.ProcessName
         End Using

@@ -163,7 +163,7 @@ Namespace DirectoryServices
 
                         Dim resultProperties As ResultPropertyCollection = result.Properties
 
-                        For Each members As Object In resultProperties(MemberName)
+                        For Each members As Object In resultProperties(MemberName).AsParallel
 
                             Dim memberEntry As DirectoryEntry = New DirectoryEntry(String.Format("{0}{1}", LDAPPrefix, members))
 

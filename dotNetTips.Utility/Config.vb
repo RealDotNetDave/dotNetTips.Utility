@@ -21,7 +21,6 @@ Imports dotNetTips.Utility.Xml
 ''' Class Config.
 ''' </summary>
 ''' <typeparam name="T"></typeparam>
-''' <seealso cref="dotNetTips.Utility.Portable.ISingleton(Of T)" />
 Public Class Config(Of T As Class)
     Implements ISingleton(Of T)
 
