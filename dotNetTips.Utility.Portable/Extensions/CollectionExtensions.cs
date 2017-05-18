@@ -33,16 +33,16 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// Adds if not exists.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="list">The list.</param>
+        /// <param name="source">The list.</param>
         /// <param name="value">The value.</param>
-        public static void AddIfNotExists<T>(this ICollection<T> list, T value)
+        public static void AddIfNotExists<T>(this ICollection<T> source, T value)
         {
             Encapsulation.TryValidateParam<ArgumentNullException>(value != null);
-            Encapsulation.TryValidateParam<ArgumentReadOnlyException>(list.IsReadOnly == false);
+            Encapsulation.TryValidateParam<ArgumentReadOnlyException>(source.IsReadOnly == false);
 
-            if (list.Contains(value) == false)
+            if (source.Contains(value) == false)
             {
-                list.Add(value);
+                source.Add(value);
             }
         }
 
@@ -50,16 +50,16 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// Adds if not exists.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="list">The list.</param>
+        /// <param name="source">The list.</param>
         /// <param name="values">The values.</param>
-        public static void AddIfNotExists<T>(this ICollection<T> list, params T[] values)
+        public static void AddIfNotExists<T>(this ICollection<T> source, params T[] values)
         {
             Encapsulation.TryValidateParam<ArgumentNullException>(values != null);
-            Encapsulation.TryValidateParam<ArgumentReadOnlyException>(list.IsReadOnly == false);
+            Encapsulation.TryValidateParam<ArgumentReadOnlyException>(source.IsReadOnly == false);
 
             foreach (var value in values)
             {
-                list.AddIfNotExists(value);
+                source.AddIfNotExists(value);
             }
         }
 
@@ -71,7 +71,6 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <returns>System.Collections.Generic.List&lt;T&gt;.</returns>
         public static List<T> CopyToList<T>(this List<T> source)
         {
-            Encapsulation.TryValidateParam(source, nameof(source));
 
             return new List<T>(source);
         }
@@ -83,7 +82,6 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <returns>System.Int32.</returns>
         public static int Count(this IEnumerable source)
         {
-            Encapsulation.TryValidateParam(source, nameof(source));
 
             var collection = source as ICollection;
 
@@ -112,7 +110,6 @@ namespace dotNetTips.Utility.Portable.Extensions
         public static T? FirstOrNull<T>(this IEnumerable<T> source, Func<T, bool> match)
             where T : struct
         {
-            Encapsulation.TryValidateParam(source, nameof(source));
             Encapsulation.TryValidateParam<ArgumentNullException>(match != null);
 
             foreach (var local in source)
@@ -148,7 +145,6 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <returns>System.String[].</returns>
         public static string[] NoDuplicates(this string[] source)
         {
-            Encapsulation.TryValidateParam(source, nameof(source));
 
             return source.Distinct().ToArray();
         }
@@ -163,7 +159,6 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <remarks>Original code by: Lukazoid</remarks>
         public static IEnumerable<IEnumerable<T>> Page<T>(this IEnumerable<T> source, int pageSize)
         {
-            Encapsulation.TryValidateParam(source, nameof(source));
             Encapsulation.TryValidateParam<ArgumentNullException>(pageSize >= 0);
 
             using (var enumerator = source.GetEnumerator())
@@ -194,7 +189,6 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <returns>IEnumerable collection.</returns>
         public static IEnumerable<T> PickRandom<T>(this IEnumerable<T> source, int count)
         {
-            Encapsulation.TryValidateParam(source, nameof(source));
             Encapsulation.TryValidateParam<ArgumentNullException>(count >= 0);
 
             return source.Randomize().Take(count);
@@ -217,7 +211,6 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <remarks>Original code by: Fons Sonnemans</remarks>
         public static Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>> Pivot<TSource, TFirstKey, TSecondKey, TValue>(this IEnumerable<TSource> source, Func<TSource, TFirstKey> firstKeySelector, Func<TSource, TSecondKey> secondKeySelector, Func<IEnumerable<TSource>, TValue> aggregate)
         {
-            Encapsulation.TryValidateParam(source, nameof(source));
             Encapsulation.TryValidateParam<ArgumentNullException>(aggregate != null);
             Encapsulation.TryValidateParam<ArgumentNullException>(firstKeySelector != null);
             Encapsulation.TryValidateParam<ArgumentNullException>(secondKeySelector != null);
@@ -252,8 +245,6 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <remarks>Original code by: Phil Campbell</remarks>
         public static IEnumerable<T> Randomize<T>(this IEnumerable<T> source)
         {
-            Encapsulation.TryValidateParam(source, nameof(source));
-
             return source.OrderBy(x => new Random().Next());
         }
 
@@ -266,8 +257,6 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <returns>System.String.</returns>
         public static string ToDelimitedString<T>(this IEnumerable<T> source, char delimiter = ControlChars.Comma)
         {
-            Encapsulation.TryValidateParam(source, nameof(source));
-
             var sb = new StringBuilder();
 
             foreach (var item in source)
@@ -294,7 +283,6 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <remarks>Original code by: James Michael Hare</remarks>
         public static Dictionary<TKey, List<TValue>> ToDictionary<TKey, TValue>(this IEnumerable<IGrouping<TKey, TValue>> source)
         {
-            Encapsulation.TryValidateParam(source, nameof(source));
 
             return source.ToDictionary(group => group.Key, group => group.ToList());
         }
@@ -308,7 +296,6 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <remarks>Original code by: Fons Sonnemans</remarks>
         public static Task<List<T>> ToListAsync<T>(this IEnumerable<T> source)
         {
-            Encapsulation.TryValidateParam(source, nameof(source));
 
             return Task.Run(() => source.ToList());
         }
@@ -321,7 +308,6 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <returns>ObservableCollection&lt;T&gt;.</returns>
         public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> source)
         {
-            Encapsulation.TryValidateParam(source, nameof(source));
 
             return new ObservableCollection<T>(source);
         }
@@ -334,7 +320,6 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <returns>ReadOnlyCollection&lt;T&gt;.</returns>
         public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(this IList<T> source)
         {
-            Encapsulation.TryValidateParam(source, nameof(source));
 
             return new ReadOnlyCollection<T>(source);
         }
@@ -350,7 +335,6 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <remarks>Original code by: Phil Campbell</remarks>
         public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> source, bool condition, Func<TSource, bool> predicate)
         {
-            Encapsulation.TryValidateParam(source, nameof(source));
 
             return condition ? source.Where(predicate) : source;
         }
@@ -365,9 +349,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <returns>IEnumerable&lt;TSource&gt;.</returns>
         /// <remarks>Original code by: Phil Campbell</remarks>
         public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> source, bool condition, Func<TSource, int, bool> predicate)
-        {
-            Encapsulation.TryValidateParam(source, nameof(source));
-
+        { 
             return condition ? source.Where(predicate) : source;
         }
     }

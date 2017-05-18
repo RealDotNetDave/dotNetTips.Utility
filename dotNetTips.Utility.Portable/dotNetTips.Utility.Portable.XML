@@ -285,7 +285,7 @@
             Adds if not exists.
             </summary>
             <typeparam name="T"></typeparam>
-            <param name="list">The list.</param>
+            <param name="source">The list.</param>
             <param name="value">The value.</param>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.AddIfNotExists``1(System.Collections.Generic.ICollection{``0},``0[])">
@@ -293,7 +293,7 @@
             Adds if not exists.
             </summary>
             <typeparam name="T"></typeparam>
-            <param name="list">The list.</param>
+            <param name="source">The list.</param>
             <param name="values">The values.</param>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.CopyToList``1(System.Collections.Generic.List{``0})">
@@ -301,7 +301,7 @@
             Makes copy of the collection.
             </summary>
             <typeparam name="T"></typeparam>
-            <param name="list">The list.</param>
+            <param name="source">The source.</param>
             <returns>System.Collections.Generic.List&lt;T&gt;.</returns>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.Count(System.Collections.IEnumerable)">
@@ -629,6 +629,12 @@
             </summary>
             <param name="obj">The object.</param>
         </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.InitializeFields(System.Object)">
+            <summary>
+            Initializes the fields.
+            </summary>
+            <param name="obj">The object.</param>
+        </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.HasProperty(System.Object,System.String)">
             <summary>
             Determines whether the specified object has the property.
@@ -920,7 +926,6 @@
             <param name="value">The value.</param>
             <param name="paramName">Name of the parameter.</param>
             <param name="message">The message.</param>
-            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
         </member>
         <member name="M:dotNetTips.Utility.Portable.OOP.Encapsulation.TryValidateParam(System.Guid,System.String,System.String)">
             <summary>
@@ -1044,7 +1049,7 @@
         </member>
         <member name="P:dotNetTips.Utility.Portable.Properties.Resources.GuidIsEmpty">
             <summary>
-              Looks up a localized string similar to Guid is empty..
+              Looks up a localized string similar to Guid is Empth..
             </summary>
         </member>
         <member name="P:dotNetTips.Utility.Portable.Properties.Resources.InvalidType">
@@ -1059,12 +1064,12 @@
         </member>
         <member name="P:dotNetTips.Utility.Portable.Properties.Resources.StringDoesNotMatch">
             <summary>
-              Looks up a localized string similar to String does not match..
+              Looks up a localized string similar to Strings do not match..
             </summary>
         </member>
         <member name="P:dotNetTips.Utility.Portable.Properties.Resources.StringDoesNotMatchMaximumLength">
             <summary>
-              Looks up a localized string similar to String does not match maximum length..
+              Looks up a localized string similar to String does not matach maximum length..
             </summary>
         </member>
         <member name="P:dotNetTips.Utility.Portable.Properties.Resources.StringDoesNotMatchMinimumLength">
@@ -1084,7 +1089,7 @@
         </member>
         <member name="P:dotNetTips.Utility.Portable.Properties.Resources.TheValueIsNotDefinedInTheEnumeration">
             <summary>
-              Looks up a localized string similar to The value is not defined in the enumeration..
+              Looks up a localized string similar to The values are not defined in the enum..
             </summary>
         </member>
         <member name="T:dotNetTips.Utility.Portable.Tristate">
