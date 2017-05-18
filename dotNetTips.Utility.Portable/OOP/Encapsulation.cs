@@ -108,6 +108,7 @@ namespace dotNetTips.Utility.Portable.OOP
         /// <exception cref="ArgumentInvalidException"></exception>
         /// <exception cref="dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
         /// <exception cref="System.ArgumentException"></exception>
+        /// <remarks>TEST Created</remarks>
         public static void TryValidateParam(Guid value, string paramName, string message = "")
         {
             if (value.Equals(Guid.Empty))

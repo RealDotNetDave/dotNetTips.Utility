@@ -54,15 +54,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DateTimeExtensionsTest.cs" />
-    <Compile Include="DateTimeExtensionsTest.Intersects.g.cs">
-      <DependentUpon>DateTimeExtensionsTest.cs</DependentUpon>
+    <Compile Include="EncapsulationTest.cs" />
+    <Compile Include="EncapsulationTest.TryValidateParam.g.cs">
+      <DependentUpon>EncapsulationTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="DateTimeExtensionsTest.ToFriendlyDateString.g.cs">
-      <DependentUpon>DateTimeExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DateTimeExtensionsTest.Tomorrow.g.cs">
-      <DependentUpon>DateTimeExtensionsTest.cs</DependentUpon>
+    <Compile Include="ExceptionExtensionTest.cs" />
+    <Compile Include="ExceptionExtensionTest.GetAllMessages.g.cs">
+      <DependentUpon>ExceptionExtensionTest.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -12,7 +12,6 @@
 // <summary></summary>
 // ***********************************************************************
 
-using dotNetTips.Utility.Portable.OOP;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -81,8 +80,6 @@ namespace dotNetTips.Utility.Portable.Extensions
         public static T TraverseFor<T>(this Exception ex)
             where T : class
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(ex != null);
-
             if (ReferenceEquals(ex.GetType(), typeof(T)))
             {
                 return ex as T;

@@ -531,19 +531,19 @@
             <param name="canContinue">The can continue.</param>
             <returns>IEnumerable&lt;TSource&gt;.</returns>
         </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.GetAllMessages(System.Exception)">
+            <summary>
+            Gets all messages.
+            </summary>
+            <param name="exception">The exception.</param>
+            <returns>System.String.</returns>
+        </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.GetAllMessages(System.Exception,System.String)">
             <summary>
             Gets all messages.
             </summary>
             <param name="exception">The exception.</param>
             <param name="separator">The separator.</param>
-            <returns>System.String.</returns>
-        </member>
-        <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.GetAllMessages(System.Exception)">
-            <summary>
-            Gets all messages.
-            </summary>
-            <param name="exception">The exception.</param>
             <returns>System.String.</returns>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.TraverseFor``1(System.Exception)">
@@ -971,6 +971,7 @@
             <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
             <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
             <exception cref="T:System.ArgumentException"></exception>
+            <remarks>TEST Created</remarks>
         </member>
         <member name="M:dotNetTips.Utility.Portable.OOP.Encapsulation.TryValidateParam(System.String,System.String,System.String)">
             <summary>

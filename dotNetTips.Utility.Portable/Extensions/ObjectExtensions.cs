@@ -14,9 +14,9 @@
 
 using dotNetTips.Utility.Portable.OOP;
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using System.Globalization;
 
 namespace dotNetTips.Utility.Portable.Extensions
 {
