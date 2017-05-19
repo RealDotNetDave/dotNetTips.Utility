@@ -459,15 +459,15 @@
             Extensions for DateTime
             </summary>
         </member>
-        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.GetLast(System.DateTime,System.DayOfWeek)">
+        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.GetLastDay(System.DateTime,System.DayOfWeek)">
             <summary>
-            Gets the last.
+            Gets the last date.
             </summary>
             <param name="input">The date/ time.</param>
             <param name="dayOfWeek">The day of week.</param>
             <returns>DateTime.</returns>
         </member>
-        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.GetNext(System.DateTime,System.DayOfWeek)">
+        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.GetNextDay(System.DateTime,System.DayOfWeek)">
             <summary>
             Gets the next.
             </summary>
@@ -511,6 +511,40 @@
             <summary>
             Class ExceptionExtension.
             </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.FromHierarchy``1(``0,System.Func{``0,``0})">
+            <summary>
+            Froms the hierarchy.
+            </summary>
+            <typeparam name="TSource">The type of the t source.</typeparam>
+            <param name="source">The source.</param>
+            <param name="nextItem">The next item.</param>
+            <returns>IEnumerable&lt;TSource&gt;.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.FromHierarchy``1(``0,System.Func{``0,``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Froms the hierarchy.
+            </summary>
+            <typeparam name="TSource">The type of the t source.</typeparam>
+            <param name="source">The source.</param>
+            <param name="nextItem">The next item.</param>
+            <param name="canContinue">The can continue.</param>
+            <returns>IEnumerable&lt;TSource&gt;.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.GetAllMessages(System.Exception,System.String)">
+            <summary>
+            Gets all messages.
+            </summary>
+            <param name="exception">The exception.</param>
+            <param name="separator">The separator.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.GetAllMessages(System.Exception)">
+            <summary>
+            Gets all messages.
+            </summary>
+            <param name="exception">The exception.</param>
+            <returns>System.String.</returns>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.TraverseFor``1(System.Exception)">
             <summary>

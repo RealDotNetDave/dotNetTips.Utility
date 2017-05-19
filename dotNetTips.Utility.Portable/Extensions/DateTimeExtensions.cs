@@ -25,12 +25,12 @@ namespace dotNetTips.Utility.Portable.Extensions
     public static class DateTimeExtensions
     {
         /// <summary>
-        /// Gets the last.
+        /// Gets the last date.
         /// </summary>
         /// <param name="input">The date/ time.</param>
         /// <param name="dayOfWeek">The day of week.</param>
         /// <returns>DateTime.</returns>
-        public static DateTime GetLast(this DateTime input, DayOfWeek dayOfWeek)
+        public static DateTime GetLastDay(this DateTime input, DayOfWeek dayOfWeek)
         {
             Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(Enum.IsDefined(typeof(DayOfWeek), input));
 
@@ -44,7 +44,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <param name="input">The date/ time.</param>
         /// <param name="dayOfWeek">The day of week.</param>
         /// <returns>DateTime.</returns>
-        public static DateTime GetNext(this DateTime input, DayOfWeek dayOfWeek)
+        public static DateTime GetNextDay(this DateTime input, DayOfWeek dayOfWeek)
         {
             Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(Enum.IsDefined(typeof(DayOfWeek), input));
 
