@@ -4,7 +4,7 @@
 // Created          : 02-28-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-16-2017
+// Last Modified On : 05-17-2017
 // ***********************************************************************
 // <copyright file="ExceptionExtension.cs" company="dotNetTips.com">
 //     David McCarter - dotNetTips.com © 2017
@@ -12,7 +12,6 @@
 // <summary></summary>
 // ***********************************************************************
 
-using dotNetTips.Utility.Portable.OOP;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,6 +53,13 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// Gets all messages.
         /// </summary>
         /// <param name="exception">The exception.</param>
+        /// <returns>System.String.</returns>
+        public static string GetAllMessages(this Exception exception) => GetAllMessages(exception, Environment.NewLine);
+
+        /// <summary>
+        /// Gets all messages.
+        /// </summary>
+        /// <param name="exception">The exception.</param>
         /// <param name="separator">The separator.</param>
         /// <returns>System.String.</returns>
         public static string GetAllMessages(this Exception exception, string separator = " ")
@@ -62,16 +68,6 @@ namespace dotNetTips.Utility.Portable.Extensions
 
 
             return string.Join(separator, messages);
-        }
-
-        /// <summary>
-        /// Gets all messages.
-        /// </summary>
-        /// <param name="exception">The exception.</param>
-        /// <returns>System.String.</returns>
-        public static string GetAllMessages(this Exception exception)
-        {
-            return GetAllMessages(exception, Environment.NewLine);
         }
 
 
@@ -84,8 +80,6 @@ namespace dotNetTips.Utility.Portable.Extensions
         public static T TraverseFor<T>(this Exception ex)
             where T : class
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(ex != null);
-
             if (ReferenceEquals(ex.GetType(), typeof(T)))
             {
                 return ex as T;

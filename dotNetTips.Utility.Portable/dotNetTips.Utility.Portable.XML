@@ -285,7 +285,7 @@
             Adds if not exists.
             </summary>
             <typeparam name="T"></typeparam>
-            <param name="source">The list.</param>
+            <param name="list">The list.</param>
             <param name="value">The value.</param>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.AddIfNotExists``1(System.Collections.Generic.ICollection{``0},``0[])">
@@ -293,7 +293,7 @@
             Adds if not exists.
             </summary>
             <typeparam name="T"></typeparam>
-            <param name="source">The list.</param>
+            <param name="list">The list.</param>
             <param name="values">The values.</param>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.CopyToList``1(System.Collections.Generic.List{``0})">
@@ -531,19 +531,19 @@
             <param name="canContinue">The can continue.</param>
             <returns>IEnumerable&lt;TSource&gt;.</returns>
         </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.GetAllMessages(System.Exception)">
+            <summary>
+            Gets all messages.
+            </summary>
+            <param name="exception">The exception.</param>
+            <returns>System.String.</returns>
+        </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.GetAllMessages(System.Exception,System.String)">
             <summary>
             Gets all messages.
             </summary>
             <param name="exception">The exception.</param>
             <param name="separator">The separator.</param>
-            <returns>System.String.</returns>
-        </member>
-        <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.GetAllMessages(System.Exception)">
-            <summary>
-            Gets all messages.
-            </summary>
-            <param name="exception">The exception.</param>
             <returns>System.String.</returns>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.TraverseFor``1(System.Exception)">
@@ -971,6 +971,7 @@
             <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
             <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
             <exception cref="T:System.ArgumentException"></exception>
+            <remarks>TEST Created</remarks>
         </member>
         <member name="M:dotNetTips.Utility.Portable.OOP.Encapsulation.TryValidateParam(System.String,System.String,System.String)">
             <summary>
