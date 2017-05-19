@@ -1,20 +1,21 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Portable
-// Author           : David McCarter Created : 04-15-2016
-// Created          : 04-15-2016
+// Author           : David McCarter
+// Created          : 02-28-2017
 //
-// Last Modified By : David McCarter Last Modified On : 06-02-2016 ***********************************************************************
-// Last Modified On : 08-09-2016
+// Last Modified By : David McCarter
+// Last Modified On : 05-19-2017
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="dotNetTips.com">
-//     Copyright Â© 2015
+//     David McCarter - dotNetTips.com © 2017
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using dotNetTips.Utility.Portable.OOP;
 using System;
-
 using System.Text;
+using System.Linq;
 
 namespace dotNetTips.Utility.Portable.Extensions
 {
@@ -31,7 +32,10 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <returns><c>true</c> if [is valid credit card number] [the specified number]; otherwise, <c>false</c>.</returns>
         public static bool IsValidCreditCardNumber(this string number)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(string.IsNullOrEmpty(number) == false);
+            if(string.IsNullOrEmpty(number))
+            {
+                return false;
+            }
 
             var deltas = new int[] { 0, 1, 2, 3, 4, -4, -3, -2, -1, 0 };
             var checksum = 0;
@@ -56,8 +60,8 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <param name="input">The string.</param>
         /// <param name="characters">The characters.</param>
         /// <returns><c>true</c> if the specified characters contains any; otherwise, <c>false</c>.</returns>
-        /// <exception cref="ArgumentNullException">Null character.</exception>
         /// <exception cref="System.ArgumentNullException">Null character.</exception>
+        /// <exception cref="ArgumentNullException">Null character.</exception>
         public static bool ContainsAny(this string input, params string[] characters)
         {
             Encapsulation.TryValidateParam<ArgumentNullException>(characters != null && characters.Length > 0);
@@ -67,7 +71,7 @@ namespace dotNetTips.Utility.Portable.Extensions
                 return false;
             }
 
-            foreach (var character in characters)
+            foreach (var character in characters.AsParallel())
             {
                 if (string.IsNullOrEmpty(character))
                 {

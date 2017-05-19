@@ -9,14 +9,14 @@
     ".NETPortable,Version=v4.5,Profile=Profile7": []
   },
   "packageFolders": {
-    "C:\\Users\\david\\.nuget\\packages\\": {}
+    "C:\\Users\\David\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
-      "projectUniqueName": "C:\\Development\\Source\\Repros\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj",
+      "projectUniqueName": "C:\\Users\\David\\Source\\Repos\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj",
       "projectName": "dotNetTips.Utility.Portable",
-      "projectPath": "C:\\Development\\Source\\Repros\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj",
-      "projectJsonPath": "C:\\Development\\Source\\Repros\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\project.json",
+      "projectPath": "C:\\Users\\David\\Source\\Repos\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj",
+      "projectJsonPath": "C:\\Users\\David\\Source\\Repos\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\project.json",
       "projectStyle": "ProjectJson"
     },
     "frameworks": {

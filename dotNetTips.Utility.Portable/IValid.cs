@@ -4,7 +4,7 @@
 // Created          : 12-07-2016
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-10-2017
+// Last Modified On : 05-19-2017
 // ***********************************************************************
 // <copyright file="ICloneable.cs" company="dotNetTips.com">
 //     David McCarter - dotNetTips.com © 2017
@@ -20,9 +20,9 @@ namespace dotNetTips.Utility.Portable
     public interface IValid
     {
         /// <summary>
-        /// Returns true if ... is valid.
+        /// Returns true if type is valid.
         /// </summary>
-        /// <returns><c>true</c> if this instance is valid; otherwise, <c>false</c>.</returns>
-        bool IsValid();
+        /// <value><c>true</c> if this instance is valid; otherwise, <c>false</c>.</value>
+        bool IsValid { get; }
     }
 }

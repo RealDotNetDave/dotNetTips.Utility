@@ -1,16 +1,17 @@
 ' ***********************************************************************
 ' Assembly         : dotNetTips.Utility
 ' Author           : David McCarter
-' Created          : 03-29-2016
+' Created          : 12-07-2016
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 05-11-2017
+' Last Modified On : 05-19-2017
 ' ***********************************************************************
-' <copyright file="ActiveDirectoryHelper.vb" company="NicheWare - David McCarter">
-'     NicheWare - David McCarter
+' <copyright file="ActiveDirectoryHelper.vb" company="McCarter Consulting - David McCarter">
+'     David McCarter - dotNetTips.com © 2017
 ' </copyright>
 ' <summary></summary>
-' *************************************************************************
+' ***********************************************************************
+
 Imports System.Collections.Generic
 Imports System.DirectoryServices
 Imports dotNetTips.Utility.Portable.OOP
@@ -25,62 +26,77 @@ Namespace DirectoryServices
         ''' The account filter
         ''' </summary>
         Private Const AccountFilter As String = "(SAMAccountName={0})"
+
         ''' <summary>
         ''' The contact delivery office
         ''' </summary>
         Private Const ContactDeliveryOffice As String = "physicalDeliveryOfficeName"
+
         ''' <summary>
         ''' The contact department
         ''' </summary>
         Private Const ContactDepartment As String = "department"
+
         ''' <summary>
         ''' The contact email
         ''' </summary>
         Private Const ContactEmail As String = "mail"
+
         ''' <summary>
         ''' The contact fax
         ''' </summary>
         Private Const ContactFax As String = "facsimileTelephoneNumber"
+
         ''' <summary>
         ''' The contact first name
         ''' </summary>
         Private Const ContactFirstName As String = "givenName"
+
         ''' <summary>
         ''' The contact last name
         ''' </summary>
         Private Const ContactLastName As String = "sn"
+
         ''' <summary>
         ''' The contact manager
         ''' </summary>
         Private Const ContactManager As String = "manager"
+
         ''' <summary>
         ''' The contact name
         ''' </summary>
         Private Const ContactName As String = "cn"
+
         ''' <summary>
         ''' The contact name filter
         ''' </summary>
         Private Const ContactNameFilter As String = "(CN={0})"
+
         ''' <summary>
         ''' The contact telephone
         ''' </summary>
         Private Const ContactTelephone As String = "telephoneNumber"
+
         ''' <summary>
         ''' The contact title
         ''' </summary>
         Private Const ContactTitle As String = "title"
+
         ''' <summary>
         ''' The distinguished name
         ''' </summary>
         Private Const DistinguishedName As String = "distinguishedName"
+
         ''' <summary>
         ''' The LDAP prefix
         ''' </summary>
         Private Const LDAPPrefix As String = "LDAP://"
+
         ''' <summary>
         ''' The member name
         ''' </summary>
         Private Const MemberName As String = "member"
+
         ''' <summary>
         ''' The SAM account name
         ''' </summary>
@@ -94,18 +110,18 @@ Namespace DirectoryServices
         Private Function FillUserInfo(ByVal entry As DirectoryEntry) As UserInfo
             Encapsulation.TryValidateParam(Of ArgumentNullException)(entry IsNot Nothing, NameOf(entry))
 
-            Dim info As New UserInfo
-
-            info.ContactName = ExtractADPropertyValue(ContactName, entry)
-            info.Email = ExtractADPropertyValue(ContactEmail, entry)
-            info.Department = ExtractADPropertyValue(ContactDepartment, entry)
-            info.Manager = GetManagerName(ExtractADPropertyValue(ContactManager, entry))
-            info.Telephone = ExtractADPropertyValue(ContactTelephone, entry)
-            info.Title = ExtractADPropertyValue(ContactTitle, entry)
-            info.FirstName = ExtractADPropertyValue(ContactFirstName, entry)
-            info.LastName = ExtractADPropertyValue(ContactLastName, entry)
-            info.Fax = ExtractADPropertyValue(ContactFax, entry)
-            info.DeliveryOffice = ExtractADPropertyValue(ContactDeliveryOffice, entry)
+            Dim info As New UserInfo With {
+                .ContactName = ExtractADPropertyValue(ContactName, entry),
+                .Email = ExtractADPropertyValue(ContactEmail, entry),
+                .Department = ExtractADPropertyValue(ContactDepartment, entry),
+                .Manager = GetManagerName(ExtractADPropertyValue(ContactManager, entry)),
+                .Telephone = ExtractADPropertyValue(ContactTelephone, entry),
+                .Title = ExtractADPropertyValue(ContactTitle, entry),
+                .FirstName = ExtractADPropertyValue(ContactFirstName, entry),
+                .LastName = ExtractADPropertyValue(ContactLastName, entry),
+                .Fax = ExtractADPropertyValue(ContactFax, entry),
+                .DeliveryOffice = ExtractADPropertyValue(ContactDeliveryOffice, entry)
+            }
 
             Return info
 
@@ -146,7 +162,9 @@ Namespace DirectoryServices
             searcher.PropertiesToLoad.Add(ContactLastName)
             searcher.PropertiesToLoad.Add(ContactFax)
             searcher.PropertiesToLoad.Add(ContactDeliveryOffice)
+
         End Sub
+
         ''' <summary>
         ''' Sets the searcher domain.
         ''' </summary>

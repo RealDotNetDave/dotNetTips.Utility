@@ -4,7 +4,7 @@
 // Created          : 02-02-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-15-2017
+// Last Modified On : 05-18-2017
 // ***********************************************************************
 // <copyright file="PerformanceStopwatch.cs" company="dotNetTips.com">
 //     Copyright © 2017
@@ -34,6 +34,7 @@ namespace dotNetTips.Utility.Standard.Diagnostics
             sw.Start();
             return sw;
         }
+
         /// <summary>
         /// Stops the reset.
         /// </summary>
@@ -41,7 +42,9 @@ namespace dotNetTips.Utility.Standard.Diagnostics
         public TimeSpan StopReset()
         {
             this.Stop();
+
             var result = this.Elapsed;
+
             base.Reset();
 
             return result;

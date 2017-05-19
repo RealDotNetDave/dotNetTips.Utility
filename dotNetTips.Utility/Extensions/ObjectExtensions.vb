@@ -1,21 +1,20 @@
 ' ***********************************************************************
 ' Assembly         : dotNetTips.Utility
 ' Author           : David McCarter
-' Created          : 08-03-2015
+' Created          : 12-07-2016
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 07-14-2016
+' Last Modified On : 05-19-2017
 ' ***********************************************************************
-' <copyright file="ObjectExtensions.vb" company="dotNetTips.com">
-'     '     '     dotNetTips.com. All rights reserved.
-'
-'
+' <copyright file="ObjectExtensions.vb" company="McCarter Consulting - David McCarter">
+'     David McCarter - dotNetTips.com © 2017
 ' </copyright>
 ' <summary></summary>
-' *************************************************************************
+' ***********************************************************************
 Imports System.IO
 Imports System.Runtime.CompilerServices
 Imports System.Runtime.Serialization.Formatters.Binary
+
 ''' <summary>
 ''' Class ObjectExtensions.
 ''' </summary>
@@ -44,6 +43,7 @@ Public Module ObjectExtensions
 
         Using stream As New MemoryStream()
             Dim formatter As New BinaryFormatter()
+
             formatter.Serialize(stream, item)
             stream.Seek(0, SeekOrigin.Begin)
 

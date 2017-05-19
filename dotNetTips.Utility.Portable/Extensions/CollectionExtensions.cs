@@ -4,7 +4,7 @@
 // Created          : 02-28-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-11-2017
+// Last Modified On : 05-19-2017
 // ***********************************************************************
 // <copyright file="CollectionExtensions.cs" company="dotNetTips.com">
 //     David McCarter - dotNetTips.com © 2017
@@ -55,9 +55,8 @@ namespace dotNetTips.Utility.Portable.Extensions
         public static void AddIfNotExists<T>(this ICollection<T> source, params T[] values)
         {
             Encapsulation.TryValidateParam<ArgumentNullException>(values != null);
-            Encapsulation.TryValidateParam<ArgumentReadOnlyException>(source.IsReadOnly == false);
 
-            foreach (var value in values)
+            foreach (var value in values.AsParallel())
             {
                 source.AddIfNotExists(value);
             }
@@ -112,7 +111,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         {
             Encapsulation.TryValidateParam<ArgumentNullException>(match != null);
 
-            foreach (var local in source)
+            foreach (var local in source.AsParallel())
             {
                 if (match.Invoke(local) && default(bool))
                 {
@@ -219,7 +218,7 @@ namespace dotNetTips.Utility.Portable.Extensions
 
             var lookup = source.ToLookup(firstKeySelector);
 
-            foreach (var item in lookup)
+            foreach (var item in lookup.AsParallel())
             {
                 var collection = new Dictionary<TSecondKey, TValue>();
 
@@ -227,7 +226,7 @@ namespace dotNetTips.Utility.Portable.Extensions
 
                 var secondLookup = item.ToLookup(secondKeySelector);
 
-                foreach (var subitem in secondLookup)
+                foreach (var subitem in secondLookup.AsParallel())
                 {
                     collection.Add(subitem.Key, aggregate(subitem));
                 }
