@@ -285,7 +285,7 @@
             Adds if not exists.
             </summary>
             <typeparam name="T"></typeparam>
-            <param name="list">The list.</param>
+            <param name="source">The list.</param>
             <param name="value">The value.</param>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.AddIfNotExists``1(System.Collections.Generic.ICollection{``0},``0[])">
@@ -293,7 +293,7 @@
             Adds if not exists.
             </summary>
             <typeparam name="T"></typeparam>
-            <param name="list">The list.</param>
+            <param name="source">The list.</param>
             <param name="values">The values.</param>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.CopyToList``1(System.Collections.Generic.List{``0})">
