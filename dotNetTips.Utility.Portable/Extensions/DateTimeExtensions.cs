@@ -4,7 +4,7 @@
 // Created          : 02-28-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-20-2017
+// Last Modified On : 05-18-2017
 // ***********************************************************************
 // <copyright file="DateTimeExtensions.cs" company="dotNetTips.com">
 //     David McCarter - dotNetTips.com © 2017
