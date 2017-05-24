@@ -130,20 +130,20 @@ Public Module Services
     ''' Starts the stop services.
     ''' </summary>
     ''' <param name="requests">The requests.</param>
-    Public Async Function StartStopServicesAsync(requests As IEnumerable(Of ServiceAction)) As Task(Of Integer)
-        Dim count = 0
+    Public Sub StartStopServices(requests As IEnumerable(Of ServiceAction))
+
+        If (requests.Count = 0) Then
+            Return
+        End If
 
         For Each request As Object In requests
             If request.ServiceActionRequest = ServiceActionRequest.Start Then
-                request.ServiceActionResult = Await Task.Run(Function() StartService(request.ServiceName))
+                request.ServiceActionResult = StartService(request.ServiceName)
             ElseIf request.ServiceActionRequest = ServiceActionRequest.[Stop] Then
-                request.ServiceActionResult = Await Task.Run(Function() StopService(request.ServiceName))
+                request.ServiceActionResult = StopService(request.ServiceName)
 
             End If
-            count += 1
         Next
 
-        Return count
-
-    End Function
+    End Sub
 End Module
