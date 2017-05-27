@@ -4,7 +4,7 @@
 ' Created          : 05-05-2017
 '
 ' Last Modified By : david
-' Last Modified On : 05-13-2017
+' Last Modified On : 05-23-2017
 ' ***********************************************************************
 ' <copyright file="Services.vb" company="McCarter Consulting - David McCarter">
 '     David McCarter - dotNetTips.com © 2017
@@ -13,6 +13,7 @@
 ' *************************************************************************
 Imports System.Collections.Generic
 Imports System.ServiceProcess
+Imports System.Threading.Tasks
 Imports dotNetTips.Utility.Portable.OOP
 
 ''' <summary>
@@ -67,10 +68,12 @@ Public Module Services
             Dim service = LoadService(serviceName)
 
             If (service IsNot Nothing AndAlso service.Status = ServiceControllerStatus.Running) Then
-                service.[Stop]()
+                service.Stop()
                 statusResult = ServiceActionResult.Stopped
             End If
-        Catch ex As InvalidOperationException
+        Catch win32Ex As ComponentModel.Win32Exception
+            statusResult = ServiceActionResult.Error
+        Catch invalidEx As InvalidOperationException
             statusResult = ServiceActionResult.Error
         End Try
 
@@ -89,12 +92,19 @@ Public Module Services
             Return statusResult
         End If
 
-        Dim service As Object = LoadService(serviceName)
+        Try
+            Dim service = LoadService(serviceName)
 
-        If (service IsNot Nothing AndAlso service.Status = ServiceControllerStatus.Stopped) Then
-            service.Start()
-            statusResult = ServiceActionResult.Running
-        End If
+            If (service IsNot Nothing AndAlso service.Status = ServiceControllerStatus.Stopped) Then
+                service.Start()
+                statusResult = ServiceActionResult.Running
+            End If
+
+        Catch win32Ex As ComponentModel.Win32Exception
+            statusResult = ServiceActionResult.Error
+        Catch invalidEx As InvalidOperationException
+            statusResult = ServiceActionResult.Error
+        End Try
 
         Return statusResult
     End Function
@@ -121,14 +131,19 @@ Public Module Services
     ''' </summary>
     ''' <param name="requests">The requests.</param>
     Public Sub StartStopServices(requests As IEnumerable(Of ServiceAction))
-        Encapsulation.TryValidateParam(requests, NameOf(requests))
+
+        If (requests.Count = 0) Then
+            Return
+        End If
 
         For Each request As Object In requests
             If request.ServiceActionRequest = ServiceActionRequest.Start Then
                 request.ServiceActionResult = StartService(request.ServiceName)
             ElseIf request.ServiceActionRequest = ServiceActionRequest.[Stop] Then
                 request.ServiceActionResult = StopService(request.ServiceName)
+
             End If
         Next
+
     End Sub
 End Module
