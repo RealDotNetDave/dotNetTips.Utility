@@ -917,11 +917,11 @@
             Interface IValid
             </summary>
         </member>
-        <member name="M:dotNetTips.Utility.Portable.IValid.IsValid">
+        <member name="P:dotNetTips.Utility.Portable.IValid.IsValid">
             <summary>
-            Returns true if ... is valid.
+            Returns true if type is valid.
             </summary>
-            <returns><c>true</c> if this instance is valid; otherwise, <c>false</c>.</returns>
+            <value><c>true</c> if this instance is valid; otherwise, <c>false</c>.</value>
         </member>
         <member name="T:dotNetTips.Utility.Portable.ImageExtensions">
             <summary>

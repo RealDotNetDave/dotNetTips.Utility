@@ -18,6 +18,7 @@ Imports System.IO
 Imports System.Reflection
 Imports System.Security.Principal
 Imports dotNetTips.Utility.Portable.OOP
+Imports Microsoft.Win32
 ''' <summary>
 ''' Class ApplicationHelper.
 ''' </summary>
@@ -27,6 +28,32 @@ Public Module ApplicationHelper
     ''' The temporary ASP files
     ''' </summary>
     Private Const TempAspFiles As String = "\Temporary ASP.NET Files\"
+
+    Public Sub UpdateUserRegKey(keyName As String, valueName As String, value As String)
+
+        Using regKey = CreateKeyIfNotExists(keyName)
+
+            regKey.SetValue(valueName, value, RegistryValueKind.String)
+
+            regKey.Flush()
+
+        End Using
+
+    End Sub
+
+    Private Function CreateKeyIfNotExists(keyName As String) As RegistryKey
+        Return Registry.Users.CreateSubKey(keyName, True)
+    End Function
+
+    Public Function GetUserRegKey(keyName As String, valueName As String) As String
+
+        Using regKey = CreateKeyIfNotExists(keyName)
+
+            Return regKey.GetValue(valueName, String.Empty)
+
+        End Using
+
+    End Function
 
     ''' <summary>
     ''' Available cultures.
@@ -119,7 +146,7 @@ Public Module ApplicationHelper
     ''' <summary>
     ''' Kills the current process.
     ''' </summary>
-    Public Sub KillProcess()
+    Public Sub KillCurrentProcess()
         KillProcess(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location))
     End Sub
 
