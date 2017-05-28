@@ -457,7 +457,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <remarks>Code by: C.F.Meijers</remarks>
         public static IEnumerable<T> OrderBy<T>(this IEnumerable<T> list, string sortExpression)
         {
-            Encapsulation.TryValidateParam(sortExpression);
+            Encapsulation.TryValidateParam(sortExpression, nameof(sortExpression));
 
             sortExpression += string.Empty;
             var parts = sortExpression.Split(ControlChars.Space);

@@ -180,7 +180,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="FileNotFoundException">File not found.</exception>
         public static T FromJsonFile<T>(string file) where T : class
         {
-            Encapsulation.TryValidateParam(file);
+            Encapsulation.TryValidateParam(file,nameof(file) );
 
             if (File.Exists(file) == false)
             {
