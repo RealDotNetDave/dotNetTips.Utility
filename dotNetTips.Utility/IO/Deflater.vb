@@ -14,6 +14,7 @@
 Imports System.IO
 Imports System.IO.Compression
 Imports dotNetTips.Utility.Portable.Extensions
+Imports Microsoft.Extensions.Caching.Memory
 
 Namespace IO
     ''' <summary>
