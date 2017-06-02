@@ -4,7 +4,7 @@
 // Created          : 02-02-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-10-2017
+// Last Modified On : 05-19-2017
 // ***********************************************************************
 // <copyright file="Encapsulation.cs" company="dotNetTips.Utility.Portable">
 //     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
@@ -84,6 +84,7 @@ namespace dotNetTips.Utility.Portable.OOP
         /// <param name="value">The value.</param>
         /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
+        /// <exception cref="System.ArgumentOutOfRangeException"></exception>
         public static void TryValidateParam(Enum value, string paramName, string message = "")
         {
             TryValidateParam(paramName, nameof(paramName));

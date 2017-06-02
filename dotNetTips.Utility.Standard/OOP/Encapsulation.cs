@@ -37,14 +37,14 @@ namespace dotNetTips.Utility.Standard.OOP
         /// <exception cref="System.InvalidCastException"></exception>
         public static void TryValidateParam<TException>(bool condition, string paramName = "", string message = "") where TException : ArgumentException, new()
         {
-            // Validate proper Exception type
+            // Confirm proper Exception type
             var t = typeof(TException);
 
             if (t.Name == nameof(Exception))
             {
                 throw new InvalidCastException(string.Format(CultureInfo.CurrentUICulture, Resources.CannotBeOfTypeException, nameof(TException)));
             }
-
+            Argument
             var defaultMessage = Resources.ParameterIsInvalid;
 
             if (string.IsNullOrEmpty(message) == false)
@@ -255,8 +255,7 @@ namespace dotNetTips.Utility.Standard.OOP
         /// <param name="maximumLength">The maximum length.</param>
         /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
-        /// <exception cref="ArgumentInvalidException">
-        /// </exception>
+        /// <exception cref="ArgumentInvalidException"></exception>
         /// <exception cref="dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
         /// <exception cref="System.ArgumentException"></exception>
         public static void TryValidateParam(string value, int minimumLength, int maximumLength, string paramName, string message = "")

@@ -32,7 +32,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <returns>DateTime.</returns>
         public static DateTime GetLastDay(this DateTime input, DayOfWeek dayOfWeek)
         {
-            Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(Enum.IsDefined(typeof(DayOfWeek), input));
+            Encapsulation.TryValidateParam(dayOfWeek, nameof(dayOfWeek));
 
             var daysToSubtract = input.DayOfWeek > dayOfWeek ? input.DayOfWeek - dayOfWeek : (7 - (int)dayOfWeek) + (int)input.DayOfWeek;
             return input.AddDays(daysToSubtract * -1);
