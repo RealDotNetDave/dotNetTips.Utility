@@ -177,12 +177,12 @@
         </member>
         <member name="T:dotNetTips.Utility.Portable.Data.DataEntity">
             <summary>
-            Base Class for Data Entities.
+            Base Class for Entity Framework Data Entities.
             </summary>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Data.DataEntity.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.Data.DataEntity"/> class.
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.Data.DataEntity" /> class.
             </summary>
         </member>
         <member name="P:dotNetTips.Utility.Portable.Data.DataEntity.CreatedAt">
@@ -193,7 +193,7 @@
         </member>
         <member name="P:dotNetTips.Utility.Portable.Data.DataEntity.Deleted">
             <summary>
-            Gets or sets a value indicating whether this <see cref="T:dotNetTips.Utility.Portable.Data.DataEntity"/> is deleted.
+            Gets or sets a value indicating whether this <see cref="T:dotNetTips.Utility.Portable.Data.DataEntity" /> is deleted.
             </summary>
             <value><c>true</c> if deleted; otherwise, <c>false</c>.</value>
         </member>

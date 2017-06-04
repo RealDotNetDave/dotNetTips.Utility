@@ -12,8 +12,8 @@
 // <summary></summary>
 // ***********************************************************************
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Linq.Mapping;
 
 namespace dotNetTips.Utility.Portable.Data
 {
@@ -48,7 +48,7 @@ namespace dotNetTips.Utility.Portable.Data
         /// </summary>
         /// <value>The identifier.</value>
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column(IsPrimaryKey = true)]
+        [Key]
         public int Id { get; set; }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace dotNetTips.Utility.Portable.Data
         /// Gets or sets the version.
         /// </summary>
         /// <value>The version.</value>
-        [Column(IsDbGenerated = true)]
+      [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public byte[] Version { get; set; }
     }
 }
