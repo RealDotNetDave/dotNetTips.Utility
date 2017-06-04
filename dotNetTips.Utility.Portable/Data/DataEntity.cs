@@ -35,7 +35,7 @@ namespace dotNetTips.Utility.Portable.Data
         /// </summary>
         /// <value>The identifier.</value>
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column(IsPrimaryKey =true)]
+        [Column(IsPrimaryKey = true)]
         public int Id { get; set; }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace dotNetTips.Utility.Portable.Data
         /// Gets or sets the version.
         /// </summary>
         /// <value>The version.</value>
-        [Column(IsDbGenerated =true)]
+        [Column(IsDbGenerated = true)]
         public byte[] Version { get; set; }
     }
 }
