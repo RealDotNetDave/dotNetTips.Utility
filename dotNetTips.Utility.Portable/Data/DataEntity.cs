@@ -1,16 +1,29 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : dotNetTips.Utility.Portable
+// Author           : david
+// Created          : 06-02-2017
+//
+// Last Modified By : david
+// Last Modified On : 06-04-2017
+// ***********************************************************************
+// <copyright file="DataEntity.cs" company="dotNetTips.com">
+//     David McCarter - dotNetTips.com © 2017
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Linq.Mapping;
 
 namespace dotNetTips.Utility.Portable.Data
 {
     /// <summary>
-    /// Base Class for Data Entities.
+    /// Base Class for Entity Framework Data Entities.
     /// </summary>
     public abstract class DataEntity
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DataEntity"/> class.
+        /// Initializes a new instance of the <see cref="DataEntity" /> class.
         /// </summary>
         protected DataEntity()
         {
@@ -25,7 +38,7 @@ namespace dotNetTips.Utility.Portable.Data
         public DateTimeOffset CreatedAt { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="DataEntity"/> is deleted.
+        /// Gets or sets a value indicating whether this <see cref="DataEntity" /> is deleted.
         /// </summary>
         /// <value><c>true</c> if deleted; otherwise, <c>false</c>.</value>
         public bool Deleted { get; set; }
