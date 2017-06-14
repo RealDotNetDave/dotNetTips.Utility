@@ -62,7 +62,7 @@ namespace dotNetTips.Utility.Portable.Data
         /// Gets or sets the version.
         /// </summary>
         /// <value>The version.</value>
-      [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public byte[] Version { get; set; }
     }
 }
