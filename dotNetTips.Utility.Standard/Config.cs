@@ -86,10 +86,10 @@ namespace dotNetTips.Utility.Standard
         {
             if (_instance is null)
             {
-                _instance = TypeHelper.Create<T>();
+                this._instance = TypeHelper.Create<T>();
             }
 
-            return _instance;
+            return this._instance;
         }
     }
 }

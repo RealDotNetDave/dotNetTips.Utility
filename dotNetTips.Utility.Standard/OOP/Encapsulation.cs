@@ -44,7 +44,7 @@ namespace dotNetTips.Utility.Standard.OOP
             {
                 throw new InvalidCastException(string.Format(CultureInfo.CurrentUICulture, Resources.CannotBeOfTypeException, nameof(TException)));
             }
-            Argument
+        
             var defaultMessage = Resources.ParameterIsInvalid;
 
             if (string.IsNullOrEmpty(message) == false)
