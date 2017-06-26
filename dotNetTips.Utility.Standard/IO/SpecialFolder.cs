@@ -385,6 +385,11 @@ namespace dotNetTips.Utility.Standard.IO
         /// <summary>
         /// The cd burning
         /// </summary>
-        CDBurning = 59
+        CDBurning = 59,
+
+        /// <summary>
+        /// The Microsoft .NET foler.
+        /// </summary>
+        MicrosoftNet = 500
     }
 }

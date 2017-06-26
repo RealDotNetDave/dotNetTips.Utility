@@ -1,17 +1,23 @@
-﻿// *********************************************************************** Assembly :
-// dotNetTips.Utility.Portable Author : David McCarter Created : 04-15-2016
+﻿// ***********************************************************************
+// Assembly         : dotNetTips.Utility.Portable
+// Author           : David McCarter
+// Created          : 02-28-2017
 //
-// Last Modified By : David McCarter Last Modified On : 06-02-2016 ***********************************************************************
-// <copyright file="TypeExtensions.cs" company="dotNetTips.com">
-//     Copyright Â© 2015
-// </copyright>
-// <summary>
-// </summary>
+// Last Modified By : David McCarter
+// Last Modified On : 03-13-2017
 // ***********************************************************************
-using System;
-using System.Diagnostics.Contracts;
+// <copyright file="TypeExtensions.cs" company="dotNetTips.com">
+//     David McCarter - dotNetTips.com © 2017
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
-namespace dotNetTips.Utility.Portable.Extensions {
+using dotNetTips.Utility.Portable.OOP;
+using System;
+
+
+namespace dotNetTips.Utility.Portable.Extensions
+{
     /// <summary>
     /// Class TypeExtensions.
     /// </summary>
@@ -28,8 +34,8 @@ namespace dotNetTips.Utility.Portable.Extensions {
         public static T Max<T>(this T obj1, T obj2)
             where T : IComparable
         {
-            Contract.Requires<ArgumentNullException>(obj1 != null);
-            Contract.Requires<ArgumentNullException>(obj2 != null);
+            Encapsulation.TryValidateParam<ArgumentNullException>(obj1 != null);
+            Encapsulation.TryValidateParam<ArgumentNullException>(obj2 != null);
 
             return obj1.CompareTo(obj2) >= 0 ? obj1 : obj2;
         }

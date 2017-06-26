@@ -4,20 +4,21 @@
 ' Created          : 08-03-2015
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 06-11-2015
+' Last Modified On : 03-06-2017
 ' ***********************************************************************
 ' <copyright file="DataContextExtensions.vb" company="dotNetTips.com">
-'     dotNetTips.com. All rights reserved.
+'     '     dotNetTips.com. All rights reserved.
+'
 ' </copyright>
 ' <summary></summary>
-' ***********************************************************************
+' *************************************************************************
 Imports System.Collections.Generic
 Imports System.Data.Linq
 Imports System.Reflection
 Imports System.Runtime.CompilerServices
 
 ''' <summary>
-'''
+''' Class DataContextExtensions.
 ''' </summary>
 Public Module DataContextExtensions
     ''' <summary>
@@ -25,8 +26,7 @@ Public Module DataContextExtensions
     ''' </summary>
     ''' <typeparam name="T"></typeparam>
     ''' <param name="dc">The dc.</param>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
+    ''' <returns>IList(Of Tuple(Of T, T)).</returns>
     <Extension>
     Public Function GetTrackedObjects(Of T)(ByVal dc As DataContext) As IList(Of Tuple(Of T, T))
         Dim result As New List(Of Tuple(Of T, T))

@@ -12,9 +12,10 @@
 ' <summary></summary>
 ' ***********************************************************************
 
-Imports System.Diagnostics.Contracts
+
 Imports System.Globalization
 Imports System.Runtime.InteropServices
+Imports dotNetTips.Utility.Portable.OOP
 
 ''' <summary>
 ''' Error logging class
@@ -36,8 +37,8 @@ Public NotInheritable Class LoggingHelper
         Dim collection As List(Of Exception) = Nothing
 
         If ex IsNot Nothing Then
-            collection = New List(Of Exception)() From { _
-                ex _
+            collection = New List(Of Exception)() From {
+                ex
             }
             If ex.InnerException IsNot Nothing Then
                 collection.AddRange(RetrieveAllExceptions(ex.InnerException))
@@ -68,7 +69,7 @@ Public NotInheritable Class LoggingHelper
     ''' </summary>
     ''' <param name="entry">The entry as <see cref="LogEntry">LogEntry</see>.</param>
     Public Shared Sub WriteEntry(ByVal entry As LogEntry)
-        Contract.Requires(Of ArgumentNullException)(entry IsNot Nothing)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(entry IsNot Nothing)
 
         If ApplicationHelper.IsAspNet() Then
             Dim log As New Microsoft.VisualBasic.Logging.AspLog
@@ -107,7 +108,7 @@ Public NotInheritable Class LoggingHelper
     ''' Gets the current process identifier.
     ''' </summary>
     ''' <returns>System.Int32.</returns>
-    <DllImport("kernel32.dll")> _
+    <DllImport("kernel32.dll")>
     Friend Shared Function GetCurrentProcessId() As Integer
     End Function
 

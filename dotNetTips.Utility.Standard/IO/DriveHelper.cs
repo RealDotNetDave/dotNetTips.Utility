@@ -29,7 +29,7 @@ namespace dotNetTips.Utility.Standard.IO
         /// <remarks>This call could take some time. Recommend multi-threading.</remarks>
         //public string GetDriveSerialNumber(string drive)
         //{
-        //    System.Diagnostics.Contracts.Contract.Requires<ArgumentNullException>(string.IsNullOrWhiteSpace(drive) == false);
+        //    System.Diagnostics.Contracts.Encapsulation.TryValidateParam<ArgumentNullException>(string.IsNullOrWhiteSpace(drive) == false);
 
         //    string driveSerial = string.Empty;
 

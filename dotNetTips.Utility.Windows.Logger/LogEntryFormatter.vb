@@ -1,14 +1,16 @@
-﻿'***********************************************************************
+﻿' ***********************************************************************
 ' Assembly         : dotNetTips
 ' Author           : David McCarter
 ' Created          : 12-10-2008
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 06-09-2009
-' Description      :
-'
-' Copyright        : (c) dotNetTips.com. All rights reserved.
-'***********************************************************************
+' Last Modified On : 02-07-2017
+' ***********************************************************************
+' <copyright file="LogEntryFormatter.vb" company="NicheWare - David McCarter">
+'     David McCarter - dotNetTips.com © 2017
+' </copyright>
+' <summary></summary>
+' *************************************************************************
 Imports System.Collections.ObjectModel
 Imports System.Collections.Specialized
 Imports System.Globalization
@@ -23,6 +25,9 @@ Friend Class LogEntryFormatter
     ''' Name of the additional information entry that holds the header.
     ''' </summary>
     Private Const LineSeparator As String = "======================================"
+    ''' <summary>
+    ''' The additional information
+    ''' </summary>
     Private _additionalInfo As NameValueCollection
 
     ''' <summary>
@@ -42,11 +47,11 @@ Friend Class LogEntryFormatter
 
 #Region "Public Methods"
     ''' <summary>
-    ''' <para>Get the formatted message to be logged.</para>
+    ''' Get the formatted message to be logged.
     ''' </summary>
-    ''' <param name="entry"><para>The exception object whose information should be
-    ''' written to log file.</para></param>
-    ''' <returns><para>The formatted message.</para></returns>
+    ''' <param name="entry">The exception object whose information should be
+    ''' written to log file.</param>
+    ''' <returns>The formatted message.</returns>
     Public Function GetMessage(ByVal entry As LogEntry) As String
         Dim message = New StringBuilder()
 
@@ -110,7 +115,7 @@ Friend Class LogEntryFormatter
     ''' Determines if the property needs to be ignored.
     ''' </summary>
     ''' <param name="propInfo">The property information.</param>
-    ''' <returns></returns>
+    ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Private Shared Function IgnoreProperty(ByVal propInfo As PropertyInfo) As Boolean
         Dim ignore = False
 

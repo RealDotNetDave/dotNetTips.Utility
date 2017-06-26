@@ -1,19 +1,25 @@
-﻿// *********************************************************************** Assembly :
-// dotNetTips.Utility.Portable Author : David McCarter Created : 04-15-2016
+﻿// ***********************************************************************
+// Assembly         : dotNetTips.Utility.Portable
+// Author           : David McCarter
+// Created          : 02-28-2017
 //
-// Last Modified By : David McCarter Last Modified On : 06-02-2016 ***********************************************************************
-// <copyright file="ObjectExtensions.cs" company="dotNetTips.com">
-//     Copyright Â© 2015
-// </copyright>
-// <summary>
-// </summary>
+// Last Modified By : David McCarter
+// Last Modified On : 05-11-2017
 // ***********************************************************************
+// <copyright file="ObjectExtensions.cs" company="dotNetTips.com">
+//     David McCarter - dotNetTips.com © 2017
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+using dotNetTips.Utility.Portable.OOP;
 using System;
-using System.Diagnostics.Contracts;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace dotNetTips.Utility.Portable.Extensions {
+namespace dotNetTips.Utility.Portable.Extensions
+{
     /// <summary>
     /// Class ObjectExtensions.
     /// </summary>
@@ -26,11 +32,65 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <param name="value">The value.</param>
         /// <returns>T.</returns>
         /// <remarks>Original code by: Shimmy Weitzhandler</remarks>
-        public static T As<T>(this object value)
-        {
-            Contract.Requires<ArgumentNullException>(value != null);
+        public static T As<T>(this object value) => (T)value;
 
-            return (T)value;
+        /// <summary>
+        /// Disposes the fields.
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        public static void DisposeFields(this IDisposable obj)
+        {
+            var fieldInfos = obj.GetType().GetRuntimeFields();
+
+            foreach (var fieldInfo in fieldInfos)
+            {
+                var value = fieldInfo.GetValue(null) as IDisposable;
+
+                if (value == null)
+                {
+                    continue;
+                }
+
+                value.Dispose();
+                fieldInfo.SetValue(obj, null);
+            }
+        }
+
+        /// <summary>
+        /// Initializes the fields.
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        public static void InitializeFields(this object obj)
+        {
+            var fieldInfos = obj.GetType().GetRuntimeFields();
+
+            foreach (var fieldInfo in fieldInfos)
+            {
+                var objectValue = fieldInfo.GetValue(obj);
+                var runtimeField = obj.GetType().GetRuntimeField(fieldInfo.Name);
+
+                if (runtimeField != null)
+                {
+                    var t = Nullable.GetUnderlyingType(runtimeField.FieldType) ?? runtimeField.FieldType;
+                    var safeValue = (objectValue == null) ? null : Convert.ChangeType(objectValue, t, CultureInfo.InvariantCulture);
+                    runtimeField.SetValue(obj, safeValue);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Determines whether the specified object has the property.
+        /// </summary>
+        /// <param name="instance">The instance.</param>
+        /// <param name="propertyName">Name of the property.</param>
+        /// <returns><c>true</c> if the specified property name has property; otherwise, <c>false</c>.</returns>
+        public static bool HasProperty(this object instance, string propertyName)
+        {
+            Encapsulation.TryValidateParam<ArgumentNullException>(string.IsNullOrWhiteSpace(propertyName) == false);
+
+            var propertyInfo = instance.GetType().GetRuntimeProperties().FirstOrDefault(p => p.Name == propertyName);
+
+            return propertyInfo != null;
         }
 
         /// <summary>
@@ -38,15 +98,14 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="source">The source.</param>
-        /// <param name="list">  The list.</param>
+        /// <param name="list">The list.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         /// <remarks>Original code by: Rory Becker</remarks>
         public static bool In<T>(this T source, params T[] list)
         {
-            Contract.Requires<ArgumentNullException>(source != null);
-            Contract.Requires<ArgumentOutOfRangeException>(list != null && list.Length != 0, "list is null or empty.");
+            Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(list != null && list.Length != 0, "list is null or empty.");
 
-            foreach (T value in list)
+            foreach (var value in list)
             {
                 if (value.Equals(source))
                 {
@@ -61,28 +120,26 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// Determines whether [is not null] [the specified object].
         /// </summary>
         /// <param name="obj">The obj.</param>
-        /// <returns>
-        /// <count>true</count> if [is not null] [the specified object]; otherwise, <count>false</count>.
-        /// </returns>
-        public static bool IsNotNull(this object obj)
-        {
-            return obj != null;
-        }
+        /// <returns><count>true</count> if [is not null] [the specified object]; otherwise, <count>false</count>.</returns>
+        public static bool IsNotNull(this object obj) => obj != null;
 
         /// <summary>
         /// Determines whether the specified object is null.
         /// </summary>
         /// <param name="obj">The object.</param>
         /// <returns><count>true</count> if the specified object is null; otherwise, <count>false</count>.</returns>
-        public static bool IsNull(this object obj)
-        {
-            return obj == null;
-        }
+        public static bool IsNull(this object obj) => obj == null;
+
+        /// <summary>
+        /// Tries the to call Dispose.
+        /// </summary>
+        /// <param name="obj">The obj.</param>
+        public static void TryDispose(this IDisposable obj) => ObjectExtensions.TryDispose(obj, false);
 
         /// <summary>
         /// Tries to Dispose the object.
         /// </summary>
-        /// <param name="obj">           The obj.</param>
+        /// <param name="obj">The obj.</param>
         /// <param name="throwException">if set to <count>true</count> [throw exception].</param>
         public static void TryDispose(this IDisposable obj, bool throwException)
         {
@@ -100,30 +157,6 @@ namespace dotNetTips.Utility.Portable.Extensions {
                     throw;
                 }
             }
-        }
-
-        /// <summary>
-        /// Tries the to call Dispose.
-        /// </summary>
-        /// <param name="obj">The obj.</param>
-        public static void TryDispose(this IDisposable obj)
-        {
-            ObjectExtensions.TryDispose(obj, false);
-        }
-
-        /// <summary>
-        /// Determines whether the specified object has the property.
-        /// </summary>
-        /// <param name="instance">    The instance.</param>
-        /// <param name="propertyName">Name of the property.</param>
-        /// <returns><c>true</c> if the specified property name has property; otherwise, <c>false</c>.</returns>
-        public static bool HasProperty(this object instance, string propertyName)
-        {
-            Contract.Requires<ArgumentNullException>(string.IsNullOrWhiteSpace(propertyName) == false);
-
-            var propertyInfo = instance.GetType().GetRuntimeProperties().FirstOrDefault(p => p.Name == propertyName);
-
-            return propertyInfo != null;
         }
     }
 }

@@ -41,10 +41,6 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <remarks>Original code by: Jeremy Clark</remarks>
         public static T Max<T>(this T obj1, T obj2) where T : IComparable
         {
-            if (obj1==null)
-            {
-                throw new ArgumentNullException(nameof(obj1), "Object 1 cannot be null.");
-            }
             if (obj2==null)
             {
                 throw new ArgumentNullException(nameof(obj2), "Object 1 cannot be null.");

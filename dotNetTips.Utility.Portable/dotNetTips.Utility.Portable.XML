@@ -4,32 +4,86 @@
         <name>dotNetTips.Utility.Portable</name>
     </assembly>
     <members>
-        <member name="T:dotNetTips.Utility.Portable.ArgumentIsReadOnlyException">
+        <member name="T:dotNetTips.Utility.Portable.ArgumentInvalidException">
             <summary>
-            Class ArgumentIsReadOnlyException.
+            Class ArgumentIsInvalidException.
             </summary>
-            <seealso cref="T:System.Exception"/>
+            <seealso cref="T:System.ArgumentException" />
         </member>
-        <member name="M:dotNetTips.Utility.Portable.ArgumentIsReadOnlyException.#ctor">
+        <member name="M:dotNetTips.Utility.Portable.ArgumentInvalidException.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentIsReadOnlyException"/> class.
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException" /> class.
             </summary>
         </member>
-        <member name="M:dotNetTips.Utility.Portable.ArgumentIsReadOnlyException.#ctor(System.String)">
+        <member name="M:dotNetTips.Utility.Portable.ArgumentInvalidException.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentIsReadOnlyException"/> class.
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException" /> class.
             </summary>
             <param name="message">The message that describes the error.</param>
         </member>
-        <member name="M:dotNetTips.Utility.Portable.ArgumentIsReadOnlyException.#ctor(System.String,System.Exception)">
+        <member name="M:dotNetTips.Utility.Portable.ArgumentInvalidException.#ctor(System.String,System.Exception)">
             <summary>
-            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentIsReadOnlyException"/> class.
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentReadOnlyException" /> class.
             </summary>
-            <param name="message">       The error message that explains the reason for the exception.</param>
-            <param name="innerException">
-            The exception that is the cause of the current exception, or a null reference (Nothing in
-            Visual Basic) if no inner exception is specified.
-            </param>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in
+            Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.ArgumentInvalidException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException" /> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="paramName">The name of the parameter that caused the current exception.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.ArgumentInvalidException.#ctor(System.String,System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException" /> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="paramName">The name of the parameter that caused the current exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception. If the <paramref name="innerException" /> parameter is not a null reference, the current exception is raised in a catch block that handles the inner exception.</param>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.ArgumentReadOnlyException">
+            <summary>
+            Class ArgumentIsReadOnlyException.
+            </summary>
+            <seealso cref="T:System.ArgumentException" />
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.ArgumentReadOnlyException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentReadOnlyException" /> class.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.ArgumentReadOnlyException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentReadOnlyException" /> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.ArgumentReadOnlyException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentReadOnlyException" /> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in
+            Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.ArgumentReadOnlyException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentReadOnlyException" /> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="paramName">The name of the parameter that caused the current exception.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.ArgumentReadOnlyException.#ctor(System.String,System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.ArgumentReadOnlyException" /> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="paramName">The name of the parameter that caused the current exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception. If the <paramref name="innerException" /> parameter is not a null reference, the current exception is raised in a catch block that handles the inner exception.</param>
         </member>
         <member name="T:dotNetTips.Utility.Portable.ControlChars">
             <summary>
@@ -38,7 +92,7 @@
         </member>
         <member name="F:dotNetTips.Utility.Portable.ControlChars.Back">
             <summary>
-            Back
+            Back char
             </summary>
         </member>
         <member name="F:dotNetTips.Utility.Portable.ControlChars.BackSlash">
@@ -120,6 +174,46 @@
             <summary>
             Vertical tab
             </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.Data.DataEntity">
+            <summary>
+            Base Class for Entity Framework Data Entities.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Data.DataEntity.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.Data.DataEntity" /> class.
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Data.DataEntity.CreatedAt">
+            <summary>
+            Gets or sets the created at date.
+            </summary>
+            <value>The created at.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Data.DataEntity.Deleted">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:dotNetTips.Utility.Portable.Data.DataEntity" /> is deleted.
+            </summary>
+            <value><c>true</c> if deleted; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Data.DataEntity.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>The identifier.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Data.DataEntity.UpdatedAt">
+            <summary>
+            Gets or sets the updated at.
+            </summary>
+            <value>The updated at.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Data.DataEntity.Version">
+            <summary>
+            Gets or sets the version.
+            </summary>
+            <value>The version.</value>
         </member>
         <member name="T:dotNetTips.Utility.Portable.DateFormat">
             <summary>
@@ -206,57 +300,20 @@
             Second
             </summary>
         </member>
-        <member name="T:dotNetTips.Utility.Portable.Extensions.ExceptionExtension">
+        <member name="T:dotNetTips.Utility.Portable.DueDate">
             <summary>
-            Class ExceptionExtension.
+            Enum DueDate
             </summary>
         </member>
-        <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.TraverseFor``1(System.Exception)">
+        <member name="F:dotNetTips.Utility.Portable.DueDate.EndOfPeriod">
             <summary>
-            Traverses Exception.
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="ex">The ex.</param>
-            <returns>T.</returns>
-        </member>
-        <member name="T:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions">
-            <summary>
-            Extensions for DateTime
+            The end of period
             </summary>
         </member>
-        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.GetLast(System.DateTime,System.DayOfWeek)">
+        <member name="F:dotNetTips.Utility.Portable.DueDate.BeggingOfPeriod">
             <summary>
-            Gets the last.
+            The begging of period
             </summary>
-            <param name="input">The date/ time.</param>
-            <param name="dayOfWeek">The day of week.</param>
-            <returns>DateTime.</returns>
-        </member>
-        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.GetNext(System.DateTime,System.DayOfWeek)">
-            <summary>
-            Gets the next.
-            </summary>
-            <param name="input">The date/ time.</param>
-            <param name="dayOfWeek">The day of week.</param>
-            <returns>DateTime.</returns>
-        </member>
-        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.Intersects(System.DateTime,System.DateTime,System.DateTime,System.DateTime)">
-            <summary>
-            Intersects the specified start date.
-            </summary>
-            <param name="startDate">The start date.</param>
-            <param name="endDate">The end date.</param>
-            <param name="intersectingStartDate">The intersecting start date.</param>
-            <param name="intersectingEndDate">The intersecting end date.</param>
-            <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-            <remarks>Code by: Walter Quesada</remarks>
-        </member>
-        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.ToFriendlyDateString(System.DateTime)">
-            <summary>
-            To the friendly date string.
-            </summary>
-            <param name="input">The date.</param>
-            <returns>System.String.</returns>
         </member>
         <member name="T:dotNetTips.Utility.Portable.Extensions.CollectionExtensions">
             <summary>
@@ -437,6 +494,118 @@
             <returns>IEnumerable&lt;TSource&gt;.</returns>
             <remarks>Original code by: Phil Campbell</remarks>
         </member>
+        <member name="T:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions">
+            <summary>
+            Extensions for DateTime
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.GetLastDay(System.DateTime,System.DayOfWeek)">
+            <summary>
+            Gets the last date.
+            </summary>
+            <param name="input">The date/ time.</param>
+            <param name="dayOfWeek">The day of week.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.GetNextDay(System.DateTime,System.DayOfWeek)">
+            <summary>
+            Gets the next.
+            </summary>
+            <param name="input">The date/ time.</param>
+            <param name="dayOfWeek">The day of week.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.Intersects(System.DateTime,System.DateTime,System.DateTime,System.DateTime)">
+            <summary>
+            Intersects the specified start date.
+            </summary>
+            <param name="startDate">The start date.</param>
+            <param name="endDate">The end date.</param>
+            <param name="intersectingStartDate">The intersecting start date.</param>
+            <param name="intersectingEndDate">The intersecting end date.</param>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+            <remarks>Code by: Walter Quesada</remarks>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.ToFriendlyDateString(System.DateTime)">
+            <summary>
+            To the friendly date string.
+            </summary>
+            <param name="input">The date.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.Yesterday(System.DateTime)">
+            <summary>
+            Yesterdays the specified input.
+            </summary>
+            <param name="input">The input.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.DateTimeExtensions.Tomorrow(System.DateTime)">
+            <summary>
+            Tomorrows the specified input.
+            </summary>
+            <param name="input">The input.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.Extensions.ExceptionExtension">
+            <summary>
+            Class ExceptionExtension.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.FromHierarchy``1(``0,System.Func{``0,``0})">
+            <summary>
+            Froms the hierarchy.
+            </summary>
+            <typeparam name="TSource">The type of the t source.</typeparam>
+            <param name="source">The source.</param>
+            <param name="nextItem">The next item.</param>
+            <returns>IEnumerable&lt;TSource&gt;.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.FromHierarchy``1(``0,System.Func{``0,``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Froms the hierarchy.
+            </summary>
+            <typeparam name="TSource">The type of the t source.</typeparam>
+            <param name="source">The source.</param>
+            <param name="nextItem">The next item.</param>
+            <param name="canContinue">The can continue.</param>
+            <returns>IEnumerable&lt;TSource&gt;.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.GetAllMessages(System.Exception)">
+            <summary>
+            Gets all messages.
+            </summary>
+            <param name="exception">The exception.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.GetAllMessages(System.Exception,System.String)">
+            <summary>
+            Gets all messages.
+            </summary>
+            <param name="exception">The exception.</param>
+            <param name="separator">The separator.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ExceptionExtension.TraverseFor``1(System.Exception)">
+            <summary>
+            Traverses Exception.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="ex">The ex.</param>
+            <returns>T.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.Extensions.HttpExtensions">
+            <summary>
+            Class HttpExtensions.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.HttpExtensions.IsXmlOrJson(System.Net.Http.HttpContent)">
+            <summary>
+            Determines whether [is XML or json] [the specified content].
+            </summary>
+            <param name="content">The content.</param>
+            <returns><c>true</c> if [is XML or json] [the specified content]; otherwise, <c>false</c>.</returns>
+        </member>
         <member name="T:dotNetTips.Utility.Portable.Extensions.MathExtensions">
             <summary>
             Class MathExtensions.
@@ -528,13 +697,33 @@
             <returns>T.</returns>
             <remarks>Original code by: Shimmy Weitzhandler</remarks>
         </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.DisposeFields(System.IDisposable)">
+            <summary>
+            Disposes the fields.
+            </summary>
+            <param name="obj">The object.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.InitializeFields(System.Object)">
+            <summary>
+            Initializes the fields.
+            </summary>
+            <param name="obj">The object.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.HasProperty(System.Object,System.String)">
+            <summary>
+            Determines whether the specified object has the property.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="propertyName">Name of the property.</param>
+            <returns><c>true</c> if the specified property name has property; otherwise, <c>false</c>.</returns>
+        </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.In``1(``0,``0[])">
             <summary>
             Ins the specified source.
             </summary>
             <typeparam name="T"></typeparam>
             <param name="source">The source.</param>
-            <param name="list">  The list.</param>
+            <param name="list">The list.</param>
             <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
             <remarks>Original code by: Rory Becker</remarks>
         </member>
@@ -543,9 +732,7 @@
             Determines whether [is not null] [the specified object].
             </summary>
             <param name="obj">The obj.</param>
-            <returns>
-            <count>true</count> if [is not null] [the specified object]; otherwise, <count>false</count>.
-            </returns>
+            <returns><count>true</count> if [is not null] [the specified object]; otherwise, <count>false</count>.</returns>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.IsNull(System.Object)">
             <summary>
@@ -554,26 +741,18 @@
             <param name="obj">The object.</param>
             <returns><count>true</count> if the specified object is null; otherwise, <count>false</count>.</returns>
         </member>
-        <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.TryDispose(System.IDisposable,System.Boolean)">
-            <summary>
-            Tries to Dispose the object.
-            </summary>
-            <param name="obj">           The obj.</param>
-            <param name="throwException">if set to <count>true</count> [throw exception].</param>
-        </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.TryDispose(System.IDisposable)">
             <summary>
             Tries the to call Dispose.
             </summary>
             <param name="obj">The obj.</param>
         </member>
-        <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.HasProperty(System.Object,System.String)">
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.TryDispose(System.IDisposable,System.Boolean)">
             <summary>
-            Determines whether the specified object has the property.
+            Tries to Dispose the object.
             </summary>
-            <param name="instance">    The instance.</param>
-            <param name="propertyName">Name of the property.</param>
-            <returns><c>true</c> if the specified property name has property; otherwise, <c>false</c>.</returns>
+            <param name="obj">The obj.</param>
+            <param name="throwException">if set to <count>true</count> [throw exception].</param>
         </member>
         <member name="T:dotNetTips.Utility.Portable.Extensions.StringExtensions">
             <summary>
@@ -650,21 +829,6 @@
             <param name="obj2">The obj2.</param>
             <returns>T.</returns>
             <remarks>Original code by: Jeremy Clark</remarks>
-        </member>
-        <member name="T:dotNetTips.Utility.Portable.DueDate">
-            <summary>
-            Enum DueDate
-            </summary>
-        </member>
-        <member name="F:dotNetTips.Utility.Portable.DueDate.EndOfPeriod">
-            <summary>
-            The end of period
-            </summary>
-        </member>
-        <member name="F:dotNetTips.Utility.Portable.DueDate.BeggingOfPeriod">
-            <summary>
-            The begging of period
-            </summary>
         </member>
         <member name="T:dotNetTips.Utility.Portable.FileAttributes">
             <summary>
@@ -782,29 +946,42 @@
             </summary>
             <typeparam name="T"></typeparam>
         </member>
-        <member name="M:dotNetTips.Utility.Portable.ICloneable`1.Cone">
+        <member name="M:dotNetTips.Utility.Portable.ICloneable`1.Clone">
             <summary>
             Cones this instance.
             </summary>
             <returns>T.</returns>
         </member>
-        <member name="T:dotNetTips.Utility.Portable.IO.DirectoryHelper">
+        <member name="T:dotNetTips.Utility.Portable.IValid">
             <summary>
-            Class DirectoryHelper.
+            Interface IValid
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.IValid.IsValid">
+            <summary>
+            Returns true if type is valid.
+            </summary>
+            <value><c>true</c> if this instance is valid; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.ImageExtensions">
+            <summary>
+            Class ImageExtensions.
             </summary>
         </member>
         <member name="T:dotNetTips.Utility.Portable.OOP.Encapsulation">
             <summary>
-            Class Encapsulation.
+            Class for Encapsulation.
             </summary>
         </member>
-        <member name="M:dotNetTips.Utility.Portable.OOP.Encapsulation.TryValidateParam``1(System.Boolean,System.String)">
+        <member name="M:dotNetTips.Utility.Portable.OOP.Encapsulation.TryValidateParam``1(System.Boolean,System.String,System.String)">
             <summary>
             Tries the validate parameter.
             </summary>
             <typeparam name="TException">The type of the t exception.</typeparam>
             <param name="condition">The condition.</param>
+            <param name="paramName">Name of the parameter.</param>
             <param name="message">The message.</param>
+            <exception cref="T:System.InvalidCastException"></exception>
         </member>
         <member name="M:dotNetTips.Utility.Portable.OOP.Encapsulation.TryValidateParam(System.Collections.IEnumerable,System.String,System.String)">
             <summary>
@@ -814,6 +991,7 @@
             <param name="paramName">Name of the parameter.</param>
             <param name="message">The message.</param>
             <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentNullException"></exception>
         </member>
         <member name="M:dotNetTips.Utility.Portable.OOP.Encapsulation.TryValidateParam(System.Enum,System.String,System.String)">
             <summary>
@@ -822,6 +1000,91 @@
             <param name="value">The value.</param>
             <param name="paramName">Name of the parameter.</param>
             <param name="message">The message.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.OOP.Encapsulation.TryValidateParam(System.Guid,System.String,System.String)">
+            <summary>
+            Tries the validate parameter.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <param name="message">The message.</param>
+            <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
+            <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+            <remarks>TEST Created</remarks>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.OOP.Encapsulation.TryValidateParam(System.String,System.String,System.String)">
+            <summary>
+            Tries the validate parameter.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <param name="message">The message.</param>
+            <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
+            <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.OOP.Encapsulation.TryValidateParam(System.Collections.IEnumerable,System.Int32,System.String,System.String)">
+            <summary>
+            Tries the validate parameter.
+            </summary>
+            <param name="collection">The collection.</param>
+            <param name="size">The size.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <param name="message">The message.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.OOP.Encapsulation.TryValidateParam(System.String,System.Text.RegularExpressions.Regex,System.String,System.String)">
+            <summary>
+            Tries the validate parameter.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="match">The match.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <param name="message">The message.</param>
+            <exception cref="T:System.ArgumentNullException">match</exception>
+            <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
+            <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException">match</exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.OOP.Encapsulation.TryValidateParam(System.String,System.String,System.String,System.String)">
+            <summary>
+            Tries the validate parameter.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="expected">The expected.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <param name="message">The message.</param>
+            <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
+            <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.OOP.Encapsulation.TryValidateParam(System.Type,System.Type,System.String,System.String)">
+            <summary>
+            Tries the validate parameter.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="expectedType">The expected type.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <param name="message">The message.</param>
+            <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
+            <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.OOP.Encapsulation.TryValidateParam(System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Tries the validate parameter.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="minimumLength">The minimum length.</param>
+            <param name="maximumLength">The maximum length.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <param name="message">The message.</param>
+            <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException">
+            </exception>
+            <exception cref="T:dotNetTips.Utility.Portable.ArgumentInvalidException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
         </member>
         <member name="T:dotNetTips.Utility.Portable.ISingleton`1">
             <summary>
@@ -829,11 +1092,81 @@
             </summary>
             <typeparam name="T"></typeparam>
         </member>
-        <member name="P:dotNetTips.Utility.Portable.ISingleton`1.Instance">
+        <member name="T:dotNetTips.Utility.Portable.Properties.Resources">
             <summary>
-            Gets the instance.
+              A strongly-typed resource class, for looking up localized strings, etc.
             </summary>
-            <value>The instance.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.CannotBeOfTypeException">
+            <summary>
+              Looks up a localized string similar to {0} cannot be of type Exception. Use a more specific exception from the framework or a custom Exception inheriting type Exception (only)..
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.CollectionIsNullOrHasNoItems">
+            <summary>
+              Looks up a localized string similar to Collection is null or has no items..
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.CollectionSizeIsNotValid">
+            <summary>
+              Looks up a localized string similar to Collection size is not valid..
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.GuidIsEmpty">
+            <summary>
+              Looks up a localized string similar to Guid is Empth..
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.InvalidType">
+            <summary>
+              Looks up a localized string similar to Invalid type..
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.ParameterIsInvalid">
+            <summary>
+              Looks up a localized string similar to Parameter is invalid..
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.StringDoesNotMatch">
+            <summary>
+              Looks up a localized string similar to Strings do not match..
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.StringDoesNotMatchMaximumLength">
+            <summary>
+              Looks up a localized string similar to String does not matach maximum length..
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.StringDoesNotMatchMinimumLength">
+            <summary>
+              Looks up a localized string similar to String does not match minimum length..
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.StringIsEmpty">
+            <summary>
+              Looks up a localized string similar to String is empty..
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.StringIsNotValid">
+            <summary>
+              Looks up a localized string similar to String is not valid..
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.TheValueIsNotDefinedInTheEnumeration">
+            <summary>
+              Looks up a localized string similar to The values are not defined in the enum..
+            </summary>
         </member>
         <member name="T:dotNetTips.Utility.Portable.Tristate">
             <summary>
@@ -866,25 +1199,24 @@
             </summary>
             <typeparam name="T"></typeparam>
             <returns>T.</returns>
-            <remarks>Original code by: Jeremy Clark</remarks>
         </member>
         <member name="T:dotNetTips.Utility.Standard.Diagnostics.PerformanceStopwatch">
             <summary>
             Class PerformanceStopwatch.
             </summary>
-            <seealso cref="T:System.Diagnostics.Stopwatch"/>
-        </member>
-        <member name="M:dotNetTips.Utility.Standard.Diagnostics.PerformanceStopwatch.StopReset">
-            <summary>
-            Stops the reset.
-            </summary>
-            <returns>TimeSpan.</returns>
+            <seealso cref="T:System.Diagnostics.Stopwatch" />
         </member>
         <member name="M:dotNetTips.Utility.Standard.Diagnostics.PerformanceStopwatch.StartNew">
             <summary>
             Starts the new.
             </summary>
             <returns>PerformanceStopwatch.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Diagnostics.PerformanceStopwatch.StopReset">
+            <summary>
+            Stops the reset.
+            </summary>
+            <returns>TimeSpan.</returns>
         </member>
     </members>
 </doc>

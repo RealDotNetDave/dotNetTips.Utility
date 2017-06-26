@@ -18,7 +18,8 @@ Imports System.IO
 Imports System.Reflection
 Imports System.Runtime.CompilerServices
 Imports System.Text
-Imports System.Diagnostics.Contracts
+Imports dotNetTips.Utility.Portable.OOP
+
 ''' <summary>
 ''' Class DataTableExtensions.
 ''' </summary>
@@ -43,17 +44,20 @@ Public Module DataTableExtensions
     ''' <remarks>Original code by: Leo Shih</remarks>
     <Extension>
     Public Function CopyToEntityList(Of T As New)(ByVal dt As DataTable) As IEnumerable(Of T)
+
         Dim properties = New T().GetType().GetProperties()
+
         Dim columns = From col In dt.Columns.Cast(Of DataColumn)()
                       Select col.ColumnName, col.DataType
+
         Dim pptList = (From ppt In properties
                        Where columns.Select(Function(p) p.ColumnName).Contains(ppt.Name) _
                        And columns.Select(Function(p) p.DataType).Contains(
-                                        If(Nullable.GetUnderlyingType(ppt.PropertyType) Is Nothing,
-                                           ppt.PropertyType, Nullable.GetUnderlyingType(ppt.PropertyType)))
+If(Nullable.GetUnderlyingType(ppt.PropertyType), ppt.PropertyType))
                        Select ppt)
 
         Dim returnList As New List(Of T)
+
         For Each dr As DataRow In dt.Rows
             Dim newT As New T()
             For Each entityItem As PropertyInfo In pptList
@@ -73,7 +77,7 @@ Public Module DataTableExtensions
     ''' <param name="includeHeader">if set to <c>true</c> [include header].</param>
     <Extension>
     Public Sub ToCsv(table As DataTable, delimiter As String, includeHeader As Boolean)
-        Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(delimiter) = False, "delimiter is nothing or empty.")
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(delimiter) = False, "delimiter is nothing or empty.")
 
         Dim result As New StringBuilder()
 

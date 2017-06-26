@@ -12,6 +12,7 @@
 Imports System
 Imports System.Collections.Generic
 Imports System.Runtime.CompilerServices
+Imports dotNetTips.Utility.Portable.OOP
 
 Namespace Extensions
     ''' <summary>
@@ -30,9 +31,9 @@ Namespace Extensions
         ''' Code by: Lucas
         ''' http://code.msdn.microsoft.com/LucasExtensions
         ''' </remarks>
-        <Extension> _
+        <Extension>
         Public Sub ForEach(Of T)(ByVal values As IEnumerable(Of T), ByVal action As Action(Of T))
-            Contract.Requires(Of ArgumentNullException)(action IsNot Nothing)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(action IsNot Nothing)
 
             For Each value As T In values
                 action(value)

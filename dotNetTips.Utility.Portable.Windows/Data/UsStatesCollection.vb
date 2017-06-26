@@ -11,6 +11,8 @@
 ' </copyright>
 ' <summary></summary>
 ' ***********************************************************************
+Imports dotNetTips.Utility.Portable.OOP
+
 Namespace Data
 
     ''' <summary>
@@ -27,7 +29,7 @@ Namespace Data
         ''' <returns>State name or code.</returns>
         ''' <remarks></remarks>
         Public Shared Function ConvertNameOrCode(ByVal nameOrCode As String) As String
-            Contracts.Contract.Requires(String.IsNullOrEmpty(nameOrCode) = False, "Argument cannot be null.")
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(nameOrCode) = False)
 
             nameOrCode = nameOrCode.Trim
 

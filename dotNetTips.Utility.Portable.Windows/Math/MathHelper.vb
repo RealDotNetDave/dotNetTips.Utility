@@ -12,6 +12,8 @@
 ' <summary></summary>
 ' ***********************************************************************
 Imports System.Globalization
+Imports dotNetTips.Utility.Portable.OOP
+
 Namespace Math
     ''' <summary>
     ''' Math helper class.
@@ -62,7 +64,7 @@ Namespace Math
         ''' <returns></returns>
         ''' <remarks></remarks>
         Public Function CalculateKilobytes(ByVal d As Decimal, ByVal digits As Int32) As Decimal
-            Contract.Requires(Of ArgumentOutOfRangeException)(digits >= 0 AndAlso digits <= 15, "Must be in range 0-15")
+            Encapsulation.TryValidateParam(Of ArgumentOutOfRangeException)(digits >= 0 AndAlso digits <= 15, "Must be in range 0-15")
 
             Return CDec(System.Math.Round(d / 1024.0, digits))
         End Function

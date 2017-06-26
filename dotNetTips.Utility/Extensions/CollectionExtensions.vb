@@ -4,22 +4,21 @@
 ' Created          : 05-14-2014
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 05-14-2014
+' Last Modified On : 03-10-2017
 ' ***********************************************************************
 ' <copyright file="CollectionExtensions.vb" company="David McCarter Consulting">
-'     David McCarter Consulting. All rights reserved.
+'     '     David McCarter Consulting. All rights reserved.
+'
 ' </copyright>
 ' <summary></summary>
-' ***********************************************************************
-Imports System.Collections.Generic
-Imports System.Diagnostics.Contracts
+' *************************************************************************
 Imports System.Drawing
 Imports System.IO
-Imports System.Reflection
 Imports System.Runtime.CompilerServices
+
 Namespace Extensions
     ''' <summary>
-    '''
+    ''' Class CollectionExtensions.
     ''' </summary>
     Public Module CollectionExtensions
 
@@ -27,11 +26,9 @@ Namespace Extensions
         ''' To the image.
         ''' </summary>
         ''' <param name="value">The value.</param>
-        ''' <returns></returns>
-        ''' <remarks></remarks>
+        ''' <returns>Image.</returns>
         <Extension>
         Public Function ToImage(value As Byte()) As Image
-            Contracts.Contract.Requires(Of ArgumentNullException)(value.Length > 0)
 
             Dim image As Image
 

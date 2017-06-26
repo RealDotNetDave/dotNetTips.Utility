@@ -4,7 +4,7 @@
 ' Created          : 03-29-2016
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 05-16-2016
+' Last Modified On : 05-11-2017
 ' ***********************************************************************
 ' <copyright file="StringExtensions.vb" company="NicheWare - David McCarter">
 '     '     NicheWare - David McCarter
@@ -13,11 +13,11 @@
 ' <summary></summary>
 ' *************************************************************************
 Imports System.ComponentModel
-Imports System.Diagnostics.Contracts
 Imports System.Runtime.CompilerServices
 Imports System.Security.Cryptography
 Imports System.Speech.Synthesis
 Imports System.Text
+Imports dotNetTips.Utility.Portable.OOP
 Imports dotNetTips.Utility.Security
 
 Namespace Extensions
@@ -54,8 +54,6 @@ Namespace Extensions
         ''' <returns>System.String.</returns>
         <Extension>
         Public Function HtmlEncode(ByVal value As String) As String
-            Contract.Ensures(String.IsNullOrWhiteSpace(Contract.Result(Of String)()) = False)
-
             Return StringHelper.HtmlEncode(value)
         End Function
 
@@ -63,9 +61,7 @@ Namespace Extensions
         ''' Determines whether [is null or empty] [the specified value].
         ''' </summary>
         ''' <param name="value">The value.</param>
-        ''' <returns>
-        ''' <c>true</c> if [is null or empty] [the specified value]; otherwise, <c>false</c>.
-        ''' </returns>
+        ''' <returns><c>true</c> if [is null or empty] [the specified value]; otherwise, <c>false</c>.</returns>
         <Extension>
         Public Function IsNullOrEmpty(ByVal value As String) As Boolean
             Return String.IsNullOrEmpty(value)
@@ -90,7 +86,7 @@ Namespace Extensions
         ''' <remarks>Original code by: Joacim Andersson</remarks>
         <Extension>
         Public Function EqualsText(ByVal value As String, ByVal equalsTo As String) As Boolean
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(equalsTo) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(equalsTo) = False)
 
             Return ((New CaseInsensitiveComparer(CultureInfo.CurrentCulture)).Compare(value, equalsTo) = 0)
         End Function
@@ -224,8 +220,8 @@ Namespace Extensions
         ''' <returns>System.String.</returns>
         <Extension>
         Public Function Extract(ByVal value As String, ByVal start As String, ByVal [end] As String) As String
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(start) = False)
-            Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace([end]) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(start) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace([end]) = False)
 
             If Not String.IsNullOrEmpty(value) Then
                 Dim i As Integer = value.IndexOf(start, StringComparison.CurrentCulture)
@@ -321,7 +317,7 @@ Namespace Extensions
         ''' <remarks>Original code by: Cosmin Pirlitu</remarks>
         <Extension>
         Public Function ComputeHash(input As String, hashType As HashType) As String
-            Contract.Requires(Of ArgumentOutOfRangeException)(System.Enum.IsDefined(GetType(HashType), hashType))
+            Encapsulation.TryValidateParam(Of ArgumentOutOfRangeException)(System.Enum.IsDefined(GetType(HashType), hashType))
 
             Dim hash As Byte() = GetHash(input, hashType)
             Dim ret As New StringBuilder()

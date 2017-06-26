@@ -4,29 +4,28 @@
 ' Created          : 12-04-2013
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 05-15-2014
+' Last Modified On : 03-06-2017
 ' ***********************************************************************
 ' <copyright file="DataServicesExtensions.vb" company="David McCarter Consulting">
-'     David McCarter Consulting. All rights reserved.
+'     '     David McCarter Consulting. All rights reserved.
+'
 ' </copyright>
 ' <summary></summary>
-' ***********************************************************************
-
+' *************************************************************************
 Imports System.Collections.Generic
 Imports System.Data.Services
 Imports System.Runtime.CompilerServices
 
 Namespace Extensions
     ''' <summary>
-    '''
+    ''' Class DataServicesExtensions.
     ''' </summary>
     Public Module DataServicesExtensions
         ''' <summary>
         ''' Copies the request header values.
         ''' </summary>
         ''' <param name="args">The args.</param>
-        ''' <returns></returns>
-        ''' <remarks></remarks>
+        ''' <returns>SortedDictionary(Of System.String, System.String).</returns>
         <Extension>
         Public Function CopyRequestHeaderValues(args As ProcessRequestArgs) As SortedDictionary(Of String, String)
 

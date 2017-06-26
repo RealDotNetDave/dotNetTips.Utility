@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F7FB8D59-0C99-4AAF-BC33-2178AA9B8460}</ProjectGuid>
+    <ProjectGuid>{5C2CAFB0-E6BF-4BB4-BCCD-240978022478}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>dotNetTips.Utility.Portable.Tests</RootNamespace>
@@ -37,113 +37,34 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.ExtendedReflection, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Pex.Framework, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Pex\Microsoft.ExtendedReflection.dll</HintPath>
+      <HintPath>..\Dependencies\Microsoft.Pex.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Pex.Framework">
-      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Pex\Microsoft.Pex.Framework.dll</HintPath>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CollectionExtensionsTest.ContainsAny.g.cs">
-      <DependentUpon>CollectionExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CollectionExtensionsTest.Count.g.cs">
-      <DependentUpon>CollectionExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CollectionExtensionsTest.cs" />
-    <Compile Include="CollectionExtensionsTest.NoDuplicates.g.cs">
-      <DependentUpon>CollectionExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CollectionExtensionsTest.Page.g.cs">
-      <DependentUpon>CollectionExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CollectionExtensionsTest.PickRandom.g.cs">
-      <DependentUpon>CollectionExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CollectionExtensionsTest.Pivot.g.cs">
-      <DependentUpon>CollectionExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CollectionExtensionsTest.Randomize.g.cs">
-      <DependentUpon>CollectionExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CollectionExtensionsTest.ToDelimitedString.g.cs">
-      <DependentUpon>CollectionExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CollectionExtensionsTest.ToDictionary.g.cs">
-      <DependentUpon>CollectionExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CollectionExtensionsTest.ToListAsync.g.cs">
-      <DependentUpon>CollectionExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CollectionExtensionsTest.ToObservableCollection.g.cs">
-      <DependentUpon>CollectionExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CollectionExtensionsTest.ToReadOnlyCollection.g.cs">
-      <DependentUpon>CollectionExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DateTimeExtensionsTest.cs" />
-    <Compile Include="DateTimeExtensionsTest.GetLast.g.cs">
-      <DependentUpon>DateTimeExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DateTimeExtensionsTest.GetNext.g.cs">
-      <DependentUpon>DateTimeExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DateTimeExtensionsTest.Intersects.g.cs">
-      <DependentUpon>DateTimeExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DateTimeExtensionsTest.ToFriendlyDateString.g.cs">
-      <DependentUpon>DateTimeExtensionsTest.cs</DependentUpon>
+    <ProjectReference Include="..\dotNetTips.Utility.Portable\dotNetTips.Utility.Portable.csproj">
+      <Project>{0C07F36A-CB82-47B3-BC4B-601FADD18A71}</Project>
+      <Name>dotNetTips.Utility.Portable</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EncapsulationTest.cs" />
+    <Compile Include="EncapsulationTest.TryValidateParam.g.cs">
+      <DependentUpon>EncapsulationTest.cs</DependentUpon>
     </Compile>
     <Compile Include="ExceptionExtensionTest.cs" />
-    <Compile Include="ExceptionExtensionTest.TraverseFor.g.cs">
+    <Compile Include="ExceptionExtensionTest.GetAllMessages.g.cs">
       <DependentUpon>ExceptionExtensionTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="MathExtensionsTest.cs" />
-    <Compile Include="MathExtensionsTest.Round.g.cs">
-      <DependentUpon>MathExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ObjectExtensionsTest.As.g.cs">
-      <DependentUpon>ObjectExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ObjectExtensionsTest.cs" />
-    <Compile Include="ObjectExtensionsTest.HasProperty.g.cs">
-      <DependentUpon>ObjectExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ObjectExtensionsTest.In.g.cs">
-      <DependentUpon>ObjectExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ObjectExtensionsTest.IsNotNull.g.cs">
-      <DependentUpon>ObjectExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ObjectExtensionsTest.IsNull.g.cs">
-      <DependentUpon>ObjectExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ObjectExtensionsTest.TryDispose.g.cs">
-      <DependentUpon>ObjectExtensionsTest.cs</DependentUpon>
-    </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\PexAssemblyInfo.cs" />
-    <Compile Include="StringExtensionsTest.cs" />
-    <Compile Include="StringExtensionsTest.DefaultIfNull.g.cs">
-      <DependentUpon>StringExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="StringExtensionsTest.DefaultIfNullOrEmpty.g.cs">
-      <DependentUpon>StringExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="StringExtensionsTest.FormatFileSize.g.cs">
-      <DependentUpon>StringExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="StringExtensionsTest.Indent.g.cs">
-      <DependentUpon>StringExtensionsTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TypeExtensionsTest.cs" />
-    <Compile Include="TypeExtensionsTest.Max.g.cs">
-      <DependentUpon>TypeExtensionsTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="TypeHelperTest.Create.g.cs">
       <DependentUpon>TypeHelperTest.cs</DependentUpon>
     </Compile>
@@ -155,11 +76,7 @@
         <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
       </ItemGroup>
     </When>
-    <Otherwise>
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
-      </ItemGroup>
-    </Otherwise>
+    <Otherwise />
   </Choose>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

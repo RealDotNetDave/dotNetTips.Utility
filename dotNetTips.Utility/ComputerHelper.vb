@@ -1,49 +1,54 @@
-'***********************************************************************
+' ***********************************************************************
 ' Assembly         : dotNetTips
 ' Author           : David McCarter
 ' Created          : 12-10-2008
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 05-20-2009
-' Description      :
-'
-' Copyright        : (c) dotNetTips.com. All rights reserved.
-'***********************************************************************
-Imports System.Management
+' Last Modified On : 05-11-2017
+' ***********************************************************************
+' <copyright file="ComputerHelper.vb" company="McCarter Consulting - David McCarter">
+'     David McCarter - dotNetTips.com © 2017
+' </copyright>
+' <summary></summary>
+' *************************************************************************
 Imports System.Collections.Generic
 Imports System.Collections.ObjectModel
+Imports System.Management
 
 ''' <summary>
 ''' System information helper.
 ''' </summary>
-''' <remarks></remarks>
 Public Module ComputerHelper
 
     ''' <summary>
     ''' Product install state.
     ''' </summary>
-    ''' <remarks></remarks>
     Private Enum ProductInstallState
         ''' <summary>
         ''' Bad Configuration
         ''' </summary>
         BadConfiguration = -6
+
         ''' <summary>
         ''' Invalid Argument
         ''' </summary>
         InvalidArgument = -2
+
         ''' <summary>
         ''' Unknown Package
         ''' </summary>
         UnknownPackage = -1
+
         ''' <summary>
         ''' Advertised
         ''' </summary>
         Advertised = 1
+
         ''' <summary>
         ''' Absent
         ''' </summary>
         Absent = 2
+
         ''' <summary>
         ''' Installed
         ''' </summary>
@@ -54,8 +59,7 @@ Public Module ComputerHelper
     ''' <summary>
     ''' Computer information for the current computer.
     ''' </summary>
-    ''' <returns><seealso cref="ComputerInfo"/></returns>
-    ''' <remarks></remarks>
+    ''' <returns><seealso cref="ComputerInfo" /></returns>
     Public Function ComputerInformation() As ComputerInfo
 
         Return New ComputerInfo() With {.InstalledUICulture = My.Computer.Info.InstalledUICulture.DisplayName, .OSFullName = My.Computer.Info.OSFullName, .OSPlatform = My.Computer.Info.OSPlatform, .OSVersion = My.Computer.Info.OSVersion}
@@ -66,7 +70,7 @@ Public Module ComputerHelper
     ''' Computer IP addresses.
     ''' </summary>
     ''' <param name="hostName">Name of the host.</param>
-    ''' <returns></returns>
+    ''' <returns>ObjectModel.ReadOnlyCollection(Of System.Net.IPAddress).</returns>
     Public Function ComputerIPAddresses(ByVal hostName As String) As ObjectModel.ReadOnlyCollection(Of System.Net.IPAddress)
         Return New ObjectModel.ReadOnlyCollection(Of System.Net.IPAddress)(System.Net.Dns.GetHostEntry(hostName).AddressList.ToList)
     End Function
@@ -74,7 +78,7 @@ Public Module ComputerHelper
     ''' <summary>
     ''' Computers mac addresses.
     ''' </summary>
-    ''' <returns></returns>
+    ''' <returns>ReadOnlyCollection(Of System.String).</returns>
     Public Function ComputerMacAddresses() As ReadOnlyCollection(Of String)
 
         Using mc As New ManagementClass("Win32_NetworkAdapterConfiguration")
@@ -97,7 +101,7 @@ Public Module ComputerHelper
     ''' <summary>
     ''' Computer IP addresses.
     ''' </summary>
-    ''' <returns></returns>
+    ''' <returns>ObjectModel.ReadOnlyCollection(Of System.Net.IPAddress).</returns>
     Public Function ComputerIPAddresses() As ObjectModel.ReadOnlyCollection(Of System.Net.IPAddress)
         Return ComputerIPAddresses(System.Net.Dns.GetHostName())
     End Function
@@ -105,8 +109,7 @@ Public Module ComputerHelper
     ''' <summary>
     ''' Current computer memory information.
     ''' </summary>
-    ''' <returns><seealso cref="ComputerMemory"/></returns>
-    ''' <remarks></remarks>
+    ''' <returns><seealso cref="ComputerMemory" /></returns>
     Public Function ComputerMemory() As ComputerMemory
         Dim result As New ComputerMemory
 
@@ -135,8 +138,7 @@ Public Module ComputerHelper
     ''' <summary>
     ''' Return drive info for the current drives on the system.
     ''' </summary>
-    ''' <returns><seealso cref="System.IO.DriveInfo"/></returns>
-    ''' <remarks></remarks>
+    ''' <returns><seealso cref="System.IO.DriveInfo" /></returns>
     Public Function ComputerReadyDrives() As ReadOnlyCollection(Of System.IO.DriveInfo)
         Dim drives As New List(Of System.IO.DriveInfo)
 
@@ -153,8 +155,7 @@ Public Module ComputerHelper
     ''' <summary>
     ''' Current computer time.
     ''' </summary>
-    ''' <returns><seealso cref="DateTime"/></returns>
-    ''' <remarks></remarks>
+    ''' <returns><seealso cref="DateTime" /></returns>
     Public Function CurrentTime() As DateTime
         Return My.Computer.Clock.LocalTime
     End Function
@@ -162,8 +163,7 @@ Public Module ComputerHelper
     ''' <summary>
     ''' Renews DHCP for the current computer.
     ''' </summary>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
+    ''' <returns>Int32.</returns>
     Public Function RenewDhcpLease() As Int32
         Dim result As Int32
 
@@ -186,7 +186,7 @@ Public Module ComputerHelper
     ''' Finds devices attached to the computer.
     ''' </summary>
     ''' <param name="machineNameOrAddress">Machine name or address.</param>
-    ''' <returns>Collection of <seealso cref="DeviceInformation"/></returns>
+    ''' <returns>Collection of <seealso cref="DeviceInformation" /></returns>
     ''' <remarks>This call could take some time. Recommend multi-threading.</remarks>
     Public Function ServerDevices(ByVal machineNameOrAddress As String) As System.Collections.ObjectModel.ReadOnlyCollection(Of DeviceInformation)
         Dim devices As New System.Collections.Generic.List(Of DeviceInformation)
@@ -217,7 +217,7 @@ Public Module ComputerHelper
     ''' Finds software installed on a computer.
     ''' </summary>
     ''' <param name="machineNameOrAddress">Machine name or address.</param>
-    ''' <returns>Collection of <seealso cref="InstalledProduct"/></returns>
+    ''' <returns>Collection of <seealso cref="InstalledProduct" /></returns>
     ''' <remarks>This call could take some time. Recommend multi-threading.</remarks>
     Public Function ServerInstalledSoftware(ByVal machineNameOrAddress As String) As ReadOnlyCollection(Of InstalledProduct)
 
@@ -292,8 +292,7 @@ Public Module ComputerHelper
     ''' <summary>
     ''' Releases DHCP for the current computer.
     ''' </summary>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
+    ''' <returns>Int32.</returns>
     Public Function ReleaseDhcpLease() As Int32
         Dim result As Int32
 
@@ -318,8 +317,7 @@ Public Module ComputerHelper
     ''' Finds the server up time.
     ''' </summary>
     ''' <param name="machineNameOrAddress">Machine name or address.</param>
-    ''' <returns><seealso cref="ServerUpTimeInformation"/></returns>
-    ''' <remarks></remarks>
+    ''' <returns><seealso cref="ServerUpTimeInformation" /></returns>
     Public Function ServerUpTime(ByVal machineNameOrAddress As String) As ServerUptimeInformation
         Dim result As New ServerUptimeInformation
 
@@ -352,7 +350,6 @@ Public Module ComputerHelper
     ''' Fines user domain and name.
     ''' </summary>
     ''' <returns>User domain and name.</returns>
-    ''' <remarks></remarks>
     Public Function LookupUserNameDomain() As String
         Return String.Format(CultureInfo.CurrentCulture, "{0}\{1}", System.Environment.UserDomainName, System.Environment.UserName)
     End Function

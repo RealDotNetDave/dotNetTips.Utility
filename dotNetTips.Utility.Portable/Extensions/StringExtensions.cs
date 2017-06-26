@@ -1,21 +1,24 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Portable
-// Author           : David McCarter Created : 04-15-2016
-// Created          : 04-15-2016
+// Author           : David McCarter
+// Created          : 02-28-2017
 //
-// Last Modified By : David McCarter Last Modified On : 06-02-2016 ***********************************************************************
-// Last Modified On : 08-09-2016
+// Last Modified By : David McCarter
+// Last Modified On : 05-19-2017
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="dotNetTips.com">
-//     Copyright Â© 2015
+//     David McCarter - dotNetTips.com © 2017
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using System;
-using System.Diagnostics.Contracts;
-using System.Text;
 
-namespace dotNetTips.Utility.Portable.Extensions {
+using dotNetTips.Utility.Portable.OOP;
+using System;
+using System.Text;
+using System.Linq;
+
+namespace dotNetTips.Utility.Portable.Extensions
+{
     /// <summary>
     /// Class StringExtensions.
     /// </summary>
@@ -29,13 +32,16 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <returns><c>true</c> if [is valid credit card number] [the specified number]; otherwise, <c>false</c>.</returns>
         public static bool IsValidCreditCardNumber(this string number)
         {
-            Contract.Requires<ArgumentNullException>(string.IsNullOrEmpty(number) == false);
+            if(string.IsNullOrEmpty(number))
+            {
+                return false;
+            }
 
             var deltas = new int[] { 0, 1, 2, 3, 4, -4, -3, -2, -1, 0 };
             var checksum = 0;
             var chars = number.ToCharArray();
 
-            for (int i = chars.Length - 1; i > -1; i--)
+            for (var i = chars.Length - 1; i > -1; i--)
             {
                 var j = ((int)chars[i]) - 48;
                 checksum += j;
@@ -54,18 +60,18 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <param name="input">The string.</param>
         /// <param name="characters">The characters.</param>
         /// <returns><c>true</c> if the specified characters contains any; otherwise, <c>false</c>.</returns>
-        /// <exception cref="ArgumentNullException">Null character.</exception>
         /// <exception cref="System.ArgumentNullException">Null character.</exception>
+        /// <exception cref="ArgumentNullException">Null character.</exception>
         public static bool ContainsAny(this string input, params string[] characters)
         {
-            Contract.Requires<ArgumentNullException>(characters != null && characters.Length > 0);
+            Encapsulation.TryValidateParam<ArgumentNullException>(characters != null && characters.Length > 0);
 
             if (string.IsNullOrEmpty(input))
             {
                 return false;
             }
 
-            foreach (var character in characters)
+            foreach (var character in characters.AsParallel())
             {
                 if (string.IsNullOrEmpty(character))
                 {
@@ -120,7 +126,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <returns>System.String.</returns>
         public static string FormatFileSize(this long fileSize)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(fileSize >= 0 && fileSize >= long.MinValue && fileSize <= long.MaxValue);
+            Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(fileSize >= 0 && fileSize >= long.MinValue && fileSize <= long.MaxValue);
 
             var size = 0L;
 
@@ -147,7 +153,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <returns>System.String.</returns>
         public static string Indent(this string str, int length, char indentationCharacter = ControlChars.Space)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(length > 0);
+            Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(length > 0);
 
             var sb = new StringBuilder();
 

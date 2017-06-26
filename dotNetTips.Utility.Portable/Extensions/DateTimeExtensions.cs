@@ -1,35 +1,38 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Portable
-// Author           : David McCarter Created : 04-15-2016
-// Created          : 04-15-2016
+// Author           : David McCarter
+// Created          : 02-28-2017
 //
-// Last Modified By : David McCarter Last Modified On : 06-02-2016 ***********************************************************************
-// Last Modified On : 12-07-2016
+// Last Modified By : David McCarter
+// Last Modified On : 05-18-2017
 // ***********************************************************************
 // <copyright file="DateTimeExtensions.cs" company="dotNetTips.com">
-//     Copyright Â© 2015
+//     David McCarter - dotNetTips.com © 2017
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
+using dotNetTips.Utility.Portable.OOP;
 using System;
-using System.Diagnostics.Contracts;
+
 using System.Globalization;
 
-namespace dotNetTips.Utility.Portable.Extensions {
+namespace dotNetTips.Utility.Portable.Extensions
+{
     /// <summary>
     /// Extensions for DateTime
     /// </summary>
     public static class DateTimeExtensions
     {
         /// <summary>
-        /// Gets the last.
+        /// Gets the last date.
         /// </summary>
         /// <param name="input">The date/ time.</param>
         /// <param name="dayOfWeek">The day of week.</param>
         /// <returns>DateTime.</returns>
-        public static DateTime GetLast(this DateTime input, DayOfWeek dayOfWeek)
+        public static DateTime GetLastDay(this DateTime input, DayOfWeek dayOfWeek)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(Enum.IsDefined(typeof(DayOfWeek), input));
+            Encapsulation.TryValidateParam(dayOfWeek, nameof(dayOfWeek));
 
             var daysToSubtract = input.DayOfWeek > dayOfWeek ? input.DayOfWeek - dayOfWeek : (7 - (int)dayOfWeek) + (int)input.DayOfWeek;
             return input.AddDays(daysToSubtract * -1);
@@ -41,9 +44,9 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <param name="input">The date/ time.</param>
         /// <param name="dayOfWeek">The day of week.</param>
         /// <returns>DateTime.</returns>
-        public static DateTime GetNext(this DateTime input, DayOfWeek dayOfWeek)
+        public static DateTime GetNextDay(this DateTime input, DayOfWeek dayOfWeek)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(Enum.IsDefined(typeof(DayOfWeek), input));
+            Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(Enum.IsDefined(typeof(DayOfWeek), input));
 
             var daysToAdd = 0;
             daysToAdd = input.DayOfWeek < dayOfWeek ? dayOfWeek - input.DayOfWeek : (7 - (int)input.DayOfWeek) + (int)dayOfWeek;
@@ -79,12 +82,32 @@ namespace dotNetTips.Utility.Portable.Extensions {
             }
             else
             {
-                formattedDate = input.Date == DateTime.Today.AddDays(-1) ? "Yesterday" : input.Date > DateTime.Today.AddDays(-6) ? input.ToString("dddd").ToString() : input.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern, CultureInfo.CurrentCulture);
+                formattedDate = input.Date == DateTime.Today.AddDays(-1) ? nameof(Yesterday) : input.Date > DateTime.Today.AddDays(-6) ? input.ToString("dddd").ToString() : input.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern, CultureInfo.CurrentCulture);
             }
 
             formattedDate += " @ " + input.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern, CultureInfo.CurrentCulture).ToLower();
 
             return formattedDate;
+        }
+
+        /// <summary>
+        /// Yesterdays the specified input.
+        /// </summary>
+        /// <param name="input">The input.</param>
+        /// <returns>DateTime.</returns>
+        public static DateTime Yesterday(this DateTime input)
+        {
+            return input.Subtract(new TimeSpan(1, 0, 0, 0));
+        }
+
+        /// <summary>
+        /// Tomorrows the specified input.
+        /// </summary>
+        /// <param name="input">The input.</param>
+        /// <returns>DateTime.</returns>
+        public static DateTime Tomorrow(this DateTime input)
+        {
+            return input.AddDays(1);
         }
     }
 }

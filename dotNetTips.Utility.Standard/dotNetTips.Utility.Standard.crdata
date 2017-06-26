@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CRData version="2.0" reportProfile="dotNetTips.Com" isUserProfile="True">
+  <Excluded>
+    <Projects count="0" />
+    <Files count="0" />
+    <Rules count="0" />
+    <Violations count="0" />
+  </Excluded>
+  <ViolationsReport count="0" />
+</CRData>

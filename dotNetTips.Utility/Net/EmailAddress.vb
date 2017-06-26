@@ -13,6 +13,7 @@
 ' <summary></summary>
 ' *************************************************************************
 Imports System.Globalization
+Imports dotNetTips.Utility.Portable.Extensions
 Namespace Net
     ''' <summary>
     ''' Email address
@@ -75,7 +76,7 @@ Namespace Net
         ''' </summary>
         ''' <returns><c>true</c> if [is address valid]; otherwise, <c>false</c>.</returns>
         Public Function IsAddressValid() As Boolean
-            Return dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidEmail(Me.Address)
+            Return Portable.Windows.Extensions.IsValidEmail(Me.Address)
         End Function
 
         ''' <summary>
@@ -83,7 +84,7 @@ Namespace Net
         ''' </summary>
         ''' <returns><c>true</c> if [is name valid]; otherwise, <c>false</c>.</returns>
         Public Function IsNameValid() As Boolean
-            Return dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidString(Me.Name)
+            Return Portable.Windows.Extensions.StringExtensions.IsValidString(Me.Name)
         End Function
 
         ''' <summary>

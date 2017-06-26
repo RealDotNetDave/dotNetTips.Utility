@@ -22,7 +22,7 @@ Namespace My
     ' Un-ported License and was created by Visual Pharm.
 
     ''' <summary>
-    '''
+    ''' Class MyPowerExtension.
     ''' </summary>
     Public Module MyPowerExtension
 

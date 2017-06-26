@@ -4,21 +4,24 @@
 ' Created          : 05-20-2016
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 08-16-2016
+' Last Modified On : 05-11-2017
 ' ***********************************************************************
 ' <copyright file="Deflater.vb" company="NicheWare - David McCarter">
 '     NicheWare - David McCarter
 ' </copyright>
 ' <summary></summary>
-' ***********************************************************************
+' *************************************************************************
 Imports System.IO
 Imports System.IO.Compression
+Imports dotNetTips.Utility.Portable.Extensions
+Imports Microsoft.Extensions.Caching.Memory
 
 Namespace IO
     ''' <summary>
     ''' This class performs files compression and decompression
     ''' <remarks>Original code by: Bechir Bejaoui</remarks>
     ''' </summary>
+    ''' <seealso cref="System.IDisposable" />
     Public Class Deflater
         Implements IDisposable
 
@@ -64,7 +67,7 @@ Namespace IO
         Public Property SourceFileName() As String = String.Empty
 
         ''' <summary>
-        ''' This is the destination full path property
+        ''' Gets or sets the name of the destination file.
         ''' </summary>
         ''' <value>The name of the destination file.</value>
         Public Property DestinationFileName() As String = String.Empty
@@ -76,7 +79,7 @@ Namespace IO
         ''' </summary>
         Public Sub CompressFile()
 
-            If File.Exists(SourceFileName) Then
+            If File.Exists(Me.SourceFileName) Then
 
                 Using inputFile As FileStream = File.Open(SourceFileName, FileMode.Open), outputFile As FileStream = File.Create(DestinationFileName)
 
@@ -106,7 +109,7 @@ Namespace IO
         ''' level when a decompression mode is chosen instead of using it directly
         ''' </summary>
         Public Sub DecompressFile()
-            If File.Exists(SourceFileName) Then
+            If File.Exists(Me.SourceFileName) Then
                 Using inputFile As FileStream = File.Open(SourceFileName, FileMode.Open), outputFile As FileStream = File.Create(DestinationFileName)
 
                     Using zipper = New DeflateStream(inputFile, CompressionMode.Decompress)
@@ -145,8 +148,15 @@ Namespace IO
 
 #Region "IDisposable Implementation"
 
+        ''' <summary>
+        ''' The disposed value
+        ''' </summary>
         Protected disposed As Boolean
 
+        ''' <summary>
+        ''' Releases unmanaged and - optionally - managed resources.
+        ''' </summary>
+        ''' <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
         Protected Overridable Sub Dispose(ByVal disposing As Boolean)
             SyncLock Me
                 ' Do nothing if the object has already been disposed of.
@@ -156,10 +166,7 @@ Namespace IO
 
                 If disposing Then
                     ' Release disposable objects used by this instance here.
-
-                    If Not _zipperStream Is Nothing Then
-                        _zipperStream.Dispose()
-                    End If
+                    Me.DisposeFields()
                 End If
 
                 ' Release unmanaged resources here. Don't access reference type fields.
@@ -169,7 +176,10 @@ Namespace IO
             End SyncLock
         End Sub
 
-        Public Overridable Sub Dispose() _
+        ''' <summary>
+        ''' Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        ''' </summary>
+        Public Sub Dispose() _
                 Implements IDisposable.Dispose
             Dispose(True)
             ' Unregister object for finalization.

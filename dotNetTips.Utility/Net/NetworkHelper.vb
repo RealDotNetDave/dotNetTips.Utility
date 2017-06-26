@@ -32,7 +32,7 @@ Namespace Net
 
             Dim sitesList As String() = {"www.google.com", "www.microsoft.com", "www.yahoo.com"}
 
-            For Each url In sitesList
+            For Each url As String In sitesList.AsParallel()
                 If My.Computer.Network.Ping(url, 300) Then
                     success = True
                     Exit For

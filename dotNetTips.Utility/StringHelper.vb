@@ -12,9 +12,10 @@
 ' </copyright>
 ' <summary></summary>
 ' *************************************************************************
-Imports System.Diagnostics.Contracts
+
 Imports System.Speech.Synthesis
 Imports System.Threading.Tasks
+Imports dotNetTips.Utility.Portable.OOP
 
 ''' <summary>
 ''' Text helper class.
@@ -27,8 +28,7 @@ Public Module StringHelper
     ''' <param name="value">RTF to convert.</param>
     ''' <returns>Converted RTF as <seealso cref="String" /></returns>
     Public Function ConvertRtfToText(ByVal value As String) As String
-        Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(value) = False)
-        Contract.Ensures(Contract.Result(Of String)() IsNot Nothing)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(value) = False)
 
         Dim result As String
 
@@ -70,8 +70,7 @@ Public Module StringHelper
     ''' <param name="value"><see cref="String">Text</see> to url encode.</param>
     ''' <returns>Uri.</returns>
     Public Function UrlEncode(ByVal value As String) As Uri
-        Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(value) = False)
-        Contract.Ensures(Contract.Result(Of Uri)() IsNot Nothing)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(value) = False)
 
         Return New Uri(Web.UrlEncode(value))
 

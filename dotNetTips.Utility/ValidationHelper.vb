@@ -1,19 +1,21 @@
-'***********************************************************************
-' Assembly         : dotNetTips
-' Author           : David McCarter
-' Created          : 12-10-2008
+' ***********************************************************************
+' Assembly         : dotNetTips.Utility
+' Author           : david
+' Created          : 02-12-2017
 '
-' Last Modified By : David McCarter
-' Last Modified On : 06-09-2009
-' Description      :
-'
-' Copyright        : (c) dotNetTips.com. All rights reserved.
-'***********************************************************************
-Imports System.Diagnostics.Contracts
+' Last Modified By : david
+' Last Modified On : 03-04-2017
+' ***********************************************************************
+' <copyright file="ValidationHelper.vb" company="McCarter Consulting - David McCarter">
+'     David McCarter - dotNetTips.com © 2017
+' </copyright>
+' <summary></summary>
+' ***********************************************************************
+
+Imports dotNetTips.Utility.Portable.OOP
 ''' <summary>
 ''' Validation helper class.
 ''' </summary>
-''' <remarks></remarks>
 Public Module ValidationHelper
 
     ''' <summary>
@@ -21,9 +23,8 @@ Public Module ValidationHelper
     ''' </summary>
     ''' <param name="input">Text to validate.</param>
     ''' <returns>True if valid.</returns>
-    ''' <remarks></remarks>
     Public Function IsValidNumber(ByVal input As String) As Boolean
-        Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(input) = False)
 
         Return IsNumeric(input)
 

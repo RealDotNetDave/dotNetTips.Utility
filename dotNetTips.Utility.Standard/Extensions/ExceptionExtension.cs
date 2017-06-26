@@ -34,7 +34,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentNullException">ex - Exception cannot be null.</exception>
         public static T TraverseFor<T>(this Exception ex) where T : class
         {
-            if (ex == null)
+            if (ex is null)
             {
                 throw new ArgumentNullException(nameof(ex), "Exception cannot be null.");
             }

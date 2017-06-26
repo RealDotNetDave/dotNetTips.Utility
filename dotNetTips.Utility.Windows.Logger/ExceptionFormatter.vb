@@ -4,13 +4,13 @@
 ' Created          : 04-15-2016
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 04-18-2016
+' Last Modified On : 03-06-2017
 ' ***********************************************************************
 ' <copyright file="ExceptionFormatter.vb" company="McCarter Consulting">
 '     Copyright © dotNetTips.com 2016
 ' </copyright>
 ' <summary></summary>
-' ***********************************************************************
+' *************************************************************************
 Imports System.Collections.ObjectModel
 Imports System.Collections.Specialized
 Imports System.Globalization
@@ -18,6 +18,7 @@ Imports System.Reflection
 Imports System.Security
 Imports System.Security.Principal
 Imports System.Text
+Imports dotNetTips.Utility.Portable.OOP
 
 ''' <summary>
 ''' Formats an Exception
@@ -36,7 +37,7 @@ Friend Class ExceptionFormatter
 #Region "Constructors"
 
     ''' <summary>
-    ''' Initializes a new instance of the <see cref="ExceptionFormatter"/> class.
+    ''' Initializes a new instance of the <see cref="ExceptionFormatter" /> class.
     ''' </summary>
     ''' <param name="information">The information.</param>
     ''' <param name="applicationName">Name of the application.</param>
@@ -160,8 +161,8 @@ Friend Class ExceptionFormatter
     ''' <param name="propValue">The property value.</param>
     ''' <param name="builder">The builder.</param>
     Private Shared Sub ProcessInformation(ByVal propInfo As PropertyInfo, ByVal propValue As Object, ByVal builder As StringBuilder)
-        Contracts.Contract.Requires(Of ArgumentNullException)(propInfo IsNot Nothing)
-        Contracts.Contract.Requires(Of ArgumentNullException)(builder IsNot Nothing)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(propInfo IsNot Nothing)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(builder IsNot Nothing)
 
         ' Loop through the collection of Information if the exception type is a BaseApplicationException.
         If propInfo.Name = NameOf(InfoItem) Then

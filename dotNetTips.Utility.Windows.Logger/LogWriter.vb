@@ -14,8 +14,9 @@
 Imports System
 Imports System.Diagnostics
 Imports System.Globalization
-Imports System.Diagnostics.Contracts
+
 Imports dotNetTips.Utility.Extensions
+Imports dotNetTips.Utility.Portable.OOP
 
 ''' <summary>
 ''' Class LogWriter.
@@ -48,7 +49,7 @@ Public Module LogWriter
     ''' </summary>
     ''' <param name="entry">The entry.</param>
     Public Sub WriteEntry(ByVal entry As LogEntry)
-        Contract.Requires(Of ArgumentNullException)(entry IsNot Nothing)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(entry IsNot Nothing)
 
         If String.IsNullOrEmpty(entry.Source) Then
             entry.Source = New CallingMethod(GetType(LogWriter)).Method.[Module].Name
@@ -87,7 +88,7 @@ Public Module LogWriter
     ''' <param name="userPopupMessage">The user popup message.</param>
     ''' <param name="id">The identifier.</param>
     Public Sub WriteException(ByVal ex As Exception, ByVal severity As TraceEventType, ByVal information As String, ByVal userPopupMessage As String, ByVal id As Integer)
-        Contract.Requires(Of ArgumentNullException)(ex IsNot Nothing)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(ex IsNot Nothing)
 
         Dim entry = New LogEntry(information, ex, severity) With {.Message = ex.Message, .EventId = id, .Category = Category.Exception}
 

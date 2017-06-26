@@ -12,6 +12,7 @@
 ' <summary></summary>
 ' ***********************************************************************
 Imports dotNetTips.Utility.Portable
+Imports dotNetTips.Utility.Portable.OOP
 
 ''' <summary>
 ''' Text helper class.
@@ -54,8 +55,8 @@ Public Module StringHelper
     ''' <returns>True if strings are the same.</returns>
     ''' <remarks></remarks>
     Public Function Compare(ByVal original As String, ByVal compareTo As String) As Boolean
-        Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(original) = False)
-        Contract.Requires(Of ArgumentNullException)(String.IsNullOrEmpty(compareTo) = False)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(original) = False)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrEmpty(compareTo) = False)
 
         If original.Length <> compareTo.Length Then
             Return False
@@ -83,7 +84,7 @@ Public Module StringHelper
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public Function Space(ByVal number As Integer) As String
-        Contract.Requires(Of ArgumentNullException)(number >= 0)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(number >= 0)
 
         Return New String(" "c, number)
 
@@ -96,7 +97,7 @@ Public Module StringHelper
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public Function RemoveSpaces(input As String) As String
-        Contract.Requires(Of ArgumentNullException)(input IsNot Nothing)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(input IsNot Nothing)
 
         Return input.Replace(" "c, String.Empty)
 
@@ -110,8 +111,8 @@ Public Module StringHelper
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public Function RemoveCharacter(input As String, character As Char) As String
-        Contract.Requires(Of ArgumentNullException)(input IsNot Nothing)
-        Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(character.ToString) = False)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(input IsNot Nothing)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(character.ToString) = False)
 
         Return input.Replace(character, String.Empty)
 

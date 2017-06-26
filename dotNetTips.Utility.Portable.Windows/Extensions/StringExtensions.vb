@@ -81,7 +81,7 @@ Namespace Extensions
         ''' <returns><c>true</c> if [is valid email] [the specified value]; otherwise, <c>false</c>.</returns>
         <Extension>
         Public Function IsValidEmail(ByVal value As String) As Boolean
-            Return dotNetTips.Utility.Portable.Windows.ValidationHelper.IsValidEmail(value)
+            Return Windows.IsValidEmail(value)
         End Function
 
         ''' <summary>
@@ -230,9 +230,6 @@ Namespace Extensions
         ''' </exception>
         <Extension>
         Public Function RemoveFromEnd(ByVal s As String, ByVal oldValue As String) As String
-            If s Is Nothing Then
-                Throw New ArgumentNullException(NameOf(s))
-            End If
             If oldValue Is Nothing Then
                 Throw New ArgumentNullException(NameOf(oldValue))
             End If
@@ -341,9 +338,6 @@ Namespace Extensions
         ''' </exception>
         <Extension>
         Public Function ToBytes(ByVal value As String, ByVal encoding As Encoding) As Byte()
-            If value Is Nothing Then
-                Throw New ArgumentNullException(NameOf(value))
-            End If
             If encoding Is Nothing Then
                 Throw New ArgumentNullException(NameOf(encoding))
             End If
@@ -361,9 +355,6 @@ Namespace Extensions
         ''' </exception>
         <Extension>
         Public Function ToString(ByVal value As Byte(), ByVal encoding As Encoding) As String
-            If value Is Nothing Then
-                Throw New ArgumentNullException(NameOf(value))
-            End If
             If encoding Is Nothing Then
                 Throw New ArgumentNullException(NameOf(encoding))
             End If
@@ -381,12 +372,10 @@ Namespace Extensions
         ''' <exception cref="System.ArgumentNullException"></exception>
         <Extension>
         Public Function ToStringJoin(Of T)(ByVal values As IEnumerable(Of T), ByVal separator As String) As String
-            If values Is Nothing Then
-                Throw New ArgumentNullException(NameOf(values))
-            End If
 
             Dim strings As String() = values.[Select](Function(v) v.ToString()).ToArray()
             Return String.Join(separator, strings)
+
         End Function
 
         ''' <summary>
@@ -401,12 +390,10 @@ Namespace Extensions
         ''' http://code.msdn.microsoft.com/LucasExtensions</remarks>
         <Extension>
         Public Function ToStringJoin(Of T)(ByVal values As IEnumerable(Of T)) As String
-            If values Is Nothing Then
-                Throw New ArgumentNullException(NameOf(values))
-            End If
 
             Dim strings As String() = values.[Select](Function(v) v.ToString()).ToArray()
             Return String.Join(Nothing, strings)
+
         End Function
 
         ''' <summary>

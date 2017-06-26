@@ -107,7 +107,8 @@ Public Class LoggableException
     ''' is the XML serializable_ read XML.
     ''' </summary>
     ''' <param name="reader">The reader.</param>
-    ''' <exception cref="System.NotImplementedException"></exception>
+    ''' <exception cref="NotImplementedException"></exception>
+    <CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1033:InterfaceMethodsShouldBeCallableByChildTypes")>
     Private Sub IXmlSerializable_ReadXml(reader As XmlReader) Implements IXmlSerializable.ReadXml
         Throw New NotImplementedException()
     End Sub

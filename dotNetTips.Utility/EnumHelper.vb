@@ -142,8 +142,8 @@ Public Module EnumHelper
     ''' <returns>Name with spaces added</returns>
     ''' <remarks>Converts values such as 'ThisIsATest' to 'This Is A Test'</remarks>
     Private Function AdjustCamelCase(ByVal name As String) As String
-        Const toTitleCase As String = "(\B[A-Z])"
-        Return System.Text.RegularExpressions.Regex.Replace(name, toTitleCase, " $1")
+        Const ToTitleCase As String = "(\B[A-Z])"
+        Return System.Text.RegularExpressions.Regex.Replace(name, ToTitleCase, " $1")
     End Function
 
 End Module

@@ -1,13 +1,13 @@
 ' ***********************************************************************
 ' Assembly         : dotNetTips.Utility
 ' Author           : David McCarter
-' Created          : 03-29-2016
+' Created          : 12-07-2016
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 08-16-2016
+' Last Modified On : 05-11-2017
 ' ***********************************************************************
-' <copyright file="UserInfo.vb" company="NicheWare - David McCarter">
-'     '     NicheWare - David McCarter
+' <copyright file="UserInfo.vb" company="McCarter Consulting - David McCarter">
+'     '     David McCarter - dotNetTips.com © 2017
 '
 ' </copyright>
 ' <summary></summary>
@@ -24,56 +24,65 @@ Namespace DirectoryServices
         ''' </summary>
         ''' <value>The name of the contact.</value>
         Public Property ContactName() As String
+
         ''' <summary>
-        ''' Account Email Address
+        ''' Gets or sets the email.
         ''' </summary>
         ''' <value>The email.</value>
         Public Property Email() As String
+
         ''' <summary>
-        ''' Account Department Name
+        ''' Gets or sets the department.
         ''' </summary>
         ''' <value>The department.</value>
         Public Property Department() As String
+
         ''' <summary>
-        ''' Account Managers' Name
+        ''' Gets or sets the manager.
         ''' </summary>
         ''' <value>The manager.</value>
         Public Property Manager() As String
+
         ''' <summary>
-        ''' Contacts telephone number.
+        ''' Gets or sets the telephone.
         ''' </summary>
-        ''' <value>String</value>
+        ''' <value>The telephone.</value>
         Public Property Telephone() As String
+
         ''' <summary>
-        ''' Contacts Title
+        ''' Gets or sets the title.
         ''' </summary>
         ''' <value>The title.</value>
         Public Property Title() As String
+
         ''' <summary>
-        ''' Users fax number.
+        ''' Gets or sets the fax.
         ''' </summary>
         ''' <value>The fax.</value>
         Public Property Fax() As String
+
         ''' <summary>
-        ''' Users first name
+        ''' Gets or sets the first name.
         ''' </summary>
         ''' <value>The first name.</value>
         Public Property FirstName() As String
+
         ''' <summary>
-        ''' Users last name.
+        ''' Gets or sets the last name.
         ''' </summary>
         ''' <value>The last name.</value>
         Public Property LastName() As String
+
         ''' <summary>
-        ''' Users delivery office
+        ''' Gets or sets the delivery office.
         ''' </summary>
         ''' <value>The delivery office.</value>
         Public Property DeliveryOffice() As String
 
         ''' <summary>
-        ''' Returns the fully qualified type name of this instance.
+        ''' Returns a <see cref="System.String" /> that represents this instance.
         ''' </summary>
-        ''' <returns>A <see cref="T:System.String" /> containing a fully qualified type name.</returns>
+        ''' <returns>A <see cref="System.String" /> that represents this instance.</returns>
         Public Overrides Function ToString() As String
             Return Me.ContactName
         End Function

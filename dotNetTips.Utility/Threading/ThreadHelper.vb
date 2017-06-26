@@ -33,7 +33,7 @@ Namespace Threading
         ''' <returns></returns>
         Public Function GetProcessName() As String
             Dim buffer As New StringBuilder(&H400)
-            Return If(dotNetTips.Utility.GetModuleFileName(UnsafeNativeMethods.GetModuleHandle(Nothing), buffer, buffer.Capacity) > 0, buffer.ToString(), String.Empty)
+            Return If(UnsafeNativeMethods.GetModuleFileName(UnsafeNativeMethods.GetModuleHandle(Nothing), buffer, buffer.Capacity) > 0, buffer.ToString(), String.Empty)
         End Function
 
     End Module

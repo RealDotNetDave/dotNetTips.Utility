@@ -47,14 +47,19 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentException">list - List cannot be read-only.</exception>
         public static void AddIfNotExists<T>(this ICollection<T> list, T value)
         {
-            Encapsulation.TryValidateParam(list, nameof(list));
-            Encapsulation.TryValidateParam<ArgumentNullException>(value == null, "Value is requried.");
-            Encapsulation.TryValidateParam<ArgumentNullException>(list.IsReadOnly, "List cannot be read-only.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(value != null, "Value is required.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(list.IsReadOnly == false, "List cannot be read-only.");
 
-            if (list.Contains(value) == false)
+            //TODO: MULTITHREAD
+            foreach (var item in list)
             {
-                list.Add(value);
+                if (TypeHelper.GetInstanceHashCode(item)== TypeHelper.GetInstanceHashCode(value))
+                {
+                    return;
+                }
             }
+
+            list.Add(value);
         }
 
         /// <summary>
@@ -71,7 +76,6 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentException">list - List cannot be read-only.</exception>
         public static void AddIfNotExists<T>(this ICollection<T> list, params T[] values)
         {
-            Encapsulation.TryValidateParam(list, nameof(list));
             Encapsulation.TryValidateParam(values, nameof(values));
             Encapsulation.TryValidateParam<ArgumentNullException>(list.IsReadOnly, "List cannot be read-only.");
 
@@ -97,7 +101,6 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="System.ArgumentNullException">Null character.</exception>
         public static bool ContainsAny(this string input, params string[] characters)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(input.IsNull(), "Input is requried.");
             Encapsulation.TryValidateParam(characters, nameof(characters));
 
             foreach (var character in characters)
@@ -121,8 +124,6 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentNullException">list - Source cannot be null.</exception>
         public static int Count(this IEnumerable list)
         {
-            Encapsulation.TryValidateParam(list, nameof(list));
-
             var collection = list as ICollection;
 
             if (collection != null)
@@ -151,8 +152,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// </exception>
         public static T? FirstOrNull<T>(this IEnumerable<T> list, Func<T, bool> match) where T : struct
         {
-            Encapsulation.TryValidateParam(list, nameof(list));
-            Encapsulation.TryValidateParam<ArgumentNullException>(match == null, "Match cannot be null.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(match != null, "Match cannot be null.");
 
             foreach (T local in list)
             {
@@ -195,8 +195,6 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 length.</exception>
         public static string[] NoDuplicates(this string[] list)
         {
-            Encapsulation.TryValidateParam(list, nameof(list));
-
             return list.Distinct().ToArray();
         }
 
@@ -215,7 +213,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <remarks>Original code by: Lukazoid</remarks>
         public static IEnumerable<IEnumerable<T>> Page<T>(this IEnumerable<T> list, int pageSize)
         {
-            Encapsulation.TryValidateParam(list, nameof(list));
+            Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(pageSize > 0);
 
             using (var enumerator = list.GetEnumerator())
             {
@@ -250,12 +248,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// </exception>
         public static IEnumerable<T> PickRandom<T>(this IEnumerable<T> list, int count)
         {
-            Encapsulation.TryValidateParam(list, nameof(list));
-
-            if (count == 0)
-            {
-                throw new ArgumentNullException(nameof(list), "Count cannot be 0.");
-            }
+            Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(count > 0);
 
             return list.Randomize().Take(count);
         }
@@ -286,10 +279,9 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <remarks>Original code by: Fons Sonnemans</remarks>
         public static Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>> Pivot<TSource, TFirstKey, TSecondKey, TValue>(this IEnumerable<TSource> list, Func<TSource, TFirstKey> firstKeySelector, Func<TSource, TSecondKey> secondKeySelector, Func<IEnumerable<TSource>, TValue> aggregate)
         {
-            Encapsulation.TryValidateParam(list, nameof(list));
-            Encapsulation.TryValidateParam<ArgumentNullException>(aggregate == null, "Aggregate cannot be null.");
-            Encapsulation.TryValidateParam<ArgumentNullException>(firstKeySelector == null, "First key selector cannot be null.");
-            Encapsulation.TryValidateParam<ArgumentNullException>(secondKeySelector == null, "Second key selector cannot be null.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(aggregate != null, "Aggregate cannot be null.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(firstKeySelector != null, "First key selector cannot be null.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(secondKeySelector != null, "Second key selector cannot be null.");
 
             var returnValue = new Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>>();
 
@@ -322,8 +314,6 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <remarks>Original code by: Phil Campbell</remarks>
         public static IEnumerable<T> Randomize<T>(this IEnumerable<T> list)
         {
-            Encapsulation.TryValidateParam(list, nameof(list));
-
             return list.OrderBy(x => (new Random().Next()));
         }
 
@@ -335,15 +325,9 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="delimiter">The delimiter (default is comma if not supplied).</param>
         /// <returns>System.String.</returns>
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
-        public static string ToDelimitedString<T>(this IEnumerable<T> list, char delimiter)
+        public static string ToDelimitedString<T>(this IEnumerable<T> list, char delimiter= ControlChars.Comma)
         {
-            Encapsulation.TryValidateParam(list, nameof(list));
-
-            if (string.IsNullOrEmpty(delimiter.ToString()))
-            {
-                delimiter = ControlChars.Comma;
-            }
-
+      
             var sb = new StringBuilder();
 
             foreach (var item in list)
@@ -370,8 +354,6 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <remarks>Original code by: James Michael Hare</remarks>
         public static Dictionary<TKey, List<TValue>> ToDictionary<TKey, TValue>(this IEnumerable<IGrouping<TKey, TValue>> list)
         {
-            Encapsulation.TryValidateParam(list, nameof(list));
-
             return list.ToDictionary(group => group.Key, group => group.ToList());
         }
 
@@ -385,8 +367,6 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <remarks>Original code by: Fons Sonnemans</remarks>
         public static Task<List<T>> ToListAsync<T>(this IEnumerable<T> list)
         {
-            Encapsulation.TryValidateParam(list, nameof(list));
-
             return Task.Run(() => list.ToList());
         }
 
@@ -399,8 +379,6 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
         public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> list)
         {
-            Encapsulation.TryValidateParam(list, nameof(list));
-
             return new ObservableCollection<T>(list);
         }
 
@@ -413,8 +391,6 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
         public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(this IList<T> list)
         {
-            Encapsulation.TryValidateParam(list, nameof(list));
-
             return new ReadOnlyCollection<T>(list);
         }
 
@@ -430,7 +406,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <remarks>Original code by: Phil Campbell</remarks>
         public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> list, bool condition, Func<TSource, bool> predicate)
         {
-            Encapsulation.TryValidateParam(list, nameof(list));
+            Encapsulation.TryValidateParam<ArgumentNullException>(predicate != null);
 
             return condition ? list.Where(predicate) : list;
         }
@@ -447,7 +423,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <remarks>Original code by: Phil Campbell</remarks>
         public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> list, bool condition, Func<TSource, int, bool> predicate)
         {
-            Encapsulation.TryValidateParam(list, nameof(list));
+            Encapsulation.TryValidateParam<ArgumentNullException>(predicate != null);
 
             return condition ? list.Where(predicate) : list;
         }
@@ -481,8 +457,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <remarks>Code by: C.F.Meijers</remarks>
         public static IEnumerable<T> OrderBy<T>(this IEnumerable<T> list, string sortExpression)
         {
-            Encapsulation.TryValidateParam(list, nameof(list));
-            Encapsulation.TryValidateParam<ArgumentNullException>(string.IsNullOrEmpty(sortExpression), "Sort expression cannot be null.");
+            Encapsulation.TryValidateParam(sortExpression, nameof(sortExpression));
 
             sortExpression += string.Empty;
             var parts = sortExpression.Split(ControlChars.Space);
@@ -500,7 +475,7 @@ namespace dotNetTips.Utility.Standard.Extensions
 
                 var prop = typeof(T).GetRuntimeProperty(property);
 
-                if (prop == null)
+                if (prop is null)
                 {
                     throw new InvalidCastException(string.Format(CultureInfo.InvariantCulture, "{0}' in + {1}'", string.Format(CultureInfo.InvariantCulture, "{0}{1}", Convert.ToString("No property '", CultureInfo.InvariantCulture), property), typeof(T).Name));
                 }
@@ -520,7 +495,6 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
         public static void AddRange<T>(this ICollection<T> list, IEnumerable<T> newItems)
         {
-            Encapsulation.TryValidateParam(list, nameof(list));
             Encapsulation.TryValidateParam(newItems, nameof(newItems));
 
             Parallel.ForEach(newItems, (item) =>
@@ -548,10 +522,9 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
         public static void AddRange<T, TKey, TValue>(this IDictionary<TKey, TValue> list, IEnumerable<T> items, Func<T, TKey> key, Func<T, TValue> value)
         {
-            Encapsulation.TryValidateParam(list, nameof(list)); 
             Encapsulation.TryValidateParam(items, nameof(items));
-            Encapsulation.TryValidateParam<ArgumentNullException>(key == null, "Key cannot be null.");
-            Encapsulation.TryValidateParam<ArgumentNullException>(value==null, "Value cannot be null.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(key != null, "Key cannot be null.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(value != null, "Value cannot be null.");
 
             foreach (T item in items)
             {

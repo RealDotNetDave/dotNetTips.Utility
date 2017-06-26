@@ -11,7 +11,7 @@
 ' </copyright>
 ' <summary></summary>
 ' ***********************************************************************
-Imports System.Diagnostics.Contracts
+
 Imports System.Globalization
 Imports System.IO
 Imports System.Security.Permissions
@@ -20,6 +20,7 @@ Imports System.Threading
 Imports System.Xml.XPath
 Imports dotNetTips.Utility.Extensions
 Imports dotNetTips.Utility.IO
+Imports dotNetTips.Utility.Portable.OOP
 
 ''' <summary>
 ''' TraceListener that saves events to xml file.
@@ -385,7 +386,7 @@ Public Class XmlTraceListener
             Return
         End If
 
-        Using process As Process = Process.GetCurrentProcess()
+        Using process As Process = process.GetCurrentProcess()
             _processId = process.Id
             _processName = process.ProcessName
         End Using
@@ -488,7 +489,7 @@ Public Class XmlTraceListener
     ''' </summary>
     ''' <param name="data">The data.</param>
     Private Sub WriteData(ByVal data As Object)
-        Contract.Requires(Of ArgumentNullException)(data IsNot Nothing)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(data IsNot Nothing)
 
         Me.InternalWrite(data.ToString())
     End Sub
@@ -516,7 +517,7 @@ Public Class XmlTraceListener
     ''' </summary>
     ''' <param name="input">The input.</param>
     Private Sub WriteEscaped(ByVal input As String)
-        Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(input) = False)
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(input) = False)
 
         Me.InternalWrite(input.HtmlEncode)
     End Sub

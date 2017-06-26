@@ -28,8 +28,8 @@ Namespace UI.Web
         ''' true if the posted content is different from the last posting; otherwise, false.
         ''' </returns>
         Protected Overrides Function LoadPostData(ByVal postDataKey As String, ByVal postCollection As Specialized.NameValueCollection) As Boolean
-            'Contracts.Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(postDataKey) = False)
-            'Contracts.Contract.Requires(Of ArgumentNullException)(postCollection IsNot Nothing)
+            'Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(postDataKey) = False)
+            'Encapsulation.TryValidateParam(Of ArgumentNullException)(postCollection IsNot Nothing)
 
             Page.ClientScript.ValidateEvent(Me.UniqueID, String.Empty)
 

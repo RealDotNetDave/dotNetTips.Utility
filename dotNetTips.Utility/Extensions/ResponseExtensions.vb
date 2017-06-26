@@ -13,6 +13,7 @@
 ' ***********************************************************************
 Imports System.Runtime.CompilerServices
 Imports System.Web
+Imports dotNetTips.Utility.Portable.OOP
 
 Namespace Extensions
     ''' <summary>
@@ -26,7 +27,7 @@ Namespace Extensions
         ''' <param name="page">The page.</param>
         <Extension>
         Public Sub Redirect(ByVal value As System.Web.HttpResponse, ByVal page As String)
-            Contracts.Contract.Requires(Of ArgumentNullException)(String.IsNullOrWhiteSpace(page) = False)
+            Encapsulation.TryValidateParam(Of ArgumentNullException)(String.IsNullOrWhiteSpace(page) = False)
 
             value.Redirect(page, False)
             HttpContext.Current.ApplicationInstance.CompleteRequest()
