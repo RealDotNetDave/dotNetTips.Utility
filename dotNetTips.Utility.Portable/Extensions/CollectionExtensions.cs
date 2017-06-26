@@ -1,47 +1,45 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Portable
-// Author           : David McCarter Created : 04-15-2016 Created : 04-15-2016
-// Created          : 04-15-2016 Created : 04-15-2016
+// Author           : David McCarter
+// Created          : 02-28-2017
 //
-// Last Modified By : David McCarter Last Modified On : 06-12-2016
-// Last Modified On : 08-16-2016
+// Last Modified By : David McCarter
+// Last Modified On : 05-19-2017
 // ***********************************************************************
 // <copyright file="CollectionExtensions.cs" company="dotNetTips.com">
-//     Copyright Â© 2015
+//     David McCarter - dotNetTips.com © 2017
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
+using dotNetTips.Utility.Portable.OOP;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dotNetTips.Utility.Portable.Extensions {
+namespace dotNetTips.Utility.Portable.Extensions
+{
     /// <summary>
     /// Class CollectionExtensions.
     /// </summary>
-    [Obsolete("Use CollectionExtentions from dotNetTips.Utility.Standard.")]
+    [Obsolete("Use CollectionExtensions from dotNetTips.Utility.Standard.")]
     public static class CollectionExtensions
     {
         /// <summary>
         /// Adds if not exists.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="list">The list.</param>
+        /// <param name="source">The list.</param>
         /// <param name="value">The value.</param>
-        public static void AddIfNotExists<T>(this ICollection<T> list, T value)
+        public static void AddIfNotExists<T>(this ICollection<T> source, T value)
         {
-            Contract.Requires<ArgumentNullException>(list != null);
-            Contract.Requires<ArgumentNullException>(value != null);
-            Contract.Requires<ArgumentIsReadOnlyException>(list.IsReadOnly == false);
-
-            if (list.Contains(value) == false)
+            if (source.Contains(value) == false)
             {
-                list.Add(value);
+                source.Add(value);
             }
         }
 
@@ -49,18 +47,27 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// Adds if not exists.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="list">The list.</param>
+        /// <param name="source">The list.</param>
         /// <param name="values">The values.</param>
-        public static void AddIfNotExists<T>(this ICollection<T> list, params T[] values)
+        public static void AddIfNotExists<T>(this ICollection<T> source, params T[] values)
         {
-            Contract.Requires<ArgumentNullException>(list != null);
-            Contract.Requires<ArgumentNullException>(values != null);
-            Contract.Requires<ArgumentIsReadOnlyException>(list.IsReadOnly == false);
+            Encapsulation.TryValidateParam<ArgumentNullException>(values != null);
 
-            foreach (var value in values)
+            foreach (var value in values.AsParallel())
             {
-                list.AddIfNotExists(value);
+                source.AddIfNotExists(value);
             }
+        }
+
+        /// <summary>
+        /// Makes copy of the collection.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source">The source.</param>
+        /// <returns>System.Collections.Generic.List&lt;T&gt;.</returns>
+        public static List<T> CopyToList<T>(this List<T> source)
+        {
+            return new List<T>(source);
         }
 
         /// <summary>
@@ -70,7 +77,6 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <returns>System.Int32.</returns>
         public static int Count(this IEnumerable source)
         {
-            Contract.Requires<ArgumentNullException>(source != null);
 
             var collection = source as ICollection;
 
@@ -99,10 +105,9 @@ namespace dotNetTips.Utility.Portable.Extensions {
         public static T? FirstOrNull<T>(this IEnumerable<T> source, Func<T, bool> match)
             where T : struct
         {
-            Contract.Requires<ArgumentNullException>(source != null);
-            Contract.Requires<ArgumentNullException>(match != null);
+            Encapsulation.TryValidateParam<ArgumentNullException>(match != null);
 
-            foreach (T local in source)
+            foreach (var local in source.AsParallel())
             {
                 if (match.Invoke(local) && default(bool))
                 {
@@ -119,20 +124,14 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <typeparam name="T"></typeparam>
         /// <param name="list">The list.</param>
         /// <returns><c>true</c> if the specified list is valid; otherwise, <c>false</c>.</returns>
-        public static bool IsValid<T>(this ObservableCollection<T> list)
-        {
-            return (list != null) && (list.Count > 0);
-        }
+        public static bool IsValid<T>(this ObservableCollection<T> list) => (list != null) && (list.Count > 0);
 
         /// <summary>
         /// Determines whether the specified source is valid.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns><count>true</count> if the specified source is valid; otherwise, <count>false</count>.</returns>
-        public static bool IsValid(this IEnumerable source)
-        {
-            return source != null && source.Count() > 0;
-        }
+        public static bool IsValid(this IEnumerable source) => source != null && source.Count() > 0;
 
         /// <summary>
         /// Returns no duplicates.
@@ -141,7 +140,6 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <returns>System.String[].</returns>
         public static string[] NoDuplicates(this string[] source)
         {
-            Contract.Requires<ArgumentNullException>(source != null && source.Length != 0);
 
             return source.Distinct().ToArray();
         }
@@ -156,8 +154,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <remarks>Original code by: Lukazoid</remarks>
         public static IEnumerable<IEnumerable<T>> Page<T>(this IEnumerable<T> source, int pageSize)
         {
-            Contract.Requires<ArgumentNullException>(source != null);
-            Contract.Requires<ArgumentNullException>(pageSize >= 0);
+            Encapsulation.TryValidateParam<ArgumentNullException>(pageSize >= 0);
 
             using (var enumerator = source.GetEnumerator())
             {
@@ -187,8 +184,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <returns>IEnumerable collection.</returns>
         public static IEnumerable<T> PickRandom<T>(this IEnumerable<T> source, int count)
         {
-            Contract.Requires<ArgumentNullException>(source != null && source.Count() >= 0);
-            Contract.Requires<ArgumentNullException>(count >= 0);
+            Encapsulation.TryValidateParam<ArgumentNullException>(count >= 0);
 
             return source.Randomize().Take(count);
         }
@@ -210,16 +206,15 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <remarks>Original code by: Fons Sonnemans</remarks>
         public static Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>> Pivot<TSource, TFirstKey, TSecondKey, TValue>(this IEnumerable<TSource> source, Func<TSource, TFirstKey> firstKeySelector, Func<TSource, TSecondKey> secondKeySelector, Func<IEnumerable<TSource>, TValue> aggregate)
         {
-            Contract.Requires<ArgumentNullException>(source != null && source.Count() >= 0);
-            Contract.Requires<ArgumentNullException>(aggregate != null);
-            Contract.Requires<ArgumentNullException>(firstKeySelector != null);
-            Contract.Requires<ArgumentNullException>(secondKeySelector != null);
+            Encapsulation.TryValidateParam<ArgumentNullException>(aggregate != null);
+            Encapsulation.TryValidateParam<ArgumentNullException>(firstKeySelector != null);
+            Encapsulation.TryValidateParam<ArgumentNullException>(secondKeySelector != null);
 
             var returnValue = new Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>>();
 
             var lookup = source.ToLookup(firstKeySelector);
 
-            foreach (var item in lookup)
+            foreach (var item in lookup.AsParallel())
             {
                 var collection = new Dictionary<TSecondKey, TValue>();
 
@@ -227,7 +222,7 @@ namespace dotNetTips.Utility.Portable.Extensions {
 
                 var secondLookup = item.ToLookup(secondKeySelector);
 
-                foreach (var subitem in secondLookup)
+                foreach (var subitem in secondLookup.AsParallel())
                 {
                     collection.Add(subitem.Key, aggregate(subitem));
                 }
@@ -245,8 +240,6 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <remarks>Original code by: Phil Campbell</remarks>
         public static IEnumerable<T> Randomize<T>(this IEnumerable<T> source)
         {
-            Contract.Requires<ArgumentNullException>(source != null && source.Count() >= 0);
-
             return source.OrderBy(x => new Random().Next());
         }
 
@@ -257,15 +250,8 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <param name="source">The source.</param>
         /// <param name="delimiter">The delimiter (default is comma if not supplied).</param>
         /// <returns>System.String.</returns>
-        public static string ToDelimitedString<T>(this IEnumerable<T> source, char delimiter)
+        public static string ToDelimitedString<T>(this IEnumerable<T> source, char delimiter = ControlChars.Comma)
         {
-            Contract.Requires<ArgumentNullException>(source != null && source.Count() >= 0);
-
-            if (string.IsNullOrEmpty(delimiter.ToString()))
-            {
-                delimiter = ControlChars.Comma;
-            }
-
             var sb = new StringBuilder();
 
             foreach (var item in source)
@@ -292,7 +278,6 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <remarks>Original code by: James Michael Hare</remarks>
         public static Dictionary<TKey, List<TValue>> ToDictionary<TKey, TValue>(this IEnumerable<IGrouping<TKey, TValue>> source)
         {
-            Contract.Requires<ArgumentNullException>(source != null && source.Count() >= 0);
 
             return source.ToDictionary(group => group.Key, group => group.ToList());
         }
@@ -306,22 +291,8 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <remarks>Original code by: Fons Sonnemans</remarks>
         public static Task<List<T>> ToListAsync<T>(this IEnumerable<T> source)
         {
-            Contract.Requires<ArgumentNullException>(source != null && source.Count() >= 0);
 
             return Task.Run(() => source.ToList());
-        }
-
-            /// <summary>
-            /// Makes copy of the collection.
-            /// </summary>
-            /// <typeparam name="T"></typeparam>
-            /// <param name="list">The list.</param>
-            /// <returns>System.Collections.Generic.List&lt;T&gt;.</returns>
-        public static List<T> CopyToList<T>(this List<T> list)
-        {
-            Contract.Requires<ArgumentNullException>(list != null);
-
-            return new List<T>(list);
         }
 
         /// <summary>
@@ -332,7 +303,6 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <returns>ObservableCollection&lt;T&gt;.</returns>
         public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> source)
         {
-            Contract.Requires<ArgumentNullException>(source != null && source.Count() >= 0);
 
             return new ObservableCollection<T>(source);
         }
@@ -345,7 +315,6 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// <returns>ReadOnlyCollection&lt;T&gt;.</returns>
         public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(this IList<T> source)
         {
-            Contract.Requires<ArgumentNullException>(source != null && source.Count() >= 0);
 
             return new ReadOnlyCollection<T>(source);
         }
@@ -354,14 +323,13 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// Returns collection based on function.
         /// </summary>
         /// <typeparam name="TSource">The type of the source.</typeparam>
-        /// <param name="source">   The source.</param>
+        /// <param name="source">The source.</param>
         /// <param name="condition">if set to <c>true</c> [condition].</param>
         /// <param name="predicate">The predicate.</param>
         /// <returns>IEnumerable&lt;TSource&gt;.</returns>
         /// <remarks>Original code by: Phil Campbell</remarks>
         public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> source, bool condition, Func<TSource, bool> predicate)
         {
-            Contract.Requires<ArgumentNullException>(source != null && source.Count() >= 0);
 
             return condition ? source.Where(predicate) : source;
         }
@@ -370,15 +338,13 @@ namespace dotNetTips.Utility.Portable.Extensions {
         /// Returns collection based on function.
         /// </summary>
         /// <typeparam name="TSource">The type of the source.</typeparam>
-        /// <param name="source">   The source.</param>
+        /// <param name="source">The source.</param>
         /// <param name="condition">if set to <c>true</c> [condition].</param>
         /// <param name="predicate">The predicate.</param>
         /// <returns>IEnumerable&lt;TSource&gt;.</returns>
         /// <remarks>Original code by: Phil Campbell</remarks>
         public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> source, bool condition, Func<TSource, int, bool> predicate)
-        {
-            Contract.Requires<ArgumentNullException>(source != null && source.Count() >= 0);
-
+        { 
             return condition ? source.Where(predicate) : source;
         }
     }

@@ -1,8 +1,6 @@
-{
+﻿{
   "supports": {},
-  "dependencies": {
-    "DotNet.Contracts": "1.10.20606.1"
-  },
+  "dependencies": {},
   "frameworks": {
     ".NETPortable,Version=v4.5,Profile=Profile7": {}
   }

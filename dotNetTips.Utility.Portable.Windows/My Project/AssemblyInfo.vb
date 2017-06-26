@@ -12,5 +12,5 @@ Imports System
 <Assembly: AssemblyProduct("dotNetTips.Utility.Portable.Windows")>
 <Assembly: AssemblyCopyright("David McCarter")>
 <Assembly: AssemblyTrademark("David McCarter")>
-<Assembly: AssemblyVersion("2017.1.0.0")>
-<Assembly: AssemblyFileVersion("2017.1.0.0")>
+<Assembly: AssemblyVersion("2017.6.26.2002")>
+<Assembly: AssemblyFileVersion("2017.6.26.2002")>

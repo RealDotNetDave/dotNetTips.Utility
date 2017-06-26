@@ -8,13 +8,19 @@
 // <summary>
 // </summary>
 // ***********************************************************************
-namespace dotNetTips.Utility.Portable {
+namespace dotNetTips.Utility.Portable
+{
     /// <summary>
     /// Interface ISingleton
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    internal interface ISingleton<T>
-        where T : class
+    public interface ISingleton<T> where T : class
     {
+        /// <summary>
+        /// Gets the instance.
+        /// </summary>
+        /// <value>The instance.</value>
+        T Instance { get; }
+
     }
 }

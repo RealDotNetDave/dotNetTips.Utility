@@ -268,7 +268,7 @@
             Adds if not exists.
             </summary>
             <typeparam name="T"></typeparam>
-            <param name="list">The list.</param>
+            <param name="source">The list.</param>
             <param name="value">The value.</param>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.AddIfNotExists``1(System.Collections.Generic.ICollection{``0},``0[])">
@@ -276,8 +276,16 @@
             Adds if not exists.
             </summary>
             <typeparam name="T"></typeparam>
-            <param name="list">The list.</param>
+            <param name="source">The list.</param>
             <param name="values">The values.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.CopyToList``1(System.Collections.Generic.List{``0})">
+            <summary>
+            Makes copy of the collection.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source">The source.</param>
+            <returns>System.Collections.Generic.List&lt;T&gt;.</returns>
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.Count(System.Collections.IEnumerable)">
             <summary>
@@ -391,14 +399,6 @@
             <returns>Task&lt;List&lt;T&gt;&gt;.</returns>
             <remarks>Original code by: Fons Sonnemans</remarks>
         </member>
-        <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.CopyToList``1(System.Collections.Generic.List{``0})">
-            <summary>
-            Makes copy of the collection.
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="list">The list.</param>
-            <returns>System.Collections.Generic.List&lt;T&gt;.</returns>
-        </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.CollectionExtensions.ToObservableCollection``1(System.Collections.Generic.IEnumerable{``0})">
             <summary>
             To the observable collection.
@@ -420,7 +420,7 @@
             Returns collection based on function.
             </summary>
             <typeparam name="TSource">The type of the source.</typeparam>
-            <param name="source">   The source.</param>
+            <param name="source">The source.</param>
             <param name="condition">if set to <c>true</c> [condition].</param>
             <param name="predicate">The predicate.</param>
             <returns>IEnumerable&lt;TSource&gt;.</returns>
@@ -431,7 +431,7 @@
             Returns collection based on function.
             </summary>
             <typeparam name="TSource">The type of the source.</typeparam>
-            <param name="source">   The source.</param>
+            <param name="source">The source.</param>
             <param name="condition">if set to <c>true</c> [condition].</param>
             <param name="predicate">The predicate.</param>
             <returns>IEnumerable&lt;TSource&gt;.</returns>
@@ -828,6 +828,12 @@
             Interface ISingleton
             </summary>
             <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.ISingleton`1.Instance">
+            <summary>
+            Gets the instance.
+            </summary>
+            <value>The instance.</value>
         </member>
         <member name="T:dotNetTips.Utility.Portable.Tristate">
             <summary>

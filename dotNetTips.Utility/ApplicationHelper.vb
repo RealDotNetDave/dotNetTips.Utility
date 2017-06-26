@@ -16,8 +16,9 @@
 Imports System.Collections.Generic
 Imports System.IO
 Imports System.Reflection
-Imports System.Diagnostics.Contracts
 Imports System.Security.Principal
+Imports dotNetTips.Utility.Portable.OOP
+Imports Microsoft.Win32
 ''' <summary>
 ''' Class ApplicationHelper.
 ''' </summary>
@@ -27,6 +28,32 @@ Public Module ApplicationHelper
     ''' The temporary ASP files
     ''' </summary>
     Private Const TempAspFiles As String = "\Temporary ASP.NET Files\"
+
+    Public Sub UpdateUserRegKey(keyName As String, valueName As String, value As String)
+
+        Using regKey = CreateKeyIfNotExists(keyName)
+
+            regKey.SetValue(valueName, value, RegistryValueKind.String)
+
+            regKey.Flush()
+
+        End Using
+
+    End Sub
+
+    Private Function CreateKeyIfNotExists(keyName As String) As RegistryKey
+        Return Registry.Users.CreateSubKey(keyName, True)
+    End Function
+
+    Public Function GetUserRegKey(keyName As String, valueName As String) As String
+
+        Using regKey = CreateKeyIfNotExists(keyName)
+
+            Return regKey.GetValue(valueName, String.Empty)
+
+        End Using
+
+    End Function
 
     ''' <summary>
     ''' Available cultures.
@@ -100,7 +127,8 @@ Public Module ApplicationHelper
     ''' <param name="processName">Name of the process.</param>
     ''' <returns><c>true</c> if [is application already running] [the specified process name]; otherwise, <c>false</c>.</returns>
     Public Function IsProcessRunning(processName As String) As Boolean
-        Contract.Requires(Of ArgumentNullException)(Not String.IsNullOrEmpty(processName), "processName is nothing or empty.")
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(Not String.IsNullOrEmpty(processName), "processName is nothing or empty.")
+
         Return If(Process.GetProcessesByName(processName).Count() > 0, True, False)
     End Function
 
@@ -118,7 +146,7 @@ Public Module ApplicationHelper
     ''' <summary>
     ''' Kills the current process.
     ''' </summary>
-    Public Sub KillProcess()
+    Public Sub KillCurrentProcess()
         KillProcess(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location))
     End Sub
 
@@ -127,7 +155,7 @@ Public Module ApplicationHelper
     ''' </summary>
     ''' <param name="processName">Name of the process.</param>
     Public Sub KillProcess(processName As String)
-        Contract.Requires(Of ArgumentNullException)(Not String.IsNullOrEmpty(processName), "processName is nothing or empty.")
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(Not String.IsNullOrEmpty(processName), "processName is nothing or empty.")
         Dim app = System.Diagnostics.Process.GetProcessesByName(processName).FirstOrDefault
 
         If app IsNot Nothing Then
