@@ -179,6 +179,7 @@
             <summary>
             Base Class for Entity Framework Data Entities.
             </summary>
+            <seealso cref="T:dotNetTips.Utility.Portable.Data.IDataEntity" />
         </member>
         <member name="M:dotNetTips.Utility.Portable.Data.DataEntity.#ctor">
             <summary>
@@ -203,6 +204,12 @@
             </summary>
             <value>The identifier.</value>
         </member>
+        <member name="P:dotNetTips.Utility.Portable.Data.DataEntity.PublicKey">
+            <summary>
+            Gets or sets the public key.
+            </summary>
+            <value>The public key.</value>
+        </member>
         <member name="P:dotNetTips.Utility.Portable.Data.DataEntity.UpdatedAt">
             <summary>
             Gets or sets the updated at.
@@ -210,6 +217,61 @@
             <value>The updated at.</value>
         </member>
         <member name="P:dotNetTips.Utility.Portable.Data.DataEntity.Version">
+            <summary>
+            Gets or sets the version.
+            </summary>
+            <value>The version.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Data.DataEntity.IsValid">
+            <summary>
+            Checks to make sure entity is valid.
+            </summary>
+            <value><c>true</c> if this instance is valid; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Data.DataEntity.IsEntityValid">
+            <summary>
+            Determines whether [is entity valid].
+            </summary>
+            <returns><c>true</c> if [is entity valid]; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.Data.IDataEntity">
+            <summary>
+            Interface IDataEntity
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Data.IDataEntity.CreatedAt">
+            <summary>
+            Gets or sets the created at date.
+            </summary>
+            <value>The created at.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Data.IDataEntity.Deleted">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:dotNetTips.Utility.Portable.Data.DataEntity" /> is deleted.
+            </summary>
+            <value><c>true</c> if deleted; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Data.IDataEntity.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>The identifier.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Data.IDataEntity.PublicKey">
+            <summary>
+            	Gets or sets the public key.
+            </summary>
+            <value>
+            	The public key.
+            </value>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Data.IDataEntity.UpdatedAt">
+            <summary>
+            Gets or sets the updated at.
+            </summary>
+            <value>The updated at.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Data.IDataEntity.Version">
             <summary>
             Gets or sets the version.
             </summary>
@@ -1092,6 +1154,12 @@
             </summary>
             <typeparam name="T"></typeparam>
         </member>
+        <member name="P:dotNetTips.Utility.Portable.ISingleton`1.Instance">
+            <summary>
+            Gets the instance.
+            </summary>
+            <value>The instance.</value>
+        </member>
         <member name="T:dotNetTips.Utility.Portable.Properties.Resources">
             <summary>
               A strongly-typed resource class, for looking up localized strings, etc.
@@ -1199,6 +1267,41 @@
             </summary>
             <typeparam name="T"></typeparam>
             <returns>T.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.Validation.IsValidResult">
+            <summary>
+            Class IsValidResult.
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Validation.IsValidResult.IsValid">
+            <summary>
+            Returns true if ... is valid.
+            </summary>
+            <value><c>true</c> if this instance is valid; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Validation.IsValidResult.Errors">
+            <summary>
+            Gets the errors.
+            </summary>
+            <value>The errors.</value>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Validation.IsValidResult.#ctor(System.Boolean,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.Validation.IsValidResult"/> class.
+            </summary>
+            <param name="valid">if set to <c>true</c> [valid].</param>
+            <param name="errors">The errors.</param>
+        </member>
+        <member name="T:dotNetTips.Utility.Portable.Validation.IValid">
+            <summary>
+            Class IValid.
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Validation.IValid.IsValid">
+            <summary>
+            Returns true if data for the object is valid.
+            </summary>
+            <value>The is valid.</value>
         </member>
         <member name="T:dotNetTips.Utility.Standard.Diagnostics.PerformanceStopwatch">
             <summary>

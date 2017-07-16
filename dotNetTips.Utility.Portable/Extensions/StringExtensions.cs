@@ -136,7 +136,7 @@ namespace dotNetTips.Utility.Portable.Extensions
                 size += 1;
             }
 
-            return ((fileSize + " ") + (new string[] {
+            return (($"{fileSize} ") + (new string[] {
             "bytes",
             "KB",
             "MB",

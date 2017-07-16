@@ -25,23 +25,18 @@ Namespace IO
         ''' <summary>
         ''' Occurs when [read text file progress].
         ''' </summary>
-        Event ReadTextFileProgress As EventHandler(Of FileProcessEventArgs)
+        Event ReadTextFileProgress As EventHandler(Of ProcessorEventArgs)
 
-        ''' <summary>
-        ''' Compresses the file.
-        ''' </summary>
-        ''' <param name="sourceFileName">Name of the source file.</param>
-        ''' <param name="destinationFileName">Name of the destination file including extension.</param>
-        Public Sub CompressFile(sourceFileName As String, destinationFileName As String)
-            Encapsulation.TryValidateParam(sourceFileName, NameOf(sourceFileName))
-            Encapsulation.TryValidateParam(destinationFileName, NameOf(destinationFileName))
+        'Public Sub CompressFile(sourceFileName As String, destinationFileName As String)
+        '    Encapsulation.TryValidateParam(sourceFileName, NameOf(sourceFileName))
+        '    Encapsulation.TryValidateParam(destinationFileName, NameOf(destinationFileName))
 
-            If File.Exists(sourceFileName) Then
-                Using archive = ZipFile.Open(destinationFileName, ZipArchiveMode.Create)
-                    Dim file = archive.CreateEntryFromFile(sourceFileName, Path.GetFileName(destinationFileName), CompressionLevel.Optimal)
-                End Using
-            End If
-        End Sub
+        '    If File.Exists(sourceFileName) Then
+        '        Using archive = ZipFile.Open(destinationFileName, ZipArchiveMode.Create)
+        '            Dim file = archive.CreateEntryFromFile(sourceFileName, Path.GetFileName(destinationFileName), CompressionLevel.Optimal)
+        '        End Using
+        '    End If
+        'End Sub
 
         ''' <summary>
         ''' Copies file.
@@ -162,7 +157,7 @@ Namespace IO
                     fileText.Append(encoding.GetString(fileData, 0, fileBytes))
                     fileLengthCopied += fileBytes
 
-                    Dim arguments As New FileProcessEventArgs() With {.TotalLength = fileTotalLength, .LengthCopied = fileLengthCopied, .Percent = CDbl((fileLengthCopied / fileTotalLength) * 100), .Cancel = cancel}
+                    Dim arguments As New ProcessorEventArgs() With {.TotalLength = fileTotalLength, .LengthCopied = fileLengthCopied, .Percent = CDbl((fileLengthCopied / fileTotalLength) * 100), .Cancel = cancel}
 
                     'Send back progress
                     RaiseEvent ReadTextFileProgress(Nothing, arguments)

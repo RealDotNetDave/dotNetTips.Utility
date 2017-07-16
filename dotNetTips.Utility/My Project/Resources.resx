@@ -194,28 +194,90 @@
   </data>
   <data name="TabIndexFormat" xml:space="preserve">
     <value>00</value>
-    <comment>ToStringValue description</comment>
   </data>
   <data name="TabIndexFormatValue" xml:space="preserve">
     <value>{0}.{1}</value>
   </data>
   <data name="ClearControlsToIgnore" xml:space="preserve">
     <value>BUTTON;LABEL</value>
-    <comment>Controls to ignore in the ClearControls method.</comment>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Countries" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Countries.xml;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-    <comment>Countries XML File</comment>
+  <data name="Countries" xml:space="preserve">
+    <value />
   </data>
-  <data name="States" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\States.xml;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="States" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;states&gt;
+	&lt;state name="ALABAMA" abbreviation="AL" /&gt;
+	&lt;state name="ALASKA" abbreviation="AK" /&gt;
+	&lt;state name="AMERICAN SAMOA" abbreviation="AS" /&gt;
+	&lt;state name="ARIZONA" abbreviation="AZ" /&gt;
+	&lt;state name="ARKANSAS" abbreviation="AR" /&gt;
+	&lt;state name="CALIFORNIA" abbreviation="CA" /&gt;
+	&lt;state name="COLORADO" abbreviation="CO" /&gt;
+	&lt;state name="CONNECTICUT" abbreviation="CT" /&gt;
+	&lt;state name="DELAWARE" abbreviation="DE" /&gt;
+	&lt;state name="DISTRICT OF COLUMBIA" abbreviation="DC" /&gt;
+	&lt;state name="FEDERATED STATES OF MICRONESIA" abbreviation="FM" /&gt;
+	&lt;state name="FLORIDA" abbreviation="FL" /&gt;
+	&lt;state name="GEORGIA" abbreviation="GA" /&gt;
+	&lt;state name="GUAM" abbreviation="GU" /&gt;
+	&lt;state name="HAWAII" abbreviation="HI" /&gt;
+	&lt;state name="IDAHO" abbreviation="ID" /&gt;
+	&lt;state name="ILLINOIS" abbreviation="IL" /&gt;
+	&lt;state name="INDIANA" abbreviation="IN" /&gt;
+	&lt;state name="IOWA" abbreviation="IA" /&gt;
+	&lt;state name="KANSAS" abbreviation="KS" /&gt;
+	&lt;state name="KENTUCKY" abbreviation="KY" /&gt;
+	&lt;state name="LOUISIANA" abbreviation="LA" /&gt;
+	&lt;state name="MAINE" abbreviation="ME" /&gt;
+	&lt;state name="MARSHALL ISLANDS" abbreviation="MH" /&gt;
+	&lt;state name="MARYLAND" abbreviation="MD" /&gt;
+	&lt;state name="MASSACHUSETTS" abbreviation="MA" /&gt;
+	&lt;state name="MICHIGAN" abbreviation="MI" /&gt;
+	&lt;state name="MINNESOTA" abbreviation="MN" /&gt;
+	&lt;state name="MISSISSIPPI" abbreviation="MS" /&gt;
+	&lt;state name="MISSOURI" abbreviation="MO" /&gt;
+	&lt;state name="MONTANA" abbreviation="MT" /&gt;
+	&lt;state name="NEBRASKA" abbreviation="NE" /&gt;
+	&lt;state name="NEVADA" abbreviation="NV" /&gt;
+	&lt;state name="NEW HAMPSHIRE" abbreviation="NH" /&gt;
+	&lt;state name="NEW JERSEY" abbreviation="NJ" /&gt;
+	&lt;state name="NEW MEXICO" abbreviation="NM" /&gt;
+	&lt;state name="NEW YORK" abbreviation="NY" /&gt;
+	&lt;state name="NORTH CAROLINA" abbreviation="NC" /&gt;
+	&lt;state name="NORTH DAKOTA" abbreviation="ND" /&gt;
+	&lt;state name="NORTHERN MARIANA ISLANDS" abbreviation="MP" /&gt;
+	&lt;state name="OHIO" abbreviation="OH" /&gt;
+	&lt;state name="OKLAHOMA" abbreviation="OK" /&gt;
+	&lt;state name="OREGON" abbreviation="OR" /&gt;
+	&lt;state name="PALAU" abbreviation="PW" /&gt;
+	&lt;state name="PENNSYLVANIA" abbreviation="PA" /&gt;
+	&lt;state name="PUERTO RICO" abbreviation="PR" /&gt;
+	&lt;state name="RHODE ISLAND" abbreviation="RI" /&gt;
+	&lt;state name="SOUTH CAROLINA" abbreviation="SC" /&gt;
+	&lt;state name="SOUTH DAKOTA" abbreviation="SD" /&gt;
+	&lt;state name="TENNESSEE" abbreviation="TN" /&gt;
+	&lt;state name="TEXAS" abbreviation="TX" /&gt;
+	&lt;state name="UTAH" abbreviation="UT" /&gt;
+	&lt;state name="VERMONT" abbreviation="VT" /&gt;
+	&lt;state name="VIRGIN ISLANDS" abbreviation="VI" /&gt;
+	&lt;state name="VIRGINIA" abbreviation="VA" /&gt;
+	&lt;state name="WASHINGTON" abbreviation="WA" /&gt;
+	&lt;state name="WEST VIRGINIA" abbreviation="WV" /&gt;
+	&lt;state name="WISCONSIN" abbreviation="WI" /&gt;
+	&lt;state name="WYOMING" abbreviation="WY" /&gt;
+&lt;/states&gt;</value>
   </data>
   <data name="GeoLookup" xml:space="preserve">
     <value>http://ipinfodb.com/ip_query.php?ip={0}</value>
-    <comment>Address to lookup IP geo location</comment>
   </data>
   <data name="HttpHeadersToIgnore" xml:space="preserve">
     <value>auth,password</value>
+  </data>
+  <data name="FolderNotFound" xml:space="preserve">
+    <value>Folder not found.</value>
+  </data>
+  <data name="FileNotFound" xml:space="preserve">
+    <value>File not found.</value>
   </data>
 </root>

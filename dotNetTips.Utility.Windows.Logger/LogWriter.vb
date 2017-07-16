@@ -14,8 +14,6 @@
 Imports System
 Imports System.Diagnostics
 Imports System.Globalization
-
-Imports dotNetTips.Utility.Extensions
 Imports dotNetTips.Utility.Portable.OOP
 
 ''' <summary>

@@ -13,11 +13,11 @@ Namespace IO
     ''' <summary>
     ''' Event arguments for file process.
     ''' </summary>
-    Public Class FileProcessEventArgs
+    Public Class ProcessorEventArgs
         Inherits System.EventArgs
 
         ''' <summary>
-        ''' Initializes a new instance of the <see cref="FileProcessEventArgs" /> class.
+        ''' Initializes a new instance of the <see cref="ProcessorEventArgs" /> class.
         ''' </summary>
         Public Sub New()
         End Sub

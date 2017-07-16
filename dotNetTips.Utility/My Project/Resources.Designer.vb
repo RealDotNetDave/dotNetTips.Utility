@@ -24,19 +24,23 @@ Namespace My.Resources
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0"),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
-     Global.Microsoft.VisualBasic.HideModuleNameAttribute()>  _
-    Friend Module Resources
+     Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute()>  _
+    Friend Class Resources
         
-        Private resourceMan As Global.System.Resources.ResourceManager
+        Private Shared resourceMan As Global.System.Resources.ResourceManager
         
-        Private resourceCulture As Global.System.Globalization.CultureInfo
+        Private Shared resourceCulture As Global.System.Globalization.CultureInfo
+        
+        <Global.System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")>  _
+        Friend Sub New()
+            MyBase.New
+        End Sub
         
         '''<summary>
         '''  Returns the cached ResourceManager instance used by this class.
         '''</summary>
         <Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Friend ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
+        Friend Shared ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
             Get
                 If Object.ReferenceEquals(resourceMan, Nothing) Then
                     Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("dotNetTips.Utility.Resources", GetType(Resources).Assembly)
@@ -51,7 +55,7 @@ Namespace My.Resources
         '''  resource lookups using this strongly typed resource class.
         '''</summary>
         <Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Friend Property Culture() As Global.System.Globalization.CultureInfo
+        Friend Shared Property Culture() As Global.System.Globalization.CultureInfo
             Get
                 Return resourceCulture
             End Get
@@ -63,7 +67,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to BUTTON;LABEL.
         '''</summary>
-        Friend ReadOnly Property ClearControlsToIgnore() As String
+        Friend Shared ReadOnly Property ClearControlsToIgnore() As String
             Get
                 Return ResourceManager.GetString("ClearControlsToIgnore", resourceCulture)
             End Get
@@ -72,7 +76,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to .
         '''</summary>
-        Friend ReadOnly Property Countries() As String
+        Friend Shared ReadOnly Property Countries() As String
             Get
                 Return ResourceManager.GetString("Countries", resourceCulture)
             End Get
@@ -81,7 +85,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Regular expression string is null or empty!.
         '''</summary>
-        Friend ReadOnly Property EXCEPTION_EMPTY_OR_NULL_REGEXP() As String
+        Friend Shared ReadOnly Property EXCEPTION_EMPTY_OR_NULL_REGEXP() As String
             Get
                 Return ResourceManager.GetString("EXCEPTION_EMPTY_OR_NULL_REGEXP", resourceCulture)
             End Get
@@ -90,7 +94,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Input string is null or empty!.
         '''</summary>
-        Friend ReadOnly Property EXCEPTION_EMPTY_OR_NULL_STRING() As String
+        Friend Shared ReadOnly Property EXCEPTION_EMPTY_OR_NULL_STRING() As String
             Get
                 Return ResourceManager.GetString("EXCEPTION_EMPTY_OR_NULL_STRING", resourceCulture)
             End Get
@@ -99,7 +103,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Exception Information Details:.
         '''</summary>
-        Friend ReadOnly Property ExceptionDetails() As String
+        Friend Shared ReadOnly Property ExceptionDetails() As String
             Get
                 Return ResourceManager.GetString("ExceptionDetails", resourceCulture)
             End Get
@@ -108,7 +112,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to HEADER.
         '''</summary>
-        Friend ReadOnly Property ExceptionFormatterHeader() As String
+        Friend Shared ReadOnly Property ExceptionFormatterHeader() As String
             Get
                 Return ResourceManager.GetString("ExceptionFormatterHeader", resourceCulture)
             End Get
@@ -117,7 +121,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to StackTrace Information Details:.
         '''</summary>
-        Friend ReadOnly Property ExceptionStackTraceDetails() As String
+        Friend Shared ReadOnly Property ExceptionStackTraceDetails() As String
             Get
                 Return ResourceManager.GetString("ExceptionStackTraceDetails", resourceCulture)
             End Get
@@ -126,7 +130,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Exception Summary for:.
         '''</summary>
-        Friend ReadOnly Property ExceptionSummary() As String
+        Friend Shared ReadOnly Property ExceptionSummary() As String
             Get
                 Return ResourceManager.GetString("ExceptionSummary", resourceCulture)
             End Get
@@ -135,16 +139,34 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Exception Type.
         '''</summary>
-        Friend ReadOnly Property ExceptionType() As String
+        Friend Shared ReadOnly Property ExceptionType() As String
             Get
                 Return ResourceManager.GetString("ExceptionType", resourceCulture)
             End Get
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to File not found..
+        '''</summary>
+        Friend Shared ReadOnly Property FileNotFound() As String
+            Get
+                Return ResourceManager.GetString("FileNotFound", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Folder not found..
+        '''</summary>
+        Friend Shared ReadOnly Property FolderNotFound() As String
+            Get
+                Return ResourceManager.GetString("FolderNotFound", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to http://ipinfodb.com/ip_query.php?ip={0}.
         '''</summary>
-        Friend ReadOnly Property GeoLookup() As String
+        Friend Shared ReadOnly Property GeoLookup() As String
             Get
                 Return ResourceManager.GetString("GeoLookup", resourceCulture)
             End Get
@@ -153,7 +175,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to auth,password.
         '''</summary>
-        Friend ReadOnly Property HttpHeadersToIgnore() As String
+        Friend Shared ReadOnly Property HttpHeadersToIgnore() As String
             Get
                 Return ResourceManager.GetString("HttpHeadersToIgnore", resourceCulture)
             End Get
@@ -162,7 +184,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Inner Exception Information Details:.
         '''</summary>
-        Friend ReadOnly Property InnerExceptionDetails() As String
+        Friend Shared ReadOnly Property InnerExceptionDetails() As String
             Get
                 Return ResourceManager.GetString("InnerExceptionDetails", resourceCulture)
             End Get
@@ -171,7 +193,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Unable to read intrinsic property.  Error message: {0}.
         '''</summary>
-        Friend ReadOnly Property IntrinsicPropertyError() As String
+        Friend Shared ReadOnly Property IntrinsicPropertyError() As String
             Get
                 Return ResourceManager.GetString("IntrinsicPropertyError", resourceCulture)
             End Get
@@ -180,7 +202,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to ======================================.
         '''</summary>
-        Friend ReadOnly Property LineSeparator() As String
+        Friend Shared ReadOnly Property LineSeparator() As String
             Get
                 Return ResourceManager.GetString("LineSeparator", resourceCulture)
             End Get
@@ -189,7 +211,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Permission for UnmanagedCode is not available..
         '''</summary>
-        Friend ReadOnly Property LogEntryIntrinsicPropertyNoUnmanagedCodePermissionError() As String
+        Friend Shared ReadOnly Property LogEntryIntrinsicPropertyNoUnmanagedCodePermissionError() As String
             Get
                 Return ResourceManager.GetString("LogEntryIntrinsicPropertyNoUnmanagedCodePermissionError", resourceCulture)
             End Get
@@ -198,7 +220,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to ^((4\d{3})|(5[1-5]\d{2})|(6011))-?\d{4}-?\d{4}-?\d{4}|3[4,7]\d{13}$.
         '''</summary>
-        Friend ReadOnly Property REGEXP_CREDIT_CARD() As String
+        Friend Shared ReadOnly Property REGEXP_CREDIT_CARD() As String
             Get
                 Return ResourceManager.GetString("REGEXP_CREDIT_CARD", resourceCulture)
             End Get
@@ -207,7 +229,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to ^[a-zA-Z0-9\-\.]+\.(com|org|net|mil|edu|COM|ORG|NET|MIL|EDU)$.
         '''</summary>
-        Friend ReadOnly Property REGEXP_DOMAIN() As String
+        Friend Shared ReadOnly Property REGEXP_DOMAIN() As String
             Get
                 Return ResourceManager.GetString("REGEXP_DOMAIN", resourceCulture)
             End Get
@@ -216,7 +238,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to \w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*.
         '''</summary>
-        Friend ReadOnly Property REGEXP_EMAIL() As String
+        Friend Shared ReadOnly Property REGEXP_EMAIL() As String
             Get
                 Return ResourceManager.GetString("REGEXP_EMAIL", resourceCulture)
             End Get
@@ -225,7 +247,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to ([A-Z]:\\[^/:\*\?&lt;&gt;\|]+\.\w{2,6})|(\\{2}[^/:\*\?&lt;&gt;\|]+\.\w{2,6}).
         '''</summary>
-        Friend ReadOnly Property REGEXP_FILE_PATH() As String
+        Friend Shared ReadOnly Property REGEXP_FILE_PATH() As String
             Get
                 Return ResourceManager.GetString("REGEXP_FILE_PATH", resourceCulture)
             End Get
@@ -234,7 +256,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to ^(?n:(?&lt;lastname&gt;(St\.\ )?(?-i:[A-Z]\&apos;?\w+?\-?)+)(?&lt;suffix&gt;\ (?i:([JS]R)|((X(X{1,2})?)?((I((I{1,2})|V|X)?)|(V(I{0,3})))?)))?,((?&lt;prefix&gt;Dr|Prof|M(r?|(is)?)s)\ )?(?&lt;firstname&gt;(?-i:[A-Z]\&apos;?(\w+?|\.)\ ??){1,2})?(\ (?&lt;mname&gt;(?-i:[A-Z])(\&apos;?\w+?|\.))){0,2})$.
         '''</summary>
-        Friend ReadOnly Property REGEXP_FIRST_LASTNAME() As String
+        Friend Shared ReadOnly Property REGEXP_FIRST_LASTNAME() As String
             Get
                 Return ResourceManager.GetString("REGEXP_FIRST_LASTNAME", resourceCulture)
             End Get
@@ -243,7 +265,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to ISBN(-1(?:(0)|3))?:?\x20+(?(1)(?(2)(?:(?=.{13}$)\d{1,5}([ -])\d{1,7}\3\d{1,6}\3(?:\d|x)$)|(?:(?=.{17}$)97(?:8|9)([ -])\d{1,5}\4\d{1,7}\4\d{1,6}\4\d$))|(?(.{13}$)(?:\d{1,5}([ -])\d{1,7}\5\d{1,6}\5(?:\d|x)$)|(?:(?=.{17}$)97(?:8|9)([ -])\d{1,5}\6\d{1,7}\6\d{1,6}\6\d$))).
         '''</summary>
-        Friend ReadOnly Property REGEXP_ISBN() As String
+        Friend Shared ReadOnly Property REGEXP_ISBN() As String
             Get
                 Return ResourceManager.GetString("REGEXP_ISBN", resourceCulture)
             End Get
@@ -252,7 +274,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to \b-?[1-9](?:\.\d+)?[Ee][-+]?\d+\b.
         '''</summary>
-        Friend ReadOnly Property REGEXP_SCIENENTIFIC() As String
+        Friend Shared ReadOnly Property REGEXP_SCIENENTIFIC() As String
             Get
                 Return ResourceManager.GetString("REGEXP_SCIENENTIFIC", resourceCulture)
             End Get
@@ -261,7 +283,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to ^(\w|\W)+$.
         '''</summary>
-        Friend ReadOnly Property REGEXP_STRING() As String
+        Friend Shared ReadOnly Property REGEXP_STRING() As String
             Get
                 Return ResourceManager.GetString("REGEXP_STRING", resourceCulture)
             End Get
@@ -270,7 +292,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to (\&lt;|\&gt;).
         '''</summary>
-        Friend ReadOnly Property REGEXP_STRING_WEB_SAFE() As String
+        Friend Shared ReadOnly Property REGEXP_STRING_WEB_SAFE() As String
             Get
                 Return ResourceManager.GetString("REGEXP_STRING_WEB_SAFE", resourceCulture)
             End Get
@@ -279,7 +301,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to ^(?n:(?!-[\d\,]*K) (?!-((\d{1,3},)*((([3-9]\d\d|2[89]\d|27[4-9])\xB0C)|(((4[6-9]|[5-9]\d)\d)\xB0F)))) -?\d{1,3}(,\d{3})*(\xB0[CF]|K) )$.
         '''</summary>
-        Friend ReadOnly Property REGEXP_TEMP() As String
+        Friend Shared ReadOnly Property REGEXP_TEMP() As String
             Get
                 Return ResourceManager.GetString("REGEXP_TEMP", resourceCulture)
             End Get
@@ -288,7 +310,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to (http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;amp;:/~\+#]*[\w\-\@?^=%&amp;amp;/~\+#])?.
         '''</summary>
-        Friend ReadOnly Property REGEXP_URL() As String
+        Friend Shared ReadOnly Property REGEXP_URL() As String
             Get
                 Return ResourceManager.GetString("REGEXP_URL", resourceCulture)
             End Get
@@ -297,7 +319,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to ((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}.
         '''</summary>
-        Friend ReadOnly Property REGEXP_US_PHONE_NUMBER() As String
+        Friend Shared ReadOnly Property REGEXP_US_PHONE_NUMBER() As String
             Get
                 Return ResourceManager.GetString("REGEXP_US_PHONE_NUMBER", resourceCulture)
             End Get
@@ -306,7 +328,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to \d{3}-\d{2}-\d{4}.
         '''</summary>
-        Friend ReadOnly Property REGEXP_US_SSN() As String
+        Friend Shared ReadOnly Property REGEXP_US_SSN() As String
             Get
                 Return ResourceManager.GetString("REGEXP_US_SSN", resourceCulture)
             End Get
@@ -315,7 +337,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to \d{5}(-\d{4})?.
         '''</summary>
-        Friend ReadOnly Property REGEXP_US_ZIP_CODE() As String
+        Friend Shared ReadOnly Property REGEXP_US_ZIP_CODE() As String
             Get
                 Return ResourceManager.GetString("REGEXP_US_ZIP_CODE", resourceCulture)
             End Get
@@ -335,7 +357,7 @@ Namespace My.Resources
         '''	&lt;state name=&quot;DELAWARE&quot; abbreviation=&quot;DE&quot; /&gt;
         '''	&lt;state name=&quot;DISTRICT OF COLUMBIA&quot; abbr [rest of string was truncated]&quot;;.
         '''</summary>
-        Friend ReadOnly Property States() As String
+        Friend Shared ReadOnly Property States() As String
             Get
                 Return ResourceManager.GetString("States", resourceCulture)
             End Get
@@ -344,7 +366,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to 00.
         '''</summary>
-        Friend ReadOnly Property TabIndexFormat() As String
+        Friend Shared ReadOnly Property TabIndexFormat() As String
             Get
                 Return ResourceManager.GetString("TabIndexFormat", resourceCulture)
             End Get
@@ -353,10 +375,10 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to {0}.{1}.
         '''</summary>
-        Friend ReadOnly Property TabIndexFormatValue() As String
+        Friend Shared ReadOnly Property TabIndexFormatValue() As String
             Get
                 Return ResourceManager.GetString("TabIndexFormatValue", resourceCulture)
             End Get
         End Property
-    End Module
+    End Class
 End Namespace

@@ -160,7 +160,7 @@ Namespace UI.Windows
         Private Sub CheckControl(ByVal controlToClear As Control, ByVal controlType As Type, ByRef shouldReturn As Boolean)
             shouldReturn = False
             'Check to see if we need to ignore the control
-            Static ignore As String() = CultureInfo.CurrentCulture.TextInfo.ToUpper(My.Resources.ClearControlsToIgnore).Split(New Char() {Char.Parse(";")})
+            Static ignore As String() = CultureInfo.CurrentCulture.TextInfo.ToUpper(My.Resources.Resources.ClearControlsToIgnore).Split(New Char() {Char.Parse(";")})
             If (ignore IsNot Nothing AndAlso ignore.Length > 0) Then
                 If (ignore.Contains(CultureInfo.CurrentCulture.TextInfo.ToUpper(controlType.Name))) Then
                     shouldReturn = True
@@ -257,10 +257,10 @@ Namespace UI.Windows
         End Sub
 
         Private Function GetTabIndex(ByVal inputControl As Control) As String
-            Dim tabIndex As String = inputControl.TabIndex.ToString(My.Resources.TabIndexFormat, CultureInfo.InvariantCulture)
+            Dim tabIndex As String = inputControl.TabIndex.ToString(My.Resources.Resources.TabIndexFormat, CultureInfo.InvariantCulture)
 
             If Not IsNothing(inputControl.Parent) Then
-                tabIndex = String.Format(CultureInfo.InvariantCulture, My.Resources.TabIndexFormatValue, GetTabIndex(inputControl.Parent), tabIndex)
+                tabIndex = String.Format(CultureInfo.InvariantCulture, My.Resources.Resources.TabIndexFormatValue, GetTabIndex(inputControl.Parent), tabIndex)
             End If
 
             Return tabIndex

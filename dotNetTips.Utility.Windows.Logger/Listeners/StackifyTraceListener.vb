@@ -16,7 +16,6 @@
 
 Imports System.Globalization
 Imports System.Text
-Imports dotNetTips.Utility.Net
 Imports dotNetTips.Utility.Portable.OOP
 Imports StackifyLib
 

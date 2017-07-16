@@ -11,8 +11,9 @@
 ' </copyright>
 ' <summary></summary>
 ' ***********************************************************************
+Imports System.Data.Entity
+Imports System.Data.Entity.Core.Objects.DataClasses
 Imports System.Runtime.CompilerServices
-Imports System.Data.Objects.DataClasses
 
 Namespace Extensions
 
@@ -41,36 +42,24 @@ Namespace Extensions
         <Extension>
         Public Sub EnsureLoaded(Of T As {Class, IEntityWithRelationships})(entityCollection As EntityCollection(Of T), entitySource As EntityObject)
             If entitySource IsNot Nothing AndAlso entityCollection IsNot Nothing AndAlso Not entityCollection.IsLoaded Then
-                If entitySource.EntityState = System.Data.EntityState.Modified OrElse entitySource.EntityState = System.Data.EntityState.Unchanged Then
+                If entitySource.EntityState = EntityState.Modified OrElse entitySource.EntityState = EntityState.Unchanged Then
                     entityCollection.Load()
                 End If
             End If
         End Sub
 
-        ''' <summary>
-        ''' Whether or not the entity reference has an entity key with a value present
-        ''' </summary>
-        ''' <typeparam name="T"></typeparam>
-        ''' <param name="entityReference">The entity reference.</param>
-        ''' <returns><c>true</c> if [has entity key first value] [the specified entity reference]; otherwise, <c>false</c>.</returns>
-        <Extension>
-        Public Function HasEntityKeyFirstValue(Of T As {Class, IEntityWithRelationships})(entityReference As EntityReference(Of T)) As Boolean
-            Return entityReference IsNot Nothing AndAlso entityReference.EntityKey.HasFirstValue(Of Integer)()
-        End Function
+        '<Extension>
+        'Public Function HasEntityKeyFirstValue(Of T As {Class, IEntityWithRelationships})(entityReference As EntityReference(Of T)) As Boolean
+        '    Return entityReference IsNot Nothing AndAlso entityReference.EntityKey.HasFirstValue(Of Integer)()
+        'End Function
 
-        ''' <summary>
-        ''' Get entity key with a value present
-        ''' </summary>
-        ''' <typeparam name="T"></typeparam>
-        ''' <param name="entityReference">The entity reference.</param>
-        ''' <returns>System.Int32.</returns>
-        <Extension>
-        Public Function GetEntityKeyFirstValue(Of T As {Class, IEntityWithRelationships})(entityReference As EntityReference(Of T)) As Integer
-            If entityReference IsNot Nothing Then
-                Return entityReference.EntityKey.GetFirstValue(Of Integer)()
-            End If
-            Return 0
-        End Function
+        '<Extension>
+        'Public Function GetEntityKeyFirstValue(Of T As {Class, IEntityWithRelationships})(entityReference As EntityReference(Of T)) As Integer
+        '    If entityReference IsNot Nothing Then
+        '        Return entityReference.EntityKey.EntityKeyValues(GetEntityKeyFirstValue(Of Integer)()
+        '    End If
+        '    Return 0
+        'End Function
 
         ''' <summary>
         ''' Gets the first entity key value
@@ -78,8 +67,8 @@ Namespace Extensions
         ''' <typeparam name="T"></typeparam>
         ''' <param name="entityKey">The entity key.</param>
         ''' <returns>the first entity key value</returns>
-        <Extension> _
-        Public Function GetFirstValue(Of T)(entityKey As EntityKey) As T
+        <Extension>
+        Public Function GetFirstValue(Of T)(entityKey As Core.EntityKey) As T
             If entityKey IsNot Nothing AndAlso entityKey.EntityKeyValues IsNot Nothing AndAlso entityKey.EntityKeyValues.Length > 0 Then
                 Return DirectCast(entityKey.EntityKeyValues.First().Value, T)
             End If
@@ -93,7 +82,7 @@ Namespace Extensions
         ''' <param name="entityKey">The entity key.</param>
         ''' <param name="value">The value.</param>
         <Extension>
-        Public Sub SetFirstValue(Of T)(entityKey As EntityKey, value As T)
+        Public Sub SetFirstValue(Of T)(entityKey As Core.EntityKey, value As T)
             If entityKey IsNot Nothing AndAlso entityKey.EntityKeyValues IsNot Nothing AndAlso entityKey.EntityKeyValues.Length > 0 Then
                 entityKey.EntityKeyValues.First().Value = value
             End If
@@ -107,7 +96,7 @@ Namespace Extensions
         ''' <param name="entityKey">The entity key.</param>
         ''' <returns><c>true</c> if [has first value] [the specified entity key]; otherwise, <c>false</c>.</returns>
         <Extension>
-        Public Function HasFirstValue(Of T)(entityKey As EntityKey) As Boolean
+        Public Function HasFirstValue(Of T)(entityKey As Core.EntityKey) As Boolean
             Return (Not GetFirstValue(Of T)(entityKey).Equals(Nothing))
         End Function
 
