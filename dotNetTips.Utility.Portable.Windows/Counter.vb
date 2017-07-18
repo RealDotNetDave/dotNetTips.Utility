@@ -4,18 +4,17 @@
 ' Created          : 04-15-2016
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 07-30-2016
+' Last Modified On : 07-31-2016
 ' ***********************************************************************
 ' <copyright file="Counter.vb" company="dotNetTips.com">
 '     David McCarter
 ' </copyright>
 ' <summary></summary>
-' ***********************************************************************
+' *************************************************************************
 Imports System.Globalization
 ''' <summary>
 ''' Counter class.
 ''' </summary>
-''' <remarks></remarks>
 Public Class Counter
 
     ''' <summary>
@@ -71,7 +70,6 @@ Public Class Counter
     ''' </summary>
     Protected Overridable Sub OnValueChanged()
         RaiseEvent ValueChanged(Me, New CounterChangedEventArgs(Me.Value))
-
     End Sub
 
     ''' <summary>
