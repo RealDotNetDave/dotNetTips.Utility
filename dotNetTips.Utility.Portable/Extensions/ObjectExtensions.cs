@@ -4,7 +4,7 @@
 // Created          : 02-28-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-11-2017
+// Last Modified On : 07-20-2017
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="dotNetTips.com">
 //     David McCarter - dotNetTips.com © 2017
@@ -42,7 +42,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         {
             var fieldInfos = obj.GetType().GetRuntimeFields();
 
-            foreach (var fieldInfo in fieldInfos)
+            foreach (var fieldInfo in fieldInfos.AsParallel())
             {
                 var value = fieldInfo.GetValue(null) as IDisposable;
 
@@ -64,7 +64,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         {
             var fieldInfos = obj.GetType().GetRuntimeFields();
 
-            foreach (var fieldInfo in fieldInfos)
+            foreach (var fieldInfo in fieldInfos.AsParallel())
             {
                 var objectValue = fieldInfo.GetValue(obj);
                 var runtimeField = obj.GetType().GetRuntimeField(fieldInfo.Name);
@@ -94,7 +94,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         }
 
         /// <summary>
-        /// Ins the specified source.
+        /// Checks to see if the value is in the specified source.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="source">The source.</param>

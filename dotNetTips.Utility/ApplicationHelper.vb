@@ -1,24 +1,26 @@
 ' ***********************************************************************
 ' Assembly         : dotNetTips.Utility
 ' Author           : David McCarter
-' Created          : 12-31-2014
+' Created          : 08-16-2016
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 08-02-2016
+' Last Modified On : 07-20-2017
 ' ***********************************************************************
-' <copyright file="ApplicationHelper.vb" company="dotNetTips.com">
-'     '     '     dotNetTips.com. All rights reserved.
-'
-'
+' <copyright file="ApplicationHelper.vb" company="McCarter Consulting - David McCarter">
+'     David McCarter - dotNetTips.com © 2017
 ' </copyright>
 ' <summary></summary>
-' *************************************************************************
+' ***********************************************************************
+
+Imports dotNetTips.Utility.My
+Imports dotNetTips.Utility.Portable.OOP
+Imports Microsoft.Win32
 Imports System.Collections.Generic
 Imports System.IO
 Imports System.Reflection
 Imports System.Security.Principal
-Imports dotNetTips.Utility.Portable.OOP
-Imports Microsoft.Win32
+Imports System.Threading
+
 ''' <summary>
 ''' Class ApplicationHelper.
 ''' </summary>
@@ -29,30 +31,14 @@ Public Module ApplicationHelper
     ''' </summary>
     Private Const TempAspFiles As String = "\Temporary ASP.NET Files\"
 
-    Public Sub UpdateUserRegKey(keyName As String, valueName As String, value As String)
 
-        Using regKey = CreateKeyIfNotExists(keyName)
-
-            regKey.SetValue(valueName, value, RegistryValueKind.String)
-
-            regKey.Flush()
-
-        End Using
-
-    End Sub
-
+    ''' <summary>
+    ''' Creates the key if not exists.
+    ''' </summary>
+    ''' <param name="keyName">Name of the key.</param>
+    ''' <returns>RegistryKey.</returns>
     Private Function CreateKeyIfNotExists(keyName As String) As RegistryKey
         Return Registry.Users.CreateSubKey(keyName, True)
-    End Function
-
-    Public Function GetUserRegKey(keyName As String, valueName As String) As String
-
-        Using regKey = CreateKeyIfNotExists(keyName)
-
-            Return regKey.GetValue(valueName, String.Empty)
-
-        End Using
-
     End Function
 
     ''' <summary>
@@ -62,7 +48,7 @@ Public Module ApplicationHelper
     ''' <returns>IEnumerable(Of CultureInfo).</returns>
     Public Function AvailableCultures(binDirectory As String) As IEnumerable(Of CultureInfo)
 
-        Dim cultures As IEnumerable(Of CultureInfo) = CultureInfo.GetCultures(CultureTypes.NeutralCultures).Where(Function(c) System.IO.Directory.Exists(System.IO.Path.Combine(binDirectory, c.TwoLetterISOLanguageName)))
+        Dim cultures = CultureInfo.GetCultures(CultureTypes.NeutralCultures).Where(Function(c) Directory.Exists(Path.Combine(binDirectory, c.TwoLetterISOLanguageName)))
 
         Return cultures
     End Function
@@ -72,7 +58,7 @@ Public Module ApplicationHelper
     ''' </summary>
     ''' <returns>Assembly name.</returns>
     Public Function CurrentAssemblyName() As String
-        Return System.Reflection.Assembly.GetEntryAssembly.GetName.Name
+        Return Assembly.GetEntryAssembly.GetName.Name
     End Function
 
     ''' <summary>
@@ -82,7 +68,7 @@ Public Module ApplicationHelper
     Public Function CurrentAssemblyReferencedAssemblies() As IEnumerable(Of String)
         Dim referencedAssemblies As New List(Of String)
 
-        For Each assembly As System.Reflection.AssemblyName In System.Reflection.Assembly.GetEntryAssembly.GetReferencedAssemblies
+        For Each assembly As AssemblyName In Reflection.Assembly.GetEntryAssembly.GetReferencedAssemblies
             referencedAssemblies.Add(assembly.ToString)
         Next
 
@@ -95,12 +81,28 @@ Public Module ApplicationHelper
     ''' </summary>
     ''' <returns><see cref="Boolean">True</see> if current user is administrator.</returns>
     Public Function CurrentUserIsAdministrator() As Boolean
-        Dim currentDomain As AppDomain = System.Threading.Thread.GetDomain()
+        Dim currentDomain = Thread.GetDomain()
 
-        currentDomain.SetPrincipalPolicy(System.Security.Principal.PrincipalPolicy.WindowsPrincipal)
-        Dim currentPrincipal As System.Security.Principal.WindowsPrincipal = CType(System.Threading.Thread.CurrentPrincipal, System.Security.Principal.WindowsPrincipal)
+        currentDomain.SetPrincipalPolicy(PrincipalPolicy.WindowsPrincipal)
+        Dim currentPrincipal = CType(Thread.CurrentPrincipal, WindowsPrincipal)
 
-        Return currentPrincipal.IsInRole(System.Security.Principal.WindowsBuiltInRole.Administrator)
+        Return currentPrincipal.IsInRole(WindowsBuiltInRole.Administrator)
+
+    End Function
+
+    ''' <summary>
+    ''' Gets the user reg key.
+    ''' </summary>
+    ''' <param name="keyName">Name of the key.</param>
+    ''' <param name="valueName">Name of the value.</param>
+    ''' <returns>System.String.</returns>
+    Public Function GetUserRegKey(keyName As String, valueName As String) As String
+
+        Using regKey = CreateKeyIfNotExists(keyName)
+
+            Return regKey.GetValue(valueName, String.Empty)
+
+        End Using
 
     End Function
 
@@ -156,12 +158,38 @@ Public Module ApplicationHelper
     ''' <param name="processName">Name of the process.</param>
     Public Sub KillProcess(processName As String)
         Encapsulation.TryValidateParam(Of ArgumentNullException)(Not String.IsNullOrEmpty(processName), "processName is nothing or empty.")
-        Dim app = System.Diagnostics.Process.GetProcessesByName(processName).FirstOrDefault
+        Dim app = Process.GetProcessesByName(processName).FirstOrDefault
 
         If app IsNot Nothing Then
             app.Kill()
             app.WaitForExit()
         End If
+    End Sub
+
+    ''' <summary>
+    ''' Plays the sound.
+    ''' </summary>
+    ''' <param name="location">The location.</param>
+    Public Sub PlaySound(location As String)
+        Computer.Audio.Play(location)
+    End Sub
+
+    ''' <summary>
+    ''' Plays the sound.
+    ''' </summary>
+    ''' <param name="data">The data.</param>
+    ''' <param name="playMode">The play mode.</param>
+    Public Sub PlaySound(data As Byte(), playMode As AudioPlayMode)
+        Computer.Audio.Play(data, playMode)
+    End Sub
+
+    ''' <summary>
+    ''' Plays the sound.
+    ''' </summary>
+    ''' <param name="stream">The stream.</param>
+    ''' <param name="playMode">The play mode.</param>
+    Public Sub PlaySound(stream As Stream, playMode As AudioPlayMode)
+        Computer.Audio.Play(stream, playMode)
     End Sub
 
     ''' <summary>
@@ -176,5 +204,23 @@ Public Module ApplicationHelper
 
             Process.GetCurrentProcess.Kill()
         End If
+    End Sub
+
+    ''' <summary>
+    ''' Updates the user reg key.
+    ''' </summary>
+    ''' <param name="keyName">Name of the key.</param>
+    ''' <param name="valueName">Name of the value.</param>
+    ''' <param name="value">The value.</param>
+    Public Sub UpdateUserRegKey(keyName As String, valueName As String, value As String)
+
+        Using regKey = CreateKeyIfNotExists(keyName)
+
+            regKey.SetValue(valueName, value, RegistryValueKind.String)
+
+            regKey.Flush()
+
+        End Using
+
     End Sub
 End Module
