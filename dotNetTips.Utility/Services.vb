@@ -14,6 +14,7 @@
 Imports System.Collections.Generic
 Imports System.ComponentModel
 Imports System.ServiceProcess
+Imports dotNetTips.Utility.Portable.OOP
 
 ''' <summary>
 ''' Class that deals with Windows services.
@@ -43,7 +44,9 @@ Public Module Services
     ''' <param name="serviceName">Name of the service.</param>
     ''' <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
     Public Function ServiceExists(serviceName As String) As Boolean
-        Dim service As Object = LoadService(serviceName)
+        Encapsulation.TryValidateParam(serviceName, NameOf(serviceName))
+
+        Dim service = LoadService(serviceName)
 
         If service IsNot Nothing Then
             Return True
@@ -52,21 +55,22 @@ Public Module Services
         End If
     End Function
 
-    'TODO: BLOG POST
     ''' <summary>
-    ''' Services the status.
+    ''' Gets the status of a Windows service.
     ''' </summary>
     ''' <param name="serviceName">Name of the service.</param>
     ''' <returns>ServiceControllerStatus.</returns>
     ''' <exception cref="InvalidOperationException">Service not found.</exception>
     ''' <exception cref="System.InvalidOperationException">Service not found.</exception>
     Public Function ServiceStatus(serviceName As String) As ServiceControllerStatus
-        Dim service As Object = LoadService(serviceName)
+        Encapsulation.TryValidateParam(serviceName, NameOf(serviceName))
 
-        If service IsNot Nothing Then
-            Return service.Status
-        Else
-            Throw New InvalidOperationException("Service not found.")
+        If ServiceExists(serviceName) Then
+            Dim service = LoadService(serviceName)
+
+            If service IsNot Nothing Then
+                Return service.Status
+            End If
         End If
     End Function
 
@@ -76,7 +80,9 @@ Public Module Services
     ''' <param name="serviceName">Name of the service.</param>
     ''' <returns>ServiceActionResult.</returns>
     Public Function StartService(serviceName As String) As ServiceActionResult
-        Dim statusResult As Object = ServiceActionResult.NotFound
+        Encapsulation.TryValidateParam(serviceName, NameOf(serviceName))
+
+        Dim statusResult = ServiceActionResult.NotFound
 
         If ServiceExists(serviceName) = False Then
             Return statusResult
@@ -102,25 +108,43 @@ Public Module Services
     ''' <summary>
     ''' Starts the stop services.
     ''' </summary>
-    ''' <param name="requests">The requests.</param>
-    Public Sub StartStopServices(requests As IEnumerable(Of ServiceAction))
+    ''' <param name="services">The requests.</param>
+    Public Sub StopServices(services As IEnumerable(Of ServiceAction))
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(services IsNot Nothing, NameOf(services))
 
-        If (requests.Count = 0) Then
-            Return
-        End If
-
-        For Each request As Object In requests.AsParallel
-            If request.ServiceActionRequest = ServiceActionRequest.Start Then
-
-                request.ServiceActionResult = StartService(request.ServiceName)
-
-            ElseIf request.ServiceActionRequest = ServiceActionRequest.[Stop] Then
-
-                request.ServiceActionResult = StopService(request.ServiceName)
-
-            End If
+        For Each service In services.AsParallel
+            service.ServiceActionResult = StopService(service.ServiceName)
         Next
 
+    End Sub
+
+
+    ''' <summary>
+    ''' Starts the services.	
+    ''' </summary>
+    ''' <param name="services">The services.</param>
+    ''' <remarks></remarks>
+    Public Sub StartServices(services As IEnumerable(Of ServiceAction))
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(services IsNot Nothing, NameOf(services))
+
+        For Each service In services.AsParallel
+            service.ServiceActionResult = StartService(service.ServiceName)
+        Next
+
+    End Sub
+
+    ''' <summary>
+    ''' Get the status of a Windows Service.	
+    ''' </summary>
+    ''' <param name="services">The services.</param>
+    ''' <remarks></remarks>
+    Public Sub ServicesStatus(services As IEnumerable(Of ServiceAction))
+        Encapsulation.TryValidateParam(Of ArgumentNullException)(services IsNot Nothing, NameOf(services))
+
+        ''Find status on services
+        For Each service In services.AsParallel
+            service.ServiceActionResult = ServiceStatus(service.ServiceName)
+        Next
     End Sub
 
     ''' <summary>
@@ -129,6 +153,8 @@ Public Module Services
     ''' <param name="serviceName">Name of the service.</param>
     ''' <returns>ServiceActionResult.</returns>
     Public Function StopService(serviceName As String) As ServiceActionResult
+        Encapsulation.TryValidateParam(serviceName, NameOf(serviceName))
+
         Dim statusResult As Object = ServiceActionResult.NotFound
 
         If ServiceExists(serviceName) = False Then

@@ -1,19 +1,23 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Portable
-// Author           : David McCarter
+// Author           : dotnetdave
 // Created          : 06-26-2017
 //
-// Last Modified By : David McCarter
-// Last Modified On : 07-21-2017
+// Last Modified By : dotnetdave
+// Last Modified On : 06-26-2017
 // ***********************************************************************
 // <copyright file="IsValidResult.cs" company="dotNetTips.com">
 //     David McCarter - dotNetTips.com © 2017
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace dotNetTips.Utility.Standard.Validation
+namespace dotNetTips.Utility.Portable.Validation
 {
     /// <summary>
     /// Class IsValidResult.
@@ -33,7 +37,7 @@ namespace dotNetTips.Utility.Standard.Validation
         public IEnumerable<string> Errors { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="IsValidResult" /> class.
+        /// Initializes a new instance of the <see cref="IsValidResult"/> class.
         /// </summary>
         /// <param name="valid">if set to <c>true</c> [valid].</param>
         /// <param name="errors">The errors.</param>

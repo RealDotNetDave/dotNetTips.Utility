@@ -158,5 +158,15 @@ namespace dotNetTips.Utility.Portable.Extensions
                 }
             }
         }
+
+        /// <summary>
+        /// Strips the null.
+        /// </summary>
+        /// <param name="field">The field.</param>
+        /// <returns>System.String.</returns>
+        public static string StripNull(this object field)
+        {
+            return field == null ? (string.Empty) : (field.ToString());
+        }
     }
 }

@@ -48,7 +48,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         public static void AddIfNotExists<T>(this ICollection<T> list, T value)
         {
             Encapsulation.TryValidateParam<ArgumentNullException>(value != null, "Value is required.");
-            Encapsulation.TryValidateParam<ArgumentNullException>(list.IsReadOnly == false, "List cannot be read-only.");
+            Encapsulation.TryValidateParam(list, nameof(list));
 
             //TODO: MULTITHREAD
             foreach (var item in list)
@@ -77,7 +77,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         public static void AddIfNotExists<T>(this ICollection<T> list, params T[] values)
         {
             Encapsulation.TryValidateParam(values, nameof(values));
-            Encapsulation.TryValidateParam<ArgumentNullException>(list.IsReadOnly, "List cannot be read-only.");
+            Encapsulation.TryValidateParam(list, nameof(list));
 
             foreach (var value in values)
             {

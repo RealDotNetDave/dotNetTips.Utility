@@ -16,6 +16,7 @@ using dotNetTips.Utility.Portable.OOP;
 using System;
 using System.Text;
 using System.Linq;
+using System.Globalization;
 
 namespace dotNetTips.Utility.Portable.Extensions
 {
@@ -65,7 +66,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         public static bool ContainsAny(this string input, params string[] characters)
         {
             Encapsulation.TryValidateParam<ArgumentNullException>(characters != null && characters.Length > 0);
-
+   
             if (string.IsNullOrEmpty(input))
             {
                 return false;
@@ -174,5 +175,65 @@ namespace dotNetTips.Utility.Portable.Extensions
             }
             return sb.ToString();
         }
+
+        /// <summary>
+        /// Adds the URL slash.
+        /// </summary>
+        /// <param name="inputPath">The input path.</param>
+        /// <returns>System.String.</returns>
+        public static string AddUrlSlash(this string inputPath)
+        {
+            //add the ending slash to a path if it isn't already there
+            var inputPathResult = inputPath.Trim();
+
+            if (inputPathResult.Length - 1 < 0)
+            {
+                return inputPathResult;
+            }
+            else if (inputPathResult[inputPathResult.Length - 1] == Convert.ToChar("/", CultureInfo.InvariantCulture))
+            {
+                return (inputPathResult);
+            }
+            else
+            {
+                return ($"{inputPathResult}/");
+            }
+
+        }
+
+        /// <summary>
+        /// Combines the URL paths.
+        /// </summary>
+        /// <param name="basePath">The base path.</param>
+        /// <param name="pagePath">The page path.</param>
+        /// <returns>System.String.</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static string CombineUrlPaths(string basePath, string pagePath)
+        {
+            if ((basePath == null) || (pagePath == null))
+            {
+                throw new ArgumentNullException((basePath == null) ? nameof(basePath) : nameof(pagePath));
+            }
+
+            if (pagePath.Length == 0)
+            {
+                return basePath;
+            }
+
+            if (pagePath[0] == Convert.ToChar("/", CultureInfo.InvariantCulture))
+            {
+                pagePath = pagePath.Substring(1, pagePath.Length - 1);
+            }
+
+            if (basePath[basePath.Length - 1] !=Convert.ToChar("/", CultureInfo.InvariantCulture))
+            {
+                return ($"{basePath}/{pagePath}");
+            }
+            else
+            {
+                return (basePath + pagePath);
+            }
+        }
+
     }
 }

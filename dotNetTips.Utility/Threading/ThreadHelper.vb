@@ -1,23 +1,23 @@
 ﻿' ***********************************************************************
 ' Assembly         : dotNetTips.Utility
-' Author           : davidmccarter
-' Created          : 12-31-2014
+' Author           : David McCarter
+' Created          : 06-26-2017
 '
-' Last Modified By : davidmccarter
-' Last Modified On : 10-06-2014
+' Last Modified By : David McCarter
+' Last Modified On : 07-27-2017
 ' ***********************************************************************
-' <copyright file="ThreadHelper.vb" company="dotNetTips.com">
-'     dotNetTips.com. All rights reserved.
+' <copyright file="ThreadHelper.vb" company="McCarter Consulting - David McCarter">
+'     David McCarter - dotNetTips.com © 2017
 ' </copyright>
 ' <summary></summary>
 ' ***********************************************************************
+
 Imports System.Text
 
 Namespace Threading
     ''' <summary>
     ''' Threading methods.
     ''' </summary>
-    ''' <remarks></remarks>
     Public Module ThreadHelper
         ''' <summary>
         ''' Gets the thread id.
@@ -30,7 +30,7 @@ Namespace Threading
         ''' <summary>
         ''' Gets the name of the current process.
         ''' </summary>
-        ''' <returns></returns>
+        ''' <returns>System.String.</returns>
         Public Function GetProcessName() As String
             Dim buffer As New StringBuilder(&H400)
             Return If(UnsafeNativeMethods.GetModuleFileName(UnsafeNativeMethods.GetModuleHandle(Nothing), buffer, buffer.Capacity) > 0, buffer.ToString(), String.Empty)

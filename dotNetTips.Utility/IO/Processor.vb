@@ -60,7 +60,7 @@ Public Class Processor
                     successCount += 1
 
                     OnProcessed(New ProgressEventArgs With {.Name = tempFile.FullName, .ProgressState = ProgressState.Copied, .Size = tempFile.Length})
-                Catch ex As Exception
+                Catch ex As Exception When TypeOf ex Is IOException OrElse TypeOf ex Is UnauthorizedAccessException
                     OnProcessed(New ProgressEventArgs With {.Name = tempFile.FullName, .ProgressState = ProgressState.Error, .Size = tempFile.Length, .Message = ex.Message})
                 End Try
 
@@ -93,7 +93,7 @@ Public Class Processor
 
                     OnProcessed(New ProgressEventArgs With {.Name = tempFile.FullName, .ProgressState = ProgressState.Deleted, .Size = tempFile.Length})
 
-                Catch ex As Exception
+                Catch ex As Exception When TypeOf ex Is IOException OrElse TypeOf ex Is UnauthorizedAccessException
                     OnProcessed(New ProgressEventArgs With {.Name = tempFile.FullName, .ProgressState = ProgressState.Error, .Size = tempFile.Length, .Message = ex.Message})
                 End Try
 
@@ -124,7 +124,7 @@ Public Class Processor
 
                     OnProcessed(New ProgressEventArgs With {.Name = tempFolder.FullName, .ProgressState = ProgressState.Deleted})
 
-                Catch ex As Exception
+                Catch ex As Exception When TypeOf ex Is UnauthorizedAccessException OrElse TypeOf ex Is DirectoryNotFoundException OrElse TypeOf ex Is IOException
                     OnProcessed(New ProgressEventArgs With {.Name = tempFolder.FullName, .ProgressState = ProgressState.Error, .Message = ex.Message})
                 End Try
             Else

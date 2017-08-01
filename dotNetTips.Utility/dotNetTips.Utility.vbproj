@@ -275,6 +275,7 @@
     <Compile Include="EnumHelper.vb" />
     <Compile Include="EnumValue.vb" />
     <Compile Include="Extensions\ObjectExtensions.vb" />
+    <Compile Include="Extensions\ThreadExtensions.vb" />
     <Compile Include="InvalidEnumTypeException.vb" />
     <Compile Include="IO\CompressionAction.vb" />
     <Compile Include="IO\Deflater.vb" />

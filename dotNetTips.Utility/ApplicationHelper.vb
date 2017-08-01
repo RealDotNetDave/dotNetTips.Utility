@@ -120,8 +120,17 @@ Public Module ApplicationHelper
     ''' <returns><c>true</c> if app is not running, <c>false</c> otherwise.</returns>
     Public Function IsProcessRunning() As Boolean
 
-        Return If(Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location)).Count() > 1, True, False)
+        Return If(Process.GetProcessesByName(ExecutingAssemblyLocation).Count() > 1, True, False)
 
+    End Function
+
+    ''' <summary>
+    ''' Executings the assembly location.	
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Function ExecutingAssemblyLocation() As String
+        Return Assembly.GetEntryAssembly().Location
     End Function
     ''' <summary>
     ''' Determines whether [is application already running] [the specified process name].
@@ -195,15 +204,15 @@ Public Module ApplicationHelper
     ''' <summary>
     ''' Restarts an app as administrator.
     ''' </summary>
+    ''' <remarks>
+    ''' DO NOT call this method if running the app in Visual Studio.
+    ''' </remarks>
     Public Sub RunAsAdministrator()
-        If Not IsRunAsAdministrator() Then
+        Dim processInfo = New ProcessStartInfo(ExecutingAssemblyLocation) With {.UseShellExecute = True, .Verb = "runas"}
 
-            Dim processInfo = New ProcessStartInfo(Assembly.GetExecutingAssembly().CodeBase) With {.UseShellExecute = True, .Verb = "runas"}
+        Process.Start(processInfo)
 
-            Process.Start(processInfo)
-
-            Process.GetCurrentProcess.Kill()
-        End If
+        Process.GetCurrentProcess.Kill()
     End Sub
 
     ''' <summary>

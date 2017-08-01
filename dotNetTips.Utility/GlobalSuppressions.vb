@@ -36,3 +36,4 @@
 <Assembly: CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times", Scope:="member", Target:="dotNetTips.Utility.Xml.XmlHelper.#Serialize(System.Object)")>
 <Assembly: CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times", Scope:="member", Target:="dotNetTips.Utility.IO.Deflater.#CompressFile()")>
 <Assembly: CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times", Scope:="member", Target:="dotNetTips.Utility.IO.Deflater.#DecompressFile()")>
+<Assembly: CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2213:DisposableFieldsShouldBeDisposed", MessageId:="_timeoutTimer", Scope:="member", Target:="dotNetTips.Utility.Threading.WorkItem.#Dispose(System.Boolean)")>

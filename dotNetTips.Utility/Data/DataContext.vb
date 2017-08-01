@@ -30,9 +30,9 @@ Namespace Data
         ''' database to which a connection will be made.
         ''' See the class remarks for how this is used to create a connection.
         ''' </summary>
-        ''' <param name="nameOrConnectionString">Either the database name or a connection string.</param>
-        Protected Sub New(nameOrConnectionString As String)
-            MyBase.New(nameOrConnectionString)
+        ''' <param name="nameOrConnection">Either the database name or a connection string.</param>
+        Protected Sub New(nameOrConnection As String)
+            MyBase.New(nameOrConnection)
             Configuration.LazyLoadingEnabled = False
             Configuration.ValidateOnSaveEnabled = True
 
@@ -65,7 +65,7 @@ Namespace Data
         ''' <remarks>Typically, this method is called only once when the first instance of a derived context
         ''' is created.  The model for that context is then cached and is for all further instances of
         ''' the context in the app domain.  This caching can be disabled by setting the ModelCaching
-        ''' property on the given ModelBuidler, but note that this can seriously degrade performance.
+        ''' property on the given ModelBuilder, but note that this can seriously degrade performance.
         ''' More control over caching is provided through use of the DbModelBuilder and DbContextFactory
         ''' classes directly.</remarks>
         Protected Overrides Sub OnModelCreating(modelBuilder As DbModelBuilder)

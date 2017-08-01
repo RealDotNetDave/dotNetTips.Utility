@@ -20,8 +20,9 @@ namespace dotNetTips.Utility.Standard.Data
     /// <summary>
     /// Base Class for Data Entities.
     /// </summary>
-    public abstract class DataEntity
+    public abstract class DataEntity : IDataEntity
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="DataEntity" /> class.
         /// </summary>
@@ -35,14 +36,12 @@ namespace dotNetTips.Utility.Standard.Data
         /// </summary>
         /// <value>The created at.</value>
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Column(Order = 97)]
         public DateTimeOffset CreatedAt { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="DataEntity" /> is deleted.
         /// </summary>
         /// <value><c>true</c> if deleted; otherwise, <c>false</c>.</value>
-        [Column(Order = 96)]
         public bool Deleted { get; set; }
 
         /// <summary>
@@ -50,22 +49,62 @@ namespace dotNetTips.Utility.Standard.Data
         /// </summary>
         /// <value>The identifier.</value>
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Key, Column(Order = 0)]
+        [Key]
         public int Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the public key.
+        /// </summary>
+        /// <value>The public key.</value>
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
+        public Guid PublicKey { get; set; }
 
         /// <summary>
         /// Gets or sets the updated at.
         /// </summary>
         /// <value>The updated at.</value>
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        [Column(Order = 98)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public DateTimeOffset? UpdatedAt { get; set; }
 
         /// <summary>
         /// Gets or sets the version.
         /// </summary>
         /// <value>The version.</value>
-        [Timestamp, Column(Order = 99)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public byte[] Version { get; set; }
+
+
+        /// <summary>
+        /// Checks to make sure entity is valid.
+        /// </summary>
+        /// <value><c>true</c> if this instance is valid; otherwise, <c>false</c>.</value>
+        public virtual bool IsValid
+        {
+            get
+            {
+                return IsEntityValid();
+            }
+        }
+
+        /// <summary>
+        /// Determines whether [is entity valid].
+        /// </summary>
+        /// <returns><c>true</c> if [is entity valid]; otherwise, <c>false</c>.</returns>
+        private bool IsEntityValid()
+        {
+            var returnValue = false;
+
+            if (this.UpdatedAt.HasValue)
+            {
+                if (this.CreatedAt > this.UpdatedAt)
+                {
+                    returnValue = false;
+                }
+            }
+
+            return returnValue;
+        }
+
     }
 }

@@ -1,20 +1,19 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Portable
-// Author           : dotnetdave
+// Author           : David McCarter
 // Created          : 06-26-2017
 //
-// Last Modified By : dotnetdave
-// Last Modified On : 06-26-2017
+// Last Modified By : David McCarter
+// Last Modified On : 07-21-2017
 // ***********************************************************************
 // <copyright file="IValid.cs" company="dotNetTips.com">
 //     David McCarter - dotNetTips.com © 2017
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using System;
-using System.Linq;
 
-namespace dotNetTips.Utility.Portable.Validation
+
+namespace dotNetTips.Utility.Standard.Validation
 {
     /// <summary>
     /// Class IValid.

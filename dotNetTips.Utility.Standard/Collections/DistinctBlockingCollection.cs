@@ -62,7 +62,7 @@ namespace dotNetTips.Utility.Standard.Collections
         {
             Encapsulation.TryValidateParam<ArgumentNullException>(item != null, "Item is requried.");
 
-            if ((ItemNotInCollection(item)))
+            if (ItemNotInCollection(item))
             {
                 base.Add(item);
             }

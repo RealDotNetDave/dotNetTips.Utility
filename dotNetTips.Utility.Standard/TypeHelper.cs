@@ -64,11 +64,11 @@ namespace dotNetTips.Utility.Standard
         /// <remarks></remarks>
         public static Int32 GetInstanceHashCode(object instance)
         {
-            Int32 hash = -1;
+            var hash = -1;
 
-            foreach (PropertyInfo prop in instance.GetType().GetRuntimeProperties().Where(p => p != null))
+            foreach (var prop in instance.GetType().GetRuntimeProperties().Where(p => p != null))
             {
-                object value = prop.GetValue(instance);
+                var value = prop.GetValue(instance);
 
                 if (value != null)
                 {

@@ -173,7 +173,7 @@
   <ItemGroup>
     <Compile Include="CallingMethod.vb" />
     <Compile Include="Category.vb" />
-    <Compile Include="EmailTraceListener.vb" />
+    <Compile Include="StackifyTraceListener.vb" />
     <Compile Include="EventLogTraceListener.vb" />
     <Compile Include="ExceptionFormatter.vb" />
     <Compile Include="GlobalSuppressions.vb" />

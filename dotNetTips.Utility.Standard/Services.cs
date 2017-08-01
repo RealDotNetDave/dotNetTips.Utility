@@ -106,25 +106,4 @@ namespace dotNetTips.Utility.Standard
             }
         }
     }
-
-    public enum ServiceActionResult
-    {
-        NotFound,
-        Running,
-        Stopped
-    }
-
-    public enum ServiceActionRequest
-    {
-        Unknown,
-        Start,
-        Stop
-    }
-
-    public class ServiceAction
-    {
-        public string ServiceName { get; set; }
-        public ServiceActionRequest ServiceActionRequest { get; set; }
-        public ServiceActionResult ServiceActionResult { get; set; }
-    }
 }

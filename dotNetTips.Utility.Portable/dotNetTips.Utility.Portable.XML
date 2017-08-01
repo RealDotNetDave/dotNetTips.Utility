@@ -781,7 +781,7 @@
         </member>
         <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.In``1(``0,``0[])">
             <summary>
-            Ins the specified source.
+            Checks to see if the value is in the specified source.
             </summary>
             <typeparam name="T"></typeparam>
             <param name="source">The source.</param>
@@ -815,6 +815,13 @@
             </summary>
             <param name="obj">The obj.</param>
             <param name="throwException">if set to <count>true</count> [throw exception].</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.ObjectExtensions.StripNull(System.Object)">
+            <summary>
+            Strips the null.
+            </summary>
+            <param name="field">The field.</param>
+            <returns>System.String.</returns>
         </member>
         <member name="T:dotNetTips.Utility.Portable.Extensions.StringExtensions">
             <summary>
@@ -876,6 +883,22 @@
             <param name="length">The length.</param>
             <param name="indentationCharacter">The indentation character.</param>
             <returns>System.String.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.StringExtensions.AddUrlSlash(System.String)">
+            <summary>
+            Adds the URL slash.
+            </summary>
+            <param name="inputPath">The input path.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.StringExtensions.CombineUrlPaths(System.String,System.String)">
+            <summary>
+            Combines the URL paths.
+            </summary>
+            <param name="basePath">The base path.</param>
+            <param name="pagePath">The page path.</param>
+            <returns>System.String.</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
         </member>
         <member name="T:dotNetTips.Utility.Portable.Extensions.TypeExtensions">
             <summary>
@@ -1268,41 +1291,6 @@
             <typeparam name="T"></typeparam>
             <returns>T.</returns>
         </member>
-        <member name="T:dotNetTips.Utility.Portable.Validation.IsValidResult">
-            <summary>
-            Class IsValidResult.
-            </summary>
-        </member>
-        <member name="P:dotNetTips.Utility.Portable.Validation.IsValidResult.IsValid">
-            <summary>
-            Returns true if ... is valid.
-            </summary>
-            <value><c>true</c> if this instance is valid; otherwise, <c>false</c>.</value>
-        </member>
-        <member name="P:dotNetTips.Utility.Portable.Validation.IsValidResult.Errors">
-            <summary>
-            Gets the errors.
-            </summary>
-            <value>The errors.</value>
-        </member>
-        <member name="M:dotNetTips.Utility.Portable.Validation.IsValidResult.#ctor(System.Boolean,System.Collections.Generic.IEnumerable{System.String})">
-            <summary>
-            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Portable.Validation.IsValidResult"/> class.
-            </summary>
-            <param name="valid">if set to <c>true</c> [valid].</param>
-            <param name="errors">The errors.</param>
-        </member>
-        <member name="T:dotNetTips.Utility.Portable.Validation.IValid">
-            <summary>
-            Class IValid.
-            </summary>
-        </member>
-        <member name="P:dotNetTips.Utility.Portable.Validation.IValid.IsValid">
-            <summary>
-            Returns true if data for the object is valid.
-            </summary>
-            <value>The is valid.</value>
-        </member>
         <member name="T:dotNetTips.Utility.Standard.Diagnostics.PerformanceStopwatch">
             <summary>
             Class PerformanceStopwatch.
@@ -1320,6 +1308,41 @@
             Stops the reset.
             </summary>
             <returns>TimeSpan.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.Validation.IsValidResult">
+            <summary>
+            Class IsValidResult.
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Validation.IsValidResult.IsValid">
+            <summary>
+            Returns true if ... is valid.
+            </summary>
+            <value><c>true</c> if this instance is valid; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Validation.IsValidResult.Errors">
+            <summary>
+            Gets the errors.
+            </summary>
+            <value>The errors.</value>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Validation.IsValidResult.#ctor(System.Boolean,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.Validation.IsValidResult" /> class.
+            </summary>
+            <param name="valid">if set to <c>true</c> [valid].</param>
+            <param name="errors">The errors.</param>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.Validation.IValid">
+            <summary>
+            Class IValid.
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Validation.IValid.IsValid">
+            <summary>
+            Returns true if data for the object is valid.
+            </summary>
+            <value>The is valid.</value>
         </member>
     </members>
 </doc>

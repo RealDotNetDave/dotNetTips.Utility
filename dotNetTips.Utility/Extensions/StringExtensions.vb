@@ -54,6 +54,7 @@ Namespace Extensions
         ''' <returns>System.String.</returns>
         <Extension>
         Public Function HtmlEncode(ByVal value As String) As String
+
             Return StringHelper.HtmlEncode(value)
         End Function
 
