@@ -15,6 +15,9 @@ using dotNetTips.Utility.Standard.OOP;
 using System;
 using System.Globalization;
 
+/// <summary>
+/// The Extensions namespace.
+/// </summary>
 namespace dotNetTips.Utility.Standard.Extensions
 {
     /// <summary>

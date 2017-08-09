@@ -45,7 +45,12 @@ Namespace Data
         ''' Updates the entities.
         ''' </summary>
         Private Sub UpdateEntities()
-            For Each tempEntity In ChangeTracker.Entries(Of IDataEntity)().AsParallel()
+
+            If ChangeTracker.HasChanges = False Then
+                Return
+            End If
+
+            For Each tempEntity In ChangeTracker.Entries(Of IDataEntity)().Where(Function(p) p.State <> EntityState.Unchanged).AsParallel()
                 If tempEntity.State = EntityState.Added Then
                     tempEntity.Entity.CreatedAt = DateTime.Now
                     tempEntity.Entity.PublicKey = Guid.NewGuid

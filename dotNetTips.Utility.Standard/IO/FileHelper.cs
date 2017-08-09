@@ -11,9 +11,6 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-/// <summary>
-/// The IO namespace.
-/// </summary>
 using dotNetTips.Utility.Standard.Extensions;
 using System;
 using System.Collections.Generic;

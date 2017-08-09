@@ -28,7 +28,7 @@ namespace dotNetTips.Utility.Standard.Data
         /// </summary>
         protected DataEntity()
         {
-            this.CreatedAt = DateTime.UtcNow;
+      
         }
 
         /// <summary>

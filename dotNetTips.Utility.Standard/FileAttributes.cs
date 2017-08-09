@@ -12,9 +12,6 @@
 // <summary></summary>
 // ***********************************************************************
 
-/// <summary>
-/// The Standard namespace.
-/// </summary>
 namespace dotNetTips.Utility.Standard
 {
     using System;

@@ -14,9 +14,6 @@
 
 using System;
 
-/// <summary>
-/// The Standard namespace.
-/// </summary>
 namespace dotNetTips.Utility.Standard
 {
     /// <summary>
@@ -57,8 +54,8 @@ namespace dotNetTips.Utility.Standard
         /// <param name="displayName">The display name.</param>
         protected Enumeration(int value, string displayName)
         {
-            _value = value;
-            _displayName = displayName;
+            this._value = value;
+            this._displayName = displayName;
         }
 
         /// <summary>
@@ -67,7 +64,7 @@ namespace dotNetTips.Utility.Standard
         /// <value>The value.</value>
         public int Value
         {
-            get { return _value; }
+            get { return this._value; }
         }
 
         /// <summary>
@@ -76,7 +73,7 @@ namespace dotNetTips.Utility.Standard
         /// <value>The display name.</value>
         public string DisplayName
         {
-            get { return _displayName; }
+            get { return this._displayName; }
         }
 
         /// <summary>
@@ -85,7 +82,7 @@ namespace dotNetTips.Utility.Standard
         /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
         public override string ToString()
         {
-            return DisplayName;
+            return this.DisplayName;
         }
 
         /// <summary>
@@ -103,7 +100,7 @@ namespace dotNetTips.Utility.Standard
             }
 
             var typeMatches = GetType().Equals(obj.GetType());
-            var valueMatches = _value.Equals(otherValue.Value);
+            var valueMatches = this._value.Equals(otherValue.Value);
 
             return typeMatches && valueMatches;
         }
@@ -115,7 +112,7 @@ namespace dotNetTips.Utility.Standard
         /// like a hash table.</returns>
         public override int GetHashCode()
         {
-            return _value.GetHashCode();
+            return this._value.GetHashCode();
         }
 
         /// <summary>
@@ -135,10 +132,9 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         /// <param name="other">The other.</param>
         /// <returns>T.</returns>
-        /// <exception cref="ApplicationException"></exception>
         public int CompareTo(object other)
         {
-            return Value.CompareTo(((Enumeration)other).Value);
+            return this.Value.CompareTo(((Enumeration)other).Value);
         }
     }
 }

@@ -4,7 +4,7 @@
 // Created          : 01-22-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-22-2017
+// Last Modified On : 06-26-2017
 // ***********************************************************************
 // <copyright file="ArgumentIsReadOnlyException.cs" company="dotNetTips.Utility.Standard">
 //     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
@@ -14,14 +14,12 @@
 
 using System;
 
-/// <summary>
-/// The Standard namespace.
-/// </summary>
 namespace dotNetTips.Utility.Standard
 {
     /// <summary>
     /// Class ArgumentIsReadOnlyException.
     /// </summary>
+    /// <seealso cref="System.ArgumentException" />
     /// <seealso cref="System.Exception" />
     public class ArgumentReadOnlyException : ArgumentException
     {
@@ -43,6 +41,11 @@ namespace dotNetTips.Utility.Standard
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ArgumentReadOnlyException"/> class.
+        /// </summary>
+        /// <param name="parmName">Name of the parm.</param>
+        /// <param name="message">The message.</param>
         public ArgumentReadOnlyException(string parmName, string message)
     : base(parmName,  message)
         {

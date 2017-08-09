@@ -15,6 +15,9 @@
 using System;
 using System.Text;
 
+/// <summary>
+/// The Extensions namespace.
+/// </summary>
 namespace dotNetTips.Utility.Standard.Extensions
 {
     /// <summary>

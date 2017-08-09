@@ -1,33 +1,11 @@
-﻿// ***********************************************************************
-// Assembly         : dotNetTips.Utility.Standard
-// Author           : David McCarter
-// Created          : 08-06-2017
-//
-// Last Modified By : David McCarter
-// Last Modified On : 06-26-2017
-// ***********************************************************************
-// <copyright file="EnumExtensions.cs" company="dotNetTips.com - David McCarter">
-//     dotNetTips.com - David McCarter
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace dotNetTips.Utility.Standard.Extensions
 {
-    /// <summary>
-    /// Class EnumExtensions.
-    /// </summary>
     public static class EnumExtensions
     {
-        /// <summary>
-        /// Ases the specified value.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="val">The value.</param>
-        /// <returns>T.</returns>
         public static T As<T>(this Enum val)
         {
             var enumType = val.GetType();
@@ -35,12 +13,6 @@ namespace dotNetTips.Utility.Standard.Extensions
             return (T)enumValue;
         }
 
-        /// <summary>
-        /// Parses the specified name.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="name">The name.</param>
-        /// <returns>T.</returns>
         public static T Parse<T>(this String name) where T : struct
         {
             return (T)Enum.Parse(typeof(T), name);

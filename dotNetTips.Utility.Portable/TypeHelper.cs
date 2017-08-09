@@ -14,6 +14,8 @@
 
 using System;
 using System.Linq.Expressions;
+using System.Linq;
+using System.Reflection;
 
 namespace dotNetTips.Utility.Portable
 {
@@ -34,6 +36,22 @@ namespace dotNetTips.Utility.Portable
             var result = Expression.Lambda<Func<T>>(Expression.Block(t, new Expression[] { Expression.New(t) })).Compile();
 
             return result();
+        }
+
+        private static T GetDefault<T>()
+        {
+            T result = default(T);
+
+            //TODO: FIGURE THIS OUT
+            //if (typeof(System.Collections.IList).IsAssignableFrom(typeof(T)))
+            //{
+            //    if (typeof(T).GetGenericArguments().Length > 0)
+            //    {
+            //        result = (T)Activator.CreateInstance(typeof(T));
+            //    }
+            //}
+
+            return result;
         }
     }
 }

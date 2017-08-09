@@ -20,14 +20,10 @@ namespace dotNetTips.Utility.Standard
     /// <typeparam name="T"></typeparam>
     public interface ISingleton<T> where T : class
     {
-
-        #region Public Properties
         /// <summary>
-        /// Returns the instance.
+        /// Returns instance for the object.
         /// </summary>
         /// <returns>T.</returns>
         T Instance();
-
-        #endregion Public Properties
     }
 }

@@ -4,7 +4,7 @@
 // Created          : 01-23-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-23-2017
+// Last Modified On : 02-11-2017
 // ***********************************************************************
 // <copyright file="TriState.cs" company="dotNetTips.Utility.Standard">
 //     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
@@ -12,9 +12,6 @@
 // <summary></summary>
 // ***********************************************************************
 
-/// <summary>
-/// The dotNetTips.Utility.Standard namespace.
-/// </summary>
 namespace dotNetTips.Utility.Standard
 {
     /// <summary>

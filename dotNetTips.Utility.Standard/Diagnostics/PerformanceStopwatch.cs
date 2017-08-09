@@ -15,9 +15,6 @@
 using System;
 using System.Diagnostics;
 
-/// <summary>
-/// The Diagnostics namespace.
-/// </summary>
 namespace dotNetTips.Utility.Standard.Diagnostics
 {
     /// <summary>
@@ -33,7 +30,7 @@ namespace dotNetTips.Utility.Standard.Diagnostics
         public TimeSpan StopReset()
         {
             this.Stop();
-            var result = Elapsed;
+            var result = this.Elapsed;
             base.Reset();
 
             return result;

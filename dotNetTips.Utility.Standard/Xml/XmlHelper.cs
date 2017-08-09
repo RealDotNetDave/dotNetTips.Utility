@@ -4,7 +4,7 @@
 // Created          : 02-04-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-04-2017
+// Last Modified On : 08-06-2017
 // ***********************************************************************
 // <copyright file="XmlHelper.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -16,9 +16,6 @@ using System;
 using System.IO;
 using System.Xml;
 
-/// <summary>
-/// The Xml namespace.
-/// </summary>
 namespace dotNetTips.Utility.Standard.Xml
 {
     /// <summary>

@@ -21,9 +21,6 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
-/// <summary>
-/// The IO namespace.
-/// </summary>
 namespace dotNetTips.Utility.Standard.IO
 {
     /// <summary>

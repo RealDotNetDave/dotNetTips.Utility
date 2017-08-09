@@ -1,16 +1,17 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Standard
 // Author           : David McCarter
-// Created          : 01-22-2017
+// Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-21-2017
+// Last Modified On : 06-26-2017
 // ***********************************************************************
-// <copyright file="ApplicationHelper.cs" company="dotNetTips.Utility.Standard">
-//     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
+// <copyright file="App.cs" company="dotNetTips.com - David McCarter">
+//     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using dotNetTips.Utility.Standard.OOP;
 using System;
 using System.Collections.Generic;
@@ -19,9 +20,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-/// <summary>
-/// The Standard namespace.
-/// </summary>
 namespace dotNetTips.Utility.Standard
 {
     /// <summary>
@@ -158,6 +156,10 @@ namespace dotNetTips.Utility.Standard
             }
         }
 
+        /// <summary>
+        /// Informations this instance.
+        /// </summary>
+        /// <returns>Info.</returns>
         public static Info Info()
         {
             var info = new Info();
@@ -189,16 +191,55 @@ namespace dotNetTips.Utility.Standard
         #endregion Public Methods
     }
 
+    /// <summary>
+    /// Class Info.
+    /// </summary>
     public class Info
     {
+        /// <summary>
+        /// Gets the company.
+        /// </summary>
+        /// <value>The company.</value>
         public string Company { get; internal set; }
+        /// <summary>
+        /// Gets the configuration.
+        /// </summary>
+        /// <value>The configuration.</value>
         public string Configuration { get; internal set; }
+        /// <summary>
+        /// Gets the copyright.
+        /// </summary>
+        /// <value>The copyright.</value>
         public string Copyright { get; internal set; }
+        /// <summary>
+        /// Gets the culture.
+        /// </summary>
+        /// <value>The culture.</value>
         public string Culture { get; internal set; }
+        /// <summary>
+        /// Gets the description.
+        /// </summary>
+        /// <value>The description.</value>
         public string Description { get; internal set; }
+        /// <summary>
+        /// Gets the file version.
+        /// </summary>
+        /// <value>The file version.</value>
         public string FileVersion { get; internal set; }
+        /// <summary>
+        /// Gets the assembly version.
+        /// </summary>
+        /// <value>The assembly version.</value>
         public string AssemblyVersion { get; internal set; }
+        /// <summary>
+        /// Gets the assembly product.
+        /// </summary>
+        /// <value>The assembly product.</value>
         public string AssemblyProduct { get; internal set; }
+        /// <summary>
+        /// Gets the assembly title.
+        /// </summary>
+        /// <value>The assembly title.</value>
         public string AssemblyTitle { get; internal set; }
     }
 }

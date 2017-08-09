@@ -4,7 +4,7 @@
 // Created          : 01-22-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-21-2017
+// Last Modified On : 06-26-2017
 // ***********************************************************************
 // <copyright file="SpecialFolder.cs" company="dotNetTips.Utility.Standard">
 //     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
@@ -12,9 +12,6 @@
 // <summary></summary>
 // ***********************************************************************
 
-/// <summary>
-/// The IO namespace.
-/// </summary>
 namespace dotNetTips.Utility.Standard.IO
 {
     /// <summary>

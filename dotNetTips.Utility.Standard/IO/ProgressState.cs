@@ -1,47 +1,39 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Standard
 // Author           : David McCarter
-// Created          : 01-22-2017
+// Created          : 08-06-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-22-2017
+// Last Modified On : 08-07-2017
 // ***********************************************************************
-// <copyright file="DateFormat.cs" company="dotNetTips.Utility.Standard">
-//     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
+// <copyright file="Processor.cs" company="dotNetTips.com - David McCarter">
+//     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
 
-namespace dotNetTips.Utility.Standard
+namespace dotNetTips.Utility.Standard.IO
 {
     /// <summary>
-    /// Enum DateFormat
+    /// Enum ProgressState
     /// </summary>
-    public enum DateFormat
+    public enum ProgressState
     {
         /// <summary>
-        /// The general date
+        /// The error
         /// </summary>
-        GeneralDate,
-
+        Error = 0,
         /// <summary>
-        /// The long date
+        /// The deleted
         /// </summary>
-        LongDate,
-
+        Deleted = 1,
         /// <summary>
-        /// The short date
+        /// The moved
         /// </summary>
-        ShortDate,
-
+        Moved = 2,
         /// <summary>
-        /// The long time
+        /// The copied
         /// </summary>
-        LongTime,
-
-        /// <summary>
-        /// The short time
-        /// </summary>
-        ShortTime
+        Copied = 3
     }
 }

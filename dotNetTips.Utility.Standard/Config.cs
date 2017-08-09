@@ -41,12 +41,12 @@ namespace dotNetTips.Utility.Standard
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public virtual bool Save()
         {
-            if (File.Exists(ConfigFileName))
+            if (File.Exists(this.ConfigFileName))
             {
-                File.Delete(ConfigFileName);
+                File.Delete(this.ConfigFileName);
             }
 
-            _instance.ToJsonFile(ConfigFileName);
+            this._instance.ToJsonFile(this.ConfigFileName);
 
             return true;
         }
@@ -57,9 +57,9 @@ namespace dotNetTips.Utility.Standard
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public virtual bool Load()
         {
-            if (File.Exists(ConfigFileName))
+            if (File.Exists(this.ConfigFileName))
             {
-                _instance = ObjectExtensions.FromJsonFile<T>(ConfigFileName);
+                this._instance = ObjectExtensions.FromJsonFile<T>(this.ConfigFileName);
 
                 return true;
             }
@@ -84,7 +84,7 @@ namespace dotNetTips.Utility.Standard
         /// <returns>T.</returns>
         public T Instance()
         {
-            if (_instance is null)
+            if (this._instance is null)
             {
                 this._instance = TypeHelper.Create<T>();
             }

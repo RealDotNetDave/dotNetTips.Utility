@@ -20,6 +20,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
+/// <summary>
+/// The Extensions namespace.
+/// </summary>
 namespace dotNetTips.Utility.Standard.Extensions
 {
     /// <summary>

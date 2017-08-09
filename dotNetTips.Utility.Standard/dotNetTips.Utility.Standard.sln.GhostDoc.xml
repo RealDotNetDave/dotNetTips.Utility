@@ -54,5 +54,6 @@
 </HelpConfigurations>
 <GeneralProperties>
   <SearchInheritedCommentsOnlyWithinProject>False</SearchInheritedCommentsOnlyWithinProject>
+  <UseWYSIWYGForDocumentThis>True</UseWYSIWYGForDocumentThis>
 </GeneralProperties>
 </GhostDoc>

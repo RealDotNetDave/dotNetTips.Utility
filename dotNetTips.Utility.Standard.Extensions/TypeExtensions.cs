@@ -14,6 +14,9 @@
 
 using System;
 
+/// <summary>
+/// The Extensions namespace.
+/// </summary>
 namespace dotNetTips.Utility.Standard.Extensions
 {
     /// <summary>

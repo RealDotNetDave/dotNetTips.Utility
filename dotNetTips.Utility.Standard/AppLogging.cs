@@ -14,9 +14,6 @@
 using Microsoft.Extensions.Logging;
 using System;
 
-/// <summary>
-/// The dotNetTips.Utility.Standard namespace.{CC2D43FA-BBC4-448A-9D0B-7B57ADF2655C}
-/// </summary>
 namespace dotNetTips.Utility.Standard
 {
     /// <summary>
