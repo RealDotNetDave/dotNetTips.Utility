@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "targets": {
     ".NETPortable,Version=v4.6,Profile=Profile44": {
       "dotNetTips.Utility.Portable/1.0.0": {
@@ -28,7 +28,18 @@
       "projectName": "dotNetTips.Utility.Portable.Windows",
       "projectPath": "M:\\src\\git\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\dotNetTips.Utility.Portable.Windows.vbproj",
       "projectJsonPath": "M:\\src\\git\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\project.json",
+      "packagesPath": "C:\\Users\\dotnetdave\\.nuget\\packages\\",
+      "outputPath": "M:\\src\\git\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\obj\\",
       "projectStyle": "ProjectJson",
+      "configFilePaths": [
+        "C:\\Users\\dotnetdave\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\dotnetdave\\.dotnet\\NuGetFallbackFolder": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
       "frameworks": {
         "portable46-net451+win81": {
           "projectReferences": {

@@ -125,9 +125,11 @@ Namespace Listeners
             If String.IsNullOrEmpty(Me.ApiKey) Then
                 Me.RetrievePropertyValues()
             End If
-            StackifyLib.Logger.ApiKey = Me.ApiKey
-            StackifyLib.Logger.GlobalAppName = ApplicationHelper.CurrentAssemblyName
-            StackifyLib.Logger.Queue(Me._logEntry.SeverityName, message)
+
+            ''TODO: FIGURE OUT NEW VERSION CHANGES.
+            'StackifyLib.Logger.ApiKey = Me.ApiKey
+            'StackifyLib.Logger.Config = ApplicationHelper.CurrentAssemblyName
+            'StackifyLib.Logger.Queue(Me._logEntry.SeverityName, message)
 
         End Sub
 

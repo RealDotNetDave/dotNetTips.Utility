@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-06-2017
+// Last Modified On : 08-09-2017
 // ***********************************************************************
 // <copyright file="InMemoryCache.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -20,6 +20,8 @@ namespace dotNetTips.Utility.Standard.Cache
     /// <summary>
     /// Class InMemoryCache.
     /// </summary>
+    /// <seealso cref="dotNetTips.Utility.Standard.ISingleton{dotNetTips.Utility.Standard.Cache.InMemoryCache}" />
+    /// <seealso cref="System.IDisposable" />
     public class InMemoryCache : ISingleton<InMemoryCache>, IDisposable
     {
         /// <summary>
@@ -67,33 +69,43 @@ namespace dotNetTips.Utility.Standard.Cache
 
         #region IDisposable Implementation
 
+        /// <summary>
+        /// The disposed
+        /// </summary>
         protected bool disposed;
 
+        /// <summary>
+        /// Releases unmanaged and - optionally - managed resources.
+        /// </summary>
+        /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
         protected virtual void Dispose(bool disposing)
         {
             lock (this)
             {
                 // Do nothing if the object has already been disposed of.
-                if (disposed)
+                if (this.disposed)
                     return;
 
                 if (disposing)
                 {
                     // Release disposable objects used by this instance here.
 
-                    if (_cache != null)
-                        _cache.Dispose();
-                    if (_instance != null)
-                        _instance.Dispose();
+                    if (this._cache != null)
+                        this._cache.Dispose();
+                    if (this._instance != null)
+                        this._instance.Dispose();
                 }
 
                 // Release unmanaged resources here. Don't access reference type fields.
 
                 // Remember that the object has been disposed of.
-                disposed = true;
+                this.disposed = true;
             }
         }
 
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public virtual void Dispose()
         {
             Dispose(true);
