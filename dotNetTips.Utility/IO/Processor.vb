@@ -11,29 +11,19 @@
 ' </copyright>
 ' <summary></summary>
 ' *************************************************************************
-Imports dotNetTips.Utility.My.Resources
-Imports dotNetTips.Utility.Portable.OOP
 Imports System
 Imports System.Collections.Generic
 Imports System.IO
-
+Imports dotNetTips.Utility.My.Resources
+Imports dotNetTips.Utility.Portable.OOP
 ''' <summary>
 ''' Class Processor.
 ''' </summary>
 Public Class Processor
-
     ''' <summary>
     ''' Occurs when processor processes a file or folder.
     ''' </summary>
     Event Processed As EventHandler(Of ProgressEventArgs)
-
-    ''' <summary>
-    ''' Handles the <see cref="E:Processed" /> event.
-    ''' </summary>
-    ''' <param name="e">The <see cref="ProgressEventArgs" /> instance containing the event data.</param>
-    Protected Overridable Sub OnProcessed(e As ProgressEventArgs)
-        RaiseEvent Processed(Me, e)
-    End Sub
 
     ''' <summary>
     ''' Copies files to new location. Will not throw exceptions.
@@ -43,7 +33,7 @@ Public Class Processor
     ''' <returns>System.Object.</returns>
     ''' <remarks>Use the Processed event to find out if file copied succeeded or failed.</remarks>
     Public Function CopyFiles(files As IEnumerable(Of FileInfo), destinationFolder As DirectoryInfo)
-        ''TODO: UNTESTED
+        ''TODO: UNIT TEST
         Encapsulation.TryValidateParam(files, NameOf(files))
         Encapsulation.TryValidateParam(Of ArgumentNullException)(destinationFolder IsNot Nothing, NameOf(destinationFolder))
 
@@ -72,7 +62,6 @@ Public Class Processor
         Return successCount
 
     End Function
-
     ''' <summary>
     ''' Deletes file list.
     ''' </summary>
@@ -135,6 +124,11 @@ Public Class Processor
         Return successCount
 
     End Function
-
-
+    ''' <summary>
+    ''' Handles the <see cref="E:Processed" /> event.
+    ''' </summary>
+    ''' <param name="e">The <see cref="ProgressEventArgs" /> instance containing the event data.</param>
+    Protected Overridable Sub OnProcessed(e As ProgressEventArgs)
+        RaiseEvent Processed(Me, e)
+    End Sub
 End Class

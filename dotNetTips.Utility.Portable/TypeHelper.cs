@@ -40,7 +40,7 @@ namespace dotNetTips.Utility.Portable
 
         private static T GetDefault<T>()
         {
-            T result = default(T);
+            var result = default(T);
 
             //TODO: FIGURE THIS OUT
             //if (typeof(System.Collections.IList).IsAssignableFrom(typeof(T)))

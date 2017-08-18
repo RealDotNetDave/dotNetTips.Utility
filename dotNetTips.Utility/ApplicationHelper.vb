@@ -61,6 +61,14 @@ Public Module ApplicationHelper
         Return Assembly.GetEntryAssembly.GetName.Name
     End Function
 
+    Public Function CurrentAssemblyVersion() As String
+        Return My.Application.Info.Version.ToString
+    End Function
+
+    Public Function CurrentAssemblyProductName() As String
+        Return My.Application.Info.ProductName
+    End Function
+
     ''' <summary>
     ''' Loads a list of the running assembly referenced assemblies.
     ''' </summary>
