@@ -1,17 +1,16 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Standard
 // Author           : David McCarter
-// Created          : 01-22-2017
+// Created          : 02-11-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-22-2017
+// Last Modified On : 09-16-2017
 // ***********************************************************************
-// <copyright file="Enumeration.cs" company="dotNetTips.Utility.Standard">
-//     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
+// <copyright file="Enumeration.cs" company="dotNetTips.com - David McCarter">
+//     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-
 using System;
 
 namespace dotNetTips.Utility.Standard
@@ -20,25 +19,23 @@ namespace dotNetTips.Utility.Standard
     /// Class Enumeration.
     /// </summary>
     /// <example>
-    /// public class EmployeeType : Enumeration { public static readonly EmployeeType Manager
-    /// = new EmployeeType(0, "Manager"); public static readonly EmployeeType Servant
-    /// = new EmployeeType(1, "Servant"); public static readonly EmployeeType AssistantToTheRegionalManager
+    /// public class EmployeeType : Enumeration { public static read only EmployeeType Manager
+    /// = new EmployeeType(0, "Manager"); public static read only EmployeeType Servant
+    /// = new EmployeeType(1, "Servant"); public static read only EmployeeType AssistantToTheRegionalManager
     /// = new EmployeeType(2, "Assistant to the Regional Manager"); private EmployeeType() { }
     /// private EmployeeType(int value, string displayName) : base(value, displayName) { } }
     /// </example>
     /// <seealso cref="System.IComparable" />
-    /// <remarks>Original code from: https://lostechies.com/jimmybogard/2008/08/12/enumeration-classes/</remarks>
     public abstract class Enumeration : IComparable
     {
+        /// <summary>
+        /// Display name
+        /// </summary>
+        private readonly string _displayName;
         /// <summary>
         /// Value
         /// </summary>
         private readonly int _value;
-
-        /// <summary>
-        /// isplay name
-        /// </summary>
-        private readonly string _displayName;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Enumeration" /> class.
@@ -59,31 +56,35 @@ namespace dotNetTips.Utility.Standard
         }
 
         /// <summary>
-        /// Gets the value.
-        /// </summary>
-        /// <value>The value.</value>
-        public int Value
-        {
-            get { return this._value; }
-        }
-
-        /// <summary>
         /// Gets the display name.
         /// </summary>
         /// <value>The display name.</value>
-        public string DisplayName
+        public string DisplayName => this._displayName;
+
+        /// <summary>
+        /// Gets the value.
+        /// </summary>
+        /// <value>The value.</value>
+        public int Value => this._value;
+
+        /// <summary>
+        /// Absolutes the difference.
+        /// </summary>
+        /// <param name="firstValue">The first value.</param>
+        /// <param name="secondValue">The second value.</param>
+        /// <returns>System.Int32.</returns>
+        public static int AbsoluteDifference(Enumeration firstValue, Enumeration secondValue)
         {
-            get { return this._displayName; }
+            var absoluteDifference = Math.Abs(firstValue.Value - secondValue.Value);
+            return absoluteDifference;
         }
 
         /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// Compares value to enumeration.
         /// </summary>
-        /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
-        public override string ToString()
-        {
-            return this.DisplayName;
-        }
+        /// <param name="obj">The other.</param>
+        /// <returns>T.</returns>
+        public int CompareTo(object obj) => this.Value.CompareTo(((Enumeration)obj).Value);
 
         /// <summary>
         /// Gets all.
@@ -110,31 +111,12 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         /// <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures
         /// like a hash table.</returns>
-        public override int GetHashCode()
-        {
-            return this._value.GetHashCode();
-        }
+        public override int GetHashCode() => this._value.GetHashCode();
 
         /// <summary>
-        /// Absolutes the difference.
+        /// Returns a <see cref="System.String" /> that represents this instance.
         /// </summary>
-        /// <param name="firstValue">The first value.</param>
-        /// <param name="secondValue">The second value.</param>
-        /// <returns>System.Int32.</returns>
-        public static int AbsoluteDifference(Enumeration firstValue, Enumeration secondValue)
-        {
-            var absoluteDifference = Math.Abs(firstValue.Value - secondValue.Value);
-            return absoluteDifference;
-        }
-
-        /// <summary>
-        /// Froms the value.
-        /// </summary>
-        /// <param name="other">The other.</param>
-        /// <returns>T.</returns>
-        public int CompareTo(object other)
-        {
-            return this.Value.CompareTo(((Enumeration)other).Value);
-        }
+        /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
+        public override string ToString() => this.DisplayName;
     }
 }

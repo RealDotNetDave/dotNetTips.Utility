@@ -20,7 +20,7 @@ namespace dotNetTips.Utility.Standard.Diagnostics
     /// Class PerformanceStopwatch.
     /// </summary>
     /// <seealso cref="System.Diagnostics.Stopwatch" />
-    //[Obsolete("Use PerformanceStopwatch from dotNetTips.Utility.Standard.")]
+    [Obsolete("Use PerformanceStopwatch from dotNetTips.Utility.Standard.")]
     public class PerformanceStopwatch : Stopwatch
     {
 

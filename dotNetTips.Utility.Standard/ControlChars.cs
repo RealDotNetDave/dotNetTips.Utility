@@ -1,17 +1,16 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Standard
 // Author           : David McCarter
-// Created          : 01-22-2017
+// Created          : 02-11-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-22-2017
+// Last Modified On : 09-16-2017
 // ***********************************************************************
-// <copyright file="ControlChars.cs" company="dotNetTips.Utility.Standard">
-//     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
+// <copyright file="ControlChars.cs" company="dotNetTips.com - David McCarter">
+//     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-
 namespace dotNetTips.Utility.Standard
 {
     /// <summary>
@@ -105,7 +104,6 @@ namespace dotNetTips.Utility.Standard
         /// Vertical tab
         /// </summary>
         public const char VerticalTab = '\v';
-
         #endregion Public Fields
     }
 }

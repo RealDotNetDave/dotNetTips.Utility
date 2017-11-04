@@ -1,0 +1,7 @@
+[*]
+end_of_line = crlf
+dotnet_style_qualification_for_property = true:suggestion
+
+[*.xml]
+indent_style = space
+

@@ -1,19 +1,18 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Standard
 // Author           : David McCarter
-// Created          : 03-06-2017
+// Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-06-2017
+// Last Modified On : 09-16-2017
 // ***********************************************************************
 // <copyright file="Config.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using dotNetTips.Utility.Standard.Extensions;
-using dotNetTips.Utility.Standard.IO;
 using System.IO;
+using dotNetTips.Utility.Standard.Extensions;
 
 namespace dotNetTips.Utility.Standard
 {
@@ -25,30 +24,42 @@ namespace dotNetTips.Utility.Standard
     public class Config<T> : ISingleton<T> where T : class
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Config{T}"/> class.
+        /// The instance
+        /// </summary>
+        private T _instance;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Config{T}" /> class.
         /// </summary>
         protected Config()
         {
+            var localAppData = System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
+
             var fileName = $"{App.Info().AssemblyProduct}.config";
-            var folder = Path.Combine(DirectoryHelper.GetFolderPath(SpecialFolder.LocalApplicationData), App.Info().Company);
+
+            var folder = Path.Combine(localAppData, App.Info().Company);
 
             this.ConfigFileName = Path.Combine(folder, fileName);
         }
 
         /// <summary>
-        /// Saves this instance.
+        /// Gets or sets the name of the configuration file.
         /// </summary>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        public virtual bool Save()
+        /// <value>The name of the configuration file.</value>
+        public string ConfigFileName { get; protected set; }
+
+        /// <summary>
+        /// Instances this instance.
+        /// </summary>
+        /// <returns>T.</returns>
+        private T GetInstance()
         {
-            if (File.Exists(this.ConfigFileName))
+            if (this._instance is null)
             {
-                File.Delete(this.ConfigFileName);
+                this._instance = TypeHelper.Create<T>();
             }
 
-            this._instance.ToJsonFile(this.ConfigFileName);
-
-            return true;
+            return this._instance;
         }
 
         /// <summary>
@@ -68,28 +79,28 @@ namespace dotNetTips.Utility.Standard
         }
 
         /// <summary>
-        /// Gets or sets the name of the configuration file.
+        /// Saves this instance.
         /// </summary>
-        /// <value>The name of the configuration file.</value>
-        public string ConfigFileName { get; protected set; }
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        public virtual bool Save()
+        {
+            if (File.Exists(this.ConfigFileName))
+            {
+                File.Delete(this.ConfigFileName);
+            }
+
+            this._instance.ToJsonFile(this.ConfigFileName);
+
+            return true;
+        }
 
         /// <summary>
-        /// The instance
-        /// </summary>
-        private T _instance;
-
-        /// <summary>
-        /// Instances this instance.
+        /// Returns instance for the object.
         /// </summary>
         /// <returns>T.</returns>
         public T Instance()
         {
-            if (this._instance is null)
-            {
-                this._instance = TypeHelper.Create<T>();
-            }
-
-            return this._instance;
+            return this.GetInstance();
         }
     }
 }

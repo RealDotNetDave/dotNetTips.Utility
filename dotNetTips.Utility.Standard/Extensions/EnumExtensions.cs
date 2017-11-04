@@ -1,17 +1,4 @@
-﻿// ***********************************************************************
-// Assembly         : dotNetTips.Utility.Standard
-// Author           : David McCarter
-// Created          : 08-06-2017
-//
-// Last Modified By : David McCarter
-// Last Modified On : 06-26-2017
-// ***********************************************************************
-// <copyright file="EnumExtensions.cs" company="dotNetTips.com - David McCarter">
-//     dotNetTips.com - David McCarter
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
@@ -34,49 +21,59 @@ namespace dotNetTips.Utility.Standard.Extensions
             var enumValue = Enum.Parse(enumType, val.ToString());
             return (T)enumValue;
         }
-
+        /// <summary>
+        /// Gets the description.
+        /// </summary>
+        /// <param name="val">The value.</param>
+        /// <returns>System.String.</returns>
+        public static string GetDescription(this Enum val)
+        {
+            var field = val.GetType().GetField(val.ToString());
+            var attributes = (DescriptionAttribute[])field.GetCustomAttributes(typeof(DescriptionAttribute), false);
+            return attributes.Length > 0 ? attributes[0].Description : val.ToString();
+        }
+        /// <summary>
+        /// Gets the items.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="enumeration">The enumeration.</param>
+        /// <returns>IList&lt;EnumItem&lt;T&gt;&gt;.</returns>
+        public static IList<EnumItem<T>> GetItems<T>(this Enum enumeration)
+        {
+            var enumType = enumeration.GetType();
+            var values = Enum.GetValues(enumType);
+            var items = new List<EnumItem<T>>();
+            foreach (var v in values)
+            {
+                var enumValue = Enum.Parse(enumType, v.ToString());
+                items.Add(GetDescriptionInternal<T>(enumValue));
+            }
+            return items;
+        }
         /// <summary>
         /// Parses the specified name.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="name">The name.</param>
         /// <returns>T.</returns>
-        public static T Parse<T>(this String name) where T : struct
+        public static T Parse<T>(this String name) where T : struct => (T)Enum.Parse(typeof(T), name);
+        /// <summary>
+        /// Gets the description internal.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="val">The value.</param>
+        /// <returns>EnumItem&lt;T&gt;.</returns>
+        private static EnumItem<T> GetDescriptionInternal<T>(object val)
         {
-            return (T)Enum.Parse(typeof(T), name);
+            var field = val.GetType().GetField(val.ToString());
+            var attributes = (DescriptionAttribute[])field.GetCustomAttributes(typeof(DescriptionAttribute), false);
+
+            var enumItem = new EnumItem<T>
+            {
+                Description = attributes.Length > 0 ? attributes[0].Description : val.ToString(),
+                Value = (T)val
+            };
+            return enumItem;
         }
-
-        //public static String GetDescription(this Enum val)
-        //{
-        //    var field = val.GetType().GetField(val.ToString());
-        //    var attributes = (DescriptionAttribute[])field.GetCustomAttributes(typeof(DescriptionAttribute), false);
-        //    return attributes.Length > 0 ? attributes[0].Description : val.ToString();
-        //}
-
-        //public static IList<EnumItem<T>> GetItems<T>(this Enum enumeration)
-        //{
-        //    var enumType = enumeration.GetType();
-        //    var values = Enum.GetValues(enumType);
-        //    var items = new List<EnumItem<T>>();
-        //    foreach (var v in values)
-        //    {
-        //        var enumValue = Enum.Parse(enumType, v.ToString());
-        //        items.Add(GetDescriptionInternal<T>(enumValue));
-        //    }
-        //    return items;
-        //}
-
-        //private static EnumItem<T> GetDescriptionInternal<T>(object val)
-        //{
-        //    var field = val.GetType().GetField(val.ToString());
-        //    var attributes = (DescriptionAttribute[])field.GetCustomAttributes(typeof(DescriptionAttribute), false);
-
-        //    var enumItem = new EnumItem<T>
-        //    {
-        //        Description = attributes.Length > 0 ? attributes[0].Description : val.ToString(),
-        //        Value = (T)val
-        //    };
-        //    return enumItem;
-        //}
     }
 }

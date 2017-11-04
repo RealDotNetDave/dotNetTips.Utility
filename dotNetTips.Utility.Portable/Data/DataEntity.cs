@@ -29,7 +29,7 @@ namespace dotNetTips.Utility.Portable.Data
         /// </summary>
         protected DataEntity()
         {
-            this.CreatedAt = DateTime.UtcNow;
+            this.CreatedAt = DateTime.Now;
         }
 
         /// <summary>

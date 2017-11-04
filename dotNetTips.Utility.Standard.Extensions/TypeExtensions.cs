@@ -1,22 +1,18 @@
 ﻿// ***********************************************************************
-// Assembly         : dotNetTips.Utility.Standard
+// Assembly         : dotNetTips.Utility.Standard.Extensions
 // Author           : David McCarter
-// Created          : 01-22-2017
+// Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-02-2017
+// Last Modified On : 09-16-2017
 // ***********************************************************************
-// <copyright file="TypeExtensions.cs" company="dotNetTips.Utility.Standard">
-//     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
+// <copyright file="TypeExtensions.cs" company="dotNetTips.com - David McCarter">
+//     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-
 using System;
 
-/// <summary>
-/// The Extensions namespace.
-/// </summary>
 namespace dotNetTips.Utility.Standard.Extensions
 {
     /// <summary>
@@ -33,15 +29,13 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="obj1">The obj1.</param>
         /// <param name="obj2">The obj2.</param>
         /// <returns>T.</returns>
-        /// <exception cref="ArgumentNullException">
-        /// obj1 - Object 1 cannot be null.
+        /// <exception cref="ArgumentNullException">obj1 - Object 1 cannot be null.
         /// or
-        /// obj2 - Object 1 cannot be null.
-        /// </exception>
+        /// obj2 - Object 1 cannot be null.</exception>
         /// <remarks>Original code by: Jeremy Clark</remarks>
         public static T Max<T>(this T obj1, T obj2) where T : IComparable
         {
-            if (obj2==null)
+            if (obj2 == null)
             {
                 throw new ArgumentNullException(nameof(obj2), "Object 1 cannot be null.");
             }
@@ -60,11 +54,10 @@ namespace dotNetTips.Utility.Standard.Extensions
         {
             var instance = Activator.CreateInstance<T>();
 
-            var result = instance is T ? (T)instance : null;
+            var result = instance is T ? instance : null;
 
             return result;
         }
-
         #endregion Public Methods
     }
 }

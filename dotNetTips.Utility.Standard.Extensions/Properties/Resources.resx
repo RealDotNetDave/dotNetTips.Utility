@@ -46,7 +46,7 @@
     
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with 
-            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
@@ -60,6 +60,7 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -68,9 +69,10 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="name" use="required" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
@@ -85,9 +87,10 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -109,9 +112,78 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Bytes" xml:space="preserve">
+    <value>bytes</value>
+  </data>
+  <data name="CannotBeOfTypeException" xml:space="preserve">
+    <value>{0} cannot be of type Exception. Use a more specific exception from the framework or a custom Exception inheriting type Exception (only).</value>
+  </data>
+  <data name="CollectionIsNullOrHasNoItems" xml:space="preserve">
+    <value>Collection is null or has no items.</value>
+  </data>
+  <data name="CollectionSizeIsNotValid" xml:space="preserve">
+    <value>Collection size is not valid.</value>
+  </data>
+  <data name="FileNotFound" xml:space="preserve">
+    <value>File not found.</value>
+  </data>
+  <data name="FolderNotFound" xml:space="preserve">
+    <value>Folder not found.</value>
+  </data>
+  <data name="GB" xml:space="preserve">
+    <value>GB</value>
+  </data>
+  <data name="GuidIsEmpty" xml:space="preserve">
+    <value>Guid is Empth.</value>
+  </data>
+  <data name="InvalidType" xml:space="preserve">
+    <value>Invalid type.</value>
+  </data>
+  <data name="KB" xml:space="preserve">
+    <value>KB</value>
+  </data>
+  <data name="MB" xml:space="preserve">
+    <value>MB</value>
+  </data>
+  <data name="ParameterIsInvalid" xml:space="preserve">
+    <value>Parameter is invalid. </value>
+  </data>
+  <data name="StringDoesNotMatch" xml:space="preserve">
+    <value>Strings do not match.</value>
+  </data>
+  <data name="StringDoesNotMatchMaximumLength" xml:space="preserve">
+    <value>String does not matach maximum length.</value>
+  </data>
+  <data name="StringDoesNotMatchMinimumLength" xml:space="preserve">
+    <value>String does not match minimum length.</value>
+  </data>
+  <data name="StringIsEmpty" xml:space="preserve">
+    <value>String is empty.</value>
+  </data>
+  <data name="StringIsNotValid" xml:space="preserve">
+    <value>String is not valid.</value>
+  </data>
+  <data name="TheValueIsNotDefinedInTheEnumeration" xml:space="preserve">
+    <value>The values are not defined in the enum.</value>
+  </data>
+  <data name="Yesterday" xml:space="preserve">
+    <value>Yesterday</value>
+  </data>
+  <data name="ExceptionCannotBeNull" xml:space="preserve">
+    <value>Exception cannot be null.</value>
+  </data>
+  <data name="ValueIsInvalid" xml:space="preserve">
+    <value>Value is invalid.</value>
+  </data>
+  <data name="FileSizeIsInvalid" xml:space="preserve">
+    <value>File size is invalid.</value>
+  </data>
+  <data name="LengthMustBeGreaterThan0" xml:space="preserve">
+    <value>Length must be greater than 0.</value>
+  </data>
 </root>

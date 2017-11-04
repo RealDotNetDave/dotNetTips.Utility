@@ -1,4 +1,3 @@
-﻿namespace dotNetTips.Utility.Portable.OOP
+﻿namespace dotNetTips.Utility.Standard.OOP
 {
-
 }

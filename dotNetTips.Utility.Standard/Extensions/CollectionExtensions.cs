@@ -1,17 +1,4 @@
-﻿// ***********************************************************************
-// Assembly         : dotNetTips.Utility.Standard
-// Author           : David McCarter
-// Created          : 01-21-2017
-//
-// Last Modified By : David McCarter
-// Last Modified On : 08-04-2017
-// ***********************************************************************
-// <copyright file="CollectionExtensions.cs" company="dotNetTips.com - McCarter Consulting">
-//     Copyright ©  2017
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -31,6 +18,7 @@ namespace dotNetTips.Utility.Standard.Extensions
     {
         #region Public Methods
 
+
         /// <summary>
         /// Adds if not exists.
         /// </summary>
@@ -46,10 +34,9 @@ namespace dotNetTips.Utility.Standard.Extensions
             Encapsulation.TryValidateParam<ArgumentNullException>(value != null, "Value is required.");
             Encapsulation.TryValidateParam(list, nameof(list));
 
-            //TODO: MULTITHREAD
             foreach (var item in list)
             {
-                if (TypeHelper.GetInstanceHashCode(item)== TypeHelper.GetInstanceHashCode(value))
+                if (TypeHelper.GetInstanceHashCode(item) == TypeHelper.GetInstanceHashCode(value))
                 {
                     return;
                 }
@@ -64,10 +51,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="source">The source.</param>
         /// <returns>List&lt;T&gt;.</returns>
-        public static List<T> CopyToList<T>(this List<T> source)
-        {
-            return new List<T>(source);
-        }
+        public static List<T> CopyToList<T>(this List<T> source) => new List<T>(source);
 
         /// <summary>
         /// Adds if not exists.
@@ -133,7 +117,10 @@ namespace dotNetTips.Utility.Standard.Extensions
 
             var count = 0;
 
-            while (list.GetEnumerator().MoveNext()) count++;
+            while (list.GetEnumerator().MoveNext())
+            {
+                count++;
+            }
 
             return count;
         }
@@ -185,10 +172,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="list">The list.</param>
         /// <returns>System.String[].</returns>
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 length.</exception>
-        public static string[] NoDuplicates(this string[] list)
-        {
-            return list.Distinct().ToArray();
-        }
+        public static string[] NoDuplicates(this string[] list) => list.Distinct().ToArray();
 
         /// <summary>
         /// Pages the specified list.
@@ -200,7 +184,6 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentNullException">list - Source cannot be null.
         /// or
         /// list - Page size cannot be 0 length.</exception>
-        /// <remarks>Original code by: Lukazoid</remarks>
         public static IEnumerable<IEnumerable<T>> Page<T>(this IEnumerable<T> list, int pageSize)
         {
             Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(pageSize > 0);
@@ -297,11 +280,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="list">The list.</param>
         /// <returns>IEnumerable&lt;T&gt;.</returns>
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
-        /// <remarks>Original code by: Phil Campbell</remarks>
-        public static IEnumerable<T> Randomize<T>(this IEnumerable<T> list)
-        {
-            return list.OrderBy(x => (new Random().Next()));
-        }
+        public static IEnumerable<T> Randomize<T>(this IEnumerable<T> list) => list.OrderBy(x => (new Random().Next()));
 
         /// <summary>
         /// Converts list to a delimited string.
@@ -311,16 +290,16 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="delimiter">The delimiter (default is comma if not supplied).</param>
         /// <returns>System.String.</returns>
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
-        public static string ToDelimitedString<T>(this IEnumerable<T> list, char delimiter= ControlChars.Comma)
+        public static string ToDelimitedString<T>(this IEnumerable<T> list, char delimiter = ControlChars.Comma)
         {
-      
+
             var sb = new StringBuilder();
 
             foreach (var item in list)
             {
                 if (sb.Length > 0)
                 {
-                    sb.Append(delimiter.ToString());
+                    sb.Append(delimiter.ToString(CultureInfo.CurrentCulture));
                 }
                 sb.Append(item.ToString());
             }
@@ -338,10 +317,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// is List of TValue type.</returns>
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
         /// <remarks>Original code by: James Michael Hare</remarks>
-        public static Dictionary<TKey, List<TValue>> ToDictionary<TKey, TValue>(this IEnumerable<IGrouping<TKey, TValue>> list)
-        {
-            return list.ToDictionary(group => group.Key, group => group.ToList());
-        }
+        public static Dictionary<TKey, List<TValue>> ToDictionary<TKey, TValue>(this IEnumerable<IGrouping<TKey, TValue>> list) => list.ToDictionary(group => group.Key, group => group.ToList());
 
         /// <summary>
         /// Creates a Generic.List.
@@ -351,10 +327,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <returns>Task&lt;List&lt;T&gt;&gt;.</returns>
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
         /// <remarks>Original code by: Fons Sonnemans</remarks>
-        public static Task<List<T>> ToListAsync<T>(this IEnumerable<T> list)
-        {
-            return Task.Run(() => list.ToList());
-        }
+        public static Task<List<T>> ToListAsync<T>(this IEnumerable<T> list) => Task.Run(() => list.ToList());
 
         /// <summary>
         /// To the observable list.
@@ -363,10 +336,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="list">The list.</param>
         /// <returns>ObservableCollection&lt;T&gt;.</returns>
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
-        public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> list)
-        {
-            return new ObservableCollection<T>(list);
-        }
+        public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> list) => new ObservableCollection<T>(list);
 
         /// <summary>
         /// Creates a read only list.
@@ -375,10 +345,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="list">The list.</param>
         /// <returns>ReadOnlyCollection&lt;T&gt;.</returns>
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
-        public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(this IList<T> list)
-        {
-            return new ReadOnlyCollection<T>(list);
-        }
+        public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(this IList<T> list) => new ReadOnlyCollection<T>(list);
 
         /// <summary>
         /// Returns list based on function.
@@ -478,7 +445,6 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="list">The list.</param>
         /// <param name="newItems">The new items.</param>
-        /// <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
         public static void AddRange<T>(this ICollection<T> list, IEnumerable<T> newItems)
         {
             Encapsulation.TryValidateParam(newItems, nameof(newItems));
@@ -515,7 +481,6 @@ namespace dotNetTips.Utility.Standard.Extensions
                 list.Add(key(item), value(item));
             }
         }
-
         #endregion Public Methods
     }
 }

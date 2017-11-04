@@ -1,18 +1,4 @@
-﻿// ***********************************************************************
-// Assembly         : dotNetTips.Utility.Standard
-// Author           : David McCarter
-// Created          : 01-22-2017
-//
-// Last Modified By : David McCarter
-// Last Modified On : 02-02-2017
-// ***********************************************************************
-// <copyright file="TypeExtensions.cs" company="dotNetTips.Utility.Standard">
-//     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using System;
+﻿using System;
 
 namespace dotNetTips.Utility.Standard.Extensions
 {
@@ -38,7 +24,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <remarks>Original code by: Jeremy Clark</remarks>
         public static T Max<T>(this T obj1, T obj2) where T : IComparable
         {
-            if (obj2==null)
+            if (obj2 == null)
             {
                 throw new ArgumentNullException(nameof(obj2), "Object 1 cannot be null.");
             }
@@ -57,11 +43,10 @@ namespace dotNetTips.Utility.Standard.Extensions
         {
             var instance = Activator.CreateInstance<T>();
 
-            var result = instance is T ? (T)instance : null;
+            var result = instance is T ? instance : null;
 
             return result;
         }
-
         #endregion Public Methods
     }
 }

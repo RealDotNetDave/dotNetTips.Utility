@@ -12,25 +12,26 @@
 ' <summary></summary>
 ' ***********************************************************************
 Imports System
-
-''' <summary>
-''' Enum ProgressState
-''' </summary>
-Public Enum ProgressState
+Namespace IO
     ''' <summary>
-    ''' The error
+    ''' Enum ProgressState
     ''' </summary>
-    [Error]
-    ''' <summary>
-    ''' The deleted
-    ''' </summary>
-    Deleted
-    ''' <summary>
-    ''' The moved
-    ''' </summary>
-    Moved
-    ''' <summary>
-    ''' The copied
-    ''' </summary>
-    Copied
-End Enum
+    Public Enum ProgressState
+        ''' <summary>
+        ''' The error
+        ''' </summary>
+        [Error]
+        ''' <summary>
+        ''' The deleted
+        ''' </summary>
+        Deleted
+        ''' <summary>
+        ''' The moved
+        ''' </summary>
+        Moved
+        ''' <summary>
+        ''' The copied
+        ''' </summary>
+        Copied
+    End Enum
+End Namespace

@@ -153,4 +153,10 @@
   <data name="TheValueIsNotDefinedInTheEnumeration" xml:space="preserve">
     <value>The values are not defined in the enum.</value>
   </data>
+  <data name="FileNotFound" xml:space="preserve">
+    <value>File not found.</value>
+  </data>
+  <data name="FolderNotFound" xml:space="preserve">
+    <value>Folder not found.</value>
+  </data>
 </root>

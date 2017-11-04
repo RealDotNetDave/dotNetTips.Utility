@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -119,7 +119,6 @@
   </resheader>
   <data name="Bytes" xml:space="preserve">
     <value>bytes</value>
-    <comment>Bytes description</comment>
   </data>
   <data name="CannotBeOfTypeException" xml:space="preserve">
     <value>{0} cannot be of type Exception. Use a more specific exception from the framework or a custom Exception inheriting type Exception (only).</value>
@@ -138,7 +137,6 @@
   </data>
   <data name="GB" xml:space="preserve">
     <value>GB</value>
-    <comment>GB description</comment>
   </data>
   <data name="GuidIsEmpty" xml:space="preserve">
     <value>Guid is Empth.</value>
@@ -148,11 +146,9 @@
   </data>
   <data name="KB" xml:space="preserve">
     <value>KB</value>
-    <comment>KB description</comment>
   </data>
   <data name="MB" xml:space="preserve">
     <value>MB</value>
-    <comment>MB description</comment>
   </data>
   <data name="ParameterIsInvalid" xml:space="preserve">
     <value>Parameter is invalid. </value>
@@ -177,6 +173,8 @@
   </data>
   <data name="Yesterday" xml:space="preserve">
     <value>Yesterday</value>
-    <comment>Yesterday description</comment>
+  </data>
+  <data name="ServiceNotFound" xml:space="preserve">
+    <value>Service not found.</value>
   </data>
 </root>

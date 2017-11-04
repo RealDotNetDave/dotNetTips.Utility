@@ -4,14 +4,13 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-26-2017
+// Last Modified On : 09-16-2017
 // ***********************************************************************
 // <copyright file="DriveHelper.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-
 namespace dotNetTips.Utility.Standard.IO
 {
     /// <summary>

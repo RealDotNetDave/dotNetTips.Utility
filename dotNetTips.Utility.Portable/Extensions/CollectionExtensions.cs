@@ -51,7 +51,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <param name="values">The values.</param>
         public static void AddIfNotExists<T>(this ICollection<T> source, params T[] values)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(values != null);
+          // Encapsulation.TryValidateParam<ArgumentNullException>(values != null);
 
             foreach (var value in values.AsParallel())
             {
@@ -124,14 +124,14 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="list">The list.</param>
         /// <returns><c>true</c> if the specified list is valid; otherwise, <c>false</c>.</returns>
-        public static bool IsValid<T>(this ObservableCollection<T> list) => (list != null) && (list.Count > 0);
+        public static bool IsValid<T>(this ObservableCollection<T> list) => (list != null);
 
         /// <summary>
         /// Determines whether the specified source is valid.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns><count>true</count> if the specified source is valid; otherwise, <count>false</count>.</returns>
-        public static bool IsValid(this IEnumerable source) => source != null && source.Count() > 0;
+        public static bool IsValid(this IEnumerable source) => source != null;
 
         /// <summary>
         /// Returns no duplicates.
@@ -291,7 +291,6 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <remarks>Original code by: Fons Sonnemans</remarks>
         public static Task<List<T>> ToListAsync<T>(this IEnumerable<T> source)
         {
-
             return Task.Run(() => source.ToList());
         }
 

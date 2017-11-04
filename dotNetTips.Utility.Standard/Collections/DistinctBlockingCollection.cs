@@ -1,23 +1,24 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Standard
 // Author           : David McCarter
-// Created          : 01-23-2017
+// Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-03-2017
+// Last Modified On : 09-16-2017
 // ***********************************************************************
-// <copyright file="DistinctBlockingCollection.cs" company="dotNetTips.Utility.Standard">
-//     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
+// <copyright file="DistinctBlockingCollection.cs" company="dotNetTips.com - David McCarter">
+//     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using dotNetTips.Utility.Standard.Extensions;
-using dotNetTips.Utility.Standard.OOP;
+
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using dotNetTips.Utility.Standard.Extensions;
+using dotNetTips.Utility.Standard.OOP;
 
 namespace dotNetTips.Utility.Standard.Collections
 {
@@ -29,6 +30,11 @@ namespace dotNetTips.Utility.Standard.Collections
     /// <seealso cref="System.Collections.Concurrent.BlockingCollection{T}" />
     public class DistinctBlockingCollection<T> : BlockingCollection<T>, ICloneable<T>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DistinctBlockingCollection{T}" /> class.
+        /// </summary>
+        public DistinctBlockingCollection()
+        { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DistinctBlockingCollection{T}" /> class.
@@ -38,7 +44,7 @@ namespace dotNetTips.Utility.Standard.Collections
         {
             if (collection.IsValid())
             {
-                foreach (var item in collection)
+                foreach (var item in collection.AsParallel())
                 {
                     this.Add(item);
                 }
@@ -46,25 +52,18 @@ namespace dotNetTips.Utility.Standard.Collections
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DistinctBlockingCollection{T}" /> class.
-        /// </summary>
-        public DistinctBlockingCollection()
-        { }
-
-        /// <summary>
         /// Adds the item to the <see cref="T:System.Collections.Concurrent.BlockingCollection`1" />.
         /// </summary>
         /// <param name="item">The item to be added to the collection. The value can be a null reference.</param>
         public new void Add(T item)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(item != null, "Item is requried.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(item != null, "Item is required.");
 
             if (ItemNotInCollection(item))
             {
                 base.Add(item);
             }
         }
-
         /// <summary>
         /// Adds the item to the <see cref="T:System.Collections.Concurrent.BlockingCollection`1" />.
         /// </summary>
@@ -72,23 +71,49 @@ namespace dotNetTips.Utility.Standard.Collections
         /// <param name="cancellationToken">A cancellation token to observe.</param>
         public new void Add(T item, CancellationToken cancellationToken)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(item != null, "Item is requried.");
-            Encapsulation.TryValidateParam<ArgumentNullException>(cancellationToken != null, "Token is requried.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(item != null, "Item is required.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(cancellationToken != null, "Token is required.");
 
             if ((ItemNotInCollection(item)))
             {
                 base.Add(item, cancellationToken);
             }
         }
-
         /// <summary>
         /// Cones this instance.
         /// </summary>
         /// <returns>T.</returns>
-        public T Cone()
+        public T Cone() => (T)MemberwiseClone();
+
+        /// <summary>
+        /// Removes all.
+        /// </summary>
+        /// <param name="match">The match.</param>
+        /// <returns>System.Int32.</returns>
+        public int RemoveAll(Predicate<T> match)
         {
-            return (T)this.MemberwiseClone();
+            Encapsulation.TryValidateParam<ArgumentNullException>(match != null, "Match is required.");
+
+            var itemsToRemove = new List<T>();
+
+            foreach (var item in base.ToArray().AsParallel())
+            {
+                if (match?.Invoke(item) ?? default(bool))
+                {
+                    itemsToRemove.Add(item);
+                }
+            }
+
+            return base.Count;
         }
+
+        /// <summary>
+        /// Tries to add the specified item to the <see cref="T:System.Collections.Concurrent.BlockingCollection`1" />.
+        /// </summary>
+        /// <param name="item">The item to be added to the collection.</param>
+        /// <returns>true if <paramref name="item" /> could be added; otherwise false. If the item is a
+        /// duplicate, and the underlying collection does not accept duplicate items, then an <see cref="T:System.InvalidOperationException" /> is thrown.</returns>
+        public new bool TryAdd(T item) => (ItemNotInCollection(item)) ? base.TryAdd(item) : false;
 
         /// <summary>
         /// Tries to add the specified item to the <see cref="T:System.Collections.Concurrent.BlockingCollection`1" /> within the specified time period.
@@ -99,21 +124,7 @@ namespace dotNetTips.Utility.Standard.Collections
         /// <returns>true if the <paramref name="item" /> could be added to the collection within the specified
         /// time; otherwise, false. If the item is a duplicate, and the underlying collection does
         /// not accept duplicate items, then an <see cref="T:System.InvalidOperationException" /> is thrown.</returns>
-        public new bool TryAdd(T item, int millisecondsTimeout)
-        {
-            return (ItemNotInCollection(item)) ? base.TryAdd(item, millisecondsTimeout) : false;
-        }
-
-        /// <summary>
-        /// Tries to add the specified item to the <see cref="T:System.Collections.Concurrent.BlockingCollection`1" />.
-        /// </summary>
-        /// <param name="item">The item to be added to the collection.</param>
-        /// <returns>true if <paramref name="item" /> could be added; otherwise false. If the item is a
-        /// duplicate, and the underlying collection does not accept duplicate items, then an <see cref="T:System.InvalidOperationException" /> is thrown.</returns>
-        public new bool TryAdd(T item)
-        {
-            return (ItemNotInCollection(item)) ? base.TryAdd(item) : false;
-        }
+        public new bool TryAdd(T item, int millisecondsTimeout) => (ItemNotInCollection(item)) ? base.TryAdd(item, millisecondsTimeout) : false;
 
         /// <summary>
         /// Tries to add the specified item to the <see cref="T:System.Collections.Concurrent.BlockingCollection`1" />.
@@ -123,10 +134,7 @@ namespace dotNetTips.Utility.Standard.Collections
         /// a <see cref="T:System.TimeSpan" /> that represents -1 milliseconds to wait indefinitely.</param>
         /// <returns>true if the <paramref name="item" /> could be added to the collection within the specified
         /// time span; otherwise, false.</returns>
-        public new bool TryAdd(T item, TimeSpan timeout)
-        {
-            return (ItemNotInCollection(item)) ? base.TryAdd(item, timeout) : false;
-        }
+        public new bool TryAdd(T item, TimeSpan timeout) => (ItemNotInCollection(item)) ? base.TryAdd(item, timeout) : false;
 
         /// <summary>
         /// Tries to add the specified item to the <see cref="T:System.Collections.Concurrent.BlockingCollection`1" /> within the specified time
@@ -139,46 +147,13 @@ namespace dotNetTips.Utility.Standard.Collections
         /// <returns>true if the <paramref name="item" /> could be added to the collection within the specified
         /// time; otherwise, false. If the item is a duplicate, and the underlying collection does
         /// not accept duplicate items, then an <see cref="T:System.InvalidOperationException" /> is thrown.</returns>
-        public new bool TryAdd(T item, int millisecondsTimeout, CancellationToken cancellationToken)
-        {
-            return (ItemNotInCollection(item)) ? base.TryAdd(item, millisecondsTimeout, cancellationToken) : false;
-        }
+        public new bool TryAdd(T item, int millisecondsTimeout, CancellationToken cancellationToken) => (ItemNotInCollection(item)) ? base.TryAdd(item, millisecondsTimeout, cancellationToken) : false;
 
         /// <summary>
         /// Items the not in collection.
         /// </summary>
         /// <param name="item">The item.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        private bool ItemNotInCollection(T item)
-        {
-            return (item != null && this.Contains(item) == false);
-        }
-
-        /// <summary>
-        /// Removes all.
-        /// </summary>
-        /// <param name="match">The match.</param>
-        /// <returns>System.Int32.</returns>
-        public int RemoveAll(Predicate<T> match)
-        {
-            Encapsulation.TryValidateParam<ArgumentNullException>(match != null, "Match is requried.");
-
-            var itemsToRemove = new List<T>();
-
-            foreach (var item in base.ToArray())
-            {
-                if (match?.Invoke(item) ?? default(bool))
-                {
-                    itemsToRemove.Add(item);
-                }
-            }
-
-            //foreach (var item in itemsToRemove.AsParallel())
-            //{   //TODO: FIX TRYTAKE
-            //    //base.TryTake(item);
-            //}
-
-            return 0;// itemsToRemove.Count;
-        }
+        private bool ItemNotInCollection(T item) => (item != null && this.Contains(item) == false);
     }
 }

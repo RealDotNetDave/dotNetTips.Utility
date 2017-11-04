@@ -1,18 +1,5 @@
-﻿// ***********************************************************************
-// Assembly         : dotNetTips.Utility.Standard
-// Author           : David McCarter
-// Created          : 01-21-2017
-//
-// Last Modified By : David McCarter
-// Last Modified On : 01-22-2017
-// ***********************************************************************
-// <copyright file="MathExtensions.cs" company="dotNetTips.com - McCarter Consulting">
-//     Copyright ©  2017
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
+﻿using System;
 using dotNetTips.Utility.Standard.OOP;
-using System;
 
 namespace dotNetTips.Utility.Standard.Extensions
 {
@@ -148,7 +135,6 @@ namespace dotNetTips.Utility.Standard.Extensions
 
             return Convert.ToInt32(System.Math.Round(value, digits, mode));
         }
-
         #endregion Public Methods
     }
 }

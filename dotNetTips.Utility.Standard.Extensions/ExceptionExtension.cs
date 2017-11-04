@@ -1,21 +1,20 @@
 ﻿// ***********************************************************************
-// Assembly         : dotNetTips.Utility.Standard
+// Assembly         : dotNetTips.Utility.Standard.Extensions
 // Author           : David McCarter
-// Created          : 01-22-2017
+// Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-22-2017
+// Last Modified On : 09-16-2017
 // ***********************************************************************
-// <copyright file="ExceptionExtension.cs" company="dotNetTips.Utility.Standard">
-//     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
+// <copyright file="ExceptionExtension.cs" company="dotNetTips.com - David McCarter">
+//     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
-/// <summary>
-/// The Extensions namespace.
-/// </summary>
 namespace dotNetTips.Utility.Standard.Extensions
 {
     /// <summary>
@@ -36,7 +35,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         {
             if (ex is null)
             {
-                throw new ArgumentNullException(nameof(ex), "Exception cannot be null.");
+                throw new ArgumentNullException(nameof(ex), Properties.Resources.ExceptionCannotBeNull);
             }
 
             if (ReferenceEquals(ex.GetType(), typeof(T)))
@@ -44,7 +43,52 @@ namespace dotNetTips.Utility.Standard.Extensions
                 return ex as T;
             }
 
-            return ex.InnerException.TraverseFor<T>() as T;
+            return ex.InnerException.TraverseFor<T>();
+        }
+
+        /// <summary>
+        /// Gets all messages.
+        /// </summary>
+        /// <param name="exception">The exception.</param>
+        /// <returns>System.String.</returns>
+        public static string GetAllMessages(this Exception exception) => GetAllMessages(exception, Environment.NewLine);
+
+        /// <summary>
+        /// Gets all messages.
+        /// </summary>
+        /// <param name="exception">The exception.</param>
+        /// <param name="separator">The separator.</param>
+        /// <returns>System.String.</returns>
+        public static string GetAllMessages(this Exception exception, string separator = " ")
+        {
+            var messages = exception.FromHierarchy(ex => ex.InnerException).Select(ex => ex.Message);
+
+            return string.Join(separator, messages);
+        }
+
+        /// <summary>
+        /// Hierarchy.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the t source.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <param name="nextItem">The next item.</param>
+        /// <returns>IEnumerable&lt;TSource&gt;.</returns>
+        public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItem) where TSource : class => FromHierarchy(source, nextItem, s => s != null);
+
+        /// <summary>
+        /// Hierarchy.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the t source.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <param name="nextItem">The next item.</param>
+        /// <param name="canContinue">The can continue.</param>
+        /// <returns>IEnumerable&lt;TSource&gt;.</returns>
+        public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItem, Func<TSource, bool> canContinue)
+        {
+            for (var current = source; canContinue(current); current = nextItem(current))
+            {
+                yield return current;
+            }
         }
 
         #endregion Public Methods

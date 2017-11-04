@@ -1,16 +1,16 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Standard
 // Author           : David McCarter
-// Created          : 12-07-2016
+// Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-09-2017
+// Last Modified On : 09-16-2017
 // ***********************************************************************
-// <copyright file="ArgumentIsReadOnlyException.cs" company="dotNetTips.com">
-//     David McCarter - dotNetTips.com © 2017
+// <copyright file="ArgumentInvalidException.cs" company="dotNetTips.com - David McCarter">
+//     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
-// **********************************************************************
+// ***********************************************************************
 using System;
 
 namespace dotNetTips.Utility.Standard
@@ -19,12 +19,13 @@ namespace dotNetTips.Utility.Standard
     /// Class ArgumentIsInvalidException.
     /// </summary>
     /// <seealso cref="System.ArgumentException" />
+    [Serializable]
     public class ArgumentInvalidException : ArgumentException
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ArgumentInvalidException" /> class.
         /// </summary>
-        public ArgumentInvalidException()
+        public ArgumentInvalidException() : base("Go to dotNetTips.com!")
         {
         }
 
@@ -51,7 +52,7 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         /// <param name="message">The error message that explains the reason for the exception.</param>
         /// <param name="paramName">The name of the parameter that caused the current exception.</param>
-        public ArgumentInvalidException(string message, string paramName): base(message, paramName)
+        public ArgumentInvalidException(string message, string paramName) : base(message, paramName)
         {
         }
 
@@ -61,7 +62,7 @@ namespace dotNetTips.Utility.Standard
         /// <param name="message">The error message that explains the reason for the exception.</param>
         /// <param name="paramName">The name of the parameter that caused the current exception.</param>
         /// <param name="innerException">The exception that is the cause of the current exception. If the <paramref name="innerException" /> parameter is not a null reference, the current exception is raised in a catch block that handles the inner exception.</param>
-        public ArgumentInvalidException(string message, string paramName, Exception innerException)  : base(message, paramName, innerException)
+        public ArgumentInvalidException(string message, string paramName, Exception innerException) : base(message, paramName, innerException)
         {
         }
     }

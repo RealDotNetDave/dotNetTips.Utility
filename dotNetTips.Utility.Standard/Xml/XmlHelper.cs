@@ -1,40 +1,29 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Standard
 // Author           : David McCarter
-// Created          : 02-04-2017
+// Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-06-2017
+// Last Modified On : 10-25-2017
 // ***********************************************************************
 // <copyright file="XmlHelper.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using dotNetTips.Utility.Standard.OOP;
 using System;
 using System.IO;
 using System.Xml;
+using System.Xml.Serialization;
+using dotNetTips.Utility.Standard.OOP;
 
 namespace dotNetTips.Utility.Standard.Xml
 {
     /// <summary>
     /// Class XmlHelper.
     /// </summary>
-    public class XmlHelper
+    public static class XmlHelper
     {
-        /// <summary>
-        /// Deserializes from XML file.
-        /// </summary>
-        /// <typeparam name="T">Type</typeparam>
-        /// <param name="fileName">Name of the file.</param>
-        /// <returns>T.</returns>
-        public T DeserializeFromXmlFile<T>(string fileName)
-        {
-            return Deserialize<T>(File.ReadAllText(fileName));
-
-        }
-
         /// <summary>
         /// Deserializes the specified XML.
         /// </summary>
@@ -42,36 +31,33 @@ namespace dotNetTips.Utility.Standard.Xml
         /// <param name="xml">The XML.</param>
         /// <returns>T.</returns>
         /// <exception cref="ArgumentNullException">xml</exception>
-        public T Deserialize<T>(string xml)
+        public static T Deserialize<T>(string xml)
         {
-            if (string.IsNullOrEmpty(xml))
-            {
-                throw new ArgumentNullException(nameof(xml));
-            }
+            Encapsulation.TryValidateParam(xml, nameof(xml));
 
-            using (var reader = new StringReader(xml))
+            using (var sr = new StringReader(xml))
             {
-                //TODO: NEED TO FIGURE THIS OUT
-                //using (var xmlReader = new XmlTextReader(reader))
-                //{
-                //    return (T)new XmlSerializer(typeof(T)).Deserialize(xmlReader);
-                //}
-                return default(T);
+                var xr = new XmlSerializer(typeof(T));
+                return (T)xr.Deserialize(sr);
             }
         }
 
         /// <summary>
-        /// Serializes obj to XML file.
+        /// Deserializes from XML file.
         /// </summary>
-        /// <param name="obj">The obj.</param>
+        /// <typeparam name="T">Type</typeparam>
         /// <param name="fileName">Name of the file.</param>
-        /// <exception cref="NotImplementedException"></exception>
-
-        public void SerializeToXmlFile(object obj, string fileName)
+        /// <returns>T.</returns>
+        public static T DeserializeFromXmlFile<T>(string fileName)
         {
-            //TODO: NEED TO FIGURE THIS OUT
-            //  My.Computer.FileSystem.WriteAllText(fileName, Serialize(obj), false);
-            throw new NotImplementedException();
+            Encapsulation.TryValidateParam(fileName, nameof(fileName));
+
+            if (File.Exists(fileName) == false)
+            {
+                throw new FileNotFoundException("File not found. Cannot deserialize from XML.", fileName);
+            }
+
+            return Deserialize<T>(File.ReadAllText(fileName));
         }
 
         /// <summary>
@@ -80,29 +66,37 @@ namespace dotNetTips.Utility.Standard.Xml
         /// <param name="obj">The obj.</param>
         /// <returns>System.String.</returns>
         /// <exception cref="ArgumentNullException">obj</exception>
-        public string Serialize(object obj)
+        public static string Serialize(object obj)
         {
+            Encapsulation.TryValidateParam<ArgumentNullException>(obj != null, nameof(obj));
 
-            Encapsulation.TryValidateParam<ArgumentNullException>(obj != null);
-
-            if (obj == null)
-            {
-                throw new ArgumentNullException(nameof(obj));
-            }
-         
             using (var writer = new StringWriter())
             {
-                //TODO: BLOG POST
                 using (var xmlWriter = XmlWriter.Create(writer))
                 {
-                    //TODO: NEED TO FIGURE THIS OUT
-                    //XmlSerializer serilizer = new XmlSerializer(obj.GetType());
-                    //serilizer.Serialize(xmlWriter, obj);
-                    //return writer.ToString();
-                    return null;
+                    var serializer = new XmlSerializer(obj.GetType());
+                    serializer.Serialize(xmlWriter, obj);
+                    return writer.ToString();
                 }
             }
+        }
 
+        /// <summary>
+        /// Serializes obj to XML file.
+        /// </summary>
+        /// <param name="obj">The obj.</param>
+        /// <param name="fileName">Name of the file.</param>
+        public static void SerializeToXmlFile(object obj, string fileName)
+        {
+            Encapsulation.TryValidateParam<ArgumentNullException>(obj != null, nameof(obj));
+            Encapsulation.TryValidateParam(fileName, nameof(fileName));
+
+            if (File.Exists(fileName))
+            {
+                File.Delete(fileName);
+            }
+
+            File.WriteAllText(fileName, Serialize(obj));
         }
     }
 }

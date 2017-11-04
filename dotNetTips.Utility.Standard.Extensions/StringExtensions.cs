@@ -1,23 +1,19 @@
 ﻿// ***********************************************************************
-// Assembly         : dotNetTips.Utility.Standard
+// Assembly         : dotNetTips.Utility.Standard.Extensions
 // Author           : David McCarter
-// Created          : 01-22-2017
+// Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-22-2017
+// Last Modified On : 09-16-2017
 // ***********************************************************************
-// <copyright file="StringExtensions.cs" company="dotNetTips.Utility.Standard">
-//     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
+// <copyright file="StringExtensions.cs" company="dotNetTips.com - David McCarter">
+//     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-
 using System;
 using System.Text;
 
-/// <summary>
-/// The Extensions namespace.
-/// </summary>
 namespace dotNetTips.Utility.Standard.Extensions
 {
     /// <summary>
@@ -60,7 +56,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         {
             if (fileSize == 0 && (fileSize >= long.MinValue && fileSize <= long.MaxValue))
             {
-                throw new ArgumentNullException(nameof(fileSize), "File size is invalid.");
+                throw new ArgumentNullException(nameof(fileSize), Properties.Resources.FileSizeIsInvalid);
             }
 
             long size = 0;
@@ -71,7 +67,7 @@ namespace dotNetTips.Utility.Standard.Extensions
                 size += 1;
             }
 
-            return fileSize + ControlChars.Space + (new string[] { Properties.Resources.Bytes, Properties.Resources.KB, Properties.Resources.MB, Properties.Resources.GB })[Convert.ToInt32(size)];
+            return fileSize + " " + (new string[] { Properties.Resources.Bytes, Properties.Resources.KB, Properties.Resources.MB, Properties.Resources.GB })[Convert.ToInt32(size)];
         }
 
         /// <summary>
@@ -82,32 +78,34 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="indentationCharacter">The indentation character.</param>
         /// <returns>System.String.</returns>
         /// <exception cref="ArgumentNullException">length - Length must be greater than 0.</exception>
-        public static string Indent(this string str, int length, char indentationCharacter = ControlChars.Space)
+        public static string Indent(this string str, int length, char indentationCharacter)
         {
-            if (length==0)
+            if (length == 0)
             {
-                throw new ArgumentNullException(nameof(length), "Length must be greater than 0.");
+                throw new ArgumentNullException(nameof(length), Properties.Resources.LengthMustBeGreaterThan0);
             }
 
             var sb = new StringBuilder();
 
-            //An indentation length smaller then 0 changes this function from an indent function to an append function.
-            //For that the final string has to start of with the initial str.
-            if (length < 0) sb.Append(str);
+            if (length < 0)
+            {
+                sb.Append(str);
+            }
 
             int i;
-            //Append the indentation string
             for (i = 1; i <= Math.Abs(length); i++)
             {
                 sb.Append(indentationCharacter);
             }
 
-            //If the indentation length was greater then 0 the string gets added now.
-            if (length > 0) sb.Append(str);
+            if (length > 0)
+            {
+                sb.Append(str);
+            }
+
 
             return sb.ToString();
         }
-
         #endregion Public Methods
     }
 }

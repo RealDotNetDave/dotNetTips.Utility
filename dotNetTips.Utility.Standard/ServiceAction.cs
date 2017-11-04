@@ -4,7 +4,7 @@
 // Created          : 07-21-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-21-2017
+// Last Modified On : 09-16-2017
 // ***********************************************************************
 // <copyright file="ServiceAction.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -19,11 +19,6 @@ namespace dotNetTips.Utility.Standard
     public class ServiceAction
     {
         /// <summary>
-        /// Gets or sets the name of the service.
-        /// </summary>
-        /// <value>The name of the service.</value>
-        public string ServiceName { get; set; }
-        /// <summary>
         /// Gets or sets the service action request.
         /// </summary>
         /// <value>The service action request.</value>
@@ -33,5 +28,10 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         /// <value>The service action result.</value>
         public ServiceActionResult ServiceActionResult { get; set; }
+        /// <summary>
+        /// Gets or sets the name of the service.
+        /// </summary>
+        /// <value>The name of the service.</value>
+        public string ServiceName { get; set; }
     }
 }

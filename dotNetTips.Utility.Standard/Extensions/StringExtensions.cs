@@ -1,18 +1,4 @@
-﻿// ***********************************************************************
-// Assembly         : dotNetTips.Utility.Standard
-// Author           : David McCarter
-// Created          : 01-22-2017
-//
-// Last Modified By : David McCarter
-// Last Modified On : 01-22-2017
-// ***********************************************************************
-// <copyright file="StringExtensions.cs" company="dotNetTips.Utility.Standard">
-//     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using System;
+﻿using System;
 using System.Text;
 
 namespace dotNetTips.Utility.Standard.Extensions
@@ -81,30 +67,32 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentNullException">length - Length must be greater than 0.</exception>
         public static string Indent(this string str, int length, char indentationCharacter = ControlChars.Space)
         {
-            if (length==0)
+            if (length == 0)
             {
                 throw new ArgumentNullException(nameof(length), "Length must be greater than 0.");
             }
 
             var sb = new StringBuilder();
 
-            //An indentation length smaller then 0 changes this function from an indent function to an append function.
-            //For that the final string has to start of with the initial str.
-            if (length < 0) sb.Append(str);
+            if (length < 0)
+            {
+                sb.Append(str);
+            }
 
             int i;
-            //Append the indentation string
             for (i = 1; i <= Math.Abs(length); i++)
             {
                 sb.Append(indentationCharacter);
             }
 
-            //If the indentation length was greater then 0 the string gets added now.
-            if (length > 0) sb.Append(str);
+            if (length > 0)
+            {
+                sb.Append(str);
+            }
+
 
             return sb.ToString();
         }
-
         #endregion Public Methods
     }
 }

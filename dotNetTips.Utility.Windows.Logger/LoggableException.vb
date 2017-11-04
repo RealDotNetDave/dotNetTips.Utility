@@ -26,7 +26,7 @@ Imports System.Runtime.Serialization
 ''' Exception meant to be logged.
 ''' </summary>
 ''' <seealso cref="System.Exception" />
-''' <seealso cref="System.Xml.Serialization.IXmlSerializable" />
+''' <seealso cref="IXmlSerializable" />
 <Serializable>
 Public Class LoggableException
     Inherits Exception
@@ -171,6 +171,21 @@ Public Class LoggableException
 
         info.AddValue(NameOf(_userMessage), _userMessage)
 
+    End Sub
+
+    Public Sub New()
+    End Sub
+
+    Public Sub New(message As String)
+        MyBase.New(message)
+    End Sub
+
+    Public Sub New(message As String, innerException As Exception)
+        MyBase.New(message, innerException)
+    End Sub
+
+    Protected Sub New(serializationInfo As SerializationInfo, streamingContext As StreamingContext)
+        Throw New NotImplementedException()
     End Sub
 
 #End Region

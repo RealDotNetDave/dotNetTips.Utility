@@ -1,21 +1,23 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Standard
 // Author           : David McCarter
-// Created          : 01-22-2017
+// Created          : 02-11-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-20-2017
+// Last Modified On : 09-16-2017
 // ***********************************************************************
-// <copyright file="FileHelper.cs" company="dotNetTips.Utility.Standard">
-//     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
+// <copyright file="FileHelper.cs" company="dotNetTips.com - David McCarter">
+//     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using dotNetTips.Utility.Standard.Extensions;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+using dotNetTips.Utility.Standard.Extensions;
+using dotNetTips.Utility.Standard.OOP;
 
 namespace dotNetTips.Utility.Standard.IO
 {
@@ -55,9 +57,43 @@ namespace dotNetTips.Utility.Standard.IO
                 }
             });
 
+
+
             return errors.AsEnumerable();
         }
 
+        /// <summary>
+        /// Copies a file as an asynchronous operation.
+        /// </summary>
+        /// <param name="file">The file.</param>
+        /// <param name="destinationFolder">The destination folder.</param>
+        /// <returns>Task&lt;System.Int32&gt;.</returns>
+        public static async Task<long> CopyFileAsync(FileInfo file, DirectoryInfo destinationFolder)
+        {
+            Encapsulation.TryValidateParam(file, nameof(file));
+            Encapsulation.TryValidateParam(destinationFolder, nameof(destinationFolder));
+
+            var backUpFolderRoot = destinationFolder.FullName.Split(ControlChars.BackSlash).Last().Trim();
+
+            var newFileName = file.FullName.Replace(destinationFolder.FullName, backUpFolderRoot);
+
+            using (var sourceStream = File.Open(file.FullName, FileMode.Open))
+            {
+                if (File.Exists(newFileName))
+                {
+                    File.Delete(newFileName);
+                }
+
+                using (var destinationStream = File.Create(newFileName))
+                {
+                    await sourceStream.CopyToAsync(destinationStream);
+                    await destinationStream.FlushAsync();
+                }
+            }
+
+            return file.Length;
+
+        }
         #endregion Public Methods
     }
 }

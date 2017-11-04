@@ -4,7 +4,7 @@
 // Created          : 08-06-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-07-2017
+// Last Modified On : 09-16-2017
 // ***********************************************************************
 // <copyright file="Processor.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -25,23 +25,10 @@ namespace dotNetTips.Utility.Standard.IO
     /// </summary>
     public class Processor
     {
-
         /// <summary>
         /// Occurs when processor processes a file or folder.
         /// </summary>
-       public event EventHandler<ProgressEventArgs> Processed;
-
-        /// <summary>
-        /// Handles the <see cref="E:Processed" /> event.
-        /// </summary>
-        /// <param name="e">The <see cref="ProgressEventArgs" /> instance containing the event data.</param>
-        protected virtual void OnProcessed(ProgressEventArgs e)
-        {
-            if (Processed != null)
-            {
-                Processed(this, e);
-            }
-        }
+        public event EventHandler<ProgressEventArgs> Processed;
 
         /// <summary>
         /// Copies files to new location. Will not throw exceptions.
@@ -59,13 +46,14 @@ namespace dotNetTips.Utility.Standard.IO
 
             var backUpFolderRoot = destinationFolder.FullName.Split(ControlChars.BackSlash).Last().Trim();
 
-            foreach (var tempFile in files)
+            foreach (var tempFile in files.AsParallel())
             {
                 if (tempFile.Exists)
                 {
                     try
                     {
                         var newFileName = tempFile.FullName.Replace(destinationFolder.FullName, backUpFolderRoot);
+
                         tempFile.CopyTo(newFileName, true);
 
                         successCount += 1;
@@ -77,7 +65,7 @@ namespace dotNetTips.Utility.Standard.IO
                             Size = tempFile.Length
                         });
                     }
-                    catch (Exception ex)
+                    catch (UnauthorizedAccessException ex)
                     {
                         OnProcessed(new ProgressEventArgs
                         {
@@ -102,9 +90,7 @@ namespace dotNetTips.Utility.Standard.IO
             }
 
             return successCount;
-
         }
-
         /// <summary>
         /// Deletes file list.
         /// </summary>
@@ -117,7 +103,7 @@ namespace dotNetTips.Utility.Standard.IO
 
             var successCount = 0;
 
-            foreach (var tempFile in files)
+            foreach (var tempFile in files.AsParallel())
             {
                 if (tempFile.Exists)
                 {
@@ -135,7 +121,7 @@ namespace dotNetTips.Utility.Standard.IO
                         });
 
                     }
-                    catch (Exception ex)
+                    catch (UnauthorizedAccessException ex)
                     {
                         OnProcessed(new ProgressEventArgs
                         {
@@ -161,7 +147,6 @@ namespace dotNetTips.Utility.Standard.IO
 
             return successCount;
         }
-
         /// <summary>
         /// Deletes the folders.
         /// </summary>
@@ -173,14 +158,14 @@ namespace dotNetTips.Utility.Standard.IO
 
             var successCount = 0;
 
-            foreach (var tempFolder in folders)
+            foreach (var tempFolder in folders.AsParallel())
             {
                 if (tempFolder.Exists)
                 {
                     try
                     {
                         tempFolder.Delete(true);
-                       
+
                         successCount += 1;
 
                         OnProcessed(new ProgressEventArgs
@@ -190,7 +175,7 @@ namespace dotNetTips.Utility.Standard.IO
                         });
 
                     }
-                    catch (Exception ex)
+                    catch (UnauthorizedAccessException ex)
                     {
                         OnProcessed(new ProgressEventArgs
                         {
@@ -213,6 +198,14 @@ namespace dotNetTips.Utility.Standard.IO
 
             return successCount;
 
+        }
+        /// <summary>
+        /// Handles the <see cref="E:Processed" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="ProgressEventArgs" /> instance containing the event data.</param>
+        protected virtual void OnProcessed(ProgressEventArgs e)
+        {
+            Processed?.Invoke(this, e);
         }
     }
 }

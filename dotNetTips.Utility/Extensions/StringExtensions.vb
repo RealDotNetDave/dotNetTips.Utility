@@ -321,13 +321,13 @@ Namespace Extensions
             Encapsulation.TryValidateParam(Of ArgumentOutOfRangeException)(System.Enum.IsDefined(GetType(HashType), hashType))
 
             Dim hash As Byte() = GetHash(input, hashType)
-            Dim ret As New StringBuilder()
+            Dim sb As New StringBuilder()
 
             For i As Integer = 0 To hash.Length - 1
-                ret.Append(hash(i).ToString("x2", CultureInfo.InvariantCulture))
+                sb.Append(hash(i).ToString("x2", CultureInfo.InvariantCulture))
             Next
 
-            Return ret.ToString()
+            Return sb.ToString()
 
         End Function
 

@@ -4,26 +4,24 @@
 // Created          : 07-21-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-06-2017
+// Last Modified On : 11-02-2017
 // ***********************************************************************
 // <copyright file="DataContext.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using System;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using dotNetTips.Utility.Standard.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace dotNetTips.Utility.Portable.Data
+namespace dotNetTips.Utility.Standard.Data
 {
     /// <summary>
-    /// Database context for GolfDbContext.
+    /// Database context.
     /// </summary>
     /// <typeparam name="TContext">The type of the t context.</typeparam>
     /// <seealso cref="Microsoft.EntityFrameworkCore.DbContext" />
@@ -33,7 +31,7 @@ namespace dotNetTips.Utility.Portable.Data
         /// Initializes a new instance of the <see cref="DataContext{TContext}" /> class.
         /// </summary>
         /// <param name="options">The options for this context.</param>
-        public DataContext(DbContextOptions options) : base(options)
+        protected DataContext(DbContextOptions options) : base(options)
         {
         }
 
@@ -49,11 +47,10 @@ namespace dotNetTips.Utility.Portable.Data
         /// <see cref="P:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.AutoDetectChangesEnabled" />.</remarks>
         public override int SaveChanges()
         {
-            this.UpdateEntities();
+            UpdateEntities();
 
             return base.SaveChanges();
         }
-
         /// <summary>
         /// Asynchronously saves all changes made in this context to the underlying database.
         /// </summary>
@@ -74,7 +71,7 @@ namespace dotNetTips.Utility.Portable.Data
         /// </para></remarks>
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken)
         {
-            this.UpdateEntities();
+            UpdateEntities();
 
             return base.SaveChangesAsync(cancellationToken);
         }
@@ -88,11 +85,7 @@ namespace dotNetTips.Utility.Portable.Data
         /// to a given database.</param>
         /// <remarks>If a model is explicitly set on the options for this context (via <see cref="M:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.UseModel(Microsoft.EntityFrameworkCore.Metadata.IModel)" />)
         /// then this method will not be run.</remarks>
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-        }
-
+        protected override void OnModelCreating(ModelBuilder modelBuilder) => base.OnModelCreating(modelBuilder);
         /// <summary>
         /// Updates the entities.
         /// </summary>
@@ -121,5 +114,4 @@ namespace dotNetTips.Utility.Portable.Data
             }
         }
     }
-
 }

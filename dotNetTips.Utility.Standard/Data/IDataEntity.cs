@@ -1,12 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// ***********************************************************************
+// Assembly         : dotNetTips.Utility.Standard
+// Author           : David McCarter
+// Created          : 07-21-2017
+//
+// Last Modified By : David McCarter
+// Last Modified On : 09-16-2017
+// ***********************************************************************
+// <copyright file="IDataEntity.cs" company="dotNetTips.com - David McCarter">
+//     dotNetTips.com - David McCarter
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 
 namespace dotNetTips.Utility.Standard.Data
 {
     /// <summary>
     /// Interface IDataEntity
     /// </summary>
+    /// <seealso cref="dotNetTips.Utility.Standard.IValid" />
     public interface IDataEntity : IValid
     {
         /// <summary>
@@ -14,11 +26,13 @@ namespace dotNetTips.Utility.Standard.Data
         /// </summary>
         /// <value>The created at.</value>
         DateTimeOffset CreatedAt { get; set; }
+
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="DataEntity" /> is deleted.
         /// </summary>
         /// <value><c>true</c> if deleted; otherwise, <c>false</c>.</value>
         bool Deleted { get; set; }
+
         /// <summary>
         /// Gets or sets the identifier.
         /// </summary>
@@ -26,11 +40,9 @@ namespace dotNetTips.Utility.Standard.Data
         int Id { get; set; }
 
         /// <summary>
-        /// 	Gets or sets the public key.
+        /// Gets or sets the public key.
         /// </summary>
-        /// <value>
-        /// 	The public key.
-        /// </value>
+        /// <value>The public key.</value>
         Guid PublicKey { get; set; }
 
         /// <summary>
@@ -38,6 +50,7 @@ namespace dotNetTips.Utility.Standard.Data
         /// </summary>
         /// <value>The updated at.</value>
         DateTimeOffset? UpdatedAt { get; set; }
+
         /// <summary>
         /// Gets or sets the version.
         /// </summary>

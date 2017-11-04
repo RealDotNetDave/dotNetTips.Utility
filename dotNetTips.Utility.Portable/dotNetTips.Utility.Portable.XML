@@ -915,6 +915,13 @@
             <returns>T.</returns>
             <remarks>Original code by: Jeremy Clark</remarks>
         </member>
+        <member name="M:dotNetTips.Utility.Portable.Extensions.TypeExtensions.ToWords(System.Int32)">
+            <summary>
+            To the words.
+            </summary>
+            <param name="number">The number.</param>
+            <returns>String.</returns>
+        </member>
         <member name="T:dotNetTips.Utility.Portable.FileAttributes">
             <summary>
             Enum FileAttributes
@@ -1177,7 +1184,7 @@
             </summary>
             <typeparam name="T"></typeparam>
         </member>
-        <member name="P:dotNetTips.Utility.Portable.ISingleton`1.Instance">
+        <member name="M:dotNetTips.Utility.Portable.ISingleton`1.Instance">
             <summary>
             Gets the instance.
             </summary>
@@ -1212,6 +1219,16 @@
         <member name="P:dotNetTips.Utility.Portable.Properties.Resources.CollectionSizeIsNotValid">
             <summary>
               Looks up a localized string similar to Collection size is not valid..
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.FileNotFound">
+            <summary>
+              Looks up a localized string similar to File not found..
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Portable.Properties.Resources.FolderNotFound">
+            <summary>
+              Looks up a localized string similar to Folder not found..
             </summary>
         </member>
         <member name="P:dotNetTips.Utility.Portable.Properties.Resources.GuidIsEmpty">

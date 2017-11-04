@@ -1,10 +1,10 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Standard
 // Author           : David McCarter
-// Created          : 03-06-2017
+// Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-05-2017
+// Last Modified On : 09-16-2017
 // ***********************************************************************
 // <copyright file="AppLogging.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -12,7 +12,6 @@
 // <summary></summary>
 // ***********************************************************************
 using Microsoft.Extensions.Logging;
-using System;
 
 namespace dotNetTips.Utility.Standard
 {
@@ -41,7 +40,7 @@ namespace dotNetTips.Utility.Standard
         public static ILogger CreateLogger<T>()
         {
             Logger = LoggerFactory.CreateLogger<T>();
-           
+
             return Logger;
         }
 

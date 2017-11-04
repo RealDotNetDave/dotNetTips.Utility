@@ -20,8 +20,6 @@
 <Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId:="dot", Scope:="namespace", Target:="dotNetTips.Utility.Logging")>
 <Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId:="dot", Scope:="namespace", Target:="dotNetTips.Utility.Drawing")>
 <Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId:="dot", Scope:="namespace", Target:="dotNetTips.Utility.Threading")>
-<Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1032:ImplementStandardExceptionConstructors", Scope:="type", Target:="System.Diagnostics.Contracts.__ContractsRuntime+ContractException")>
-<Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1064:ExceptionsShouldBePublic", Scope:="type", Target:="System.Diagnostics.Contracts.__ContractsRuntime+ContractException")>
 <Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1703:ResourceStringsShouldBeSpelledCorrectly", MessageId:="Dr", Scope:="resource", Target:="dotNetTips.Utility.Resources.resources")>
 <Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2234:PassSystemUriObjectsInsteadOfStrings", Scope:="member", Target:="dotNetTips.Utility.Web.UrlBuilder.#.ctor(System.String)")>
 <Assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CC0057:Unused parameters.", Justification:="<Pending>", Scope:="member", Target:="~M:dotNetTips.Utility.UnsafeNativeMethods.GetModuleHandle(System.String)~System.IntPtr")>

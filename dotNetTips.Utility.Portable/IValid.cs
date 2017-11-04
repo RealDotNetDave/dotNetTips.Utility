@@ -1,12 +1,12 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Portable
 // Author           : David McCarter
-// Created          : 12-07-2016
+// Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-19-2017
+// Last Modified On : 06-26-2017
 // ***********************************************************************
-// <copyright file="ICloneable.cs" company="dotNetTips.com">
+// <copyright file="IValid.cs" company="dotNetTips.com">
 //     David McCarter - dotNetTips.com © 2017
 // </copyright>
 // <summary></summary>

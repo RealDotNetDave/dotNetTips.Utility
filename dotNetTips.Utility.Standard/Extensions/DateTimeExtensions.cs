@@ -1,19 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : dotNetTips.Utility.Standard
-// Author           : David McCarter
-// Created          : 01-22-2017
-//
-// Last Modified By : David McCarter
-// Last Modified On : 01-22-2017
-// ***********************************************************************
-// <copyright file="DateTimeExtensions.cs" company="dotNetTips.Utility.Standard">
-//     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-using dotNetTips.Utility.Standard.OOP;
-using System;
+﻿using System;
 using System.Globalization;
+using dotNetTips.Utility.Standard.OOP;
 
 namespace dotNetTips.Utility.Standard.Extensions
 {
@@ -50,7 +37,10 @@ namespace dotNetTips.Utility.Standard.Extensions
             while (true)
             {
                 if (date.DayOfWeek == day)
+                {
                     return date;
+                }
+
                 date = date.AddDays(1);
             }
         }
@@ -61,10 +51,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="date">Date to process</param>
         /// <param name="timezoneFromUtc">Hours of the timezone from UTC</param>
         /// <returns>Future date</returns>
-        public static DateTime LocalTimeFromUtc(this DateTime date, Int32 timezoneFromUtc)
-        {
-            return date.ToUniversalTime().AddHours(timezoneFromUtc);
-        }
+        public static DateTime LocalTimeFromUtc(this DateTime date, Int32 timezoneFromUtc) => date.ToUniversalTime().AddHours(timezoneFromUtc);
 
         /// <summary>
         /// Gets the next.
@@ -92,11 +79,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="intersectingStartDate">The intersecting start date.</param>
         /// <param name="intersectingEndDate">The intersecting end date.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        /// <remarks>Code by: Walter Quesada</remarks>
-        public static bool Intersects(this DateTime startDate, DateTime endDate, DateTime intersectingStartDate, DateTime intersectingEndDate)
-        {
-            return intersectingEndDate >= startDate && intersectingStartDate <= endDate;
-        }
+        public static bool Intersects(this DateTime startDate, DateTime endDate, DateTime intersectingStartDate, DateTime intersectingEndDate) => intersectingEndDate >= startDate && intersectingStartDate <= endDate;
 
         /// <summary>
         /// To the friendly date string.
@@ -108,16 +91,18 @@ namespace dotNetTips.Utility.Standard.Extensions
             var formattedDate = string.Empty;
 
             if (input.Date == DateTime.Today)
+            {
                 formattedDate = nameof(DateTime.Today);
+            }
             else
+            {
                 formattedDate = input.Date == DateTime.Today.AddDays(-1) ? Properties.Resources.Yesterday : input.Date > DateTime.Today.AddDays(-6) ? input.ToString("dddd", CultureInfo.CurrentCulture).ToString() : input.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern, CultureInfo.CurrentCulture);
+            }
 
-            // append the time portion to the output
             formattedDate += " @ " + input.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern, CultureInfo.CurrentCulture).ToLower();
 
             return formattedDate;
         }
-
         #endregion Public Methods
     }
 }

@@ -1,22 +1,18 @@
 ﻿// ***********************************************************************
-// Assembly         : dotNetTips.Utility.Standard
+// Assembly         : dotNetTips.Utility.Standard.Extensions
 // Author           : David McCarter
-// Created          : 01-21-2017
+// Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-22-2017
+// Last Modified On : 09-16-2017
 // ***********************************************************************
-// <copyright file="MathExtensions.cs" company="dotNetTips.com - McCarter Consulting">
-//     Copyright ©  2017
+// <copyright file="MathExtensions.cs" company="dotNetTips.com - David McCarter">
+//     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using dotNetTips.Utility.Standard.OOP;
 using System;
 
-/// <summary>
-/// The Extensions namespace.
-/// </summary>
 namespace dotNetTips.Utility.Standard.Extensions
 {
     /// <summary>
@@ -32,11 +28,8 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="value">The value.</param>
         /// <returns>System.Int32.</returns>
         /// <exception cref="ArgumentNullException">value - Value is invalid.</exception>
-        /// <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
         public static int Round(this double value)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(value <= double.MinValue || value >= double.MaxValue, nameof(value));
-
             return Convert.ToInt32(System.Math.Round(value));
         }
 
@@ -47,11 +40,8 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="digits">The digits.</param>
         /// <returns>System.Int32.</returns>
         /// <exception cref="ArgumentNullException">value - Value is invalid.</exception>
-        /// <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
         public static int Round(this double value, int digits)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(value <= double.MinValue || value >= double.MaxValue, nameof(value));
-
             return Convert.ToInt32(System.Math.Round(value, digits));
         }
 
@@ -62,11 +52,8 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="mode">The mode.</param>
         /// <returns>System.Int32.</returns>
         /// <exception cref="ArgumentNullException">value - Value is invalid.</exception>
-        /// <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
         public static int Round(this double value, MidpointRounding mode)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(value <= double.MinValue || value >= double.MaxValue, nameof(value));
-
             return Convert.ToInt32(System.Math.Round(value, mode));
         }
 
@@ -78,11 +65,8 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="mode">The mode.</param>
         /// <returns>System.Int32.</returns>
         /// <exception cref="ArgumentNullException">value - Value is invalid.</exception>
-        /// <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
         public static int Round(this double value, int digits, MidpointRounding mode)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(value <= double.MinValue || value >= double.MaxValue, nameof(value));
-
             return Convert.ToInt32(System.Math.Round(value, digits, mode));
         }
 
@@ -92,11 +76,8 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="value">The value.</param>
         /// <returns>System.Int32.</returns>
         /// <exception cref="ArgumentNullException">value - Value is invalid.</exception>
-        /// <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
         public static int Round(this decimal value)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(value <= decimal.MinValue || value >= decimal.MaxValue, nameof(value));
-
             return Convert.ToInt32(System.Math.Round(value));
         }
 
@@ -107,11 +88,8 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="digits">The digits.</param>
         /// <returns>System.Int32.</returns>
         /// <exception cref="ArgumentNullException">value - Value is invalid.</exception>
-        /// <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
         public static int Round(this decimal value, int digits)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(value <= decimal.MinValue || value >= decimal.MaxValue, nameof(value));
-
             return Convert.ToInt32(System.Math.Round(value, digits));
         }
 
@@ -122,12 +100,11 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="mode">The mode.</param>
         /// <returns>System.Int32.</returns>
         /// <exception cref="ArgumentNullException">value - Value is invalid.</exception>
-        /// <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
         public static int Round(this decimal value, MidpointRounding mode)
         {
             if (value <= decimal.MinValue || value >= decimal.MaxValue)
             {
-                throw new ArgumentNullException(nameof(value), "Value is invalid.");
+                throw new ArgumentNullException(nameof(value), Properties.Resources.ValueIsInvalid);
             }
 
             return Convert.ToInt32(System.Math.Round(value, mode));
@@ -141,17 +118,15 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="mode">The mode.</param>
         /// <returns>System.Int32.</returns>
         /// <exception cref="ArgumentNullException">value - Value is invalid.</exception>
-        /// <remarks>Code by: Lucas http://code.msdn.microsoft.com/LucasExtensions</remarks>
         public static int Round(this decimal value, int digits, MidpointRounding mode)
         {
             if (value <= decimal.MinValue || value >= decimal.MaxValue)
             {
-                throw new ArgumentNullException(nameof(value), "Value is invalid.");
+                throw new ArgumentNullException(nameof(value), Properties.Resources.ValueIsInvalid);
             }
 
             return Convert.ToInt32(System.Math.Round(value, digits, mode));
         }
-
         #endregion Public Methods
     }
 }

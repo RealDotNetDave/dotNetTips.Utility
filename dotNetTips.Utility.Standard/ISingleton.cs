@@ -1,17 +1,16 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Standard
-// Author           : david
-// Created          : 02-12-2017
+// Author           : David McCarter
+// Created          : 06-26-2017
 //
-// Last Modified By : david
-// Last Modified On : 06-24-2017
+// Last Modified By : David McCarter
+// Last Modified On : 09-16-2017
 // ***********************************************************************
 // <copyright file="ISingleton.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-
 namespace dotNetTips.Utility.Standard
 {
     /// <summary>

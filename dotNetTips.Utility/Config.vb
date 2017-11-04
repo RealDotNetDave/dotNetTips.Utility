@@ -56,7 +56,6 @@ Public Class Config(Of T As Class)
         Return False
     End Function
 
-
     ''' <summary>
     ''' Gets or sets the name of the configuration file.
     ''' </summary>
@@ -73,28 +72,28 @@ Public Class Config(Of T As Class)
         End Set
     End Property
 
-    ''' <summary>
-    ''' Gets the singleton instance.
-    ''' </summary>
-    ''' <value>The i singleton instance.</value>
-    Public ReadOnly Property Instance As T Implements ISingleton(Of T).Instance
-        Get
-            If _instance Is Nothing Then
-                _instance = TypeHelper.Create(Of T)()
-            End If
 
-            Return _instance
-        End Get
-    End Property
+    ''' <summary>
+    ''' Gets the instance.
+    ''' </summary>
+    ''' <returns></returns>
+    Public Function Instance() As T Implements ISingleton(Of T).Instance
+        If _instance Is Nothing Then
+            _instance = TypeHelper.Create(Of T)()
+        End If
+
+        Return _instance
+    End Function
+
+    ''' <summary>
+    ''' The instance
+    ''' </summary>
+    Private _instance As T
 
     ''' <summary>
     ''' The configuration file name
     ''' </summary>
     Private _configFileName As String
 
-    ''' <summary>
-    ''' The instance
-    ''' </summary>
-    Private _instance As T
 
 End Class

@@ -1,24 +1,11 @@
-﻿// ***********************************************************************
-// Assembly         : dotNetTips.Utility.Standard
-// Author           : David McCarter
-// Created          : 01-22-2017
-//
-// Last Modified By : David McCarter
-// Last Modified On : 02-26-2017
-// ***********************************************************************
-// <copyright file="ObjectExtensions.cs" company="dotNetTips.Utility.Standard">
-//     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
-// </copyright>
-// <summary></summary>
-// ************************************************************************
-
-using dotNetTips.Utility.Standard.OOP;
-using dotNetTips.Utility.Standard.Serialization;
-using System;
+﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using dotNetTips.Utility.Standard.OOP;
+using dotNetTips.Utility.Standard.Serialization;
 
 namespace dotNetTips.Utility.Standard.Extensions
 {
@@ -36,11 +23,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="value">The value.</param>
         /// <returns>T.</returns>
         /// <exception cref="ArgumentNullException">value - Value cannot be null.</exception>
-        /// <remarks>Original code by: Shimmy Weitzhandler</remarks>
-        public static T As<T>(this object value)
-        {
-            return (T)value;
-        }
+        public static T As<T>(this object value) => (T)value;
 
         /// <summary>
         /// Ins the specified source.
@@ -72,20 +55,14 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// </summary>
         /// <param name="obj">The obj.</param>
         /// <returns><count>true</count> if [is not null] [the specified object]; otherwise, <count>false</count>.</returns>
-        public static bool IsNotNull(this object obj)
-        {
-            return obj != null;
-        }
+        public static bool IsNotNull(this object obj) => obj != null;
 
         /// <summary>
         /// Determines whether the specified object is null.
         /// </summary>
         /// <param name="obj">The object.</param>
         /// <returns><count>true</count> if the specified object is null; otherwise, <count>false</count>.</returns>
-        public static bool IsNull(this object obj)
-        {
-            return obj is null;
-        }
+        public static bool IsNull(this object obj) => obj is null;
 
         /// <summary>
         /// Tries to Dispose the object.
@@ -114,10 +91,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// Tries the to call Dispose.
         /// </summary>
         /// <param name="obj">The obj.</param>
-        public static void TryDispose(this IDisposable obj)
-        {
-            ObjectExtensions.TryDispose(obj, false);
-        }
+        public static void TryDispose(this IDisposable obj) => ObjectExtensions.TryDispose(obj, false);
 
         /// <summary>
         /// Determines whether the specified object has the property.
@@ -140,9 +114,57 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// </summary>
         /// <param name="instance">The instance.</param>
         /// <returns>System.String.</returns>
-        public static string ToJson(this object instance)
+        public static string ToJson(this object instance) => JsonSerializer.Serialize(instance);
+
+        /// <summary>
+        /// Disposes the fields.
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        public static void DisposeFields(this IDisposable obj)
         {
-            return JsonSerializer.Serialize(instance);
+            var fieldInfos = obj.GetType().GetRuntimeFields();
+
+            foreach (var fieldInfo in fieldInfos.AsParallel())
+            {
+                var value = fieldInfo.GetValue(null) as IDisposable;
+
+                if (value == null)
+                {
+                    continue;
+                }
+
+                value.Dispose();
+                fieldInfo.SetValue(obj, null);
+            }
+        }
+
+        /// <summary>
+        /// Strips the null.
+        /// </summary>
+        /// <param name="field">The field.</param>
+        /// <returns>System.String.</returns>
+        public static string StripNull(this object field) => field == null ? (string.Empty) : (field.ToString());
+
+        /// <summary>
+        /// Initializes the fields.
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        public static void InitializeFields(this object obj)
+        {
+            var fieldInfos = obj.GetType().GetRuntimeFields();
+
+            foreach (var fieldInfo in fieldInfos.AsParallel())
+            {
+                var objectValue = fieldInfo.GetValue(obj);
+                var runtimeField = obj.GetType().GetRuntimeField(fieldInfo.Name);
+
+                if (runtimeField != null)
+                {
+                    var t = Nullable.GetUnderlyingType(runtimeField.FieldType) ?? runtimeField.FieldType;
+                    var safeValue = (objectValue == null) ? null : Convert.ChangeType(objectValue, t, CultureInfo.InvariantCulture);
+                    runtimeField.SetValue(obj, safeValue);
+                }
+            }
         }
 
         /// <summary>
@@ -163,10 +185,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="json">The json.</param>
         /// <returns>T.</returns>
-        public static T FromJson<T>(this string json) where T : class
-        {
-            return JsonSerializer.Deserialize<T>(json);
-        }
+        public static T FromJson<T>(this string json) where T : class => JsonSerializer.Deserialize<T>(json);
 
         /// <summary>
         /// Creates object from a Json file.
@@ -177,7 +196,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="FileNotFoundException">File not found.</exception>
         public static T FromJsonFile<T>(string file) where T : class
         {
-            Encapsulation.TryValidateParam(file,nameof(file) );
+            Encapsulation.TryValidateParam(file, nameof(file));
 
             if (File.Exists(file) == false)
             {
@@ -188,7 +207,6 @@ namespace dotNetTips.Utility.Standard.Extensions
 
             return JsonSerializer.Deserialize<T>(json);
         }
-
         #endregion Public Methods
     }
 }

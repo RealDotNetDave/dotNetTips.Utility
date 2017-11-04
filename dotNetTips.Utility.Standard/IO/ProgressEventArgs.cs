@@ -1,12 +1,12 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Standard
 // Author           : David McCarter
-// Created          : 08-06-2017
+// Created          : 08-07-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-07-2017
+// Last Modified On : 09-16-2017
 // ***********************************************************************
-// <copyright file="Processor.cs" company="dotNetTips.com - David McCarter">
+// <copyright file="ProgressEventArgs.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
@@ -22,31 +22,29 @@ namespace dotNetTips.Utility.Standard.IO
     public class ProgressEventArgs : EventArgs
     {
         /// <summary>
-        /// The name
+        /// Initializes a new instance of the <see cref="ProgressEventArgs" /> class.
         /// </summary>
-        public string Name;
-
-        /// <summary>
-        /// The size
-        /// </summary>
-        public long Size;
-
-        /// <summary>
-        /// The progress state
-        /// </summary>
-        public ProgressState ProgressState;
+        public ProgressEventArgs() => Message = string.Empty;
 
         /// <summary>
         /// The message
         /// </summary>
-        public string Message;
-
+        /// <value>The message.</value>
+        public string Message { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="ProgressEventArgs"/> class.
+        /// The name
         /// </summary>
-        public ProgressEventArgs()
-        {
-            this.Message = string.Empty;
-        }
+        /// <value>The name.</value>
+        public string Name { get; set; }
+        /// <summary>
+        /// The progress state
+        /// </summary>
+        /// <value>The state of the progress.</value>
+        public ProgressState ProgressState { get; set; }
+        /// <summary>
+        /// The size
+        /// </summary>
+        /// <value>The size.</value>
+        public long Size { get; set; }
     }
 }

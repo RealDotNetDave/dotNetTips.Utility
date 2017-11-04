@@ -20,7 +20,7 @@ namespace dotNetTips.Utility.Portable
         /// Gets the instance.
         /// </summary>
         /// <value>The instance.</value>
-        T Instance { get; }
+        T Instance();
 
     }
 }

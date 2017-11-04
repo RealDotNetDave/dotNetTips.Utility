@@ -12,27 +12,28 @@
 ' <summary></summary>
 ' ***********************************************************************
 Imports System
-
-''' <summary>
-''' Class FileProgressEventArgs.
-''' </summary>
-''' <seealso cref="System.EventArgs" />
-Public Class ProgressEventArgs
-    Inherits EventArgs
+Namespace IO
     ''' <summary>
-    ''' The name
+    ''' Class FileProgressEventArgs.
     ''' </summary>
-    Public Name As String
-    ''' <summary>
-    ''' The size
-    ''' </summary>
-    Public Size As Long
-    ''' <summary>
-    ''' The progress state
-    ''' </summary>
-    Public ProgressState As ProgressState
-    ''' <summary>
-    ''' The message
-    ''' </summary>
-    Public Message As String = String.Empty
-End Class
+    ''' <seealso cref="System.EventArgs" />
+    Public Class ProgressEventArgs
+        Inherits EventArgs
+        ''' <summary>
+        ''' The name
+        ''' </summary>
+        Public Name As String
+        ''' <summary>
+        ''' The size
+        ''' </summary>
+        Public Size As Long
+        ''' <summary>
+        ''' The progress state
+        ''' </summary>
+        Public ProgressState As ProgressState
+        ''' <summary>
+        ''' The message
+        ''' </summary>
+        Public Message As String = String.Empty
+    End Class
+End Namespace

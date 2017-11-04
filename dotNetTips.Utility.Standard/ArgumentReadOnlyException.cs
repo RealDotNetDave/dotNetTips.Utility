@@ -1,17 +1,16 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Standard
 // Author           : David McCarter
-// Created          : 01-22-2017
+// Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-26-2017
+// Last Modified On : 09-16-2017
 // ***********************************************************************
-// <copyright file="ArgumentIsReadOnlyException.cs" company="dotNetTips.Utility.Standard">
-//     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
+// <copyright file="ArgumentReadOnlyException.cs" company="dotNetTips.com - David McCarter">
+//     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-
 using System;
 
 namespace dotNetTips.Utility.Standard
@@ -21,6 +20,7 @@ namespace dotNetTips.Utility.Standard
     /// </summary>
     /// <seealso cref="System.ArgumentException" />
     /// <seealso cref="System.Exception" />
+    [Serializable]
     public class ArgumentReadOnlyException : ArgumentException
     {
         #region Public Constructors
@@ -28,7 +28,7 @@ namespace dotNetTips.Utility.Standard
         /// <summary>
         /// Initializes a new instance of the <see cref="ArgumentReadOnlyException" /> class.
         /// </summary>
-        public ArgumentReadOnlyException()
+        public ArgumentReadOnlyException() : base("Go to dotNetTips.com!")
         {
         }
 
@@ -42,12 +42,12 @@ namespace dotNetTips.Utility.Standard
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ArgumentReadOnlyException"/> class.
+        /// Initializes a new instance of the <see cref="ArgumentReadOnlyException" /> class.
         /// </summary>
-        /// <param name="parmName">Name of the parm.</param>
+        /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
-        public ArgumentReadOnlyException(string parmName, string message)
-    : base(parmName,  message)
+        public ArgumentReadOnlyException(string paramName, string message)
+    : base(paramName, message)
         {
         }
 
@@ -61,7 +61,6 @@ namespace dotNetTips.Utility.Standard
             : base(message, innerException)
         {
         }
-
         #endregion Public Constructors
     }
 }
