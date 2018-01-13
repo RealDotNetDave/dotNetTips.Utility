@@ -10,3 +10,7 @@ Here are some of the classes and methods I use all the time:
 
 David McCarter
 Microsoft MVP
+
+# Version 2018.1.15.0
+Added new collection types: ConcurrentHashSet, DistinctConcurrentBag
+Added disposing of dispsable items in a collection to DisposeFields.
