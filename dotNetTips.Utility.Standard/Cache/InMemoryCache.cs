@@ -28,10 +28,12 @@ namespace dotNetTips.Utility.Standard.Cache
         /// The disposed
         /// </summary>
         protected bool disposed;
+
         /// <summary>
         /// The cache
         /// </summary>
         private MemoryCache _cache;
+
         /// <summary>
         /// The instance
         /// </summary>
@@ -63,6 +65,7 @@ namespace dotNetTips.Utility.Standard.Cache
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
         /// <summary>
         /// Returns the instance.
         /// </summary>

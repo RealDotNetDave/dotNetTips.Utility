@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-16-2017
+// Last Modified On : 12-20-2017
 // ***********************************************************************
 // <copyright file="TypeExtensions.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -37,7 +37,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         {
             if (obj2 == null)
             {
-                throw new ArgumentNullException(nameof(obj2), "Object 1 cannot be null.");
+                throw new ArgumentNullException(nameof(obj2), $"{nameof(obj1)} cannot be null.");
             }
 
             return obj1.CompareTo(obj2) >= 0 ? obj1 : obj2;
@@ -58,6 +58,7 @@ namespace dotNetTips.Utility.Standard.Extensions
 
             return result;
         }
+
         #endregion Public Methods
     }
 }

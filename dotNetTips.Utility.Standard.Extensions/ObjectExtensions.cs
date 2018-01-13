@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-18-2017
+// Last Modified On : 01-11-2018
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -12,10 +12,12 @@
 // <summary></summary>
 // ***********************************************************************
 using System;
+using System.Collections;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
 namespace dotNetTips.Utility.Standard.Extensions
@@ -49,14 +51,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <remarks>Original code by: Rory Becker</remarks>
         public static bool In<T>(this T source, params T[] list)
         {
-            foreach (var value in list)
-            {
-                if (value.Equals(source))
-                {
-                    return true;
-                }
-            }
-            return false;
+            return list.Any(value => value.Equals(source));
         }
 
         /// <summary>
@@ -85,6 +80,7 @@ namespace dotNetTips.Utility.Standard.Extensions
                 if (IsNotNull(obj))
                 {
                     obj.Dispose();
+                    obj = null;
                 }
             }
             catch
@@ -105,13 +101,13 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <summary>
         /// Determines whether the specified object has the property.
         /// </summary>
-        /// <param name="instance">The instance.</param>
+        /// <param name="obj">The instance.</param>
         /// <param name="propertyName">Name of the property.</param>
         /// <returns><c>true</c> if the specified property name has property; otherwise, <c>false</c>.</returns>
         /// <exception cref="ArgumentNullException">propertyName - Source cannot be null.</exception>
-        public static bool HasProperty(this object instance, string propertyName)
+        public static bool HasProperty(this object obj, string propertyName)
         {
-            var propertyInfo = instance.GetType().GetRuntimeProperties().FirstOrDefault(p => p.Name == propertyName);
+            var propertyInfo = obj.GetType().GetRuntimeProperties().FirstOrDefault(p => p.Name == propertyName);
 
             return (propertyInfo != null);
         }
@@ -119,9 +115,9 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <summary>
         /// Serializes object to Json.
         /// </summary>
-        /// <param name="instance">The instance.</param>
+        /// <param name="obj">The instance.</param>
         /// <returns>System.String.</returns>
-        public static string ToJson(this object instance) => JsonSerializer.Serialize(instance);
+        public static string ToJson(this object obj) => JsonSerializer.Serialize(obj);
 
         /// <summary>
         /// Disposes the fields.
@@ -131,26 +127,50 @@ namespace dotNetTips.Utility.Standard.Extensions
         {
             var fieldInfos = obj.GetType().GetRuntimeFields();
 
-            foreach (var fieldInfo in fieldInfos.AsParallel())
+            foreach (var fieldInfo in fieldInfos.Where(p => p.IsStatic == false).AsParallel())
             {
-                var value = fieldInfo.GetValue(null) as IDisposable;
+                var value = fieldInfo.GetValue(obj);
 
-                if (value == null)
+                if (value != null)
                 {
-                    continue;
+                    if (value is IDisposable disposableItem)
+                    {
+                       disposableItem.TryDispose();
+                    }
+                    else if (value is IEnumerable collection)
+                    {
+                        collection.DisposeCollection();
+                    }
                 }
-
-                value.Dispose();
-                fieldInfo.SetValue(obj, null);
             }
         }
 
         /// <summary>
         /// Strips the null.
         /// </summary>
-        /// <param name="field">The field.</param>
+        /// <param name="input">The field.</param>
         /// <returns>System.String.</returns>
-        public static string StripNull(this object field) => field == null ? (string.Empty) : (field.ToString());
+        public static string StripNull(this object input) => input == null ? (string.Empty) : (input.ToString());
+
+        /// <summary>
+        /// Clones the specified object.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj">The object.</param>
+        /// <returns>T.</returns>
+        public static T Clone<T>(this object obj)
+        {
+
+            using (var stream = new MemoryStream())
+            {
+                var formatter = new BinaryFormatter();
+
+                formatter.Serialize(stream, obj);
+                stream.Seek(0, SeekOrigin.Begin);
+
+                return (T)formatter.Deserialize(stream);
+            }
+        }
 
         /// <summary>
         /// Initializes the fields.
@@ -177,41 +197,43 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <summary>
         /// Saves object to Json file.
         /// </summary>
-        /// <param name="instance">The instance.</param>
-        /// <param name="file">The file.</param>
-        public static void ToJsonFile(this object instance, string file)
+        /// <param name="obj">The instance.</param>
+        /// <param name="fileName">The file.</param>
+        public static void ToJsonFile(this object obj, string fileName)
         {
-            var json = JsonSerializer.Serialize(instance);
+            var json = JsonSerializer.Serialize(obj);
 
-            File.WriteAllText(file, json, Encoding.UTF8);
+            File.WriteAllText(fileName, json, Encoding.UTF8);
         }
 
         /// <summary>
         /// Creates object from Json.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="json">The json.</param>
+        /// <param name="input">The json.</param>
         /// <returns>T.</returns>
-        public static T FromJson<T>(this string json) where T : class => JsonSerializer.Deserialize<T>(json);
+        public static T FromJson<T>(this string input) where T : class => JsonSerializer.Deserialize<T>(input);
 
         /// <summary>
         /// Creates object from a Json file.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="file">The file.</param>
+        /// <param name="fileName">Name of the file.</param>
         /// <returns>T.</returns>
         /// <exception cref="FileNotFoundException">File not found.</exception>
-        public static T FromJsonFile<T>(string file) where T : class
+        public static T FromJsonFile<T>(string fileName) where T : class
         {
-            if (File.Exists(file) == false)
+            if (File.Exists(fileName) == false)
             {
-                throw new FileNotFoundException(dotNetTips.Utility.Standard.Extensions.Properties.Resources.FileNotFound, file);
+                throw new FileNotFoundException(dotNetTips.Utility.Standard.Extensions.Properties.Resources.FileNotFound, fileName);
             }
 
-            var json = File.ReadAllText(file, Encoding.UTF8);
+            var json = File.ReadAllText(fileName, Encoding.UTF8);
 
             return JsonSerializer.Deserialize<T>(json);
         }
+
+
         #endregion Public Methods
     }
 }

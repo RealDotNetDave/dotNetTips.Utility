@@ -19,28 +19,31 @@ namespace dotNetTips.Utility.Standard.IO
     /// Class ProgressEventArgs.
     /// </summary>
     /// <seealso cref="System.EventArgs" />
-    public class ProgressEventArgs : EventArgs
+    public sealed class FileProgressEventArgs : EventArgs
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ProgressEventArgs" /> class.
+        /// Initializes a new instance of the <see cref="FileProgressEventArgs" /> class.
         /// </summary>
-        public ProgressEventArgs() => Message = string.Empty;
+        public FileProgressEventArgs() => Message = string.Empty;
 
         /// <summary>
         /// The message
         /// </summary>
         /// <value>The message.</value>
         public string Message { get; set; }
+
         /// <summary>
         /// The name
         /// </summary>
         /// <value>The name.</value>
         public string Name { get; set; }
+
         /// <summary>
         /// The progress state
         /// </summary>
         /// <value>The state of the progress.</value>
-        public ProgressState ProgressState { get; set; }
+        public FileProgressState ProgressState { get; set; }
+
         /// <summary>
         /// The size
         /// </summary>

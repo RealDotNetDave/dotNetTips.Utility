@@ -12,7 +12,9 @@
 // <summary></summary>
 // ***********************************************************************
 using System.IO;
+using System.Xml.Serialization;
 using dotNetTips.Utility.Standard.Extensions;
+using dotNetTips.Utility.Standard.Xml;
 
 namespace dotNetTips.Utility.Standard
 {
@@ -35,9 +37,9 @@ namespace dotNetTips.Utility.Standard
         {
             var localAppData = System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
 
-            var fileName = $"{App.Info().AssemblyProduct}.config";
+            var fileName = $"{App.AssemblyInfo.Product}.config";
 
-            var folder = Path.Combine(localAppData, App.Info().Company);
+            var folder = Path.Combine(localAppData, App.AssemblyInfo.Company);
 
             this.ConfigFileName = Path.Combine(folder, fileName);
         }
@@ -46,6 +48,7 @@ namespace dotNetTips.Utility.Standard
         /// Gets or sets the name of the configuration file.
         /// </summary>
         /// <value>The name of the configuration file.</value>
+        [XmlIgnore]
         public string ConfigFileName { get; protected set; }
 
         /// <summary>
@@ -70,7 +73,7 @@ namespace dotNetTips.Utility.Standard
         {
             if (File.Exists(this.ConfigFileName))
             {
-                this._instance = ObjectExtensions.FromJsonFile<T>(this.ConfigFileName);
+                this._instance = XmlHelper.DeserializeFromXmlFile<T>(this.ConfigFileName);
 
                 return true;
             }
@@ -89,7 +92,7 @@ namespace dotNetTips.Utility.Standard
                 File.Delete(this.ConfigFileName);
             }
 
-            this._instance.ToJsonFile(this.ConfigFileName);
+            XmlHelper.SerializeToXmlFile(this.GetInstance(), this.ConfigFileName);
 
             return true;
         }

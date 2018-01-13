@@ -4,20 +4,20 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-16-2017
+// Last Modified On : 12-08-2017
 // ***********************************************************************
 // <copyright file="App.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using dotNetTips.Utility.Standard.OOP;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using dotNetTips.Utility.Standard.OOP;
 
 namespace dotNetTips.Utility.Standard
 {
@@ -32,7 +32,7 @@ namespace dotNetTips.Utility.Standard
         /// Gets the assembly information.
         /// </summary>
         /// <value>The assembly information.</value>
-        public static Info AssemblyInfo => Info();
+        public static AppInfo AssemblyInfo => Info();
 
         /// <summary>
         /// Loads a list of the running assembly referenced assemblies.
@@ -80,7 +80,7 @@ namespace dotNetTips.Utility.Standard
         {
             Encapsulation.TryValidateParam<ArgumentNullException>(string.IsNullOrEmpty(processName) == false, "Process name is required.");
 
-            return Process.GetProcessesByName(processName).Count() > 0 ? true : false;
+            return Process.GetProcessesByName(processName).Any() ? true : false;
         }
 
         /// <summary>
@@ -121,34 +121,31 @@ namespace dotNetTips.Utility.Standard
             Process.GetCurrentProcess().Kill();
         }
 
+        private static AppInfo appInfo;
+
         /// <summary>
-        /// Informations this instance.
+        /// App information.
         /// </summary>
         /// <returns>Info.</returns>
-        public static Info Info()
+        private static AppInfo Info()
         {
-            var info = new Info();
+            if (appInfo == null)
+            {
+                appInfo = new AppInfo();
 
-            var assembly = System.Reflection.Assembly.GetEntryAssembly();
+                var assembly = Assembly.GetEntryAssembly();
 
-            info.Company = assembly.GetCustomAttributes<AssemblyCompanyAttribute>()
-    .FirstOrDefault().Company;
-            info.Configuration = assembly.GetCustomAttributes<AssemblyConfigurationAttribute>()
-     .FirstOrDefault().Configuration;
-            info.Copyright = assembly.GetCustomAttributes<AssemblyCopyrightAttribute>()
-      .FirstOrDefault().Copyright;
-            info.Description = assembly.GetCustomAttributes<AssemblyDescriptionAttribute>()
-           .FirstOrDefault().Description;
-            info.FileVersion = assembly.GetCustomAttributes<AssemblyFileVersionAttribute>()
-      .FirstOrDefault().Version;
-            info.AssemblyVersion = assembly.GetCustomAttributes<AssemblyInformationalVersionAttribute>()
-      .FirstOrDefault().InformationalVersion;
-            info.AssemblyProduct = assembly.GetCustomAttributes<AssemblyProductAttribute>()
-       .FirstOrDefault().Product;
-            info.AssemblyTitle = assembly.GetCustomAttributes<AssemblyTitleAttribute>()
-    .FirstOrDefault().Title;
+                appInfo.Company = assembly.GetCustomAttributes<AssemblyCompanyAttribute>().FirstOrDefault().Company;
+                appInfo.Configuration = assembly.GetCustomAttributes<AssemblyConfigurationAttribute>().FirstOrDefault().Configuration;
+                appInfo.Copyright = assembly.GetCustomAttributes<AssemblyCopyrightAttribute>().FirstOrDefault().Copyright;
+                appInfo.Description = assembly.GetCustomAttributes<AssemblyDescriptionAttribute>().FirstOrDefault().Description;
+                appInfo.FileVersion = assembly.GetCustomAttributes<AssemblyFileVersionAttribute>().FirstOrDefault().Version;
+                //  appInfo.Version = assembly.GetCustomAttributes<AssemblyInformationalVersionAttribute>()?.FirstOrDefault().InformationalVersion;
+                appInfo.Product = assembly.GetCustomAttributes<AssemblyProductAttribute>().FirstOrDefault().Product;
+                appInfo.Title = assembly.GetCustomAttributes<AssemblyTitleAttribute>().FirstOrDefault().Title;
+            }
 
-            return info;
+            return appInfo;
         }
 
         #endregion Public Methods

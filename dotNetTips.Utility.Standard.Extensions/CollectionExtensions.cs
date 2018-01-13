@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-16-2017
+// Last Modified On : 12-15-2017
 // ***********************************************************************
 // <copyright file="CollectionExtensions.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -53,6 +53,55 @@ namespace dotNetTips.Utility.Standard.Extensions
         }
 
         /// <summary>
+        /// Disposes the collection.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="items">The items.</param>
+        internal static void DisposeCollection<T>(this IEnumerable<T> items)
+        {
+            ProcessCollectionToDispose(items);
+        }
+
+        /// <summary>
+        /// Tries to dispose collection items.
+        /// </summary>
+        /// <param name="items">The items.</param>
+        internal static void DisposeCollection(this IEnumerable items)
+        {
+            ProcessCollectionToDispose(items);
+        }
+
+        private static void ProcessCollectionToDispose(IEnumerable items)
+        {
+            if (items.IsValid())
+            {
+                foreach (var item in items.AsParallel())
+                {
+                    if (item != null && item is IDisposable disposableItem)
+                    {
+                        disposableItem.TryDispose();
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Disposes the collection.
+        /// </summary>
+        /// <typeparam name="TKey">The type of the t key.</typeparam>
+        /// <typeparam name="TValue">The type of the t value.</typeparam>
+        /// <param name="items">The items.</param>
+        public static void DisposeCollection<TKey, TValue>(this IDictionary<TKey, TValue> items)
+        {
+            ProcessCollectionToDispose(items.Select(p => p.Value));
+        }
+
+        /// <summary>
         /// Copies to list.
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -79,36 +128,10 @@ namespace dotNetTips.Utility.Standard.Extensions
         }
 
         /// <summary>
-        /// Determines whether the specified the string contains any.
-        /// </summary>
-        /// <param name="input">The string.</param>
-        /// <param name="characters">The characters.</param>
-        /// <returns><c>true</c> if the specified characters contains any; otherwise, <c>false</c>.</returns>
-        /// <exception cref="ArgumentNullException">input - List cannot be null.
-        /// or
-        /// characters - Characters cannot be null or 0 length.
-        /// or
-        /// Null character.</exception>
-        /// <exception cref="System.ArgumentNullException">Null character.</exception>
-        public static bool ContainsAny(this string input, params string[] characters)
-        {
-            foreach (var character in characters)
-            {
-                if (input.Contains(character))
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        /// <summary>
         /// Counts the specified list.
         /// </summary>
         /// <param name="list">The list.</param>
         /// <returns>System.Int32.</returns>
-        /// <exception cref="ArgumentNullException">list - Source cannot be null.</exception>
         public static int Count(this IEnumerable list)
         {
 
@@ -119,7 +142,9 @@ namespace dotNetTips.Utility.Standard.Extensions
 
             var count = 0;
 
-            while (list.GetEnumerator().MoveNext())
+            var enumerator = list.GetEnumerator();
+
+            while (enumerator.MoveNext())
             {
                 count++;
             }
@@ -156,15 +181,14 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="list">The list.</param>
         /// <returns><c>true</c> if the specified list is valid; otherwise, <c>false</c>.</returns>
-        public static bool IsValid<T>(this ObservableCollection<T> list) => ((list != null) && (list.Count > 0));
+        public static bool IsValid<T>(this ObservableCollection<T> list) => ((list != null) && (list.Any()));
 
         /// <summary>
         /// Determines whether the specified list is valid.
         /// </summary>
         /// <param name="source">The list.</param>
         /// <returns><count>true</count> if the specified list is valid; otherwise, <count>false</count>.</returns>
-        public static bool IsValid(this IEnumerable source) =>
-            source != null && source.Count() > 0;
+        public static bool IsValid(this IEnumerable source) => source != null && source.Count() > 0;
 
         /// <summary>
         /// Returns no duplicates.
@@ -172,7 +196,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="list">The list.</param>
         /// <returns>System.String[].</returns>
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 length.</exception>
-        public static string[] NoDuplicates(this string[] list) => list.Distinct().ToArray();
+        public static string[] ToDistinct(this string[] list) => list.Distinct().ToArray();
 
         /// <summary>
         /// Pages the specified list.
@@ -241,7 +265,6 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// firstKeySelector - First key selector cannot be null.
         /// or
         /// secondKeySelector - Second key selector cannot be null.</exception>
-        /// <remarks>Original code by: Fons Sonnemans</remarks>
         public static Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>> Pivot<TSource, TFirstKey, TSecondKey, TValue>(this IEnumerable<TSource> list, Func<TSource, TFirstKey> firstKeySelector, Func<TSource, TSecondKey> secondKeySelector, Func<IEnumerable<TSource>, TValue> aggregate)
         {
             var returnValue = new Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>>();
@@ -284,7 +307,6 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
         public static string ToDelimitedString<T>(this IEnumerable<T> list, char delimiter)
         {
-
             var sb = new StringBuilder();
 
             foreach (var item in list)
@@ -293,6 +315,7 @@ namespace dotNetTips.Utility.Standard.Extensions
                 {
                     sb.Append(delimiter.ToString(CultureInfo.CurrentCulture));
                 }
+
                 sb.Append(item.ToString());
             }
 
@@ -318,7 +341,6 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="list">The list.</param>
         /// <returns>Task&lt;List&lt;T&gt;&gt;.</returns>
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
-        /// <remarks>Original code by: Fons Sonnemans</remarks>
         public static Task<List<T>> ToListAsync<T>(this IEnumerable<T> list) => Task.Run(() => list.ToList());
 
         /// <summary>
@@ -394,7 +416,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <returns>IEnumerable&lt;T&gt;.</returns>
         /// <exception cref="InvalidCastException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
-        /// <exception cref="System.InvalidCastException">sortExpression - Sort expression cannot be null.</exception>
+        /// <exception cref="System.InvalidCastException"></exception>
         /// <remarks>Code by: C.F.Meijers</remarks>
         public static IEnumerable<T> OrderBy<T>(this IEnumerable<T> list, string sortExpression)
         {
@@ -461,6 +483,52 @@ namespace dotNetTips.Utility.Standard.Extensions
                 list.Add(key(item), value(item));
             }
         }
+
+        /// <summary>
+        /// Counts the faster.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source">The source.</param>
+        /// <param name="predicate">The predicate.</param>
+        /// <returns>System.Int32.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// source
+        /// or
+        /// source
+        /// </exception>
+        /// <exception cref="Exception"></exception>
+        public static int Count<T>(this IEnumerable<T> source, Func<T, bool> predicate)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+
+            if (predicate == null)
+            {
+                throw new ArgumentNullException(nameof(predicate));
+            }
+
+            if (source is List<T>)
+            {
+                int finalCount = 0;
+                var list = (List<T>)source;
+                var count = list.Count;
+
+                for (var j = 0; j < count; j++)
+                {
+                    if (predicate(list[j]))
+                    {
+                        finalCount++;
+                    }
+                }
+
+                return finalCount;
+            }
+
+            return source.Count(predicate);
+        }
+
         #endregion Public Methods
     }
 }

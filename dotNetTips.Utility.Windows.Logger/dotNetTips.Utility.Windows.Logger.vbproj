@@ -10,7 +10,7 @@
     <AssemblyName>dotNetTips.Utility.Windows.Logger</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
     <TargetFrameworkProfile />
     <AssemblyVersion>2017.5.23.2153</AssemblyVersion>
@@ -78,7 +78,7 @@
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\</OutputPath>
+    <OutputPath>..\UtilityBin\</OutputPath>
     <DocumentationFile>dotNetTips.Utility.Windows.Logger.xml</DocumentationFile>
     <NoWarn>
     </NoWarn>

@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-16-2017
+// Last Modified On : 11-28-2017
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 using System;
+using System.Linq;
 using System.Text;
 
 namespace dotNetTips.Utility.Standard.Extensions
@@ -22,6 +23,23 @@ namespace dotNetTips.Utility.Standard.Extensions
     public static class StringExtensions
     {
         #region Public Methods
+
+        /// <summary>
+        /// Determines whether the specified the string contains any.
+        /// </summary>
+        /// <param name="input">The string.</param>
+        /// <param name="characters">The characters.</param>
+        /// <returns><c>true</c> if the specified characters contains any; otherwise, <c>false</c>.</returns>
+        /// <exception cref="ArgumentNullException">input - List cannot be null.
+        /// or
+        /// characters - Characters cannot be null or 0 length.
+        /// or
+        /// Null character.</exception>
+        /// <exception cref="System.ArgumentNullException">Null character.</exception>
+        public static bool ContainsAny(this string input, params string[] characters)
+        {
+            return characters.Any(character => input.Contains(character));
+        }
 
         /// <summary>
         /// Defaults if null.
@@ -54,11 +72,6 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentNullException">fileSize - File size is invalid.</exception>
         public static string FormatFileSize(this long fileSize)
         {
-            if (fileSize == 0 && (fileSize >= long.MinValue && fileSize <= long.MaxValue))
-            {
-                throw new ArgumentNullException(nameof(fileSize), Properties.Resources.FileSizeIsInvalid);
-            }
-
             long size = 0;
 
             while (fileSize > 1024 && size < 4)
@@ -67,7 +80,42 @@ namespace dotNetTips.Utility.Standard.Extensions
                 size += 1;
             }
 
-            return fileSize + " " + (new string[] { Properties.Resources.Bytes, Properties.Resources.KB, Properties.Resources.MB, Properties.Resources.GB })[Convert.ToInt32(size)];
+            return $"{fileSize} {((new string[] { Properties.Resources.Bytes, Properties.Resources.KB, Properties.Resources.MB, Properties.Resources.GB })[Convert.ToInt32(size)])}";
+        }
+
+        /// <summary>
+        /// Concatenates the specified first message with passed in string[].
+        /// </summary>
+        /// <param name="firstMessage">The first message.</param>
+        /// <param name="delimiter">The delimiter.</param>
+        /// <param name="addLineFeed">The add line feed. If set to true, delimiter will not be used.</param>
+        /// <param name="args">The arguments.</param>
+        /// <returns>System.String.</returns>
+        public static string Concat(this string firstMessage, string delimiter, bool addLineFeed, params string[] args)
+        {
+            if (string.IsNullOrEmpty(delimiter))
+            {
+                delimiter = string.Empty;
+            }
+
+            var sb = new StringBuilder(firstMessage);
+
+            if (args != null && args.Any())
+            {
+                foreach (var value in args)
+                {
+                    if (addLineFeed)
+                    {
+                        sb.AppendLine(value);
+                    }
+                    else
+                    {
+                        sb.Append(string.Concat(value, delimiter));
+                    }
+                }
+            }
+
+            return sb.ToString();
         }
 
         /// <summary>

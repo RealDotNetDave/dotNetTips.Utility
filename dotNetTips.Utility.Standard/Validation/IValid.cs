@@ -11,6 +11,8 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using dotNetTips.Utility.Standard.Validation;
+
 namespace dotNetTips.Utility.Standard
 {
     /// <summary>
@@ -22,6 +24,6 @@ namespace dotNetTips.Utility.Standard
         /// Returns true if type is valid.
         /// </summary>
         /// <value><c>true</c> if this instance is valid; otherwise, <c>false</c>.</value>
-        bool IsValid { get; }
+        IsValidResult IsValid { get; }
     }
 }

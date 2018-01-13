@@ -25,7 +25,7 @@ namespace dotNetTips.Utility.Standard.Validation
         /// </summary>
         /// <param name="valid">if set to <c>true</c> [valid].</param>
         /// <param name="errors">The errors.</param>
-        public IsValidResult(bool valid, IEnumerable<string> errors)
+        public IsValidResult(bool valid, params string[] errors)
         {
             this.IsValid = valid;
             this.Errors = errors;

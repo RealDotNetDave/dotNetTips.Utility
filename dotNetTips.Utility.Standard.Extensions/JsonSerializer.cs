@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using System;
 using System.IO;
 using System.Runtime.Serialization.Json;
 using System.Text;
@@ -30,7 +31,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <returns>T.</returns>
         public static T Deserialize<T>(string json) where T : class
         {
-            var obj = default(T);
+            var obj = Activator.CreateInstance<T>();
 
             using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(json)))
             {

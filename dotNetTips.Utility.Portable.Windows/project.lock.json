@@ -20,31 +20,36 @@
     ".NETPortable,Version=v4.6,Profile=Profile44": []
   },
   "packageFolders": {
-    "C:\\Users\\dotnetdave\\.nuget\\packages\\": {}
+    "C:\\Users\\dotnetdave\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {}
   },
   "project": {
     "restore": {
-      "projectUniqueName": "M:\\src\\git\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\dotNetTips.Utility.Portable.Windows.vbproj",
+      "projectUniqueName": "E:\\src\\git\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\dotNetTips.Utility.Portable.Windows.vbproj",
       "projectName": "dotNetTips.Utility.Portable.Windows",
-      "projectPath": "M:\\src\\git\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\dotNetTips.Utility.Portable.Windows.vbproj",
-      "projectJsonPath": "M:\\src\\git\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\project.json",
+      "projectPath": "E:\\src\\git\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\dotNetTips.Utility.Portable.Windows.vbproj",
+      "projectJsonPath": "E:\\src\\git\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\project.json",
       "packagesPath": "C:\\Users\\dotnetdave\\.nuget\\packages\\",
-      "outputPath": "M:\\src\\git\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\obj\\",
+      "outputPath": "E:\\src\\git\\dotNetTips.Utility\\dotNetTips.Utility.Portable.Windows\\obj\\",
       "projectStyle": "ProjectJson",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\"
+      ],
       "configFilePaths": [
         "C:\\Users\\dotnetdave\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Users\\dotnetdave\\.dotnet\\NuGetFallbackFolder": {},
+        "http://nuget.grapecity.com/nuget": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "portable46-net451+win81": {
           "projectReferences": {
-            "M:\\src\\git\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj": {
-              "projectPath": "M:\\src\\git\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj"
+            "E:\\src\\git\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj": {
+              "projectPath": "E:\\src\\git\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj"
             }
           }
         }

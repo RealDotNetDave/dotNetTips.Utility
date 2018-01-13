@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
@@ -34,16 +35,25 @@ namespace dotNetTips.Utility.Standard.Xml
         public static T Deserialize<T>(string xml)
         {
             Encapsulation.TryValidateParam(xml, nameof(xml));
-
-            using (var sr = new StringReader(xml))
+           
+            try
             {
-                var xr = new XmlSerializer(typeof(T));
-                return (T)xr.Deserialize(sr);
+                using (var sr = new StringReader(xml))
+                {
+                    var xs = new XmlSerializer(typeof(T));
+                    return (T)xs.Deserialize(sr);
+                }
+            }
+            catch (InvalidOperationException ex)
+            {
+                Trace.WriteLine(ex.Message);
+
+                return default(T);
             }
         }
 
         /// <summary>
-        /// Deserializes from XML file.
+        /// De-serializes from XML file.
         /// </summary>
         /// <typeparam name="T">Type</typeparam>
         /// <param name="fileName">Name of the file.</param>
@@ -70,14 +80,24 @@ namespace dotNetTips.Utility.Standard.Xml
         {
             Encapsulation.TryValidateParam<ArgumentNullException>(obj != null, nameof(obj));
 
-            using (var writer = new StringWriter())
+            try
             {
-                using (var xmlWriter = XmlWriter.Create(writer))
+                using (var writer = new StringWriter())
                 {
-                    var serializer = new XmlSerializer(obj.GetType());
-                    serializer.Serialize(xmlWriter, obj);
-                    return writer.ToString();
+                    using (var xmlWriter = XmlWriter.Create(writer))
+                    {
+                        var serializer = new XmlSerializer(obj.GetType());
+                        serializer.Serialize(xmlWriter, obj);
+
+                        return writer.ToString();
+                    }
                 }
+            }
+            catch (InvalidOperationException ex)
+            {
+                Trace.WriteLine(ex.Message);
+
+                return string.Empty;
             }
         }
 

@@ -99,8 +99,8 @@ Namespace Xml
 
             Using writer = New StringWriter()
                 Using xmlWriter = New XmlTextWriter(writer)
-                    Dim serilizer As New XmlSerializer(obj.[GetType]())
-                    serilizer.Serialize(xmlWriter, obj)
+                    Dim serializer As New XmlSerializer(obj.[GetType]())
+                    serializer.Serialize(xmlWriter, obj)
                     Return writer.ToString()
                 End Using
             End Using

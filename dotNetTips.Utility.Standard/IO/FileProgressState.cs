@@ -16,7 +16,7 @@ namespace dotNetTips.Utility.Standard.IO
     /// <summary>
     /// Enum ProgressState
     /// </summary>
-    public enum ProgressState
+    public enum FileProgressState
     {
         /// <summary>
         /// The error

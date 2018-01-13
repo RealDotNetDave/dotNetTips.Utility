@@ -30,20 +30,25 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="client">The client.</param>
         /// <param name="url">The URL.</param>
         /// <returns>T.</returns>
-        public static T GetJson<T>(this WebClient client, string url) where T : class
+        public static T ConvertFrom<T>(this WebClient client, string url) where T : class
         {
             var data = client.DownloadString(url);
+
             if (string.IsNullOrEmpty(data))
             {
                 return null;
             }
 
-            var stream = new MemoryStream(Encoding.UTF8.GetBytes(data));
-            var serializer = new DataContractJsonSerializer(typeof(T));
-            var obj = (T)serializer.ReadObject(stream);
-            stream.Close();
+            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(data)))
+            {
+                var serializer = new DataContractJsonSerializer(typeof(T));
+                var obj = (T)serializer.ReadObject(stream);
 
-            return obj;
+                stream.Flush();
+                stream.Close();
+
+                return obj as T;
+            }
         }
     }
 }

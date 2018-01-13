@@ -15,6 +15,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using dotNetTips.Utility.Standard.Validation;
 
 namespace dotNetTips.Utility.Standard.Data
 {
@@ -53,7 +54,7 @@ namespace dotNetTips.Utility.Standard.Data
         /// Checks to make sure entity is valid.
         /// </summary>
         /// <value><c>true</c> if this instance is valid; otherwise, <c>false</c>.</value>
-        public virtual bool IsValid => IsEntityValid();
+        public virtual IsValidResult IsValid => IsEntityValid();
         /// <summary>
         /// Gets or sets the public key.
         /// </summary>
@@ -78,7 +79,7 @@ namespace dotNetTips.Utility.Standard.Data
         /// Determines whether [is entity valid].
         /// </summary>
         /// <returns><c>true</c> if [is entity valid]; otherwise, <c>false</c>.</returns>
-        private bool IsEntityValid()
+        private IsValidResult IsEntityValid()
         {
             var returnValue = false;
 
@@ -90,7 +91,7 @@ namespace dotNetTips.Utility.Standard.Data
                 }
             }
 
-            return returnValue;
+            return new IsValidResult(returnValue);
         }
     }
 }
