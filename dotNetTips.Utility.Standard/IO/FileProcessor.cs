@@ -55,7 +55,7 @@ namespace dotNetTips.Utility.Standard.IO
 
             var successCount = 0;
 
-            var folderPrefix = string.Format(CultureInfo.InvariantCulture, @"{0}-{1}-{2}\", Environment.MachineName, Environment.UserName, DateTime.Now.ToString(System.Globalization.DateTimeFormatInfo.CurrentInfo.SortableDateTimePattern, CultureInfo.CurrentCulture)).ToUpper(CultureInfo.CurrentCulture).Replace(":", ".");
+            var folderPrefix = $@"{Environment.MachineName}-{Environment.UserName}-{(DateTime.Now.ToString(System.Globalization.DateTimeFormatInfo.CurrentInfo.SortableDateTimePattern, CultureInfo.CurrentCulture))}\".ToUpper(CultureInfo.CurrentCulture).Replace(":", ".");
 
             var backupFolder = new DirectoryInfo(Path.Combine(destinationFolder.FullName, folderPrefix));
 

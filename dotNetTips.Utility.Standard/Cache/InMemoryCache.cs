@@ -52,7 +52,7 @@ namespace dotNetTips.Utility.Standard.Cache
         /// <param name="expirationScanFrequency">The expiration scan frequency.</param>
         protected InMemoryCache(TimeSpan expirationScanFrequency)
         {
-            var options = new MemoryCacheOptions() { ExpirationScanFrequency = expirationScanFrequency };
+            var options = new MemoryCacheOptions { ExpirationScanFrequency = expirationScanFrequency };
 
             this._cache = new MemoryCache(options);
         }

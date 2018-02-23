@@ -52,7 +52,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <returns>Integer</returns>
         public static int Increment(this int number, int upperBound = 100, int step = 1)
         {
-            var n = number + 1;
+            var n = number + step;
             return n > upperBound ? upperBound : n;
         }
         /// <summary>
@@ -61,6 +61,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="theNumber">Number to process</param>
         /// <returns>True/False</returns>
         public static bool IsEven(this int theNumber) => (theNumber % 2) == 0;
+
         /// <summary>
         /// Determines if the Integer is of the specified interval. E.g. if the interval is 100 and
         /// the integer is 400, it would return true. This function uses the Mod operator, for the
@@ -70,6 +71,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="interval">The interval.</param>
         /// <returns><c>true</c> if the specified number is interval; otherwise, <c>false</c>.</returns>
         public static bool IsInterval(this int num, int interval) => num % interval == 0 ? true : false;
+       
         /// <summary>
         /// Noes the duplicates.
         /// </summary>
@@ -77,6 +79,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <returns>System.Int32().</returns>
         /// <remarks>Code by: Kevin S Gallagher</remarks>
         public static IEnumerable<int> RemoveDuplicates(this int[] values) => values.Distinct().AsEnumerable();
+       
         /// <summary>
         /// Returns the nearest power of 2 that is bigger than the number.
         /// </summary>

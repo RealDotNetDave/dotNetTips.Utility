@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-16-2017
+// Last Modified On : 11-01-2017
 // ***********************************************************************
 // <copyright file="PerformanceStopwatch.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -43,6 +43,19 @@ namespace dotNetTips.Utility.Standard.Diagnostics
             this.Stop();
             var result = this.Elapsed;
             base.Reset();
+
+            return result;
+        }
+
+        /// <summary>
+        /// Stops the restart.
+        /// </summary>
+        /// <returns>TimeSpan.</returns>
+        public TimeSpan StopRestart()
+        {
+            var result = this.Elapsed;
+            
+            base.Restart();
 
             return result;
         }

@@ -56,6 +56,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// </summary>
         public ConcurrentHashSet()
         {
+            this._hashSet = new HashSet<T>();
         }
 
         /// <summary>

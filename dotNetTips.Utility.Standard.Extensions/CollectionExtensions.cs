@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-15-2017
+// Last Modified On : 02-22-2018
 // ***********************************************************************
 // <copyright file="CollectionExtensions.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -71,6 +71,10 @@ namespace dotNetTips.Utility.Standard.Extensions
             ProcessCollectionToDispose(items);
         }
 
+        /// <summary>
+        /// Processes the collection to dispose.
+        /// </summary>
+        /// <param name="items">The items.</param>
         private static void ProcessCollectionToDispose(IEnumerable items)
         {
             if (items.IsValid())
@@ -176,7 +180,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         }
 
         /// <summary>
-        /// Returns true if ... is valid.
+        /// Returns true if ... is valid (not null and has items).
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list">The list.</param>
@@ -184,11 +188,32 @@ namespace dotNetTips.Utility.Standard.Extensions
         public static bool IsValid<T>(this ObservableCollection<T> list) => ((list != null) && (list.Any()));
 
         /// <summary>
-        /// Determines whether the specified list is valid.
+        /// Returns true if ... is valid (not null and has items).
         /// </summary>
-        /// <param name="source">The list.</param>
-        /// <returns><count>true</count> if the specified list is valid; otherwise, <count>false</count>.</returns>
-        public static bool IsValid(this IEnumerable source) => source != null && source.Count() > 0;
+        /// <param name="source">The source.</param>
+        /// <returns><c>true</c> if the specified source is valid; otherwise, <c>false</c>.</returns>
+        public static bool IsValid(this IEnumerable source) => source?.Count() > 0;
+
+        /// <summary>
+        /// Returns true if ... is valid (not null and contains items).
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns><c>true</c> if the specified source is valid; otherwise, <c>false</c>.</returns>
+        public static bool IsValid(this ICollection source) => source?.Count > 0;
+
+        /// <summary>
+        /// Determines whether the specified source has items.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns><c>true</c> if the specified source has items; otherwise, <c>false</c>.</returns>
+        public static bool HasItems(this IEnumerable source) => source.Count() > 0;
+
+        /// <summary>
+        /// Determines whether the specified source has items.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns><c>true</c> if the specified source has items; otherwise, <c>false</c>.</returns>
+        public static bool HasItems(this ICollection source) => source.Count > 0;
 
         /// <summary>
         /// Returns no duplicates.
@@ -420,6 +445,11 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <remarks>Code by: C.F.Meijers</remarks>
         public static IEnumerable<T> OrderBy<T>(this IEnumerable<T> list, string sortExpression)
         {
+            if (string.IsNullOrEmpty(sortExpression))
+            {
+                return null;
+            }
+
             sortExpression += string.Empty;
             var parts = sortExpression.Split(Convert.ToChar(" ", CultureInfo.InvariantCulture));
             var descending = false;
@@ -438,7 +468,7 @@ namespace dotNetTips.Utility.Standard.Extensions
 
                 if (prop is null)
                 {
-                    throw new InvalidCastException(string.Format(CultureInfo.InvariantCulture, "{0}' in + {1}'", string.Format(CultureInfo.InvariantCulture, "{0}{1}", Convert.ToString("No property '", CultureInfo.InvariantCulture), property), typeof(T).Name));
+                    throw new InvalidCastException($"{(string.Format(CultureInfo.InvariantCulture, "{0}{1}", Convert.ToString("No property '", CultureInfo.InvariantCulture), property))}' in + {typeof (T).Name}'");
                 }
 
                 return @descending ? list.OrderByDescending(x => prop.GetValue(x, null)) : list.OrderBy(x => prop.GetValue(x, null));
@@ -491,12 +521,12 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="source">The source.</param>
         /// <param name="predicate">The predicate.</param>
         /// <returns>System.Int32.</returns>
-        /// <exception cref="ArgumentNullException">
-        /// source
+        /// <exception cref="ArgumentNullException">source
         /// or
-        /// source
-        /// </exception>
-        /// <exception cref="Exception"></exception>
+        /// source</exception>
+        /// <exception cref="Exception">source
+        /// or
+        /// source</exception>
         public static int Count<T>(this IEnumerable<T> source, Func<T, bool> predicate)
         {
             if (source == null)

@@ -85,6 +85,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <returns>IEnumerable&lt;TSource&gt;.</returns>
         public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItem, Func<TSource, bool> canContinue)
         {
+
             for (var current = source; canContinue(current); current = nextItem(current))
             {
                 yield return current;
