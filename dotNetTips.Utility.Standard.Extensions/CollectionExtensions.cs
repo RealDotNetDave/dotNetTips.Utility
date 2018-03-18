@@ -79,7 +79,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         {
             if (items.IsValid())
             {
-                foreach (var item in items.AsParallel())
+                foreach (var item in items)
                 {
                     if (item != null && item is IDisposable disposableItem)
                     {
@@ -527,7 +527,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="Exception">source
         /// or
         /// source</exception>
-        public static int Count<T>(this IEnumerable<T> source, Func<T, bool> predicate)
+        public static int FastCount<T>(this IEnumerable<T> source, Func<T, bool> predicate)
         {
             if (source == null)
             {

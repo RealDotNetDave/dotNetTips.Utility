@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace dotNetTips.Utility.Standard.Validation
 {

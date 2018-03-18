@@ -13,13 +13,13 @@ namespace dotNetTips.Utility.PerformanceTester
     class Program
     {
         static int TestRunCount = 2;
-        static int TestRunCollectionCount = 2;
+        static int TestRunCollectionCount = 10000;
 
         static void Main()
         {
             //Warm up
             RunConcurrentHashSet();
-            RunConcurrentDictionary();
+           RunConcurrentDictionary();
 
             var stopTime = DateTime.Now.AddMinutes(5);
 
@@ -42,6 +42,7 @@ namespace dotNetTips.Utility.PerformanceTester
             TestDisposeMethods();
 
             Console.Beep();
+            Console.WriteLine("DONE");
             Console.ReadLine();
 
         }
@@ -50,7 +51,7 @@ namespace dotNetTips.Utility.PerformanceTester
         {
             var testCollection = new ConcurrentDictionary<decimal, DataSet>();
             
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 10000; i++)
             {
                 var item = new KeyValuePair<decimal, DataSet>(i, new DataSet(i.ToString()));
 
@@ -67,8 +68,8 @@ namespace dotNetTips.Utility.PerformanceTester
             var threads = new List<Task>();
             var sw = new Stopwatch();
 
-            using (var ch = new ConcurrentHashSet<Guid>())
-            {
+            var ch = new ConcurrentHashSet<DataTable>();
+
                 sw.Start();
 
                 for (int runCount = 0; runCount < TestRunCount; runCount++)
@@ -81,19 +82,18 @@ namespace dotNetTips.Utility.PerformanceTester
                 sw.Stop();
 
                 //Test XML
-                var xml = XmlHelper.Serialize(ch);
+                //var xml = XmlHelper.Serialize(ch);
 
-                var xmlResult = XmlHelper.Deserialize<ConcurrentHashSet<Guid>>(xml);
+                //var xmlResult = XmlHelper.Deserialize<ConcurrentHashSet<DataTable>>(xml);
 
-                var json = ch.ToJson();
+                //var json = ch.ToJson();
 
-                var jsonResult = json.FromJson<ConcurrentHashSet<Guid>>();
+                //var jsonResult = json.FromJson<ConcurrentHashSet<DataTable>>();
 
                 var count = ch.Count();
                 double avg = sw.ElapsedMilliseconds / count;
 
                 Console.WriteLine("ConcurrentHasSet test took {0} milliseconds, Count={1}-{2}.", sw.ElapsedMilliseconds, count, avg);
-            }
 
 
             Console.WriteLine();
@@ -118,13 +118,13 @@ namespace dotNetTips.Utility.PerformanceTester
             sw.Stop();
 
 
-            var test = XmlHelper.Serialize(ch);
+            //var test = XmlHelper.Serialize(ch);
 
-            var testResult = XmlHelper.Deserialize<DistinctConcurrentBag<Guid>>(test);
+            //var testResult = XmlHelper.Deserialize<DistinctConcurrentBag<Guid>>(test);
 
-            var json = ch.ToJson();
+            //var json = ch.ToJson();
 
-            var jsonResult = json.FromJson<DistinctConcurrentBag<Guid>>();
+            //var jsonResult = json.FromJson<DistinctConcurrentBag<Guid>>();
 
 
             var count = ch.Count;
@@ -135,13 +135,13 @@ namespace dotNetTips.Utility.PerformanceTester
         }
 
 
-        private static void ProcessConcurrentHashSet(ConcurrentHashSet<Guid> ch, int collectionCount)
+        private static void ProcessConcurrentHashSet(ConcurrentHashSet<DataTable> ch, int collectionCount)
         {
             Console.WriteLine("CHS Collection Count={0}...", collectionCount);
 
             for (var iterationCount = 0; iterationCount < collectionCount; iterationCount++)
             {
-                ch.Add(Guid.NewGuid());
+                ch.Add(new DataTable(iterationCount.ToString()));
             }
         }
 

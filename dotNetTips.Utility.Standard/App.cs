@@ -26,6 +26,31 @@ namespace dotNetTips.Utility.Standard
     /// </summary>
     public static class App
     {
+        private const int ProcessorCountRefreshInterval = 30000;
+
+        private static volatile int _processorCount;
+        private static volatile int _lastProcessorCountRefreshTicks;
+
+        /// <summary>
+        /// Gets the processor count.
+        /// </summary>
+        /// <value>The processor count.</value>
+        public static int ProcessorCount
+        {
+            get
+            {
+                var now = Environment.TickCount;
+
+                if (_processorCount == 0 || now - _lastProcessorCountRefreshTicks >= ProcessorCountRefreshInterval)
+                {
+                    _processorCount = Environment.ProcessorCount;
+                    _lastProcessorCountRefreshTicks = now;
+                }
+
+                return _processorCount;
+            }
+        }
+
         #region Public Methods
 
         /// <summary>

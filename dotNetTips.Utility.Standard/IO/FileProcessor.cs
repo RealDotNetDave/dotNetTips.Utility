@@ -64,7 +64,7 @@ namespace dotNetTips.Utility.Standard.IO
                 backupFolder.Create();
             }
 
-            foreach (var tempFile in files.AsParallel())
+            foreach (var tempFile in files)
             {
                 if (tempFile.Exists)
                 {

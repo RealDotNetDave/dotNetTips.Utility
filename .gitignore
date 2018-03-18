@@ -196,3 +196,6 @@ FakesAssemblies/
 *.opt
 /dotNetTips.Utility.Standard.bak2
 /UtilityBin
+/.vs.bak
+/dotNetTips.Utility.Standard/Collections/Generic/Concurrent/ConcurrentHashSet.old.cs
+/dotNetTips.Utility.Standard.iloprj
