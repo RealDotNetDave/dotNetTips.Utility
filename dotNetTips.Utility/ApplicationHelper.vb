@@ -138,7 +138,7 @@ Public Module ApplicationHelper
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public Function ExecutingAssemblyLocation() As String
-        Return Assembly.GetEntryAssembly().Location
+        Return Assembly.GetEntryAssembly().CodeBase
     End Function
     ''' <summary>
     ''' Determines whether [is application already running] [the specified process name].

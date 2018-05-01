@@ -26,7 +26,7 @@ Public Module ThreadExtensions
     ''' <param name="stopOn">The stop on.</param>
     <Extension>
     Public Sub WaitUntil(currentThread As Thread, stopOn As DateTime)
-        Do Until DateTime.UtcNow >= stopOn.ToUniversalTime
+        Do Until (DateTime.UtcNow >= stopOn.ToUniversalTime) OrElse currentThread.IsAlive = False
             Application.DoEvents()
         Loop
     End Sub

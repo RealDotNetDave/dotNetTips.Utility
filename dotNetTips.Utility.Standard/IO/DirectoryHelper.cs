@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-01-2017
+// Last Modified On : 03-27-2018
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -89,6 +89,37 @@ namespace dotNetTips.Utility.Standard.IO
             });
 
             return files.Distinct().AsEnumerable();
+        }
+
+        /// <summary>
+        /// Safes the directory search.
+        /// </summary>
+        /// <param name="rootDirectory">The root directory.</param>
+        /// <param name="searchPattern">The search pattern.</param>
+        /// <returns>IEnumerable&lt;DirectoryInfo&gt;.</returns>
+        public static IEnumerable<DirectoryInfo> SafeDirectorySearch(DirectoryInfo rootDirectory, string searchPattern = ControlChars.DoubleQuote)
+        {
+            Encapsulation.TryValidateParam(rootDirectory, nameof(rootDirectory));
+
+            var folders = new List<DirectoryInfo>();
+            folders.Add(rootDirectory);
+
+            foreach (var topFolder in rootDirectory.GetDirectories(searchPattern, SearchOption.TopDirectoryOnly))
+            {
+                try
+                {
+                    foreach (var folder in SafeDirectorySearch(topFolder, searchPattern))
+                    {
+                        folders.Add(folder);
+                    }
+                }
+                catch (UnauthorizedAccessException)
+                {
+                    //Ignore and keep going
+                }
+            }
+
+            return folders;
         }
     }
 }

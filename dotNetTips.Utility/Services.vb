@@ -27,7 +27,7 @@ Public Module Services
     ''' <param name="serviceName">Name of the service.</param>
     ''' <returns>ServiceController.</returns>
     Private Function LoadService(serviceName As String) As ServiceController
-        Return ServiceController.GetServices().Where(Function(p) p.ServiceName = serviceName).FirstOrDefault()
+        Return ServiceController.GetServices().FirstOrDefault(Function(p) p.ServiceName = serviceName)
     End Function
 
     ''' <summary>
@@ -48,11 +48,7 @@ Public Module Services
 
         Dim service = LoadService(serviceName)
 
-        If service IsNot Nothing Then
-            Return True
-        Else
-            Return False
-        End If
+        Return If(service IsNot Nothing, True, False)
     End Function
 
     ''' <summary>
