@@ -28,8 +28,9 @@ namespace dotNetTips.Utility.Standard
     {
         private const int ProcessorCountRefreshInterval = 30000;
 
-        private static volatile int _processorCount;
         private static volatile int _lastProcessorCountRefreshTicks;
+
+        private static volatile int _processorCount;
 
         /// <summary>
         /// Gets the processor count.
@@ -51,7 +52,6 @@ namespace dotNetTips.Utility.Standard
             }
         }
 
-        #region Public Methods
 
         /// <summary>
         /// Gets the assembly information.
@@ -72,17 +72,16 @@ namespace dotNetTips.Utility.Standard
                 referencedAssemblies.Add(assembly.ToString());
             }
 
-            return referencedAssemblies.AsReadOnly().AsEnumerable();
+            return referencedAssemblies.AsEnumerable();
         }
 
         /// <summary>
         /// Checks to see if the current application is ASP.NET
         /// </summary>
         /// <returns>True if running ASP.NET</returns>
-        public static bool IsRunningFromAspNet()
-        {
-            return !string.IsNullOrEmpty(AppDomain.CurrentDomain.DynamicDirectory) ? AppDomain.CurrentDomain.DynamicDirectory.Contains(TempAspFiles) : false;
-        }
+        public static bool IsRunningFromAspNet() => !string.IsNullOrEmpty(AppDomain.CurrentDomain.DynamicDirectory)
+            ? AppDomain.CurrentDomain.DynamicDirectory.Contains(TempAspFiles)
+            : false;
 
         /// <summary>
         /// The temporary ASP files location
@@ -93,7 +92,12 @@ namespace dotNetTips.Utility.Standard
         /// Check to see if the current app is already running.
         /// </summary>
         /// <returns><c>true</c> if app is not running, <c>false</c> otherwise.</returns>
-        public static bool IsRunning() => Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location)).Count() > 1 ? true : false;
+        public static bool IsRunning() => Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly()
+                    .Location))
+                    .Count() >
+                1
+            ? true
+            : false;
 
         /// <summary>
         /// Determines whether [is application already running] [the specified process name].
@@ -103,7 +107,8 @@ namespace dotNetTips.Utility.Standard
         /// <exception cref="ArgumentNullException">processName - Process name is required.</exception>
         public static bool IsProcessRunning(string processName)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(string.IsNullOrEmpty(processName) == false, "Process name is required.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(string.IsNullOrEmpty(processName) == false,
+                                                                  "Process name is required.");
 
             return Process.GetProcessesByName(processName).Any() ? true : false;
         }
@@ -120,14 +125,15 @@ namespace dotNetTips.Utility.Standard
         /// <exception cref="ArgumentNullException">processName - Process name is nothing or empty.</exception>
         public static void KillProcess(string processName)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(string.IsNullOrEmpty(processName), "Process name is required.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(string.IsNullOrEmpty(processName),
+                                                                  "Process name is required.");
 
-            var app = System.Diagnostics.Process.GetProcessesByName(processName).FirstOrDefault();
+            var app = Process.GetProcessesByName(processName).FirstOrDefault();
 
             if (app != null)
             {
                 app.Kill();
-                app.WaitForExit();
+                app.WaitForExit(6000);
             }
         }
 
@@ -161,10 +167,14 @@ namespace dotNetTips.Utility.Standard
                 var assembly = Assembly.GetEntryAssembly();
 
                 appInfo.Company = assembly.GetCustomAttributes<AssemblyCompanyAttribute>().FirstOrDefault().Company;
-                appInfo.Configuration = assembly.GetCustomAttributes<AssemblyConfigurationAttribute>().FirstOrDefault().Configuration;
-                appInfo.Copyright = assembly.GetCustomAttributes<AssemblyCopyrightAttribute>().FirstOrDefault().Copyright;
-                appInfo.Description = assembly.GetCustomAttributes<AssemblyDescriptionAttribute>().FirstOrDefault().Description;
-                appInfo.FileVersion = assembly.GetCustomAttributes<AssemblyFileVersionAttribute>().FirstOrDefault().Version;
+                appInfo.Configuration = assembly.GetCustomAttributes<AssemblyConfigurationAttribute>().FirstOrDefault()
+                    .Configuration;
+                appInfo.Copyright = assembly.GetCustomAttributes<AssemblyCopyrightAttribute>().FirstOrDefault()
+                    .Copyright;
+                appInfo.Description = assembly.GetCustomAttributes<AssemblyDescriptionAttribute>().FirstOrDefault()
+                    .Description;
+                appInfo.FileVersion = assembly.GetCustomAttributes<AssemblyFileVersionAttribute>().FirstOrDefault()
+                    .Version;
                 //  appInfo.Version = assembly.GetCustomAttributes<AssemblyInformationalVersionAttribute>()?.FirstOrDefault().InformationalVersion;
                 appInfo.Product = assembly.GetCustomAttributes<AssemblyProductAttribute>().FirstOrDefault().Product;
                 appInfo.Title = assembly.GetCustomAttributes<AssemblyTitleAttribute>().FirstOrDefault().Title;
@@ -172,7 +182,5 @@ namespace dotNetTips.Utility.Standard
 
             return appInfo;
         }
-
-        #endregion Public Methods
     }
 }

@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-22-2018
+// Last Modified On : 05-02-2018
 // ***********************************************************************
 // <copyright file="CollectionExtensions.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -28,7 +28,6 @@ namespace dotNetTips.Utility.Standard.Extensions
     /// </summary>
     public static class CollectionExtensions
     {
-        #region Public Methods
 
         /// <summary>
         /// Adds if not exists.
@@ -53,67 +52,6 @@ namespace dotNetTips.Utility.Standard.Extensions
         }
 
         /// <summary>
-        /// Disposes the collection.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="items">The items.</param>
-        internal static void DisposeCollection<T>(this IEnumerable<T> items)
-        {
-            ProcessCollectionToDispose(items);
-        }
-
-        /// <summary>
-        /// Tries to dispose collection items.
-        /// </summary>
-        /// <param name="items">The items.</param>
-        internal static void DisposeCollection(this IEnumerable items)
-        {
-            ProcessCollectionToDispose(items);
-        }
-
-        /// <summary>
-        /// Processes the collection to dispose.
-        /// </summary>
-        /// <param name="items">The items.</param>
-        private static void ProcessCollectionToDispose(IEnumerable items)
-        {
-            if (items.IsValid())
-            {
-                foreach (var item in items)
-                {
-                    if (item != null && item is IDisposable disposableItem)
-                    {
-                        disposableItem.TryDispose();
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
-            }
-        }
-
-
-        /// <summary>
-        /// Disposes the collection.
-        /// </summary>
-        /// <typeparam name="TKey">The type of the t key.</typeparam>
-        /// <typeparam name="TValue">The type of the t value.</typeparam>
-        /// <param name="items">The items.</param>
-        public static void DisposeCollection<TKey, TValue>(this IDictionary<TKey, TValue> items)
-        {
-            ProcessCollectionToDispose(items.Select(p => p.Value));
-        }
-
-        /// <summary>
-        /// Copies to list.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="source">The source.</param>
-        /// <returns>List&lt;T&gt;.</returns>
-        public static List<T> CopyToList<T>(this List<T> source) => new List<T>(source);
-
-        /// <summary>
         /// Adds if not exists.
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -130,6 +68,51 @@ namespace dotNetTips.Utility.Standard.Extensions
                 list.AddIfNotExists(value);
             }
         }
+
+        /// <summary>
+        /// Adds the range.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list">The list.</param>
+        /// <param name="newItems">The new items.</param>
+        public static void AddRange<T>(this ICollection<T> list, IEnumerable<T> newItems)
+        {
+            Parallel.ForEach(newItems, (item) =>
+             {
+                 list.Add(item);
+             });
+        }
+
+        /// <summary>
+        /// Adds the range.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TKey">The type of the key.</typeparam>
+        /// <typeparam name="TValue">The type of the value.</typeparam>
+        /// <param name="list">The list.</param>
+        /// <param name="items">The items.</param>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        /// <exception cref="ArgumentNullException">list - Dictionary cannot be null.
+        /// or
+        /// key - Key cannot be null.</exception>
+        /// <exception cref="ArgumentException">value - Value cannot be null.</exception>
+        /// <remarks>Code by: Lucas</remarks>
+        public static void AddRange<T, TKey, TValue>(this IDictionary<TKey, TValue> list, IEnumerable<T> items, Func<T, TKey> key, Func<T, TValue> value)
+        {
+            foreach (var item in items)
+            {
+                list.Add(key(item), value(item));
+            }
+        }
+
+        /// <summary>
+        /// Copies to list.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source">The source.</param>
+        /// <returns>List&lt;T&gt;.</returns>
+        public static List<T> CopyToList<T>(this List<T> source) => new List<T>(source);
 
         /// <summary>
         /// Counts the specified list.
@@ -156,6 +139,84 @@ namespace dotNetTips.Utility.Standard.Extensions
             return count;
         }
 
+
+        /// <summary>
+        /// Disposes the collection.
+        /// </summary>
+        /// <typeparam name="TKey">The type of the t key.</typeparam>
+        /// <typeparam name="TValue">The type of the t value.</typeparam>
+        /// <param name="items">The items.</param>
+        public static void DisposeCollection<TKey, TValue>(this IDictionary<TKey, TValue> items)
+        {
+            ProcessCollectionToDispose(items.Select(p => p.Value));
+        }
+
+        /// <summary>
+        /// Fasts any.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source">The source.</param>
+        /// <param name="predicate">The predicate.</param>
+        /// <returns>System.Boolean.</returns>
+        /// <exception cref="ArgumentNullException">predicate - predicate</exception>
+        public static bool FastAny<T>(this IEnumerable<T> source, Func<T, bool> predicate)
+        {
+            if (predicate == null)
+            {
+                throw new ArgumentNullException(nameof(predicate), $"{nameof(predicate)} is null.");
+            }
+
+            var findAny = source.Select(predicate).IsNotNull();
+
+            return findAny;
+        }
+
+        /// <summary>
+        /// Counts the faster.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source">The source.</param>
+        /// <param name="predicate">The predicate.</param>
+        /// <returns>System.Int32.</returns>
+        /// <exception cref="ArgumentNullException">source
+        /// or
+        /// source</exception>
+        /// <exception cref="Exception">source
+        /// or
+        /// source</exception>
+        public static int FastCount<T>(this IEnumerable<T> source, Func<T, bool> predicate)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+
+            if (predicate == null)
+            {
+                throw new ArgumentNullException(nameof(predicate));
+            }
+
+            if (source is List<T>)
+            {
+                int finalCount = 0;
+                var list = (List<T>)source;
+                var count = list.Count;
+
+                for (var j = 0; j < count; j++)
+                {
+                    if (predicate(list[j]))
+                    {
+                        finalCount++;
+                    }
+                }
+
+                return finalCount;
+            }
+
+            return source.Count(predicate);
+        }
+
+
         /// <summary>
         /// Finds first item or returns null.
         /// </summary>
@@ -180,6 +241,34 @@ namespace dotNetTips.Utility.Standard.Extensions
         }
 
         /// <summary>
+        /// Converts delimited string to list.
+        /// </summary>
+        /// <param name="delimitedInput">The string buffer.</param>
+        /// <param name="delimiter">The delimiter.</param>
+        /// <returns>IEnumerable&lt;System.String&gt;.</returns>
+        /// <remarks>Code by: Blake Pell</remarks>
+        public static IEnumerable<string> FromDelimitedString(this string delimitedInput, char delimiter)
+        {
+            var items = delimitedInput.Split(delimiter);
+
+            return items.AsEnumerable();
+        }
+
+        /// <summary>
+        /// Determines whether the specified source has items.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns><c>true</c> if the specified source has items; otherwise, <c>false</c>.</returns>
+        public static bool HasItems(this IEnumerable source) => source.Count() > 0;
+
+        /// <summary>
+        /// Determines whether the specified source has items.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns><c>true</c> if the specified source has items; otherwise, <c>false</c>.</returns>
+        public static bool HasItems(this ICollection source) => source.Count > 0;
+
+        /// <summary>
         /// Returns true if ... is valid (not null and has items).
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -202,26 +291,51 @@ namespace dotNetTips.Utility.Standard.Extensions
         public static bool IsValid(this ICollection source) => source?.Count > 0;
 
         /// <summary>
-        /// Determines whether the specified source has items.
+        /// Orders a list based on a sort expression. Useful in object data binding scenarios where
+        /// the ObjectDataSource generates a dynamic sort expression (example: "Name desc") that
+        /// specifies the property of the object sort on.
         /// </summary>
-        /// <param name="source">The source.</param>
-        /// <returns><c>true</c> if the specified source has items; otherwise, <c>false</c>.</returns>
-        public static bool HasItems(this IEnumerable source) => source.Count() > 0;
-
-        /// <summary>
-        /// Determines whether the specified source has items.
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <returns><c>true</c> if the specified source has items; otherwise, <c>false</c>.</returns>
-        public static bool HasItems(this ICollection source) => source.Count > 0;
-
-        /// <summary>
-        /// Returns no duplicates.
-        /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="list">The list.</param>
-        /// <returns>System.String[].</returns>
-        /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 length.</exception>
-        public static string[] ToDistinct(this string[] list) => list.Distinct().ToArray();
+        /// <param name="sortExpression">The sort expression.</param>
+        /// <returns>IEnumerable&lt;T&gt;.</returns>
+        /// <exception cref="InvalidCastException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="System.InvalidCastException"></exception>
+        /// <remarks>Code by: C.F.Meijers</remarks>
+        public static IEnumerable<T> OrderBy<T>(this IEnumerable<T> list, string sortExpression)
+        {
+            if (string.IsNullOrEmpty(sortExpression))
+            {
+                return null;
+            }
+
+            sortExpression += string.Empty;
+            var parts = sortExpression.Split(Convert.ToChar(" ", CultureInfo.InvariantCulture));
+            var descending = false;
+            var property = string.Empty;
+
+            if (parts.Length > 0 && !string.IsNullOrEmpty(parts[0]))
+            {
+                property = parts[0];
+
+                if (parts.Length > 1)
+                {
+                    @descending = CultureInfo.InvariantCulture.TextInfo.ToLower(parts[1]).Contains("esc");
+                }
+
+                var prop = typeof(T).GetRuntimeProperty(property);
+
+                if (prop is null)
+                {
+                    throw new InvalidCastException($"{(string.Format(CultureInfo.InvariantCulture, "{0}{1}", Convert.ToString("No property '", CultureInfo.InvariantCulture), property))}' in + {typeof(T).Name}'");
+                }
+
+                return @descending ? list.OrderByDescending(x => prop.GetValue(x, null)) : list.OrderBy(x => prop.GetValue(x, null));
+            }
+
+            return list;
+        }
 
         /// <summary>
         /// Pages the specified list.
@@ -360,6 +474,14 @@ namespace dotNetTips.Utility.Standard.Extensions
         public static Dictionary<TKey, List<TValue>> ToDictionary<TKey, TValue>(this IEnumerable<IGrouping<TKey, TValue>> list) => list.ToDictionary(group => group.Key, group => group.ToList());
 
         /// <summary>
+        /// Returns no duplicates.
+        /// </summary>
+        /// <param name="list">The list.</param>
+        /// <returns>System.String[].</returns>
+        /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 length.</exception>
+        public static string[] ToDistinct(this string[] list) => list.Distinct().ToArray();
+
+        /// <summary>
         /// Creates a Generic.List.
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -417,148 +539,44 @@ namespace dotNetTips.Utility.Standard.Extensions
         }
 
         /// <summary>
-        /// Converts delimited string to list.
-        /// </summary>
-        /// <param name="delimitedInput">The string buffer.</param>
-        /// <param name="delimiter">The delimiter.</param>
-        /// <returns>IEnumerable&lt;System.String&gt;.</returns>
-        /// <remarks>Code by: Blake Pell</remarks>
-        public static IEnumerable<string> FromDelimitedString(this string delimitedInput, char delimiter)
-        {
-            var items = delimitedInput.Split(delimiter);
-
-            return items.AsEnumerable();
-        }
-
-        /// <summary>
-        /// Orders a list based on a sort expression. Useful in object data binding scenarios where
-        /// the ObjectDataSource generates a dynamic sort expression (example: "Name desc") that
-        /// specifies the property of the object sort on.
+        /// Disposes the collection.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="list">The list.</param>
-        /// <param name="sortExpression">The sort expression.</param>
-        /// <returns>IEnumerable&lt;T&gt;.</returns>
-        /// <exception cref="InvalidCastException"></exception>
-        /// <exception cref="ArgumentNullException"></exception>
-        /// <exception cref="System.InvalidCastException"></exception>
-        /// <remarks>Code by: C.F.Meijers</remarks>
-        public static IEnumerable<T> OrderBy<T>(this IEnumerable<T> list, string sortExpression)
-        {
-            if (string.IsNullOrEmpty(sortExpression))
-            {
-                return null;
-            }
-
-            sortExpression += string.Empty;
-            var parts = sortExpression.Split(Convert.ToChar(" ", CultureInfo.InvariantCulture));
-            var descending = false;
-            var property = string.Empty;
-
-            if (parts.Length > 0 && !string.IsNullOrEmpty(parts[0]))
-            {
-                property = parts[0];
-
-                if (parts.Length > 1)
-                {
-                    @descending = CultureInfo.InvariantCulture.TextInfo.ToLower(parts[1]).Contains("esc");
-                }
-
-                var prop = typeof(T).GetRuntimeProperty(property);
-
-                if (prop is null)
-                {
-                    throw new InvalidCastException($"{(string.Format(CultureInfo.InvariantCulture, "{0}{1}", Convert.ToString("No property '", CultureInfo.InvariantCulture), property))}' in + {typeof (T).Name}'");
-                }
-
-                return @descending ? list.OrderByDescending(x => prop.GetValue(x, null)) : list.OrderBy(x => prop.GetValue(x, null));
-            }
-
-            return list;
-        }
-
-        /// <summary>
-        /// Adds the range.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="list">The list.</param>
-        /// <param name="newItems">The new items.</param>
-        public static void AddRange<T>(this ICollection<T> list, IEnumerable<T> newItems)
-        {
-            Parallel.ForEach(newItems, (item) =>
-             {
-                 list.Add(item);
-             });
-        }
-
-        /// <summary>
-        /// Adds the range.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <typeparam name="TKey">The type of the key.</typeparam>
-        /// <typeparam name="TValue">The type of the value.</typeparam>
-        /// <param name="list">The list.</param>
         /// <param name="items">The items.</param>
-        /// <param name="key">The key.</param>
-        /// <param name="value">The value.</param>
-        /// <exception cref="ArgumentNullException">list - Dictionary cannot be null.
-        /// or
-        /// key - Key cannot be null.</exception>
-        /// <exception cref="ArgumentException">value - Value cannot be null.</exception>
-        /// <remarks>Code by: Lucas</remarks>
-        public static void AddRange<T, TKey, TValue>(this IDictionary<TKey, TValue> list, IEnumerable<T> items, Func<T, TKey> key, Func<T, TValue> value)
+        internal static void DisposeCollection<T>(this IEnumerable<T> items)
         {
-            foreach (var item in items)
-            {
-                list.Add(key(item), value(item));
-            }
+            ProcessCollectionToDispose(items);
         }
 
         /// <summary>
-        /// Counts the faster.
+        /// Tries to dispose collection items.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="source">The source.</param>
-        /// <param name="predicate">The predicate.</param>
-        /// <returns>System.Int32.</returns>
-        /// <exception cref="ArgumentNullException">source
-        /// or
-        /// source</exception>
-        /// <exception cref="Exception">source
-        /// or
-        /// source</exception>
-        public static int FastCount<T>(this IEnumerable<T> source, Func<T, bool> predicate)
+        /// <param name="items">The items.</param>
+        internal static void DisposeCollection(this IEnumerable items)
         {
-            if (source == null)
-            {
-                throw new ArgumentNullException(nameof(source));
-            }
+            ProcessCollectionToDispose(items);
+        }
 
-            if (predicate == null)
+        /// <summary>
+        /// Processes the collection to dispose.
+        /// </summary>
+        /// <param name="items">The items.</param>
+        private static void ProcessCollectionToDispose(IEnumerable items)
+        {
+            if (items.IsValid())
             {
-                throw new ArgumentNullException(nameof(predicate));
-            }
-
-            if (source is List<T>)
-            {
-                int finalCount = 0;
-                var list = (List<T>)source;
-                var count = list.Count;
-
-                for (var j = 0; j < count; j++)
+                foreach (var item in items)
                 {
-                    if (predicate(list[j]))
+                    if (item != null && item is IDisposable disposableItem)
                     {
-                        finalCount++;
+                        disposableItem.TryDispose();
+                    }
+                    else
+                    {
+                        return;
                     }
                 }
-
-                return finalCount;
             }
-
-            return source.Count(predicate);
         }
-
-        #endregion Public Methods
     }
 }

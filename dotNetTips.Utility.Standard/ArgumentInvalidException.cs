@@ -20,7 +20,7 @@ namespace dotNetTips.Utility.Standard
     /// </summary>
     /// <seealso cref="System.ArgumentException" />
     [Serializable]
-    public class ArgumentInvalidException : ArgumentException
+    public sealed class ArgumentInvalidException : ArgumentException
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ArgumentInvalidException" /> class.

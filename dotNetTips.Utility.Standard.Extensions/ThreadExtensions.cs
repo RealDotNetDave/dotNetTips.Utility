@@ -23,7 +23,7 @@ namespace dotNetTips.Utility.Standard.Extensions
     public static class ThreadExtensions
     {
         /// <summary>
-        /// Waits for.
+        /// Waits for a certian amount of time. Does not use timer (no need to call Dispose).
         /// </summary>
         /// <param name="thread">The thread.</param>
         /// <param name="interval">The interval.</param>
@@ -34,7 +34,8 @@ namespace dotNetTips.Utility.Standard.Extensions
             do
             {
                 Thread.SpinWait(10);
-            } while (DateTime.Now < stopAt);
+            }
+            while (thread.IsAlive && DateTime.Now < stopAt);
 
         }
     }

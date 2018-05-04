@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-16-2017
+// Last Modified On : 05-04-2018
 // ***********************************************************************
 // <copyright file="Services.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -39,14 +39,7 @@ namespace dotNetTips.Utility.Standard
         {
             var service = LoadService(serviceName);
 
-            if (service != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return service != null ? true : false;
         }
         /// <summary>
         /// Services the status.
@@ -58,14 +51,7 @@ namespace dotNetTips.Utility.Standard
         {
             var service = LoadService(serviceName);
 
-            if (service != null)
-            {
-                return service.Status;
-            }
-            else
-            {
-                throw new InvalidOperationException(Resources.ServiceNotFound);
-            }
+            return service != null ? service.Status : throw new InvalidOperationException(Resources.ServiceNotFound);
         }
         /// <summary>
         /// Starts the service.
@@ -169,6 +155,6 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         /// <param name="serviceName">Name of the service.</param>
         /// <returns>ServiceController.</returns>
-        private static ServiceController LoadService(string serviceName) => ServiceController.GetServices().Where(p => p.ServiceName == serviceName).FirstOrDefault();
+        private static ServiceController LoadService(string serviceName) => ServiceController.GetServices().FirstOrDefault(p => p.ServiceName == serviceName);
     }
 }

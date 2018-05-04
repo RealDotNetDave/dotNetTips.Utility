@@ -24,9 +24,9 @@ namespace dotNetTips.Utility.Standard
         EndOfPeriod,
 
         /// <summary>
-        /// The begging of period
+        /// The beginning of the period
         /// </summary>
 
-        BeggingOfPeriod
+        BeginngOfPeriod
     }
 }

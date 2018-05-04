@@ -21,10 +21,8 @@ namespace dotNetTips.Utility.Standard
     /// <seealso cref="System.ArgumentException" />
     /// <seealso cref="System.Exception" />
     [Serializable]
-    public class ArgumentReadOnlyException : ArgumentException
+    public sealed class ArgumentReadOnlyException : ArgumentException
     {
-        #region Public Constructors
-
         /// <summary>
         /// Initializes a new instance of the <see cref="ArgumentReadOnlyException" /> class.
         /// </summary>
@@ -36,8 +34,7 @@ namespace dotNetTips.Utility.Standard
         /// Initializes a new instance of the <see cref="ArgumentReadOnlyException" /> class.
         /// </summary>
         /// <param name="message">The message that describes the error.</param>
-        public ArgumentReadOnlyException(string message)
-            : base(message)
+        public ArgumentReadOnlyException(string message) : base(message)
         {
         }
 
@@ -46,8 +43,7 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
-        public ArgumentReadOnlyException(string paramName, string message)
-    : base(paramName, message)
+        public ArgumentReadOnlyException(string paramName, string message) : base(paramName, message)
         {
         }
 
@@ -57,10 +53,8 @@ namespace dotNetTips.Utility.Standard
         /// <param name="message">The error message that explains the reason for the exception.</param>
         /// <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in
         /// Visual Basic) if no inner exception is specified.</param>
-        public ArgumentReadOnlyException(string message, Exception innerException)
-            : base(message, innerException)
+        public ArgumentReadOnlyException(string message, Exception innerException) : base(message, innerException)
         {
         }
-        #endregion Public Constructors
     }
 }

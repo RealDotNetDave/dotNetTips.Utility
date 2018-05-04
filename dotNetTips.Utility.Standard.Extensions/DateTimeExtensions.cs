@@ -4,13 +4,14 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-16-2017
+// Last Modified On : 11-01-2017
 // ***********************************************************************
 // <copyright file="DateTimeExtensions.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using dotNetTips.Utility.Standard.Extensions.Properties;
 using System;
 using System.Globalization;
 
@@ -21,8 +22,6 @@ namespace dotNetTips.Utility.Standard.Extensions
     /// </summary>
     public static class DateTimeExtensions
     {
-        #region Public Methods
-
         /// <summary>
         /// Gets the last.
         /// </summary>
@@ -32,7 +31,9 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentNullException">input - Input is invalid.</exception>
         public static DateTime GetLast(this DateTime input, DayOfWeek dayOfWeek)
         {
-            var daysToSubtract = input.DayOfWeek > dayOfWeek ? input.DayOfWeek - dayOfWeek : (7 - (int)dayOfWeek) + (int)input.DayOfWeek;
+            var daysToSubtract = input.DayOfWeek > dayOfWeek
+                ? input.DayOfWeek - dayOfWeek
+                : (7 - (int)dayOfWeek) + (int)input.DayOfWeek;
             return input.AddDays(daysToSubtract * -1);
         }
 
@@ -74,7 +75,9 @@ namespace dotNetTips.Utility.Standard.Extensions
         {
             var daysToAdd = 0;
 
-            daysToAdd = input.DayOfWeek < dayOfWeek ? dayOfWeek - input.DayOfWeek : (7 - (int)input.DayOfWeek) + (int)dayOfWeek;
+            daysToAdd = input.DayOfWeek < dayOfWeek
+                ? dayOfWeek - input.DayOfWeek
+                : (7 - (int)input.DayOfWeek) + (int)dayOfWeek;
 
             return input.AddDays(daysToAdd);
         }
@@ -87,7 +90,11 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="intersectingStartDate">The intersecting start date.</param>
         /// <param name="intersectingEndDate">The intersecting end date.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        public static bool Intersects(this DateTime startDate, DateTime endDate, DateTime intersectingStartDate, DateTime intersectingEndDate) => intersectingEndDate >= startDate && intersectingStartDate <= endDate;
+        public static bool Intersects(this DateTime startDate,
+                                      DateTime endDate,
+                                      DateTime intersectingStartDate,
+                                      DateTime intersectingEndDate) => intersectingEndDate >= startDate &&
+            intersectingStartDate <= endDate;
 
         /// <summary>
         /// To the friendly date string.
@@ -104,13 +111,17 @@ namespace dotNetTips.Utility.Standard.Extensions
             }
             else
             {
-                formattedDate = input.Date == DateTime.Today.AddDays(-1) ? Properties.Resources.Yesterday : input.Date > DateTime.Today.AddDays(-6) ? input.ToString("dddd", CultureInfo.CurrentCulture) : input.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern, CultureInfo.CurrentCulture);
+                formattedDate = input.Date == DateTime.Today.AddDays(-1)
+                    ? Resources.Yesterday
+                    : input.Date > DateTime.Today.AddDays(-6)
+                        ? input.ToString("dddd", CultureInfo.CurrentCulture)
+                        : input.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern,
+                                         CultureInfo.CurrentCulture);
             }
 
             formattedDate += $" @ {(input.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern, CultureInfo.CurrentCulture).ToLower(CultureInfo.CurrentCulture))}";
 
             return formattedDate;
         }
-        #endregion Public Methods
     }
 }

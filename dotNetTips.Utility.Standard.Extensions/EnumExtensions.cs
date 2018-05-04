@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-16-2017
+// Last Modified On : 11-02-2017
 // ***********************************************************************
 // <copyright file="EnumExtensions.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -23,6 +23,26 @@ namespace dotNetTips.Utility.Standard.Extensions
     public static class EnumExtensions
     {
         /// <summary>
+        /// Gets the description internal.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="val">The value.</param>
+        /// <returns>EnumItem&lt;T&gt;.</returns>
+        private static EnumItem<T> GetDescriptionInternal<T>(object val)
+        {
+            var field = val.GetType().GetField(val.ToString());
+            var attributes = (DescriptionAttribute[])field.GetCustomAttributes(typeof(DescriptionAttribute), false);
+
+            var enumItem = new EnumItem<T>
+            {
+                Description = attributes.Length > 0 ? attributes[0].Description : val.ToString(),
+                Value = (T)val
+            };
+
+            return enumItem;
+        }
+
+        /// <summary>
         /// Converts enum to type.
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -34,6 +54,7 @@ namespace dotNetTips.Utility.Standard.Extensions
             var enumValue = Enum.Parse(enumType, val.ToString());
             return (T)enumValue;
         }
+
         /// <summary>
         /// Gets the description.
         /// </summary>
@@ -45,6 +66,7 @@ namespace dotNetTips.Utility.Standard.Extensions
             var attributes = (DescriptionAttribute[])field.GetCustomAttributes(typeof(DescriptionAttribute), false);
             return attributes.Length > 0 ? attributes[0].Description : val.ToString();
         }
+
         /// <summary>
         /// Gets the items.
         /// </summary>
@@ -65,6 +87,7 @@ namespace dotNetTips.Utility.Standard.Extensions
 
             return items;
         }
+
         /// <summary>
         /// Parses the specified name.
         /// </summary>
@@ -72,23 +95,5 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="name">The name.</param>
         /// <returns>T.</returns>
         public static T Parse<T>(this string name) where T : struct => (T)Enum.Parse(typeof(T), name);
-        /// <summary>
-        /// Gets the description internal.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="val">The value.</param>
-        /// <returns>EnumItem&lt;T&gt;.</returns>
-        private static EnumItem<T> GetDescriptionInternal<T>(object val)
-        {
-            var field = val.GetType().GetField(val.ToString());
-            var attributes = (DescriptionAttribute[])field.GetCustomAttributes(typeof(DescriptionAttribute), false);
-
-            var enumItem = new EnumItem<T>
-            {
-                Description = attributes.Length > 0 ? attributes[0].Description : val.ToString(), Value = (T)val
-            };
-
-            return enumItem;
-        }
     }
 }

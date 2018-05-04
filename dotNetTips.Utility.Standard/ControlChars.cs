@@ -18,8 +18,6 @@ namespace dotNetTips.Utility.Standard
     /// </summary>
     public static class ControlChars
     {
-        #region Public Fields
-
         /// <summary>
         /// Back
         /// </summary>
@@ -104,6 +102,5 @@ namespace dotNetTips.Utility.Standard
         /// Vertical tab
         /// </summary>
         public const char VerticalTab = '\v';
-        #endregion Public Fields
     }
 }

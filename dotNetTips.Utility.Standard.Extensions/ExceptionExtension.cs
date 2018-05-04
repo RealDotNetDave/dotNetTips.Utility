@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using dotNetTips.Utility.Standard.Extensions.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,8 +23,6 @@ namespace dotNetTips.Utility.Standard.Extensions
     /// </summary>
     public static class ExceptionExtension
     {
-        #region Public Methods
-
         /// <summary>
         /// Traverses Exception.
         /// </summary>
@@ -31,14 +30,15 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="ex">The ex.</param>
         /// <returns>T.</returns>
         /// <exception cref="ArgumentNullException">ex - Exception cannot be null.</exception>
-        public static T TraverseFor<T>(this Exception ex) where T : class
+        public static T TraverseFor<T>(this Exception ex)
+            where T : class
         {
-            if (ex is null)
+            if(ex is null)
             {
-                throw new ArgumentNullException(nameof(ex), Properties.Resources.ExceptionCannotBeNull);
+                throw new ArgumentNullException(nameof(ex), Resources.ExceptionCannotBeNull);
             }
 
-            if (ReferenceEquals(ex.GetType(), typeof(T)))
+            if(ReferenceEquals(ex.GetType(), typeof(T)))
             {
                 return ex as T;
             }
@@ -73,7 +73,8 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="source">The source.</param>
         /// <param name="nextItem">The next item.</param>
         /// <returns>IEnumerable&lt;TSource&gt;.</returns>
-        public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItem) where TSource : class => FromHierarchy(source, nextItem, s => s != null);
+        public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItem)
+            where TSource : class => FromHierarchy(source, nextItem, s => s != null);
 
         /// <summary>
         /// Hierarchy.
@@ -83,15 +84,14 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="nextItem">The next item.</param>
         /// <param name="canContinue">The can continue.</param>
         /// <returns>IEnumerable&lt;TSource&gt;.</returns>
-        public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItem, Func<TSource, bool> canContinue)
+        public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source,
+                                                                  Func<TSource, TSource> nextItem,
+                                                                  Func<TSource, bool> canContinue)
         {
-
-            for (var current = source; canContinue(current); current = nextItem(current))
+            for(var current = source; canContinue(current); current = nextItem(current))
             {
                 yield return current;
             }
         }
-
-        #endregion Public Methods
     }
 }

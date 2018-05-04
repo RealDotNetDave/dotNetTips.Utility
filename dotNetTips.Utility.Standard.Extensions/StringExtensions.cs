@@ -13,6 +13,7 @@
 // ***********************************************************************
 using System;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace dotNetTips.Utility.Standard.Extensions
@@ -40,6 +41,32 @@ namespace dotNetTips.Utility.Standard.Extensions
         {
             return characters.Any(character => input.Contains(character));
         }
+
+        /// <summary>
+        /// Computes the sha256 hash.
+        /// </summary>
+        /// <param name="data">The data.</param>
+        /// <returns>System.String.</returns>
+        public static string ComputeSha256Hash(this string data)
+        {
+            // Create a SHA256   
+            using (var sha256Hash = SHA256.Create())
+            {
+                // ComputeHash - returns byte array  
+                var bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(data));
+
+                // Convert byte array to a string   
+                var builder = new StringBuilder();
+
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+
+                return builder.ToString();
+            }
+        }
+
 
         /// <summary>
         /// Defaults if null.

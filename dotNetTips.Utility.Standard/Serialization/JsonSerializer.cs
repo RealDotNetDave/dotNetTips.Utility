@@ -52,13 +52,13 @@ namespace dotNetTips.Utility.Standard.Serialization
         /// <returns>System.String.</returns>
         public static string Serialize(object obj)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(obj != null);
+            Encapsulation.TryValidateParam<ArgumentNullException>(obj != null, nameof(obj));
 
-            string json;
+            var json = string.Empty;
 
             using (var ms = new MemoryStream())
             {
-                var ser = new DataContractJsonSerializer(obj.GetType(), new DataContractJsonSerializerSettings { SerializeReadOnlyTypes = true, UseSimpleDictionaryFormat = true, EmitTypeInformation = System.Runtime.Serialization.EmitTypeInformation.AsNeeded });
+                var ser = new DataContractJsonSerializer(type: obj.GetType(), settings: new DataContractJsonSerializerSettings { SerializeReadOnlyTypes = true, UseSimpleDictionaryFormat = true, EmitTypeInformation = System.Runtime.Serialization.EmitTypeInformation.AsNeeded });
 
                 ser.WriteObject(ms, obj);
 
