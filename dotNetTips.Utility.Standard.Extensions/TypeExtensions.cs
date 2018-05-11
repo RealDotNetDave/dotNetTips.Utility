@@ -12,6 +12,8 @@
 // <summary></summary>
 // ***********************************************************************
 using System;
+using System.Linq;
+using System.Reflection;
 
 namespace dotNetTips.Utility.Standard.Extensions
 {
@@ -57,6 +59,27 @@ namespace dotNetTips.Utility.Standard.Extensions
             var result = instance is T ? instance : null;
 
             return result;
+        }
+
+        /// <summary>
+        /// Gets the field hash.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="callback">The callback.</param>
+        /// <returns>System.String.</returns>
+        public static string GetFieldHash<T>(this Func<T> callback)
+        {
+            return new string(
+              callback
+                .Target
+                .GetType()
+                .GetFields()
+                .Where(x => x.MemberType == MemberTypes.Field)
+                .Select(x => ((FieldInfo)x).GetValue(callback.Target))
+                .Where(x => x != null)
+                .SelectMany(x => x.ToString())
+                .ToArray()
+            );
         }
 
         #endregion Public Methods

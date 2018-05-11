@@ -88,7 +88,17 @@ namespace dotNetTips.Utility.Standard.Extensions
                                                                   Func<TSource, TSource> nextItem,
                                                                   Func<TSource, bool> canContinue)
         {
-            for(var current = source; canContinue(current); current = nextItem(current))
+            if (canContinue == null)
+            {
+                throw new ArgumentNullException(nameof(canContinue), $"{nameof(canContinue)} is null.");
+            }
+
+            if (nextItem == null)
+            {
+                throw new ArgumentNullException(nameof(nextItem), $"{nameof(nextItem)} is null.");
+            }
+
+            for (var current = source; canContinue(current); current = nextItem(current))
             {
                 yield return current;
             }

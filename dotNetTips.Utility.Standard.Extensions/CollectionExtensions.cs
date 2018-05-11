@@ -100,8 +100,20 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <remarks>Code by: Lucas</remarks>
         public static void AddRange<T, TKey, TValue>(this IDictionary<TKey, TValue> list, IEnumerable<T> items, Func<T, TKey> key, Func<T, TValue> value)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value), $"{nameof(value)} is null.");
+            }
+
+            if (key == null)
+            {
+                throw new ArgumentNullException(nameof(key), $"{nameof(key)} is null.");
+            }
+
             foreach (var item in items)
             {
+
+
                 list.Add(key(item), value(item));
             }
         }
@@ -198,7 +210,7 @@ namespace dotNetTips.Utility.Standard.Extensions
 
             if (source is List<T>)
             {
-                int finalCount = 0;
+                var finalCount = 0;
                 var list = (List<T>)source;
                 var count = list.Count;
 
