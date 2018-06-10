@@ -40,8 +40,8 @@ namespace dotNetTips.Utility.Standard.Diagnostics
         /// <returns>TimeSpan.</returns>
         public TimeSpan StopReset()
         {
-            this.Stop();
-            var result = this.Elapsed;
+            Stop();
+            var result = Elapsed;
             base.Reset();
 
             return result;
@@ -53,8 +53,8 @@ namespace dotNetTips.Utility.Standard.Diagnostics
         /// <returns>TimeSpan.</returns>
         public TimeSpan StopRestart()
         {
-            var result = this.Elapsed;
-            
+            var result = Elapsed;
+
             base.Restart();
 
             return result;

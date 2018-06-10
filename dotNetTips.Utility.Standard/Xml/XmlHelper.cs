@@ -10,13 +10,13 @@
 //     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
+using dotNetTips.Utility.Standard.OOP;
 // ***********************************************************************
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
-using dotNetTips.Utility.Standard.OOP;
 
 namespace dotNetTips.Utility.Standard.Xml
 {
@@ -35,16 +35,15 @@ namespace dotNetTips.Utility.Standard.Xml
         public static T Deserialize<T>(string xml)
         {
             Encapsulation.TryValidateParam(xml, nameof(xml));
-           
+
             try
             {
-                using (var sr = new StringReader(xml))
+                using(var sr = new StringReader(xml))
                 {
                     var xs = new XmlSerializer(typeof(T));
                     return (T)xs.Deserialize(sr);
                 }
-            }
-            catch (InvalidOperationException ex)
+            } catch(InvalidOperationException ex)
             {
                 Trace.WriteLine(ex.Message);
 
@@ -62,7 +61,7 @@ namespace dotNetTips.Utility.Standard.Xml
         {
             Encapsulation.TryValidateParam(fileName, nameof(fileName));
 
-            if (File.Exists(fileName) == false)
+            if(File.Exists(fileName) == false)
             {
                 throw new FileNotFoundException("File not found. Cannot deserialize from XML.", fileName);
             }
@@ -82,9 +81,9 @@ namespace dotNetTips.Utility.Standard.Xml
 
             try
             {
-                using (var writer = new StringWriter())
+                using(var writer = new StringWriter())
                 {
-                    using (var xmlWriter = XmlWriter.Create(writer))
+                    using(var xmlWriter = XmlWriter.Create(writer))
                     {
                         var serializer = new XmlSerializer(obj.GetType());
                         serializer.Serialize(xmlWriter, obj);
@@ -92,8 +91,7 @@ namespace dotNetTips.Utility.Standard.Xml
                         return writer.ToString();
                     }
                 }
-            }
-            catch (InvalidOperationException ex)
+            } catch(InvalidOperationException ex)
             {
                 Trace.WriteLine(ex.Message);
 
@@ -111,7 +109,7 @@ namespace dotNetTips.Utility.Standard.Xml
             Encapsulation.TryValidateParam<ArgumentNullException>(obj != null, nameof(obj));
             Encapsulation.TryValidateParam(fileName, nameof(fileName));
 
-            if (File.Exists(fileName))
+            if(File.Exists(fileName))
             {
                 File.Delete(fileName);
             }

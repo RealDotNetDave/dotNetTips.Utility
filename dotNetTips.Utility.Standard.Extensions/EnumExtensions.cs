@@ -79,7 +79,7 @@ namespace dotNetTips.Utility.Standard.Extensions
             var values = Enum.GetValues(enumType);
             var items = new List<EnumItem<T>>();
 
-            foreach (var v in values)
+            foreach(var v in values)
             {
                 var enumValue = Enum.Parse(enumType, v.ToString());
                 items.Add(GetDescriptionInternal<T>(enumValue));

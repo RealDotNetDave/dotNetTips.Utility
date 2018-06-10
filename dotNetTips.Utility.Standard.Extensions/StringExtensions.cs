@@ -11,7 +11,9 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using dotNetTips.Utility.Standard.Extensions.Properties;
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -23,8 +25,6 @@ namespace dotNetTips.Utility.Standard.Extensions
     /// </summary>
     public static class StringExtensions
     {
-        #region Public Methods
-
         /// <summary>
         /// Determines whether the specified the string contains any.
         /// </summary>
@@ -37,9 +37,16 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// or
         /// Null character.</exception>
         /// <exception cref="System.ArgumentNullException">Null character.</exception>
-        public static bool ContainsAny(this string input, params string[] characters)
+        public static bool ContainsAny(this string input, params string[] characters) => characters.Any(character => input.Contains(character));
+
+        /// <summary>
+        /// Determines whether the specified input has value.
+        /// </summary>
+        /// <param name="input">The input.</param>
+        /// <returns><c>true</c> if the specified input has value; otherwise, <c>false</c>.</returns>
+        public static bool HasValue(this string input)
         {
-            return characters.Any(character => input.Contains(character));
+            return string.IsNullOrEmpty(input) == false;
         }
 
         /// <summary>
@@ -60,7 +67,7 @@ namespace dotNetTips.Utility.Standard.Extensions
 
                 for (int i = 0; i < bytes.Length; i++)
                 {
-                    builder.Append(bytes[i].ToString("x2"));
+                    builder.Append(bytes[i].ToString("x2", CultureInfo.InvariantCulture));
                 }
 
                 return builder.ToString();
@@ -89,7 +96,9 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="value">The value.</param>
         /// <param name="defaultValue">The default value.</param>
         /// <returns>System.String.</returns>
-        public static string DefaultIfNullOrEmpty(this string value, string defaultValue) => string.IsNullOrEmpty(value) ? value : defaultValue;
+        public static string DefaultIfNullOrEmpty(this string value, string defaultValue) => string.IsNullOrEmpty(value)
+            ? value
+            : defaultValue;
 
         /// <summary>
         /// Formats the size of the file.
@@ -107,7 +116,7 @@ namespace dotNetTips.Utility.Standard.Extensions
                 size += 1;
             }
 
-            return $"{fileSize} {((new string[] { Properties.Resources.Bytes, Properties.Resources.KB, Properties.Resources.MB, Properties.Resources.GB })[Convert.ToInt32(size)])}";
+            return $"{fileSize} {((new string[] { Resources.Bytes, Resources.KB, Resources.MB, Resources.GB })[Convert.ToInt32(size)])}";
         }
 
         /// <summary>
@@ -157,7 +166,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         {
             if (length == 0)
             {
-                throw new ArgumentNullException(nameof(length), Properties.Resources.LengthMustBeGreaterThan0);
+                throw new ArgumentNullException(nameof(length), Resources.LengthMustBeGreaterThan0);
             }
 
             var sb = new StringBuilder();
@@ -181,6 +190,5 @@ namespace dotNetTips.Utility.Standard.Extensions
 
             return sb.ToString();
         }
-        #endregion Public Methods
     }
 }

@@ -25,36 +25,54 @@ namespace dotNetTips.Utility.Standard.Data
         /// Gets or sets the created at date.
         /// </summary>
         /// <value>The created at.</value>
-        DateTimeOffset CreatedAt { get; set; }
+        DateTimeOffset CreatedAt
+        {
+            get; set;
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="DataEntity" /> is deleted.
         /// </summary>
         /// <value><c>true</c> if deleted; otherwise, <c>false</c>.</value>
-        bool Deleted { get; set; }
+        bool Deleted
+        {
+            get; set;
+        }
 
         /// <summary>
         /// Gets or sets the identifier.
         /// </summary>
         /// <value>The identifier.</value>
-        int Id { get; set; }
+        int Id
+        {
+            get; set;
+        }
 
         /// <summary>
         /// Gets or sets the public key.
         /// </summary>
         /// <value>The public key.</value>
-        Guid PublicKey { get; set; }
+        Guid PublicKey
+        {
+            get; set;
+        }
 
         /// <summary>
         /// Gets or sets the updated at.
         /// </summary>
         /// <value>The updated at.</value>
-        DateTimeOffset? UpdatedAt { get; set; }
+        DateTimeOffset? UpdatedAt
+        {
+            get; set;
+        }
 
         /// <summary>
         /// Gets or sets the version.
         /// </summary>
         /// <value>The version.</value>
-        byte[] Version { get; set; }
+        byte[] Version
+        {
+            get; set;
+        }
     }
 }

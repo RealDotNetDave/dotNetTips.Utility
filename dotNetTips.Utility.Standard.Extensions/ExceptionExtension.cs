@@ -24,26 +24,41 @@ namespace dotNetTips.Utility.Standard.Extensions
     public static class ExceptionExtension
     {
         /// <summary>
-        /// Traverses Exception.
+        /// Hierarchy.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="ex">The ex.</param>
-        /// <returns>T.</returns>
-        /// <exception cref="ArgumentNullException">ex - Exception cannot be null.</exception>
-        public static T TraverseFor<T>(this Exception ex)
-            where T : class
+        /// <typeparam name="TSource">The type of the t source.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <param name="nextItem">The next item.</param>
+        /// <returns>IEnumerable&lt;TSource&gt;.</returns>
+        public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItem)
+            where TSource : class => FromHierarchy(source, nextItem, s => s != null);
+
+        /// <summary>
+        /// Hierarchy.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the t source.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <param name="nextItem">The next item.</param>
+        /// <param name="canContinue">The can continue.</param>
+        /// <returns>IEnumerable&lt;TSource&gt;.</returns>
+        public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source,
+                                                                  Func<TSource, TSource> nextItem,
+                                                                  Func<TSource, bool> canContinue)
         {
-            if(ex is null)
+            if(canContinue == null)
             {
-                throw new ArgumentNullException(nameof(ex), Resources.ExceptionCannotBeNull);
+                throw new ArgumentNullException(nameof(canContinue), $"{nameof(canContinue)} is null.");
             }
 
-            if(ReferenceEquals(ex.GetType(), typeof(T)))
+            if(nextItem == null)
             {
-                return ex as T;
+                throw new ArgumentNullException(nameof(nextItem), $"{nameof(nextItem)} is null.");
             }
 
-            return ex.InnerException.TraverseFor<T>();
+            for(var current = source; canContinue(current); current = nextItem(current))
+            {
+                yield return current;
+            }
         }
 
         /// <summary>
@@ -67,41 +82,26 @@ namespace dotNetTips.Utility.Standard.Extensions
         }
 
         /// <summary>
-        /// Hierarchy.
+        /// Traverses Exception.
         /// </summary>
-        /// <typeparam name="TSource">The type of the t source.</typeparam>
-        /// <param name="source">The source.</param>
-        /// <param name="nextItem">The next item.</param>
-        /// <returns>IEnumerable&lt;TSource&gt;.</returns>
-        public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItem)
-            where TSource : class => FromHierarchy(source, nextItem, s => s != null);
-
-        /// <summary>
-        /// Hierarchy.
-        /// </summary>
-        /// <typeparam name="TSource">The type of the t source.</typeparam>
-        /// <param name="source">The source.</param>
-        /// <param name="nextItem">The next item.</param>
-        /// <param name="canContinue">The can continue.</param>
-        /// <returns>IEnumerable&lt;TSource&gt;.</returns>
-        public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source,
-                                                                  Func<TSource, TSource> nextItem,
-                                                                  Func<TSource, bool> canContinue)
+        /// <typeparam name="T"></typeparam>
+        /// <param name="ex">The ex.</param>
+        /// <returns>T.</returns>
+        /// <exception cref="ArgumentNullException">ex - Exception cannot be null.</exception>
+        public static T TraverseFor<T>(this Exception ex)
+            where T : class
         {
-            if (canContinue == null)
+            if(ex is null)
             {
-                throw new ArgumentNullException(nameof(canContinue), $"{nameof(canContinue)} is null.");
+                throw new ArgumentNullException(nameof(ex), Resources.ExceptionCannotBeNull);
             }
 
-            if (nextItem == null)
+            if(ReferenceEquals(ex.GetType(), typeof(T)))
             {
-                throw new ArgumentNullException(nameof(nextItem), $"{nameof(nextItem)} is null.");
+                return ex as T;
             }
 
-            for (var current = source; canContinue(current); current = nextItem(current))
-            {
-                yield return current;
-            }
+            return ex.InnerException.TraverseFor<T>();
         }
     }
 }

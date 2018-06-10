@@ -24,6 +24,9 @@ namespace dotNetTips.Utility.Standard
         /// Returns true if type is valid.
         /// </summary>
         /// <value><c>true</c> if this instance is valid; otherwise, <c>false</c>.</value>
-        IsValidResult IsValid { get; }
+        IsValidResult IsValid
+        {
+            get;
+        }
     }
 }

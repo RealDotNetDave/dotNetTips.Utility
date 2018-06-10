@@ -30,24 +30,36 @@ namespace dotNetTips.Utility.Standard.IO
         /// The message
         /// </summary>
         /// <value>The message.</value>
-        public string Message { get; set; }
+        public string Message
+        {
+            get; set;
+        }
 
         /// <summary>
         /// The name
         /// </summary>
         /// <value>The name.</value>
-        public string Name { get; set; }
+        public string Name
+        {
+            get; set;
+        }
 
         /// <summary>
         /// The progress state
         /// </summary>
         /// <value>The state of the progress.</value>
-        public FileProgressState ProgressState { get; set; }
+        public FileProgressState ProgressState
+        {
+            get; set;
+        }
 
         /// <summary>
         /// The size
         /// </summary>
         /// <value>The size.</value>
-        public long Size { get; set; }
+        public long Size
+        {
+            get; set;
+        }
     }
 }

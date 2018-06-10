@@ -13,6 +13,7 @@
 // ***********************************************************************
 using System;
 using System.IO;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
 
@@ -29,11 +30,12 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="json">The json.</param>
         /// <returns>T.</returns>
-        public static T Deserialize<T>(string json) where T : class
+        public static T Deserialize<T>(string json)
+            where T : class
         {
             var obj = Activator.CreateInstance<T>();
 
-            using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(json)))
+            using(var ms = new MemoryStream(Encoding.UTF8.GetBytes(json)))
             {
                 var ser = new DataContractJsonSerializer(obj.GetType());
                 obj = ser.ReadObject(ms) as T;
@@ -41,6 +43,7 @@ namespace dotNetTips.Utility.Standard.Extensions
 
             return obj;
         }
+
         /// <summary>
         /// Serializes the specified object.
         /// </summary>
@@ -50,9 +53,15 @@ namespace dotNetTips.Utility.Standard.Extensions
         {
             string json;
 
-            using (var ms = new MemoryStream())
+            using(var ms = new MemoryStream())
             {
-                var ser = new DataContractJsonSerializer(obj.GetType(), new DataContractJsonSerializerSettings { SerializeReadOnlyTypes = true, UseSimpleDictionaryFormat = true, EmitTypeInformation = System.Runtime.Serialization.EmitTypeInformation.AsNeeded });
+                var ser = new DataContractJsonSerializer(obj.GetType(),
+                                                         new DataContractJsonSerializerSettings
+                {
+                    SerializeReadOnlyTypes = true,
+                    UseSimpleDictionaryFormat = true,
+                    EmitTypeInformation = EmitTypeInformation.AsNeeded
+                });
 
                 ser.WriteObject(ms, obj);
 

@@ -10,13 +10,13 @@
 //     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
+using Microsoft.EntityFrameworkCore;
 // ***********************************************************************
 
 using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace dotNetTips.Utility.Standard.Data
 {
@@ -25,7 +25,8 @@ namespace dotNetTips.Utility.Standard.Data
     /// </summary>
     /// <typeparam name="TContext">The type of the t context.</typeparam>
     /// <seealso cref="Microsoft.EntityFrameworkCore.DbContext" />
-    public abstract class DataContext<TContext> : DbContext where TContext : DbContext
+    public abstract class DataContext<TContext> : DbContext
+        where TContext : DbContext
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="DataContext{TContext}" /> class.
@@ -34,6 +35,45 @@ namespace dotNetTips.Utility.Standard.Data
         protected DataContext(DbContextOptions options) : base(options)
         {
         }
+
+        /// <summary>
+        /// Updates the entities.
+        /// </summary>
+        private void UpdateEntities()
+        {
+            if(ChangeTracker.HasChanges() == false)
+            {
+                return;
+            }
+
+            foreach(var entry in ChangeTracker.Entries<DataEntity>().Where(p => p.State != EntityState.Unchanged))
+            {
+                if(entry.State == EntityState.Added)
+                {
+                    entry.Entity.CreatedAt = DateTime.UtcNow;
+
+                    if(entry.Entity.PublicKey == null || entry.Entity.PublicKey == Guid.Empty)
+                    {
+                        entry.Entity.PublicKey = Guid.NewGuid();
+                    }
+                } else
+                {
+                    entry.Entity.UpdatedAt = DateTime.UtcNow;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Override this method to further configure the model that was discovered by convention from the entity types
+        /// exposed in <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1" /> properties on your derived context. The resulting model may be cached
+        /// and re-used for subsequent instances of your derived context.
+        /// </summary>
+        /// <param name="modelBuilder">The builder being used to construct the model for this context. Databases (and other extensions) typically
+        /// define extension methods on this object that allow you to configure aspects of the model that are specific
+        /// to a given database.</param>
+        /// <remarks>If a model is explicitly set on the options for this context (via <see cref="M:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.UseModel(Microsoft.EntityFrameworkCore.Metadata.IModel)" />)
+        /// then this method will not be run.</remarks>
+        protected override void OnModelCreating(ModelBuilder modelBuilder) => base.OnModelCreating(modelBuilder);
 
         /// <summary>
         /// Saves all changes made in this context to the underlying database.
@@ -51,6 +91,7 @@ namespace dotNetTips.Utility.Standard.Data
 
             return base.SaveChanges();
         }
+
         /// <summary>
         /// Asynchronously saves all changes made in this context to the underlying database.
         /// </summary>
@@ -74,44 +115,6 @@ namespace dotNetTips.Utility.Standard.Data
             UpdateEntities();
 
             return base.SaveChangesAsync(cancellationToken);
-        }
-        /// <summary>
-        /// Override this method to further configure the model that was discovered by convention from the entity types
-        /// exposed in <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1" /> properties on your derived context. The resulting model may be cached
-        /// and re-used for subsequent instances of your derived context.
-        /// </summary>
-        /// <param name="modelBuilder">The builder being used to construct the model for this context. Databases (and other extensions) typically
-        /// define extension methods on this object that allow you to configure aspects of the model that are specific
-        /// to a given database.</param>
-        /// <remarks>If a model is explicitly set on the options for this context (via <see cref="M:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.UseModel(Microsoft.EntityFrameworkCore.Metadata.IModel)" />)
-        /// then this method will not be run.</remarks>
-        protected override void OnModelCreating(ModelBuilder modelBuilder) => base.OnModelCreating(modelBuilder);
-        /// <summary>
-        /// Updates the entities.
-        /// </summary>
-        private void UpdateEntities()
-        {
-            if (this.ChangeTracker.HasChanges() == false)
-            {
-                return;
-            }
-
-            foreach (var entry in this.ChangeTracker.Entries<DataEntity>().Where(p => p.State != EntityState.Unchanged))
-            {
-                if (entry.State == EntityState.Added)
-                {
-                    entry.Entity.CreatedAt = DateTime.UtcNow;
-
-                    if (entry.Entity.PublicKey == null || entry.Entity.PublicKey == Guid.Empty)
-                    {
-                        entry.Entity.PublicKey = Guid.NewGuid();
-                    }
-                }
-                else
-                {
-                    entry.Entity.UpdatedAt = DateTime.UtcNow;
-                }
-            }
         }
     }
 }

@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-01-2017
+// Last Modified On : 06-06-2018
 // ***********************************************************************
 // <copyright file="InMemoryCache.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -12,7 +12,6 @@
 // <summary></summary>
 // ***********************************************************************
 using System;
-using dotNetTips.Utility.Standard.Extensions;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace dotNetTips.Utility.Standard.Cache
@@ -20,95 +19,88 @@ namespace dotNetTips.Utility.Standard.Cache
     /// <summary>
     /// Class InMemoryCache.
     /// </summary>
-    /// <seealso cref="dotNetTips.Utility.Standard.Cache.InMemoryCache" />
-    /// <seealso cref="System.IDisposable" />
-    public class InMemoryCache : ISingleton<InMemoryCache>, IDisposable
+    /// <remarks>Expiration is set to 20 minutes.</remarks>
+    public sealed class InMemoryCache
     {
         /// <summary>
-        /// The disposed
+        /// The instance
         /// </summary>
-        protected bool disposed;
+        private static readonly InMemoryCache _instance = new InMemoryCache();
+
+        /// <summary>
+        /// Prevents a default instance of the class from being created.
+        /// </summary>
+        private InMemoryCache()
+        {
+            this.Cache = CreateCache();
+        }
+
+        /// <summary>
+        /// Gets the instance.
+        /// </summary>
+        /// <value>The instance.</value>
+        public static InMemoryCache Instance
+        {
+            get
+            {
+                return _instance;
+            }
+        }
 
         /// <summary>
         /// The cache
         /// </summary>
-        private MemoryCache _cache;
+        /// <value>The cache.</value>
+        public MemoryCache Cache { get; private set; }
 
         /// <summary>
-        /// The instance
+        /// Gets the count.
         /// </summary>
-        private InMemoryCache _instance;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="InMemoryCache" /> class. Sets ExpirationScanFrequency to 5 minutes.
-        /// </summary>
-        protected InMemoryCache() : this(new TimeSpan(0, 5, 0))
+        /// <value>The count.</value>
+        public int Count
         {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="InMemoryCache" /> class.
-        /// </summary>
-        /// <param name="expirationScanFrequency">The expiration scan frequency.</param>
-        protected InMemoryCache(TimeSpan expirationScanFrequency)
-        {
-            var options = new MemoryCacheOptions { ExpirationScanFrequency = expirationScanFrequency };
-
-            this._cache = new MemoryCache(options);
-        }
-
-        /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
-        public virtual void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        /// <summary>
-        /// Returns the instance.
-        /// </summary>
-        /// <returns>T.</returns>
-        private InMemoryCache GetInstance()
-        {
-            if (this._instance == null)
+            get
             {
-                this._instance = new InMemoryCache();
+                return _instance.Cache.Count;
             }
-
-            return this._instance;
         }
 
         /// <summary>
-        /// Returns instance for the object.
+        /// Adds the cache item.
         /// </summary>
-        /// <returns>T.</returns>
-        public InMemoryCache Instance()
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key">The key.</param>
+        /// <param name="item">The item.</param>
+        public void AddCacheItem<T>(string key, T item)
         {
-            return this.GetInstance();
+            this.Cache.Set(key, item);
         }
 
         /// <summary>
-        /// Releases unmanaged and - optionally - managed resources.
+        /// Gets the cache item.
         /// </summary>
-        /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
-        protected virtual void Dispose(bool disposing)
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key">The key.</param>
+        /// <returns>TValue.</returns>
+        public T GetCacheItem<T>(string key)
         {
-            lock (this)
+            this.Cache.TryGetValue<T>(key, out T item);
+
+            return item;
+        }
+
+        /// <summary>
+        /// Creates the cache using 20 minute expiration.
+        /// </summary>
+        /// <returns>MemoryCache.</returns>
+        private static MemoryCache CreateCache()
+        {
+            var options = new MemoryCacheOptions
             {
-                if (this.disposed)
-                {
-                    return;
-                }
+                ExpirationScanFrequency = new TimeSpan(0, 20, 0)
+            };
 
-                if (disposing)
-                {
-                    this.DisposeFields();
-                }
-
-                this.disposed = true;
-            }
+            return new MemoryCache(options);
         }
     }
 }

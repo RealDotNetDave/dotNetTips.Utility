@@ -12,7 +12,6 @@
 // <summary></summary>
 // ***********************************************************************
 using System.Collections.Generic;
-using System.ComponentModel;
 
 namespace dotNetTips.Utility.Standard.Validation
 {
@@ -28,20 +27,26 @@ namespace dotNetTips.Utility.Standard.Validation
         /// <param name="errors">The errors.</param>
         public IsValidResult(bool valid, params string[] errors)
         {
-            this.IsValid = valid;
-            this.Errors = errors;
+            IsValid = valid;
+            Errors = errors;
         }
 
         /// <summary>
         /// Gets the errors.
         /// </summary>
         /// <value>The errors.</value>
-        public IEnumerable<string> Errors { get; private set; }
+        public IEnumerable<string> Errors
+        {
+            get; private set;
+        }
 
         /// <summary>
         /// Returns true if ... is valid.
         /// </summary>
         /// <value><c>true</c> if this instance is valid; otherwise, <c>false</c>.</value>
-        public bool IsValid { get; private set; }
+        public bool IsValid
+        {
+            get; private set;
+        }
     }
 }

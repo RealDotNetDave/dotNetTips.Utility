@@ -51,21 +51,9 @@ namespace dotNetTips.Utility.Standard
         /// <param name="displayName">The display name.</param>
         protected Enumeration(int value, string displayName)
         {
-            this._value = value;
-            this._displayName = displayName;
+            _value = value;
+            _displayName = displayName;
         }
-
-        /// <summary>
-        /// Gets the display name.
-        /// </summary>
-        /// <value>The display name.</value>
-        public string DisplayName => this._displayName;
-
-        /// <summary>
-        /// Gets the value.
-        /// </summary>
-        /// <value>The value.</value>
-        public int Value => this._value;
 
         /// <summary>
         /// Absolutes the difference.
@@ -84,7 +72,7 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         /// <param name="obj">The other.</param>
         /// <returns>T.</returns>
-        public int CompareTo(object obj) => this.Value.CompareTo(((Enumeration)obj).Value);
+        public int CompareTo(object obj) => Value.CompareTo(((Enumeration)obj).Value);
 
         /// <summary>
         /// Gets all.
@@ -95,13 +83,13 @@ namespace dotNetTips.Utility.Standard
         {
             var otherValue = obj as Enumeration;
 
-            if (otherValue == null)
+            if(otherValue == null)
             {
                 return false;
             }
 
             var typeMatches = GetType().Equals(obj.GetType());
-            var valueMatches = this._value.Equals(otherValue.Value);
+            var valueMatches = _value.Equals(otherValue.Value);
 
             return typeMatches && valueMatches;
         }
@@ -111,12 +99,24 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         /// <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures
         /// like a hash table.</returns>
-        public override int GetHashCode() => this._value.GetHashCode();
+        public override int GetHashCode() => _value.GetHashCode();
 
         /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
         /// </summary>
         /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
-        public override string ToString() => this.DisplayName;
+        public override string ToString() => DisplayName;
+
+        /// <summary>
+        /// Gets the display name.
+        /// </summary>
+        /// <value>The display name.</value>
+        public string DisplayName => _displayName;
+
+        /// <summary>
+        /// Gets the value.
+        /// </summary>
+        /// <value>The value.</value>
+        public int Value => _value;
     }
 }

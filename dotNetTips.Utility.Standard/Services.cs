@@ -10,13 +10,13 @@
 //     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
+using dotNetTips.Utility.Standard.OOP;
+using dotNetTips.Utility.Standard.Properties;
 // ***********************************************************************
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceProcess;
-using dotNetTips.Utility.Standard.OOP;
-using dotNetTips.Utility.Standard.Properties;
 
 namespace dotNetTips.Utility.Standard
 {
@@ -26,10 +26,21 @@ namespace dotNetTips.Utility.Standard
     public static class Services
     {
         /// <summary>
+        /// Loads the service.
+        /// </summary>
+        /// <param name="serviceName">Name of the service.</param>
+        /// <returns>ServiceController.</returns>
+        private static ServiceController LoadService(string serviceName) => ServiceController.GetServices()
+            .FirstOrDefault(p => p.ServiceName == serviceName);
+
+        /// <summary>
         /// Alls the services.
         /// </summary>
         /// <returns>IEnumerable&lt;System.String&gt;.</returns>
-        public static IEnumerable<string> AllServices() => ServiceController.GetServices().Select(p => p.ServiceName).AsEnumerable();
+        public static IEnumerable<string> AllServices() => ServiceController.GetServices()
+            .Select(p => p.ServiceName)
+            .AsEnumerable();
+
         /// <summary>
         /// Services the exists.
         /// </summary>
@@ -41,6 +52,7 @@ namespace dotNetTips.Utility.Standard
 
             return service != null ? true : false;
         }
+
         /// <summary>
         /// Services the status.
         /// </summary>
@@ -53,6 +65,7 @@ namespace dotNetTips.Utility.Standard
 
             return service != null ? service.Status : throw new InvalidOperationException(Resources.ServiceNotFound);
         }
+
         /// <summary>
         /// Starts the service.
         /// </summary>
@@ -62,14 +75,14 @@ namespace dotNetTips.Utility.Standard
         {
             var statusResult = ServiceActionResult.Error;
 
-            if (ServiceExists(serviceName) == false)
+            if(ServiceExists(serviceName) == false)
             {
                 return ServiceActionResult.NotFound;
             }
 
             var service = LoadService(serviceName);
 
-            if ((service != null && service.Status == ServiceControllerStatus.Stopped))
+            if((service != null && service.Status == ServiceControllerStatus.Stopped))
             {
                 service.Start();
                 statusResult = ServiceActionResult.Running;
@@ -77,6 +90,21 @@ namespace dotNetTips.Utility.Standard
 
             return statusResult;
         }
+
+        /// <summary>
+        /// Starts the services.
+        /// </summary>
+        /// <param name="requests">The requests.</param>
+        public static void StartServices(IEnumerable<ServiceAction> requests)
+        {
+            Encapsulation.TryValidateParam(requests, nameof(requests));
+
+            foreach(var request in requests)
+            {
+                request.ServiceActionResult = StartService(request.ServiceName);
+            }
+        }
+
         /// <summary>
         /// Starts the stop services.
         /// </summary>
@@ -85,18 +113,18 @@ namespace dotNetTips.Utility.Standard
         {
             Encapsulation.TryValidateParam(requests, nameof(requests));
 
-            foreach (var request in requests)
+            foreach(var request in requests)
             {
-                if (request.ServiceActionRequest == ServiceActionRequest.Start)
+                if(request.ServiceActionRequest == ServiceActionRequest.Start)
                 {
                     request.ServiceActionResult = StartService(request.ServiceName);
-                }
-                else if (request.ServiceActionRequest == ServiceActionRequest.Stop)
+                } else if(request.ServiceActionRequest == ServiceActionRequest.Stop)
                 {
                     request.ServiceActionResult = StopService(request.ServiceName);
                 }
             }
         }
+
         /// <summary>
         /// Stops the service.
         /// </summary>
@@ -106,14 +134,14 @@ namespace dotNetTips.Utility.Standard
         {
             var statusResult = ServiceActionResult.NotFound;
 
-            if (ServiceExists(serviceName) == false)
+            if(ServiceExists(serviceName) == false)
             {
                 return statusResult;
             }
 
             var service = LoadService(serviceName);
 
-            if ((service != null && service.Status == ServiceControllerStatus.Running))
+            if((service != null && service.Status == ServiceControllerStatus.Running))
             {
                 service.Stop();
                 statusResult = ServiceActionResult.Stopped;
@@ -130,31 +158,10 @@ namespace dotNetTips.Utility.Standard
         {
             Encapsulation.TryValidateParam(requests, nameof(requests));
 
-            foreach (var request in requests)
+            foreach(var request in requests)
             {
                 request.ServiceActionResult = StopService(request.ServiceName);
             }
         }
-
-        /// <summary>
-        /// Starts the services.
-        /// </summary>
-        /// <param name="requests">The requests.</param>
-        public static void StartServices(IEnumerable<ServiceAction> requests)
-        {
-            Encapsulation.TryValidateParam(requests, nameof(requests));
-
-            foreach (var request in requests)
-            {
-                request.ServiceActionResult = StartService(request.ServiceName);
-            }
-        }
-
-        /// <summary>
-        /// Loads the service.
-        /// </summary>
-        /// <param name="serviceName">Name of the service.</param>
-        /// <returns>ServiceController.</returns>
-        private static ServiceController LoadService(string serviceName) => ServiceController.GetServices().FirstOrDefault(p => p.ServiceName == serviceName);
     }
 }

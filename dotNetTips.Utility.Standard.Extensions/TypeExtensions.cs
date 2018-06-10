@@ -22,8 +22,6 @@ namespace dotNetTips.Utility.Standard.Extensions
     /// </summary>
     public static class TypeExtensions
     {
-        #region Public Methods
-
         /// <summary>
         /// Return maximum type. Works with value and reference types.
         /// </summary>
@@ -35,7 +33,8 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// or
         /// obj2 - Object 1 cannot be null.</exception>
         /// <remarks>Original code by: Jeremy Clark</remarks>
-        public static T Max<T>(this T obj1, T obj2) where T : IComparable
+        public static T Max<T>(this T obj1, T obj2)
+            where T : IComparable
         {
             if (obj2 == null)
             {
@@ -51,8 +50,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <typeparam name="T"></typeparam>
         /// <returns>T.</returns>
         /// <remarks>Original code by: Jeremy Clark</remarks>
-        public static T Create<T>()
-            where T : class
+        internal static T Create<T>() where T : class, new()
         {
             var instance = Activator.CreateInstance<T>();
 
@@ -67,21 +65,29 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="callback">The callback.</param>
         /// <returns>System.String.</returns>
-        public static string GetFieldHash<T>(this Func<T> callback)
-        {
-            return new string(
+        public static string GetFieldHash<T>(this Func<T> callback) => new string(
               callback
                 .Target
                 .GetType()
-                .GetFields()
-                .Where(x => x.MemberType == MemberTypes.Field)
-                .Select(x => ((FieldInfo)x).GetValue(callback.Target))
-                .Where(x => x != null)
-                .SelectMany(x => x.ToString())
-                .ToArray()
+            .GetFields()
+            .Where(x => x.MemberType == MemberTypes.Field)
+            .Select(x => x.GetValue(callback.Target))
+            .Where(x => x != null)
+            .SelectMany(x => x.ToString())
+            .ToArray()
             );
-        }
 
-        #endregion Public Methods
+        /// <summary>
+        /// Determines whether [has parameterless constructor] [the specified type].
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns><c>true</c> if [has parameterless constructor] [the specified type]; otherwise, <c>false</c>.</returns>
+        public static bool HasParameterlessConstructor(this Type type) => type.GetConstructor(BindingFlags.Instance |
+                BindingFlags.Public |
+                BindingFlags.NonPublic,
+                                                                                              null,
+                                                                                              Type.EmptyTypes,
+                                                                                              null) !=
+            null;
     }
 }

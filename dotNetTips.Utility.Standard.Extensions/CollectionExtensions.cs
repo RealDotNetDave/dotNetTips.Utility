@@ -28,6 +28,39 @@ namespace dotNetTips.Utility.Standard.Extensions
     /// </summary>
     public static class CollectionExtensions
     {
+        /// <summary>
+        /// Processes the collection to dispose.
+        /// </summary>
+        /// <param name="items">The items.</param>
+        private static void ProcessCollectionToDispose(IEnumerable items)
+        {
+            if(items.IsValid())
+            {
+                foreach(var item in items)
+                {
+                    if(item != null && item is IDisposable disposableItem)
+                    {
+                        disposableItem.TryDispose();
+                    } else
+                    {
+                        return;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Disposes the collection.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="items">The items.</param>
+        internal static void DisposeCollection<T>(this IEnumerable<T> items) => ProcessCollectionToDispose(items);
+
+        /// <summary>
+        /// Tries to dispose collection items.
+        /// </summary>
+        /// <param name="items">The items.</param>
+        internal static void DisposeCollection(this IEnumerable items) => ProcessCollectionToDispose(items);
 
         /// <summary>
         /// Adds if not exists.
@@ -41,11 +74,10 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentException">list - List cannot be read-only.</exception>
         public static void AddIfNotExists<T>(this ICollection<T> list, T value)
         {
-            if (list.Contains(value))
+            if(list.Contains(value))
             {
                 return;
-            }
-            else
+            } else
             {
                 list.Add(value);
             }
@@ -63,7 +95,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentException">list - List cannot be read-only.</exception>
         public static void AddIfNotExists<T>(this ICollection<T> list, params T[] values)
         {
-            foreach (var value in values)
+            foreach(var value in values)
             {
                 list.AddIfNotExists(value);
             }
@@ -75,13 +107,11 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="list">The list.</param>
         /// <param name="newItems">The new items.</param>
-        public static void AddRange<T>(this ICollection<T> list, IEnumerable<T> newItems)
+        public static void AddRange<T>(this ICollection<T> list, IEnumerable<T> newItems) => Parallel.ForEach(newItems,
+                                                                                                              (item) =>
         {
-            Parallel.ForEach(newItems, (item) =>
-             {
-                 list.Add(item);
-             });
-        }
+            list.Add(item);
+        });
 
         /// <summary>
         /// Adds the range.
@@ -98,22 +128,23 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// key - Key cannot be null.</exception>
         /// <exception cref="ArgumentException">value - Value cannot be null.</exception>
         /// <remarks>Code by: Lucas</remarks>
-        public static void AddRange<T, TKey, TValue>(this IDictionary<TKey, TValue> list, IEnumerable<T> items, Func<T, TKey> key, Func<T, TValue> value)
+        public static void AddRange<T, TKey, TValue>(this IDictionary<TKey, TValue> list,
+                                                     IEnumerable<T> items,
+                                                     Func<T, TKey> key,
+                                                     Func<T, TValue> value)
         {
-            if (value == null)
+            if(value == null)
             {
                 throw new ArgumentNullException(nameof(value), $"{nameof(value)} is null.");
             }
 
-            if (key == null)
+            if(key == null)
             {
                 throw new ArgumentNullException(nameof(key), $"{nameof(key)} is null.");
             }
 
-            foreach (var item in items)
+            foreach(var item in items)
             {
-
-
                 list.Add(key(item), value(item));
             }
         }
@@ -133,8 +164,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <returns>System.Int32.</returns>
         public static int Count(this IEnumerable list)
         {
-
-            if (list is ICollection collection)
+            if(list is ICollection collection)
             {
                 return collection.Count;
             }
@@ -143,7 +173,7 @@ namespace dotNetTips.Utility.Standard.Extensions
 
             var enumerator = list.GetEnumerator();
 
-            while (enumerator.MoveNext())
+            while(enumerator.MoveNext())
             {
                 count++;
             }
@@ -158,10 +188,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <typeparam name="TKey">The type of the t key.</typeparam>
         /// <typeparam name="TValue">The type of the t value.</typeparam>
         /// <param name="items">The items.</param>
-        public static void DisposeCollection<TKey, TValue>(this IDictionary<TKey, TValue> items)
-        {
-            ProcessCollectionToDispose(items.Select(p => p.Value));
-        }
+        public static void DisposeCollection<TKey, TValue>(this IDictionary<TKey, TValue> items) => ProcessCollectionToDispose(items.Select(p => p.Value));
 
         /// <summary>
         /// Fasts any.
@@ -173,7 +200,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentNullException">predicate - predicate</exception>
         public static bool FastAny<T>(this IEnumerable<T> source, Func<T, bool> predicate)
         {
-            if (predicate == null)
+            if(predicate == null)
             {
                 throw new ArgumentNullException(nameof(predicate), $"{nameof(predicate)} is null.");
             }
@@ -198,25 +225,25 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// source</exception>
         public static int FastCount<T>(this IEnumerable<T> source, Func<T, bool> predicate)
         {
-            if (source == null)
+            if(source == null)
             {
                 throw new ArgumentNullException(nameof(source));
             }
 
-            if (predicate == null)
+            if(predicate == null)
             {
                 throw new ArgumentNullException(nameof(predicate));
             }
 
-            if (source is List<T>)
+            if(source is List<T>)
             {
                 var finalCount = 0;
                 var list = (List<T>)source;
                 var count = list.Count;
 
-                for (var j = 0; j < count; j++)
+                for(var j = 0; j < count; j++)
                 {
-                    if (predicate(list[j]))
+                    if(predicate(list[j]))
                     {
                         finalCount++;
                     }
@@ -239,11 +266,12 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentNullException">list - Source cannot be null.
         /// or
         /// match - Match cannot be null.</exception>
-        public static T? FirstOrNull<T>(this IEnumerable<T> list, Func<T, bool> match) where T : struct
+        public static T? FirstOrNull<T>(this IEnumerable<T> list, Func<T, bool> match)
+            where T : struct
         {
-            foreach (var local in list)
+            foreach(var local in list)
             {
-                if (match?.Invoke(local) ?? default(bool))
+                if(match?.Invoke(local) ?? default(bool))
                 {
                     return new T?(local);
                 }
@@ -317,7 +345,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <remarks>Code by: C.F.Meijers</remarks>
         public static IEnumerable<T> OrderBy<T>(this IEnumerable<T> list, string sortExpression)
         {
-            if (string.IsNullOrEmpty(sortExpression))
+            if(string.IsNullOrEmpty(sortExpression))
             {
                 return null;
             }
@@ -327,23 +355,25 @@ namespace dotNetTips.Utility.Standard.Extensions
             var descending = false;
             var property = string.Empty;
 
-            if (parts.Length > 0 && !string.IsNullOrEmpty(parts[0]))
+            if(parts.Length > 0 && !string.IsNullOrEmpty(parts[0]))
             {
                 property = parts[0];
 
-                if (parts.Length > 1)
+                if(parts.Length > 1)
                 {
                     @descending = CultureInfo.InvariantCulture.TextInfo.ToLower(parts[1]).Contains("esc");
                 }
 
                 var prop = typeof(T).GetRuntimeProperty(property);
 
-                if (prop is null)
+                if(prop is null)
                 {
                     throw new InvalidCastException($"{(string.Format(CultureInfo.InvariantCulture, "{0}{1}", Convert.ToString("No property '", CultureInfo.InvariantCulture), property))}' in + {typeof(T).Name}'");
                 }
 
-                return @descending ? list.OrderByDescending(x => prop.GetValue(x, null)) : list.OrderBy(x => prop.GetValue(x, null));
+                return @descending
+                    ? list.OrderByDescending(x => prop.GetValue(x, null))
+                    : list.OrderBy(x => prop.GetValue(x, null));
             }
 
             return list;
@@ -361,16 +391,16 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// list - Page size cannot be 0 length.</exception>
         public static IEnumerable<IEnumerable<T>> Page<T>(this IEnumerable<T> list, int pageSize)
         {
-            using (var enumerator = list.GetEnumerator())
+            using(var enumerator = list.GetEnumerator())
             {
-                while (enumerator.MoveNext())
+                while(enumerator.MoveNext())
                 {
                     var currentPage = new List<T>(pageSize)
-            {
-                enumerator.Current
-            };
+                    {
+                        enumerator.Current
+                    };
 
-                    while (currentPage.Count < pageSize && enumerator.MoveNext())
+                    while(currentPage.Count < pageSize && enumerator.MoveNext())
                     {
                         currentPage.Add(enumerator.Current);
                     }
@@ -390,10 +420,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.
         /// or
         /// list - Count cannot be 0.</exception>
-        public static IEnumerable<T> PickRandom<T>(this IEnumerable<T> list, int count)
-        {
-            return list.Randomize().Take(count);
-        }
+        public static IEnumerable<T> PickRandom<T>(this IEnumerable<T> list, int count) => list.Randomize().Take(count);
 
         /// <summary>
         /// Groups the elements of a sequence according to a specified firstKey selector function and
@@ -416,13 +443,16 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// firstKeySelector - First key selector cannot be null.
         /// or
         /// secondKeySelector - Second key selector cannot be null.</exception>
-        public static Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>> Pivot<TSource, TFirstKey, TSecondKey, TValue>(this IEnumerable<TSource> list, Func<TSource, TFirstKey> firstKeySelector, Func<TSource, TSecondKey> secondKeySelector, Func<IEnumerable<TSource>, TValue> aggregate)
+        public static Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>> Pivot<TSource, TFirstKey, TSecondKey, TValue>(this IEnumerable<TSource> list,
+                                                                                                                          Func<TSource, TFirstKey> firstKeySelector,
+                                                                                                                          Func<TSource, TSecondKey> secondKeySelector,
+                                                                                                                          Func<IEnumerable<TSource>, TValue> aggregate)
         {
             var returnValue = new Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>>();
 
             var lookup = list.ToLookup(firstKeySelector);
 
-            foreach (var item in lookup)
+            foreach(var item in lookup)
             {
                 var collection = new Dictionary<TSecondKey, TValue>();
 
@@ -430,7 +460,7 @@ namespace dotNetTips.Utility.Standard.Extensions
 
                 var secondLookup = item.ToLookup(secondKeySelector);
 
-                foreach (var subitem in secondLookup)
+                foreach(var subitem in secondLookup)
                 {
                     collection.Add(subitem.Key, aggregate.Invoke(subitem));
                 }
@@ -460,9 +490,9 @@ namespace dotNetTips.Utility.Standard.Extensions
         {
             var sb = new StringBuilder();
 
-            foreach (var item in list)
+            foreach(var item in list)
             {
-                if (sb.Length > 0)
+                if(sb.Length > 0)
                 {
                     sb.Append(delimiter.ToString(CultureInfo.CurrentCulture));
                 }
@@ -483,7 +513,8 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// is List of TValue type.</returns>
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
         /// <remarks>Original code by: James Michael Hare</remarks>
-        public static Dictionary<TKey, List<TValue>> ToDictionary<TKey, TValue>(this IEnumerable<IGrouping<TKey, TValue>> list) => list.ToDictionary(group => group.Key, group => group.ToList());
+        public static Dictionary<TKey, List<TValue>> ToDictionary<TKey, TValue>(this IEnumerable<IGrouping<TKey, TValue>> list) => list.ToDictionary(group => group.Key,
+                                                                                                                                                     group => group.ToList());
 
         /// <summary>
         /// Returns no duplicates.
@@ -530,10 +561,11 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <returns>IEnumerable&lt;TSource&gt;.</returns>
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
         /// <remarks>Original code by: Phil Campbell</remarks>
-        public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> list, bool condition, Func<TSource, bool> predicate)
-        {
-            return condition ? list.Where(predicate) : list;
-        }
+        public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> list,
+                                                            bool condition,
+                                                            Func<TSource, bool> predicate) => condition
+            ? list.Where(predicate)
+            : list;
 
         /// <summary>
         /// Returns list based on function.
@@ -545,50 +577,10 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <returns>IEnumerable&lt;TSource&gt;.</returns>
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
         /// <remarks>Original code by: Phil Campbell</remarks>
-        public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> list, bool condition, Func<TSource, int, bool> predicate)
-        {
-            return condition ? list.Where(predicate) : list;
-        }
-
-        /// <summary>
-        /// Disposes the collection.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="items">The items.</param>
-        internal static void DisposeCollection<T>(this IEnumerable<T> items)
-        {
-            ProcessCollectionToDispose(items);
-        }
-
-        /// <summary>
-        /// Tries to dispose collection items.
-        /// </summary>
-        /// <param name="items">The items.</param>
-        internal static void DisposeCollection(this IEnumerable items)
-        {
-            ProcessCollectionToDispose(items);
-        }
-
-        /// <summary>
-        /// Processes the collection to dispose.
-        /// </summary>
-        /// <param name="items">The items.</param>
-        private static void ProcessCollectionToDispose(IEnumerable items)
-        {
-            if (items.IsValid())
-            {
-                foreach (var item in items)
-                {
-                    if (item != null && item is IDisposable disposableItem)
-                    {
-                        disposableItem.TryDispose();
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
-            }
-        }
+        public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> list,
+                                                            bool condition,
+                                                            Func<TSource, int, bool> predicate) => condition
+            ? list.Where(predicate)
+            : list;
     }
 }

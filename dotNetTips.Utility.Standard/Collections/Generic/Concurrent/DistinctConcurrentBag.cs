@@ -4,14 +4,16 @@
 // Created          : 12-14-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-14-2017
+// Last Modified On : 05-28-2018
 // ***********************************************************************
 // <copyright file="DistinctConcurrentBag.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
+using dotNetTips.Utility.Standard.OOP;
 // ***********************************************************************
 
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 
@@ -47,9 +49,12 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// <param name="collection">The collection whose elements are copied to the new <see cref="T:System.Collections.Concurrent.ConcurrentBag`1"></see>.</param>
         public DistinctConcurrentBag(IEnumerable<T> collection)
         {
-            foreach (var item in collection)
+            if(collection != null)
             {
-                this.Add(item);
+                foreach(var item in collection)
+                {
+                    Add(item);
+                }
             }
         }
 
@@ -59,14 +64,16 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// <param name="item">The object to be added to the <see cref="T:System.Collections.Concurrent.ConcurrentBag`1"></see>. The value can be a null reference (Nothing in Visual Basic) for reference types.</param>
         public new void Add(T item)
         {
+            Encapsulation.TryValidateParam<ArgumentNullException>(item != null, nameof(item));
+
             var hashCode = item.GetHashCode();
 
-            lock (this._lock)
+            lock(_lock)
             {
-                if (this._hashCodes.Contains(hashCode) == false)
+                if(_hashCodes.Contains(hashCode) == false)
                 {
                     base.Add(item);
-                    this._hashCodes.Add(hashCode);
+                    _hashCodes.Add(hashCode);
                 }
             }
         }
@@ -78,14 +85,13 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// <returns>true if an object was removed successfully; otherwise, false.</returns>
         public new bool TryTake(out T result)
         {
-            lock (this._lock)
+            lock(_lock)
             {
-                if (base.TryTake(out result))
+                if(base.TryTake(out result))
                 {
-                    this._hashCodes.Remove(result.GetHashCode());
+                    _hashCodes.Remove(result.GetHashCode());
                     return true;
-                }
-                else
+                } else
                 {
                     return false;
                 }

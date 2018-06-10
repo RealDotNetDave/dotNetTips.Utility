@@ -31,6 +31,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="upper">Upper bound</param>
         /// <returns>True/False</returns>
         public static bool Between(this int theNumber, int lower, int upper) => theNumber >= lower && theNumber <= upper;
+
         /// <summary>
         /// Decrement a number ensuring it never passes a given lower-bound.
         /// </summary>
@@ -43,6 +44,7 @@ namespace dotNetTips.Utility.Standard.Extensions
             var n = number - step;
             return n < lowerBound ? lowerBound : n;
         }
+
         /// <summary>
         /// Increment a number ensuring it never passes a given upper-bound.
         /// </summary>
@@ -55,6 +57,7 @@ namespace dotNetTips.Utility.Standard.Extensions
             var n = number + step;
             return n > upperBound ? upperBound : n;
         }
+
         /// <summary>
         /// Indicate whether the number is even.
         /// </summary>
@@ -71,7 +74,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="interval">The interval.</param>
         /// <returns><c>true</c> if the specified number is interval; otherwise, <c>false</c>.</returns>
         public static bool IsInterval(this int num, int interval) => num % interval == 0 ? true : false;
-       
+
         /// <summary>
         /// Noes the duplicates.
         /// </summary>
@@ -79,7 +82,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <returns>System.Int32().</returns>
         /// <remarks>Code by: Kevin S Gallagher</remarks>
         public static IEnumerable<int> RemoveDuplicates(this int[] values) => values.Distinct().AsEnumerable();
-       
+
         /// <summary>
         /// Returns the nearest power of 2 that is bigger than the number.
         /// </summary>
@@ -88,15 +91,16 @@ namespace dotNetTips.Utility.Standard.Extensions
         public static int RoundToPowerOf2(this int theNumber)
         {
             var exponent = 1;
-            while (true)
+            while(true)
             {
                 var powerOf2 = (uint)Math.Pow(2, exponent++);
-                if (powerOf2 >= theNumber)
+                if(powerOf2 >= theNumber)
                 {
                     return (int)powerOf2;
                 }
             }
         }
+
         /// <summary>
         /// Parse the number to a string or a default string if outside given range.
         /// </summary>
@@ -105,10 +109,13 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="upperLimit">Upper bound</param>
         /// <param name="defaultText">Default text</param>
         /// <returns>String</returns>
-        public static string ToStringOrEmpty(this int theNumber, int lowerLimit = 0, int upperLimit = 9000, string defaultText = "")
-        {
-            return theNumber <= lowerLimit || theNumber > upperLimit ? defaultText : theNumber.ToString(CultureInfo.InvariantCulture);
-        }
+        public static string ToStringOrEmpty(this int theNumber,
+                                             int lowerLimit = 0,
+                                             int upperLimit = 9000,
+                                             string defaultText = "") => theNumber <= lowerLimit ||
+                theNumber > upperLimit
+            ? defaultText
+            : theNumber.ToString(CultureInfo.InvariantCulture);
 
         /// <summary>
         /// Translate the number in words (English)
@@ -117,54 +124,76 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <returns>String</returns>
         public static string ToWords(this int number)
         {
-            if (number == 0)
+            if(number == 0)
             {
                 return "Zero";
             }
 
-            if (number < 0)
+            if(number < 0)
             {
                 return "Minus " + ToWords(Math.Abs(number));
             }
 
             var words = string.Empty;
 
-            if ((number / 1000000) > 0)
+            if((number / 1000000) > 0)
             {
                 words += ToWords(number / 1000000) + " million ";
                 number %= 1000000;
             }
 
-            if ((number / 1000) > 0)
+            if((number / 1000) > 0)
             {
                 words += ToWords(number / 1000) + " Thousand ";
                 number %= 1000;
             }
 
-            if ((number / 100) > 0)
+            if((number / 100) > 0)
             {
                 words += ToWords(number / 100) + " Hundred ";
                 number %= 100;
             }
 
-            if (number > 0)
+            if(number > 0)
             {
-                if (string.IsNullOrEmpty(words) == false)
+                if(string.IsNullOrEmpty(words) == false)
                 {
                     words += "and ";
                 }
 
-                var units = new[] { "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen" };
-                var tens = new[] { "Zero", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
+                var units = new[]
+                {
+                    "Zero",
+                    "One",
+                    "Two",
+                    "Three",
+                    "Four",
+                    "Five",
+                    "Six",
+                    "Seven",
+                    "Eight",
+                    "Nine",
+                    "Ten",
+                    "Eleven",
+                    "Twelve",
+                    "Thirteen",
+                    "Fourteen",
+                    "Fifteen",
+                    "Sixteen",
+                    "Seventeen",
+                    "Eighteen",
+                    "Nineteen"
+                };
+                var tens = new[]
+                { "Zero", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
 
-                if (number < 20)
+                if(number < 20)
                 {
                     words += units[number];
-                }
-                else
+                } else
                 {
                     words += tens[number / 10];
-                    if ((number % 10) > 0)
+                    if((number % 10) > 0)
                     {
                         words += "-" + units[number % 10];
                     }

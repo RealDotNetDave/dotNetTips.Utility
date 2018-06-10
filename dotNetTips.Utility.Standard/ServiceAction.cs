@@ -22,16 +22,27 @@ namespace dotNetTips.Utility.Standard
         /// Gets or sets the service action request.
         /// </summary>
         /// <value>The service action request.</value>
-        public ServiceActionRequest ServiceActionRequest { get; set; }
+        public ServiceActionRequest ServiceActionRequest
+        {
+            get; set;
+        }
+
         /// <summary>
         /// Gets or sets the service action result.
         /// </summary>
         /// <value>The service action result.</value>
-        public ServiceActionResult ServiceActionResult { get; set; }
+        public ServiceActionResult ServiceActionResult
+        {
+            get; set;
+        }
+
         /// <summary>
         /// Gets or sets the name of the service.
         /// </summary>
         /// <value>The name of the service.</value>
-        public string ServiceName { get; set; }
+        public string ServiceName
+        {
+            get; set;
+        }
     }
 }

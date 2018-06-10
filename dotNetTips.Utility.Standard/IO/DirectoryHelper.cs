@@ -10,6 +10,7 @@
 //     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
+using dotNetTips.Utility.Standard.OOP;
 // ***********************************************************************
 
 using System;
@@ -19,7 +20,6 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using dotNetTips.Utility.Standard.OOP;
 
 namespace dotNetTips.Utility.Standard.IO
 {
@@ -37,12 +37,16 @@ namespace dotNetTips.Utility.Standard.IO
             var userPath = Environment.GetEnvironmentVariable(
             RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "LOCALAPPDATA" : "Home");
 
-            var companyName = Assembly.GetEntryAssembly().GetCustomAttributes<AssemblyCompanyAttribute>().FirstOrDefault().Company.Trim();
+            var companyName = Assembly.GetEntryAssembly()
+                .GetCustomAttributes<AssemblyCompanyAttribute>()
+                .FirstOrDefault()
+                .Company.Trim();
 
-            var path = System.IO.Path.Combine(userPath, companyName);
+            var path = Path.Combine(userPath, companyName);
 
             return path;
         }
+
         /// <summary>
         /// Delete directory as an asynchronous operation.
         /// </summary>
@@ -54,17 +58,19 @@ namespace dotNetTips.Utility.Standard.IO
         {
             Encapsulation.TryValidateParam<ArgumentNullException>(directory != null);
 
-            if (directory.Exists)
+            if(directory.Exists)
             {
                 await Task.Factory.StartNew(() =>
                 {
                     directory.Delete(recursive: true);
                     return true;
-                }).ConfigureAwait(true);
+                })
+                    .ConfigureAwait(true);
             }
 
             return false;
         }
+
         /// <summary>
         /// Loads the files.
         /// </summary>
@@ -72,16 +78,19 @@ namespace dotNetTips.Utility.Standard.IO
         /// <param name="searchPattern">The search pattern.</param>
         /// <param name="searchOption">The search option.</param>
         /// <returns>IEnumerable(Of FileInfo).</returns>
-        public static IEnumerable<FileInfo> LoadFiles(IEnumerable<DirectoryInfo> directories, string searchPattern, SearchOption searchOption)
+        public static IEnumerable<FileInfo> LoadFiles(IEnumerable<DirectoryInfo> directories,
+                                                      string searchPattern,
+                                                      SearchOption searchOption)
         {
             var files = new List<FileInfo>();
 
-            Parallel.ForEach(directories, (directory) =>
+            Parallel.ForEach(directories,
+                             (directory) =>
             {
-                if ((directory.Exists))
+                if((directory.Exists))
                 {
                     var foundFiles = directory.EnumerateFiles(searchPattern, searchOption);
-                    lock (files)
+                    lock(files)
                     {
                         files.AddRange(foundFiles);
                     }
@@ -97,23 +106,23 @@ namespace dotNetTips.Utility.Standard.IO
         /// <param name="rootDirectory">The root directory.</param>
         /// <param name="searchPattern">The search pattern.</param>
         /// <returns>IEnumerable&lt;DirectoryInfo&gt;.</returns>
-        public static IEnumerable<DirectoryInfo> SafeDirectorySearch(DirectoryInfo rootDirectory, string searchPattern = ControlChars.DoubleQuote)
+        public static IEnumerable<DirectoryInfo> SafeDirectorySearch(DirectoryInfo rootDirectory,
+                                                                     string searchPattern = ControlChars.DoubleQuote)
         {
             Encapsulation.TryValidateParam(rootDirectory, nameof(rootDirectory));
 
             var folders = new List<DirectoryInfo>();
             folders.Add(rootDirectory);
 
-            foreach (var topFolder in rootDirectory.GetDirectories(searchPattern, SearchOption.TopDirectoryOnly))
+            foreach(var topFolder in rootDirectory.GetDirectories(searchPattern, SearchOption.TopDirectoryOnly))
             {
                 try
                 {
-                    foreach (var folder in SafeDirectorySearch(topFolder, searchPattern))
+                    foreach(var folder in SafeDirectorySearch(topFolder, searchPattern))
                     {
                         folders.Add(folder);
                     }
-                }
-                catch (UnauthorizedAccessException)
+                } catch(UnauthorizedAccessException)
                 {
                     //Ignore and keep going
                 }

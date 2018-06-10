@@ -240,7 +240,9 @@ Namespace Net
                 Return Me._mailServer.Timeout
             End Get
             Set(ByVal value As Int32)
-                Me._mailServer.Timeout = value
+                If (value <> Me.Timeout AndAlso value >= 0) Then
+                    Me._mailServer.Timeout = value
+                End If
             End Set
         End Property
 #End Region

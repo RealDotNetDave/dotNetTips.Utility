@@ -10,11 +10,11 @@
 //     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
+using dotNetTips.Utility.Standard.Extensions;
 // ***********************************************************************
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using dotNetTips.Utility.Standard.Extensions;
 
 namespace dotNetTips.Utility.Standard.Collections.Generic
 {
@@ -35,6 +35,22 @@ namespace dotNetTips.Utility.Standard.Collections.Generic
         }
 
         /// <summary>
+        /// Cones this instance.
+        /// </summary>
+        /// <returns>T.</returns>
+        public T Cone() => this.Clone<T>();
+
+        /// <summary>
+        /// Returns an enumerator that iterates through the <see cref="T:System.Collections.Generic.List`1"></see>.
+        /// </summary>
+        /// <returns>A <see cref="T:System.Collections.Generic.List`1.Enumerator"></see> for the <see cref="T:System.Collections.Generic.List`1"></see>.</returns>
+        public new Enumerator GetEnumerator()
+        {
+            base.Sort();
+            return base.GetEnumerator();
+        }
+
+        /// <summary>
         /// Copies the elements of the <see cref="T:System.Collections.Generic.List`1"></see> to a new array.
         /// </summary>
         /// <returns>An array containing copies of the elements of the <see cref="T:System.Collections.Generic.List`1"></see>.</returns>
@@ -52,25 +68,6 @@ namespace dotNetTips.Utility.Standard.Collections.Generic
         {
             base.Sort();
             return new List<T>(base.ToArray());
-        }
-
-        /// <summary>
-        /// Returns an enumerator that iterates through the <see cref="T:System.Collections.Generic.List`1"></see>.
-        /// </summary>
-        /// <returns>A <see cref="T:System.Collections.Generic.List`1.Enumerator"></see> for the <see cref="T:System.Collections.Generic.List`1"></see>.</returns>
-        public new Enumerator GetEnumerator()
-        {
-            base.Sort();
-            return base.GetEnumerator();
-        }
-
-        /// <summary>
-        /// Cones this instance.
-        /// </summary>
-        /// <returns>T.</returns>
-        public T Cone()
-        {
-            return this.Clone<T>();
         }
     }
 }

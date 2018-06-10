@@ -25,11 +25,18 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// Gets or sets the description.
         /// </summary>
         /// <value>The description.</value>
-        public string Description { get; set; }
+        public string Description
+        {
+            get; set;
+        }
+
         /// <summary>
         /// Gets or sets the value.
         /// </summary>
         /// <value>The value.</value>
-        public T Value { get; set; }
+        public T Value
+        {
+            get; set;
+        }
     }
 }

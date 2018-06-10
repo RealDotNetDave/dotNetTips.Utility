@@ -38,33 +38,6 @@ namespace dotNetTips.Utility.Standard.Extensions
         }
 
         /// <summary>
-        /// Given a date, it returns the next (specified) day of week
-        /// </summary>
-        /// <param name="date">Date to process</param>
-        /// <param name="day">Day of week to find on calendar</param>
-        /// <returns>Future date</returns>
-        public static DateTime NextDayOfWeek(this DateTime date, DayOfWeek day = DayOfWeek.Monday)
-        {
-            while (true)
-            {
-                if (date.DayOfWeek == day)
-                {
-                    return date;
-                }
-
-                date = date.AddDays(1);
-            }
-        }
-
-        /// <summary>
-        /// Given a date, it returns the next (specified) day of week
-        /// </summary>
-        /// <param name="date">Date to process</param>
-        /// <param name="timezoneFromUtc">Hours of the timezone from UTC</param>
-        /// <returns>Future date</returns>
-        public static DateTime LocalTimeFromUtc(this DateTime date, int timezoneFromUtc) => date.ToUniversalTime().AddHours(timezoneFromUtc);
-
-        /// <summary>
         /// Gets the next.
         /// </summary>
         /// <param name="input">The date/ time.</param>
@@ -97,6 +70,34 @@ namespace dotNetTips.Utility.Standard.Extensions
             intersectingStartDate <= endDate;
 
         /// <summary>
+        /// Given a date, it returns the next (specified) day of week
+        /// </summary>
+        /// <param name="date">Date to process</param>
+        /// <param name="timezoneFromUtc">Hours of the timezone from UTC</param>
+        /// <returns>Future date</returns>
+        public static DateTime LocalTimeFromUtc(this DateTime date, int timezoneFromUtc) => date.ToUniversalTime()
+            .AddHours(timezoneFromUtc);
+
+        /// <summary>
+        /// Given a date, it returns the next (specified) day of week
+        /// </summary>
+        /// <param name="date">Date to process</param>
+        /// <param name="day">Day of week to find on calendar</param>
+        /// <returns>Future date</returns>
+        public static DateTime NextDayOfWeek(this DateTime date, DayOfWeek day = DayOfWeek.Monday)
+        {
+            while(true)
+            {
+                if(date.DayOfWeek == day)
+                {
+                    return date;
+                }
+
+                date = date.AddDays(1);
+            }
+        }
+
+        /// <summary>
         /// To the friendly date string.
         /// </summary>
         /// <param name="input">The date.</param>
@@ -105,11 +106,10 @@ namespace dotNetTips.Utility.Standard.Extensions
         {
             var formattedDate = string.Empty;
 
-            if (input.Date == DateTime.Today)
+            if(input.Date == DateTime.Today)
             {
                 formattedDate = nameof(DateTime.Today);
-            }
-            else
+            } else
             {
                 formattedDate = input.Date == DateTime.Today.AddDays(-1)
                     ? Resources.Yesterday

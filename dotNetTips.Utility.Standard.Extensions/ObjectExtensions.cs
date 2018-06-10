@@ -46,7 +46,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <returns>T.</returns>
         public static T Clone<T>(this object obj)
         {
-            using (var stream = new MemoryStream())
+            using(var stream = new MemoryStream())
             {
                 var formatter = new BinaryFormatter();
 
@@ -58,6 +58,31 @@ namespace dotNetTips.Utility.Standard.Extensions
         }
 
         /// <summary>
+        /// Computes the m d5 hash.
+        /// </summary>
+        /// <param name="data">The data.</param>
+        /// <returns>System.String.</returns>
+        public static string ComputeMD5Hash(this object data)
+        {
+            // Create a MD5   
+            using(var md5Hash = MD5.Create())
+            {
+                // ComputeHash - returns byte array  
+                var bytes = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(data.ToJson()));
+
+                // Convert byte array to a string   
+                var builder = new StringBuilder();
+
+                for(int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2", CultureInfo.InvariantCulture));
+                }
+
+                return builder.ToString();
+            }
+        }
+
+        /// <summary>
         /// Computes the sha256 hash.
         /// </summary>
         /// <param name="data">The data.</param>
@@ -65,7 +90,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         public static string ComputeSha256Hash(this object data)
         {
             // Create a SHA256   
-            using (var sha256Hash = SHA256.Create())
+            using(var sha256Hash = SHA256.Create())
             {
                 // ComputeHash - returns byte array  
                 var bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(data.ToJson()));
@@ -73,7 +98,7 @@ namespace dotNetTips.Utility.Standard.Extensions
                 // Convert byte array to a string   
                 var builder = new StringBuilder();
 
-                for (int i = 0; i < bytes.Length; i++)
+                for(int i = 0; i < bytes.Length; i++)
                 {
                     builder.Append(bytes[i].ToString("x2", CultureInfo.InvariantCulture));
                 }
@@ -90,17 +115,16 @@ namespace dotNetTips.Utility.Standard.Extensions
         {
             var fieldInfos = obj.GetType().GetRuntimeFields();
 
-            foreach (var fieldInfo in fieldInfos.Where(p => p.IsStatic == false).AsParallel())
+            foreach(var fieldInfo in fieldInfos.Where(p => p.IsStatic == false).AsParallel())
             {
                 var value = fieldInfo.GetValue(obj);
 
-                if (value != null)
+                if(value != null)
                 {
-                    if (value is IDisposable disposableItem)
+                    if(value is IDisposable disposableItem)
                     {
                         disposableItem.TryDispose();
-                    }
-                    else if (value is IEnumerable collection)
+                    } else if(value is IEnumerable collection)
                     {
                         collection.DisposeCollection();
                     }
@@ -126,7 +150,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         public static T FromJsonFile<T>(string fileName)
             where T : class
         {
-            if (File.Exists(fileName) == false)
+            if(File.Exists(fileName) == false)
             {
                 throw new FileNotFoundException(Resources.FileNotFound, fileName);
             }
@@ -171,12 +195,12 @@ namespace dotNetTips.Utility.Standard.Extensions
         {
             var fieldInfos = obj.GetType().GetRuntimeFields();
 
-            foreach (var fieldInfo in fieldInfos.AsParallel())
+            foreach(var fieldInfo in fieldInfos.AsParallel())
             {
                 var objectValue = fieldInfo.GetValue(obj);
                 var runtimeField = obj.GetType().GetRuntimeField(fieldInfo.Name);
 
-                if (runtimeField != null)
+                if(runtimeField != null)
                 {
                     var t = Nullable.GetUnderlyingType(runtimeField.FieldType) ?? runtimeField.FieldType;
                     var safeValue = (objectValue == null)
@@ -228,6 +252,12 @@ namespace dotNetTips.Utility.Standard.Extensions
         }
 
         /// <summary>
+        /// Tries the to call Dispose.
+        /// </summary>
+        /// <param name="obj">The obj.</param>
+        public static void TryDispose(this IDisposable obj) => ObjectExtensions.TryDispose(obj, false);
+
+        /// <summary>
         /// Tries to Dispose the object.
         /// </summary>
         /// <param name="obj">The obj.</param>
@@ -236,25 +266,18 @@ namespace dotNetTips.Utility.Standard.Extensions
         {
             try
             {
-                if (IsNotNull(obj))
+                if(IsNotNull(obj))
                 {
                     obj.Dispose();
                     obj = null;
                 }
-            }
-            catch //Swallow exception on purpose.
+            } catch //Swallow exception on purpose.
             {
-                if (throwException)
+                if(throwException)
                 {
                     throw;
                 }
             }
         }
-
-        /// <summary>
-        /// Tries the to call Dispose.
-        /// </summary>
-        /// <param name="obj">The obj.</param>
-        public static void TryDispose(this IDisposable obj) => ObjectExtensions.TryDispose(obj, false);
     }
 }

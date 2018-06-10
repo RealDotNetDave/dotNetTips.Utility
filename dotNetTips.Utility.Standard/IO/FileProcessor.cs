@@ -4,12 +4,14 @@
 // Created          : 08-06-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-20-2017
+// Last Modified On : 03-07-2018
 // ***********************************************************************
 // <copyright file="Processor.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
+using dotNetTips.Utility.Standard.OOP;
+using dotNetTips.Utility.Standard.Properties;
 // ***********************************************************************
 using System;
 using System.Collections.Generic;
@@ -17,8 +19,6 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Security;
-using dotNetTips.Utility.Standard.OOP;
-using dotNetTips.Utility.Standard.Properties;
 
 namespace dotNetTips.Utility.Standard.IO
 {
@@ -36,10 +36,7 @@ namespace dotNetTips.Utility.Standard.IO
         /// Handles the <see cref="E:Processed" /> event.
         /// </summary>
         /// <param name="e">The <see cref="FileProgressEventArgs" /> instance containing the event data.</param>
-        protected virtual void OnProcessed(FileProgressEventArgs e)
-        {
-            Processed?.Invoke(this, e);
-        }
+        protected virtual void OnProcessed(FileProgressEventArgs e) => Processed?.Invoke(this, e);
 
         /// <summary>
         /// Copies files to new location. Will not throw exceptions.
@@ -55,24 +52,26 @@ namespace dotNetTips.Utility.Standard.IO
 
             var successCount = 0;
 
-            var folderPrefix = $@"{Environment.MachineName}-{Environment.UserName}-{(DateTime.Now.ToString(System.Globalization.DateTimeFormatInfo.CurrentInfo.SortableDateTimePattern, CultureInfo.CurrentCulture))}\".ToUpper(CultureInfo.CurrentCulture).Replace(":", ".");
+            var folderPrefix = $@"{Environment.MachineName}-{Environment.UserName}-{(DateTime.Now.ToString(DateTimeFormatInfo.CurrentInfo.SortableDateTimePattern, CultureInfo.CurrentCulture))}\".ToUpper(CultureInfo.CurrentCulture)
+                .Replace(":", ".");
 
             var backupFolder = new DirectoryInfo(Path.Combine(destinationFolder.FullName, folderPrefix));
 
-            if (backupFolder.Exists == false)
+            if(backupFolder.Exists == false)
             {
                 backupFolder.Create();
             }
 
-            foreach (var tempFile in files)
+            foreach(var tempFile in files)
             {
-                if (tempFile.Exists)
+                if(tempFile.Exists)
                 {
                     try
                     {
-                        var newFileName = new FileInfo(tempFile.FullName.Replace(tempFile.Directory.Root.FullName, backupFolder.FullName));
+                        var newFileName = new FileInfo(tempFile.FullName.Replace(tempFile.Directory.Root.FullName,
+                                                                                 backupFolder.FullName));
 
-                        if (newFileName.Directory.Exists == false)
+                        if(newFileName.Directory.Exists == false)
                         {
                             newFileName.Directory.Create();
                         }
@@ -87,8 +86,9 @@ namespace dotNetTips.Utility.Standard.IO
                             ProgressState = FileProgressState.Copied,
                             Size = tempFile.Length
                         });
-                    }
-                    catch (Exception ex) when (ex is IOException || ex is SecurityException || ex is UnauthorizedAccessException || ex is PathTooLongException)
+                    } catch(Exception ex) when (ex is IOException || ex is SecurityException ||
+                        ex is UnauthorizedAccessException ||
+                        ex is PathTooLongException)
                     {
                         OnProcessed(new FileProgressEventArgs
                         {
@@ -98,15 +98,14 @@ namespace dotNetTips.Utility.Standard.IO
                             Message = ex.Message
                         });
                     }
-                }
-                else
+                } else
                 {
                     OnProcessed(new FileProgressEventArgs
                     {
                         Name = tempFile.FullName,
                         ProgressState = FileProgressState.Error,
                         Size = tempFile.Length,
-                        Message = Properties.Resources.FileNotFound
+                        Message = Resources.FileNotFound
                     });
                 }
             }
@@ -126,9 +125,9 @@ namespace dotNetTips.Utility.Standard.IO
 
             var successCount = 0;
 
-            foreach (var tempFile in files.AsParallel())
+            foreach(var tempFile in files.AsParallel())
             {
-                if (tempFile.Exists)
+                if(tempFile.Exists)
                 {
                     try
                     {
@@ -142,9 +141,8 @@ namespace dotNetTips.Utility.Standard.IO
                             ProgressState = FileProgressState.Deleted,
                             Size = tempFile.Length
                         });
-
-                    }
-                    catch (Exception ex) when (ex is IOException || ex is SecurityException || ex is UnauthorizedAccessException)
+                    } catch(Exception ex) when (ex is IOException || ex is SecurityException ||
+                        ex is UnauthorizedAccessException)
                     {
                         OnProcessed(new FileProgressEventArgs
                         {
@@ -154,9 +152,7 @@ namespace dotNetTips.Utility.Standard.IO
                             Message = ex.Message
                         });
                     }
-
-                }
-                else
+                } else
                 {
                     OnProcessed(new FileProgressEventArgs
                     {
@@ -182,9 +178,9 @@ namespace dotNetTips.Utility.Standard.IO
 
             var successCount = 0;
 
-            foreach (var tempFolder in folders.AsParallel())
+            foreach(var tempFolder in folders.AsParallel())
             {
-                if (tempFolder.Exists)
+                if(tempFolder.Exists)
                 {
                     try
                     {
@@ -197,9 +193,9 @@ namespace dotNetTips.Utility.Standard.IO
                             Name = tempFolder.FullName,
                             ProgressState = FileProgressState.Deleted
                         });
-
-                    }
-                    catch (Exception ex) when (ex is IOException || ex is SecurityException || ex is UnauthorizedAccessException || ex is DirectoryNotFoundException)
+                    } catch(Exception ex) when (ex is IOException || ex is SecurityException ||
+                        ex is UnauthorizedAccessException ||
+                        ex is DirectoryNotFoundException)
                     {
                         OnProcessed(new FileProgressEventArgs
                         {
@@ -208,8 +204,7 @@ namespace dotNetTips.Utility.Standard.IO
                             Message = ex.Message
                         });
                     }
-                }
-                else
+                } else
                 {
                     OnProcessed(new FileProgressEventArgs
                     {

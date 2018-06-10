@@ -22,13 +22,9 @@ namespace dotNetTips.Utility.Standard.Web
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <seealso cref="System.IDisposable" />
-    public abstract class ServiceProxy<T> where T : ICommunicationObject, IDisposable
+    public abstract class ServiceProxy<T>
+        where T : ICommunicationObject, IDisposable
     {
-        /// <summary>
-        /// The disposed
-        /// </summary>
-        protected bool disposed;
-
         /// <summary>
         /// The channel
         /// </summary>
@@ -48,14 +44,73 @@ namespace dotNetTips.Utility.Standard.Web
         /// The service endpoint
         /// </summary>
         private readonly string _serviceEndpoint;
+        /// <summary>
+        /// The disposed
+        /// </summary>
+        protected bool disposed;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceProxy{T}" /> class.
         /// </summary>
         /// <param name="serviceEndpoint">The service endpoint.</param>
-        protected ServiceProxy(string serviceEndpoint)
+        protected ServiceProxy(string serviceEndpoint) => _serviceEndpoint = serviceEndpoint;
+
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
+        private void Initialize()
         {
-            this._serviceEndpoint = serviceEndpoint;
+            lock(_lock)
+            {
+                if(Channel != null)
+                {
+                    return;
+                }
+
+                _channelFactory = new ChannelFactory<T>(_serviceEndpoint);
+                Channel = _channelFactory.CreateChannel(new EndpointAddress(_serviceEndpoint));
+            }
+        }
+
+        /// <summary>
+        /// Closes the channel.
+        /// </summary>
+        protected void CloseChannel()
+        {
+            if(Channel != null)
+            {
+                ((ICommunicationObject)Channel).Close();
+            }
+        }
+
+        /// <summary>
+        /// Releases unmanaged and - optionally - managed resources.
+        /// </summary>
+        /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            // Do nothing if the object has already been disposed of.
+            if(disposed)
+            {
+                return;
+            }
+
+            if (disposing)
+            {
+                lock(_lock)
+                {
+                    // Release disposable objects used by this instance here.
+                    if(Channel != null)
+                    {
+                        Channel.Dispose();
+                    }
+                }
+            }
+
+            // Release unmanaged resources here. Don't access reference type fields.
+
+            // Remember that the object has been disposed of.
+            disposed = true;
         }
 
         /// <summary>
@@ -67,9 +122,9 @@ namespace dotNetTips.Utility.Standard.Web
             get
             {
                 Initialize();
-                return this._channel;
+                return _channel;
             }
-            private set => this._channel = value;
+            private set => _channel = value;
         }
 
         /// <summary>
@@ -81,61 +136,5 @@ namespace dotNetTips.Utility.Standard.Web
             // Unregister object for finalization.
             GC.SuppressFinalize(this);
         }
-
-        /// <summary>
-        /// Closes the channel.
-        /// </summary>
-        protected void CloseChannel()
-        {
-            if (this.Channel != null)
-            {
-                ((ICommunicationObject)this.Channel).Close();
-            }
-        }
-
-        /// <summary>
-        /// Releases unmanaged and - optionally - managed resources.
-        /// </summary>
-        /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
-        protected virtual void Dispose(bool disposing)
-        {
-            // Do nothing if the object has already been disposed of.
-            if (this.disposed) return;
-
-            if (disposing)
-            {
-                lock (this._lock)
-                {
-                    // Release disposable objects used by this instance here.
-                    if (this.Channel != null)
-                    {
-                        this.Channel.Dispose();
-                    }
-                }
-            }
-
-            // Release unmanaged resources here. Don't access reference type fields.
-
-            // Remember that the object has been disposed of.
-            this.disposed = true;
-        }
-
-        /// <summary>
-        /// Initializes this instance.
-        /// </summary>
-        private void Initialize()
-        {
-            lock (this._lock)
-            {
-                if (this.Channel != null)
-                {
-                    return;
-                }
-
-                this._channelFactory = new ChannelFactory<T>(this._serviceEndpoint);
-                this.Channel = this._channelFactory.CreateChannel(new EndpointAddress(this._serviceEndpoint));
-            }
-        }
     }
-
 }

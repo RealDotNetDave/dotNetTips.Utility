@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-16-2017
+// Last Modified On : 06-06-2018
 // ***********************************************************************
 // <copyright file="AppLogging.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -24,7 +24,10 @@ namespace dotNetTips.Utility.Standard
         /// Gets the logger.
         /// </summary>
         /// <value>The logger.</value>
-        public static ILogger Logger { get; private set; }
+        public static ILogger Logger
+        {
+            get; private set;
+        }
 
         /// <summary>
         /// Gets the logger factory.

@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-16-2017
+// Last Modified On : 06-10-2018
 // ***********************************************************************
 // <copyright file="Config.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -13,7 +13,6 @@
 // ***********************************************************************
 using System.IO;
 using System.Xml.Serialization;
-using dotNetTips.Utility.Standard.Extensions;
 using dotNetTips.Utility.Standard.Xml;
 
 namespace dotNetTips.Utility.Standard
@@ -22,20 +21,25 @@ namespace dotNetTips.Utility.Standard
     /// Class Config.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    /// <seealso cref="dotNetTips.Utility.Standard.ISingleton{T}" />
-    public class Config<T> : ISingleton<T> where T : class
+    public class Config<T> where T : class, new()
     {
+
         /// <summary>
-        /// The instance
+        /// Prevents a default instance of the <see cref="Config{T}" /> class from being created.
         /// </summary>
-        private T _instance;
+        private Config() : this(ConfigStorageLocation.User)
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Config{T}" /> class.
         /// </summary>
-        protected Config()
+        /// <param name="storageLocation">The storage location.</param>
+        protected Config(ConfigStorageLocation storageLocation)
         {
-            var localAppData = System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
+            var localAppData = string.Empty;
+
+            localAppData = storageLocation == ConfigStorageLocation.User ? System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData) : Directory.GetCurrentDirectory();
 
             var fileName = $"{App.AssemblyInfo.Product}.config";
 
@@ -49,21 +53,7 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         /// <value>The name of the configuration file.</value>
         [XmlIgnore]
-        public string ConfigFileName { get; protected set; }
-
-        /// <summary>
-        /// Instances this instance.
-        /// </summary>
-        /// <returns>T.</returns>
-        private T GetInstance()
-        {
-            if (this._instance is null)
-            {
-                this._instance = TypeHelper.Create<T>();
-            }
-
-            return this._instance;
-        }
+        public string ConfigFileName { get; private set; }
 
         /// <summary>
         /// Loads this instance.
@@ -73,7 +63,7 @@ namespace dotNetTips.Utility.Standard
         {
             if (File.Exists(this.ConfigFileName))
             {
-                this._instance = XmlHelper.DeserializeFromXmlFile<T>(this.ConfigFileName);
+                Instance = XmlHelper.DeserializeFromXmlFile<T>(this.ConfigFileName);
 
                 return true;
             }
@@ -92,7 +82,7 @@ namespace dotNetTips.Utility.Standard
                 File.Delete(this.ConfigFileName);
             }
 
-            XmlHelper.SerializeToXmlFile(this.GetInstance(), this.ConfigFileName);
+            XmlHelper.SerializeToXmlFile(Instance, this.ConfigFileName);
 
             return true;
         }
@@ -100,10 +90,8 @@ namespace dotNetTips.Utility.Standard
         /// <summary>
         /// Returns instance for the object.
         /// </summary>
-        /// <returns>T.</returns>
-        public T Instance()
-        {
-            return this.GetInstance();
-        }
+        /// <value>The instance.</value>
+        [XmlIgnore]
+        public static T Instance { get; private set; } = TypeHelper.Create<T>();
     }
 }

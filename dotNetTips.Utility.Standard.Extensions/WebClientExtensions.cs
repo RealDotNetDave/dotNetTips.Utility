@@ -30,16 +30,17 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="client">The client.</param>
         /// <param name="url">The URL.</param>
         /// <returns>T.</returns>
-        public static T ConvertFrom<T>(this WebClient client, string url) where T : class
+        public static T ConvertFrom<T>(this WebClient client, string url)
+            where T : class
         {
             var data = client.DownloadString(url);
 
-            if (string.IsNullOrEmpty(data))
+            if(string.IsNullOrEmpty(data))
             {
                 return null;
             }
 
-            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(data)))
+            using(var stream = new MemoryStream(Encoding.UTF8.GetBytes(data)))
             {
                 var serializer = new DataContractJsonSerializer(typeof(T));
                 var obj = (T)serializer.ReadObject(stream);
@@ -47,7 +48,7 @@ namespace dotNetTips.Utility.Standard.Extensions
                 stream.Flush();
                 stream.Close();
 
-                return obj as T;
+                return obj;
             }
         }
     }
