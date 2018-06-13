@@ -438,12 +438,12 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// <summary>
         /// Gets the bucket.
         /// </summary>
-        /// <param name="hashcode">The hashcode.</param>
+        /// <param name="hashCode">The hashcode.</param>
         /// <param name="bucketCount">The bucket count.</param>
         /// <returns>System.Int32.</returns>
-        private static int GetBucket(int hashcode, int bucketCount)
+        private static int GetBucket(int hashCode, int bucketCount)
         {
-            var bucketNo = (hashcode & 0x7fffffff) % bucketCount;
+            var bucketNo = (hashCode & 0x7fffffff) % bucketCount;
             Debug.Assert(bucketNo >= 0 && bucketNo < bucketCount);
             return bucketNo;
         }
@@ -451,14 +451,14 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// <summary>
         /// Gets the bucket and lock no.
         /// </summary>
-        /// <param name="hashcode">The hashcode.</param>
+        /// <param name="hashCode">The hashcode.</param>
         /// <param name="bucketNo">The bucket no.</param>
         /// <param name="lockNo">The lock no.</param>
         /// <param name="bucketCount">The bucket count.</param>
         /// <param name="lockCount">The lock count.</param>
-        private static void GetBucketAndLockNo(int hashcode, out int bucketNo, out int lockNo, int bucketCount, int lockCount)
+        private static void GetBucketAndLockNo(int hashCode, out int bucketNo, out int lockNo, int bucketCount, int lockCount)
         {
-            bucketNo = (hashcode & 0x7fffffff) % bucketCount;
+            bucketNo = (hashCode & 0x7fffffff) % bucketCount;
             lockNo = bucketNo % lockCount;
 
             Debug.Assert(bucketNo >= 0 && bucketNo < bucketCount);
@@ -518,16 +518,16 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// Adds the internal.
         /// </summary>
         /// <param name="item">The item.</param>
-        /// <param name="hashcode">The hashcode.</param>
+        /// <param name="hashCode">The hashcode.</param>
         /// <param name="acquireLock">if set to <c>true</c> [acquire lock].</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        private bool AddInternal(T item, int hashcode, bool acquireLock)
+        private bool AddInternal(T item, int hashCode, bool acquireLock)
         {
             while (true)
             {
                 var tables = this._tables;
-
-                GetBucketAndLockNo(hashcode, out int bucketNo, out int lockNo, tables.Buckets.Length, tables.Locks.Length);
+               
+                GetBucketAndLockNo(hashCode, out int bucketNo, out int lockNo, tables.Buckets.Length, tables.Locks.Length);
 
                 var resizeDesired = false;
                 var lockTaken = false;
@@ -551,7 +551,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
                     for (var current = tables.Buckets[bucketNo]; current != null; current = current.Next)
                     {
                         Debug.Assert(previous == null && current == tables.Buckets[bucketNo] || previous.Next == current);
-                        if (hashcode == current.Hashcode && this._comparer.Equals(current.Item, item))
+                        if (hashCode == current.Hashcode && this._comparer.Equals(current.Item, item))
                         {
                             return false;
                         }
@@ -559,7 +559,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
                     }
 
                     // The item was not found in the bucket. Insert the new item.
-                    Volatile.Write(ref tables.Buckets[bucketNo], new Node(item, hashcode, tables.Buckets[bucketNo]));
+                    Volatile.Write(ref tables.Buckets[bucketNo], new Node(item, hashCode, tables.Buckets[bucketNo]));
                     checked
                     {
                         tables.CountPerLock[lockNo]++;

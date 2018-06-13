@@ -67,7 +67,7 @@ namespace dotNetTips.Utility.Standard
         /// <typeparam name="T"></typeparam>
         /// <returns>T.</returns>
         /// <remarks>Original code by: Jeremy Clark</remarks>
-        public static T Create<T>() where T : class, new()
+        public static T Create<T>() where T : class
         {
             var instance = Activator.CreateInstance<T>();
 

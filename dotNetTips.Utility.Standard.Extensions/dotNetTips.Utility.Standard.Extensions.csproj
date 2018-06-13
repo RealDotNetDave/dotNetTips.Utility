@@ -3,8 +3,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <DocumentationFile>..\UtilityBin\netstandard2.0\dotNetTips.Utility.Standard.xml</DocumentationFile>
     <OutputPath>..\UtilityBin\netstandard2.0\</OutputPath>
-    <AssemblyVersion>2018.6.10.38596</AssemblyVersion>
-    <FileVersion>2018.6.10.38596</FileVersion>
+    <AssemblyVersion>2018.6.13.1212</AssemblyVersion>
+    <FileVersion>2018.6.13.1212</FileVersion>
     <NeutralLanguage>en</NeutralLanguage>
     <Authors>David McCarter</Authors>
     <Company>dotNetTips.com - David McCarter</Company>
@@ -19,11 +19,12 @@
     <AssemblyOriginatorKeyFile>dotNetTips.Utility.Standard.snk</AssemblyOriginatorKeyFile>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2018.6.10.0</Version>
+    <Version>2018.6.10.2</Version>
     <PackageTags>David McCarter, dotNetDave, dotNetTips.com</PackageTags>
     <AssemblyName>dotNetTips.Utility.Standard.Extensions</AssemblyName>
     <RootNamespace>dotNetTips.Utility.Standard.Extensions</RootNamespace>
     <Configurations>Debug;Release;Full Build</Configurations>
+    <PackageLicenseUrl>https://github.com/RealDotNetDave/dotNetTips.Utility/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>

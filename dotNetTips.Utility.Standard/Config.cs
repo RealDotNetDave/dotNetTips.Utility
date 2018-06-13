@@ -23,28 +23,14 @@ namespace dotNetTips.Utility.Standard
     /// <typeparam name="T"></typeparam>
     public class Config<T> where T : class, new()
     {
-
         /// <summary>
         /// Prevents a default instance of the <see cref="Config{T}" /> class from being created.
         /// </summary>
-        private Config() : this(ConfigStorageLocation.User)
+        private Config()
         {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Config{T}" /> class.
-        /// </summary>
-        /// <param name="storageLocation">The storage location.</param>
-        protected Config(ConfigStorageLocation storageLocation)
-        {
-            var localAppData = string.Empty;
-
-            localAppData = storageLocation == ConfigStorageLocation.User ? System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData) : Directory.GetCurrentDirectory();
-
+            var localAppData = System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
             var fileName = $"{App.AssemblyInfo.Product}.config";
-
             var folder = Path.Combine(localAppData, App.AssemblyInfo.Company);
-
             this.ConfigFileName = Path.Combine(folder, fileName);
         }
 
@@ -63,7 +49,7 @@ namespace dotNetTips.Utility.Standard
         {
             if (File.Exists(this.ConfigFileName))
             {
-                Instance = XmlHelper.DeserializeFromXmlFile<T>(this.ConfigFileName);
+                _instance = XmlHelper.DeserializeFromXmlFile<T>(this.ConfigFileName);
 
                 return true;
             }
@@ -92,6 +78,13 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         /// <value>The instance.</value>
         [XmlIgnore]
-        public static T Instance { get; private set; } = TypeHelper.Create<T>();
+        public static T Instance
+        {
+            get { return _instance; }
+        }
+
+        private static T _instance = new T();
+
+
     }
 }
