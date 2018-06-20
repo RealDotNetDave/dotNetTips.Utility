@@ -1,18 +1,20 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Standard
 // Author           : David McCarter
-// Created          : 06-26-2017
+// Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-27-2018
+// Last Modified On : 06-16-2018
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
-using dotNetTips.Utility.Standard.OOP;
 // ***********************************************************************
 
+using dotNetTips.Utility.Standard.Extensions;
+using dotNetTips.Utility.Standard.OOP;
+using dotNetTips.Utility.Standard.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,6 +30,68 @@ namespace dotNetTips.Utility.Standard.IO
     /// </summary>
     public static class DirectoryHelper
     {
+
+        /// <summary>
+        /// Loads the one drive folders.
+        /// </summary>
+        /// <returns>IEnumerable&lt;OneDriveFolder&gt;.</returns>
+        public static IEnumerable<OneDriveFolder> LoadOneDriveFolders()
+        {
+            var folders = new List<OneDriveFolder>();
+
+            var oneDriveKey = RegistryHelper.GetCurrentUserRegistryKey(RegistryHelper.KeyCurrentUserOneDrive);
+
+            if (oneDriveKey.IsNotNull())
+            {
+                //Get Accounts
+                var accountKey = oneDriveKey.GetSubKey("Accounts");
+
+                if (accountKey.IsNotNull() && accountKey.SubKeyCount > 0)
+                {
+                    foreach (var subKeyName in accountKey.GetSubKeyNames())
+                    {
+                        var key = accountKey.GetSubKey(subKeyName);
+
+                        var folder = new OneDriveFolder();
+                        var directoryValue = key.GetValue<string>( "UserFolder");
+
+                        if (string.IsNullOrEmpty(directoryValue) == false)
+                        {
+
+                            folder.DirectoryInfo = new DirectoryInfo(directoryValue);
+
+                            var emailValue = key.GetValue<string>("UserEmail");
+
+                            if (string.IsNullOrEmpty(emailValue) == false)
+                            {
+                                folder.UserEmail = emailValue;
+                            }
+
+                            //Figure out account type
+                            var name = key.GetValue<string>("DisplayName");
+
+                            if (name.HasValue())
+                            {
+                                folder.AccountType = OneDriveAccountType.Business;
+                                folder.AccountName = name;
+                            }
+                            else
+                            {
+                                folder.AccountName = key.GetValue<string>(string.Empty);
+                            }
+
+                            if (folder.AccountName.HasValue() && folder.UserEmail.HasValue())
+                            {
+                                folders.Add(folder);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return folders.AsEnumerable();
+        }
+
         /// <summary>
         /// Applications the application data folder.
         /// </summary>
@@ -58,7 +122,7 @@ namespace dotNetTips.Utility.Standard.IO
         {
             Encapsulation.TryValidateParam<ArgumentNullException>(directory != null);
 
-            if(directory.Exists)
+            if (directory.Exists)
             {
                 await Task.Factory.StartNew(() =>
                 {
@@ -87,10 +151,10 @@ namespace dotNetTips.Utility.Standard.IO
             Parallel.ForEach(directories,
                              (directory) =>
             {
-                if((directory.Exists))
+                if ((directory.Exists))
                 {
                     var foundFiles = directory.EnumerateFiles(searchPattern, searchOption);
-                    lock(files)
+                    lock (files)
                     {
                         files.AddRange(foundFiles);
                     }
@@ -114,17 +178,18 @@ namespace dotNetTips.Utility.Standard.IO
             var folders = new List<DirectoryInfo>();
             folders.Add(rootDirectory);
 
-            foreach(var topFolder in rootDirectory.GetDirectories(searchPattern, SearchOption.TopDirectoryOnly))
+            foreach (var topFolder in rootDirectory.GetDirectories(searchPattern, SearchOption.TopDirectoryOnly))
             {
                 try
                 {
-                    foreach(var folder in SafeDirectorySearch(topFolder, searchPattern))
+                    foreach (var folder in SafeDirectorySearch(topFolder, searchPattern))
                     {
                         folders.Add(folder);
                     }
-                } catch(UnauthorizedAccessException)
+                }
+                catch (UnauthorizedAccessException ex)
                 {
-                    //Ignore and keep going
+                    System.Diagnostics.Trace.WriteLine(ex.Message);
                 }
             }
 

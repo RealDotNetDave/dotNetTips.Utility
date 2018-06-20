@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-28-2017
+// Last Modified On : 06-06-2018
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -50,6 +50,13 @@ namespace dotNetTips.Utility.Standard.Extensions
         }
 
         /// <summary>
+        /// To the string trimmed.
+        /// </summary>
+        /// <param name="input">The input.</param>
+        /// <returns>System.String.</returns>
+        public static string ToStringTrimmed(this string input) => input.Trim();
+
+        /// <summary>
         /// Computes the sha256 hash.
         /// </summary>
         /// <param name="data">The data.</param>
@@ -65,7 +72,7 @@ namespace dotNetTips.Utility.Standard.Extensions
                 // Convert byte array to a string   
                 var builder = new StringBuilder();
 
-                for (int i = 0; i < bytes.Length; i++)
+                for (var i = 0; i < bytes.Length; i++)
                 {
                     builder.Append(bytes[i].ToString("x2", CultureInfo.InvariantCulture));
                 }
@@ -96,9 +103,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="value">The value.</param>
         /// <param name="defaultValue">The default value.</param>
         /// <returns>System.String.</returns>
-        public static string DefaultIfNullOrEmpty(this string value, string defaultValue) => string.IsNullOrEmpty(value)
-            ? value
-            : defaultValue;
+        public static string DefaultIfNullOrEmpty(this string value, string defaultValue) => string.IsNullOrEmpty(value) ? value : defaultValue;
 
         /// <summary>
         /// Formats the size of the file.

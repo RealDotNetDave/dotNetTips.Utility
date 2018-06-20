@@ -45,7 +45,7 @@ namespace dotNetTips.Utility.Standard
         /// <returns>Info.</returns>
         private static AppInfo Info()
         {
-            if(appInfo == null)
+            if (appInfo == null)
             {
                 appInfo = new AppInfo();
 
@@ -118,7 +118,7 @@ namespace dotNetTips.Utility.Standard
 
             var app = Process.GetProcessesByName(processName).FirstOrDefault();
 
-            if(app != null)
+            if (app != null)
             {
                 app.Kill();
                 app.WaitForExit(6000);
@@ -133,7 +133,7 @@ namespace dotNetTips.Utility.Standard
         {
             var referencedAssemblies = new List<string>();
 
-            foreach(var assembly in Assembly.GetEntryAssembly().GetReferencedAssemblies())
+            foreach (var assembly in Assembly.GetEntryAssembly().GetReferencedAssemblies())
             {
                 referencedAssemblies.Add(assembly.ToString());
             }
@@ -173,7 +173,7 @@ namespace dotNetTips.Utility.Standard
             {
                 var now = Environment.TickCount;
 
-                if(_processorCount == 0 || now - _lastProcessorCountRefreshTicks >= ProcessorCountRefreshInterval)
+                if (_processorCount == 0 || now - _lastProcessorCountRefreshTicks >= ProcessorCountRefreshInterval)
                 {
                     _processorCount = Environment.ProcessorCount;
                     _lastProcessorCountRefreshTicks = now;

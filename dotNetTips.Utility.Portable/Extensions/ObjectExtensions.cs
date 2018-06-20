@@ -42,7 +42,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         {
             var fieldInfos = obj.GetType().GetRuntimeFields();
 
-            foreach (var fieldInfo in fieldInfos.AsParallel())
+            foreach (var fieldInfo in fieldInfos)
             {
                 var value = fieldInfo.GetValue(null) as IDisposable;
 
@@ -64,7 +64,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         {
             var fieldInfos = obj.GetType().GetRuntimeFields();
 
-            foreach (var fieldInfo in fieldInfos.AsParallel())
+            foreach (var fieldInfo in fieldInfos)
             {
                 var objectValue = fieldInfo.GetValue(obj);
                 var runtimeField = obj.GetType().GetRuntimeField(fieldInfo.Name);

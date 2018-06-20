@@ -5,13 +5,14 @@
 
     <IsPackable>false</IsPackable>
 
-    <AssemblyVersion>2018.6.13.1212</AssemblyVersion>
+    <AssemblyVersion>2018.6.19.2974</AssemblyVersion>
 
-    <FileVersion>2018.6.13.1212</FileVersion>
+    <FileVersion>2018.6.19.2974</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
+    <PackageReference Include="Microsoft.Win32.Registry" Version="4.5.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.2.1" />
     <PackageReference Include="MSTest.TestFramework" Version="1.2.1" />
   </ItemGroup>

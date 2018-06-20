@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-16-2017
+// Last Modified On : 06-01-2018
 // ***********************************************************************
 // <copyright file="ArgumentInvalidException.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter

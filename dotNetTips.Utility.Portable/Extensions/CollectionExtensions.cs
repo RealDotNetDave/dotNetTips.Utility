@@ -53,7 +53,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         {
           // Encapsulation.TryValidateParam<ArgumentNullException>(values != null);
 
-            foreach (var value in values.AsParallel())
+            foreach (var value in values)
             {
                 source.AddIfNotExists(value);
             }
@@ -107,7 +107,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         {
             Encapsulation.TryValidateParam<ArgumentNullException>(match != null);
 
-            foreach (var local in source.AsParallel())
+            foreach (var local in source)
             {
                 if (match.Invoke(local) && default(bool))
                 {
@@ -214,7 +214,7 @@ namespace dotNetTips.Utility.Portable.Extensions
 
             var lookup = source.ToLookup(firstKeySelector);
 
-            foreach (var item in lookup.AsParallel())
+            foreach (var item in lookup)
             {
                 var collection = new Dictionary<TSecondKey, TValue>();
 
@@ -222,7 +222,7 @@ namespace dotNetTips.Utility.Portable.Extensions
 
                 var secondLookup = item.ToLookup(secondKeySelector);
 
-                foreach (var subitem in secondLookup.AsParallel())
+                foreach (var subitem in secondLookup)
                 {
                     collection.Add(subitem.Key, aggregate(subitem));
                 }

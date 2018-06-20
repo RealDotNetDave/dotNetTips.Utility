@@ -8,7 +8,8 @@ Imports System
 <Assembly: AssemblyDescription("General .NET Utilities")>
 <Assembly: AssemblyCompany("dotNetTips.com")>
 <Assembly: AssemblyProduct("dotNetTips.Utility.Portable.Windows")>
-<Assembly: AssemblyCopyright("David McCarter - dotNetTips.com © 2017")>
+<Assembly: AssemblyCopyright("David McCarter - dotNetTips.com ï¿½ 2017")>
 <Assembly: AssemblyTrademark("David McCarter - dotNetTips.com")>
-<Assembly: AssemblyVersion("2017.9.28.2332")>
-<Assembly: AssemblyFileVersion("2017.9.28.2332")>
+<Assembly: AssemblyVersion("2018.6.20.36878")>
+<Assembly: AssemblyFileVersion("2018.6.20.36878")>
+<Assembly: AssemblyInformationalVersion("2018.6.3")>

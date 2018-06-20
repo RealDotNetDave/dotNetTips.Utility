@@ -27,7 +27,7 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <returns><c>true</c> if [is XML or json] [the specified content]; otherwise, <c>false</c>.</returns>
         private static bool IsXmlOrJson(this HttpContent content)
         {
-            string type = content.Headers.ContentType?.MediaType;
+            var type = content.Headers.ContentType?.MediaType;
             return type != null && (type.Contains("/xml") || type.Contains("/json"));
         }
     }

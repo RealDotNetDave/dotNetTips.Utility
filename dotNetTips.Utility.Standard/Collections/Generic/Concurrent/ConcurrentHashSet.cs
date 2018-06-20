@@ -4,12 +4,13 @@
 // Created          : 03-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-28-2018
+// Last Modified On : 06-12-2018
 // ***********************************************************************
 // <copyright file="ConcurrentHashSet.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
+// ***********************************************************************
 using dotNetTips.Utility.Standard.OOP;
 // ***********************************************************************
 using System;
@@ -607,7 +608,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// <param name="arrayIndex">The zero-based index in array at which copying begins.</param>
         /// <exception cref="ArgumentException">The index is equal to or greater than the length of the array, or the number of elements in the set is greater than the available space from index to the end of the destination array.</exception>
         /// <exception cref="ArgumentNullException">The index is equal to or greater than the length of the array, or the number of elements in the set is greater than the available space from index to the end of the destination array.</exception>
-        /// <exception cref="ArgumentOutOfRangeException">array</exception>
+        /// <exception cref="ArgumentOutOfRangeException">The index is equal to or greater than the length of the array, or the number of elements in the set is greater than the available space from index to the end of the destination array.</exception>
         void ICollection<T>.CopyTo(T[] array, int arrayIndex)
         {
             Encapsulation.TryValidateParam(array, nameof(array));

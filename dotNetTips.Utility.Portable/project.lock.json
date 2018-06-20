@@ -1,12 +1,12 @@
 {
   "version": 3,
   "targets": {
-    ".NETPortable,Version=v4.5,Profile=Profile7": {}
+    ".NETPortable,Version=v4.5,Profile=Profile49": {}
   },
   "libraries": {},
   "projectFileDependencyGroups": {
     "": [],
-    ".NETPortable,Version=v4.5,Profile=Profile7": []
+    ".NETPortable,Version=v4.5,Profile=Profile49": []
   },
   "packageFolders": {
     "C:\\Users\\dotnetdave\\.nuget\\packages\\": {},
@@ -26,17 +26,21 @@
       ],
       "configFilePaths": [
         "C:\\Users\\dotnetdave\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 18.1.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "http://nuget.grapecity.com/nuget": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "http://nuget.ops.blastmotion.com/feed/nuget/": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://www.nuget.org/api/v2/": {},
+        "p:\\Program Files (x86)\\DevExpress 18.1\\Components\\System\\Components\\Packages": {}
       }
     },
     "frameworks": {
-      "portable45-net45+win8": {}
+      "portable45-net45+wp8": {}
     }
   }
 }

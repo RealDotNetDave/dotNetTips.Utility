@@ -1,28 +1,31 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Standard
 // Author           : David McCarter
-// Created          : 02-11-2017
+// Created          : 06-15-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-01-2018
+// Last Modified On : 06-15-2018
 // ***********************************************************************
-// <copyright file="ICloneable.cs" company="dotNetTips.com - David McCarter">
+// <copyright file="OneDriveAccountType.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace dotNetTips.Utility.Standard
+namespace dotNetTips.Utility.Standard.IO
 {
     /// <summary>
-    /// Interface ICloneable
+    /// Enum OneDriveAccountType
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public interface ICloneable<T>
+    public enum OneDriveAccountType
     {
         /// <summary>
-        /// Cones this instance.
+        /// The personal
         /// </summary>
-        /// <returns>T.</returns>
-        T Cone();
+        Personal,
+
+        /// <summary>
+        /// The business
+        /// </summary>
+        Business
     }
 }

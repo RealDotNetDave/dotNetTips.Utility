@@ -1,20 +1,9 @@
 {
   "version": 3,
   "targets": {
-    ".NETPortable,Version=v4.6,Profile=Profile44": {
-      "dotNetTips.Utility.Portable/1.0.0": {
-        "type": "project",
-        "framework": ".NETPortable,Version=v4.5,Profile=Profile7"
-      }
-    }
+    ".NETPortable,Version=v4.6,Profile=Profile44": {}
   },
-  "libraries": {
-    "dotNetTips.Utility.Portable/1.0.0": {
-      "type": "project",
-      "path": "../dotNetTips.Utility.Portable/project.json",
-      "msbuildProject": "../dotNetTips.Utility.Portable/dotNetTips.Utility.Portable.csproj"
-    }
-  },
+  "libraries": {},
   "projectFileDependencyGroups": {
     "": [],
     ".NETPortable,Version=v4.6,Profile=Profile44": []
@@ -37,22 +26,17 @@
       ],
       "configFilePaths": [
         "C:\\Users\\dotnetdave\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 18.1.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "http://nuget.grapecity.com/nuget": {},
-        "https://api.nuget.org/v3/index.json": {}
-      },
-      "frameworks": {
-        "portable46-net451+win81": {
-          "projectReferences": {
-            "S:\\src\\git\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj": {
-              "projectPath": "S:\\src\\git\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj"
-            }
-          }
-        }
+        "http://nuget.ops.blastmotion.com/feed/nuget/": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://www.nuget.org/api/v2/": {},
+        "p:\\Program Files (x86)\\DevExpress 18.1\\Components\\System\\Components\\Packages": {}
       }
     },
     "frameworks": {

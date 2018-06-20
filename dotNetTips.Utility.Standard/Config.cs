@@ -26,7 +26,7 @@ namespace dotNetTips.Utility.Standard
         /// <summary>
         /// Prevents a default instance of the <see cref="Config{T}" /> class from being created.
         /// </summary>
-        private Config()
+        protected Config()
         {
             var localAppData = System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
             var fileName = $"{App.AssemblyInfo.Product}.config";

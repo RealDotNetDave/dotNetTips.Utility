@@ -1,4 +1,4 @@
-﻿Imports System
+Imports System
 Imports System.Reflection
 Imports System.Resources
 Imports System.Runtime.InteropServices
@@ -15,7 +15,8 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyProduct("dotNetTips.Utility.Windows.Logger")>
 <Assembly: AssemblyCopyright("David McCarter - dotNetTips.com © 2017")>
 <Assembly: AssemblyTrademark("David McCarter - dotNetTips.com")>
-<Assembly: AssemblyVersion("2017.9.28.2334")>
+<Assembly: AssemblyVersion("2018.6.20.36952")>
 <Assembly: ComVisible(False)>
 <Assembly: NeutralResourcesLanguageAttribute("en-US")>
-<Assembly: AssemblyFileVersion("2017.9.28.2334")>
+<Assembly: AssemblyFileVersion("2018.6.20.36952")>
+<Assembly: AssemblyInformationalVersion("2018.6.5")>

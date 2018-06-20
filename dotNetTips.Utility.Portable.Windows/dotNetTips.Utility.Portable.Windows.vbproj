@@ -22,6 +22,7 @@
     </SccProvider>
     <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <AssemblyVersion>2018.6.20.36878</AssemblyVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -36,7 +37,6 @@
     <ApplicationVersion>2017.5.23.2153</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <AssemblyVersion>2017.5.23.2152</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

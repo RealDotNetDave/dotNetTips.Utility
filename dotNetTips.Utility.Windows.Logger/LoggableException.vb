@@ -31,6 +31,11 @@ Imports System.Runtime.Serialization
 Public Class LoggableException
     Inherits Exception
     Implements IXmlSerializable
+
+    ''' <summary>
+    ''' user message
+    ''' </summary>
+    Private _userMessage As String
 #Region "Public Constructors"
 
     ''' <summary>
@@ -42,6 +47,21 @@ Public Class LoggableException
     Public Sub New(message As String, ex As Exception, userMessage As String)
         MyBase.New(message, ex)
         userMessage = userMessage
+    End Sub
+
+    Public Sub New()
+    End Sub
+
+    Public Sub New(message As String)
+        MyBase.New(message)
+    End Sub
+
+    Public Sub New(message As String, innerException As Exception)
+        MyBase.New(message, innerException)
+    End Sub
+
+    Protected Sub New(serializationInfo As SerializationInfo, streamingContext As StreamingContext)
+        Throw New NotImplementedException()
     End Sub
 
 #End Region
@@ -85,41 +105,26 @@ Public Class LoggableException
             _userMessage = Value
         End Set
     End Property
-    ''' <summary>
-    ''' user message
-    ''' </summary>
-    Private _userMessage As String
 
 #End Region
 
-#Region "Public Methods"
+#Region "ISerialization Implementation"
 
     ''' <summary>
-    ''' is the XML serializable_ get schema.
+    ''' When overridden in a derived class, sets the <see cref="T:System.Runtime.Serialization.SerializationInfo" /> with information about the exception.
     ''' </summary>
-    ''' <returns>XmlSchema.</returns>
-    ''' <exception cref="System.NotImplementedException"></exception>
-    Private Function IXmlSerializable_GetSchema() As XmlSchema Implements IXmlSerializable.GetSchema
-        Throw New NotImplementedException()
-    End Function
+    ''' <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
+    ''' <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
+    ''' <PermissionSet>
+    '''   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Read="*AllFiles*" PathDiscovery="*AllFiles*" />
+    '''   <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="SerializationFormatter" />
+    ''' </PermissionSet>
+    Public Overrides Sub GetObjectData(info As SerializationInfo, context As StreamingContext)
 
-    ''' <summary>
-    ''' is the XML serializable_ read XML.
-    ''' </summary>
-    ''' <param name="reader">The reader.</param>
-    ''' <exception cref="NotImplementedException"></exception>
-    <CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1033:InterfaceMethodsShouldBeCallableByChildTypes")>
-    Private Sub IXmlSerializable_ReadXml(reader As XmlReader) Implements IXmlSerializable.ReadXml
-        Throw New NotImplementedException()
-    End Sub
+        MyBase.GetObjectData(info, context)
 
-    ''' <summary>
-    ''' is the XML serializable_ write XML.
-    ''' </summary>
-    ''' <param name="writer">The writer.</param>
-    ''' <exception cref="System.NotImplementedException"></exception>
-    Private Sub IXmlSerializable_WriteXml(writer As XmlWriter) Implements IXmlSerializable.WriteXml
-        Throw New NotImplementedException()
+        info.AddValue(NameOf(_userMessage), _userMessage)
+
     End Sub
 
 #End Region
@@ -154,37 +159,33 @@ Public Class LoggableException
 
 #End Region
 
-#Region "ISerialization Implementation"
+#Region "Public Methods"
 
     ''' <summary>
-    ''' When overridden in a derived class, sets the <see cref="T:System.Runtime.Serialization.SerializationInfo" /> with information about the exception.
+    ''' is the XML serializable_ get schema.
     ''' </summary>
-    ''' <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
-    ''' <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
-    ''' <PermissionSet>
-    '''   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Read="*AllFiles*" PathDiscovery="*AllFiles*" />
-    '''   <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="SerializationFormatter" />
-    ''' </PermissionSet>
-    Public Overrides Sub GetObjectData(info As SerializationInfo, context As StreamingContext)
+    ''' <returns>XmlSchema.</returns>
+    ''' <exception cref="System.NotImplementedException"></exception>
+    Private Function IXmlSerializable_GetSchema() As XmlSchema Implements IXmlSerializable.GetSchema
+        Throw New NotImplementedException()
+    End Function
 
-        MyBase.GetObjectData(info, context)
-
-        info.AddValue(NameOf(_userMessage), _userMessage)
-
+    ''' <summary>
+    ''' is the XML serializable_ read XML.
+    ''' </summary>
+    ''' <param name="reader">The reader.</param>
+    ''' <exception cref="NotImplementedException"></exception>
+    <CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1033:InterfaceMethodsShouldBeCallableByChildTypes")>
+    Private Sub IXmlSerializable_ReadXml(reader As XmlReader) Implements IXmlSerializable.ReadXml
+        Throw New NotImplementedException()
     End Sub
 
-    Public Sub New()
-    End Sub
-
-    Public Sub New(message As String)
-        MyBase.New(message)
-    End Sub
-
-    Public Sub New(message As String, innerException As Exception)
-        MyBase.New(message, innerException)
-    End Sub
-
-    Protected Sub New(serializationInfo As SerializationInfo, streamingContext As StreamingContext)
+    ''' <summary>
+    ''' is the XML serializable_ write XML.
+    ''' </summary>
+    ''' <param name="writer">The writer.</param>
+    ''' <exception cref="System.NotImplementedException"></exception>
+    Private Sub IXmlSerializable_WriteXml(writer As XmlWriter) Implements IXmlSerializable.WriteXml
         Throw New NotImplementedException()
     End Sub
 

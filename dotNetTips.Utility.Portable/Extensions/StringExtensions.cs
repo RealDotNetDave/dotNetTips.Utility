@@ -72,7 +72,7 @@ namespace dotNetTips.Utility.Portable.Extensions
                 return false;
             }
 
-            foreach (var character in characters.AsParallel())
+            foreach (var character in characters)
             {
                 if (string.IsNullOrEmpty(character))
                 {

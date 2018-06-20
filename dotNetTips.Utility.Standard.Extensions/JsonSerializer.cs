@@ -4,7 +4,7 @@
 // Created          : 09-16-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-16-2017
+// Last Modified On : 06-01-2018
 // ***********************************************************************
 // <copyright file="JsonSerializer.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -35,7 +35,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         {
             var obj = Activator.CreateInstance<T>();
 
-            using(var ms = new MemoryStream(Encoding.UTF8.GetBytes(json)))
+            using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(json)))
             {
                 var ser = new DataContractJsonSerializer(obj.GetType());
                 obj = ser.ReadObject(ms) as T;
@@ -53,10 +53,9 @@ namespace dotNetTips.Utility.Standard.Extensions
         {
             string json;
 
-            using(var ms = new MemoryStream())
+            using (var ms = new MemoryStream())
             {
-                var ser = new DataContractJsonSerializer(obj.GetType(),
-                                                         new DataContractJsonSerializerSettings
+                var ser = new DataContractJsonSerializer(obj.GetType(), new DataContractJsonSerializerSettings
                 {
                     SerializeReadOnlyTypes = true,
                     UseSimpleDictionaryFormat = true,
