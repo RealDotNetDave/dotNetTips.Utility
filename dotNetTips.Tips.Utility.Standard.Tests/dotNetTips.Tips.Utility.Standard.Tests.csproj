@@ -5,9 +5,19 @@
 
     <IsPackable>false</IsPackable>
 
-    <AssemblyVersion>2018.6.19.2974</AssemblyVersion>
+    <AssemblyVersion>2018.6.21.28468</AssemblyVersion>
 
-    <FileVersion>2018.6.19.2974</FileVersion>
+    <FileVersion>2018.6.21.28468</FileVersion>
+
+    <Authors>David McCarter - dotNetTips.com</Authors>
+
+    <Company>McCarter Consulting</Company>
+
+    <Description>Unit Tests</Description>
+
+    <Copyright>David McCarter - dotNetTips.com</Copyright>
+
+    <NeutralLanguage>en-US</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>
