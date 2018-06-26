@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>David McCarter</Authors>
     <Company>McCarter Consulting - dotNetTips.com</Company>
-    <Description>Common .NET Standard code for AWS/Amazon</Description>
+    <Description>Common .NET Standard code for AWS/Amazon.  AWS/Amazon is © 1996-2018, Amazon Web Services, Inc.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Copyright>David McCarter - dotNetTips.com</Copyright>
     <PackageLicenseUrl>https://github.com/RealDotNetDave/dotNetTips.Utility/blob/master/LICENSE</PackageLicenseUrl>
@@ -12,8 +12,8 @@
     <RepositoryUrl>https://github.com/RealDotNetDave/dotNetTips.Utility</RepositoryUrl>
     <PackageTags>David McCarter, dotNetDave, dotNetTips.com, Amazon, AWS</PackageTags>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <AssemblyVersion>2018.6.21.28468</AssemblyVersion>
-    <FileVersion>2018.6.21.28468</FileVersion>
+    <AssemblyVersion>2018.6.26.37891</AssemblyVersion>
+    <FileVersion>2018.6.26.37891</FileVersion>
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
 
@@ -26,7 +26,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AWSSDK.SecretsManager" Version="3.3.0.11" />
+    <PackageReference Include="AWSSDK.SecretsManager" Version="3.3.0.12" />
   </ItemGroup>
 
   <ItemGroup>

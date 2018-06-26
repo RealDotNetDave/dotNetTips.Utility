@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-08-2017
+// Last Modified On : 06-26-2018
 // ***********************************************************************
 // <copyright file="App.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -13,11 +13,14 @@
 // ***********************************************************************
 using dotNetTips.Utility.Standard.OOP;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using dotNetTips.Utility.Standard.Extensions;
 
 namespace dotNetTips.Utility.Standard
 {
@@ -26,6 +29,9 @@ namespace dotNetTips.Utility.Standard
     /// </summary>
     public static class App
     {
+        /// <summary>
+        /// The processor count refresh interval
+        /// </summary>
         private const int ProcessorCountRefreshInterval = 30000;
 
         /// <summary>
@@ -33,10 +39,19 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         private const string TempAspFiles = "\\Temporary ASP.NET Files\\";
 
+        /// <summary>
+        /// The last processor count refresh ticks
+        /// </summary>
         private static volatile int _lastProcessorCountRefreshTicks;
 
+        /// <summary>
+        /// The processor count
+        /// </summary>
         private static volatile int _processorCount;
 
+        /// <summary>
+        /// The application information
+        /// </summary>
         private static AppInfo appInfo;
 
         /// <summary>
@@ -49,7 +64,7 @@ namespace dotNetTips.Utility.Standard
             {
                 appInfo = new AppInfo();
 
-                var assembly = Assembly.GetEntryAssembly();
+                var assembly = Assembly.GetExecutingAssembly();
 
                 appInfo.Company = assembly.GetCustomAttributes<AssemblyCompanyAttribute>().FirstOrDefault().Company;
                 appInfo.Configuration = assembly.GetCustomAttributes<AssemblyConfigurationAttribute>().FirstOrDefault()
@@ -76,22 +91,16 @@ namespace dotNetTips.Utility.Standard
         /// <exception cref="ArgumentNullException">processName - Process name is required.</exception>
         public static bool IsProcessRunning(string processName)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(string.IsNullOrEmpty(processName) == false,
-                                                                  "Process name is required.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(string.IsNullOrEmpty(processName) == false, "Process name is required.");
 
-            return Process.GetProcessesByName(processName).Any() ? true : false;
+            return Process.GetProcessesByName(processName).IsValid();
         }
 
         /// <summary>
         /// Check to see if the current app is already running.
         /// </summary>
         /// <returns><c>true</c> if app is not running, <c>false</c> otherwise.</returns>
-        public static bool IsRunning() => Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly()
-                    .Location))
-                    .Count() >
-                1
-            ? true
-            : false;
+        public static bool IsRunning() => Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location)).Count() > 1;
 
         /// <summary>
         /// Checks to see if the current application is ASP.NET
@@ -113,8 +122,7 @@ namespace dotNetTips.Utility.Standard
         /// <exception cref="ArgumentNullException">processName - Process name is nothing or empty.</exception>
         public static void KillProcess(string processName)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(string.IsNullOrEmpty(processName),
-                                                                  "Process name is required.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(string.IsNullOrEmpty(processName), "Process name is required.");
 
             var app = Process.GetProcessesByName(processName).FirstOrDefault();
 
@@ -140,6 +148,25 @@ namespace dotNetTips.Utility.Standard
 
             return referencedAssemblies.AsEnumerable();
         }
+
+        /// <summary>
+        /// Gets the environmen variables.
+        /// </summary>
+        /// <returns>IImmutableDictionary&lt;System.String, System.String&gt;.</returns>
+        public static IImmutableDictionary<string, string> GetEnvironmenVariables()
+        {
+            var variables = Environment.GetEnvironmentVariables();
+
+            var builder = ImmutableDictionary.CreateBuilder<string, string>();
+
+            foreach (DictionaryEntry variable in variables)
+            {
+                builder.Add(variable.Key.ToString(), variable.Value.ToString());
+            }
+
+            return builder.ToImmutable();
+        }
+
 
         /// <summary>
         /// Restarts an app as administrator.
