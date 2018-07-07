@@ -7,7 +7,7 @@
 // Last Modified On : 11-01-2017
 // ***********************************************************************
 // <copyright file="PerformanceStopwatch.cs" company="dotNetTips.com - David McCarter">
-//     dotNetTips.com - David McCarter
+//      McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -41,7 +41,7 @@ namespace dotNetTips.Utility.Standard.Diagnostics
         public TimeSpan StopReset()
         {
             Stop();
-            var result = Elapsed;
+            var result = this.Elapsed;
             base.Reset();
 
             return result;
@@ -53,7 +53,7 @@ namespace dotNetTips.Utility.Standard.Diagnostics
         /// <returns>TimeSpan.</returns>
         public TimeSpan StopRestart()
         {
-            var result = Elapsed;
+            var result = this.Elapsed;
 
             base.Restart();
 

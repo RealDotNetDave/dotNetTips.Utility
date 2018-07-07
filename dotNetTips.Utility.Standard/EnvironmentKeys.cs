@@ -7,12 +7,12 @@
 // Last Modified On : 06-26-2018
 // ***********************************************************************
 // <copyright file="EnvironmentKeys.cs" company="dotNetTips.com - David McCarter">
-//     dotNetTips.com - David McCarter
+//      McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
 
-namespace dotNetTips.Tips.Utility.Standard.Tests
+namespace dotNetTips.Tips.Utility.Standard
 {
     /// <summary>
     /// Enum EnvironmentKeys

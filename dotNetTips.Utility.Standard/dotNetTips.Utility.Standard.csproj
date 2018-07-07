@@ -3,13 +3,13 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <DocumentationFile>..\UtilityBin\netstandard2.0\dotNetTips.Utility.Standard.xml</DocumentationFile>
     <OutputPath>..\UtilityBin\netstandard2.0\</OutputPath>
-    <AssemblyVersion>2018.6.26.37891</AssemblyVersion>
-    <FileVersion>2018.6.26.37891</FileVersion>
+    <AssemblyVersion>2018.7.7.33797</AssemblyVersion>
+    <FileVersion>2018.7.7.33797</FileVersion>
     <NeutralLanguage>en</NeutralLanguage>
     <Authors>David McCarter</Authors>
     <Company>dotNetTips.com - David McCarter</Company>
     <Description>Common .NET Standard Code</Description>
-    <Copyright>dotNetTips.com - David McCarter</Copyright>
+    <Copyright>McCarter Consulting (David McCarter)</Copyright>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageProjectUrl>https://github.com/RealDotNetDave/dotNetTips.Utility</PackageProjectUrl>
     <RepositoryUrl>https://github.com/RealDotNetDave/dotNetTips.Utility</RepositoryUrl>

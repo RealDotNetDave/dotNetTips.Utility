@@ -16,7 +16,7 @@ namespace dotNetTips.Tips.Utility.Standard.Tests.IO
         {
             var folders = DirectoryHelper.LoadOneDriveFolders();
 
-            Assert.IsTrue(folders?.Count() > 0);
+            Assert.IsTrue(folders!= null && folders.Count() > 0);
         }
 
         [TestMethod]

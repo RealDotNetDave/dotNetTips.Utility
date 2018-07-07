@@ -1,21 +1,21 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Standard
 // Author           : David McCarter
-// Created          : 06-26-2017
+// Created          : 05-28-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-16-2017
+// Last Modified On : 07-05-2018
 // ***********************************************************************
 // <copyright file="DataEntity.cs" company="dotNetTips.com - David McCarter">
-//     dotNetTips.com - David McCarter
+//     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
-using dotNetTips.Utility.Standard.Validation;
 // ***********************************************************************
 
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using dotNetTips.Utility.Standard.Validation;
 
 namespace dotNetTips.Utility.Standard.Data
 {
@@ -40,9 +40,9 @@ namespace dotNetTips.Utility.Standard.Data
         {
             var returnValue = false;
 
-            if(UpdatedAt.HasValue)
+            if (this.UpdatedAt.HasValue)
             {
-                if(CreatedAt > UpdatedAt)
+                if (this.CreatedAt > this.UpdatedAt)
                 {
                     returnValue = false;
                 }

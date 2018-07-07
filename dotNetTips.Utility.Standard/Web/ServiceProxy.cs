@@ -7,7 +7,7 @@
 // Last Modified On : 04-02-2018
 // ***********************************************************************
 // <copyright file="ServiceProxy.cs" company="dotNetTips.com - David McCarter">
-//     dotNetTips.com - David McCarter
+//      McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -60,15 +60,15 @@ namespace dotNetTips.Utility.Standard.Web
         /// </summary>
         private void Initialize()
         {
-            lock(_lock)
+            lock(this._lock)
             {
-                if(Channel != null)
+                if(this.Channel != null)
                 {
                     return;
                 }
 
-                _channelFactory = new ChannelFactory<T>(_serviceEndpoint);
-                Channel = _channelFactory.CreateChannel(new EndpointAddress(_serviceEndpoint));
+                this._channelFactory = new ChannelFactory<T>(this._serviceEndpoint);
+                this.Channel = this._channelFactory.CreateChannel(new EndpointAddress(this._serviceEndpoint));
             }
         }
 
@@ -77,9 +77,9 @@ namespace dotNetTips.Utility.Standard.Web
         /// </summary>
         protected void CloseChannel()
         {
-            if(Channel != null)
+            if(this.Channel != null)
             {
-                ((ICommunicationObject)Channel).Close();
+                ((ICommunicationObject)this.Channel).Close();
             }
         }
 
@@ -90,19 +90,19 @@ namespace dotNetTips.Utility.Standard.Web
         protected virtual void Dispose(bool disposing)
         {
             // Do nothing if the object has already been disposed of.
-            if(disposed)
+            if(this.disposed)
             {
                 return;
             }
 
             if (disposing)
             {
-                lock(_lock)
+                lock(this._lock)
                 {
                     // Release disposable objects used by this instance here.
-                    if(Channel != null)
+                    if(this.Channel != null)
                     {
-                        Channel.Dispose();
+                        this.Channel.Dispose();
                     }
                 }
             }
@@ -110,7 +110,7 @@ namespace dotNetTips.Utility.Standard.Web
             // Release unmanaged resources here. Don't access reference type fields.
 
             // Remember that the object has been disposed of.
-            disposed = true;
+            this.disposed = true;
         }
 
         /// <summary>
@@ -122,9 +122,9 @@ namespace dotNetTips.Utility.Standard.Web
             get
             {
                 Initialize();
-                return _channel;
+                return this._channel;
             }
-            private set => _channel = value;
+            private set => this._channel = value;
         }
 
         /// <summary>

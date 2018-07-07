@@ -7,7 +7,7 @@
 // Last Modified On : 11-02-2017
 // ***********************************************************************
 // <copyright file="DataContext.cs" company="dotNetTips.com - David McCarter">
-//     dotNetTips.com - David McCarter
+//      McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 using Microsoft.EntityFrameworkCore;
@@ -41,22 +41,23 @@ namespace dotNetTips.Utility.Standard.Data
         /// </summary>
         private void UpdateEntities()
         {
-            if(ChangeTracker.HasChanges() == false)
+            if (this.ChangeTracker.HasChanges() == false)
             {
                 return;
             }
 
-            foreach(var entry in ChangeTracker.Entries<DataEntity>().Where(p => p.State != EntityState.Unchanged))
+            foreach (var entry in this.ChangeTracker.Entries<DataEntity>().Where(p => p.State != EntityState.Unchanged))
             {
-                if(entry.State == EntityState.Added)
+                if (entry.State == EntityState.Added)
                 {
                     entry.Entity.CreatedAt = DateTime.UtcNow;
 
-                    if(entry.Entity.PublicKey == null || entry.Entity.PublicKey == Guid.Empty)
+                    if (entry.Entity.PublicKey == null || entry.Entity.PublicKey == Guid.Empty)
                     {
                         entry.Entity.PublicKey = Guid.NewGuid();
                     }
-                } else
+                }
+                else
                 {
                     entry.Entity.UpdatedAt = DateTime.UtcNow;
                 }

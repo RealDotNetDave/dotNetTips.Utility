@@ -7,7 +7,7 @@
 // Last Modified On : 06-15-2018
 // ***********************************************************************
 // <copyright file="RegistryHelper.cs" company="dotNetTips.com - David McCarter">
-//     dotNetTips.com - David McCarter
+//      McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************

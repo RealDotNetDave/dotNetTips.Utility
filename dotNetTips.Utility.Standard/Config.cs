@@ -7,7 +7,7 @@
 // Last Modified On : 06-10-2018
 // ***********************************************************************
 // <copyright file="Config.cs" company="dotNetTips.com - David McCarter">
-//     dotNetTips.com - David McCarter
+//      McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -68,7 +68,7 @@ namespace dotNetTips.Utility.Standard
                 File.Delete(this.ConfigFileName);
             }
 
-            XmlHelper.SerializeToXmlFile(Instance, this.ConfigFileName);
+            XmlHelper.SerializeToXmlFile(this.Instance, this.ConfigFileName);
 
             return true;
         }
@@ -78,7 +78,7 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         /// <value>The instance.</value>
         [XmlIgnore]
-        public static T Instance
+        public T Instance
         {
             get { return _instance; }
         }

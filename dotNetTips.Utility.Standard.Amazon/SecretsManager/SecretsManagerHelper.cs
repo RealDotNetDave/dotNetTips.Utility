@@ -4,17 +4,17 @@
 // Created          : 06-20-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-20-2018
+// Last Modified On : 07-07-2018
 // ***********************************************************************
 // <copyright file="SecretsManagerHelper.cs" company="McCarter Consulting - dotNetTips.com">
-//     David McCarter - dotNetTips.com
+//     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using System;
 using Amazon.SecretsManager;
 using Amazon.SecretsManager.Model;
-using dotNetTips.Utility.Standard.OOP;
 
 namespace dotNetTips.Utility.Standard.Amazon.SecretsManager
 {
@@ -29,10 +29,14 @@ namespace dotNetTips.Utility.Standard.Amazon.SecretsManager
         /// <param name="client">The client.</param>
         /// <param name="secretKey">The secret key.</param>
         /// <returns>GetSecretValueResponse.</returns>
+        /// <exception cref="ArgumentNullException">client - client</exception>
+        /// <exception cref="ArgumentException">secretKey - secretKey</exception>
+        /// <exception cref="System.ArgumentNullException">client - client</exception>
+        /// <exception cref="System.ArgumentException">secretKey - secretKey</exception>
         private static GetSecretValueResponse GetSecretValue(AmazonSecretsManagerClient client, string secretKey)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(client != null, nameof(client));
-            Encapsulation.TryValidateParam(secretKey, nameof(secretKey));
+            OOP.Encapsulation.TryValidateParam<ArgumentNullException>(client != null, nameof(client));
+            OOP.Encapsulation.TryValidateParam(secretKey, nameof(secretKey));
 
             var request = new GetSecretValueRequest
             {

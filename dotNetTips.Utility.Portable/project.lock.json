@@ -1,12 +1,12 @@
 {
   "version": 3,
   "targets": {
-    ".NETPortable,Version=v4.5,Profile=Profile49": {}
+    ".NETPortable,Version=v4.5,Profile=Profile7": {}
   },
   "libraries": {},
   "projectFileDependencyGroups": {
     "": [],
-    ".NETPortable,Version=v4.5,Profile=Profile49": []
+    ".NETPortable,Version=v4.5,Profile=Profile7": []
   },
   "packageFolders": {
     "C:\\Users\\dotnetdave\\.nuget\\packages\\": {},
@@ -40,7 +40,7 @@
       }
     },
     "frameworks": {
-      "portable45-net45+wp8": {}
+      "portable45-net45+win8": {}
     }
   }
 }

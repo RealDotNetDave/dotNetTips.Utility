@@ -61,7 +61,7 @@ Public Class LoggableException
     End Sub
 
     Protected Sub New(serializationInfo As SerializationInfo, streamingContext As StreamingContext)
-        Throw New NotImplementedException()
+        MyBase.New(serializationInfo, streamingContext)
     End Sub
 
 #End Region

@@ -7,7 +7,7 @@
 // Last Modified On : 09-16-2017
 // ***********************************************************************
 // <copyright file="ProgressState.cs" company="dotNetTips.com - David McCarter">
-//     dotNetTips.com - David McCarter
+//      McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************

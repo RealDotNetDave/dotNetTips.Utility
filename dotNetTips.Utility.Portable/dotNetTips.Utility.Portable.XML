@@ -1233,7 +1233,7 @@
         </member>
         <member name="P:dotNetTips.Utility.Portable.Properties.Resources.GuidIsEmpty">
             <summary>
-              Looks up a localized string similar to Guid is Empth..
+              Looks up a localized string similar to Guid is Empty..
             </summary>
         </member>
         <member name="P:dotNetTips.Utility.Portable.Properties.Resources.InvalidType">

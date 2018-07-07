@@ -7,7 +7,7 @@
 // Last Modified On : 09-16-2017
 // ***********************************************************************
 // <copyright file="Encapsulation.cs" company="dotNetTips.com - David McCarter">
-//     dotNetTips.com - David McCarter
+//      McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 using dotNetTips.Utility.Standard.Extensions;
@@ -194,7 +194,7 @@ namespace dotNetTips.Utility.Standard.OOP
         /// <param name="message">The message.</param>
         /// <exception cref="dotNetTips.Utility.Standard.ArgumentInvalidException"></exception>
         /// <exception cref="ArgumentInvalidException"></exception>
-        public static void TryValidateParam(string value, string paramName, string message = "")
+        public static void TryValidateParam(string value, string paramName="", string message = "")
         {
             if(value.IsNull())
             {

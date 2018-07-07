@@ -7,7 +7,7 @@
 // Last Modified On : 06-12-2018
 // ***********************************************************************
 // <copyright file="ConcurrentHashSet.cs" company="dotNetTips.com - David McCarter">
-//     dotNetTips.com - David McCarter
+//      McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -527,7 +527,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
             while (true)
             {
                 var tables = this._tables;
-               
+
                 GetBucketAndLockNo(hashCode, out int bucketNo, out int lockNo, tables.Buckets.Length, tables.Locks.Length);
 
                 var resizeDesired = false;

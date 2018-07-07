@@ -7,7 +7,7 @@
 // Last Modified On : 06-16-2018
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="dotNetTips.com - David McCarter">
-//     dotNetTips.com - David McCarter
+//      McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -53,7 +53,7 @@ namespace dotNetTips.Utility.Standard.IO
                         var key = accountKey.GetSubKey(subKeyName);
 
                         var folder = new OneDriveFolder();
-                        var directoryValue = key.GetValue<string>( "UserFolder");
+                        var directoryValue = key.GetValue<string>("UserFolder");
 
                         if (string.IsNullOrEmpty(directoryValue) == false)
                         {

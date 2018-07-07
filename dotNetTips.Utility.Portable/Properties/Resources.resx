@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,23 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ParameterIsInvalid" xml:space="preserve">
-    <value>Parameter is invalid.</value>
+  <data name="CannotBeOfTypeException" xml:space="preserve">
+    <value>{0} cannot be of type Exception. Use a more specific exception from the framework or a custom Exception inheriting type Exception (only).</value>
   </data>
   <data name="CollectionIsNullOrHasNoItems" xml:space="preserve">
     <value>Collection is null or has no items.</value>
   </data>
-  <data name="CannotBeOfTypeException" xml:space="preserve">
-    <value>{0} cannot be of type Exception. Use a more specific exception from the framework or a custom Exception inheriting type Exception (only).</value>
-  </data>
   <data name="CollectionSizeIsNotValid" xml:space="preserve">
     <value>Collection size is not valid.</value>
   </data>
+  <data name="FileNotFound" xml:space="preserve">
+    <value>File not found.</value>
+  </data>
+  <data name="FolderNotFound" xml:space="preserve">
+    <value>Folder not found.</value>
+  </data>
   <data name="GuidIsEmpty" xml:space="preserve">
-    <value>Guid is Empth.</value>
+    <value>Guid is Empty.</value>
   </data>
   <data name="InvalidType" xml:space="preserve">
     <value>Invalid type.</value>
+  </data>
+  <data name="ParameterIsInvalid" xml:space="preserve">
+    <value>Parameter is invalid.</value>
   </data>
   <data name="StringDoesNotMatch" xml:space="preserve">
     <value>Strings do not match.</value>
@@ -152,11 +158,5 @@
   </data>
   <data name="TheValueIsNotDefinedInTheEnumeration" xml:space="preserve">
     <value>The values are not defined in the enum.</value>
-  </data>
-  <data name="FileNotFound" xml:space="preserve">
-    <value>File not found.</value>
-  </data>
-  <data name="FolderNotFound" xml:space="preserve">
-    <value>Folder not found.</value>
   </data>
 </root>

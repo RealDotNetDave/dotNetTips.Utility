@@ -4,10 +4,10 @@
 // Created          : 06-26-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-26-2018
+// Last Modified On : 07-07-2018
 // ***********************************************************************
 // <copyright file="AWSEnvironmentKeys.cs" company="McCarter Consulting - dotNetTips.com">
-//     David McCarter - dotNetTips.com
+//     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************

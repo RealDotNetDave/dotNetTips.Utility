@@ -7,7 +7,7 @@
 // Last Modified On : 06-10-2018
 // ***********************************************************************
 // <copyright file="DirectoryNotFoundException.cs" company="dotNetTips.com - David McCarter">
-//     dotNetTips.com - David McCarter
+//      McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************

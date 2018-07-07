@@ -7,7 +7,7 @@
 // Last Modified On : 06-08-2018
 // ***********************************************************************
 // <copyright file="AppConfig.cs" company="dotNetTips.com - David McCarter">
-//     dotNetTips.com - David McCarter
+//      McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************

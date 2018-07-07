@@ -7,7 +7,7 @@
 // Last Modified On : 12-08-2017
 // ***********************************************************************
 // <copyright file="Info.cs" company="dotNetTips.com - David McCarter">
-//     dotNetTips.com - David McCarter
+//      McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************

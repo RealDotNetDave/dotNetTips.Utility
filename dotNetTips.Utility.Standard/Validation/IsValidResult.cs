@@ -7,7 +7,7 @@
 // Last Modified On : 09-16-2017
 // ***********************************************************************
 // <copyright file="IsValidResult.cs" company="dotNetTips.com - David McCarter">
-//     dotNetTips.com - David McCarter
+//      McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -27,8 +27,8 @@ namespace dotNetTips.Utility.Standard.Validation
         /// <param name="errors">The errors.</param>
         public IsValidResult(bool valid, params string[] errors)
         {
-            IsValid = valid;
-            Errors = errors;
+            this.IsValid = valid;
+            this.Errors = errors;
         }
 
         /// <summary>

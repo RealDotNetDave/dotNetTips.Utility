@@ -7,7 +7,7 @@
 // Last Modified On : 10-25-2017
 // ***********************************************************************
 // <copyright file="XmlHelper.cs" company="dotNetTips.com - David McCarter">
-//     dotNetTips.com - David McCarter
+//      McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 using dotNetTips.Utility.Standard.OOP;

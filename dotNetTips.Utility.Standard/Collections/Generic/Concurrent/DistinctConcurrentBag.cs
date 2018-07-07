@@ -7,7 +7,7 @@
 // Last Modified On : 05-28-2018
 // ***********************************************************************
 // <copyright file="DistinctConcurrentBag.cs" company="dotNetTips.com - David McCarter">
-//     dotNetTips.com - David McCarter
+//      McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 using dotNetTips.Utility.Standard.OOP;
@@ -49,9 +49,9 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// <param name="collection">The collection whose elements are copied to the new <see cref="T:System.Collections.Concurrent.ConcurrentBag`1"></see>.</param>
         public DistinctConcurrentBag(IEnumerable<T> collection)
         {
-            if(collection != null)
+            if (collection != null)
             {
-                foreach(var item in collection)
+                foreach (var item in collection)
                 {
                     Add(item);
                 }
@@ -68,12 +68,12 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
 
             var hashCode = item.GetHashCode();
 
-            lock(_lock)
+            lock (this._lock)
             {
-                if(_hashCodes.Contains(hashCode) == false)
+                if (this._hashCodes.Contains(hashCode) == false)
                 {
                     base.Add(item);
-                    _hashCodes.Add(hashCode);
+                    this._hashCodes.Add(hashCode);
                 }
             }
         }
@@ -85,13 +85,14 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// <returns>true if an object was removed successfully; otherwise, false.</returns>
         public new bool TryTake(out T result)
         {
-            lock(_lock)
+            lock (this._lock)
             {
-                if(base.TryTake(out result))
+                if (base.TryTake(out result))
                 {
-                    _hashCodes.Remove(result.GetHashCode());
+                    this._hashCodes.Remove(result.GetHashCode());
                     return true;
-                } else
+                }
+                else
                 {
                     return false;
                 }

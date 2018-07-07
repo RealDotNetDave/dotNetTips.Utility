@@ -7,7 +7,7 @@
 // Last Modified On : 06-26-2018
 // ***********************************************************************
 // <copyright file="App.cs" company="dotNetTips.com - David McCarter">
-//     dotNetTips.com - David McCarter
+//      McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -64,7 +64,7 @@ namespace dotNetTips.Utility.Standard
             {
                 appInfo = new AppInfo();
 
-                var assembly = Assembly.GetExecutingAssembly();
+                var assembly = Assembly.GetEntryAssembly();
 
                 appInfo.Company = assembly.GetCustomAttributes<AssemblyCompanyAttribute>().FirstOrDefault().Company;
                 appInfo.Configuration = assembly.GetCustomAttributes<AssemblyConfigurationAttribute>().FirstOrDefault()

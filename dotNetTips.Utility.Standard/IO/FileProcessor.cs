@@ -7,7 +7,7 @@
 // Last Modified On : 03-07-2018
 // ***********************************************************************
 // <copyright file="Processor.cs" company="dotNetTips.com - David McCarter">
-//     dotNetTips.com - David McCarter
+//      McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 using dotNetTips.Utility.Standard.OOP;

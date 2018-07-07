@@ -107,7 +107,7 @@ namespace dotNetTips.Utility.Portable.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Guid is Empth..
+        ///   Looks up a localized string similar to Guid is Empty..
         /// </summary>
         internal static string GuidIsEmpty {
             get {

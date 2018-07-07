@@ -7,7 +7,7 @@
 // Last Modified On : 05-04-2018
 // ***********************************************************************
 // <copyright file="Services.cs" company="dotNetTips.com - David McCarter">
-//     dotNetTips.com - David McCarter
+//      McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 using dotNetTips.Utility.Standard.OOP;

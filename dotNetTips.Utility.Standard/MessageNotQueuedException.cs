@@ -7,7 +7,7 @@
 // Last Modified On : 06-21-2018
 // ***********************************************************************
 // <copyright file="MessageNotQueuedException.cs" company="dotNetTips.com - David McCarter">
-//     dotNetTips.com - David McCarter
+//      McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
