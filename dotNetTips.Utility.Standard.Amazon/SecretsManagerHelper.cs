@@ -15,8 +15,9 @@
 using System;
 using Amazon.SecretsManager;
 using Amazon.SecretsManager.Model;
+using dotNetTips.Utility.Standard.OOP;
 
-namespace dotNetTips.Utility.Standard.Amazon.SecretsManager
+namespace dotNetTips.Utility.Standard.Amazon
 {
     /// <summary>
     /// Class SecretsManagerHelper.
@@ -33,10 +34,10 @@ namespace dotNetTips.Utility.Standard.Amazon.SecretsManager
         /// <exception cref="ArgumentException">secretKey - secretKey</exception>
         /// <exception cref="System.ArgumentNullException">client - client</exception>
         /// <exception cref="System.ArgumentException">secretKey - secretKey</exception>
-        private static GetSecretValueResponse GetSecretValue(AmazonSecretsManagerClient client, string secretKey)
+        private static GetSecretValueResponse Load(AmazonSecretsManagerClient client, string secretKey)
         {
-            OOP.Encapsulation.TryValidateParam<ArgumentNullException>(client != null, nameof(client));
-            OOP.Encapsulation.TryValidateParam(secretKey, nameof(secretKey));
+            Encapsulation.TryValidateParam<ArgumentNullException>(client != null, nameof(client));
+            Encapsulation.TryValidateParam(secretKey, nameof(secretKey));
 
             var request = new GetSecretValueRequest
             {

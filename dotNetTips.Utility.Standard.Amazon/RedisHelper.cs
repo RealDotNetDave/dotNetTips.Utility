@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using dotNetTips.Utility.Standard.OOP;
 using ServiceStack.Redis;
 
 namespace dotNetTips.Utility.Standard.Amazon
@@ -27,11 +28,11 @@ namespace dotNetTips.Utility.Standard.Amazon
         /// <param name="key">The key.</param>
         /// <param name="data">The data.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        public static bool CacheMessage(string host, string key, string data)
+        public static bool Cache(string host, string key, string data)
         {
-            OOP.Encapsulation.TryValidateParam(host, nameof(host));
-            OOP.Encapsulation.TryValidateParam(key, nameof(key));
-            OOP.Encapsulation.TryValidateParam(data, nameof(data));
+            Encapsulation.TryValidateParam(host, nameof(host));
+            Encapsulation.TryValidateParam(key, nameof(key));
+            Encapsulation.TryValidateParam(data, nameof(data));
 
             using (var manager = new RedisManagerPool(host.Trim()))
             {
@@ -48,10 +49,10 @@ namespace dotNetTips.Utility.Standard.Amazon
         /// <param name="host">The redis host.</param>
         /// <param name="key">The key.</param>
         /// <returns>System.String.</returns>
-        public static string LoadFromCache(string host, string key)
+        public static string Load(string host, string key)
         {
-            OOP.Encapsulation.TryValidateParam(host, nameof(host));
-            OOP.Encapsulation.TryValidateParam(key, nameof(key));
+            Encapsulation.TryValidateParam(host, nameof(host));
+            Encapsulation.TryValidateParam(key, nameof(key));
 
             using (var manager = new RedisManagerPool(host.Trim()))
             {

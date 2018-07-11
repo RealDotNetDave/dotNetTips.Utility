@@ -17,6 +17,7 @@ using System.Net;
 using Amazon;
 using Amazon.SimpleSystemsManagement;
 using Amazon.SimpleSystemsManagement.Model;
+using dotNetTips.Utility.Standard.OOP;
 
 namespace dotNetTips.Utility.Standard.Amazon
 {
@@ -35,8 +36,8 @@ namespace dotNetTips.Utility.Standard.Amazon
         /// <returns>System.String.</returns>
         public static (HttpStatusCode statusCode, string paramater) GetParameter(RegionEndpoint region, string parameterName, bool withDecryption)
         {
-            OOP.Encapsulation.TryValidateParam<ArgumentNullException>(region != null, nameof(region));
-            OOP.Encapsulation.TryValidateParam(parameterName, nameof(parameterName));
+            Encapsulation.TryValidateParam<ArgumentNullException>(region != null, nameof(region));
+            Encapsulation.TryValidateParam(parameterName, nameof(parameterName));
 
             using (var client = new AmazonSimpleSystemsManagementClient(region))
             {

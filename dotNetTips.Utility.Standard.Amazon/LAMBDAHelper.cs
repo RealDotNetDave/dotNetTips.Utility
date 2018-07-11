@@ -12,6 +12,8 @@
 // <summary></summary>
 // ***********************************************************************
 using System;
+using dotNetTips.Utility.Standard.OOP;
+
 namespace dotNetTips.Utility.Standard.Amazon
 {
     /// <summary>
@@ -26,7 +28,7 @@ namespace dotNetTips.Utility.Standard.Amazon
         /// <returns>System.String.</returns>
         public static string GetEnvironmentVariable(string key)
         {
-            OOP.Encapsulation.TryValidateParam(key, nameof(key));
+            Encapsulation.TryValidateParam(key, nameof(key));
 
             var returnValue = string.Empty;
 

@@ -12,8 +12,8 @@
     <RepositoryUrl>https://github.com/RealDotNetDave/dotNetTips.Utility</RepositoryUrl>
     <PackageTags>David McCarter, dotNetDave, dotNetTips.com, Amazon, AWS</PackageTags>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <AssemblyVersion>2018.7.7.33858</AssemblyVersion>
-    <FileVersion>2018.7.7.33858</FileVersion>
+    <AssemblyVersion>2018.7.10.35548</AssemblyVersion>
+    <FileVersion>2018.7.10.35548</FileVersion>
     <SignAssembly>false</SignAssembly>
     <Version>2018.7.8.1</Version>
   </PropertyGroup>

@@ -16,6 +16,7 @@ using System.Net;
 using Amazon;
 using Amazon.SQS;
 using Amazon.SQS.Model;
+using dotNetTips.Utility.Standard.OOP;
 
 namespace dotNetTips.Utility.Standard.Amazon
 {
@@ -30,10 +31,10 @@ namespace dotNetTips.Utility.Standard.Amazon
         /// <param name="sqsUri">The SQS URI.</param>
         /// <param name="messageReceiptHandle">The message.</param>
         /// <returns>HttpStatusCode.</returns>
-        public static HttpStatusCode DeleteMessage(string sqsUri, string messageReceiptHandle)
+        public static HttpStatusCode Delete(string sqsUri, string messageReceiptHandle)
         {
-            OOP.Encapsulation.TryValidateParam(sqsUri, nameof(sqsUri));
-            OOP.Encapsulation.TryValidateParam(messageReceiptHandle, nameof(messageReceiptHandle));
+            Encapsulation.TryValidateParam(sqsUri, nameof(sqsUri));
+            Encapsulation.TryValidateParam(messageReceiptHandle, nameof(messageReceiptHandle));
 
             using (var sqs = new AmazonSQSClient(RegionEndpoint.USWest2))
             {

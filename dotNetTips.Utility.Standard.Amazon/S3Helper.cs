@@ -11,12 +11,13 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using Amazon;
-using Amazon.S3;
-using Amazon.S3.Model;
 using System;
 using System.IO;
 using System.Net;
+using Amazon;
+using Amazon.S3;
+using Amazon.S3.Model;
+using dotNetTips.Utility.Standard.OOP;
 
 namespace dotNetTips.Utility.Standard.Amazon
 {
@@ -35,11 +36,11 @@ namespace dotNetTips.Utility.Standard.Amazon
         /// <param name="bucketName">Name of the bucket.</param>
         /// <param name="key">The key.</param>
         /// <returns>System.String.</returns>
-        public static (HttpStatusCode statusCode, string data)  RetrieveAsString(RegionEndpoint region, string bucketName, string key)
+        public static (HttpStatusCode statusCode, string data)  Load(RegionEndpoint region, string bucketName, string key)
         {
-            OOP.Encapsulation.TryValidateParam<ArgumentNullException>(region != null, nameof(region));
-            OOP.Encapsulation.TryValidateParam(bucketName, nameof(bucketName));
-            OOP.Encapsulation.TryValidateParam(key, nameof(key));
+            Encapsulation.TryValidateParam<ArgumentNullException>(region != null, nameof(region));
+            Encapsulation.TryValidateParam(bucketName, nameof(bucketName));
+            Encapsulation.TryValidateParam(key, nameof(key));
 
             using (var client = new AmazonS3Client(region))
             {
@@ -74,10 +75,10 @@ namespace dotNetTips.Utility.Standard.Amazon
         /// <returns>HttpStatusCode.</returns>
         public static HttpStatusCode Store(RegionEndpoint region, string bucketName, string key, string data)
         {
-            OOP.Encapsulation.TryValidateParam<ArgumentNullException>(region != null, nameof(region));
-            OOP.Encapsulation.TryValidateParam(bucketName, nameof(bucketName));
-            OOP.Encapsulation.TryValidateParam(key, nameof(key));
-
+            Encapsulation.TryValidateParam<ArgumentNullException>(region != null, nameof(region));
+            Encapsulation.TryValidateParam(bucketName, nameof(bucketName));
+            Encapsulation.TryValidateParam(key, nameof(key));
+           
             using (var client = new AmazonS3Client(region))
             {
                 var putRequest = new PutObjectRequest

@@ -12,11 +12,12 @@
 // <summary></summary>
 // ***********************************************************************
 
+using System;
+using System.Net;
 using Amazon;
 using Amazon.SimpleNotificationService;
 using Amazon.SimpleNotificationService.Model;
-using System;
-using System.Net;
+using dotNetTips.Utility.Standard.OOP;
 
 namespace dotNetTips.Utility.Standard.Amazon
 {
@@ -34,32 +35,24 @@ namespace dotNetTips.Utility.Standard.Amazon
         /// <returns>Tuple&lt;HttpStatusCode, System.String&gt;.</returns>
         /// <exception cref="dotNetTips.Utility.Standard.Amazon.NotQueuedException"></exception>
         /// <exception cref="NotQueuedException"></exception>
-        public static (HttpStatusCode statusCode, string messageId) SendToQueue(RegionEndpoint region, string topicArn, string data)
+        public static (HttpStatusCode statusCode, string messageId) Send(RegionEndpoint region, string topicArn, string data)
         {
-            OOP.Encapsulation.TryValidateParam<ArgumentNullException>(region != null, nameof(region));
-            OOP.Encapsulation.TryValidateParam(topicArn, nameof(topicArn));
-            OOP.Encapsulation.TryValidateParam(data, nameof(data));
+            Encapsulation.TryValidateParam<ArgumentNullException>(region != null, nameof(region));
+            Encapsulation.TryValidateParam(topicArn, nameof(topicArn));
+            Encapsulation.TryValidateParam(data, nameof(data));
 
-            try
+            using (var snsClient = new AmazonSimpleNotificationServiceClient(region))
             {
-                using (var snsClient = new AmazonSimpleNotificationServiceClient(region))
+                // Sending a message
+                var sendMessageRequest = new PublishRequest
                 {
-                    // Sending a message
-                    var sendMessageRequest = new PublishRequest
-                    {
-                        TopicArn = topicArn,
-                        Message = data
-                    };
+                    TopicArn = topicArn,
+                    Message = data
+                };
 
-                    var result = snsClient.PublishAsync(sendMessageRequest).Result;
+                var result = snsClient.PublishAsync(sendMessageRequest).Result;
 
-                    return (result.HttpStatusCode, result.MessageId);
-                }
-            }
-            catch (Exception ex)
-            {
-
-                throw new NotQueuedException($"Unable to queue message into AWS SNS: {topicArn}.", ex);
+                return (result.HttpStatusCode, result.MessageId);
             }
         }
     }

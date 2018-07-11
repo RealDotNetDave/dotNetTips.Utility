@@ -4,10 +4,10 @@
 // Created          : 06-06-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-10-2018
+// Last Modified On : 07-10-2018
 // ***********************************************************************
 // <copyright file="LoggableException.cs" company="dotNetTips.com - David McCarter">
-//      McCarter Consulting (David McCarter)
+//     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -15,6 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO.Compression;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
@@ -129,6 +130,31 @@ namespace dotNetTips.Utility.Standard
         }
 
         /// <summary>
+        /// The has been logged
+        /// </summary>
+        private bool _hasBeenLogged;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance has been logged.
+        /// </summary>
+        /// <value><c>true</c> if this instance has been logged; otherwise, <c>false</c>.</value>
+        public bool HasBeenLogged
+        {
+            get
+            {
+                return this._hasBeenLogged;
+            }
+            set
+            {
+                //Prevent from being set (from code) to false.
+                if (value == true)
+                {
+                    this._hasBeenLogged = value;
+                }
+            }
+        }
+
+        /// <summary>
         /// Reflects the exception.
         /// </summary>
         /// <param name="ex">The ex.</param>
@@ -157,5 +183,4 @@ namespace dotNetTips.Utility.Standard
             return sb.ToString();
         }
     }
-
 }
