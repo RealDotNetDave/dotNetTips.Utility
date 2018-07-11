@@ -3,8 +3,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <DocumentationFile>..\UtilityBin\netstandard2.0\dotNetTips.Utility.Standard.xml</DocumentationFile>
     <OutputPath>..\UtilityBin\netstandard2.0\</OutputPath>
-    <AssemblyVersion>2018.7.10.38727</AssemblyVersion>
-    <FileVersion>2018.7.10.38727</FileVersion>
+    <AssemblyVersion>2018.7.11.28910</AssemblyVersion>
+    <FileVersion>2018.7.11.28910</FileVersion>
     <NeutralLanguage>en</NeutralLanguage>
     <Authors>David McCarter</Authors>
     <Company>dotNetTips.com - David McCarter</Company>
@@ -17,9 +17,9 @@
     <SignAssembly>false</SignAssembly>
     <DelaySign>False</DelaySign>
     <AssemblyOriginatorKeyFile>dotNetTips.Utility.Standard.snk</AssemblyOriginatorKeyFile>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2018.6.10.2</Version>
+    <Version>2018.7.1.0</Version>
     <PackageTags>David McCarter, dotNetDave, dotNetTips.com</PackageTags>
     <Configurations>Debug;Release;Full Build</Configurations>
     <PackageLicenseUrl>https://github.com/RealDotNetDave/dotNetTips.Utility/blob/master/LICENSE</PackageLicenseUrl>
@@ -35,6 +35,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <WarningsAsErrors />
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <PlatformTarget>x64</PlatformTarget>

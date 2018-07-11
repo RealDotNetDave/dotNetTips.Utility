@@ -515,7 +515,10 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="list">The list.</param>
         /// <returns>Task&lt;List&lt;T&gt;&gt;.</returns>
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
-        public static Task<List<T>> ToListAsync<T>(this IEnumerable<T> list) => Task.Run(() => list.ToList());
+        public static Task<List<T>> ToListAsync<T>(this IEnumerable<T> list)
+        {
+            return Task.Run(() => list.ToList());
+        }
 
         /// <summary>
         /// To the observable list.
@@ -524,7 +527,10 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="list">The list.</param>
         /// <returns>ObservableCollection&lt;T&gt;.</returns>
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
-        public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> list) => new ObservableCollection<T>(list);
+        public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> list)
+        {
+            return new ObservableCollection<T>(list);
+        }
 
         /// <summary>
         /// Creates a read only list.
@@ -533,7 +539,10 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="list">The list.</param>
         /// <returns>ReadOnlyCollection&lt;T&gt;.</returns>
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
-        public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(this IList<T> list) => new ReadOnlyCollection<T>(list);
+        public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(this IList<T> list)
+        {
+            return new ReadOnlyCollection<T>(list);
+        }
 
         /// <summary>
         /// Returns list based on function.

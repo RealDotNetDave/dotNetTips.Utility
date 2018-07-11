@@ -5,9 +5,9 @@
 
     <IsPackable>false</IsPackable>
 
-    <AssemblyVersion>2018.7.10.35548</AssemblyVersion>
+    <AssemblyVersion>2018.7.11.28910</AssemblyVersion>
 
-    <FileVersion>2018.7.10.35548</FileVersion>
+    <FileVersion>2018.7.11.28910</FileVersion>
 
     <Authors>David McCarter - dotNetTips.com</Authors>
 
@@ -18,6 +18,11 @@
     <Copyright>David McCarter - dotNetTips.com</Copyright>
 
     <NeutralLanguage>en-US</NeutralLanguage>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 
   <ItemGroup>

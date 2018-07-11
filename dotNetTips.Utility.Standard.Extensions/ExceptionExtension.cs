@@ -41,9 +41,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="nextItem">The next item.</param>
         /// <param name="canContinue">The can continue.</param>
         /// <returns>IEnumerable&lt;TSource&gt;.</returns>
-        public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source,
-                                                                  Func<TSource, TSource> nextItem,
-                                                                  Func<TSource, bool> canContinue)
+        public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItem, Func<TSource, bool> canContinue)
         {
             if(canContinue == null)
             {

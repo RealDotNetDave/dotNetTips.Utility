@@ -14,8 +14,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{B8E8DF
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotNetTips.Utility.Standard.Amazon", "dotNetTips.Utility.Standard.Amazon\dotNetTips.Utility.Standard.Amazon.csproj", "{DC920C7C-62AA-4830-9F44-6281112A51F1}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,14 +47,6 @@ Global
 		{4B7D0635-C7EC-4A72-8B95-2E9D43074197}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4B7D0635-C7EC-4A72-8B95-2E9D43074197}.Release|x64.ActiveCfg = Release|Any CPU
 		{4B7D0635-C7EC-4A72-8B95-2E9D43074197}.Release|x64.Build.0 = Release|Any CPU
-		{DC920C7C-62AA-4830-9F44-6281112A51F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DC920C7C-62AA-4830-9F44-6281112A51F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DC920C7C-62AA-4830-9F44-6281112A51F1}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{DC920C7C-62AA-4830-9F44-6281112A51F1}.Debug|x64.Build.0 = Debug|Any CPU
-		{DC920C7C-62AA-4830-9F44-6281112A51F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DC920C7C-62AA-4830-9F44-6281112A51F1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DC920C7C-62AA-4830-9F44-6281112A51F1}.Release|x64.ActiveCfg = Release|Any CPU
-		{DC920C7C-62AA-4830-9F44-6281112A51F1}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -66,18 +66,14 @@ namespace dotNetTips.Utility.Standard
 
                 var assembly = Assembly.GetEntryAssembly();
 
-                appInfo.Company = assembly.GetCustomAttributes<AssemblyCompanyAttribute>().FirstOrDefault().Company;
-                appInfo.Configuration = assembly.GetCustomAttributes<AssemblyConfigurationAttribute>().FirstOrDefault()
-                    .Configuration;
-                appInfo.Copyright = assembly.GetCustomAttributes<AssemblyCopyrightAttribute>().FirstOrDefault()
-                    ?.Copyright;
-                appInfo.Description = assembly.GetCustomAttributes<AssemblyDescriptionAttribute>().FirstOrDefault()
-                    .Description;
-                appInfo.FileVersion = assembly.GetCustomAttributes<AssemblyFileVersionAttribute>().FirstOrDefault()
-                    .Version;
-                appInfo.Version = assembly.GetCustomAttributes<AssemblyInformationalVersionAttribute>()?.FirstOrDefault().InformationalVersion;
-                appInfo.Product = assembly.GetCustomAttributes<AssemblyProductAttribute>().FirstOrDefault().Product;
-                appInfo.Title = assembly.GetCustomAttributes<AssemblyTitleAttribute>().FirstOrDefault().Title;
+                appInfo.Company = assembly.GetCustomAttributes<AssemblyCompanyAttribute>().FirstOrDefault()?.Company;
+                appInfo.Configuration = assembly.GetCustomAttributes<AssemblyConfigurationAttribute>().FirstOrDefault()?.Configuration;
+                appInfo.Copyright = assembly.GetCustomAttributes<AssemblyCopyrightAttribute>().FirstOrDefault()?.Copyright;
+                appInfo.Description = assembly.GetCustomAttributes<AssemblyDescriptionAttribute>().FirstOrDefault()?.Description;
+                appInfo.FileVersion = assembly.GetCustomAttributes<AssemblyFileVersionAttribute>().FirstOrDefault()?.Version;
+                appInfo.Version = assembly.GetCustomAttributes<AssemblyInformationalVersionAttribute>().FirstOrDefault()?.InformationalVersion;
+                appInfo.Product = assembly.GetCustomAttributes<AssemblyProductAttribute>().FirstOrDefault()?.Product;
+                appInfo.Title = assembly.GetCustomAttributes<AssemblyTitleAttribute>().FirstOrDefault()?.Title;
             }
 
             return appInfo;

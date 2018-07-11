@@ -16,9 +16,8 @@ namespace dotNetTips.Tips.Utility.Standard.Tests
         {
             var info = App.AssemblyInfo;
 
-            Assert.IsTrue(info.Company.IsValid());
-            Assert.IsTrue(info.Copyright.IsValid());
-            Assert.IsTrue(info.Description.IsValid());
+            Assert.IsTrue(info.FileVersion.IsValid());
+            Assert.IsTrue(info.Version.IsValid());
 
         }
 

@@ -30,7 +30,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="json">The json.</param>
         /// <returns>T.</returns>
-        public static T Deserialize<T>(string json)
+        internal static T Deserialize<T>(string json)
             where T : class
         {
             var obj = Activator.CreateInstance<T>();
@@ -49,7 +49,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// </summary>
         /// <param name="obj">The object.</param>
         /// <returns>System.String.</returns>
-        public static string Serialize(object obj)
+        internal static string Serialize(object obj)
         {
             string json;
 

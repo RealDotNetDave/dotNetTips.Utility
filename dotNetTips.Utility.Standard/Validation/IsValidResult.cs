@@ -18,7 +18,7 @@ namespace dotNetTips.Utility.Standard.Validation
     /// <summary>
     /// Class IsValidResult.
     /// </summary>
-    public class IsValidResult
+    public sealed class IsValidResult
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="IsValidResult" /> class.

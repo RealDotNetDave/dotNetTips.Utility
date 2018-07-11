@@ -60,13 +60,7 @@ namespace dotNetTips.Utility.Standard.Serialization
 
             using(var ms = new MemoryStream())
             {
-                var ser = new DataContractJsonSerializer(type: obj.GetType(),
-                                                         settings: new DataContractJsonSerializerSettings
-                {
-                    SerializeReadOnlyTypes = true,
-                    UseSimpleDictionaryFormat = true,
-                    EmitTypeInformation = EmitTypeInformation.AsNeeded
-                });
+                var ser = new DataContractJsonSerializer(type: obj.GetType(), settings: new DataContractJsonSerializerSettings { SerializeReadOnlyTypes = true, UseSimpleDictionaryFormat = true, EmitTypeInformation = EmitTypeInformation.AsNeeded });
 
                 ser.WriteObject(ms, obj);
 
