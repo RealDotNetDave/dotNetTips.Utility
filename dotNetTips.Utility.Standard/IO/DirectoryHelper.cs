@@ -65,7 +65,7 @@ namespace dotNetTips.Utility.Standard.IO
 
                             var emailValue = key.GetValue<string>(EmailKey);
 
-                            if (emailValue.HasValue() == false)
+                            if (emailValue.HasValue())
                             {
                                 folder.UserEmail = emailValue;
                             }
