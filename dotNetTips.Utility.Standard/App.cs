@@ -4,10 +4,10 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-26-2018
+// Last Modified On : 07-11-2018
 // ***********************************************************************
 // <copyright file="App.cs" company="dotNetTips.com - David McCarter">
-//      McCarter Consulting (David McCarter)
+//     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -21,6 +21,8 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using dotNetTips.Utility.Standard.Extensions;
+using System.Threading;
+using System.Globalization;
 
 namespace dotNetTips.Utility.Standard
 {
@@ -146,10 +148,10 @@ namespace dotNetTips.Utility.Standard
         }
 
         /// <summary>
-        /// Gets the environmen variables.
+        /// Gets the environment variables.
         /// </summary>
         /// <returns>IImmutableDictionary&lt;System.String, System.String&gt;.</returns>
-        public static IImmutableDictionary<string, string> GetEnvironmenVariables()
+        public static IImmutableDictionary<string, string> GetEnvironmentVariables()
         {
             var variables = Environment.GetEnvironmentVariables();
 
@@ -205,5 +207,66 @@ namespace dotNetTips.Utility.Standard
                 return _processorCount;
             }
         }
+
+        /// <summary>
+        /// Gets the stack trace.
+        /// </summary>
+        /// <value>The stack trace.</value>
+        public static string StackTrace => Environment.StackTrace;
+
+        /// <summary>
+        /// Gets the working set.
+        /// </summary>
+        /// <value>The working set.</value>
+        public static long WorkingSet => Environment.WorkingSet;
+
+        /// <summary>
+        /// Gets the culture.
+        /// </summary>
+        /// <value>The culture.</value>
+        public static CultureInfo CurrentCulture => Thread.CurrentThread.CurrentCulture;
+
+        /// <summary>
+        /// Gets the UI culture.
+        /// </summary>
+        /// <value>The UI culture.</value>
+        public static CultureInfo CurrentUICulture => Thread.CurrentThread.CurrentUICulture;
+
+        /// <summary>
+        /// Changes the culture.
+        /// </summary>
+        /// <param name="cultureName">Name of the culture.</param>
+        public static void ChangeCulture(string cultureName)
+        {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(cultureName);
+        }
+
+        /// <summary>
+        /// Changes the UI culture.
+        /// </summary>
+        /// <param name="cultureName">Name of the culture.</param>
+        public static void ChangeUICulture(string cultureName)
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureName);
+        }
+
+        /// <summary>
+        /// Gets the installed UI culture.
+        /// </summary>
+        /// <value>The installed UI culture.</value>
+        public static CultureInfo InstalledUICulture => CultureInfo.InstalledUICulture;
+
+
+        /// <summary>
+        /// Gets the os platform.
+        /// </summary>
+        /// <value>The os platform.</value>
+        public static string OSPlatform => Environment.OSVersion.Platform.ToString();
+
+        /// <summary>
+        /// Gets the os version.
+        /// </summary>
+        /// <value>The os version.</value>
+        public static string OSVersion => Environment.OSVersion.Version.ToString();
     }
 }

@@ -102,5 +102,10 @@ namespace dotNetTips.Utility.Standard
         /// Vertical tab
         /// </summary>
         public const char VerticalTab = '\v';
+
+        /// <summary>
+        /// The colon
+        /// </summary>
+        public const char Colon = ':';
     }
 }

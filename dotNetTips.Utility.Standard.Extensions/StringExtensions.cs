@@ -46,7 +46,14 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <returns><c>true</c> if the specified input has value; otherwise, <c>false</c>.</returns>
         public static bool HasValue(this string input)
         {
-            return string.IsNullOrEmpty(input) == false;
+            if (input == null)
+            {
+                return false;
+            }
+            else
+            {
+                return input.Trim().Length > 0;
+            }
         }
 
         /// <summary>

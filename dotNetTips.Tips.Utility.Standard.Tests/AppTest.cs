@@ -24,7 +24,7 @@ namespace dotNetTips.Tips.Utility.Standard.Tests
         [TestMethod]
         public void TestLoadingEnvironmentVariables()
         {
-            var variables = App.GetEnvironmenVariables();
+            var variables = App.GetEnvironmentVariables();
 
             Assert.IsNotNull(variables);
 
@@ -39,7 +39,7 @@ namespace dotNetTips.Tips.Utility.Standard.Tests
         [TestMethod]
         public void TestLoadingEnvironmentVaiable()
         {
-            var variables = App.GetEnvironmenVariables();
+            var variables = App.GetEnvironmentVariables();
 
             Assert.IsTrue(variables.ContainsKey(EnvironmentKeys.Path.ToString()));
         }

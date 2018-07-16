@@ -37,7 +37,7 @@ namespace dotNetTips.Utility.Standard
         /// <summary>
         /// The network available changed
         /// </summary>
-        NetworkAvailableChanged,
+        NetworkAvailabilityChanged,
 
         /// <summary>
         /// The unhandled exception
@@ -109,12 +109,12 @@ namespace dotNetTips.Utility.Standard
 
         private static void CurrentDomain_FirstChanceException(object sender, System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         private static void CurrentDomain_ProcessExit(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+           
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace dotNetTips.Utility.Standard
 
             Trace.Write($"Network availble: {e.IsAvailable}");
 
-            var eventArgs = new SystemChangedEventArgs { SystemEventType = SystemEventType.NetworkAvailableChanged, EventInformation = eventInfo };
+            var eventArgs = new SystemChangedEventArgs { SystemEventType = SystemEventType.NetworkAvailabilityChanged, EventInformation = eventInfo };
 
             OnSystemChanged(eventArgs);
         }

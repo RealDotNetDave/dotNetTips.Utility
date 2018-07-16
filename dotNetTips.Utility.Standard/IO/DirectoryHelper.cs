@@ -12,9 +12,6 @@
 // <summary></summary>
 // ***********************************************************************
 
-using dotNetTips.Utility.Standard.Extensions;
-using dotNetTips.Utility.Standard.OOP;
-using dotNetTips.Utility.Standard.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,6 +19,9 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using dotNetTips.Utility.Standard.Extensions;
+using dotNetTips.Utility.Standard.OOP;
+using dotNetTips.Utility.Standard.Win32;
 
 namespace dotNetTips.Utility.Standard.IO
 {
@@ -30,13 +30,17 @@ namespace dotNetTips.Utility.Standard.IO
     /// </summary>
     public static class DirectoryHelper
     {
-
         /// <summary>
         /// Loads the one drive folders.
         /// </summary>
         /// <returns>IEnumerable&lt;OneDriveFolder&gt;.</returns>
         public static IEnumerable<OneDriveFolder> LoadOneDriveFolders()
         {
+            const string DisplayNameKey = "DisplayName";
+            const string UserFolderKey = "UserFolder";
+            const string AccountsKey = "Accounts";
+            const string EmailKey = "UserEmail";
+
             var folders = new List<OneDriveFolder>();
 
             var oneDriveKey = RegistryHelper.GetCurrentUserRegistryKey(RegistryHelper.KeyCurrentUserOneDrive);
@@ -44,7 +48,7 @@ namespace dotNetTips.Utility.Standard.IO
             if (oneDriveKey.IsNotNull())
             {
                 //Get Accounts
-                var accountKey = oneDriveKey.GetSubKey("Accounts");
+                var accountKey = oneDriveKey.GetSubKey(AccountsKey);
 
                 if (accountKey.IsNotNull() && accountKey.SubKeyCount > 0)
                 {
@@ -53,22 +57,21 @@ namespace dotNetTips.Utility.Standard.IO
                         var key = accountKey.GetSubKey(subKeyName);
 
                         var folder = new OneDriveFolder();
-                        var directoryValue = key.GetValue<string>("UserFolder");
+                        var directoryValue = key.GetValue<string>(UserFolderKey);
 
-                        if (string.IsNullOrEmpty(directoryValue) == false)
+                        if (directoryValue.HasValue())
                         {
-
                             folder.DirectoryInfo = new DirectoryInfo(directoryValue);
 
-                            var emailValue = key.GetValue<string>("UserEmail");
+                            var emailValue = key.GetValue<string>(EmailKey);
 
-                            if (string.IsNullOrEmpty(emailValue) == false)
+                            if (emailValue.HasValue() == false)
                             {
                                 folder.UserEmail = emailValue;
                             }
 
-                            //Figure out account type
-                            var name = key.GetValue<string>("DisplayName");
+                            //Figure out account type                           
+                            var name = key.GetValue<string>(DisplayNameKey);
 
                             if (name.HasValue())
                             {
@@ -80,7 +83,7 @@ namespace dotNetTips.Utility.Standard.IO
                                 folder.AccountName = key.GetValue<string>(string.Empty);
                             }
 
-                            if (folder.AccountName.HasValue() && folder.UserEmail.HasValue())
+                            if (folder.AccountName.HasValue() && folder.DirectoryInfo.IsNotNull())
                             {
                                 folders.Add(folder);
                             }

@@ -4,14 +4,12 @@
 // Created          : 08-06-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-07-2018
+// Last Modified On : 07-05-2018
 // ***********************************************************************
 // <copyright file="Processor.cs" company="dotNetTips.com - David McCarter">
-//      McCarter Consulting (David McCarter)
+//     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
-using dotNetTips.Utility.Standard.OOP;
-using dotNetTips.Utility.Standard.Properties;
 // ***********************************************************************
 using System;
 using System.Collections.Generic;
@@ -19,6 +17,8 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Security;
+using dotNetTips.Utility.Standard.OOP;
+using dotNetTips.Utility.Standard.Properties;
 
 namespace dotNetTips.Utility.Standard.IO
 {
