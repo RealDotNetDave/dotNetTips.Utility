@@ -4,12 +4,13 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-16-2017
+// Last Modified On : 07-11-2018
 // ***********************************************************************
 // <copyright file="JsonSerializer.cs" company="dotNetTips.com - David McCarter">
-//      McCarter Consulting (David McCarter)
+//     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
+// ***********************************************************************
 using dotNetTips.Utility.Standard.OOP;
 // ***********************************************************************
 using System;
@@ -38,7 +39,7 @@ namespace dotNetTips.Utility.Standard.Serialization
 
             var obj = TypeHelper.GetDefault<T>();
 
-            using(var ms = new MemoryStream(Encoding.UTF8.GetBytes(json)))
+            using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(json)))
             {
                 var ser = new DataContractJsonSerializer(obj.GetType());
                 obj = ser.ReadObject(ms) as T;
@@ -58,9 +59,11 @@ namespace dotNetTips.Utility.Standard.Serialization
 
             var json = string.Empty;
 
-            using(var ms = new MemoryStream())
+            using (var ms = new MemoryStream())
             {
-                var ser = new DataContractJsonSerializer(type: obj.GetType(), settings: new DataContractJsonSerializerSettings { SerializeReadOnlyTypes = true, UseSimpleDictionaryFormat = true, EmitTypeInformation = EmitTypeInformation.AsNeeded });
+                var ser = new DataContractJsonSerializer(
+                    type: obj.GetType(),
+                    settings: new DataContractJsonSerializerSettings        { SerializeReadOnlyTypes = true, UseSimpleDictionaryFormat = true, EmitTypeInformation = EmitTypeInformation.AsNeeded });
 
                 ser.WriteObject(ms, obj);
 

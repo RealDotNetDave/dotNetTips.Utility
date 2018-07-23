@@ -25,7 +25,7 @@
     </SccProvider>
     <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <AssemblyVersion>2018.6.26.40489</AssemblyVersion>
+    <AssemblyVersion>2018.7.20.3150</AssemblyVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>

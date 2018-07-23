@@ -8,8 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace dotNetTips.Utility.Standard.Properties
-{
+namespace dotNetTips.Utility.Standard.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -20,268 +22,220 @@ namespace dotNetTips.Utility.Standard.Properties
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if (object.ReferenceEquals(resourceMan, null))
-                {
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("dotNetTips.Utility.Standard.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to bytes.
         /// </summary>
-        internal static string Bytes
-        {
-            get
-            {
+        internal static string Bytes {
+            get {
                 return ResourceManager.GetString("Bytes", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to {0} cannot be of type Exception. Use a more specific exception from the framework or a custom Exception inheriting type Exception (only)..
         /// </summary>
-        internal static string CannotBeOfTypeException
-        {
-            get
-            {
+        internal static string CannotBeOfTypeException {
+            get {
                 return ResourceManager.GetString("CannotBeOfTypeException", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Collection is null or has no items..
         /// </summary>
-        internal static string CollectionIsNullOrHasNoItems
-        {
-            get
-            {
+        internal static string CollectionIsNullOrHasNoItems {
+            get {
                 return ResourceManager.GetString("CollectionIsNullOrHasNoItems", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Collection size is not valid..
         /// </summary>
-        internal static string CollectionSizeIsNotValid
-        {
-            get
-            {
+        internal static string CollectionSizeIsNotValid {
+            get {
                 return ResourceManager.GetString("CollectionSizeIsNotValid", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to File not found..
         /// </summary>
-        internal static string FileNotFound
-        {
-            get
-            {
+        internal static string FileNotFound {
+            get {
                 return ResourceManager.GetString("FileNotFound", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Folder not found..
         /// </summary>
-        internal static string FolderNotFound
-        {
-            get
-            {
+        internal static string FolderNotFound {
+            get {
                 return ResourceManager.GetString("FolderNotFound", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to GB.
         /// </summary>
-        internal static string GB
-        {
-            get
-            {
+        internal static string GB {
+            get {
                 return ResourceManager.GetString("GB", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Guid is Empty..
         /// </summary>
-        internal static string GuidIsEmpty
-        {
-            get
-            {
+        internal static string GuidIsEmpty {
+            get {
                 return ResourceManager.GetString("GuidIsEmpty", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Invalid type..
         /// </summary>
-        internal static string InvalidType
-        {
-            get
-            {
+        internal static string InvalidType {
+            get {
                 return ResourceManager.GetString("InvalidType", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to KB.
         /// </summary>
-        internal static string KB
-        {
-            get
-            {
+        internal static string KB {
+            get {
                 return ResourceManager.GetString("KB", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to MB.
         /// </summary>
-        internal static string MB
-        {
-            get
-            {
+        internal static string MB {
+            get {
                 return ResourceManager.GetString("MB", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Parameter is invalid. .
         /// </summary>
-        internal static string ParameterIsInvalid
-        {
-            get
-            {
+        internal static string ParameterIsInvalid {
+            get {
                 return ResourceManager.GetString("ParameterIsInvalid", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Service not found..
         /// </summary>
-        internal static string ServiceNotFound
-        {
-            get
-            {
+        internal static string ServiceNotFound {
+            get {
                 return ResourceManager.GetString("ServiceNotFound", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Strings do not match..
         /// </summary>
-        internal static string StringDoesNotMatch
-        {
-            get
-            {
+        internal static string StringDoesNotMatch {
+            get {
                 return ResourceManager.GetString("StringDoesNotMatch", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to String does not match maximum length..
+        ///   Looks up a localized string similar to String does not matach maximum length..
         /// </summary>
-        internal static string StringDoesNotMatchMaximumLength
-        {
-            get
-            {
+        internal static string StringDoesNotMatchMaximumLength {
+            get {
                 return ResourceManager.GetString("StringDoesNotMatchMaximumLength", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to String does not match minimum length..
         /// </summary>
-        internal static string StringDoesNotMatchMinimumLength
-        {
-            get
-            {
+        internal static string StringDoesNotMatchMinimumLength {
+            get {
                 return ResourceManager.GetString("StringDoesNotMatchMinimumLength", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to String is empty..
         /// </summary>
-        internal static string StringIsEmpty
-        {
-            get
-            {
+        internal static string StringIsEmpty {
+            get {
                 return ResourceManager.GetString("StringIsEmpty", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to String is not valid..
         /// </summary>
-        internal static string StringIsNotValid
-        {
-            get
-            {
+        internal static string StringIsNotValid {
+            get {
                 return ResourceManager.GetString("StringIsNotValid", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to The values are not defined in the enum..
         /// </summary>
-        internal static string TheValueIsNotDefinedInTheEnumeration
-        {
-            get
-            {
+        internal static string TheValueIsNotDefinedInTheEnumeration {
+            get {
                 return ResourceManager.GetString("TheValueIsNotDefinedInTheEnumeration", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Yesterday.
         /// </summary>
-        internal static string Yesterday
-        {
-            get
-            {
+        internal static string Yesterday {
+            get {
                 return ResourceManager.GetString("Yesterday", resourceCulture);
             }
         }

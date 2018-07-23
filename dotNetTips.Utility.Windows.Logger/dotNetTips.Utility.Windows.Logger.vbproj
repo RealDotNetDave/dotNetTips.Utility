@@ -13,7 +13,7 @@
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
     <TargetFrameworkProfile />
-    <AssemblyVersion>2018.6.20.36952</AssemblyVersion>
+    <AssemblyVersion>2018.7.20.3150</AssemblyVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <PublishUrl>publish\</PublishUrl>
@@ -275,6 +275,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\dotNetTips.Utility.Portable.Windows\dotNetTips.Utility.Portable.Windows.vbproj">
+      <Project>{a1d2c465-bf98-47e1-80f0-8f005028615b}</Project>
+      <Name>dotNetTips.Utility.Portable.Windows</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dotNetTips.Utility.Portable\dotNetTips.Utility.Portable.csproj">
       <Project>{0C07F36A-CB82-47B3-BC4B-601FADD18A71}</Project>
       <Name>dotNetTips.Utility.Portable</Name>

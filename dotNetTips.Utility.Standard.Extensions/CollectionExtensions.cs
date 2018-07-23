@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-05-2018
+// Last Modified On : 07-21-2018
 // ***********************************************************************
 // <copyright file="CollectionExtensions.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -147,7 +147,6 @@ namespace dotNetTips.Utility.Standard.Extensions
             return count;
         }
 
-
         /// <summary>
         /// Disposes the collection.
         /// </summary>
@@ -212,8 +211,10 @@ namespace dotNetTips.Utility.Standard.Extensions
 
                 return finalCount;
             }
-
-            return source.Count(predicate);
+            else
+            {
+                return source.Count(predicate);
+            }
         }
 
 
@@ -303,7 +304,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="InvalidCastException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="System.InvalidCastException"></exception>
-        /// <remarks>Code by: C.F.Meijers</remarks>
+        /// <remarks>Original code by: C.F.Meijers</remarks>
         public static IEnumerable<T> OrderBy<T>(this IEnumerable<T> list, string sortExpression)
         {
             if (string.IsNullOrEmpty(sortExpression))
@@ -554,9 +555,10 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <returns>IEnumerable&lt;TSource&gt;.</returns>
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
         /// <remarks>Original code by: Phil Campbell</remarks>
-        public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> list, bool condition, Func<TSource, bool> predicate) => condition
-            ? list.Where(predicate)
-            : list;
+        public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> list, bool condition, Func<TSource, bool> predicate)
+        {
+            return condition ? list.Where(predicate) : list;
+        }
 
         /// <summary>
         /// Returns list based on function.
@@ -568,9 +570,10 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <returns>IEnumerable&lt;TSource&gt;.</returns>
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
         /// <remarks>Original code by: Phil Campbell</remarks>
-        public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> list, bool condition, Func<TSource, int, bool> predicate) => condition
-            ? list.Where(predicate)
-            : list;
+        public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> list, bool condition, Func<TSource, int, bool> predicate)
+        {
+            return condition ? list.Where(predicate) : list;
+        }
 
         /// <summary>
         /// Disposes the collection.
@@ -595,9 +598,9 @@ namespace dotNetTips.Utility.Standard.Extensions
             {
                 foreach (var item in items)
                 {
-                    if (item != null && item is IDisposable disposableItem)
+                    if (item != null && item is IDisposable disposeItem)
                     {
-                        disposableItem.TryDispose();
+                        disposeItem.TryDispose();
                     }
                     else
                     {

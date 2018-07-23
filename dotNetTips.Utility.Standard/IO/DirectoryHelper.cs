@@ -4,10 +4,10 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-16-2018
+// Last Modified On : 07-17-2018
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="dotNetTips.com - David McCarter">
-//      McCarter Consulting (David McCarter)
+//     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -141,28 +141,49 @@ namespace dotNetTips.Utility.Standard.IO
         /// <summary>
         /// Loads the files.
         /// </summary>
+        /// <param name="path">The path.</param>
+        /// <param name="searchPattern">The search pattern.</param>
+        /// <param name="searchOption">The search option.</param>
+        /// <returns>IEnumerable&lt;FileInfo&gt;.</returns>
+        public static IEnumerable<FileInfo> LoadFiles(string path, string searchPattern, SearchOption searchOption)
+        {
+            return LoadFiles(new List<DirectoryInfo> { new DirectoryInfo(path) }, searchPattern, searchOption);
+        }
+
+        /// <summary>
+        /// Loads the files.
+        /// </summary>
+        /// <param name="directory">The directory.</param>
+        /// <param name="searchPattern">The search pattern.</param>
+        /// <param name="searchOption">The search option.</param>
+        /// <returns>IEnumerable&lt;FileInfo&gt;.</returns>
+        public static IEnumerable<FileInfo> LoadFiles(DirectoryInfo directory, string searchPattern, SearchOption searchOption)
+        {
+            return LoadFiles(new List<DirectoryInfo> { directory }, searchPattern, searchOption);
+        }
+
+        /// <summary>
+        /// Loads the files.
+        /// </summary>
         /// <param name="directories">The directories.</param>
         /// <param name="searchPattern">The search pattern.</param>
         /// <param name="searchOption">The search option.</param>
         /// <returns>IEnumerable(Of FileInfo).</returns>
-        public static IEnumerable<FileInfo> LoadFiles(IEnumerable<DirectoryInfo> directories,
-                                                      string searchPattern,
-                                                      SearchOption searchOption)
+        public static IEnumerable<FileInfo> LoadFiles(IEnumerable<DirectoryInfo> directories, string searchPattern, SearchOption searchOption)
         {
             var files = new List<FileInfo>();
 
-            Parallel.ForEach(directories,
-                             (directory) =>
-            {
-                if ((directory.Exists))
+            Parallel.ForEach(directories, (directory) =>
                 {
-                    var foundFiles = directory.EnumerateFiles(searchPattern, searchOption);
-                    lock (files)
+                    if ((directory.Exists))
                     {
-                        files.AddRange(foundFiles);
+                        var foundFiles = directory.EnumerateFiles(searchPattern, searchOption);
+                        lock (files)
+                        {
+                            files.AddRange(foundFiles);
+                        }
                     }
-                }
-            });
+                });
 
             return files.Distinct().AsEnumerable();
         }

@@ -61,5 +61,14 @@ namespace dotNetTips.Utility.Standard.IO
         {
             get; set;
         }
+
+        /// <summary>
+        /// Gets or sets the speed in milliseconds.
+        /// </summary>
+        /// <value>The speed in milliseconds.</value>
+        public double SpeedInMilliseconds
+        {
+            get; set;
+        }
     }
 }

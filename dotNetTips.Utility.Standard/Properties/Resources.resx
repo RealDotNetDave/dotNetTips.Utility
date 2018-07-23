@@ -139,7 +139,7 @@
     <value>GB</value>
   </data>
   <data name="GuidIsEmpty" xml:space="preserve">
-    <value>Guid is Empth.</value>
+    <value>Guid is Empty.</value>
   </data>
   <data name="InvalidType" xml:space="preserve">
     <value>Invalid type.</value>

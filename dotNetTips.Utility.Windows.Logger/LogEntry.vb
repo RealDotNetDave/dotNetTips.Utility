@@ -627,7 +627,7 @@ Public Class LogEntry
     ''' <summary>
     ''' Loads the default information.
     ''' </summary>
-    Private Shared Sub LoadDefaultInformation()
+    Public Sub LoadDefaultInformation()
         _defaultInformation.Add(New InfoItem("Application.ClrVersion", Environment.Version.ToString()))
         _defaultInformation.Add(New InfoItem("Application.64BitProcess", Environment.Is64BitProcess.ToString()))
         _defaultInformation.Add(New InfoItem("Computer.OS.64Bit", Environment.Is64BitOperatingSystem.ToString(CultureInfo.CurrentCulture)))
@@ -744,7 +744,7 @@ Public Class LogEntry
     ''' <summary>
     ''' Loads the debugging information.
     ''' </summary>
-    Private Sub LoadDebuggingInformation()
+    Public Sub LoadDebuggingInformation()
         If (IsUnmanagedCodePermissionAvailable()) Then
             Me.LoadUnmanagedCodeValues()
         End If
@@ -793,7 +793,7 @@ Public Class LogEntry
         Me.AddInfoItem(New InfoItem("Server.BootTime", ComputerHelper.ServerUpTime(Environment.MachineName).BootTime.ToString()))
 
         If _defaultInformation.Count() = 0 Then
-            LogEntry.LoadDefaultInformation()
+            Me.LoadDefaultInformation()
             For Each item In _defaultInformation
                 Me.AddInfoItem(item)
             Next

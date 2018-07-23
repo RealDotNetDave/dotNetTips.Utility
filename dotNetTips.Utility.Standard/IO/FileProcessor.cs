@@ -17,6 +17,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Security;
+using dotNetTips.Utility.Standard.Diagnostics;
 using dotNetTips.Utility.Standard.OOP;
 using dotNetTips.Utility.Standard.Properties;
 
@@ -57,38 +58,44 @@ namespace dotNetTips.Utility.Standard.IO
 
             var backupFolder = new DirectoryInfo(Path.Combine(destinationFolder.FullName, folderPrefix));
 
-            if(backupFolder.Exists == false)
+            if (backupFolder.Exists == false)
             {
                 backupFolder.Create();
             }
 
-            foreach(var tempFile in files)
+            foreach (var tempFile in files)
             {
-                if(tempFile.Exists)
+                if (tempFile.Exists)
                 {
                     try
                     {
-                        var newFileName = new FileInfo(tempFile.FullName.Replace(tempFile.Directory.Root.FullName,
-                                                                                 backupFolder.FullName));
+                        var newFileName = new FileInfo(tempFile.FullName.Replace(tempFile.Directory.Root.FullName, backupFolder.FullName));
 
-                        if(newFileName.Directory.Exists == false)
+                        if (newFileName.Directory.Exists == false)
                         {
                             newFileName.Directory.Create();
                         }
 
+                        var psw = PerformanceStopwatch.StartNew();
+
                         tempFile.CopyTo(newFileName.FullName, true);
+
+                        var perf = psw.StopReset();
 
                         successCount += 1;
 
                         OnProcessed(new FileProgressEventArgs
                         {
                             Name = tempFile.FullName,
+                            Message = tempFile.Name,
                             ProgressState = FileProgressState.Copied,
-                            Size = tempFile.Length
+                            Size = tempFile.Length,
+                            SpeedInMilliseconds = perf.TotalMilliseconds
                         });
-                    } catch(Exception ex) when (ex is IOException || ex is SecurityException ||
-                        ex is UnauthorizedAccessException ||
-                        ex is PathTooLongException)
+                    }
+                    catch (Exception ex) when (ex is IOException || ex is SecurityException ||
+                      ex is UnauthorizedAccessException ||
+                      ex is PathTooLongException)
                     {
                         OnProcessed(new FileProgressEventArgs
                         {
@@ -98,7 +105,8 @@ namespace dotNetTips.Utility.Standard.IO
                             Message = ex.Message
                         });
                     }
-                } else
+                }
+                else
                 {
                     OnProcessed(new FileProgressEventArgs
                     {
@@ -125,24 +133,32 @@ namespace dotNetTips.Utility.Standard.IO
 
             var successCount = 0;
 
-            foreach(var tempFile in files.AsParallel())
+            foreach (var tempFile in files.AsParallel())
             {
-                if(tempFile.Exists)
+                if (tempFile.Exists)
                 {
                     try
                     {
+
+                        var psw = PerformanceStopwatch.StartNew();
+
                         tempFile.Delete();
+
+                        var perf = psw.StopReset();
 
                         successCount += 1;
 
                         OnProcessed(new FileProgressEventArgs
                         {
                             Name = tempFile.FullName,
+                            Message = tempFile.Name,
                             ProgressState = FileProgressState.Deleted,
-                            Size = tempFile.Length
+                            Size = tempFile.Length,
+                            SpeedInMilliseconds = perf.TotalMilliseconds
                         });
-                    } catch(Exception ex) when (ex is IOException || ex is SecurityException ||
-                        ex is UnauthorizedAccessException)
+                    }
+                    catch (Exception ex) when (ex is IOException || ex is SecurityException ||
+                      ex is UnauthorizedAccessException)
                     {
                         OnProcessed(new FileProgressEventArgs
                         {
@@ -152,7 +168,8 @@ namespace dotNetTips.Utility.Standard.IO
                             Message = ex.Message
                         });
                     }
-                } else
+                }
+                else
                 {
                     OnProcessed(new FileProgressEventArgs
                     {
@@ -178,9 +195,9 @@ namespace dotNetTips.Utility.Standard.IO
 
             var successCount = 0;
 
-            foreach(var tempFolder in folders.AsParallel())
+            foreach (var tempFolder in folders.AsParallel())
             {
-                if(tempFolder.Exists)
+                if (tempFolder.Exists)
                 {
                     try
                     {
@@ -193,9 +210,8 @@ namespace dotNetTips.Utility.Standard.IO
                             Name = tempFolder.FullName,
                             ProgressState = FileProgressState.Deleted
                         });
-                    } catch(Exception ex) when (ex is IOException || ex is SecurityException ||
-                        ex is UnauthorizedAccessException ||
-                        ex is DirectoryNotFoundException)
+                    }
+                    catch (Exception ex) when (ex is IOException || ex is SecurityException || ex is UnauthorizedAccessException || ex is DirectoryNotFoundException)
                     {
                         OnProcessed(new FileProgressEventArgs
                         {
@@ -204,7 +220,8 @@ namespace dotNetTips.Utility.Standard.IO
                             Message = ex.Message
                         });
                     }
-                } else
+                }
+                else
                 {
                     OnProcessed(new FileProgressEventArgs
                     {

@@ -4,16 +4,13 @@
 // Created          : 07-11-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-11-2018
+// Last Modified On : 07-22-2018
 // ***********************************************************************
 // <copyright file="PathHelpercs.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace dotNetTips.Utility.Standard.IO
 {
@@ -23,7 +20,7 @@ namespace dotNetTips.Utility.Standard.IO
     public static class PathHelper
     {
         /// <summary>
-        /// Pathes the contains wildcards.
+        /// Checks to see if path contains any wild cards.
         /// </summary>
         /// <param name="path">The path.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>

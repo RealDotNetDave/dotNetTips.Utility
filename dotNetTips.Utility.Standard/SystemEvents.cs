@@ -20,80 +20,9 @@ using System.Net.NetworkInformation;
 namespace dotNetTips.Utility.Standard
 {
     /// <summary>
-    /// Enum SystemEventType
-    /// </summary>
-    public enum SystemEventType
-    {
-        /// <summary>
-        /// The none
-        /// </summary>
-        None,
-
-        /// <summary>
-        /// The network address changed
-        /// </summary>
-        NetworkAddressChanged,
-
-        /// <summary>
-        /// The network available changed
-        /// </summary>
-        NetworkAvailabilityChanged,
-
-        /// <summary>
-        /// The unhandled exception
-        /// </summary>
-        UnhandledException
-    }
-
-    /// <summary>
-    /// Interface IEventInformation
-    /// </summary>
-    public interface IEventInformation
-    {
-    }
-
-    /// <summary>
-    /// Class NetworkAddressChangedEventInformation.
-    /// </summary>
-    /// <seealso cref="dotNetTips.Utility.Standard.IEventInformation" />
-    public sealed class NetworkAddressChangedEventInformation : IEventInformation
-    {
-        /// <summary>
-        /// Gets the name.
-        /// </summary>
-        /// <value>The name.</value>
-        public string Name { get; internal set; }
-
-        /// <summary>
-        /// Gets the identifier.
-        /// </summary>
-        /// <value>The identifier.</value>
-        public string Id { get; internal set; }
-
-        /// <summary>
-        /// Gets the operational status.
-        /// </summary>
-        /// <value>The operational status.</value>
-        public OperationalStatus OperationalStatus { get; internal set; }
-    }
-
-    /// <summary>
-    /// Class NetworkAvailabilityChangedEventInformation.
-    /// </summary>
-    /// <seealso cref="dotNetTips.Utility.Standard.IEventInformation" />
-    public sealed class NetworkAvailabilityChangedEventInformation : IEventInformation
-    {
-        /// <summary>
-        /// Gets a value indicating whether [network available].
-        /// </summary>
-        /// <value><c>true</c> if [network available]; otherwise, <c>false</c>.</value>
-        public bool NetworkAvailable { get; internal set; }
-    }
-
-    /// <summary>
     /// Class SystemEvents.
     /// </summary>
-    public static class SystemEvents
+    public static partial class SystemEvents
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SystemEvents" /> class.
@@ -115,25 +44,6 @@ namespace dotNetTips.Utility.Standard
         private static void CurrentDomain_ProcessExit(object sender, EventArgs e)
         {
            
-        }
-
-        /// <summary>
-        /// Class UnhandledExceptionEventInformation.
-        /// </summary>
-        /// <seealso cref="dotNetTips.Utility.Standard.IEventInformation" />
-        public sealed class UnhandledExceptionEventInformation : IEventInformation
-        {
-            /// <summary>
-            /// Gets a value indicating whether [network available].
-            /// </summary>
-            /// <value><c>true</c> if [network available]; otherwise, <c>false</c>.</value>
-            public bool IsTerminating { get; internal set; }
-
-            /// <summary>
-            /// Gets the exception.
-            /// </summary>
-            /// <value>The exception.</value>
-            public LoggableException Exception { get; internal set; }
         }
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -209,23 +119,5 @@ namespace dotNetTips.Utility.Standard
         /// <param name="e">The <see cref="SystemChangedEventArgs" /> instance containing the event data.</param>
         private static void OnSystemChanged(SystemChangedEventArgs e) => SystemChanged?.Invoke(AppDomain.CurrentDomain, e);
 
-        /// <summary>
-        /// Class SystemChangedEventArgs. This class cannot be inherited.
-        /// </summary>
-        /// <seealso cref="System.EventArgs" />
-        public sealed class SystemChangedEventArgs : EventArgs
-        {
-            /// <summary>
-            /// Gets the type of the system event.
-            /// </summary>
-            /// <value>The type of the system event.</value>
-            public SystemEventType SystemEventType { get; internal set; }
-
-            /// <summary>
-            /// Gets the event information.
-            /// </summary>
-            /// <value>The event information.</value>
-            public IEnumerable<IEventInformation> EventInformation { get; internal set; }
-        }
     }
 }

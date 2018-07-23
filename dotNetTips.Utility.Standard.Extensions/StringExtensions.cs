@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-06-2018
+// Last Modified On : 07-16-2018
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -46,14 +46,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <returns><c>true</c> if the specified input has value; otherwise, <c>false</c>.</returns>
         public static bool HasValue(this string input)
         {
-            if (input == null)
-            {
-                return false;
-            }
-            else
-            {
-                return input.Trim().Length > 0;
-            }
+            return input == null ? false : input.Trim().Length > 0;
         }
 
         /// <summary>

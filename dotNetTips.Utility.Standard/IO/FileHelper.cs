@@ -35,21 +35,21 @@ namespace dotNetTips.Utility.Standard.IO
         {
             var errors = new SortedDictionary<string, string>();
 
-            Parallel.ForEach(files,
-                                                    (information) =>
-            {
-                try
+            Parallel.ForEach(files, (information) =>
                 {
-                    File.Delete(information);
-                } catch(IOException fileIOException)
-                {
-                    errors.AddIfNotExists(new KeyValuePair<string, string>(information, fileIOException.Message));
-                } catch(UnauthorizedAccessException notAuthorizedException)
-                {
-                    errors.AddIfNotExists(new KeyValuePair<string, string>(information, notAuthorizedException.Message));
-                }
-            });
-
+                    try
+                    {
+                        File.Delete(information);
+                    }
+                    catch (IOException fileIOException)
+                    {
+                        errors.AddIfNotExists(new KeyValuePair<string, string>(information, fileIOException.Message));
+                    }
+                    catch (UnauthorizedAccessException notAuthorizedException)
+                    {
+                        errors.AddIfNotExists(new KeyValuePair<string, string>(information, notAuthorizedException.Message));
+                    }
+                });
 
             return errors.AsEnumerable();
         }
@@ -69,14 +69,14 @@ namespace dotNetTips.Utility.Standard.IO
 
             var newFileName = file.FullName.Replace(destinationFolder.FullName, backUpFolderRoot);
 
-            using(var sourceStream = File.Open(file.FullName, FileMode.Open))
+            using (var sourceStream = File.Open(file.FullName, FileMode.Open))
             {
-                if(File.Exists(newFileName))
+                if (File.Exists(newFileName))
                 {
                     File.Delete(newFileName);
                 }
 
-                using(var destinationStream = File.Create(newFileName))
+                using (var destinationStream = File.Create(newFileName))
                 {
                     await sourceStream.CopyToAsync(destinationStream);
                     await destinationStream.FlushAsync();
