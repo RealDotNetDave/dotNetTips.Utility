@@ -173,17 +173,15 @@ namespace dotNetTips.Utility.Standard.IO
         {
             var files = new List<FileInfo>();
 
-            Parallel.ForEach(directories, (directory) =>
+            foreach (var directory in directories)
+            {
+                if ((directory.Exists))
                 {
-                    if ((directory.Exists))
-                    {
-                        var foundFiles = directory.EnumerateFiles(searchPattern, searchOption);
-                        lock (files)
-                        {
-                            files.AddRange(foundFiles);
-                        }
-                    }
-                });
+                    var foundFiles = directory.EnumerateFiles(searchPattern, searchOption);
+
+                    files.AddRange(foundFiles);
+                }
+            }
 
             return files.Distinct().AsEnumerable();
         }

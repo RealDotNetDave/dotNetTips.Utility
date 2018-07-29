@@ -4,7 +4,7 @@
 ' Created          : 03-29-2016
 '
 ' Last Modified By : David McCarter
-' Last Modified On : 03-06-2017
+' Last Modified On : 07-29-2018
 ' ***********************************************************************
 ' <copyright file="ColorExtensions.vb" company="NicheWare - David McCarter">
 '     '     NicheWare - David McCarter
@@ -16,6 +16,7 @@ Imports System.Collections.Generic
 Imports System.Drawing
 Imports System.Runtime.CompilerServices
 Imports dotNetTips.Utility.Portable.Extensions
+Imports dotNetTips.Utility.Portable.OOP
 
 Namespace Extensions
     ''' <summary>
@@ -48,7 +49,7 @@ Namespace Extensions
         End Function
 
         ''' <summary>
-        ''' Averages the specified colors.
+        ''' Averages the specified colors in the collection..
         ''' </summary>
         ''' <param name="colors">The colors.</param>
         ''' <returns>CGI+ Color structure.</returns>
@@ -56,6 +57,8 @@ Namespace Extensions
         ''' http://code.msdn.microsoft.com/LucasExtensions</remarks>
         <Extension>
         Public Function Average(ByVal colors As IEnumerable(Of Color)) As Color
+
+            Encapsulation.TryValidateParam(colors, NameOf(colors))
 
             Dim r As Integer = colors.Average(Function(c) c.R).Round()
             Dim g As Integer = colors.Average(Function(c) c.G).Round()
