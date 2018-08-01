@@ -63,6 +63,11 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentException">list - List cannot be read-only.</exception>
         public static void AddIfNotExists<T>(this ICollection<T> list, params T[] values)
         {
+            if (values == null || values.Length == 0)
+            {
+                throw new ArgumentException($"{nameof(values)} is null or empty.", nameof(values));
+            }
+
             foreach (var value in values)
             {
                 list.AddIfNotExists(value);

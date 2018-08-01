@@ -3,8 +3,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <DocumentationFile>..\UtilityBin\netstandard2.0\dotNetTips.Utility.Standard.xml</DocumentationFile>
     <OutputPath>..\UtilityBin\netstandard2.0\</OutputPath>
-    <AssemblyVersion>2018.7.29.33989</AssemblyVersion>
-    <FileVersion>2018.7.29.33989</FileVersion>
+    <AssemblyVersion>2018.8.1.37715</AssemblyVersion>
+    <FileVersion>2018.8.1.37715</FileVersion>
     <NeutralLanguage>en</NeutralLanguage>
     <Authors>David McCarter</Authors>
     <Company>dotNetTips.com - David McCarter</Company>
@@ -19,7 +19,7 @@
     <AssemblyOriginatorKeyFile>dotNetTips.com.pfx</AssemblyOriginatorKeyFile>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2018.7.1.0</Version>
+    <Version>2018.7.2.0</Version>
     <PackageTags>David McCarter, dotNetDave, dotNetTips.com</PackageTags>
     <AssemblyName>dotNetTips.Utility.Standard.Extensions</AssemblyName>
     <RootNamespace>dotNetTips.Utility.Standard.Extensions</RootNamespace>

@@ -21,7 +21,7 @@ namespace dotNetTips.Utility.Standard.Extensions
     /// <summary>
     /// Class ExceptionExtension.
     /// </summary>
-    public static class ExceptionExtension
+    public static class ExceptionExtensions
     {
         /// <summary>
         /// Hierarchy.

@@ -10,14 +10,14 @@
 //      McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
-using dotNetTips.Utility.Standard.Extensions;
-using dotNetTips.Utility.Standard.Properties;
 // ***********************************************************************
 using System;
 using System.Collections;
 using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
+using dotNetTips.Utility.Standard.Extensions;
+using dotNetTips.Utility.Standard.Properties;
 
 namespace dotNetTips.Utility.Standard.OOP
 {
@@ -40,7 +40,7 @@ namespace dotNetTips.Utility.Standard.OOP
         {
             var t = typeof(TException);
 
-            if(t.Name == nameof(Exception))
+            if (t.Name == nameof(Exception))
             {
                 throw new InvalidCastException(string.Format(CultureInfo.CurrentUICulture,
                                                              Resources.CannotBeOfTypeException,
@@ -49,12 +49,12 @@ namespace dotNetTips.Utility.Standard.OOP
 
             var defaultMessage = Resources.ParameterIsInvalid;
 
-            if(string.IsNullOrEmpty(message) == false)
+            if (string.IsNullOrEmpty(message) == false)
             {
                 defaultMessage = message;
             }
 
-            if(condition == false)
+            if (condition == false)
             {
                 var ex = Activator.CreateInstance(typeof(TException), paramName, defaultMessage).As<TException>();
                 throw ex;
@@ -71,9 +71,9 @@ namespace dotNetTips.Utility.Standard.OOP
         /// <exception cref="System.ArgumentNullException"></exception>
         public static void TryValidateParam(IEnumerable collection, string paramName, string message = "")
         {
-            if(collection.IsValid() == false)
+            if (collection.IsValid() == false)
             {
-                if(message.IsNull())
+                if (message.IsNull())
                 {
                     message = Resources.CollectionIsNullOrHasNoItems;
                 }
@@ -92,17 +92,18 @@ namespace dotNetTips.Utility.Standard.OOP
         /// <exception cref="FileNotFoundException"></exception>
         public static void TryValidateParam(FileInfo file, string paramName, string message = "")
         {
-            if(file == null)
+            if (file == null)
             {
-                if(message.IsNull())
+                if (message.IsNull())
                 {
                     message = "File cannot be null.";
                 }
 
                 throw new ArgumentNullException(paramName, message);
-            } else if(file.Exists == false)
+            }
+            else if (file.Exists == false)
             {
-                if(message.IsNull())
+                if (message.IsNull())
                 {
                     message = "File does not exist.";
                 }
@@ -121,17 +122,18 @@ namespace dotNetTips.Utility.Standard.OOP
         /// <exception cref="DirectoryNotFoundException"></exception>
         public static void TryValidateParam(DirectoryInfo directory, string paramName, string message = "")
         {
-            if(directory == null)
+            if (directory == null)
             {
-                if(message.IsNull())
+                if (message.IsNull())
                 {
                     message = "Directory cannot be null.";
                 }
 
                 throw new ArgumentNullException(paramName, message);
-            } else if(directory.Exists == false)
+            }
+            else if (directory.Exists == false)
             {
-                if(message.IsNull())
+                if (message.IsNull())
                 {
                     message = "Directory does not exist.";
                 }
@@ -152,9 +154,9 @@ namespace dotNetTips.Utility.Standard.OOP
         {
             TryValidateParam(paramName, nameof(paramName));
 
-            if(Enum.IsDefined(value.GetType(), value) == false)
+            if (Enum.IsDefined(value.GetType(), value) == false)
             {
-                if(message.IsNull())
+                if (message.IsNull())
                 {
                     message = Resources.TheValueIsNotDefinedInTheEnumeration;
                 }
@@ -175,9 +177,9 @@ namespace dotNetTips.Utility.Standard.OOP
         /// <remarks>TEST Created</remarks>
         public static void TryValidateParam(Guid value, string paramName, string message = "")
         {
-            if(value.Equals(Guid.Empty))
+            if (value.Equals(Guid.Empty))
             {
-                if(message.IsNull())
+                if (message.IsNull())
                 {
                     message = Resources.GuidIsEmpty;
                 }
@@ -194,11 +196,11 @@ namespace dotNetTips.Utility.Standard.OOP
         /// <param name="message">The message.</param>
         /// <exception cref="dotNetTips.Utility.Standard.ArgumentInvalidException"></exception>
         /// <exception cref="ArgumentInvalidException"></exception>
-        public static void TryValidateParam(string value, string paramName="", string message = "")
+        public static void TryValidateParam(string value, string paramName = "", string message = "")
         {
-            if(value.IsNull())
+            if (value.IsNull())
             {
-                if(message.IsNull())
+                if (message.IsNull())
                 {
                     message = Resources.StringIsEmpty;
                 }
@@ -220,9 +222,9 @@ namespace dotNetTips.Utility.Standard.OOP
         {
             TryValidateParam(collection, paramName, message);
 
-            if(collection.Count() != size)
+            if (collection.Count() != size)
             {
-                if(message.IsNull())
+                if (message.IsNull())
                 {
                     message = Resources.CollectionSizeIsNotValid;
                 }
@@ -245,16 +247,16 @@ namespace dotNetTips.Utility.Standard.OOP
         /// <exception cref="System.ArgumentException">match</exception>
         public static void TryValidateParam(string value, Regex match, string paramName, string message = "")
         {
-            if(match.IsNull())
+            if (match.IsNull())
             {
                 throw new ArgumentNullException(nameof(match));
             }
 
             TryValidateParam(value, paramName, message);
 
-            if(match.IsMatch(value) == false)
+            if (match.IsMatch(value) == false)
             {
-                if(message.IsNull())
+                if (message.IsNull())
                 {
                     message = Resources.StringIsNotValid;
                 }
@@ -277,9 +279,9 @@ namespace dotNetTips.Utility.Standard.OOP
         {
             TryValidateParam(value, paramName, message);
 
-            if(value.Equals(expected, StringComparison.CurrentCultureIgnoreCase) == false)
+            if (value.Equals(expected, StringComparison.CurrentCultureIgnoreCase) == false)
             {
-                if(message.IsNull())
+                if (message.IsNull())
                 {
                     message = Resources.StringDoesNotMatch;
                 }
@@ -300,9 +302,9 @@ namespace dotNetTips.Utility.Standard.OOP
         /// <exception cref="System.ArgumentException"></exception>
         public static void TryValidateParam(Type value, Type expectedType, string paramName, string message = "")
         {
-            if(value != expectedType)
+            if (value != expectedType)
             {
-                if(message.IsNull())
+                if (message.IsNull())
                 {
                     message = Resources.InvalidType;
                 }
@@ -323,18 +325,13 @@ namespace dotNetTips.Utility.Standard.OOP
         /// </exception>
         /// <exception cref="ArgumentInvalidException"></exception>
         /// <exception cref="System.ArgumentException"></exception>
-        public static void TryValidateParam(string value,
-                                            int minimumLength,
-                                            int maximumLength,
-                                            string paramName,
-                                            string message = "")
+        public static void TryValidateParam(string value, int minimumLength, int maximumLength, string paramName, string message = "")
         {
             TryValidateParam(value, paramName, message);
 
-
-            if(value.Length < minimumLength)
+            if (value.Length < minimumLength)
             {
-                if(message.IsNull())
+                if (message.IsNull())
                 {
                     message = Resources.StringDoesNotMatchMinimumLength;
                 }
@@ -342,9 +339,9 @@ namespace dotNetTips.Utility.Standard.OOP
                 throw new ArgumentInvalidException(message, paramName);
             }
 
-            if(value.Length > maximumLength)
+            if (value.Length > maximumLength)
             {
-                if(message.IsNull())
+                if (message.IsNull())
                 {
                     message = Resources.StringDoesNotMatchMaximumLength;
                 }

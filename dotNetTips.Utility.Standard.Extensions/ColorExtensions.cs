@@ -33,11 +33,6 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentOutOfRangeException">colors - colors</exception>
         public static Color Average(this IEnumerable<Color> colors)
         {
-            if (colors == null)
-            {
-                throw new ArgumentNullException(nameof(colors), $"{nameof(colors)} is null.");
-            }
-
             if (colors.Count() == 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(colors), $"{nameof(colors)} does not contain items.");
