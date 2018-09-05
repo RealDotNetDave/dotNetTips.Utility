@@ -4,7 +4,7 @@
 // Created          : 02-28-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-19-2017
+// Last Modified On : 08-02-2018
 // ***********************************************************************
 // <copyright file="CollectionExtensions.cs" company="dotNetTips.com">
 //     David McCarter - dotNetTips.com © 2017
@@ -51,11 +51,12 @@ namespace dotNetTips.Utility.Portable.Extensions
         /// <param name="values">The values.</param>
         public static void AddIfNotExists<T>(this ICollection<T> source, params T[] values)
         {
-          // Encapsulation.TryValidateParam<ArgumentNullException>(values != null);
-
+            if(values.IsValid())
+                {
             foreach (var value in values)
             {
                 source.AddIfNotExists(value);
+            }
             }
         }
 

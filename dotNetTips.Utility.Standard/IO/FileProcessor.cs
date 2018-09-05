@@ -93,10 +93,9 @@ namespace dotNetTips.Utility.Standard.IO
                             SpeedInMilliseconds = perf.TotalMilliseconds
                         });
                     }
-                    catch (Exception ex) when (ex is IOException || ex is SecurityException ||
-                      ex is UnauthorizedAccessException ||
-                      ex is PathTooLongException)
+                    catch (Exception ex)
                     {
+                        //Send error if an Exception happens.
                         OnProcessed(new FileProgressEventArgs
                         {
                             Name = tempFile.FullName,

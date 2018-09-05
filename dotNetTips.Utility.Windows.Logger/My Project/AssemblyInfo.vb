@@ -15,8 +15,8 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyProduct("dotNetTips.Utility.Windows.Logger")>
 <Assembly: AssemblyCopyright("David McCarter - dotNetTips.com © 2017")>
 <Assembly: AssemblyTrademark("David McCarter - dotNetTips.com")>
-<Assembly: AssemblyVersion("2018.7.29.33641")>
+<Assembly: AssemblyVersion("2018.8.9.2865")>
 <Assembly: ComVisible(False)>
 <Assembly: NeutralResourcesLanguageAttribute("en-US")>
-<Assembly: AssemblyFileVersion("2018.7.29.33641")>
-<Assembly: AssemblyInformationalVersion("2018.7.3")>
+<Assembly: AssemblyFileVersion("2018.8.9.2865")>
+<Assembly: AssemblyInformationalVersion("2018.8.1")>

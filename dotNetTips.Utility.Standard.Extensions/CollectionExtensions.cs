@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-21-2018
+// Last Modified On : 08-02-2018
 // ***********************************************************************
 // <copyright file="CollectionExtensions.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -63,14 +63,12 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentException">list - List cannot be read-only.</exception>
         public static void AddIfNotExists<T>(this ICollection<T> list, params T[] values)
         {
-            if (values == null || values.Length == 0)
+            if (values.IsValid())
             {
-                throw new ArgumentException($"{nameof(values)} is null or empty.", nameof(values));
-            }
-
-            foreach (var value in values)
-            {
-                list.AddIfNotExists(value);
+                foreach (var value in values)
+                {
+                    list.AddIfNotExists(value);
+                }
             }
         }
 
@@ -82,7 +80,10 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="newItems">The new items.</param>
         public static void AddRange<T>(this ICollection<T> list, IEnumerable<T> newItems)
         {
-            Parallel.ForEach(newItems, (item) => { list.Add(item); });
+            if (newItems.IsValid())
+            {
+                Parallel.ForEach(newItems, (item) => { list.Add(item); });
+            }
         }
 
         /// <summary>
@@ -114,19 +115,25 @@ namespace dotNetTips.Utility.Standard.Extensions
                 throw new ArgumentNullException(nameof(key), $"{nameof(key)} is null.");
             }
 
-            foreach (var item in items)
+            if (items.IsValid())
             {
-                list.Add(key(item), value(item));
+                foreach (var item in items)
+                {
+                    list.Add(key(item), value(item));
+                }
             }
         }
 
         /// <summary>
-        /// Copies to list.
+        /// Copies the collection to a generic List.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T">Type</typeparam>
         /// <param name="source">The source.</param>
         /// <returns>List&lt;T&gt;.</returns>
-        public static List<T> CopyToList<T>(this List<T> source) => new List<T>(source);
+        public static List<T> CopyToList<T>(this List<T> source)
+        {
+            return new List<T>(source);
+        }
 
         /// <summary>
         /// Counts the specified list.

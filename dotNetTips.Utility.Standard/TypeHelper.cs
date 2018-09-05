@@ -4,20 +4,19 @@
 // Created          : 08-09-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-06-2018
+// Last Modified On : 08-05-2018
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="dotNetTips.com - David McCarter">
-//      McCarter Consulting (David McCarter)
+//     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
-// ***********************************************************************
-using dotNetTips.Utility.Standard.OOP;
 // ***********************************************************************
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using dotNetTips.Utility.Standard.OOP;
 
 namespace dotNetTips.Utility.Standard
 {
@@ -72,6 +71,19 @@ namespace dotNetTips.Utility.Standard
             var instance = Activator.CreateInstance<T>();
 
             return instance is T ? instance : null;
+        }
+
+        /// <summary>
+        /// Creates the specified parameter array.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="paramArray">The parameter array.</param>
+        /// <returns>T.</returns>
+        public static T Create<T>(params object[] paramArray)
+        {
+            var instance = (T)Activator.CreateInstance(typeof(T), args: paramArray);
+
+            return instance;
         }
 
         /// <summary>
@@ -144,6 +156,7 @@ namespace dotNetTips.Utility.Standard
         /// <param name="baseType">Type of the base.</param>
         /// <param name="classOnly">if set to <c>true</c> [class only].</param>
         /// <returns>IEnumerable&lt;Type&gt;.</returns>
+        /// <exception cref="System.IO.DirectoryNotFoundException">Could not find path.</exception>
         /// <exception cref="dotNetTips.Utility.Standard.DirectoryNotFoundException">Could not find path.</exception>
         /// <exception cref="ArgumentNullException">Could not find assembly.</exception>
         public static IEnumerable<Type> FindDerivedTypes(string path, SearchOption searchOption, Type baseType, bool classOnly)

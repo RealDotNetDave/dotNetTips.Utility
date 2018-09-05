@@ -3,8 +3,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <DocumentationFile>..\UtilityBin\netstandard2.0\dotNetTips.Utility.Standard.xml</DocumentationFile>
     <OutputPath>..\UtilityBin\netstandard2.0\</OutputPath>
-    <AssemblyVersion>2018.8.1.37715</AssemblyVersion>
-    <FileVersion>2018.8.1.37715</FileVersion>
+    <AssemblyVersion>2018.8.13.1441</AssemblyVersion>
+    <FileVersion>2018.8.13.1441</FileVersion>
     <NeutralLanguage>en</NeutralLanguage>
     <Authors>David McCarter</Authors>
     <Company>dotNetTips.com - David McCarter</Company>
@@ -52,8 +52,8 @@
     <Compile Remove="ISingleton.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.1.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.1.1" />
@@ -61,7 +61,6 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.1.1" />
     <PackageReference Include="Microsoft.Win32.Registry" Version="4.5.0" />
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
     <PackageReference Include="System.Diagnostics.Process" Version="4.3.0" />
     <PackageReference Include="System.Memory" Version="4.5.1" />
     <PackageReference Include="System.Runtime.Serialization.Json" Version="4.3.0" />

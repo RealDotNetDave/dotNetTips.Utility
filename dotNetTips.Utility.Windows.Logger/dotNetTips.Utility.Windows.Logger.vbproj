@@ -13,7 +13,7 @@
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
     <TargetFrameworkProfile />
-    <AssemblyVersion>2018.7.29.33641</AssemblyVersion>
+    <AssemblyVersion>2018.8.9.2865</AssemblyVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <IsWebBootstrapper>false</IsWebBootstrapper>
