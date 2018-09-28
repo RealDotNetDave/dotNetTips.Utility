@@ -53,14 +53,9 @@ namespace dotNetTips.Utility.Standard.IO
 
             var successCount = 0;
 
-            var folderPrefix = $@"{Environment.MachineName}-{Environment.UserName}-{(DateTime.Now.ToString(DateTimeFormatInfo.CurrentInfo.SortableDateTimePattern, CultureInfo.CurrentCulture))}\".ToUpper(CultureInfo.CurrentCulture)
-                .Replace(":", ".");
-
-            var backupFolder = new DirectoryInfo(Path.Combine(destinationFolder.FullName, folderPrefix));
-
-            if (backupFolder.Exists == false)
+            if (destinationFolder.Exists == false)
             {
-                backupFolder.Create();
+                destinationFolder.Create();
             }
 
             foreach (var tempFile in files)
@@ -69,7 +64,7 @@ namespace dotNetTips.Utility.Standard.IO
                 {
                     try
                     {
-                        var newFileName = new FileInfo(tempFile.FullName.Replace(tempFile.Directory.Root.FullName, backupFolder.FullName));
+                        var newFileName = new FileInfo(tempFile.FullName.Replace(tempFile.Directory.Root.FullName, destinationFolder.FullName));
 
                         if (newFileName.Directory.Exists == false)
                         {

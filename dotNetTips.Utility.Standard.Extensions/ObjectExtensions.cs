@@ -4,14 +4,13 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-01-2018
+// Last Modified On : 07-22-2018
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using dotNetTips.Utility.Standard.Extensions.Properties;
 using System;
 using System.Collections;
 using System.Globalization;
@@ -21,6 +20,7 @@ using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Text;
+using dotNetTips.Utility.Standard.Extensions.Properties;
 
 namespace dotNetTips.Utility.Standard.Extensions
 {
@@ -147,6 +147,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="fileName">Name of the file.</param>
         /// <returns>T.</returns>
+        /// <exception cref="System.IO.FileNotFoundException"></exception>
         /// <exception cref="FileNotFoundException">File not found.</exception>
         public static T FromJsonFile<T>(string fileName)
             where T : class

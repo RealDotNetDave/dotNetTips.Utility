@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-02-2018
+// Last Modified On : 09-28-2018
 // ***********************************************************************
 // <copyright file="CollectionExtensions.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -29,6 +29,42 @@ namespace dotNetTips.Utility.Standard.Extensions
     /// </summary>
     public static class CollectionExtensions
     {
+
+        /// <summary>
+        /// Processes the collection to dispose.
+        /// </summary>
+        /// <param name="items">The items.</param>
+        private static void ProcessCollectionToDispose(IEnumerable items)
+        {
+            if (items.IsValid())
+            {
+                foreach (var item in items)
+                {
+                    if (item != null && item is IDisposable disposeItem)
+                    {
+                        disposeItem.TryDispose();
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Disposes the collection.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="items">The items.</param>
+        internal static void DisposeCollection<T>(this IEnumerable<T> items) => ProcessCollectionToDispose(items);
+
+        /// <summary>
+        /// Tries to dispose collection items.
+        /// </summary>
+        /// <param name="items">The items.</param>
+        internal static void DisposeCollection(this IEnumerable items) => ProcessCollectionToDispose(items);
+
         /// <summary>
         /// Adds if not exists.
         /// </summary>
@@ -96,6 +132,11 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="items">The items.</param>
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
+        /// <exception cref="System.ArgumentNullException">
+        /// value - value
+        /// or
+        /// key - key
+        /// </exception>
         /// <exception cref="ArgumentNullException">list - Dictionary cannot be null.
         /// or
         /// key - Key cannot be null.</exception>
@@ -174,26 +215,29 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="source">The source.</param>
         /// <param name="predicate">The predicate.</param>
         /// <returns>System.Boolean.</returns>
+        /// <exception cref="System.ArgumentNullException">predicate - predicate</exception>
         /// <exception cref="ArgumentNullException">predicate - predicate</exception>
         public static bool FastAny<T>(this IEnumerable<T> source, Func<T, bool> predicate)
         {
+            //TODO: DO PERFORMANCE TESTING
             if (predicate == null)
             {
                 throw new ArgumentNullException(nameof(predicate), $"{nameof(predicate)} is null.");
             }
 
-            var findAny = source.Select(predicate).IsNotNull();
+            var findAny = source.FirstOrDefault(predicate) != null;
 
             return findAny;
         }
 
         /// <summary>
-        /// Counts the faster.
+        /// Counts the the collection.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="source">The source.</param>
         /// <param name="predicate">The predicate.</param>
         /// <returns>System.Int32.</returns>
+        /// <exception cref="System.ArgumentNullException">predicate</exception>
         /// <exception cref="ArgumentNullException">source
         /// or
         /// source</exception>
@@ -202,6 +246,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// source</exception>
         public static int FastCount<T>(this IEnumerable<T> source, Func<T, bool> predicate)
         {
+            //TODO: DO PERFORMANCE TESTING
             if (predicate == null)
             {
                 throw new ArgumentNullException(nameof(predicate));
@@ -211,9 +256,8 @@ namespace dotNetTips.Utility.Standard.Extensions
             {
                 var finalCount = 0;
                 var list = (List<T>)source;
-                var count = list.Count;
 
-                for (var j = 0; j < count; j++)
+                for (var j = 0; j < list.Count; j++)
                 {
                     if (predicate(list[j]))
                     {
@@ -313,9 +357,9 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="list">The list.</param>
         /// <param name="sortExpression">The sort expression.</param>
         /// <returns>IEnumerable&lt;T&gt;.</returns>
+        /// <exception cref="System.InvalidCastException"></exception>
         /// <exception cref="InvalidCastException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
-        /// <exception cref="System.InvalidCastException"></exception>
         /// <remarks>Original code by: C.F.Meijers</remarks>
         public static IEnumerable<T> OrderBy<T>(this IEnumerable<T> list, string sortExpression)
         {
@@ -585,41 +629,6 @@ namespace dotNetTips.Utility.Standard.Extensions
         public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> list, bool condition, Func<TSource, int, bool> predicate)
         {
             return condition ? list.Where(predicate) : list;
-        }
-
-        /// <summary>
-        /// Disposes the collection.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="items">The items.</param>
-        internal static void DisposeCollection<T>(this IEnumerable<T> items) => ProcessCollectionToDispose(items);
-
-        /// <summary>
-        /// Tries to dispose collection items.
-        /// </summary>
-        /// <param name="items">The items.</param>
-        internal static void DisposeCollection(this IEnumerable items) => ProcessCollectionToDispose(items);
-
-        /// <summary>
-        /// Processes the collection to dispose.
-        /// </summary>
-        /// <param name="items">The items.</param>
-        private static void ProcessCollectionToDispose(IEnumerable items)
-        {
-            if (items.IsValid())
-            {
-                foreach (var item in items)
-                {
-                    if (item != null && item is IDisposable disposeItem)
-                    {
-                        disposeItem.TryDispose();
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
-            }
         }
     }
 }
