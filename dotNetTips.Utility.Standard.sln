@@ -16,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{B8E8DF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotNetTips.Utility.Core.EntityFramework", "dotNetTips.Utility.Core.EntityFramework\dotNetTips.Utility.Core.EntityFramework.csproj", "{C7AF09C1-1F5F-4EEB-8FA6-BA49F21F25BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotNetTips.Utility.Standard.Extensions.Tests", "dotNetTips.Utility.Standard.Extensions.Tests\dotNetTips.Utility.Standard.Extensions.Tests.csproj", "{910B0C98-CBA8-4C9A-BC85-F01E607B16AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotNetTips.Utility.Standard.Extensions.Tests", "dotNetTips.Utility.Standard.Extensions.Tests\dotNetTips.Utility.Standard.Extensions.Tests.csproj", "{910B0C98-CBA8-4C9A-BC85-F01E607B16AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

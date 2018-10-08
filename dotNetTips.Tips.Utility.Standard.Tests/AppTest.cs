@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Diagnostics;
 using dotNetTips.Utility.Standard;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using dotNetTips.Utility.Standard.Extensions;
-using System.Diagnostics;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace dotNetTips.Tips.Utility.Standard.Tests
 {
@@ -16,8 +13,8 @@ namespace dotNetTips.Tips.Utility.Standard.Tests
         {
             var info = App.AssemblyInfo;
 
-            Assert.IsTrue(info.FileVersion.IsValid());
-            Assert.IsTrue(info.Version.IsValid());
+            Assert.IsTrue(info.FileVersion.HasItems());
+            Assert.IsTrue(info.Version.HasItems());
 
         }
 
@@ -30,7 +27,7 @@ namespace dotNetTips.Tips.Utility.Standard.Tests
 
             Assert.IsTrue(variables.Count > 0);
 
-            foreach(var variable in variables)
+            foreach (var variable in variables)
             {
                 Debug.WriteLine($"{variable.Key}:{variable.Value}");
             }

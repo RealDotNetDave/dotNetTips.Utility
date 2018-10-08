@@ -36,7 +36,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="items">The items.</param>
         private static void ProcessCollectionToDispose(IEnumerable items)
         {
-            if (items.IsValid())
+            if (items.HasItems())
             {
                 foreach (var item in items)
                 {
@@ -99,7 +99,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentException">list - List cannot be read-only.</exception>
         public static void AddIfNotExists<T>(this ICollection<T> list, params T[] values)
         {
-            if (values.IsValid())
+            if (values.HasItems())
             {
                 foreach (var value in values)
                 {
@@ -116,7 +116,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="newItems">The new items.</param>
         public static void AddRange<T>(this ICollection<T> list, IEnumerable<T> newItems)
         {
-            if (newItems.IsValid())
+            if (newItems.HasItems())
             {
                 Parallel.ForEach(newItems, (item) => { list.Add(item); });
             }
@@ -156,7 +156,7 @@ namespace dotNetTips.Utility.Standard.Extensions
                 throw new ArgumentNullException(nameof(key), $"{nameof(key)} is null.");
             }
 
-            if (items.IsValid())
+            if (items.HasItems())
             {
                 foreach (var item in items)
                 {
@@ -327,26 +327,12 @@ namespace dotNetTips.Utility.Standard.Extensions
         public static bool HasItems(this ICollection source) => source.Count > 0;
 
         /// <summary>
-        /// Returns true if ... is valid (not null and has items).
+        /// Determines whether the specified source has items.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="list">The list.</param>
-        /// <returns><c>true</c> if the specified list is valid; otherwise, <c>false</c>.</returns>
-        public static bool IsValid<T>(this ObservableCollection<T> list) => ((list != null) && (list.Any()));
-
-        /// <summary>
-        /// Returns true if ... is valid (not null and has items).
-        /// </summary>
         /// <param name="source">The source.</param>
-        /// <returns><c>true</c> if the specified source is valid; otherwise, <c>false</c>.</returns>
-        public static bool IsValid(this IEnumerable source) => source?.Count() > 0;
-
-        /// <summary>
-        /// Returns true if ... is valid (not null and contains items).
-        /// </summary>
-        /// <param name="source">The source.</param>
-        /// <returns><c>true</c> if the specified source is valid; otherwise, <c>false</c>.</returns>
-        public static bool IsValid(this ICollection source) => source?.Count > 0;
+        /// <returns><c>true</c> if the specified source has items; otherwise, <c>false</c>.</returns>
+        public static bool HasItems<T>(this ObservableCollection<T> source) => source.Count > 0;
 
         /// <summary>
         /// Orders a list based on a sort expression. Useful in object data binding scenarios where

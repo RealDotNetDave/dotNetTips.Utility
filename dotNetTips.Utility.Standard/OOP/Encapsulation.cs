@@ -71,7 +71,7 @@ namespace dotNetTips.Utility.Standard.OOP
         /// <exception cref="System.ArgumentNullException"></exception>
         public static void TryValidateParam(IEnumerable collection, string paramName, string message = "")
         {
-            if (collection.IsValid() == false)
+            if (collection.HasItems() == false)
             {
                 if (message.IsNull())
                 {

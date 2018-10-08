@@ -62,45 +62,45 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <summary>
         /// Decrement a number ensuring it never passes a given lower-bound.
         /// </summary>
-        /// <param name="number">Number to process</param>
+        /// <param name="value">Number to process</param>
         /// <param name="lowerBound">Lower bound</param>
         /// <param name="step">Step of the decrement</param>
         /// <returns>Integer</returns>
-        public static int Decrement(this int number, int lowerBound = 0, int step = 1)
+        public static int Decrement(this int value, int lowerBound = 0, int step = 1)
         {
-            var n = number - step;
+            var n = value - step;
             return n < lowerBound ? lowerBound : n;
         }
 
         /// <summary>
         /// Increment a number ensuring it never passes a given upper-bound.
         /// </summary>
-        /// <param name="number">Number to process</param>
+        /// <param name="value">Number to process</param>
         /// <param name="upperBound">Upper bound</param>
         /// <param name="step">Step of the increment</param>
         /// <returns>Integer</returns>
-        public static int Increment(this int number, int upperBound = 100, int step = 1)
+        public static int Increment(this int value, int upperBound = 100, int step = 1)
         {
-            var n = number + step;
-            return n > upperBound ? upperBound : n;
+            var number = value + step;
+            return number > upperBound ? upperBound : number;
         }
 
         /// <summary>
         /// Indicate whether the number is even.
         /// </summary>
-        /// <param name="theNumber">Number to process</param>
+        /// <param name="value">Number to process</param>
         /// <returns>True/False</returns>
-        public static bool IsEven(this int theNumber) => (theNumber % 2) == 0;
+        public static bool IsEven(this int value) => (value % 2) == 0;
 
         /// <summary>
         /// Determines if the Integer is of the specified interval. E.g. if the interval is 100 and
         /// the integer is 400, it would return true. This function uses the Mod operator, for the
         /// above example: (300 Mod 100 = 0)
         /// </summary>
-        /// <param name="num">The number.</param>
+        /// <param name="value">The number.</param>
         /// <param name="interval">The interval.</param>
         /// <returns><c>true</c> if the specified number is interval; otherwise, <c>false</c>.</returns>
-        public static bool IsInterval(this int num, int interval) => num % interval == 0 ? true : false;
+        public static bool IsInterval(this int value, int interval) => value % interval == 0 ? true : false;
 
         /// <summary>
         /// Noes the duplicates.
@@ -111,17 +111,47 @@ namespace dotNetTips.Utility.Standard.Extensions
         public static IEnumerable<int> RemoveDuplicates(this int[] values) => values.Distinct().AsEnumerable();
 
         /// <summary>
+        /// To the positive value.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>System.Int32.</returns>
+        public static int ToPositiveValue(this int value)
+        {
+            return value.IsInRange(0, int.MaxValue) ? value : 0;
+        }
+
+        /// <summary>
+        /// To the positive value.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>System.Int64.</returns>
+        public static long ToPositiveValue(this long value)
+        {
+            return value.IsInRange(0, int.MaxValue) ? value : 0;
+        }
+
+        /// <summary>
+        /// To the positive value.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>System.Decimal.</returns>
+        public static decimal ToPositiveValue(this decimal value)
+        {
+            return value.IsInRange(0, int.MaxValue) ? value : 0;
+        }
+
+        /// <summary>
         /// Returns the nearest power of 2 that is bigger than the number.
         /// </summary>
-        /// <param name="theNumber">Number to process</param>
+        /// <param name="value">Number to process</param>
         /// <returns>Integer</returns>
-        public static int RoundToPowerOf2(this int theNumber)
+        public static int RoundToPowerOf2(this int value)
         {
             var exponent = 1;
             while (true)
             {
                 var powerOf2 = (uint)Math.Pow(2, exponent++);
-                if (powerOf2 >= theNumber)
+                if (powerOf2 >= value)
                 {
                     return (int)powerOf2;
                 }
@@ -131,54 +161,54 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <summary>
         /// Parse the number to a string or a default string if outside given range.
         /// </summary>
-        /// <param name="theNumber">Number to process</param>
+        /// <param name="value">Number to process</param>
         /// <param name="lowerLimit">Lower bound</param>
         /// <param name="upperLimit">Upper bound</param>
         /// <param name="defaultText">Default text</param>
         /// <returns>String</returns>
-        public static string ToStringOrEmpty(this int theNumber, int lowerLimit = 0, int upperLimit = 9000, string defaultText = "") => theNumber <= lowerLimit ||
-                theNumber > upperLimit
+        public static string ToStringOrEmpty(this int value, int lowerLimit = 0, int upperLimit = 9000, string defaultText = "") => value <= lowerLimit ||
+                value > upperLimit
                 ? defaultText
-                : theNumber.ToString(CultureInfo.InvariantCulture);
+                : value.ToString(CultureInfo.InvariantCulture);
 
         /// <summary>
         /// Translate the number in words (English)
         /// </summary>
-        /// <param name="number">Number to translate</param>
+        /// <param name="value">Number to translate</param>
         /// <returns>String</returns>
-        public static string ToWords(this int number)
+        public static string ToWords(this int value)
         {
-            if (number == 0)
+            if (value == 0)
             {
                 return "Zero";
             }
 
-            if (number < 0)
+            if (value < 0)
             {
-                return "Minus " + ToWords(Math.Abs(number));
+                return "Minus " + ToWords(Math.Abs(value));
             }
 
             var words = string.Empty;
 
-            if ((number / 1000000) > 0)
+            if ((value / 1000000) > 0)
             {
-                words += ToWords(number / 1000000) + " million ";
-                number %= 1000000;
+                words += ToWords(value / 1000000) + " million ";
+                value %= 1000000;
             }
 
-            if ((number / 1000) > 0)
+            if ((value / 1000) > 0)
             {
-                words += ToWords(number / 1000) + " Thousand ";
-                number %= 1000;
+                words += ToWords(value / 1000) + " Thousand ";
+                value %= 1000;
             }
 
-            if ((number / 100) > 0)
+            if ((value / 100) > 0)
             {
-                words += ToWords(number / 100) + " Hundred ";
-                number %= 100;
+                words += ToWords(value / 100) + " Hundred ";
+                value %= 100;
             }
 
-            if (number > 0)
+            if (value > 0)
             {
                 if (string.IsNullOrEmpty(words) == false)
                 {
@@ -211,17 +241,17 @@ namespace dotNetTips.Utility.Standard.Extensions
                 var tens = new[]
                 { "Zero", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
 
-                if (number < 20)
+                if (value < 20)
                 {
-                    words += units[number];
+                    words += units[value];
                 }
                 else
                 {
-                    words += tens[number / 10];
+                    words += tens[value / 10];
 
-                    if ((number % 10) > 0)
+                    if ((value % 10) > 0)
                     {
-                        words += "-" + units[number % 10];
+                        words += "-" + units[value % 10];
                     }
                 }
             }

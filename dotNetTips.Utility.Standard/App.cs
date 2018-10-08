@@ -91,7 +91,7 @@ namespace dotNetTips.Utility.Standard
         {
             Encapsulation.TryValidateParam<ArgumentNullException>(string.IsNullOrEmpty(processName) == false, "Process name is required.");
 
-            return Process.GetProcessesByName(processName).IsValid();
+            return Process.GetProcessesByName(processName).HasItems();
         }
 
         /// <summary>

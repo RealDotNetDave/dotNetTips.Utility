@@ -3,8 +3,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <DocumentationFile>..\UtilityBin\netstandard2.0\dotNetTips.Utility.Standard.xml</DocumentationFile>
     <OutputPath>..\UtilityBin\netstandard2.0\</OutputPath>
-    <AssemblyVersion>2018.9.28.33619</AssemblyVersion>
-    <FileVersion>2018.9.28.33619</FileVersion>
+    <AssemblyVersion>2018.10.8.35743</AssemblyVersion>
+    <FileVersion>2018.10.8.35743</FileVersion>
     <NeutralLanguage>en</NeutralLanguage>
     <Authors>David McCarter</Authors>
     <Company>dotNetTips.com - David McCarter</Company>
