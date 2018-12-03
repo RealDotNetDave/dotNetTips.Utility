@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-16-2018
+// Last Modified On : 11-24-2018
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -72,30 +72,29 @@ namespace dotNetTips.Utility.Standard.Extensions
                 // Convert byte array to a string   
                 var builder = new StringBuilder();
 
-                for (var i = 0; i < bytes.Length; i++)
+                foreach (byte byteItem in bytes)
                 {
-                    builder.Append(bytes[i].ToString("x2", CultureInfo.InvariantCulture));
+                    builder.Append(byteItem.ToString("x2", CultureInfo.InvariantCulture));
                 }
 
                 return builder.ToString();
             }
         }
 
-
         /// <summary>
         /// Defaults if null.
         /// </summary>
-        /// <param name="s">The s.</param>
+        /// <param name="value">The s.</param>
         /// <returns>System.String.</returns>
-        public static string DefaultIfNull(this string s) => s ?? string.Empty;
+        public static string DefaultIfNull(this string value) => value ?? string.Empty;
 
         /// <summary>
         /// Defaults if null.
         /// </summary>
-        /// <param name="s">The s.</param>
+        /// <param name="value">The s.</param>
         /// <param name="defaultValue">The default value.</param>
         /// <returns>System.String.</returns>
-        public static string DefaultIfNull(this string s, string defaultValue) => s ?? (defaultValue ?? string.Empty);
+        public static string DefaultIfNull(this string value, string defaultValue) => value ?? (defaultValue ?? string.Empty);
 
         /// <summary>
         /// Defaults if null or empty.
@@ -104,25 +103,6 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="defaultValue">The default value.</param>
         /// <returns>System.String.</returns>
         public static string DefaultIfNullOrEmpty(this string value, string defaultValue) => string.IsNullOrEmpty(value) ? value : defaultValue;
-
-        /// <summary>
-        /// Formats the size of the file.
-        /// </summary>
-        /// <param name="fileSize">Size of the file.</param>
-        /// <returns>System.String.</returns>
-        /// <exception cref="ArgumentNullException">fileSize - File size is invalid.</exception>
-        public static string FormatFileSize(this long fileSize)
-        {
-            long size = 0;
-
-            while (fileSize > 1024 && size < 4)
-            {
-                fileSize = Convert.ToInt64(fileSize / 1024);
-                size += 1;
-            }
-
-            return $"{fileSize} {((new string[] { Resources.Bytes, Resources.KB, Resources.MB, Resources.GB })[Convert.ToInt32(size)])}";
-        }
 
         /// <summary>
         /// Concatenates the specified first message with passed in string[].

@@ -25,7 +25,7 @@
     </SccProvider>
     <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <AssemblyVersion>2018.8.9.2865</AssemblyVersion>
+    <AssemblyVersion>2018.10.10.36550</AssemblyVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -79,8 +79,6 @@
     <Compile Include="ArgumentInvalidException.cs" />
     <Compile Include="ArgumentReadOnlyException.cs" />
     <Compile Include="ControlChars.cs" />
-    <Compile Include="Data\DataEntity.cs" />
-    <Compile Include="Data\IDataEntity.cs" />
     <Compile Include="DateFormat.cs" />
     <Compile Include="DateInterval.cs" />
     <Compile Include="Diagnostics\PerformanceStopwatch.cs" />

@@ -4,10 +4,10 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-10-2018
+// Last Modified On : 11-11-2018
 // ***********************************************************************
 // <copyright file="Config.cs" company="dotNetTips.com - David McCarter">
-//      McCarter Consulting (David McCarter)
+//     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -29,8 +29,8 @@ namespace dotNetTips.Utility.Standard
         protected Config()
         {
             var localAppData = System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
-            var fileName = $"{App.AssemblyInfo.Product}.config";
-            var folder = Path.Combine(localAppData, App.AssemblyInfo.Company);
+            var fileName = $"{App.AppInfo.Product}.config";
+            var folder = Path.Combine(localAppData, App.AppInfo.Company);
             this.ConfigFileName = Path.Combine(folder, fileName);
         }
 
@@ -83,8 +83,9 @@ namespace dotNetTips.Utility.Standard
             get { return _instance; }
         }
 
+        /// <summary>
+        /// The instance
+        /// </summary>
         private static T _instance = new T();
-
-
     }
 }

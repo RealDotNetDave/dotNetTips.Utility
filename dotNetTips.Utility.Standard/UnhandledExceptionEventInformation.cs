@@ -4,7 +4,7 @@
 // Created          : 07-09-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-10-2018
+// Last Modified On : 11-11-2018
 // ***********************************************************************
 // <copyright file="SystemEvents.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -14,6 +14,9 @@
 
 namespace dotNetTips.Utility.Standard
 {
+    /// <summary>
+    /// Class SystemEvents.
+    /// </summary>
     public static partial class SystemEvents
     {
         /// <summary>

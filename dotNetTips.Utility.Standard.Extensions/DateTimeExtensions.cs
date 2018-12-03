@@ -133,7 +133,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         }
 
         /// <summary>
-        ///  Determines whether value is in range of the specified beginning time and end time.
+        /// Determines whether value is in range of the specified beginning time and end time.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="beginningTime">The beginning time.</param>

@@ -4,17 +4,18 @@
 // Created          : 02-11-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-16-2017
+// Last Modified On : 11-11-2018
 // ***********************************************************************
 // <copyright file="ControlChars.cs" company="dotNetTips.com - David McCarter">
-//      McCarter Consulting (David McCarter)
+//     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
 namespace dotNetTips.Utility.Standard
 {
+
     /// <summary>
-    /// Control Characters
+    /// Class ControlChars.
     /// </summary>
     public static class ControlChars
     {

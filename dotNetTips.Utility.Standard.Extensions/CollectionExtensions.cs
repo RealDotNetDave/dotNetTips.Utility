@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-28-2018
+// Last Modified On : 11-11-2018
 // ***********************************************************************
 // <copyright file="CollectionExtensions.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -132,17 +132,15 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="items">The items.</param>
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
-        /// <exception cref="System.ArgumentNullException">
-        /// value - value
+        /// <exception cref="System.ArgumentNullException">value - value
         /// or
-        /// key - key
-        /// </exception>
+        /// key - key</exception>
         /// <exception cref="ArgumentNullException">list - Dictionary cannot be null.
         /// or
         /// key - Key cannot be null.</exception>
-        /// <exception cref="ArgumentException">list - Dictionary cannot be null.
+        /// <exception cref="ArgumentException">value - value
         /// or
-        /// key - Key cannot be null.</exception>
+        /// key - key</exception>
         /// <remarks>Code by: Lucas</remarks>
         public static void AddRange<T, TKey, TValue>(this IDictionary<TKey, TValue> list, IEnumerable<T> items, Func<T, TKey> key, Func<T, TValue> value)
         {
@@ -219,7 +217,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentNullException">predicate - predicate</exception>
         public static bool FastAny<T>(this IEnumerable<T> source, Func<T, bool> predicate)
         {
-            //TODO: DO PERFORMANCE TESTING
+            //TODO: PERFORMANCE TESTING
             if (predicate == null)
             {
                 throw new ArgumentNullException(nameof(predicate), $"{nameof(predicate)} is null.");
@@ -241,9 +239,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentNullException">source
         /// or
         /// source</exception>
-        /// <exception cref="Exception">source
-        /// or
-        /// source</exception>
+        /// <exception cref="Exception">predicate</exception>
         public static int FastCount<T>(this IEnumerable<T> source, Func<T, bool> predicate)
         {
             //TODO: DO PERFORMANCE TESTING

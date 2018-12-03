@@ -29,6 +29,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="obj1">The obj1.</param>
         /// <param name="obj2">The obj2.</param>
         /// <returns>T.</returns>
+        /// <exception cref="System.ArgumentNullException">obj2</exception>
         /// <exception cref="ArgumentNullException">obj1 - Object 1 cannot be null.
         /// or
         /// obj2 - Object 1 cannot be null.</exception>
@@ -54,9 +55,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         {
             var instance = Activator.CreateInstance<T>();
 
-            var result = instance is T ? instance : null;
-
-            return result;
+            return instance is T ? instance : null;
         }
 
         /// <summary>

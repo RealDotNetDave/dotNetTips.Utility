@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-11-2018
+// Last Modified On : 11-24-2018
 // ***********************************************************************
 // <copyright file="App.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -23,6 +23,7 @@ using System.Reflection;
 using dotNetTips.Utility.Standard.Extensions;
 using System.Threading;
 using System.Globalization;
+using System.Runtime.InteropServices;
 
 namespace dotNetTips.Utility.Standard
 {
@@ -40,16 +41,6 @@ namespace dotNetTips.Utility.Standard
         /// The temporary ASP files location
         /// </summary>
         private const string TempAspFiles = "\\Temporary ASP.NET Files\\";
-
-        /// <summary>
-        /// The last processor count refresh ticks
-        /// </summary>
-        private static volatile int _lastProcessorCountRefreshTicks;
-
-        /// <summary>
-        /// The processor count
-        /// </summary>
-        private static volatile int _processorCount;
 
         /// <summary>
         /// The application information
@@ -165,7 +156,6 @@ namespace dotNetTips.Utility.Standard
             return builder.ToImmutable();
         }
 
-
         /// <summary>
         /// Restarts an app as administrator.
         /// </summary>
@@ -181,32 +171,11 @@ namespace dotNetTips.Utility.Standard
             Process.GetCurrentProcess().Kill();
         }
 
-
         /// <summary>
         /// Gets the assembly information.
         /// </summary>
         /// <value>The assembly information.</value>
-        public static AppInfo AssemblyInfo => Info();
-
-        /// <summary>
-        /// Gets the processor count.
-        /// </summary>
-        /// <value>The processor count.</value>
-        public static int ProcessorCount
-        {
-            get
-            {
-                var now = Environment.TickCount;
-
-                if (_processorCount == 0 || now - _lastProcessorCountRefreshTicks >= ProcessorCountRefreshInterval)
-                {
-                    _processorCount = Environment.ProcessorCount;
-                    _lastProcessorCountRefreshTicks = now;
-                }
-
-                return _processorCount;
-            }
-        }
+        public static AppInfo AppInfo => Info();
 
         /// <summary>
         /// Gets the stack trace.
@@ -224,13 +193,13 @@ namespace dotNetTips.Utility.Standard
         /// Gets the culture.
         /// </summary>
         /// <value>The culture.</value>
-        public static CultureInfo CurrentCulture => Thread.CurrentThread.CurrentCulture;
+        public static CultureInfo CurrentCulture => CultureInfo.CurrentCulture;
 
         /// <summary>
         /// Gets the UI culture.
         /// </summary>
         /// <value>The UI culture.</value>
-        public static CultureInfo CurrentUICulture => Thread.CurrentThread.CurrentUICulture;
+        public static CultureInfo CurrentUICulture => CultureInfo.CurrentUICulture;
 
         /// <summary>
         /// Changes the culture.
@@ -238,7 +207,7 @@ namespace dotNetTips.Utility.Standard
         /// <param name="cultureName">Name of the culture.</param>
         public static void ChangeCulture(string cultureName)
         {
-            Thread.CurrentThread.CurrentCulture = new CultureInfo(cultureName);
+            CultureInfo.CurrentCulture = new CultureInfo(cultureName);
         }
 
         /// <summary>
@@ -247,7 +216,7 @@ namespace dotNetTips.Utility.Standard
         /// <param name="cultureName">Name of the culture.</param>
         public static void ChangeUICulture(string cultureName)
         {
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureName);
+            CultureInfo.CurrentUICulture = new CultureInfo(cultureName);
         }
 
         /// <summary>
@@ -256,17 +225,28 @@ namespace dotNetTips.Utility.Standard
         /// <value>The installed UI culture.</value>
         public static CultureInfo InstalledUICulture => CultureInfo.InstalledUICulture;
 
-
         /// <summary>
-        /// Gets the os platform.
+        /// Gets the platform architecture on which the current app is running.
         /// </summary>
         /// <value>The os platform.</value>
-        public static string OSPlatform => Environment.OSVersion.Platform.ToString();
+        public static Architecture OSArchitecture => RuntimeInformation.OSArchitecture;
 
         /// <summary>
-        /// Gets the os version.
+        /// Gets a string that describes the operating system on which the app is running.
         /// </summary>
         /// <value>The os version.</value>
-        public static string OSVersion => Environment.OSVersion.Version.ToString();
+        public static string OSDescription => RuntimeInformation.OSDescription;
+
+        /// <summary>
+        /// Gets the process architecture of the currently running app.
+        /// </summary>
+        /// <value>The process architecture.</value>
+        public static Architecture ProcessArchitecture => RuntimeInformation.ProcessArchitecture;
+
+        /// <summary>
+        /// Returns a string that indicates the name of the .NET installation on which an app is running.
+        /// </summary>
+        /// <value>The framework description.</value>
+        public static string FrameworkDescription => RuntimeInformation.FrameworkDescription;
     }
 }

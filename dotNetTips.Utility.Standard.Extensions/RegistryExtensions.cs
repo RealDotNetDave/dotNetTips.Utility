@@ -4,7 +4,7 @@
 // Created          : 06-16-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-16-2018
+// Last Modified On : 11-24-2018
 // ***********************************************************************
 // <copyright file="RegistryExtensions.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -13,6 +13,7 @@
 // ***********************************************************************
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text;
 using Microsoft.Win32;
 
@@ -29,9 +30,18 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="key">The key.</param>
         /// <param name="name">The name.</param>
         /// <returns>RegistryKey.</returns>
+        /// <exception cref="System.PlatformNotSupportedException"></exception>
+        /// <exception cref="PlatformNotSupportedException"></exception>
         public static RegistryKey GetSubKey(this RegistryKey key, string name)
         {
-            return key.OpenSubKey(name);
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return key.OpenSubKey(name);
+            }
+            else
+            {
+                throw new PlatformNotSupportedException();
+            }
         }
 
         /// <summary>
@@ -41,18 +51,27 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="key">The key.</param>
         /// <param name="name">The name.</param>
         /// <returns>T.</returns>
+        /// <exception cref="System.PlatformNotSupportedException"></exception>
+        /// <exception cref="PlatformNotSupportedException"></exception>
         public static T GetValue<T>(this RegistryKey key, string name)
         {
             var returnValue = default(T);
 
-            var keyValue = key.GetValue(name);
-
-            if (keyValue != null)
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                returnValue = (T)keyValue;
-            }
+                var keyValue = key.GetValue(name);
 
-            return returnValue;
+                if (keyValue != null)
+                {
+                    returnValue = (T)keyValue;
+                }
+
+                return returnValue;
+            }
+            else
+            {
+                throw new PlatformNotSupportedException();
+            }
         }
     }
 }

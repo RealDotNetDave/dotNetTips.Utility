@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-16-2017
+// Last Modified On : 07-30-2018
 // ***********************************************************************
 // <copyright file="ExceptionExtension.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -41,6 +41,11 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="nextItem">The next item.</param>
         /// <param name="canContinue">The can continue.</param>
         /// <returns>IEnumerable&lt;TSource&gt;.</returns>
+        /// <exception cref="System.ArgumentNullException">
+        /// canContinue
+        /// or
+        /// nextItem
+        /// </exception>
         public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItem, Func<TSource, bool> canContinue)
         {
             if(canContinue == null)
@@ -85,6 +90,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="ex">The ex.</param>
         /// <returns>T.</returns>
+        /// <exception cref="System.ArgumentNullException">ex</exception>
         /// <exception cref="ArgumentNullException">ex - Exception cannot be null.</exception>
         public static T TraverseFor<T>(this Exception ex)
             where T : class

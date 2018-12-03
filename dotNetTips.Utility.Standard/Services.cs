@@ -4,12 +4,13 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-04-2018
+// Last Modified On : 07-05-2018
 // ***********************************************************************
 // <copyright file="Services.cs" company="dotNetTips.com - David McCarter">
-//      McCarter Consulting (David McCarter)
+//     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
+// ***********************************************************************
 using dotNetTips.Utility.Standard.OOP;
 using dotNetTips.Utility.Standard.Properties;
 // ***********************************************************************

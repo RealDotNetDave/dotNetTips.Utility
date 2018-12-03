@@ -19,6 +19,7 @@ Imports System.Reflection
 Imports System.Runtime.CompilerServices
 Imports System.Text
 Imports dotNetTips.Utility.Portable.OOP
+Imports System.Data
 
 ''' <summary>
 ''' Class DataTableExtensions.

@@ -4,12 +4,13 @@
 // Created          : 12-14-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-28-2018
+// Last Modified On : 11-24-2018
 // ***********************************************************************
 // <copyright file="DistinctConcurrentBag.cs" company="dotNetTips.com - David McCarter">
-//      McCarter Consulting (David McCarter)
+//     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
+// ***********************************************************************
 using dotNetTips.Utility.Standard.OOP;
 // ***********************************************************************
 
@@ -29,12 +30,12 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// <summary>
         /// The hash codes
         /// </summary>
-        HashSet<int> _hashCodes = new HashSet<int>();
+        private readonly HashSet<int> _hashCodes = new HashSet<int>();
 
         /// <summary>
         /// The lock
         /// </summary>
-        object _lock = new object();
+        private readonly object _lock = new object();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DistinctConcurrentBag{T}" /> class.
@@ -53,7 +54,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
             {
                 foreach (var item in collection)
                 {
-                    Add(item);
+                    this.Add(item);
                 }
             }
         }

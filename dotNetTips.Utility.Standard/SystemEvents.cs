@@ -4,7 +4,7 @@
 // Created          : 07-09-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-10-2018
+// Last Modified On : 11-12-2018
 // ***********************************************************************
 // <copyright file="SystemEvents.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -36,16 +36,31 @@ namespace dotNetTips.Utility.Standard
             AppDomain.CurrentDomain.FirstChanceException += CurrentDomain_FirstChanceException;
         }
 
+        /// <summary>
+        /// Handles the FirstChanceException event of the CurrentDomain control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs"/> instance containing the event data.</param>
         private static void CurrentDomain_FirstChanceException(object sender, System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs e)
         {
             
         }
 
+        /// <summary>
+        /// Handles the ProcessExit event of the CurrentDomain control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private static void CurrentDomain_ProcessExit(object sender, EventArgs e)
         {
            
         }
 
+        /// <summary>
+        /// Handles the UnhandledException event of the CurrentDomain control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="UnhandledExceptionEventArgs"/> instance containing the event data.</param>
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             var eventArgs = new SystemChangedEventArgs { SystemEventType = SystemEventType.UnhandledException };
@@ -61,7 +76,7 @@ namespace dotNetTips.Utility.Standard
         /// Handles the NetworkAvailabilityChanged event of the NetworkChange control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="NetworkAvailabilityEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="NetworkAvailabilityEventArgs" /> instance containing the event data.</param>
         private static void NetworkChange_NetworkAvailabilityChanged(object sender, NetworkAvailabilityEventArgs e)
         {
             var eventInfo = new List<NetworkAvailabilityChangedEventInformation>(1)
@@ -80,7 +95,7 @@ namespace dotNetTips.Utility.Standard
         /// Networks the address changed callback.
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private static void NetworkAddressChangedCallback(object sender, EventArgs e)
         {
             var adapters = NetworkInterface.GetAllNetworkInterfaces();
@@ -89,17 +104,19 @@ namespace dotNetTips.Utility.Standard
 
             foreach (NetworkInterface adapter in adapters)
             {
-                var networkEvent = new NetworkAddressChangedEventInformation();
-                networkEvent.Id = adapter.Id;
-                networkEvent.Name = adapter.Name;
-                networkEvent.OperationalStatus = adapter.OperationalStatus;
+                var networkEvent = new NetworkAddressChangedEventInformation
+                {
+                    Id = adapter.Id,
+                    Name = adapter.Name,
+                    OperationalStatus = adapter.OperationalStatus
+                };
 
                 eventInfo.Add(networkEvent);
             }
 
             eventInfo.TrimExcess();
 
-            var eventArgs = new SystemChangedEventArgs()
+            var eventArgs = new SystemChangedEventArgs
             {
                 SystemEventType = SystemEventType.NetworkAddressChanged,
                 EventInformation = eventInfo

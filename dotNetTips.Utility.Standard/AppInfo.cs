@@ -4,13 +4,15 @@
 // Created          : 08-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-08-2017
+// Last Modified On : 11-29-2018
 // ***********************************************************************
 // <copyright file="Info.cs" company="dotNetTips.com - David McCarter">
-//      McCarter Consulting (David McCarter)
+//     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using dotNetTips.Utility.Standard.Properties;
+
 namespace dotNetTips.Utility.Standard
 {
     /// <summary>
@@ -97,6 +99,15 @@ namespace dotNetTips.Utility.Standard
         public string Version
         {
             get; internal set;
+        }
+
+        /// <summary>
+        /// Names the application name and version.
+        /// </summary>
+        /// <returns>System.String.</returns>
+        public string NameAndVersion()
+        {
+            return string.Format(Properties.Resources.AppNameAndVersion, (object)this.Product, (object)this.Version);
         }
     }
 }

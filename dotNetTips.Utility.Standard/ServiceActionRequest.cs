@@ -4,10 +4,10 @@
 // Created          : 07-21-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-16-2017
+// Last Modified On : 07-05-2018
 // ***********************************************************************
 // <copyright file="ServiceActionRequest.cs" company="dotNetTips.com - David McCarter">
-//      McCarter Consulting (David McCarter)
+//     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************

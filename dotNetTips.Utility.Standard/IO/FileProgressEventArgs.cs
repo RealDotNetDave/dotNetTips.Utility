@@ -4,10 +4,10 @@
 // Created          : 08-07-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-16-2017
+// Last Modified On : 07-16-2018
 // ***********************************************************************
 // <copyright file="ProgressEventArgs.cs" company="dotNetTips.com - David McCarter">
-//      McCarter Consulting (David McCarter)
+//     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************

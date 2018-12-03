@@ -4,10 +4,10 @@
 // Created          : 02-11-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-16-2017
+// Last Modified On : 11-24-2018
 // ***********************************************************************
 // <copyright file="Enumeration.cs" company="dotNetTips.com - David McCarter">
-//      McCarter Consulting (David McCarter)
+//     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -83,12 +83,12 @@ namespace dotNetTips.Utility.Standard
         {
             var otherValue = obj as Enumeration;
 
-            if(otherValue == null)
+            if (otherValue == null)
             {
                 return false;
             }
 
-            var typeMatches = GetType().Equals(obj.GetType());
+            var typeMatches = this.GetType().Equals(obj.GetType());
             var valueMatches = this._value.Equals(otherValue.Value);
 
             return typeMatches && valueMatches;

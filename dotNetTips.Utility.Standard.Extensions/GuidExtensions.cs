@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 using System;
+using System.Globalization;
 
 namespace dotNetTips.Utility.Standard.Extensions
 {
@@ -27,7 +28,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <returns>System.String.</returns>
         public static string ToDigits(this Guid value)
         {
-            return value.ToString("N");
+            return value.ToString("N", CultureInfo.InvariantCulture);
         }
     }
 }

@@ -4,10 +4,10 @@
 // Created          : 06-26-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-26-2018
+// Last Modified On : 11-11-2018
 // ***********************************************************************
 // <copyright file="EnvironmentKeys.cs" company="dotNetTips.com - David McCarter">
-//      McCarter Consulting (David McCarter)
+//     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -17,7 +17,7 @@ namespace dotNetTips.Tips.Utility.Standard
     /// <summary>
     /// Enum EnvironmentKeys
     /// </summary>
-    public enum EnvironmentKeys
+    public enum EnvironmentKey
     {
         /// <summary>
         /// The allusersprofile

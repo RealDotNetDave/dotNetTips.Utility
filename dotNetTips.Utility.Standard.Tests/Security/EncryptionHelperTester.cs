@@ -1,13 +1,32 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : dotNetTips.Tips.Utility.Standard.Tests
+// Author           : David McCarter
+// Created          : 09-05-2018
+//
+// Last Modified By : David McCarter
+// Last Modified On : 09-05-2018
+// ***********************************************************************
+// <copyright file="EncryptionHelperTester.cs" company="McCarter Consulting">
+//     David McCarter - dotNetTips.com
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.Security.Cryptography;
 using dotNetTips.Utility.Standard.Security;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace dotNetTips.Tips.Utility.Standard.Tests.Security
 {
+    /// <summary>
+    /// Class EncryptionHelperTester.
+    /// </summary>
     [TestClass]
     public class EncryptionHelperTester
     {
+        /// <summary>
+        /// Encrypts the decrypt string test.
+        /// </summary>
         [TestMethod]
         public void EncryptDecryptStringTest()
         {

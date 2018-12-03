@@ -4,10 +4,10 @@
 // Created          : 04-02-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-02-2018
+// Last Modified On : 11-12-2018
 // ***********************************************************************
 // <copyright file="ServiceProxy.cs" company="dotNetTips.com - David McCarter">
-//      McCarter Consulting (David McCarter)
+//     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -53,7 +53,10 @@ namespace dotNetTips.Utility.Standard.Web
         /// Initializes a new instance of the <see cref="ServiceProxy{T}" /> class.
         /// </summary>
         /// <param name="serviceEndpoint">The service endpoint.</param>
-        protected ServiceProxy(string serviceEndpoint) => _serviceEndpoint = serviceEndpoint;
+        protected ServiceProxy(string serviceEndpoint)
+        {
+            this._serviceEndpoint = serviceEndpoint;
+        }
 
         /// <summary>
         /// Initializes this instance.
@@ -121,7 +124,7 @@ namespace dotNetTips.Utility.Standard.Web
         {
             get
             {
-                Initialize();
+                this.Initialize();
                 return this._channel;
             }
             private set => this._channel = value;
@@ -132,7 +135,8 @@ namespace dotNetTips.Utility.Standard.Web
         /// </summary>
         public virtual void Dispose()
         {
-            Dispose(true);
+            this.Dispose(true);
+
             // Unregister object for finalization.
             GC.SuppressFinalize(this);
         }

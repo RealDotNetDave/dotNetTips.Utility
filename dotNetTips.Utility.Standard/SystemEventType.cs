@@ -25,7 +25,7 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         None,
 
-           /// <summary>
+        /// <summary>
         /// The network address changed
         /// </summary>
         NetworkAddressChanged,

@@ -4,12 +4,13 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-25-2017
+// Last Modified On : 07-05-2018
 // ***********************************************************************
 // <copyright file="XmlHelper.cs" company="dotNetTips.com - David McCarter">
-//      McCarter Consulting (David McCarter)
+//     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
+// ***********************************************************************
 using dotNetTips.Utility.Standard.OOP;
 // ***********************************************************************
 using System;
@@ -57,6 +58,7 @@ namespace dotNetTips.Utility.Standard.Xml
         /// <typeparam name="T">Type</typeparam>
         /// <param name="fileName">Name of the file.</param>
         /// <returns>T.</returns>
+        /// <exception cref="FileNotFoundException">File not found. Cannot deserialize from XML.</exception>
         public static T DeserializeFromXmlFile<T>(string fileName)
         {
             Encapsulation.TryValidateParam(fileName, nameof(fileName));

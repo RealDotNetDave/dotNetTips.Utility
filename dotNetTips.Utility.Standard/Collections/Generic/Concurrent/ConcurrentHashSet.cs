@@ -4,10 +4,10 @@
 // Created          : 03-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-12-2018
+// Last Modified On : 11-27-2018
 // ***********************************************************************
 // <copyright file="ConcurrentHashSet.cs" company="dotNetTips.com - David McCarter">
-//      McCarter Consulting (David McCarter)
+//     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -37,6 +37,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// The default capacity
         /// </summary>
         private const int DefaultCapacity = 31;
+
         /// <summary>
         /// The maximum lock number
         /// </summary>
@@ -130,7 +131,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         {
             if (collection != null)
             {
-                InitializeFromCollection(collection);
+                this.InitializeFromCollection(collection);
             }
         }
 
@@ -154,7 +155,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         {
             if (collection != null)
             {
-                InitializeFromCollection(collection);
+                this.InitializeFromCollection(collection);
             }
         }
 
@@ -234,7 +235,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
                 var acquiredLocks = 0;
                 try
                 {
-                    AcquireAllLocks(ref acquiredLocks);
+                    this.AcquireAllLocks(ref acquiredLocks);
 
                     for (var i = 0; i < this._tables.CountPerLock.Length; i++)
                     {
@@ -243,7 +244,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
                 }
                 finally
                 {
-                    ReleaseLocks(0, acquiredLocks);
+                    this.ReleaseLocks(0, acquiredLocks);
                 }
 
                 return count;
@@ -260,9 +261,10 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
             get
             {
                 var acquiredLocks = 0;
+
                 try
                 {
-                    AcquireAllLocks(ref acquiredLocks);
+                    this.AcquireAllLocks(ref acquiredLocks);
 
                     for (var i = 0; i < this._tables.CountPerLock.Length; i++)
                     {
@@ -274,7 +276,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
                 }
                 finally
                 {
-                    ReleaseLocks(0, acquiredLocks);
+                    this.ReleaseLocks(0, acquiredLocks);
                 }
 
                 return true;
@@ -285,7 +287,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// Gets the default concurrency level.
         /// </summary>
         /// <value>The default concurrency level.</value>
-        private static int DefaultConcurrencyLevel => App.ProcessorCount;
+        private static int DefaultConcurrencyLevel => Environment.ProcessorCount;
 
         /// <summary>
         /// Gets a value indicating whether the <see cref="T:System.Collections.Generic.ICollection`1"></see> is read-only.
@@ -301,7 +303,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// successfully; false if it already exists.</returns>
         /// <exception cref="T:System.OverflowException">The <see cref="ConcurrentHashSet{T}" />
         /// contains too many items.</exception>
-        public bool Add(T item) => AddInternal(item, this._comparer.GetHashCode(item), true);
+        public bool Add(T item) => this.AddInternal(item, this._comparer.GetHashCode(item), true);
 
         /// <summary>
         /// Removes all items from the <see cref="ConcurrentHashSet{T}" />.
@@ -311,7 +313,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
             var locksAcquired = 0;
             try
             {
-                AcquireAllLocks(ref locksAcquired);
+                this.AcquireAllLocks(ref locksAcquired);
 
                 var newTables = new Tables(new Node[DefaultCapacity], this._tables.Locks, new int[this._tables.CountPerLock.Length]);
                 this._tables = newTables;
@@ -319,7 +321,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
             }
             finally
             {
-                ReleaseLocks(0, locksAcquired);
+                this.ReleaseLocks(0, locksAcquired);
             }
         }
 
@@ -473,11 +475,12 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         private void AcquireAllLocks(ref int locksAcquired)
         {
             // First, acquire lock 0
-            AcquireLocks(0, 1, ref locksAcquired);
+            this.AcquireLocks(0, 1, ref locksAcquired);
 
             // Now that we have lock 0, the _locks array will not change (i.e., grow),
             // and so we can safely read _locks.Length.
-            AcquireLocks(1, this._tables.Locks.Length, ref locksAcquired);
+            this.AcquireLocks(1, this._tables.Locks.Length, ref locksAcquired);
+
             Debug.Assert(locksAcquired == this._tables.Locks.Length);
         }
 
@@ -513,7 +516,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// Adds an item to the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
         /// </summary>
         /// <param name="item">The object to add to the <see cref="T:System.Collections.Generic.ICollection`1"></see>.</param>
-        void ICollection<T>.Add(T item) => Add(item);
+        void ICollection<T>.Add(T item) => this.Add(item);
 
         /// <summary>
         /// Adds the internal.
@@ -524,6 +527,8 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private bool AddInternal(T item, int hashCode, bool acquireLock)
         {
+            Encapsulation.TryValidateParam<ArgumentNullException>(item != null, nameof(item));
+
             while (true)
             {
                 var tables = this._tables;
@@ -594,7 +599,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
                 //
                 if (resizeDesired)
                 {
-                    GrowTable(tables);
+                    this.GrowTable(tables);
                 }
 
                 return true;
@@ -618,7 +623,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
 
             try
             {
-                AcquireAllLocks(ref locksAcquired);
+                this.AcquireAllLocks(ref locksAcquired);
 
                 var count = 0;
 
@@ -632,11 +637,11 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
                     throw new ArgumentException("The index is equal to or greater than the length of the array, or the number of elements in the set is greater than the available space from index to the end of the destination array.");
                 }
 
-                CopyToItems(array, arrayIndex);
+                this.CopyToItems(array, arrayIndex);
             }
             finally
             {
-                ReleaseLocks(0, locksAcquired);
+                this.ReleaseLocks(0, locksAcquired);
             }
         }
 
@@ -662,7 +667,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// Returns an enumerator that iterates through a collection.
         /// </summary>
         /// <returns>An <see cref="T:System.Collections.IEnumerator"></see> object that can be used to iterate through the collection.</returns>
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
 
         /// <summary>
         /// Grows the table.
@@ -675,7 +680,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
             try
             {
                 // The thread that first obtains _locks[0] will be the one doing the resize operation
-                AcquireLocks(0, 1, ref locksAcquired);
+                this.AcquireLocks(0, 1, ref locksAcquired);
 
                 // Make sure nobody resized the table while we were waiting for lock 0:
                 if (tables != this._tables)
@@ -750,7 +755,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
                 }
 
                 // Now acquire all other locks for the table
-                AcquireLocks(1, tables.Locks.Length, ref locksAcquired);
+                this.AcquireLocks(1, tables.Locks.Length, ref locksAcquired);
 
                 var newLocks = tables.Locks;
 
@@ -797,7 +802,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
             finally
             {
                 // Release all locks that we took earlier
-                ReleaseLocks(0, locksAcquired);
+                this.ReleaseLocks(0, locksAcquired);
             }
         }
 
@@ -809,7 +814,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         {
             foreach (var item in collection)
             {
-                AddInternal(item, this._comparer.GetHashCode(item), false);
+                this.AddInternal(item, this._comparer.GetHashCode(item), false);
             }
 
             if (this._budget == 0)
@@ -838,7 +843,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// </summary>
         /// <param name="item">The object to remove from the <see cref="T:System.Collections.Generic.ICollection`1"></see>.</param>
         /// <returns>true if <paramref name="item">item</paramref> was successfully removed from the <see cref="T:System.Collections.Generic.ICollection`1"></see>; otherwise, false. This method also returns false if <paramref name="item">item</paramref> is not found in the original <see cref="T:System.Collections.Generic.ICollection`1"></see>.</returns>
-        bool ICollection<T>.Remove(T item) => TryRemove(item);
+        bool ICollection<T>.Remove(T item) => this.TryRemove(item);
 
         /// <summary>
         /// Class Node.

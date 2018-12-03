@@ -4,7 +4,7 @@
 // Created          : 02-11-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-05-2018
+// Last Modified On : 11-12-2018
 // ***********************************************************************
 // <copyright file="FileHelper.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -78,8 +78,8 @@ namespace dotNetTips.Utility.Standard.IO
 
                 using (var destinationStream = File.Create(newFileName))
                 {
-                    await sourceStream.CopyToAsync(destinationStream);
-                    await destinationStream.FlushAsync();
+                    await sourceStream.CopyToAsync(destinationStream).ConfigureAwait(true);
+                    await destinationStream.FlushAsync().ConfigureAwait(true);
                 }
             }
 

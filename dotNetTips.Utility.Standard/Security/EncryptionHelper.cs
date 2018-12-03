@@ -4,7 +4,7 @@
 // Created          : 09-05-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-05-2018
+// Last Modified On : 11-27-2018
 // ***********************************************************************
 // <copyright file="EncryptionHelper.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -21,16 +21,15 @@ namespace dotNetTips.Utility.Standard.Security
     /// </summary>
     public static class EncryptionHelper
     {
-
         /// <summary>
         /// Triples the DES decrypt.
         /// </summary>
         /// <param name="cipherText">The cipher text.</param>
-        /// <param name="Key">The key.</param>
-        /// <param name="IV">The iv.</param>
-        /// <remarks>Original code by: Mahesh Chand</remarks>
+        /// <param name="key">The key.</param>
+        /// <param name="iv">The iv.</param>
         /// <returns>System.String.</returns>
-        public static string TripleDESDecrypt(byte[] cipherText, byte[] Key, byte[] IV)
+        /// <remarks>Original code by: Mahesh Chand</remarks>
+        public static string TripleDESDecrypt(byte[] cipherText, byte[] key, byte[] iv)
         {
             string plaintext = null;
 
@@ -38,7 +37,7 @@ namespace dotNetTips.Utility.Standard.Security
             using (var tdes = new TripleDESCryptoServiceProvider())
             {
                 // Create a decryptor  
-                var decryptor = tdes.CreateDecryptor(Key, IV);
+                var decryptor = tdes.CreateDecryptor(key, iv);
 
                 // Create the streams used for decryption.  
                 using (var ms = new MemoryStream(cipherText))
@@ -57,15 +56,16 @@ namespace dotNetTips.Utility.Standard.Security
 
             return plaintext;
         }
+
         /// <summary>
         /// Triples the DES encrypt.
         /// </summary>
         /// <param name="plainText">The plain text.</param>
-        /// <param name="Key">The key.</param>
-        /// <param name="IV">The iv.</param>
-        /// <remarks>Original code by: Mahesh Chand</remarks>
+        /// <param name="key">The key.</param>
+        /// <param name="iv">The iv.</param>
         /// <returns>System.Byte[].</returns>
-        public static byte[] TripleDESEncrypt(string plainText, byte[] Key, byte[] IV)
+        /// <remarks>Original code by: Mahesh Chand</remarks>
+        public static byte[] TripleDESEncrypt(string plainText, byte[] key, byte[] iv)
         {
             byte[] encrypted;
 
@@ -73,7 +73,7 @@ namespace dotNetTips.Utility.Standard.Security
             using (var tdes = new TripleDESCryptoServiceProvider())
             {
                 // Create encryptor  
-                var encryptor = tdes.CreateEncryptor(Key, IV);
+                var encryptor = tdes.CreateEncryptor(key, iv);
 
                 // Create MemoryStream  
                 using (var ms = new MemoryStream())

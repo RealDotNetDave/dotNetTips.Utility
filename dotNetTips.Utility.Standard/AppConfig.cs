@@ -4,10 +4,10 @@
 // Created          : 06-06-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-08-2018
+// Last Modified On : 11-11-2018
 // ***********************************************************************
 // <copyright file="AppConfig.cs" company="dotNetTips.com - David McCarter">
-//      McCarter Consulting (David McCarter)
+//     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -21,6 +21,9 @@ namespace dotNetTips.Utility.Standard
     /// </summary>
     public class AppConfig
     {
+        /// <summary>
+        /// The file name
+        /// </summary>
         private const string FileName = "appsettings.json";
 
         /// <summary>

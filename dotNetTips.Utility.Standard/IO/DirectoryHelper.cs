@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-17-2018
+// Last Modified On : 11-24-2018
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -34,8 +34,14 @@ namespace dotNetTips.Utility.Standard.IO
         /// Loads the one drive folders.
         /// </summary>
         /// <returns>IEnumerable&lt;OneDriveFolder&gt;.</returns>
+        /// <exception cref="PlatformNotSupportedException"></exception>
         public static IEnumerable<OneDriveFolder> LoadOneDriveFolders()
         {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) == false)
+            {
+                throw new PlatformNotSupportedException();
+            }
+
             const string DisplayNameKey = "DisplayName";
             const string UserFolderKey = "UserFolder";
             const string AccountsKey = "Accounts";
@@ -192,13 +198,14 @@ namespace dotNetTips.Utility.Standard.IO
         /// <param name="rootDirectory">The root directory.</param>
         /// <param name="searchPattern">The search pattern.</param>
         /// <returns>IEnumerable&lt;DirectoryInfo&gt;.</returns>
-        public static IEnumerable<DirectoryInfo> SafeDirectorySearch(DirectoryInfo rootDirectory,
-                                                                     string searchPattern = ControlChars.DoubleQuote)
+        public static IEnumerable<DirectoryInfo> SafeDirectorySearch(DirectoryInfo rootDirectory, string searchPattern = ControlChars.DoubleQuote)
         {
             Encapsulation.TryValidateParam(rootDirectory, nameof(rootDirectory));
 
-            var folders = new List<DirectoryInfo>();
-            folders.Add(rootDirectory);
+            var folders = new List<DirectoryInfo>
+            {
+                rootDirectory
+            };
 
             foreach (var topFolder in rootDirectory.GetDirectories(searchPattern, SearchOption.TopDirectoryOnly))
             {

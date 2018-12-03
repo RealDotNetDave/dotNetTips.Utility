@@ -61,6 +61,15 @@ namespace dotNetTips.Utility.Standard.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} v{1}.
+        /// </summary>
+        internal static string AppNameAndVersion {
+            get {
+                return ResourceManager.GetString("AppNameAndVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to bytes.
         /// </summary>
         internal static string Bytes {

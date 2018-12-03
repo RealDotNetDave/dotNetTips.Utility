@@ -156,9 +156,9 @@ namespace dotNetTips.Utility.Standard
         /// <param name="baseType">Type of the base.</param>
         /// <param name="classOnly">if set to <c>true</c> [class only].</param>
         /// <returns>IEnumerable&lt;Type&gt;.</returns>
-        /// <exception cref="System.IO.DirectoryNotFoundException">Could not find path.</exception>
         /// <exception cref="dotNetTips.Utility.Standard.DirectoryNotFoundException">Could not find path.</exception>
-        /// <exception cref="ArgumentNullException">Could not find assembly.</exception>
+        /// <exception cref="System.IO.DirectoryNotFoundException">Could not find path.</exception>
+        /// <exception cref="ArgumentNullException">Could not find path.</exception>
         public static IEnumerable<Type> FindDerivedTypes(string path, SearchOption searchOption, Type baseType, bool classOnly)
         {
             Encapsulation.TryValidateParam(path, nameof(path), "Must pass in path and file name to the assembly.");
