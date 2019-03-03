@@ -4,7 +4,7 @@
 // Created          : 07-09-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-12-2018
+// Last Modified On : 11-24-2018
 // ***********************************************************************
 // <copyright file="SystemEvents.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -40,7 +40,7 @@ namespace dotNetTips.Utility.Standard
         /// Handles the FirstChanceException event of the CurrentDomain control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs" /> instance containing the event data.</param>
         private static void CurrentDomain_FirstChanceException(object sender, System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs e)
         {
             
@@ -50,7 +50,7 @@ namespace dotNetTips.Utility.Standard
         /// Handles the ProcessExit event of the CurrentDomain control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private static void CurrentDomain_ProcessExit(object sender, EventArgs e)
         {
            
@@ -60,7 +60,7 @@ namespace dotNetTips.Utility.Standard
         /// Handles the UnhandledException event of the CurrentDomain control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="UnhandledExceptionEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="UnhandledExceptionEventArgs" /> instance containing the event data.</param>
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             var eventArgs = new SystemChangedEventArgs { SystemEventType = SystemEventType.UnhandledException };

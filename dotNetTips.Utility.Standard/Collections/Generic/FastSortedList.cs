@@ -1,21 +1,21 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Standard
 // Author           : David McCarter
-// Created          : 01-22-2018
+// Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-22-2018
+// Last Modified On : 03-03-2019
 // ***********************************************************************
-// <copyright file="SortedList.cs" company="dotNetTips.com - David McCarter">
+// <copyright file="FastSortedList.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using dotNetTips.Utility.Standard.Extensions;
-// ***********************************************************************
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics;
+using dotNetTips.Utility.Standard.Extensions;
 
 namespace dotNetTips.Utility.Standard.Collections.Generic
 {
@@ -28,6 +28,11 @@ namespace dotNetTips.Utility.Standard.Collections.Generic
     [DebuggerDisplay("Count = {Count}"), Serializable]
     public class FastSortedList<T> : List<T>, ICloneable<T>
     {
+        /// <summary>
+        /// The sorted
+        /// </summary>
+        private bool _sorted;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SortedList{TKey, TValue}" /> class.
         /// </summary>
@@ -47,9 +52,44 @@ namespace dotNetTips.Utility.Standard.Collections.Generic
         /// <returns>A <see cref="T:System.Collections.Generic.List`1.Enumerator"></see> for the <see cref="T:System.Collections.Generic.List`1"></see>.</returns>
         public new Enumerator GetEnumerator()
         {
-            base.Sort();
+            this.SortCollection();
             return base.GetEnumerator();
         }
+
+        /// <summary>
+        /// Adds an object to the end of the <see cref="T:System.Collections.Generic.List`1"></see>.
+        /// </summary>
+        /// <param name="item">The object to be added to the end of the <see cref="T:System.Collections.Generic.List`1"></see>. The value can be null for reference types.</param>
+        public new void Add(T item)
+        {
+            base.Add(item);
+
+            this._sorted = false;
+        }
+
+        /// <summary>
+        /// Adds the range.
+        /// </summary>
+        /// <param name="items">The items.</param>
+        public new void AddRange(IEnumerable<T> items)
+        {
+            base.AddRange(items);
+        
+            this._sorted = false;
+        }
+
+        /// <summary>
+        /// Sorts the collection.
+        /// </summary>
+        private void SortCollection()
+        {
+            if (this._sorted == false)
+            {
+                base.Sort();
+                this._sorted = true;
+            }
+        }
+
 
         /// <summary>
         /// Copies the elements of the <see cref="T:System.Collections.Generic.List`1"></see> to a new array.
@@ -57,8 +97,18 @@ namespace dotNetTips.Utility.Standard.Collections.Generic
         /// <returns>An array containing copies of the elements of the <see cref="T:System.Collections.Generic.List`1"></see>.</returns>
         public new T[] ToArray()
         {
-            base.Sort();
+            this.SortCollection();
             return base.ToArray();
+        }
+
+        /// <summary>
+        /// To the immutable list.
+        /// </summary>
+        /// <returns>System.Collections.Immutable.IImmutableList&lt;T&gt;.</returns>
+        public IImmutableList<T> ToImmutableList()
+        {
+            this.SortCollection();
+            return this.ToImmutable();
         }
 
         /// <summary>
@@ -67,7 +117,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic
         /// <returns>List&lt;T&gt;.</returns>
         public List<T> ToList()
         {
-            base.Sort();
+            this.SortCollection();
             return new List<T>(base.ToArray());
         }
     }

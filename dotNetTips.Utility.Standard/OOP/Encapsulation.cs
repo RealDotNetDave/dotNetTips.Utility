@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-02-2018
+// Last Modified On : 11-24-2018
 // ***********************************************************************
 // <copyright file="Encapsulation.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -33,8 +33,8 @@ namespace dotNetTips.Utility.Standard.OOP
         /// <param name="condition">The condition.</param>
         /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
-        /// <exception cref="InvalidCastException"></exception>
         /// <exception cref="System.InvalidCastException"></exception>
+        /// <exception cref="InvalidCastException"></exception>
         public static void TryValidateParam<TException>(bool condition, string paramName = "", string message = "")
             where TException : ArgumentException, new()
         {
@@ -67,8 +67,8 @@ namespace dotNetTips.Utility.Standard.OOP
         /// <param name="collection">The collection.</param>
         /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
-        /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="System.ArgumentNullException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
         public static void TryValidateParam(IEnumerable collection, string paramName, string message = "")
         {
             if (collection.HasItems() == false)
@@ -88,6 +88,8 @@ namespace dotNetTips.Utility.Standard.OOP
         /// <param name="file">The file.</param>
         /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
+        /// <exception cref="System.ArgumentNullException"></exception>
+        /// <exception cref="System.IO.FileNotFoundException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="FileNotFoundException"></exception>
         public static void TryValidateParam(FileInfo file, string paramName, string message = "")
@@ -118,6 +120,8 @@ namespace dotNetTips.Utility.Standard.OOP
         /// <param name="directory">The directory.</param>
         /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
+        /// <exception cref="System.ArgumentNullException"></exception>
+        /// <exception cref="System.IO.DirectoryNotFoundException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="DirectoryNotFoundException"></exception>
         public static void TryValidateParam(DirectoryInfo directory, string paramName, string message = "")
@@ -148,8 +152,8 @@ namespace dotNetTips.Utility.Standard.OOP
         /// <param name="value">The value.</param>
         /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
         /// <exception cref="System.ArgumentOutOfRangeException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public static void TryValidateParam(Enum value, string paramName, string message = "")
         {
             TryValidateParam(paramName, nameof(paramName));
@@ -216,8 +220,8 @@ namespace dotNetTips.Utility.Standard.OOP
         /// <param name="size">The size.</param>
         /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
         /// <exception cref="System.ArgumentOutOfRangeException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public static void TryValidateParam(IEnumerable collection, int size, string paramName, string message = "")
         {
             TryValidateParam(collection, paramName, message);
@@ -240,10 +244,10 @@ namespace dotNetTips.Utility.Standard.OOP
         /// <param name="match">The match.</param>
         /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
-        /// <exception cref="ArgumentNullException">match</exception>
+        /// <exception cref="System.ArgumentNullException">match</exception>
         /// <exception cref="ArgumentInvalidException">match</exception>
+        /// <exception cref="ArgumentNullException">match</exception>
         /// <exception cref="dotNetTips.Utility.Standard.ArgumentInvalidException">match</exception>
-        /// <exception cref="System.ArgumentNullException"></exception>
         /// <exception cref="System.ArgumentException">match</exception>
         public static void TryValidateParam(string value, Regex match, string paramName, string message = "")
         {

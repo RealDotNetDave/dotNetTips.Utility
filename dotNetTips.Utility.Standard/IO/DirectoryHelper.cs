@@ -34,6 +34,7 @@ namespace dotNetTips.Utility.Standard.IO
         /// Loads the one drive folders.
         /// </summary>
         /// <returns>IEnumerable&lt;OneDriveFolder&gt;.</returns>
+        /// <exception cref="System.PlatformNotSupportedException"></exception>
         /// <exception cref="PlatformNotSupportedException"></exception>
         public static IEnumerable<OneDriveFolder> LoadOneDriveFolders()
         {

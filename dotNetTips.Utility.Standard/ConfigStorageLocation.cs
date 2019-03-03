@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-05-2018
+// Last Modified On : 11-27-2018
 // ***********************************************************************
 // <copyright file="Config.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -26,6 +26,9 @@ namespace dotNetTips.Utility.Standard
         /// <summary>
         /// The application
         /// </summary>
+        /// public string
+        /// {
+        /// get; inter
         Application
     }
 }

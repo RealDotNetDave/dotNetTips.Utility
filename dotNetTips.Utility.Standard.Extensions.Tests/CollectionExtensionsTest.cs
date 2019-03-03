@@ -4,7 +4,7 @@
 // Created          : 09-28-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-28-2018
+// Last Modified On : 03-03-2019
 // ***********************************************************************
 // <copyright file="CollectionExtensionsTest.cs" company="dotNetTips.Utility.Standard.Extensions.Tests">
 //     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 using System.Collections.Generic;
+using dotNetTips.Utility.Standard.Tester.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace dotNetTips.Utility.Standard.Extensions.Tests
@@ -31,7 +32,7 @@ namespace dotNetTips.Utility.Standard.Extensions.Tests
             var people = CreatePersonCollection(1000);
 
             //Test Finding Age of 100
-            Assert.IsTrue(people.FastAny(p => p.Age == 100));
+            Assert.IsTrue(people.FastAny(p => p.Age >= 1));
 
             //Test Finding Age not in collection
             Assert.IsFalse(people.FastAny(p => p.Age == 100000));
@@ -46,7 +47,7 @@ namespace dotNetTips.Utility.Standard.Extensions.Tests
             var people = CreatePersonCollection(1000);
 
             //Test Finding Age of 100
-            Assert.IsTrue(people.FastCount(p => p.Age == 100) > 0);
+            Assert.IsTrue(people.FastCount(p => p.Age >= 1) > 0);
 
             //Test Finding Age not in collection
             Assert.IsTrue(people.FastCount(p => p.Age == 100000) == 0);
@@ -66,9 +67,9 @@ namespace dotNetTips.Utility.Standard.Extensions.Tests
             {
                 var person = new Person
                 {
-                    Age = i,
-                    FirstName = $"FirstName{i}",
-                    LastName = $"LastName{i}"
+                    Age = RandomData.Integer(1, 95),
+                    FirstName = RandomData.Word(5, 50),
+                    LastName = RandomData.Word(2, 50)
                 };
 
                 people.Add(person);

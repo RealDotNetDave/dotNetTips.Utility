@@ -39,13 +39,16 @@
         "C:\\Users\\dotnetdave\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 18.1.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\ServiceFabricSDK.config"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
+        "S:\\src\\git\\dotNetTips.Utility\\NuGet": {},
         "http://nuget.grapecity.com/nuget": {},
-        "http://nuget.ops.blastmotion.com/feed/nuget/": {},
         "https://api.nuget.org/v3/index.json": {},
+        "https://ci.appveyor.com/nuget/benchmarkdotnet": {},
         "https://www.nuget.org/api/v2/": {},
         "p:\\Program Files (x86)\\DevExpress 18.1\\Components\\System\\Components\\Packages": {}
       },

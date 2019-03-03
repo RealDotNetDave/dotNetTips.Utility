@@ -4,7 +4,7 @@
 // Created          : 02-11-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-12-2018
+// Last Modified On : 12-03-2018
 // ***********************************************************************
 // <copyright file="FileHelper.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -33,21 +33,21 @@ namespace dotNetTips.Utility.Standard.IO
         /// <returns>IEnumerable&lt;KeyValuePair&lt;System.String, System.String&gt;&gt;.</returns>
         public static IEnumerable<KeyValuePair<string, string>> DeleteFiles(this IEnumerable<string> files)
         {
-            var errors = new SortedDictionary<string, string>();
+            var errors = new Dictionary<string, string>();
 
-            Parallel.ForEach(files, (information) =>
+            Parallel.ForEach(files, (fileName) =>
                 {
                     try
                     {
-                        File.Delete(information);
+                        File.Delete(fileName);
                     }
                     catch (IOException fileIOException)
                     {
-                        errors.AddIfNotExists(new KeyValuePair<string, string>(information, fileIOException.Message));
+                        errors.AddIfNotExists(new KeyValuePair<string, string>(fileName, fileIOException.Message));
                     }
                     catch (UnauthorizedAccessException notAuthorizedException)
                     {
-                        errors.AddIfNotExists(new KeyValuePair<string, string>(information, notAuthorizedException.Message));
+                        errors.AddIfNotExists(new KeyValuePair<string, string>(fileName, notAuthorizedException.Message));
                     }
                 });
 

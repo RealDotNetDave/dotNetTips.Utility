@@ -4,7 +4,7 @@
 // Created          : 06-16-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-24-2018
+// Last Modified On : 03-03-2019
 // ***********************************************************************
 // <copyright file="RegistryExtensions.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -12,9 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 using System;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using System.Text;
 using Microsoft.Win32;
 
 namespace dotNetTips.Utility.Standard.Extensions
@@ -30,8 +28,8 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="key">The key.</param>
         /// <param name="name">The name.</param>
         /// <returns>RegistryKey.</returns>
-        /// <exception cref="System.PlatformNotSupportedException"></exception>
         /// <exception cref="PlatformNotSupportedException"></exception>
+        /// <exception cref="System.PlatformNotSupportedException"></exception>
         public static RegistryKey GetSubKey(this RegistryKey key, string name)
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
@@ -51,8 +49,8 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="key">The key.</param>
         /// <param name="name">The name.</param>
         /// <returns>T.</returns>
-        /// <exception cref="System.PlatformNotSupportedException"></exception>
         /// <exception cref="PlatformNotSupportedException"></exception>
+        /// <exception cref="System.PlatformNotSupportedException"></exception>
         public static T GetValue<T>(this RegistryKey key, string name)
         {
             var returnValue = default(T);

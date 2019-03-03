@@ -4,7 +4,7 @@
 // Created          : 08-06-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-20-2018
+// Last Modified On : 03-03-2019
 // ***********************************************************************
 // <copyright file="Processor.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -13,10 +13,10 @@
 // ***********************************************************************
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Security;
+using System.Threading;
 using dotNetTips.Utility.Standard.Diagnostics;
 using dotNetTips.Utility.Standard.OOP;
 using dotNetTips.Utility.Standard.Properties;
@@ -53,6 +53,8 @@ namespace dotNetTips.Utility.Standard.IO
 
             var successCount = 0;
 
+            Thread.CurrentThread.Priority = ThreadPriority.Lowest;
+
             if (destinationFolder.Exists == false)
             {
                 destinationFolder.Create();
@@ -79,7 +81,7 @@ namespace dotNetTips.Utility.Standard.IO
 
                         successCount += 1;
 
-                        OnProcessed(new FileProgressEventArgs
+                        this.OnProcessed(new FileProgressEventArgs
                         {
                             Name = tempFile.FullName,
                             Message = tempFile.Name,
@@ -91,7 +93,7 @@ namespace dotNetTips.Utility.Standard.IO
                     catch (Exception ex)
                     {
                         //Send error if an Exception happens.
-                        OnProcessed(new FileProgressEventArgs
+                        this.OnProcessed(new FileProgressEventArgs
                         {
                             Name = tempFile.FullName,
                             ProgressState = FileProgressState.Error,
@@ -102,7 +104,7 @@ namespace dotNetTips.Utility.Standard.IO
                 }
                 else
                 {
-                    OnProcessed(new FileProgressEventArgs
+                    this.OnProcessed(new FileProgressEventArgs
                     {
                         Name = tempFile.FullName,
                         ProgressState = FileProgressState.Error,
@@ -142,7 +144,7 @@ namespace dotNetTips.Utility.Standard.IO
 
                         successCount += 1;
 
-                        OnProcessed(new FileProgressEventArgs
+                        this.OnProcessed(new FileProgressEventArgs
                         {
                             Name = tempFile.FullName,
                             Message = tempFile.Name,
@@ -154,7 +156,7 @@ namespace dotNetTips.Utility.Standard.IO
                     catch (Exception ex) when (ex is IOException || ex is SecurityException ||
                       ex is UnauthorizedAccessException)
                     {
-                        OnProcessed(new FileProgressEventArgs
+                        this.OnProcessed(new FileProgressEventArgs
                         {
                             Name = tempFile.FullName,
                             ProgressState = FileProgressState.Error,
@@ -165,7 +167,7 @@ namespace dotNetTips.Utility.Standard.IO
                 }
                 else
                 {
-                    OnProcessed(new FileProgressEventArgs
+                    this.OnProcessed(new FileProgressEventArgs
                     {
                         Name = tempFile.FullName,
                         ProgressState = FileProgressState.Error,
@@ -199,7 +201,7 @@ namespace dotNetTips.Utility.Standard.IO
 
                         successCount += 1;
 
-                        OnProcessed(new FileProgressEventArgs
+                        this.OnProcessed(new FileProgressEventArgs
                         {
                             Name = tempFolder.FullName,
                             ProgressState = FileProgressState.Deleted
@@ -207,7 +209,7 @@ namespace dotNetTips.Utility.Standard.IO
                     }
                     catch (Exception ex) when (ex is IOException || ex is SecurityException || ex is UnauthorizedAccessException || ex is DirectoryNotFoundException)
                     {
-                        OnProcessed(new FileProgressEventArgs
+                        this.OnProcessed(new FileProgressEventArgs
                         {
                             Name = tempFolder.FullName,
                             ProgressState = FileProgressState.Error,
@@ -217,7 +219,7 @@ namespace dotNetTips.Utility.Standard.IO
                 }
                 else
                 {
-                    OnProcessed(new FileProgressEventArgs
+                    this.OnProcessed(new FileProgressEventArgs
                     {
                         Name = tempFolder.FullName,
                         ProgressState = FileProgressState.Error,

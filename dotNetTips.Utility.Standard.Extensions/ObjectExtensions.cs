@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-28-2018
+// Last Modified On : 03-03-2019
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -147,8 +147,8 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="fileName">Name of the file.</param>
         /// <returns>T.</returns>
-        /// <exception cref="System.IO.FileNotFoundException"></exception>
         /// <exception cref="FileNotFoundException"></exception>
+        /// <exception cref="System.IO.FileNotFoundException"></exception>
         public static T FromJsonFile<T>(string fileName)
             where T : class
         {

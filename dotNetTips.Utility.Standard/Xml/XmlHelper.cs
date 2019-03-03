@@ -4,20 +4,19 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-05-2018
+// Last Modified On : 03-03-2019
 // ***********************************************************************
 // <copyright file="XmlHelper.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using dotNetTips.Utility.Standard.OOP;
-// ***********************************************************************
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
+using dotNetTips.Utility.Standard.OOP;
 
 namespace dotNetTips.Utility.Standard.Xml
 {
@@ -58,6 +57,7 @@ namespace dotNetTips.Utility.Standard.Xml
         /// <typeparam name="T">Type</typeparam>
         /// <param name="fileName">Name of the file.</param>
         /// <returns>T.</returns>
+        /// <exception cref="System.IO.FileNotFoundException">File not found. Cannot deserialize from XML.</exception>
         /// <exception cref="FileNotFoundException">File not found. Cannot deserialize from XML.</exception>
         public static T DeserializeFromXmlFile<T>(string fileName)
         {

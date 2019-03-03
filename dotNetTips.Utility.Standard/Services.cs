@@ -4,20 +4,19 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-05-2018
+// Last Modified On : 03-03-2019
 // ***********************************************************************
 // <copyright file="Services.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using dotNetTips.Utility.Standard.OOP;
-using dotNetTips.Utility.Standard.Properties;
-// ***********************************************************************
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceProcess;
+using dotNetTips.Utility.Standard.OOP;
+using dotNetTips.Utility.Standard.Properties;
 
 namespace dotNetTips.Utility.Standard
 {
@@ -59,6 +58,7 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         /// <param name="serviceName">Name of the service.</param>
         /// <returns>ServiceControllerStatus.</returns>
+        /// <exception cref="System.InvalidOperationException"></exception>
         /// <exception cref="InvalidOperationException">Service not found.</exception>
         public static ServiceControllerStatus ServiceStatus(string serviceName)
         {

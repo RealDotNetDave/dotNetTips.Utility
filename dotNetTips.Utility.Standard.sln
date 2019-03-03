@@ -12,13 +12,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{B8E8DF
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotNetTips.Utility.Core.Windows", "dotNetTips.Utility.Core.Windows\dotNetTips.Utility.Core.Windows.csproj", "{8474598C-A7E4-4544-B6B4-F7ED406C340A}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{ADDE826D-236D-4BFC-B092-BD61F3CAA59F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotNetTips.Utility.Standard.Extensions.Tests", "dotNetTips.Utility.Standard.Extensions.Tests\dotNetTips.Utility.Standard.Extensions.Tests.csproj", "{C22FC24D-EB6D-4D46-BB40-D5C16B19773E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotNetTips.Tips.Utility.Standard.Tests", "dotNetTips.Utility.Standard.Tests\dotNetTips.Tips.Utility.Standard.Tests.csproj", "{95A2E0F4-B3C7-4CE0-BB5E-1630B58028F4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotNetTips.Utility.Standard.Tester", "dotNetTips.Utility.Standard.Tester\dotNetTips.Utility.Standard.Tester.csproj", "{21062EE0-D491-4F29-9D0F-0DE65A7FFFF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,14 +45,6 @@ Global
 		{F8D79BB2-5A8F-450C-9BD2-6608B89CEB08}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F8D79BB2-5A8F-450C-9BD2-6608B89CEB08}.Release|x64.ActiveCfg = Release|Any CPU
 		{F8D79BB2-5A8F-450C-9BD2-6608B89CEB08}.Release|x64.Build.0 = Release|Any CPU
-		{8474598C-A7E4-4544-B6B4-F7ED406C340A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8474598C-A7E4-4544-B6B4-F7ED406C340A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8474598C-A7E4-4544-B6B4-F7ED406C340A}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{8474598C-A7E4-4544-B6B4-F7ED406C340A}.Debug|x64.Build.0 = Debug|Any CPU
-		{8474598C-A7E4-4544-B6B4-F7ED406C340A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8474598C-A7E4-4544-B6B4-F7ED406C340A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8474598C-A7E4-4544-B6B4-F7ED406C340A}.Release|x64.ActiveCfg = Release|Any CPU
-		{8474598C-A7E4-4544-B6B4-F7ED406C340A}.Release|x64.Build.0 = Release|Any CPU
 		{C22FC24D-EB6D-4D46-BB40-D5C16B19773E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C22FC24D-EB6D-4D46-BB40-D5C16B19773E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C22FC24D-EB6D-4D46-BB40-D5C16B19773E}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -69,6 +61,14 @@ Global
 		{95A2E0F4-B3C7-4CE0-BB5E-1630B58028F4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{95A2E0F4-B3C7-4CE0-BB5E-1630B58028F4}.Release|x64.ActiveCfg = Release|Any CPU
 		{95A2E0F4-B3C7-4CE0-BB5E-1630B58028F4}.Release|x64.Build.0 = Release|Any CPU
+		{21062EE0-D491-4F29-9D0F-0DE65A7FFFF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21062EE0-D491-4F29-9D0F-0DE65A7FFFF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21062EE0-D491-4F29-9D0F-0DE65A7FFFF1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{21062EE0-D491-4F29-9D0F-0DE65A7FFFF1}.Debug|x64.Build.0 = Debug|Any CPU
+		{21062EE0-D491-4F29-9D0F-0DE65A7FFFF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21062EE0-D491-4F29-9D0F-0DE65A7FFFF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21062EE0-D491-4F29-9D0F-0DE65A7FFFF1}.Release|x64.ActiveCfg = Release|Any CPU
+		{21062EE0-D491-4F29-9D0F-0DE65A7FFFF1}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

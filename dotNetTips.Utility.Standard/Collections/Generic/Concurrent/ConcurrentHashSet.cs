@@ -4,20 +4,19 @@
 // Created          : 03-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-27-2018
+// Last Modified On : 03-03-2019
 // ***********************************************************************
 // <copyright file="ConcurrentHashSet.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using dotNetTips.Utility.Standard.OOP;
-// ***********************************************************************
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
+using dotNetTips.Utility.Standard.OOP;
 
 namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
 {
@@ -179,8 +178,8 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// <summary>
         /// Initializes a new instance of the <see cref="ConcurrentHashSet{T}" /> class.
         /// </summary>
-        /// <param name="concurrencyLevel">The concurrency level.</param>
-        /// <param name="capacity">The capacity.</param>
+        /// <param name="concurrencyLevel">The concurrency level. Must be a value of 1 or greater.</param>
+        /// <param name="capacity">The capacity. Must be a value of 0 or greater.</param>
         /// <param name="growLockArray">if set to <c>true</c> [grow lock array].</param>
         /// <param name="comparer">The comparer.</param>
         /// <exception cref="ArgumentOutOfRangeException">concurrencyLevel
@@ -237,9 +236,9 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
                 {
                     this.AcquireAllLocks(ref acquiredLocks);
 
-                    for (var i = 0; i < this._tables.CountPerLock.Length; i++)
+                    foreach (int countPerLock in this._tables.CountPerLock)
                     {
-                        count += this._tables.CountPerLock[i];
+                        count += countPerLock;
                     }
                 }
                 finally
@@ -266,9 +265,9 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
                 {
                     this.AcquireAllLocks(ref acquiredLocks);
 
-                    for (var i = 0; i < this._tables.CountPerLock.Length; i++)
+                    foreach (int countPerLock in this._tables.CountPerLock)
                     {
-                        if (this._tables.CountPerLock[i] != 0)
+                        if (countPerLock != 0)
                         {
                             return false;
                         }
@@ -611,6 +610,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// </summary>
         /// <param name="array">The one-dimensional <see cref="T:System.Array"></see> that is the destination of the elements copied from <see cref="T:System.Collections.Generic.ICollection`1"></see>. The <see cref="T:System.Array"></see> must have zero-based indexing.</param>
         /// <param name="arrayIndex">The zero-based index in array at which copying begins.</param>
+        /// <exception cref="System.ArgumentException">The index is equal to or greater than the length of the array, or the number of elements in the set is greater than the available space from index to the end of the destination array.</exception>
         /// <exception cref="ArgumentException">The index is equal to or greater than the length of the array, or the number of elements in the set is greater than the available space from index to the end of the destination array.</exception>
         /// <exception cref="ArgumentNullException">The index is equal to or greater than the length of the array, or the number of elements in the set is greater than the available space from index to the end of the destination array.</exception>
         /// <exception cref="ArgumentOutOfRangeException">The index is equal to or greater than the length of the array, or the number of elements in the set is greater than the available space from index to the end of the destination array.</exception>
@@ -853,16 +853,16 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
             /// <summary>
             /// The Hashcode
             /// </summary>
-            public readonly int Hashcode;
+            internal readonly int Hashcode;
             /// <summary>
             /// The item
             /// </summary>
-            public readonly T Item;
+            internal readonly T Item;
 
             /// <summary>
             /// The next
             /// </summary>
-            public volatile Node Next;
+            internal volatile Node Next;
 
             /// <summary>
             /// Initializes a new instance of the <see cref="Node" /> class.
@@ -870,7 +870,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
             /// <param name="item">The item.</param>
             /// <param name="hashcode">The hashcode.</param>
             /// <param name="next">The next.</param>
-            public Node(T item, int hashcode, Node next)
+            internal Node(T item, int hashcode, Node next)
             {
                 this.Item = item;
                 this.Hashcode = hashcode;
@@ -886,16 +886,17 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
             /// <summary>
             /// The buckets
             /// </summary>
-            public readonly Node[] Buckets;
+            internal readonly Node[] Buckets;
 
             /// <summary>
             /// The count per lock
             /// </summary>
-            public volatile int[] CountPerLock;
+            internal volatile int[] CountPerLock;
+
             /// <summary>
             /// The locks
             /// </summary>
-            public readonly object[] Locks;
+            internal readonly object[] Locks;
 
             /// <summary>
             /// Initializes a new instance of the <see cref="Tables" /> class.
@@ -903,7 +904,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
             /// <param name="buckets">The buckets.</param>
             /// <param name="locks">The locks.</param>
             /// <param name="countPerLock">The count per lock.</param>
-            public Tables(Node[] buckets, object[] locks, int[] countPerLock)
+            internal Tables(Node[] buckets, object[] locks, int[] countPerLock)
             {
                 this.Buckets = buckets;
                 this.Locks = locks;

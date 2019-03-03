@@ -4,7 +4,7 @@
 // Created          : 02-11-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-05-2018
+// Last Modified On : 03-03-2019
 // ***********************************************************************
 // <copyright file="ICloneable.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)

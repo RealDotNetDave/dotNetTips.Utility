@@ -4,16 +4,13 @@
 // Created          : 06-15-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-16-2018
+// Last Modified On : 03-03-2019
 // ***********************************************************************
 // <copyright file="RegistryHelperUnitTest.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using System;
-using System.Collections.Generic;
-using System.Text;
 using dotNetTips.Utility.Standard.Win32;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

@@ -4,7 +4,7 @@
 // Created          : 06-10-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-10-2018
+// Last Modified On : 03-03-2019
 // ***********************************************************************
 // <copyright file="InMemoryCacheUnitTest.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 using dotNetTips.Utility.Standard.Cache;
+using dotNetTips.Utility.Standard.Tester.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace dotNetTips.Tips.Utility.Standard.Tests.Cache
@@ -37,7 +38,7 @@ namespace dotNetTips.Tips.Utility.Standard.Tests.Cache
 
             for (int i = 0; i < TestCount; i++)
             {
-                cache.AddCacheItem<int>(i.ToString(), i);
+                cache.AddCacheItem<int>(RandomData.Key(),RandomData.Integer(i,1000000));
             }
 
             Assert.IsTrue(cache.Count == TestCount);

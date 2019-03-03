@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-23-2018
+// Last Modified On : 03-03-2019
 // ***********************************************************************
 // <copyright file="Resources.Designer.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -12,10 +12,8 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace dotNetTips.Utility.Standard.Extensions.Properties {
-    using System;
-
-
+namespace dotNetTips.Utility.Standard.Extensions.Properties
+{
     /// <summary>
     /// A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -39,7 +37,7 @@ namespace dotNetTips.Utility.Standard.Extensions.Properties {
         private static global::System.Globalization.CultureInfo resourceCulture;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Resources"/> class.
+        /// Initializes a new instance of the <see cref="Resources" /> class.
         /// </summary>
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {

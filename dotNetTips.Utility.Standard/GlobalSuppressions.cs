@@ -1,4 +1,17 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿// ***********************************************************************
+// Assembly         : dotNetTips.Utility.Standard
+// Author           : David McCarter
+// Created          : 05-04-2018
+//
+// Last Modified By : David McCarter
+// Last Modified On : 11-27-2018
+// ***********************************************************************
+// <copyright file="GlobalSuppressions.cs" company="dotNetTips.com - David McCarter">
+//     McCarter Consulting (David McCarter)
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System.Diagnostics.CodeAnalysis;
 
 [assembly: SuppressMessage("Usage", "CC0022:Should dispose object", Justification = "<Pending>", Scope = "member", Target = "~P:dotNetTips.Utility.Standard.AppLogging.LoggerFactory")]
 

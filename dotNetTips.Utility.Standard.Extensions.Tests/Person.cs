@@ -4,7 +4,7 @@
 // Created          : 09-28-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-28-2018
+// Last Modified On : 11-27-2018
 // ***********************************************************************
 // <copyright file="CollectionExtensionsTest.cs" company="dotNetTips.Utility.Standard.Extensions.Tests">
 //     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.

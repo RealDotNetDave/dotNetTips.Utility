@@ -4,7 +4,7 @@
 // Created          : 09-05-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-05-2018
+// Last Modified On : 03-03-2019
 // ***********************************************************************
 // <copyright file="EncryptionHelperTester.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com

@@ -4,7 +4,7 @@
 // Created          : 06-15-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-24-2018
+// Last Modified On : 03-03-2019
 // ***********************************************************************
 // <copyright file="RegistryHelper.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -12,9 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 using System;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using System.Text;
 using Microsoft.Win32;
 
 namespace dotNetTips.Utility.Standard.Win32
@@ -35,6 +33,7 @@ namespace dotNetTips.Utility.Standard.Win32
         /// </summary>
         /// <param name="name">The name.</param>
         /// <returns>RegistryKey.</returns>
+        /// <exception cref="System.PlatformNotSupportedException"></exception>
         /// <exception cref="PlatformNotSupportedException"></exception>
         public static RegistryKey GetCurrentUserRegistryKey(string name)
         {

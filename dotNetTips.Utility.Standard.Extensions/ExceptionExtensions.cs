@@ -4,17 +4,17 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-30-2018
+// Last Modified On : 03-03-2019
 // ***********************************************************************
 // <copyright file="ExceptionExtension.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using dotNetTips.Utility.Standard.Extensions.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using dotNetTips.Utility.Standard.Extensions.Properties;
 
 namespace dotNetTips.Utility.Standard.Extensions
 {
@@ -41,11 +41,14 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="nextItem">The next item.</param>
         /// <param name="canContinue">The can continue.</param>
         /// <returns>IEnumerable&lt;TSource&gt;.</returns>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// canContinue
         /// or
         /// nextItem
         /// </exception>
+        /// <exception cref="System.ArgumentNullException">canContinue
+        /// or
+        /// nextItem</exception>
         public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItem, Func<TSource, bool> canContinue)
         {
             if(canContinue == null)
@@ -90,8 +93,8 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="ex">The ex.</param>
         /// <returns>T.</returns>
-        /// <exception cref="System.ArgumentNullException">ex</exception>
         /// <exception cref="ArgumentNullException">ex - Exception cannot be null.</exception>
+        /// <exception cref="System.ArgumentNullException">ex</exception>
         public static T TraverseFor<T>(this Exception ex)
             where T : class
         {
