@@ -32,11 +32,6 @@ namespace dotNetTips.Utility.Standard.IO
     public static class DirectoryHelper
     {
         /// <summary>
-        /// The retries
-        /// </summary>
-        private const int Retries = 10;
-
-        /// <summary>
         /// Applications the application data folder for Windows and Mac.
         /// </summary>
         /// <returns>System.String.</returns>
@@ -91,13 +86,14 @@ namespace dotNetTips.Utility.Standard.IO
             }
         }
 
-        /// <summary>
-        /// Deletes the directory with retry.
-        /// </summary>
+        /// <summary>Deletes the directory with retry.</summary>
         /// <param name="path">The path.</param>
-        public static void DeleteDirectory(string path)
+        /// <param name="retries">Number of retries.</param>
+        public static void DeleteDirectory(string path, int retries = 10)
         {
-            for (var retryCount = 0; retryCount < Retries; retryCount++)
+            retries = Math.Max(1, retries);
+
+            for (var retryCount = 0; retryCount < retries; retryCount++)
             {
                 if (!Directory.Exists(path))
                 {
@@ -113,10 +109,10 @@ namespace dotNetTips.Utility.Standard.IO
 
                     return;
                 }
-                catch (IOException) when (retryCount < Retries - 1)
+                catch (IOException) when (retryCount < retries - 1)
                 {
                 }
-                catch (UnauthorizedAccessException) when (retryCount < Retries - 1)
+                catch (UnauthorizedAccessException) when (retryCount < retries - 1)
                 {
                 }
 
@@ -267,14 +263,15 @@ namespace dotNetTips.Utility.Standard.IO
             return folders.AsEnumerable();
         }
 
-        /// <summary>
-        /// Moves the directory.
-        /// </summary>
+        /// <summary>Moves the directory.</summary>
         /// <param name="sourceDirectoryName">Name of the source dir.</param>
         /// <param name="destinationDirectoryName">Name of the dest dir.</param>
-        public static void MoveDirectory(string sourceDirectoryName, string destinationDirectoryName)
+        /// <param name="retries">Number of retries.</param>
+        public static void MoveDirectory(string sourceDirectoryName, string destinationDirectoryName, int retries = 10)
         {
-            for (var retryCount = 0; retryCount < Retries; retryCount++)
+            retries = Math.Max(1, retries);
+
+            for (var retryCount = 0; retryCount < retries; retryCount++)
             {
                 if (!Directory.Exists(sourceDirectoryName) && Directory.Exists(destinationDirectoryName))
                 {
@@ -286,10 +283,10 @@ namespace dotNetTips.Utility.Standard.IO
                     Directory.Move(sourceDirectoryName, destinationDirectoryName);
                     return;
                 }
-                catch (IOException) when (retryCount < Retries - 1)
+                catch (IOException) when (retryCount < retries - 1)
                 {
                 }
-                catch (UnauthorizedAccessException) when (retryCount < Retries - 1)
+                catch (UnauthorizedAccessException) when (retryCount < retries - 1)
                 {
                 }
 

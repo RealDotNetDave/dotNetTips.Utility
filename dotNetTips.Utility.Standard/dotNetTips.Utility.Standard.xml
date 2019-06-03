@@ -1549,11 +1549,6 @@
             Class DirectoryHelper.
             </summary>
         </member>
-        <member name="F:dotNetTips.Utility.Standard.IO.DirectoryHelper.Retries">
-            <summary>
-            The retries
-            </summary>
-        </member>
         <member name="M:dotNetTips.Utility.Standard.IO.DirectoryHelper.AppDataFolder">
             <summary>
             Applications the application data folder for Windows and Mac.
@@ -1568,11 +1563,10 @@
             <param name="destinationDirectory">The destination directory.</param>
             <param name="overwrite">if set to <c>true</c> [overwrite].</param>
         </member>
-        <member name="M:dotNetTips.Utility.Standard.IO.DirectoryHelper.DeleteDirectory(System.String)">
-            <summary>
-            Deletes the directory with retry.
-            </summary>
+        <member name="M:dotNetTips.Utility.Standard.IO.DirectoryHelper.DeleteDirectory(System.String,System.Int32)">
+            <summary>Deletes the directory with retry.</summary>
             <param name="path">The path.</param>
+            <param name="retries">Number of retries.</param>
         </member>
         <member name="M:dotNetTips.Utility.Standard.IO.DirectoryHelper.DeleteDirectoryAsync(System.IO.DirectoryInfo)">
             <summary>
@@ -1618,19 +1612,17 @@
             <exception cref="T:System.PlatformNotSupportedException"></exception>
             <exception cref="T:System.PlatformNotSupportedException"></exception>
         </member>
-        <member name="M:dotNetTips.Utility.Standard.IO.DirectoryHelper.MoveDirectory(System.String,System.String)">
-            <summary>
-            Moves the directory.
-            </summary>
+        <member name="M:dotNetTips.Utility.Standard.IO.DirectoryHelper.MoveDirectory(System.String,System.String,System.Int32)">
+            <summary>Moves the directory.</summary>
             <param name="sourceDirectoryName">Name of the source dir.</param>
             <param name="destinationDirectoryName">Name of the dest dir.</param>
+            <param name="retries">Number of retries.</param>
         </member>
-        <member name="M:dotNetTips.Utility.Standard.IO.DirectoryHelper.SafeDirectorySearch(System.IO.DirectoryInfo,System.String)">
-            <summary>
-            Safes the directory search.
-            </summary>
+        <member name="M:dotNetTips.Utility.Standard.IO.DirectoryHelper.SafeDirectorySearch(System.IO.DirectoryInfo,System.String,System.IO.SearchOption)">
+            <summary>Safe directory search.</summary>
             <param name="rootDirectory">The root directory.</param>
             <param name="searchPattern">The search pattern.</param>
+            <param name="searchOption">All or Top Directory Only</param>
             <returns>IEnumerable&lt;DirectoryInfo&gt;.</returns>
         </member>
         <member name="M:dotNetTips.Utility.Standard.IO.DirectoryHelper.SetAttributesNormal(System.String)">
