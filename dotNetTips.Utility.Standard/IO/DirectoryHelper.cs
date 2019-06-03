@@ -269,6 +269,9 @@ namespace dotNetTips.Utility.Standard.IO
         /// <param name="retries">Number of retries.</param>
         public static void MoveDirectory(string sourceDirectoryName, string destinationDirectoryName, int retries = 10)
         {
+            Encapsulation.TryValidateParam(sourceDirectoryName, nameof(sourceDirectoryName));
+            Encapsulation.TryValidateParam(destinationDirectoryName, nameof(destinationDirectoryName));
+
             retries = Math.Max(1, retries);
 
             for (var retryCount = 0; retryCount < retries; retryCount++)
