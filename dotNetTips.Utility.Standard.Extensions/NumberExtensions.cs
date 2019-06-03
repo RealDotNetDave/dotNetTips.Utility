@@ -4,9 +4,9 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-27-2018
+// Last Modified On : 03-03-2019
 // ***********************************************************************
-// <copyright file="IntegerExtensions.cs" company="dotNetTips.com - David McCarter">
+// <copyright file="NumberExtensions.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
 // </copyright>
 // <summary></summary>
@@ -192,7 +192,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <returns>String</returns>
         public static string ToStringOrEmpty(this int value, int lowerLimit = 0, int upperLimit = 9000, string defaultText = "")
         {
-            if (value <= lowerLimit ||value > upperLimit)
+            if (value <= lowerLimit || value > upperLimit)
             {
                 return defaultText;
             }
@@ -270,7 +270,8 @@ namespace dotNetTips.Utility.Standard.Extensions
                     "Nineteen"
                 };
                 var tens = new[]
-                { "Zero", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
+                {
+                "Zero", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
 
                 if (value < 20)
                 {

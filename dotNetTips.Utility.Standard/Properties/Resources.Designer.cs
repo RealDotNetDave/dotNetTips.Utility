@@ -1,10 +1,10 @@
 ﻿// ***********************************************************************
 // Assembly         : dotNetTips.Utility.Standard
 // Author           : David McCarter
-// Created          : 02-14-2018
+// Created          : 03-03-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-03-2019
+// Last Modified On : 05-31-2019
 // ***********************************************************************
 // <copyright file="Resources.Designer.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -12,8 +12,8 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace dotNetTips.Utility.Standard.Properties
-{
+namespace dotNetTips.Utility.Standard.Properties {
+    using System;
 
 
     /// <summary>
@@ -126,6 +126,36 @@ namespace dotNetTips.Utility.Standard.Properties
         }
 
         /// <summary>
+        /// Looks up a localized string similar to Directory cannot be null..
+        /// </summary>
+        /// <value>The directory cannot be null.</value>
+        internal static string DirectoryCannotBeNull {
+            get {
+                return ResourceManager.GetString("DirectoryCannotBeNull", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        /// Looks up a localized string similar to Directory does not exist..
+        /// </summary>
+        /// <value>The directory does not exist.</value>
+        internal static string DirectoryDoesNotExist {
+            get {
+                return ResourceManager.GetString("DirectoryDoesNotExist", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        /// Looks up a localized string similar to File cannot be null..
+        /// </summary>
+        /// <value>The file cannot be null.</value>
+        internal static string FileCannotBeNull {
+            get {
+                return ResourceManager.GetString("FileCannotBeNull", resourceCulture);
+            }
+        }
+
+        /// <summary>
         /// Looks up a localized string similar to File not found..
         /// </summary>
         /// <value>The file not found.</value>
@@ -226,7 +256,7 @@ namespace dotNetTips.Utility.Standard.Properties
         }
 
         /// <summary>
-        /// Looks up a localized string similar to String does not matach maximum length..
+        /// Looks up a localized string similar to String does not match maximum length..
         /// </summary>
         /// <value>The maximum length of the string does not match.</value>
         internal static string StringDoesNotMatchMaximumLength {

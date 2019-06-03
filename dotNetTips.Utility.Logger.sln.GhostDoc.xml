@@ -15,14 +15,12 @@
   <HelpConfiguration name="HelpFile">
     <OutputPath>..\..\..\Help</OutputPath>
     <CleanupOutputPath>true</CleanupOutputPath>
-    <HelpFileNamingMethod>MemberName</HelpFileNamingMethod>
     <ImageFolderPath />
     <HtmlFormats>
       <HtmlHelp>true</HtmlHelp>
       <MSHelpViewer>false</MSHelpViewer>
       <MSHelp2>false</MSHelp2>
       <Website>false</Website>
-      <VSIntelliSenseFile>false</VSIntelliSenseFile>
     </HtmlFormats>
     <IncludeScopes>
       <Public>true</Public>
@@ -42,10 +40,6 @@
     <ResolveCrefLinks>true</ResolveCrefLinks>
     <HeaderText>dotNetTips.com</HeaderText>
     <FooterText>David McCarter</FooterText>
-    <ConceptualContent>
-      <ContentLayout />
-      <MediaContent />
-    </ConceptualContent>
     <SelectedProjects>
       <SelectedProject>dotNetTips.Utility.Portable</SelectedProject>
       <SelectedProject>dotNetTips.Utility.Portable.Windows</SelectedProject>
@@ -55,6 +49,5 @@
 </HelpConfigurations>
 <GeneralProperties>
   <SearchInheritedCommentsOnlyWithinProject>False</SearchInheritedCommentsOnlyWithinProject>
-  <UseWYSIWYGForDocumentThis>True</UseWYSIWYGForDocumentThis>
 </GeneralProperties>
 </GhostDoc>

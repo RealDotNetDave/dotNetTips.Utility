@@ -4,9 +4,9 @@
 // Created          : 08-07-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-24-2018
+// Last Modified On : 05-31-2019
 // ***********************************************************************
-// <copyright file="ProgressState.cs" company="dotNetTips.com - David McCarter">
+// <copyright file="FileProgressState.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>

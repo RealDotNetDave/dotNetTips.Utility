@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-24-2018
+// Last Modified On : 06-03-2019
 // ***********************************************************************
 // <copyright file="Encapsulation.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -27,14 +27,14 @@ namespace dotNetTips.Utility.Standard.OOP
     public static class Encapsulation
     {
         /// <summary>
-        /// Tries the validate parameter.
+        /// Tries to validate a method parameter.
         /// </summary>
         /// <typeparam name="TException">The type of the t exception.</typeparam>
         /// <param name="condition">The condition.</param>
         /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
-        /// <exception cref="System.InvalidCastException"></exception>
         /// <exception cref="InvalidCastException"></exception>
+        /// <exception cref="System.InvalidCastException"></exception>
         public static void TryValidateParam<TException>(bool condition, string paramName = "", string message = "")
             where TException : ArgumentException, new()
         {
@@ -42,9 +42,7 @@ namespace dotNetTips.Utility.Standard.OOP
 
             if (t.Name == nameof(Exception))
             {
-                throw new InvalidCastException(string.Format(CultureInfo.CurrentUICulture,
-                                                             Resources.CannotBeOfTypeException,
-                                                             nameof(TException)));
+                throw new InvalidCastException(string.Format(CultureInfo.CurrentUICulture, Resources.CannotBeOfTypeException, nameof(TException)));
             }
 
             var defaultMessage = Resources.ParameterIsInvalid;
@@ -62,13 +60,13 @@ namespace dotNetTips.Utility.Standard.OOP
         }
 
         /// <summary>
-        /// Tries the validate parameter.
+        /// Tries to validate a method parameter.
         /// </summary>
         /// <param name="collection">The collection.</param>
         /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
-        /// <exception cref="System.ArgumentNullException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="System.ArgumentNullException"></exception>
         public static void TryValidateParam(IEnumerable collection, string paramName, string message = "")
         {
             if (collection.HasItems() == false)
@@ -83,22 +81,22 @@ namespace dotNetTips.Utility.Standard.OOP
         }
 
         /// <summary>
-        /// Tries the validate parameter.
+        /// Tries to validate a method parameter.
         /// </summary>
         /// <param name="file">The file.</param>
         /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.IO.FileNotFoundException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="FileNotFoundException"></exception>
+        /// <exception cref="System.ArgumentNullException"></exception>
+        /// <exception cref="System.IO.FileNotFoundException"></exception>
         public static void TryValidateParam(FileInfo file, string paramName, string message = "")
         {
             if (file == null)
             {
                 if (message.IsNull())
                 {
-                    message = "File cannot be null.";
+                    message = Resources.FileCannotBeNull;
                 }
 
                 throw new ArgumentNullException(paramName, message);
@@ -107,7 +105,7 @@ namespace dotNetTips.Utility.Standard.OOP
             {
                 if (message.IsNull())
                 {
-                    message = "File does not exist.";
+                    message = Resources.FileNotFound;
                 }
 
                 throw new FileNotFoundException(message, file.FullName);
@@ -115,22 +113,22 @@ namespace dotNetTips.Utility.Standard.OOP
         }
 
         /// <summary>
-        /// Tries the validate parameter.
+        /// Tries to validate a method parameter.
         /// </summary>
         /// <param name="directory">The directory.</param>
         /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.IO.DirectoryNotFoundException"></exception>
-        /// <exception cref="ArgumentNullException"></exception>
-        /// <exception cref="DirectoryNotFoundException"></exception>
+        /// <exception cref="ArgumentNullException">Argument cannot be null.</exception>
+        /// <exception cref="DirectoryNotFoundException">Directory not found.</exception>
+        /// <exception cref="System.ArgumentNullException">Argument cannot be null.</exception>
+        /// <exception cref="System.IO.DirectoryNotFoundException">Directory not found.</exception>
         public static void TryValidateParam(DirectoryInfo directory, string paramName, string message = "")
         {
             if (directory == null)
             {
                 if (message.IsNull())
                 {
-                    message = "Directory cannot be null.";
+                    message = Resources.DirectoryCannotBeNull;
                 }
 
                 throw new ArgumentNullException(paramName, message);
@@ -139,7 +137,7 @@ namespace dotNetTips.Utility.Standard.OOP
             {
                 if (message.IsNull())
                 {
-                    message = "Directory does not exist.";
+                    message = Resources.DirectoryDoesNotExist;
                 }
 
                 throw new DirectoryNotFoundException(message, directory.FullName);
@@ -147,13 +145,14 @@ namespace dotNetTips.Utility.Standard.OOP
         }
 
         /// <summary>
-        /// Tries the validate parameter.
+        /// Tries to validate a method parameter.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
-        /// <exception cref="System.ArgumentOutOfRangeException"></exception>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <exception cref="ArgumentInvalidException"></exception>
+        /// <exception cref="System.ArgumentException">Argument is invalid.</exception>
         public static void TryValidateParam(Enum value, string paramName, string message = "")
         {
             TryValidateParam(paramName, nameof(paramName));
@@ -170,7 +169,7 @@ namespace dotNetTips.Utility.Standard.OOP
         }
 
         /// <summary>
-        /// Tries the validate parameter.
+        /// Tries to validate a method parameter.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="paramName">Name of the parameter.</param>
@@ -178,7 +177,6 @@ namespace dotNetTips.Utility.Standard.OOP
         /// <exception cref="ArgumentInvalidException"></exception>
         /// <exception cref="dotNetTips.Utility.Standard.ArgumentInvalidException"></exception>
         /// <exception cref="System.ArgumentException"></exception>
-        /// <remarks>TEST Created</remarks>
         public static void TryValidateParam(Guid value, string paramName, string message = "")
         {
             if (value.Equals(Guid.Empty))
@@ -193,7 +191,7 @@ namespace dotNetTips.Utility.Standard.OOP
         }
 
         /// <summary>
-        /// Tries the validate parameter.
+        /// Tries to validate a method parameter.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="paramName">Name of the parameter.</param>
@@ -214,14 +212,15 @@ namespace dotNetTips.Utility.Standard.OOP
         }
 
         /// <summary>
-        /// Tries the validate parameter.
+        /// Tries to validate a method parameter.
         /// </summary>
         /// <param name="collection">The collection.</param>
         /// <param name="size">The size.</param>
         /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
-        /// <exception cref="System.ArgumentOutOfRangeException"></exception>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <exception cref="ArgumentInvalidException"></exception>
+        /// <exception cref="System.ArgumentException">Argument is invalid.</exception>
         public static void TryValidateParam(IEnumerable collection, int size, string paramName, string message = "")
         {
             TryValidateParam(collection, paramName, message);
@@ -238,16 +237,16 @@ namespace dotNetTips.Utility.Standard.OOP
         }
 
         /// <summary>
-        /// Tries the validate parameter.
+        /// Tries to validate a method parameter.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="match">The match.</param>
         /// <param name="paramName">Name of the parameter.</param>
         /// <param name="message">The message.</param>
-        /// <exception cref="System.ArgumentNullException">match</exception>
-        /// <exception cref="ArgumentInvalidException">match</exception>
         /// <exception cref="ArgumentNullException">match</exception>
+        /// <exception cref="ArgumentInvalidException">match</exception>
         /// <exception cref="dotNetTips.Utility.Standard.ArgumentInvalidException">match</exception>
+        /// <exception cref="System.ArgumentNullException">match</exception>
         /// <exception cref="System.ArgumentException">match</exception>
         public static void TryValidateParam(string value, Regex match, string paramName, string message = "")
         {
@@ -270,7 +269,7 @@ namespace dotNetTips.Utility.Standard.OOP
         }
 
         /// <summary>
-        /// Tries the validate parameter.
+        /// Tries to validate a method parameter.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="expected">The expected.</param>
@@ -295,7 +294,7 @@ namespace dotNetTips.Utility.Standard.OOP
         }
 
         /// <summary>
-        /// Tries the validate parameter.
+        /// Tries to validate a method parameter.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="expectedType">The expected type.</param>
@@ -318,7 +317,7 @@ namespace dotNetTips.Utility.Standard.OOP
         }
 
         /// <summary>
-        /// Tries the validate parameter.
+        /// Tries to validate a method parameter.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="minimumLength">The minimum length.</param>

@@ -4,7 +4,7 @@
 // Created          : 07-29-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-24-2018
+// Last Modified On : 03-03-2019
 // ***********************************************************************
 // <copyright file="ColorExtensions.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -30,8 +30,8 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="colors">The colors.</param>
         /// <returns>Color.</returns>
         /// <exception cref="ArgumentOutOfRangeException">colors - colors</exception>
-        /// <exception cref="System.ArgumentOutOfRangeException">colors</exception>
-        /// <exception cref="ArgumentNullException">colors - colors</exception>
+        /// <exception cref="System.ArgumentOutOfRangeException">colors - colors</exception>
+        /// <exception cref="ArgumentNullException">colors</exception>
         public static Color Average(this IEnumerable<Color> colors)
         {
             if (colors.Count() == 0)

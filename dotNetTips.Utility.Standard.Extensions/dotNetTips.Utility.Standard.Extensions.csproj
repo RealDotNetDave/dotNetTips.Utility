@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <DocumentationFile>..\UtilityBin\netstandard2.0\dotNetTips.Utility.Standard.xml</DocumentationFile>
+    <DocumentationFile>dotNetTips.Utility.Standard.xml</DocumentationFile>
     <OutputPath>..\UtilityBin\netstandard2.0\</OutputPath>
-    <AssemblyVersion>2019.3.3.33689</AssemblyVersion>
-    <FileVersion>2019.3.3.33689</FileVersion>
+    <AssemblyVersion>2019.6.3.33705</AssemblyVersion>
+    <FileVersion>2019.6.3.33705</FileVersion>
     <NeutralLanguage>en</NeutralLanguage>
     <Authors>David McCarter</Authors>
     <Company>dotNetTips.com - David McCarter</Company>
@@ -19,12 +19,13 @@
     <AssemblyOriginatorKeyFile>dotNetTips.com.pfx</AssemblyOriginatorKeyFile>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2019.03.03</Version>
+    <Version>2019.06.03</Version>
     <PackageTags>David McCarter, dotNetDave, dotNetTips.com</PackageTags>
     <AssemblyName>dotNetTips.Utility.Standard.Extensions</AssemblyName>
     <RootNamespace>dotNetTips.Utility.Standard.Extensions</RootNamespace>
     <Configurations>Debug;Release;Full Build</Configurations>
-    <PackageLicenseUrl>https://github.com/RealDotNetDave/dotNetTips.Utility/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseUrl></PackageLicenseUrl>
+    <PackageReleaseNotes>-- JUNE 2019: Quarterly Release - Code cleanup.</PackageReleaseNotes>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -77,6 +78,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if $(ConfigurationName) == Debug (dotnet pack &quot;$(ProjectPath)&quot; --no-build --include-source --include-symbols --output  &quot;$(ProjectDir)\..\NuGet&quot;)" />
+    <Exec Command="if $(ConfigurationName) == Release (dotnet pack &quot;$(ProjectPath)&quot; --no-build --include-source --include-symbols --output  &quot;$(ProjectDir)\..\NuGet&quot;)" />
   </Target>
 </Project>

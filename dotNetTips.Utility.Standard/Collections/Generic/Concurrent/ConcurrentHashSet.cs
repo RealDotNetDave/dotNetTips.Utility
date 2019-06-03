@@ -4,7 +4,7 @@
 // Created          : 03-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-03-2019
+// Last Modified On : 06-03-2019
 // ***********************************************************************
 // <copyright file="ConcurrentHashSet.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -28,9 +28,9 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
     /// <seealso cref="System.Collections.Generic.ICollection{T}" />
     /// <remarks>All public members of <see cref="ConcurrentHashSet{T}" /> are thread-safe and may be used
     /// concurrently from multiple threads.
-    /// Original Code by: Bar Arnon: https://github.com/i3arnon</remarks>
+    /// Original Code by Bar Arnon.</remarks>
     [DebuggerDisplay("Count = {Count}")]
-    public class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T>
+    public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T>
     {
         /// <summary>
         /// The default capacity
@@ -347,7 +347,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
 
             while (current != null)
             {
-                if (hashcode == current.Hashcode && this._comparer.Equals(current.Item, item))
+                if (hashcode == current.HashCode && this._comparer.Equals(current.Item, item))
                 {
                     return true;
                 }
@@ -415,7 +415,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
                         Debug.Assert((previous == null && current == tables.Buckets[bucketNo]) ||
                             previous.Next == current);
 
-                        if (hashcode == current.Hashcode && this._comparer.Equals(current.Item, item))
+                        if (hashcode == current.HashCode && this._comparer.Equals(current.Item, item))
                         {
                             if (previous == null)
                             {
@@ -556,7 +556,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
                     for (var current = tables.Buckets[bucketNo]; current != null; current = current.Next)
                     {
                         Debug.Assert(previous == null && current == tables.Buckets[bucketNo] || previous.Next == current);
-                        if (hashCode == current.Hashcode && this._comparer.Equals(current.Item, item))
+                        if (hashCode == current.HashCode && this._comparer.Equals(current.Item, item))
                         {
                             return false;
                         }
@@ -610,8 +610,8 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// </summary>
         /// <param name="array">The one-dimensional <see cref="T:System.Array"></see> that is the destination of the elements copied from <see cref="T:System.Collections.Generic.ICollection`1"></see>. The <see cref="T:System.Array"></see> must have zero-based indexing.</param>
         /// <param name="arrayIndex">The zero-based index in array at which copying begins.</param>
-        /// <exception cref="System.ArgumentException">The index is equal to or greater than the length of the array, or the number of elements in the set is greater than the available space from index to the end of the destination array.</exception>
         /// <exception cref="ArgumentException">The index is equal to or greater than the length of the array, or the number of elements in the set is greater than the available space from index to the end of the destination array.</exception>
+        /// <exception cref="System.ArgumentException">The index is equal to or greater than the length of the array, or the number of elements in the set is greater than the available space from index to the end of the destination array.</exception>
         /// <exception cref="ArgumentNullException">The index is equal to or greater than the length of the array, or the number of elements in the set is greater than the available space from index to the end of the destination array.</exception>
         /// <exception cref="ArgumentOutOfRangeException">The index is equal to or greater than the length of the array, or the number of elements in the set is greater than the available space from index to the end of the destination array.</exception>
         void ICollection<T>.CopyTo(T[] array, int arrayIndex)
@@ -632,7 +632,8 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
                     count += this._tables.CountPerLock[i];
                 }
 
-                if (array.Length - count < arrayIndex || count < 0) //"count" itself or "count + arrayIndex" can overflow
+                // "count" itself or "count + arrayIndex" can overflow
+                if (array.Length - count < arrayIndex || count < 0)
                 {
                     throw new ArgumentException("The index is equal to or greater than the length of the array, or the number of elements in the set is greater than the available space from index to the end of the destination array.");
                 }
@@ -658,7 +659,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
                 for (var current = buckets[i]; current != null; current = current.Next)
                 {
                     array[index] = current.Item;
-                    index++; //this should never flow, CopyToItems is only called when there's no overflow risk
+                    index++; // this should never flow, CopyToItems is only called when there's no overflow risk
                 }
             }
         }
@@ -704,10 +705,12 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
                 if (approxCount < tables.Buckets.Length / 4)
                 {
                     this._budget = 2 * this._budget;
+
                     if (this._budget < 0)
                     {
                         this._budget = int.MaxValue;
                     }
+
                     return;
                 }
 
@@ -780,9 +783,9 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
                     while (current != null)
                     {
                         var next = current.Next;
-                        GetBucketAndLockNo(current.Hashcode, out int newBucketNo, out int newLockNo, newBuckets.Length, newLocks.Length);
+                        GetBucketAndLockNo(current.HashCode, out int newBucketNo, out int newLockNo, newBuckets.Length, newLocks.Length);
 
-                        newBuckets[newBucketNo] = new Node(current.Item, current.Hashcode, newBuckets[newBucketNo]);
+                        newBuckets[newBucketNo] = new Node(current.Item, current.HashCode, newBuckets[newBucketNo]);
 
                         checked
                         {
@@ -853,7 +856,8 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
             /// <summary>
             /// The Hashcode
             /// </summary>
-            internal readonly int Hashcode;
+            internal readonly int HashCode;
+
             /// <summary>
             /// The item
             /// </summary>
@@ -873,7 +877,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
             internal Node(T item, int hashcode, Node next)
             {
                 this.Item = item;
-                this.Hashcode = hashcode;
+                this.HashCode = hashcode;
                 this.Next = next;
             }
         }

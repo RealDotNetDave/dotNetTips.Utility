@@ -1,0 +1,3544 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>dotNetTips.Utility.Standard</name>
+    </assembly>
+    <members>
+        <member name="T:dotNetTips.Utility.Standard.App">
+            <summary>
+            Class ApplicationHelper.
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.App.TempAspFiles">
+            <summary>
+            The temporary ASP files location
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.App.appInfo">
+            <summary>
+            The application information
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.App.AppInfo">
+            <summary>
+            Gets the assembly information.
+            </summary>
+            <value>The assembly information.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.App.CurrentCulture">
+            <summary>
+            Gets the culture.
+            </summary>
+            <value>The culture.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.App.CurrentUICulture">
+            <summary>
+            Gets the UI culture.
+            </summary>
+            <value>The UI culture.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.App.FrameworkDescription">
+            <summary>
+            Returns a string that indicates the name of the .NET installation on which an app is running.
+            </summary>
+            <value>The framework description.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.App.InstalledUICulture">
+            <summary>
+            Gets the installed UI culture.
+            </summary>
+            <value>The installed UI culture.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.App.OSArchitecture">
+            <summary>
+            Gets the platform architecture on which the current app is running.
+            </summary>
+            <value>The operating system platform.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.App.OSDescription">
+            <summary>
+            Gets a string that describes the operating system on which the app is running.
+            </summary>
+            <value>The operating system description.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.App.ProcessArchitecture">
+            <summary>
+            Gets the process architecture of the currently running app.
+            </summary>
+            <value>The process architecture.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.App.StackTrace">
+            <summary>
+            Gets the stack trace.
+            </summary>
+            <value>The stack trace.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.App.WorkingSet">
+            <summary>
+            Gets the working set.
+            </summary>
+            <value>The working set.</value>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.App.ChangeCulture(System.String)">
+            <summary>
+            Changes the culture.
+            </summary>
+            <param name="cultureName">Name of the culture.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.App.ChangeUICulture(System.String)">
+            <summary>
+            Changes the UI culture.
+            </summary>
+            <param name="cultureName">Name of the culture.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.App.GetEnvironmentVariables">
+            <summary>
+            Gets the environment variables.
+            </summary>
+            <returns>IImmutableDictionary&lt;System.String, System.String&gt;.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.App.IsProcessRunning(System.String)">
+            <summary>
+            Determines whether [is application already running] [the specified process name].
+            </summary>
+            <param name="processName">Name of the process.</param>
+            <returns><c>true</c> if [is application already running] [the specified process name]; otherwise, <c>false</c>.</returns>
+            <exception cref="T:System.ArgumentNullException">processName - Process name is required.</exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.App.IsRunning">
+            <summary>
+            Check to see if the current app is already running.
+            </summary>
+            <returns><c>true</c> if app is not running, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.App.IsRunningFromAspNet">
+            <summary>
+            Checks to see if the current application is ASP.NET
+            </summary>
+            <returns>True if running ASP.NET</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.App.Kill">
+            <summary>
+            Kills the current process.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.App.KillProcess(System.String)">
+            <summary>
+            Kills the process.
+            </summary>
+            <param name="processName">Name of the process.</param>
+            <exception cref="T:System.ArgumentNullException">processName - Process name is nothing or empty.</exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.App.ReferencedAssemblies">
+            <summary>
+            Loads a list of the running assembly referenced assemblies.
+            </summary>
+            <returns>IEnumerable(Of System.String).</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.App.RunAsAdministrator">
+            <summary>
+            Restarts an app as administrator.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.App.Info">
+            <summary>
+            App information.
+            </summary>
+            <returns>Returns <seealso cref="P:dotNetTips.Utility.Standard.App.AppInfo" /></returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.AppConfig">
+            <summary>
+            Class AppConfig.
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.AppConfig.FileName">
+            <summary>
+            The file name
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.AppConfig.LoadConfiguration(System.Boolean)">
+            <summary>
+            Creates a new IConfigurationRoot object for the application.
+            </summary>
+            <param name="addEnvironmentVariables">if set to <c>true</c> [add environment variables].</param>
+            <returns>IConfigurationRoot</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.AppInfo">
+            <summary>
+            Class Info.
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.AppInfo.Company">
+            <summary>
+            Gets the company.
+            </summary>
+            <value>The company.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.AppInfo.Configuration">
+            <summary>
+            Gets the configuration.
+            </summary>
+            <value>The configuration.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.AppInfo.Copyright">
+            <summary>
+            Gets the copyright.
+            </summary>
+            <value>The copyright.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.AppInfo.Culture">
+            <summary>
+            Gets the culture.
+            </summary>
+            <value>The culture.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.AppInfo.Description">
+            <summary>
+            Gets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.AppInfo.FileVersion">
+            <summary>
+            Gets the file version.
+            </summary>
+            <value>The file version.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.AppInfo.Product">
+            <summary>
+            Gets the assembly product.
+            </summary>
+            <value>The assembly product.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.AppInfo.Title">
+            <summary>
+            Gets the assembly title.
+            </summary>
+            <value>The assembly title.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.AppInfo.Version">
+            <summary>
+            Gets the assembly version.
+            </summary>
+            <value>The assembly version.</value>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.AppInfo.NameAndVersion">
+            <summary>
+            Names the application name and version.
+            </summary>
+            <returns>System.String.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.AppLogging">
+            <summary>
+            Class AppLogging.
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.AppLogging.Logger">
+            <summary>
+            Gets the logger.
+            </summary>
+            <value>The logger.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.AppLogging.LoggerFactory">
+            <summary>
+            Gets the logger factory.
+            </summary>
+            <value>The logger factory.</value>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.AppLogging.CreateLogger``1">
+            <summary>
+            Creates the logger.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns>ILogger.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.AppLogging.CreateLogger``1(Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Creates the logger.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="loggerFactory">The logger factory.</param>
+            <returns>Microsoft.Extensions.Logging.ILogger.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.ArgumentInvalidException">
+            <summary>
+            Class ArgumentIsInvalidException.
+            </summary>
+            <seealso cref="T:System.ArgumentException" />
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.ArgumentInvalidException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.ArgumentInvalidException" /> class.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.ArgumentInvalidException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.ArgumentInvalidException" /> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.ArgumentInvalidException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.ArgumentReadOnlyException" /> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in
+            Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.ArgumentInvalidException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.ArgumentInvalidException" /> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="paramName">The name of the parameter that caused the current exception.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.ArgumentInvalidException.#ctor(System.String,System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.ArgumentInvalidException" /> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="paramName">The name of the parameter that caused the current exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception. If the <paramref name="innerException" /> parameter is not a null reference, the current exception is raised in a catch block that handles the inner exception.</param>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.ArgumentReadOnlyException">
+            <summary>
+            Class ArgumentIsReadOnlyException.
+            </summary>
+            <seealso cref="T:System.ArgumentException" />
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.ArgumentReadOnlyException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.ArgumentReadOnlyException" /> class.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.ArgumentReadOnlyException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.ArgumentReadOnlyException" /> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.ArgumentReadOnlyException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.ArgumentReadOnlyException" /> class.
+            </summary>
+            <param name="paramName">Name of the parameter.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.ArgumentReadOnlyException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.ArgumentReadOnlyException" /> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in
+            Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.Cache.InMemoryCache">
+            <summary>
+            Class InMemoryCache.
+            </summary>
+            <remarks>Expiration is set to 20 minutes.</remarks>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Cache.InMemoryCache._instance">
+            <summary>
+            The instance
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Cache.InMemoryCache.#ctor">
+            <summary>
+            Prevents a default instance of the class from being created.
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Cache.InMemoryCache.Instance">
+            <summary>
+            Gets the instance.
+            </summary>
+            <value>The instance.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Cache.InMemoryCache.Cache">
+            <summary>
+            The cache
+            </summary>
+            <value>The cache.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Cache.InMemoryCache.Count">
+            <summary>
+            Gets the count.
+            </summary>
+            <value>The count.</value>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Cache.InMemoryCache.AddCacheItem``1(System.String,``0)">
+            <summary>
+            Adds item to the cache.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key">The key.</param>
+            <param name="item">The item.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Cache.InMemoryCache.GetCacheItem``1(System.String)">
+            <summary>
+            Gets the cache item.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="key">The key.</param>
+            <returns>TValue.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Cache.InMemoryCache.CreateCache">
+            <summary>
+            Creates the cache using 20 minute expiration.
+            </summary>
+            <returns>MemoryCache.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.Collections.DistinctBlockingCollection`1">
+            <summary>
+            Class DistinctBlockingCollection.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <seealso cref="T:dotNetTips.Utility.Standard.ICloneable`1" />
+            <seealso cref="T:System.Collections.Concurrent.BlockingCollection`1" />
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.DistinctBlockingCollection`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.Collections.DistinctBlockingCollection`1" /> class.
+            </summary>
+            <param name="collection">The collection.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.DistinctBlockingCollection`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.Collections.DistinctBlockingCollection`1" /> class.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.DistinctBlockingCollection`1.Add(`0)">
+            <summary>
+            Adds the item to the <see cref="T:System.Collections.Concurrent.BlockingCollection`1" />.
+            </summary>
+            <param name="item">The item to be added to the collection. The value can be a null reference.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.DistinctBlockingCollection`1.Add(`0,System.Threading.CancellationToken)">
+            <summary>
+            Adds the item to the <see cref="T:System.Collections.Concurrent.BlockingCollection`1" />.
+            </summary>
+            <param name="item">The item to be added to the collection. The value can be a null reference.</param>
+            <param name="cancellationToken">A cancellation token to observe.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.DistinctBlockingCollection`1.Cone">
+            <summary>
+            Cones this instance.
+            </summary>
+            <returns>T.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.DistinctBlockingCollection`1.TryAdd(`0,System.Int32)">
+            <summary>
+            Tries to add the specified item to the <see cref="T:System.Collections.Concurrent.BlockingCollection`1" /> within the specified time period.
+            </summary>
+            <param name="item">The item to be added to the collection.</param>
+            <param name="millisecondsTimeout">The number of milliseconds to wait, or <see cref="F:System.Threading.Timeout.Infinite" />
+            (-1) to wait indefinitely.</param>
+            <returns>true if the <paramref name="item" /> could be added to the collection within the specified
+            time; otherwise, false. If the item is a duplicate, and the underlying collection does
+            not accept duplicate items, then an <see cref="T:System.InvalidOperationException" /> is thrown.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.DistinctBlockingCollection`1.TryAdd(`0)">
+            <summary>
+            Tries to add the specified item to the <see cref="T:System.Collections.Concurrent.BlockingCollection`1" />.
+            </summary>
+            <param name="item">The item to be added to the collection.</param>
+            <returns>true if <paramref name="item" /> could be added; otherwise false. If the item is a
+            duplicate, and the underlying collection does not accept duplicate items, then an <see cref="T:System.InvalidOperationException" /> is thrown.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.DistinctBlockingCollection`1.TryAdd(`0,System.TimeSpan)">
+            <summary>
+            Tries to add the specified item to the <see cref="T:System.Collections.Concurrent.BlockingCollection`1" />.
+            </summary>
+            <param name="item">The item to be added to the collection.</param>
+            <param name="timeout">A <see cref="T:System.TimeSpan" /> that represents the number of milliseconds to wait, or
+            a <see cref="T:System.TimeSpan" /> that represents -1 milliseconds to wait indefinitely.</param>
+            <returns>true if the <paramref name="item" /> could be added to the collection within the specified
+            time span; otherwise, false.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.DistinctBlockingCollection`1.TryAdd(`0,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Tries to add the specified item to the <see cref="T:System.Collections.Concurrent.BlockingCollection`1" /> within the specified time
+            period, while observing a cancellation token.
+            </summary>
+            <param name="item">The item to be added to the collection.</param>
+            <param name="millisecondsTimeout">The number of milliseconds to wait, or <see cref="F:System.Threading.Timeout.Infinite" />
+            (-1) to wait indefinitely.</param>
+            <param name="cancellationToken">A cancellation token to observe.</param>
+            <returns>true if the <paramref name="item" /> could be added to the collection within the specified
+            time; otherwise, false. If the item is a duplicate, and the underlying collection does
+            not accept duplicate items, then an <see cref="T:System.InvalidOperationException" /> is thrown.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.DistinctBlockingCollection`1.ItemNotInCollection(`0)">
+            <summary>
+            Items the not in collection.
+            </summary>
+            <param name="item">The item.</param>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.DistinctBlockingCollection`1.RemoveAll(System.Predicate{`0})">
+            <summary>
+            Removes all.
+            </summary>
+            <param name="match">The match.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1">
+            <summary>
+            Represents a thread-safe hash-based unique collection.
+            </summary>
+            <typeparam name="T">The type of the items in the collection.</typeparam>
+            <seealso cref="T:System.Collections.Generic.IReadOnlyCollection`1" />
+            <seealso cref="T:System.Collections.Generic.ICollection`1" />
+            <remarks>All public members of <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" /> are thread-safe and may be used
+            concurrently from multiple threads.
+            Original Code by Bar Arnon.</remarks>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.DefaultCapacity">
+            <summary>
+            The default capacity
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.MaxLockNumber">
+            <summary>
+            The maximum lock number
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1._budget">
+            <summary>
+            The budget
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1._comparer">
+            <summary>
+            The comparer
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1._growLockArray">
+            <summary>
+            The grow lock array
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1._tables">
+            <summary>
+            The tables
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" />
+            class that is empty, has the default concurrency level, has the default initial capacity, and
+            uses the default comparer for the item type.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" />
+            class that contains elements copied from the specified <see cref="T:System.Collections.IEnumerable{T}" />, has the default concurrency
+            level, has the default initial capacity, and uses the default comparer for the item type.
+            </summary>
+            <param name="collection">The <see cref="T:System.Collections.IEnumerable{T}" /> whose elements are copied to
+            the new
+            <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" />.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="collection" /> is a null reference.</exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.#ctor(System.Collections.Generic.IEqualityComparer{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" />
+            class that is empty, has the specified concurrency level and capacity, and uses the specified
+            <see cref="T:System.Collections.Generic.IEqualityComparer{T}" />.
+            </summary>
+            <param name="comparer">The <see cref="T:System.Collections.Generic.IEqualityComparer{T}" />
+            implementation to use when comparing items.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" />
+            class that is empty, has the specified concurrency level and capacity, and uses the default
+            comparer for the item type.
+            </summary>
+            <param name="concurrencyLevel">The estimated number of threads that will update the
+            <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" /> concurrently.</param>
+            <param name="capacity">The initial number of elements that the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" />
+            can contain.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="concurrencyLevel" /> is
+            less than 1.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="capacity" /> is less than
+            0.</exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Collections.Generic.IEqualityComparer{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" />
+            class that contains elements copied from the specified <see cref="T:System.Collections.IEnumerable" />, has the default concurrency level, has the default
+            initial capacity, and uses the specified
+            <see cref="T:System.Collections.Generic.IEqualityComparer{T}" />.
+            </summary>
+            <param name="collection">The <see cref="T:System.Collections.IEnumerable{T}" /> whose elements are copied to
+            the new
+            <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" />.</param>
+            <param name="comparer">The <see cref="T:System.Collections.Generic.IEqualityComparer{T}" />
+            implementation to use when comparing items.</param>
+            <exception cref="T:System.ArgumentNullException">collection</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="collection" /> is a null reference
+            (Nothing in Visual Basic).</exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.#ctor(System.Int32,System.Collections.Generic.IEnumerable{`0},System.Collections.Generic.IEqualityComparer{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" />
+            class that contains elements copied from the specified <see cref="T:System.Collections.IEnumerable" />,
+            has the specified concurrency level, has the specified initial capacity, and uses the specified
+            <see cref="T:System.Collections.Generic.IEqualityComparer{T}" />.
+            </summary>
+            <param name="concurrencyLevel">The estimated number of threads that will update the
+            <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" /> concurrently.</param>
+            <param name="collection">The <see cref="T:System.Collections.IEnumerable{T}" /> whose elements are copied to the new
+            <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" />.</param>
+            <param name="comparer">The <see cref="T:System.Collections.Generic.IEqualityComparer{T}" /> implementation to use
+            when comparing items.</param>
+            <exception cref="T:System.ArgumentNullException">collection</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="collection" /> is a null reference.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="concurrencyLevel" /> is less than 1.</exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.#ctor(System.Int32,System.Int32,System.Collections.Generic.IEqualityComparer{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" />
+            class that is empty, has the specified concurrency level, has the specified initial capacity, and
+            uses the specified <see cref="T:System.Collections.Generic.IEqualityComparer{T}" />.
+            </summary>
+            <param name="concurrencyLevel">The estimated number of threads that will update the
+            <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" /> concurrently.</param>
+            <param name="capacity">The initial number of elements that the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" />
+            can contain.</param>
+            <param name="comparer">The <see cref="T:System.Collections.Generic.IEqualityComparer{T}" />
+            implementation to use when comparing items.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="concurrencyLevel" /> is less than 1. -or-
+            <paramref name="capacity" /> is less than 0.</exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.#ctor(System.Int32,System.Int32,System.Boolean,System.Collections.Generic.IEqualityComparer{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" /> class.
+            </summary>
+            <param name="concurrencyLevel">The concurrency level. Must be a value of 1 or greater.</param>
+            <param name="capacity">The capacity. Must be a value of 0 or greater.</param>
+            <param name="growLockArray">if set to <c>true</c> [grow lock array].</param>
+            <param name="comparer">The comparer.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">concurrencyLevel
+            or
+            capacity</exception>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.Count">
+            <summary>
+            Gets the number of items contained in the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" />.
+            </summary>
+            <value>The number of items contained in the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" />.</value>
+            <remarks>Count has snapshot semantics and represents the number of items in the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" />
+            at the moment when Count was accessed.</remarks>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.IsEmpty">
+            <summary>
+            Gets a value that indicates whether the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" /> is empty.
+            </summary>
+            <value>true if the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" /> is empty; otherwise,
+            false.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.DefaultConcurrencyLevel">
+            <summary>
+            Gets the default concurrency level.
+            </summary>
+            <value>The default concurrency level.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.System#Collections#Generic#ICollection{T}#IsReadOnly">
+            <summary>
+            Gets a value indicating whether the <see cref="T:System.Collections.Generic.ICollection`1"></see> is read-only.
+            </summary>
+            <value><c>true</c> if this instance is read only; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.Add(`0)">
+            <summary>
+            Adds the specified item to the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" />.
+            </summary>
+            <param name="item">The item to add.</param>
+            <returns>true if the items was added to the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" />
+            successfully; false if it already exists.</returns>
+            <exception cref="T:System.OverflowException">The <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" />
+            contains too many items.</exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.Clear">
+            <summary>
+            Removes all items from the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" />.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.Contains(`0)">
+            <summary>
+            Determines whether the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" /> contains the specified
+            item.
+            </summary>
+            <param name="item">The item to locate in the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" />.</param>
+            <returns>true if the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" /> contains the item; otherwise, false.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" />.
+            </summary>
+            <returns>An enumerator for the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" />.</returns>
+            <remarks>The enumerator returned from the collection is safe to use concurrently with
+            reads and writes to the collection, however it does not represent a moment-in-time snapshot
+            of the collection.  The contents exposed through the enumerator may contain modifications
+            made to the collection after <see cref="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.GetEnumerator" /> was called.</remarks>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.TryRemove(`0)">
+            <summary>
+            Attempts to remove the item from the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1" />.
+            </summary>
+            <param name="item">The item to remove.</param>
+            <returns>true if an item was removed successfully; otherwise, false.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.GetBucket(System.Int32,System.Int32)">
+            <summary>
+            Gets the bucket.
+            </summary>
+            <param name="hashCode">The hashcode.</param>
+            <param name="bucketCount">The bucket count.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.GetBucketAndLockNo(System.Int32,System.Int32@,System.Int32@,System.Int32,System.Int32)">
+            <summary>
+            Gets the bucket and lock no.
+            </summary>
+            <param name="hashCode">The hashcode.</param>
+            <param name="bucketNo">The bucket no.</param>
+            <param name="lockNo">The lock no.</param>
+            <param name="bucketCount">The bucket count.</param>
+            <param name="lockCount">The lock count.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.AcquireAllLocks(System.Int32@)">
+            <summary>
+            Acquires all locks.
+            </summary>
+            <param name="locksAcquired">The locks acquired.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.AcquireLocks(System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            Acquires the locks.
+            </summary>
+            <param name="fromInclusive">From inclusive.</param>
+            <param name="toExclusive">To exclusive.</param>
+            <param name="locksAcquired">The locks acquired.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.System#Collections#Generic#ICollection{T}#Add(`0)">
+            <summary>
+            Adds an item to the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
+            </summary>
+            <param name="item">The object to add to the <see cref="T:System.Collections.Generic.ICollection`1"></see>.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.AddInternal(`0,System.Int32,System.Boolean)">
+            <summary>
+            Adds the internal.
+            </summary>
+            <param name="item">The item.</param>
+            <param name="hashCode">The hashcode.</param>
+            <param name="acquireLock">if set to <c>true</c> [acquire lock].</param>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.System#Collections#Generic#ICollection{T}#CopyTo(`0[],System.Int32)">
+            <summary>
+            Copies the elements of the <see cref="T:System.Collections.Generic.ICollection`1"></see> to an <see cref="T:System.Array"></see>, starting at a particular <see cref="T:System.Array"></see> index.
+            </summary>
+            <param name="array">The one-dimensional <see cref="T:System.Array"></see> that is the destination of the elements copied from <see cref="T:System.Collections.Generic.ICollection`1"></see>. The <see cref="T:System.Array"></see> must have zero-based indexing.</param>
+            <param name="arrayIndex">The zero-based index in array at which copying begins.</param>
+            <exception cref="T:System.ArgumentException">The index is equal to or greater than the length of the array, or the number of elements in the set is greater than the available space from index to the end of the destination array.</exception>
+            <exception cref="T:System.ArgumentException">The index is equal to or greater than the length of the array, or the number of elements in the set is greater than the available space from index to the end of the destination array.</exception>
+            <exception cref="T:System.ArgumentNullException">The index is equal to or greater than the length of the array, or the number of elements in the set is greater than the available space from index to the end of the destination array.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">The index is equal to or greater than the length of the array, or the number of elements in the set is greater than the available space from index to the end of the destination array.</exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.CopyToItems(`0[],System.Int32)">
+            <summary>
+            Copies to items.
+            </summary>
+            <param name="array">The array.</param>
+            <param name="index">The index.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>An <see cref="T:System.Collections.IEnumerator"></see> object that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.GrowTable(dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet{`0}.Tables)">
+            <summary>
+            Grows the table.
+            </summary>
+            <param name="tables">The tables.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.InitializeFromCollection(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes from collection.
+            </summary>
+            <param name="collection">The collection.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.ReleaseLocks(System.Int32,System.Int32)">
+            <summary>
+            Releases the locks.
+            </summary>
+            <param name="fromInclusive">From inclusive.</param>
+            <param name="toExclusive">To exclusive.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.System#Collections#Generic#ICollection{T}#Remove(`0)">
+            <summary>
+            Removes the first occurrence of a specific object from the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
+            </summary>
+            <param name="item">The object to remove from the <see cref="T:System.Collections.Generic.ICollection`1"></see>.</param>
+            <returns>true if <paramref name="item">item</paramref> was successfully removed from the <see cref="T:System.Collections.Generic.ICollection`1"></see>; otherwise, false. This method also returns false if <paramref name="item">item</paramref> is not found in the original <see cref="T:System.Collections.Generic.ICollection`1"></see>.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.Node">
+            <summary>
+            Class Node.
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.Node.HashCode">
+            <summary>
+            The Hashcode
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.Node.Item">
+            <summary>
+            The item
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.Node.Next">
+            <summary>
+            The next
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.Node.#ctor(`0,System.Int32,dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet{`0}.Node)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.Node" /> class.
+            </summary>
+            <param name="item">The item.</param>
+            <param name="hashcode">The hashcode.</param>
+            <param name="next">The next.</param>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.Tables">
+            <summary>
+            Class Tables.
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.Tables.Buckets">
+            <summary>
+            The buckets
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.Tables.CountPerLock">
+            <summary>
+            The count per lock
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.Tables.Locks">
+            <summary>
+            The locks
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.Tables.#ctor(dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet{`0}.Node[],System.Object[],System.Int32[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.ConcurrentHashSet`1.Tables" /> class.
+            </summary>
+            <param name="buckets">The buckets.</param>
+            <param name="locks">The locks.</param>
+            <param name="countPerLock">The count per lock.</param>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.DistinctConcurrentBag`1">
+            <summary>
+            Class DistinctConcurrentBag.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <seealso cref="T:System.Collections.Concurrent.ConcurrentBag`1" />
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.DistinctConcurrentBag`1._hashCodes">
+            <summary>
+            The hash codes
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.DistinctConcurrentBag`1._lock">
+            <summary>
+            The lock
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.DistinctConcurrentBag`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.DistinctConcurrentBag`1" /> class.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.DistinctConcurrentBag`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.DistinctConcurrentBag`1" /> class.
+            </summary>
+            <param name="collection">The collection whose elements are copied to the new <see cref="T:System.Collections.Concurrent.ConcurrentBag`1"></see>.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.DistinctConcurrentBag`1.Add(`0)">
+            <summary>
+            Adds an object to the <see cref="T:System.Collections.Concurrent.ConcurrentBag`1"></see>.
+            </summary>
+            <param name="item">The object to be added to the <see cref="T:System.Collections.Concurrent.ConcurrentBag`1"></see>. The value can be a null reference (Nothing in Visual Basic) for reference types.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.Concurrent.DistinctConcurrentBag`1.TryTake(`0@)">
+            <summary>
+            Attempts to remove and return an object from the <see cref="T:System.Collections.Concurrent.ConcurrentBag`1"></see>.
+            </summary>
+            <param name="result">When this method returns, result contains the object removed from the <see cref="T:System.Collections.Concurrent.ConcurrentBag`1"></see> or the default value of T if the bag is empty.</param>
+            <returns>true if an object was removed successfully; otherwise, false.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.Collections.Generic.FastSortedList`1">
+            <summary>
+            Class SortedList.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <seealso cref="T:dotNetTips.Utility.Standard.ICloneable`1" />
+            <seealso cref="T:System.Collections.Generic.List`1" />
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Collections.Generic.FastSortedList`1._sorted">
+            <summary>
+            The sorted
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.FastSortedList`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Collections.Generic.SortedList`2" /> class.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.FastSortedList`1.Add(`0)">
+            <summary>
+            Adds an object to the end of the <see cref="T:System.Collections.Generic.List`1"></see>.
+            </summary>
+            <param name="item">The object to be added to the end of the <see cref="T:System.Collections.Generic.List`1"></see>. The value can be null for reference types.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.FastSortedList`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Adds the range.
+            </summary>
+            <param name="items">The items.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.FastSortedList`1.Cone">
+            <summary>
+            Cones this instance.
+            </summary>
+            <returns>T.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.FastSortedList`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the <see cref="T:System.Collections.Generic.List`1"></see>.
+            </summary>
+            <returns>A <see cref="T:System.Collections.Generic.List`1.Enumerator"></see> for the <see cref="T:System.Collections.Generic.List`1"></see>.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.FastSortedList`1.ToArray">
+            <summary>
+            Copies the elements of the <see cref="T:System.Collections.Generic.List`1"></see> to a new array.
+            </summary>
+            <returns>An array containing copies of the elements of the <see cref="T:System.Collections.Generic.List`1"></see>.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.FastSortedList`1.ToImmutableList">
+            <summary>
+            To the immutable list.
+            </summary>
+            <returns>System.Collections.Immutable.IImmutableList&lt;T&gt;.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.FastSortedList`1.ToList">
+            <summary>
+            To the list.
+            </summary>
+            <returns>List&lt;T&gt;.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Collections.Generic.FastSortedList`1.SortCollection">
+            <summary>
+            Sorts the collection.
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.ComputerInfo">
+            <summary>
+            Class ComputerInfo.
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.ComputerInfo.MachineName">
+            <summary>
+            Gets the name of the machine.
+            </summary>
+            <value>The name of the machine.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.ComputerInfo.IPAddress">
+            <summary>
+            Gets the ip address.
+            </summary>
+            <value>The ip address.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.ComputerInfo.OSDescription">
+            <summary>
+            Gets the os version.
+            </summary>
+            <value>The os version.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.ComputerInfo.ProcessorCount">
+            <summary>
+            Gets the processor count.
+            </summary>
+            <value>The processor count.</value>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.Config`1">
+            <summary>
+            Class Config.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Config`1._instance">
+            <summary>
+            The instance
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Config`1.#ctor">
+            <summary>
+            Prevents a default instance of the <see cref="T:dotNetTips.Utility.Standard.Config`1" /> class from being created.
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Config`1.ConfigFileName">
+            <summary>
+            Gets or sets the name of the configuration file.
+            </summary>
+            <value>The name of the configuration file.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Config`1.Instance">
+            <summary>
+            Returns instance for the object.
+            </summary>
+            <value>The instance.</value>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Config`1.Load">
+            <summary>
+            Loads this instance.
+            </summary>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Config`1.Save">
+            <summary>
+            Saves this instance.
+            </summary>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.ConfigStorageLocation">
+            <summary>
+            Enum StorageLocation
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ConfigStorageLocation.User">
+            <summary>
+            The user
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ConfigStorageLocation.Application">
+            <summary>
+            The application
+            </summary>
+            public string
+            {
+            get; inter
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.ControlChars">
+            <summary>
+            Class ControlChars.
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ControlChars.Back">
+            <summary>
+            Back
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ControlChars.BackSlash">
+            <summary>
+            Back Slash
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ControlChars.Colon">
+            <summary>
+            The colon
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ControlChars.Comma">
+            <summary>
+            Comma
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ControlChars.Cr">
+            <summary>
+            CR
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ControlChars.CRLF">
+            <summary>
+            CRLF
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ControlChars.DoubleQuote">
+            <summary>
+            The double quote
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ControlChars.FormFeed">
+            <summary>
+            Form feed
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ControlChars.ForwardSlash">
+            <summary>
+            Forward slash
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ControlChars.Lf">
+            <summary>
+            LF
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ControlChars.NewLine">
+            <summary>
+            New line
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ControlChars.NullChar">
+            <summary>
+            Null character
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ControlChars.Quote">
+            <summary>
+            Quote
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ControlChars.SingleQuote">
+            <summary>
+            The single quote
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ControlChars.Space">
+            <summary>
+            Space
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ControlChars.Tab">
+            <summary>
+            Tab
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ControlChars.Underscore">
+            <summary>
+            Underscore
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ControlChars.VerticalTab">
+            <summary>
+            Vertical tab
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.DateFormat">
+            <summary>
+            Enum DateFormat
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.DateFormat.GeneralDate">
+            <summary>
+            The general date
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.DateFormat.LongDate">
+            <summary>
+            The long date
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.DateFormat.ShortDate">
+            <summary>
+            The short date
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.DateFormat.LongTime">
+            <summary>
+            The long time
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.DateFormat.ShortTime">
+            <summary>
+            The short time
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.DateInterval">
+            <summary>
+            Enum DateInterval
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.DateInterval.Year">
+            <summary>
+            Year
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.DateInterval.Quarter">
+            <summary>
+            Quarter
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.DateInterval.Month">
+            <summary>
+            Month
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.DateInterval.DayOfYear">
+            <summary>
+            Day of year
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.DateInterval.Day">
+            <summary>
+            Day
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.DateInterval.WeekOfYear">
+            <summary>
+            Week of year
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.DateInterval.Weekday">
+            <summary>
+            Weekday
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.DateInterval.Hour">
+            <summary>
+            Hour
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.DateInterval.Minute">
+            <summary>
+            Minute
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.DateInterval.Second">
+            <summary>
+            Second
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.Devices.Clock">
+            <summary>
+            Class Clock.
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Devices.Clock.LocalTime">
+            <summary>
+            Gets the local time.
+            </summary>
+            <value>The local time.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Devices.Clock.UtcTime">
+            <summary>
+            Gets the UTC time.
+            </summary>
+            <value>The UTC time.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Devices.Clock.TickCount">
+            <summary>
+            Gets the tick count.
+            </summary>
+            <value>The tick count.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Devices.Clock.DaysInCurrentMonth">
+            <summary>
+            Gets the days in the current month (local time).
+            </summary>
+            <value>The days in month.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Devices.Clock.DaysInCurrentUtcMonth">
+            <summary>
+            Gets the days in current UTC month.
+            </summary>
+            <value>The days in current UTC month.</value>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.Diagnostics.PerformanceStopwatch">
+            <summary>
+            Class PerformanceStopwatch.
+            </summary>
+            <seealso cref="T:System.Diagnostics.Stopwatch" />
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Diagnostics.PerformanceStopwatch.StartNew">
+            <summary>
+            Starts the new.
+            </summary>
+            <returns>PerformanceStopwatch.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Diagnostics.PerformanceStopwatch.StopReset">
+            <summary>
+            Stops the reset.
+            </summary>
+            <returns>TimeSpan.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Diagnostics.PerformanceStopwatch.StopRestart">
+            <summary>
+            Stops the restart.
+            </summary>
+            <returns>TimeSpan.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.DirectoryNotFoundException">
+            <summary>
+            Class DirectoryNotFoundException.
+            </summary>
+            <seealso cref="T:dotNetTips.Utility.Standard.LoggableException" />
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.DirectoryNotFoundException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.DirectoryNotFoundException"></see> class.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.DirectoryNotFoundException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.DirectoryNotFoundException"></see> class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"></see> that contains contextual information about the source or destination.</param>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="info">info</paramref> parameter is null.</exception>
+            <exception cref="T:System.Runtime.Serialization.SerializationException">The class name is null or <see cref="P:System.Exception.HResult"></see> is zero (0).</exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.DirectoryNotFoundException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.DirectoryNotFoundException"></see> class with a specified error message.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="directory">The directory.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.DirectoryNotFoundException.#ctor(System.String,System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.DirectoryNotFoundException"></see> class with a specified error message and a reference to the inner exception that is the cause of this exception.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="directory">The directory.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.DirectoryNotFoundException.Directory">
+            <summary>
+            Gets the directory.
+            </summary>
+            <value>The directory.</value>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.DueDate">
+            <summary>
+            Enum DueDate
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.DueDate.EndOfPeriod">
+            <summary>
+            The end of period
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.DueDate.BeginngOfPeriod">
+            <summary>
+            The beginning of the period
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.Enumeration">
+            <summary>
+            Class Enumeration.
+            </summary>
+            <example>
+            public class EmployeeType : Enumeration { public static read only EmployeeType Manager
+            = new EmployeeType(0, "Manager"); public static read only EmployeeType Servant
+            = new EmployeeType(1, "Servant"); public static read only EmployeeType AssistantToTheRegionalManager
+            = new EmployeeType(2, "Assistant to the Regional Manager"); private EmployeeType() { }
+            private EmployeeType(int value, string displayName) : base(value, displayName) { } }
+            </example>
+            <seealso cref="T:System.IComparable" />
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Enumeration._displayName">
+            <summary>
+            Display name
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Enumeration._value">
+            <summary>
+            Value
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Enumeration.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.Enumeration" /> class.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Enumeration.#ctor(System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.Enumeration" /> class.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="displayName">The display name.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Enumeration.AbsoluteDifference(dotNetTips.Utility.Standard.Enumeration,dotNetTips.Utility.Standard.Enumeration)">
+            <summary>
+            Absolutes the difference.
+            </summary>
+            <param name="firstValue">The first value.</param>
+            <param name="secondValue">The second value.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Enumeration.CompareTo(System.Object)">
+            <summary>
+            Compares value to enumeration.
+            </summary>
+            <param name="obj">The other.</param>
+            <returns>T.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Enumeration.Equals(System.Object)">
+            <summary>
+            Gets all.
+            </summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns>IEnumerable&lt;T&gt;.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Enumeration.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures
+            like a hash table.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Enumeration.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Enumeration.DisplayName">
+            <summary>
+            Gets the display name.
+            </summary>
+            <value>The display name.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Enumeration.Value">
+            <summary>
+            Gets the value.
+            </summary>
+            <value>The value.</value>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.FileAttributes">
+            <summary>
+            Enum FileAttributes
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.FileAttributes.Archive">
+            <summary>
+            Archive
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.FileAttributes.Directory">
+            <summary>
+            Directory
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.FileAttributes.Hidden">
+            <summary>
+            Hidden
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.FileAttributes.Normal">
+            <summary>
+            Normal
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.FileAttributes.ReadOnly">
+            <summary>
+            Read only
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.FileAttributes.System">
+            <summary>
+            System
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.FileAttributes.Volume">
+            <summary>
+            Volume
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.FirstDayOfWeek">
+            <summary>
+            Enum FirstDayOfWeek
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.FirstDayOfWeek.System">
+            <summary>
+            The system date
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.FirstDayOfWeek.Sunday">
+            <summary>
+            Sunday
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.FirstDayOfWeek.Monday">
+            <summary>
+            Monday
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.FirstDayOfWeek.Tuesday">
+            <summary>
+            Tuesday
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.FirstDayOfWeek.Wednesday">
+            <summary>
+            Wednesday
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.FirstDayOfWeek.Thursday">
+            <summary>
+            Thursday
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.FirstDayOfWeek.Friday">
+            <summary>
+            Friday
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.FirstDayOfWeek.Saturday">
+            <summary>
+            Saturday
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.FirstWeekOfYear">
+            <summary>
+            Enum FirstWeekOfYear
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.FirstWeekOfYear.System">
+            <summary>
+            The system
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.FirstWeekOfYear.Jan1">
+            <summary>
+            The January 1st
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.FirstWeekOfYear.FirstFourDays">
+            <summary>
+            The first four days
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.FirstWeekOfYear.FirstFullWeek">
+            <summary>
+            The first full week
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.ICloneable`1">
+            <summary>
+            Interface ICloneable
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.ICloneable`1.Cone">
+            <summary>
+            Cones this instance.
+            </summary>
+            <returns>T.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.IEventInformation">
+            <summary>
+            Interface IEventInformation
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.IO.DirectoryHelper">
+            <summary>
+            Class DirectoryHelper.
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.DirectoryHelper.Retries">
+            <summary>
+            The retries
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.DirectoryHelper.AppDataFolder">
+            <summary>
+            Applications the application data folder for Windows and Mac.
+            </summary>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.DirectoryHelper.CopyDirectory(System.String,System.String,System.Boolean)">
+            <summary>
+            Copies directory to a new location.
+            </summary>
+            <param name="sourceDirectory">The source directory.</param>
+            <param name="destinationDirectory">The destination directory.</param>
+            <param name="overwrite">if set to <c>true</c> [overwrite].</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.DirectoryHelper.DeleteDirectory(System.String)">
+            <summary>
+            Deletes the directory with retry.
+            </summary>
+            <param name="path">The path.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.DirectoryHelper.DeleteDirectoryAsync(System.IO.DirectoryInfo)">
+            <summary>
+            Delete directory, with retries, as an asynchronous operation.
+            </summary>
+            <param name="directory">The directory.</param>
+            <returns>Task&lt;System.Boolean&gt;.</returns>
+            <exception cref="T:System.ArgumentNullException">directory</exception>
+            <exception cref="T:System.ArgumentNullException">directory</exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.DirectoryHelper.LoadFiles(System.String,System.String,System.IO.SearchOption)">
+            <summary>
+            Loads the files.
+            </summary>
+            <param name="path">The path.</param>
+            <param name="searchPattern">The search pattern.</param>
+            <param name="searchOption">The search option.</param>
+            <returns>IEnumerable&lt;FileInfo&gt;.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.DirectoryHelper.LoadFiles(System.IO.DirectoryInfo,System.String,System.IO.SearchOption)">
+            <summary>
+            Loads the files.
+            </summary>
+            <param name="directory">The directory.</param>
+            <param name="searchPattern">The search pattern.</param>
+            <param name="searchOption">The search option.</param>
+            <returns>IEnumerable&lt;FileInfo&gt;.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.DirectoryHelper.LoadFiles(System.Collections.Generic.IEnumerable{System.IO.DirectoryInfo},System.String,System.IO.SearchOption)">
+            <summary>
+            Loads the files.
+            </summary>
+            <param name="directories">The directories.</param>
+            <param name="searchPattern">The search pattern.</param>
+            <param name="searchOption">The search option.</param>
+            <returns>IEnumerable(Of FileInfo).</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.DirectoryHelper.LoadOneDriveFolders">
+            <summary>
+            Loads the one drive folders.
+            </summary>
+            <returns>IEnumerable&lt;OneDriveFolder&gt;.</returns>
+            <exception cref="T:System.PlatformNotSupportedException"></exception>
+            <exception cref="T:System.PlatformNotSupportedException"></exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.DirectoryHelper.MoveDirectory(System.String,System.String)">
+            <summary>
+            Moves the directory.
+            </summary>
+            <param name="sourceDirectoryName">Name of the source dir.</param>
+            <param name="destinationDirectoryName">Name of the dest dir.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.DirectoryHelper.SafeDirectorySearch(System.IO.DirectoryInfo,System.String)">
+            <summary>
+            Safes the directory search.
+            </summary>
+            <param name="rootDirectory">The root directory.</param>
+            <param name="searchPattern">The search pattern.</param>
+            <returns>IEnumerable&lt;DirectoryInfo&gt;.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.DirectoryHelper.SetAttributesNormal(System.String)">
+            <summary>
+            Sets the attributes normal for all files and directories in the path.
+            </summary>
+            <param name="path">The path.</param>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.IO.DriveHelper">
+            <summary>
+            Class DriveHelper.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.DriveHelper.GetFixedDrives">
+            <summary>
+            Gets the fixed drives.
+            </summary>
+            <returns>IImmutableList&lt;DirectoryInfo&gt;.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.IO.FileHelper">
+            <summary>
+            Class FileHelper.
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.FileHelper.Retries">
+            <summary>
+            The count for retries.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.FileHelper.CopyFileAsync(System.IO.FileInfo,System.IO.DirectoryInfo)">
+            <summary>
+            Copies a file to a new directory as an asynchronous operation.
+            </summary>
+            <param name="file">The file.</param>
+            <param name="destinationFolder">The destination folder.</param>
+            <returns>Task&lt;System.Int32&gt;.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.FileHelper.DownloadFileFromWebAndUnzipAsync(System.String,System.String)">
+            <summary>
+            Download file from web and unzips it as an asynchronous operation.
+            </summary>
+            <param name="remoteFileUrl">The remote file URL.</param>
+            <param name="localExpandedDirPath">The local expanded dir path.</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.FileHelper.DeleteFiles(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Deletes the files.
+            </summary>
+            <param name="files">The files.</param>
+            <returns>IEnumerable&lt;KeyValuePair&lt;System.String, System.String&gt;&gt;.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.FileHelper.DownloadFileFromWeb(System.String,System.String)">
+            <summary>
+            Downloads the file from the web.
+            </summary>
+            <param name="remoteFileUrl">The remote file URL.</param>
+            <param name="localFilePath">The local file path.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.FileHelper.MoveFile(System.String,System.String)">
+            <summary>
+            Moves the file.
+            </summary>
+            <param name="sourceFileName">Name of the source file.</param>
+            <param name="destinationFileName">Name of the destination file.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.FileHelper.UnGZipAsync(System.String,System.String,System.Boolean)">
+            <summary>
+            un g zip as an asynchronous operation.
+            </summary>
+            <param name="gzipPath">The gzip path.</param>
+            <param name="expandedFilePath">The expanded file path.</param>
+            <param name="deleteGZipFile">if set to <c>true</c> [delete g zip file].</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.FileHelper.UnGZipAsync(System.String,System.String)">
+            <summary>
+            un g zip as an asynchronous operation.
+            </summary>
+            <param name="gzipPath">The gzip path.</param>
+            <param name="expandedFilePath">The expanded file path.</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.FileHelper.UnZipAsync(System.String,System.String)">
+            <summary>
+            Unzips a file as an asynchronous operation.
+            </summary>
+            <param name="zipPath">The path to the zip file.</param>
+            <param name="expandToDirectory">The directory path where files will be unzipped.</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.FileHelper.UnZipAsync(System.String,System.String,System.Boolean)">
+            <summary>
+            Unzips a file as an asynchronous operation.
+            </summary>
+            <param name="zipPath">The path to the zip file.</param>
+            <param name="expandToDirectory">The directory path where files will be unzipped.</param>
+            <param name="deleteZipFile">if set to <c>true</c> [deletes zip file].</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.FileHelper.UnWinZipAsync(System.String,System.String)">
+            <summary>
+            Un-zips a file as an asynchronous operation.
+            </summary>
+            <param name="zipPath">The zip path.</param>
+            <param name="expandedDirectoryPath">The expanded directory path.</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.IO.FileProcessor">
+            <summary>
+            Class Processor.
+            </summary>
+        </member>
+        <member name="E:dotNetTips.Utility.Standard.IO.FileProcessor.Processed">
+            <summary>
+            Occurs when processor processes a file or folder.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.FileProcessor.OnProcessed(dotNetTips.Utility.Standard.IO.FileProgressEventArgs)">
+            <summary>
+            Handles the <see cref="E:Processed" /> event.
+            </summary>
+            <param name="e">The <see cref="T:dotNetTips.Utility.Standard.IO.FileProgressEventArgs" /> instance containing the event data.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.FileProcessor.CopyFiles(System.Collections.Generic.IEnumerable{System.IO.FileInfo},System.IO.DirectoryInfo)">
+            <summary>
+            Copies files to new location. Will not throw exceptions.
+            </summary>
+            <param name="files">The files.</param>
+            <param name="destinationFolder">The destination folder.</param>
+            <returns>System.Object.</returns>
+            <remarks>Use the Processed event to find out if file copied succeeded or failed.</remarks>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.FileProcessor.DeleteFiles(System.Collections.Generic.IEnumerable{System.IO.FileInfo})">
+            <summary>
+            Deletes file list.
+            </summary>
+            <param name="files">The file list to delete.</param>
+            <returns>System.Int32 with the number of files that were successfully deleted.</returns>
+            <remarks>Use the <seealso cref="E:dotNetTips.Utility.Standard.IO.FileProcessor.Processed">Processed</seealso> event to find out if file deletion succeeded or failed.</remarks>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.FileProcessor.DeleteFolders(System.Collections.Generic.IEnumerable{System.IO.DirectoryInfo})">
+            <summary>
+            Deletes the folders.
+            </summary>
+            <param name="folders">The folders.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.IO.FileProgressEventArgs">
+            <summary>
+            Class ProgressEventArgs.
+            </summary>
+            <seealso cref="T:System.EventArgs" />
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.FileProgressEventArgs.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.IO.FileProgressEventArgs" /> class.
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.IO.FileProgressEventArgs.Message">
+            <summary>
+            Gets the file progres message
+            </summary>
+            <value>The message.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.IO.FileProgressEventArgs.Name">
+            <summary>
+            The name
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.IO.FileProgressEventArgs.ProgressState">
+            <summary>
+            The progress state
+            </summary>
+            <value>The state of the progress.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.IO.FileProgressEventArgs.Size">
+            <summary>
+            The size
+            </summary>
+            <value>The size.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.IO.FileProgressEventArgs.SpeedInMilliseconds">
+            <summary>
+            Gets or sets the speed in milliseconds.
+            </summary>
+            <value>The speed in milliseconds.</value>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.IO.FileProgressState">
+            <summary>
+            Enum ProgressState
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.FileProgressState.Error">
+            <summary>
+            The error
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.FileProgressState.Deleted">
+            <summary>
+            The deleted
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.FileProgressState.Moved">
+            <summary>
+            The moved
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.FileProgressState.Copied">
+            <summary>
+            The copied
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.IO.OneDriveAccountType">
+            <summary>
+            Enum OneDriveAccountType
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.OneDriveAccountType.Personal">
+            <summary>
+            The personal
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.OneDriveAccountType.Business">
+            <summary>
+            The business
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.IO.OneDriveFolder">
+            <summary>
+            Class OneDriveFolder.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.OneDriveFolder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.IO.OneDriveFolder" /> class.
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.IO.OneDriveFolder.DirectoryInfo">
+            <summary>
+            Gets the directory information.
+            </summary>
+            <value>The directory information.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.IO.OneDriveFolder.AccountType">
+            <summary>
+            Gets the type of the account.
+            </summary>
+            <value>The type of the account.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.IO.OneDriveFolder.AccountName">
+            <summary>
+            Gets the name of the account.
+            </summary>
+            <value>The name of the account.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.IO.OneDriveFolder.UserEmail">
+            <summary>
+            Gets the account email.
+            </summary>
+            <value>The account email.</value>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.IO.PathHelper">
+            <summary>
+            Class PathHelper.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.IO.PathHelper.PathContainsWildcard(System.String)">
+            <summary>
+            Checks to see if path contains any wild cards.
+            </summary>
+            <param name="path">The path.</param>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.IO.SpecialFolder">
+            <summary>
+            Enum SpecialFolder
+            </summary>
+            TODO Edit XML Comment Template for SpecialFolder
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.Desktop">
+            <summary>
+            The desktop
+            </summary>
+            TODO Edit XML Comment Template for Desktop
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.Programs">
+            <summary>
+            The programs
+            </summary>
+            TODO Edit XML Comment Template for Programs
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.Personal">
+            <summary>
+            The personal
+            </summary>
+            TODO Edit XML Comment Template for Personal
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.UserDocuments">
+            <summary>
+            The user documents
+            </summary>
+            TODO Edit XML Comment Template for UserDocuments
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.Favorites">
+            <summary>
+            The favorites
+            </summary>
+            TODO Edit XML Comment Template for Favorites
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.Startup">
+            <summary>
+            The startup
+            </summary>
+            TODO Edit XML Comment Template for Startup
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.Recent">
+            <summary>
+            The recent
+            </summary>
+            TODO Edit XML Comment Template for Recent
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.SendTo">
+            <summary>
+            The send to
+            </summary>
+            TODO Edit XML Comment Template for SendTo
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.StartMenu">
+            <summary>
+            The start menu
+            </summary>
+            TODO Edit XML Comment Template for StartMenu
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.MyMusic">
+            <summary>
+            My music
+            </summary>
+            TODO Edit XML Comment Template for MyMusic
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.MyVideos">
+            <summary>
+            My videos
+            </summary>
+            TODO Edit XML Comment Template for MyVideos
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.DesktopDirectory">
+            <summary>
+            The desktop directory
+            </summary>
+            TODO Edit XML Comment Template for DesktopDirectory
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.MyComputer">
+            <summary>
+            My computer
+            </summary>
+            TODO Edit XML Comment Template for MyComputer
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.NetworkShortcuts">
+            <summary>
+            The network shortcuts
+            </summary>
+            TODO Edit XML Comment Template for NetworkShortcuts
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.Fonts">
+            <summary>
+            The fonts
+            </summary>
+            TODO Edit XML Comment Template for Fonts
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.Templates">
+            <summary>
+            The templates
+            </summary>
+            TODO Edit XML Comment Template for Templates
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.CommonStartMenu">
+            <summary>
+            The common start menu
+            </summary>
+            TODO Edit XML Comment Template for CommonStartMenu
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.CommonPrograms">
+            <summary>
+            The common programs
+            </summary>
+            TODO Edit XML Comment Template for CommonPrograms
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.CommonStartup">
+            <summary>
+            The common startup
+            </summary>
+            TODO Edit XML Comment Template for CommonStartup
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.CommonDesktopDirectory">
+            <summary>
+            The common desktop directory
+            </summary>
+            TODO Edit XML Comment Template for CommonDesktopDirectory
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.ApplicationData">
+            <summary>
+            The application data
+            </summary>
+            TODO Edit XML Comment Template for ApplicationData
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.PrinterShortcuts">
+            <summary>
+            The printer shortcuts
+            </summary>
+            TODO Edit XML Comment Template for PrinterShortcuts
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.LocalApplicationData">
+            <summary>
+            The local application data
+            </summary>
+            TODO Edit XML Comment Template for LocalApplicationData
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.InternetCache">
+            <summary>
+            The internet cache
+            </summary>
+            TODO Edit XML Comment Template for InternetCache
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.Cookies">
+            <summary>
+            The cookies
+            </summary>
+            TODO Edit XML Comment Template for Cookies
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.History">
+            <summary>
+            The history
+            </summary>
+            TODO Edit XML Comment Template for History
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.CommonApplicationData">
+            <summary>
+            The common application data
+            </summary>
+            TODO Edit XML Comment Template for CommonApplicationData
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.Windows">
+            <summary>
+            The windows
+            </summary>
+            TODO Edit XML Comment Template for Windows
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.System">
+            <summary>
+            The system
+            </summary>
+            TODO Edit XML Comment Template for System
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.ProgramFiles">
+            <summary>
+            The program files
+            </summary>
+            TODO Edit XML Comment Template for ProgramFiles
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.MyPictures">
+            <summary>
+            My pictures
+            </summary>
+            TODO Edit XML Comment Template for MyPictures
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.UserProfile">
+            <summary>
+            The user profile
+            </summary>
+            TODO Edit XML Comment Template for UserProfile
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.SystemX86">
+            <summary>
+            The system X86
+            </summary>
+            TODO Edit XML Comment Template for SystemX86
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.ProgramFilesX86">
+            <summary>
+            The program files X86
+            </summary>
+            TODO Edit XML Comment Template for ProgramFilesX86
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.CommonProgramFiles">
+            <summary>
+            The common program files
+            </summary>
+            TODO Edit XML Comment Template for CommonProgramFiles
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.CommonProgramFilesX86">
+            <summary>
+            The common program files X86
+            </summary>
+            TODO Edit XML Comment Template for CommonProgramFilesX86
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.CommonTemplates">
+            <summary>
+            The common templates
+            </summary>
+            TODO Edit XML Comment Template for CommonTemplates
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.CommonDocuments">
+            <summary>
+            The common documents
+            </summary>
+            TODO Edit XML Comment Template for CommonDocuments
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.CommonAdminTools">
+            <summary>
+            The common admin tools
+            </summary>
+            TODO Edit XML Comment Template for CommonAdminTools
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.AdminTools">
+            <summary>
+            The admin tools
+            </summary>
+            TODO Edit XML Comment Template for AdminTools
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.CommonMusic">
+            <summary>
+            The common music
+            </summary>
+            TODO Edit XML Comment Template for CommonMusic
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.CommonPictures">
+            <summary>
+            The common pictures
+            </summary>
+            TODO Edit XML Comment Template for CommonPictures
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.CommonVideos">
+            <summary>
+            The common videos
+            </summary>
+            TODO Edit XML Comment Template for CommonVideos
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.Resources">
+            <summary>
+            The resources
+            </summary>
+            TODO Edit XML Comment Template for Resources
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.LocalizedResources">
+            <summary>
+            The localized resources
+            </summary>
+            TODO Edit XML Comment Template for LocalizedResources
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.CommonOemLinks">
+            <summary>
+            The common oem links
+            </summary>
+            TODO Edit XML Comment Template for CommonOemLinks
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.CDBurning">
+            <summary>
+            The cd burning
+            </summary>
+            TODO Edit XML Comment Template for CDBurning
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.IO.SpecialFolder.MicrosoftNet">
+            <summary>
+            The Microsoft .NET foler.
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.LoggableException">
+            <summary>
+            Class LoggableException.
+            </summary>
+            <seealso cref="T:System.Exception" />
+            <seealso cref="T:System.Xml.Serialization.IXmlSerializable" />
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.LoggableException.#ctor(System.String,System.Exception,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.LoggableException" /> class.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="ex">The ex.</param>
+            <param name="userMessage">The user message.</param>
+            TODO Edit XML Comment Template for #ctor
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.LoggableException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.LoggableException" /> class.
+            </summary>
+            TODO Edit XML Comment Template for #ctor
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.LoggableException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.LoggableException" /> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            TODO Edit XML Comment Template for #ctor
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.LoggableException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.LoggableException" /> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+            TODO Edit XML Comment Template for #ctor
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.LoggableException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.LoggableException" /> class.
+            </summary>
+            <param name="serializationInfo">The serialization information.</param>
+            <param name="streamingContext">The streaming context.</param>
+            <exception cref="T:System.NotImplementedException"></exception>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.LoggableException.Messages">
+            <summary>
+            Gets the messages.
+            </summary>
+            <value>The messages.</value>
+            TODO Edit XML Comment Template for Messages
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.LoggableException.UserMessage">
+            <summary>
+            Gets or sets the user message.
+            </summary>
+            <value>The user message.</value>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.LoggableException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            When overridden in a derived class, sets the <see cref="T:System.Runtime.Serialization.SerializationInfo" /> with information about the exception.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
+            TODO Edit XML Comment Template for GetObjectData
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.LoggableException._hasBeenLogged">
+            <summary>
+            The exception has been logged
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.LoggableException.HasBeenLogged">
+            <summary>
+            Gets or sets a value indicating whether this instance has been logged.
+            </summary>
+            <value><c>true</c> if this instance has been logged; otherwise, <c>false</c>.</value>
+            TODO Edit XML Comment Template for HasBeenLogged
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.LoggableException.ReflectException(System.Exception)">
+            <summary>
+            Reflects the exception.
+            </summary>
+            <param name="ex">The ex.</param>
+            <returns>System.String.</returns>
+            TODO Edit XML Comment Template for ReflectException
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.Logging.LoggingHelper">
+            <summary>
+            Class LoggingHelper.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Logging.LoggingHelper.RetrieveAllExceptions(System.Exception)">
+            <summary>
+            Retrieves all exceptions.
+            </summary>
+            <param name="ex">The ex.</param>
+            <returns>IEnumerable&lt;Exception&gt;.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.MessageNotQueuedException">
+            <summary>
+            Class MessageNotQueuedException.
+            </summary>
+            <seealso cref="T:dotNetTips.Utility.Standard.LoggableException" />
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.MessageNotQueuedException.MessageId">
+            <summary>
+            Gets the message identifier.
+            </summary>
+            <value>The message identifier.</value>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.MessageNotQueuedException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.MessageNotQueuedException" /> class.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.MessageNotQueuedException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.MessageNotQueuedException" /> class.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="messageId">The message identifier.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.MessageNotQueuedException.#ctor(System.String,System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.MessageNotQueuedException" /> class.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="messageId">The message identifier.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.NetworkAddressChangedEventInformation">
+            <summary>
+            Class NetworkAddressChangedEventInformation.
+            </summary>
+            <seealso cref="T:dotNetTips.Utility.Standard.IEventInformation" />
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.NetworkAddressChangedEventInformation.Name">
+            <summary>
+            Gets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.NetworkAddressChangedEventInformation.Id">
+            <summary>
+            Gets the identifier.
+            </summary>
+            <value>The identifier.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.NetworkAddressChangedEventInformation.OperationalStatus">
+            <summary>
+            Gets the operational status.
+            </summary>
+            <value>The operational status.</value>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.NetworkAvailabilityChangedEventInformation">
+            <summary>
+            Class NetworkAvailabilityChangedEventInformation.
+            </summary>
+            <seealso cref="T:dotNetTips.Utility.Standard.IEventInformation" />
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.NetworkAvailabilityChangedEventInformation.NetworkAvailable">
+            <summary>
+            Gets a value indicating whether [network available].
+            </summary>
+            <value><c>true</c> if [network available]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.Net.NetworkHelper">
+            <summary>
+            Class NetworkHelper.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Net.NetworkHelper.IsHostAvailable(System.String)">
+            <summary>
+            Determines whether [is host available] [the specified host name or address].
+            </summary>
+            <param name="hostNameOrAddress">The host name or address.</param>
+            <returns><c>true</c> if [is host available] [the specified host name or address]; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.OOP.Encapsulation">
+            <summary>
+            Class Encapsulation.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.OOP.Encapsulation.TryValidateParam``1(System.Boolean,System.String,System.String)">
+            <summary>
+            Tries to validate a method parameter.
+            </summary>
+            <typeparam name="TException">The type of the t exception.</typeparam>
+            <param name="condition">The condition.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <param name="message">The message.</param>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.InvalidCastException"></exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.OOP.Encapsulation.TryValidateParam(System.Collections.IEnumerable,System.String,System.String)">
+            <summary>
+            Tries to validate a method parameter.
+            </summary>
+            <param name="collection">The collection.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <param name="message">The message.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.OOP.Encapsulation.TryValidateParam(System.IO.FileInfo,System.String,System.String)">
+            <summary>
+            Tries to validate a method parameter.
+            </summary>
+            <param name="file">The file.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <param name="message">The message.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.OOP.Encapsulation.TryValidateParam(System.IO.DirectoryInfo,System.String,System.String)">
+            <summary>
+            Tries to validate a method parameter.
+            </summary>
+            <param name="directory">The directory.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <param name="message">The message.</param>
+            <exception cref="T:System.ArgumentNullException">Argument cannot be null.</exception>
+            <exception cref="T:dotNetTips.Utility.Standard.DirectoryNotFoundException">Directory not found.</exception>
+            <exception cref="T:System.ArgumentNullException">Argument cannot be null.</exception>
+            <exception cref="T:System.IO.DirectoryNotFoundException">Directory not found.</exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.OOP.Encapsulation.TryValidateParam(System.Enum,System.String,System.String)">
+            <summary>
+            Tries to validate a method parameter.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <param name="message">The message.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:dotNetTips.Utility.Standard.ArgumentInvalidException"></exception>
+            <exception cref="T:System.ArgumentException">Argument is invalid.</exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.OOP.Encapsulation.TryValidateParam(System.Guid,System.String,System.String)">
+            <summary>
+            Tries to validate a method parameter.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <param name="message">The message.</param>
+            <exception cref="T:dotNetTips.Utility.Standard.ArgumentInvalidException"></exception>
+            <exception cref="T:dotNetTips.Utility.Standard.ArgumentInvalidException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.OOP.Encapsulation.TryValidateParam(System.String,System.String,System.String)">
+            <summary>
+            Tries to validate a method parameter.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <param name="message">The message.</param>
+            <exception cref="T:dotNetTips.Utility.Standard.ArgumentInvalidException"></exception>
+            <exception cref="T:dotNetTips.Utility.Standard.ArgumentInvalidException"></exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.OOP.Encapsulation.TryValidateParam(System.Collections.IEnumerable,System.Int32,System.String,System.String)">
+            <summary>
+            Tries to validate a method parameter.
+            </summary>
+            <param name="collection">The collection.</param>
+            <param name="size">The size.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <param name="message">The message.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:dotNetTips.Utility.Standard.ArgumentInvalidException"></exception>
+            <exception cref="T:System.ArgumentException">Argument is invalid.</exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.OOP.Encapsulation.TryValidateParam(System.String,System.Text.RegularExpressions.Regex,System.String,System.String)">
+            <summary>
+            Tries to validate a method parameter.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="match">The match.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <param name="message">The message.</param>
+            <exception cref="T:System.ArgumentNullException">match</exception>
+            <exception cref="T:dotNetTips.Utility.Standard.ArgumentInvalidException">match</exception>
+            <exception cref="T:dotNetTips.Utility.Standard.ArgumentInvalidException">match</exception>
+            <exception cref="T:System.ArgumentNullException">match</exception>
+            <exception cref="T:System.ArgumentException">match</exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.OOP.Encapsulation.TryValidateParam(System.String,System.String,System.String,System.String)">
+            <summary>
+            Tries to validate a method parameter.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="expected">The expected.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <param name="message">The message.</param>
+            <exception cref="T:dotNetTips.Utility.Standard.ArgumentInvalidException"></exception>
+            <exception cref="T:dotNetTips.Utility.Standard.ArgumentInvalidException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.OOP.Encapsulation.TryValidateParam(System.Type,System.Type,System.String,System.String)">
+            <summary>
+            Tries to validate a method parameter.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="expectedType">The expected type.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <param name="message">The message.</param>
+            <exception cref="T:dotNetTips.Utility.Standard.ArgumentInvalidException"></exception>
+            <exception cref="T:dotNetTips.Utility.Standard.ArgumentInvalidException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.OOP.Encapsulation.TryValidateParam(System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Tries to validate a method parameter.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="minimumLength">The minimum length.</param>
+            <param name="maximumLength">The maximum length.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <param name="message">The message.</param>
+            <exception cref="T:dotNetTips.Utility.Standard.ArgumentInvalidException">
+            </exception>
+            <exception cref="T:dotNetTips.Utility.Standard.ArgumentInvalidException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.Properties.Resources">
+            <summary>
+            A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Properties.Resources.resourceMan">
+            <summary>
+            The resource man
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Properties.Resources.resourceCulture">
+            <summary>
+            The resource culture
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Properties.Resources.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.Properties.Resources"/> class.
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.ResourceManager">
+            <summary>
+            Returns the cached ResourceManager instance used by this class.
+            </summary>
+            <value>The resource manager.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.Culture">
+            <summary>
+            Overrides the current thread's CurrentUICulture property for all
+            resource lookups using this strongly typed resource class.
+            </summary>
+            <value>The culture.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.AppNameAndVersion">
+            <summary>
+            Looks up a localized string similar to {0} v{1}.
+            </summary>
+            <value>The application name and version.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.Bytes">
+            <summary>
+            Looks up a localized string similar to bytes.
+            </summary>
+            <value>The bytes.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.CannotBeOfTypeException">
+            <summary>
+            Looks up a localized string similar to {0} cannot be of type Exception. Use a more specific exception from the framework or a custom Exception inheriting type Exception (only)..
+            </summary>
+            <value>The cannot be of type exception.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.CollectionIsNullOrHasNoItems">
+            <summary>
+            Looks up a localized string similar to Collection is null or has no items..
+            </summary>
+            <value>The collection is null or has no items.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.CollectionSizeIsNotValid">
+            <summary>
+            Looks up a localized string similar to Collection size is not valid..
+            </summary>
+            <value>The collection size is not valid.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.DirectoryCannotBeNull">
+            <summary>
+            Looks up a localized string similar to Directory cannot be null..
+            </summary>
+            <value>The directory cannot be null.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.DirectoryDoesNotExist">
+            <summary>
+            Looks up a localized string similar to Directory does not exist..
+            </summary>
+            <value>The directory does not exist.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.FileCannotBeNull">
+            <summary>
+            Looks up a localized string similar to File cannot be null..
+            </summary>
+            <value>The file cannot be null.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.FileNotFound">
+            <summary>
+            Looks up a localized string similar to File not found..
+            </summary>
+            <value>The file not found.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.FolderNotFound">
+            <summary>
+            Looks up a localized string similar to Folder not found..
+            </summary>
+            <value>The folder not found.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.GB">
+            <summary>
+            Looks up a localized string similar to GB.
+            </summary>
+            <value>The gb.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.GuidIsEmpty">
+            <summary>
+            Looks up a localized string similar to Guid is Empty..
+            </summary>
+            <value>The unique identifier is empty.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.InvalidType">
+            <summary>
+            Looks up a localized string similar to Invalid type..
+            </summary>
+            <value>The type of the invalid.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.KB">
+            <summary>
+            Looks up a localized string similar to KB.
+            </summary>
+            <value>The kb.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.MB">
+            <summary>
+            Looks up a localized string similar to MB.
+            </summary>
+            <value>The mb.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.ParameterIsInvalid">
+            <summary>
+            Looks up a localized string similar to Parameter is invalid. .
+            </summary>
+            <value>The parameter is invalid.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.ServiceNotFound">
+            <summary>
+            Looks up a localized string similar to Service not found..
+            </summary>
+            <value>The service not found.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.StringDoesNotMatch">
+            <summary>
+            Looks up a localized string similar to Strings do not match..
+            </summary>
+            <value>The string does not match.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.StringDoesNotMatchMaximumLength">
+            <summary>
+            Looks up a localized string similar to String does not match maximum length..
+            </summary>
+            <value>The maximum length of the string does not match.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.StringDoesNotMatchMinimumLength">
+            <summary>
+            Looks up a localized string similar to String does not match minimum length..
+            </summary>
+            <value>The minimum length of the string does not match.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.StringIsEmpty">
+            <summary>
+            Looks up a localized string similar to String is empty..
+            </summary>
+            <value>The string is empty.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.StringIsNotValid">
+            <summary>
+            Looks up a localized string similar to String is not valid..
+            </summary>
+            <value>The string is not valid.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.TheValueIsNotDefinedInTheEnumeration">
+            <summary>
+            Looks up a localized string similar to The values are not defined in the enum..
+            </summary>
+            <value>The value is not defined in the enumeration.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Properties.Resources.Yesterday">
+            <summary>
+            Looks up a localized string similar to Yesterday.
+            </summary>
+            <value>The yesterday.</value>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.Security.EncryptionHelper">
+            <summary>
+            Class EncryptionHelper.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Security.EncryptionHelper.TripleDESDecrypt(System.Byte[],System.Byte[],System.Byte[])">
+            <summary>
+            Triples the DES decrypt.
+            </summary>
+            <param name="cipherText">The cipher text.</param>
+            <param name="key">The key.</param>
+            <param name="iv">The iv.</param>
+            <returns>System.String.</returns>
+            <remarks>Original code by: Mahesh Chand</remarks>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Security.EncryptionHelper.TripleDESEncrypt(System.String,System.Byte[],System.Byte[])">
+            <summary>
+            Triples the DES encrypt.
+            </summary>
+            <param name="plainText">The plain text.</param>
+            <param name="key">The key.</param>
+            <param name="iv">The iv.</param>
+            <returns>System.Byte[].</returns>
+            <remarks>Original code by: Mahesh Chand</remarks>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.Serialization.JsonSerializer">
+            <summary>
+            Class JsonSerializer.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Serialization.JsonSerializer.Deserialize``1(System.String)">
+            <summary>
+            Deserializes the specified Json.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="json">The json.</param>
+            <returns>T.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Serialization.JsonSerializer.Serialize(System.Object)">
+            <summary>
+            Serializes the specified object.
+            </summary>
+            <param name="obj">The object.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.ServiceAction">
+            <summary>
+            Class ServiceAction.
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.ServiceAction.ServiceActionRequest">
+            <summary>
+            Gets or sets the service action request.
+            </summary>
+            <value>The service action request.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.ServiceAction.ServiceActionResult">
+            <summary>
+            Gets or sets the service action result.
+            </summary>
+            <value>The service action result.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.ServiceAction.ServiceName">
+            <summary>
+            Gets or sets the name of the service.
+            </summary>
+            <value>The name of the service.</value>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.ServiceActionRequest">
+            <summary>
+            Enum ServiceActionRequest
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ServiceActionRequest.Unknown">
+            <summary>
+            The unknown
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ServiceActionRequest.Start">
+            <summary>
+            The start
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ServiceActionRequest.Stop">
+            <summary>
+            The stop
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.ServiceActionResult">
+            <summary>
+            Enum ServiceActionResult
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ServiceActionResult.NotFound">
+            <summary>
+            The not found
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ServiceActionResult.Running">
+            <summary>
+            The running
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ServiceActionResult.Stopped">
+            <summary>
+            The stopped
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.ServiceActionResult.Error">
+            <summary>
+            The error
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.Services">
+            <summary>
+            Class Services.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Services.LoadService(System.String)">
+            <summary>
+            Loads the service.
+            </summary>
+            <param name="serviceName">Name of the service.</param>
+            <returns>ServiceController.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Services.AllServices">
+            <summary>
+            Alls the services.
+            </summary>
+            <returns>IEnumerable&lt;System.String&gt;.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Services.ServiceExists(System.String)">
+            <summary>
+            Services the exists.
+            </summary>
+            <param name="serviceName">Name of the service.</param>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Services.ServiceStatus(System.String)">
+            <summary>
+            Services the status.
+            </summary>
+            <param name="serviceName">Name of the service.</param>
+            <returns>ServiceControllerStatus.</returns>
+            <exception cref="T:System.InvalidOperationException">Service not found.</exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Services.StartService(System.String)">
+            <summary>
+            Starts the service.
+            </summary>
+            <param name="serviceName">Name of the service.</param>
+            <returns>ServiceActionResult.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Services.StartServices(System.Collections.Generic.IEnumerable{dotNetTips.Utility.Standard.ServiceAction})">
+            <summary>
+            Starts the services.
+            </summary>
+            <param name="requests">The requests.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Services.StartStopServices(System.Collections.Generic.IEnumerable{dotNetTips.Utility.Standard.ServiceAction})">
+            <summary>
+            Starts the stop services.
+            </summary>
+            <param name="requests">The requests.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Services.StopService(System.String)">
+            <summary>
+            Stops the service.
+            </summary>
+            <param name="serviceName">Name of the service.</param>
+            <returns>ServiceActionResult.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Services.StopServices(System.Collections.Generic.IEnumerable{dotNetTips.Utility.Standard.ServiceAction})">
+            <summary>
+            Stops the services.
+            </summary>
+            <param name="requests">The requests.</param>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.Singleton`1">
+            <summary>
+            Class Singleton.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Singleton`1._instance">
+            <summary>
+            The instance
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Singleton`1.Instance">
+            <summary>
+            Gets the instance.
+            </summary>
+            <value>The instance.</value>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Singleton`1.LoadData(`0)">
+            <summary>
+            ts this instance.
+            </summary>
+            <param name="data">The data.</param>
+            <returns>LoadData.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.SystemChangedEventArgs">
+            <summary>
+            Class SystemChangedEventArgs. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:System.EventArgs" />
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.SystemChangedEventArgs.SystemEventType">
+            <summary>
+            Gets the type of the system event.
+            </summary>
+            <value>The type of the system event.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.SystemChangedEventArgs.EventInformation">
+            <summary>
+            Gets the event information.
+            </summary>
+            <value>The event information.</value>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.SystemEvents">
+            <summary>
+            Class SystemEvents.
+            </summary>
+            <summary>
+            Class SystemEvents.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.SystemEvents.#cctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.SystemEvents" /> class.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.SystemEvents.CurrentDomain_FirstChanceException(System.Object,System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs)">
+            <summary>
+            Handles the FirstChanceException event of the CurrentDomain control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs" /> instance containing the event data.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.SystemEvents.CurrentDomain_ProcessExit(System.Object,System.EventArgs)">
+            <summary>
+            Handles the ProcessExit event of the CurrentDomain control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs" /> instance containing the event data.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.SystemEvents.CurrentDomain_UnhandledException(System.Object,System.UnhandledExceptionEventArgs)">
+            <summary>
+            Handles the UnhandledException event of the CurrentDomain control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.UnhandledExceptionEventArgs" /> instance containing the event data.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.SystemEvents.NetworkChange_NetworkAvailabilityChanged(System.Object,System.Net.NetworkInformation.NetworkAvailabilityEventArgs)">
+            <summary>
+            Handles the NetworkAvailabilityChanged event of the NetworkChange control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Net.NetworkInformation.NetworkAvailabilityEventArgs" /> instance containing the event data.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.SystemEvents.NetworkAddressChangedCallback(System.Object,System.EventArgs)">
+            <summary>
+            Networks the address changed callback.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.EventArgs" /> instance containing the event data.</param>
+        </member>
+        <member name="E:dotNetTips.Utility.Standard.SystemEvents.SystemChanged">
+            <summary>
+            Occurs when [system changed].
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.SystemEvents.OnSystemChanged(dotNetTips.Utility.Standard.SystemChangedEventArgs)">
+            <summary>
+            Handles the <see cref="E:SystemChanged" /> event.
+            </summary>
+            <param name="e">The <see cref="T:dotNetTips.Utility.Standard.SystemChangedEventArgs" /> instance containing the event data.</param>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.SystemEvents.UnhandledExceptionEventInformation">
+            <summary>
+            Class UnhandledExceptionEventInformation.
+            </summary>
+            <seealso cref="T:dotNetTips.Utility.Standard.IEventInformation" />
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.SystemEvents.UnhandledExceptionEventInformation.IsTerminating">
+            <summary>
+            Gets a value indicating whether [network available].
+            </summary>
+            <value><c>true</c> if [network available]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.SystemEvents.UnhandledExceptionEventInformation.Exception">
+            <summary>
+            Gets the exception.
+            </summary>
+            <value>The exception.</value>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.SystemEventType">
+            <summary>
+            Enum SystemEventType
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.SystemEventType.None">
+            <summary>
+            System Event not selected.
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.SystemEventType.NetworkAddressChanged">
+            <summary>
+            The network address changed
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.SystemEventType.NetworkAvailabilityChanged">
+            <summary>
+            The network availability changed
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.SystemEventType.UnhandledException">
+            <summary>
+            Unhandled Exception
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.Tristate">
+            <summary>
+            Enum TriState
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Tristate.False">
+            <summary>
+            False
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Tristate.True">
+            <summary>
+            True
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Tristate.UseDefault">
+            <summary>
+            Use default
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.TypeHelper">
+            <summary>
+            Class TypeHelper.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.TypeHelper.LoadDerivedTypes(System.Collections.Generic.IEnumerable{System.Reflection.TypeInfo},System.Type,System.Boolean)">
+            <summary>
+            Loads the derived types.
+            </summary>
+            <param name="types">The types.</param>
+            <param name="baseType">Type of the base.</param>
+            <param name="classOnly">if set to <c>true</c> [class only].</param>
+            <returns>IEnumerable&lt;Type&gt;.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.TypeHelper.Create``1">
+            <summary>
+            Creates type instance.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns>T.</returns>
+            <remarks>Original code by: Jeremy Clark</remarks>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.TypeHelper.Create``1(System.Object[])">
+            <summary>
+            Creates the specified parameter array.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="paramArray">The parameter array.</param>
+            <returns>T.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.TypeHelper.DoesObjectEqualInstance(System.Object,System.Object)">
+            <summary>
+            Does the object equal instance.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="instance">The instance.</param>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.TypeHelper.FindDerivedTypes(System.Type,System.Boolean)">
+            <summary>
+            Finds the derived types.
+            </summary>
+            <param name="baseType">Type of the base.</param>
+            <param name="classOnly">if set to <c>true</c> [class only].</param>
+            <returns>IEnumerable&lt;Type&gt;.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.TypeHelper.FindDerivedTypes(System.AppDomain,System.Type,System.Boolean)">
+            <summary>
+            Finds the derived types.
+            </summary>
+            <param name="currentDomain">The current domain.</param>
+            <param name="baseType">Type of the base.</param>
+            <param name="classOnly">if set to <c>true</c> [class only].</param>
+            <returns>IEnumerable&lt;Type&gt;.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.TypeHelper.FindDerivedTypes(System.String,System.IO.SearchOption,System.Type,System.Boolean)">
+            <summary>
+            Finds the derived types.
+            </summary>
+            <param name="path">The path.</param>
+            <param name="searchOption">The search option.</param>
+            <param name="baseType">Type of the base.</param>
+            <param name="classOnly">if set to <c>true</c> [class only].</param>
+            <returns>IEnumerable&lt;Type&gt;.</returns>
+            <exception cref="T:dotNetTips.Utility.Standard.DirectoryNotFoundException">Could not find path.</exception>
+            <exception cref="T:System.IO.DirectoryNotFoundException">Could not find path.</exception>
+            <exception cref="T:System.ArgumentNullException">Could not find path.</exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.TypeHelper.GetDefault``1">
+            <summary>
+            Gets the default type.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns>T.</returns>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.TypeHelper.GetInstanceHashCode(System.Object)">
+            <summary>
+            Gets the instance hash code.
+            </summary>
+            <param name="instance">The instance.</param>
+            <returns>Int32.</returns>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.Validation.IsValidResult">
+            <summary>
+            Class IsValidResult.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Validation.IsValidResult.#ctor(System.Boolean,System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.Validation.IsValidResult" /> class.
+            </summary>
+            <param name="valid">if set to <c>true</c> [valid].</param>
+            <param name="errors">The errors.</param>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Validation.IsValidResult.Errors">
+            <summary>
+            Gets the errors.
+            </summary>
+            <value>The errors.</value>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Validation.IsValidResult.IsValid">
+            <summary>
+            Returns true if ... is valid.
+            </summary>
+            <value><c>true</c> if this instance is valid; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.IValid">
+            <summary>
+            Interface IValid
+            </summary>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.IValid.IsValid">
+            <summary>
+            Returns true if type is valid.
+            </summary>
+            <value><c>true</c> if this instance is valid; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.Web.ServiceProxy`1">
+            <summary>
+            Class ServiceProxy.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <seealso cref="T:System.IDisposable" />
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Web.ServiceProxy`1._channel">
+            <summary>
+            The channel
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Web.ServiceProxy`1._channelFactory">
+            <summary>
+            The channel factory
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Web.ServiceProxy`1._lock">
+            <summary>
+            The lock
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Web.ServiceProxy`1._serviceEndpoint">
+            <summary>
+            The service endpoint
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Web.ServiceProxy`1.disposed">
+            <summary>
+            The disposed
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Web.ServiceProxy`1.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:dotNetTips.Utility.Standard.Web.ServiceProxy`1" /> class.
+            </summary>
+            <param name="serviceEndpoint">The service endpoint.</param>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Web.ServiceProxy`1.Initialize">
+            <summary>
+            Initializes this instance.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Web.ServiceProxy`1.CloseChannel">
+            <summary>
+            Closes the channel.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Web.ServiceProxy`1.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="P:dotNetTips.Utility.Standard.Web.ServiceProxy`1.Channel">
+            <summary>
+            Gets the channel.
+            </summary>
+            <value>The channel.</value>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Web.ServiceProxy`1.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.Win32.RegistryHelper">
+            <summary>
+            Class RegistryHelper.
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Utility.Standard.Win32.RegistryHelper.KeyCurrentUserOneDrive">
+            <summary>
+            The key current user one drive
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Win32.RegistryHelper.GetCurrentUserRegistryKey(System.String)">
+            <summary>
+            Gets the registry key.
+            </summary>
+            <param name="name">The name.</param>
+            <returns>RegistryKey.</returns>
+            <exception cref="T:System.PlatformNotSupportedException"></exception>
+            <exception cref="T:System.PlatformNotSupportedException"></exception>
+        </member>
+        <member name="T:dotNetTips.Utility.Standard.Xml.XmlHelper">
+            <summary>
+            Class XmlHelper.
+            </summary>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Xml.XmlHelper.Deserialize``1(System.String)">
+            <summary>
+            Deserializes the specified XML.
+            </summary>
+            <typeparam name="T">Type</typeparam>
+            <param name="xml">The XML.</param>
+            <returns>T.</returns>
+            <exception cref="T:System.ArgumentNullException">xml</exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Xml.XmlHelper.DeserializeFromXmlFile``1(System.String)">
+            <summary>
+            De-serializes from XML file.
+            </summary>
+            <typeparam name="T">Type</typeparam>
+            <param name="fileName">Name of the file.</param>
+            <returns>T.</returns>
+            <exception cref="T:System.IO.FileNotFoundException">File not found. Cannot deserialize from XML.</exception>
+            <exception cref="T:System.IO.FileNotFoundException">File not found. Cannot deserialize from XML.</exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Xml.XmlHelper.Serialize(System.Object)">
+            <summary>
+            Serializes the specified obj to xml.
+            </summary>
+            <param name="obj">The obj.</param>
+            <returns>System.String.</returns>
+            <exception cref="T:System.ArgumentNullException">obj</exception>
+        </member>
+        <member name="M:dotNetTips.Utility.Standard.Xml.XmlHelper.SerializeToXmlFile(System.Object,System.String)">
+            <summary>
+            Serializes obj to XML file.
+            </summary>
+            <param name="obj">The obj.</param>
+            <param name="fileName">Name of the file.</param>
+        </member>
+        <member name="T:dotNetTips.Tips.Utility.Standard.EnvironmentKey">
+            <summary>
+            Enum EnvironmentKeys
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.ALLUSERSPROFILE">
+            <summary>
+            The allusersprofile
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.APPDATA">
+            <summary>
+            The appdata
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.CLIENTNAME">
+            <summary>
+            The clientname
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.CommonProgramFiles">
+            <summary>
+            The common program files
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.CommonProgramW6432">
+            <summary>
+            The common program W6432
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.COMPUTERNAME">
+            <summary>
+            The computername
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.ComSpec">
+            <summary>
+            The COM spec
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.DriverData">
+            <summary>
+            The driver data
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.ENABLE_XAML_DIAGNOSTICS_SOURCE_INFO">
+            <summary>
+            The enable xaml diagnostics source information
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.FPS_BROWSER_APP_PROFILE_STRING">
+            <summary>
+            The FPS browser application profile string
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.FPS_BROWSER_USER_PROFILE_STRING">
+            <summary>
+            The FPS browser user profile string
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.FSHARPINSTALLDIR">
+            <summary>
+            The fsharpinstalldir
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.HOMEDRIVE">
+            <summary>
+            The homedrive
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.HOMEPATH">
+            <summary>
+            The homepath
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.LOCALAPPDATA">
+            <summary>
+            The localappdata
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.LOGONSERVER">
+            <summary>
+            The logonserver
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.MSBuildLoadMicrosoftTargetsReadOnly">
+            <summary>
+            The ms build load microsoft targets read only
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.NUMBER_OF_PROCESSORS">
+            <summary>
+            The number of processors
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.OneDrive">
+            <summary>
+            The one drive
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.OS">
+            <summary>
+            The allusersprofile
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.Path">
+            <summary>
+            The path
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.PATHEXT">
+            <summary>
+            The pathext
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.PkgDefApplicationConfigFile">
+            <summary>
+            The PKG definition application configuration file
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.PROCESSOR_ARCHITECTURE">
+            <summary>
+            The appdata
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.PROCESSOR_IDENTIFIER">
+            <summary>
+            The processor identifier
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.PROCESSOR_LEVEL">
+            <summary>
+            The processor level
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.PROCESSOR_REVISION">
+            <summary>
+            The processor revision
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.ProgramData">
+            <summary>
+            The clientname
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.ProgramFiles">
+            <summary>
+            The program files
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.ProgramW6432">
+            <summary>
+            The program W6432
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.PSModulePath">
+            <summary>
+            The ps module path
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.PUBLIC">
+            <summary>
+            The common program files
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.SESSIONNAME">
+            <summary>
+            The sessionname
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.SystemDrive">
+            <summary>
+            The system drive
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.SystemRoot">
+            <summary>
+            The system root
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.TEMP">
+            <summary>
+            The common program W6432
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.TMP">
+            <summary>
+            The temporary
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.USERDOMAIN">
+            <summary>
+            The userdomain
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.USERDOMAIN_ROAMINGPROFILE">
+            <summary>
+            The userdomain roamingprofile
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.USERNAME">
+            <summary>
+            The computername
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.USERPROFILE">
+            <summary>
+            The userprofile
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.VisualStudioDir">
+            <summary>
+            The visual studio dir
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.VisualStudioEdition">
+            <summary>
+            The visual studio edition
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.VisualStudioVersion">
+            <summary>
+            The COM spec
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.VSAPPIDDIR">
+            <summary>
+            The vsappiddir
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.VSAPPIDNAME">
+            <summary>
+            The vsappidname
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.VSLANG">
+            <summary>
+            The vslang
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.VSLOGGER_UNIQUEID">
+            <summary>
+            The driver data
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.VSSKUEDITION">
+            <summary>
+            The vsskuedition
+            </summary>
+        </member>
+        <member name="F:dotNetTips.Tips.Utility.Standard.EnvironmentKey.windir">
+            <summary>
+            The windir
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -5,7 +5,7 @@
 // Created          : 09-28-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-02-2018
+// Last Modified On : 03-03-2019
 // ***********************************************************************
 // <copyright file="GlobalSuppressions.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)

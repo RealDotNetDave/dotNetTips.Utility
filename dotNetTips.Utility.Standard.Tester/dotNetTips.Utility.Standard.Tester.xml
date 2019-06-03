@@ -8,7 +8,7 @@
             <summary>
             Class RandomData.
             </summary>
-            <remarks>Original code from: https://github.com/andrewseward/Any-.Net</remarks>
+            <remarks>Original code from: https://github.com/andrewseward/Any-.Net </remarks>
         </member>
         <member name="F:dotNetTips.Utility.Standard.Tester.Data.RandomData.DefaultMaxCharacter">
             <summary>
@@ -78,6 +78,12 @@
             <param name="max">The maximum int.</param>
             <returns>System.Int32.</returns>
         </member>
+        <member name="M:dotNetTips.Utility.Standard.Tester.Data.RandomData.Key">
+            <summary>
+            Keys this instance.
+            </summary>
+            <returns>System.String.</returns>
+        </member>
         <member name="M:dotNetTips.Utility.Standard.Tester.Data.RandomData.Of(System.String[])">
             <summary>
             Ofs the specified words.
@@ -112,12 +118,6 @@
         <member name="M:dotNetTips.Utility.Standard.Tester.Data.RandomData.UrlHostnameWithoutSubdomain">
             <summary>
             URLs the hostname without subdomain.
-            </summary>
-            <returns>System.String.</returns>
-        </member>
-        <member name="M:dotNetTips.Utility.Standard.Tester.Data.RandomData.Key">
-            <summary>
-            Keys this instance.
             </summary>
             <returns>System.String.</returns>
         </member>

@@ -58,8 +58,8 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         /// <param name="serviceName">Name of the service.</param>
         /// <returns>ServiceControllerStatus.</returns>
-        /// <exception cref="System.InvalidOperationException"></exception>
         /// <exception cref="InvalidOperationException">Service not found.</exception>
+        /// <exception cref="System.InvalidOperationException"></exception>
         public static ServiceControllerStatus ServiceStatus(string serviceName)
         {
             var service = LoadService(serviceName);

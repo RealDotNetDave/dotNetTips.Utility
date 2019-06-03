@@ -4,7 +4,7 @@
 // Created          : 01-19-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-19-2019
+// Last Modified On : 05-31-2019
 // ***********************************************************************
 // <copyright file="RandomData.cs" company="dotNetTips.Utility.Standard.Tester">
 //     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
@@ -19,7 +19,7 @@ namespace dotNetTips.Utility.Standard.Tester.Data
     /// <summary>
     /// Class RandomData.
     /// </summary>
-    /// <remarks>Original code from: https://github.com/andrewseward/Any-.Net</remarks>
+    /// <remarks>Original code from: https://github.com/andrewseward/Any-.Net </remarks>
     public static class RandomData
     {
         /// <summary>
@@ -72,7 +72,7 @@ namespace dotNetTips.Utility.Standard.Tester.Data
         {
             var multiplier = ((decimal)decimalPlaces) * 10;
 
-            var result = Integer(((int)(minValue * multiplier)), ((int)(maxValue * multiplier))) / multiplier;
+            var result = Integer((int)(minValue * multiplier), (int)(maxValue * multiplier)) / multiplier;
 
             return result;
         }
@@ -111,6 +111,15 @@ namespace dotNetTips.Utility.Standard.Tester.Data
             {
                 return Random.Next(min, max);
             }
+        }
+
+        /// <summary>
+        /// Keys this instance.
+        /// </summary>
+        /// <returns>System.String.</returns>
+        public static string Key()
+        {
+            return Guid.NewGuid().ToString().Replace("-", string.Empty);
         }
 
         /// <summary>
@@ -195,15 +204,6 @@ namespace dotNetTips.Utility.Standard.Tester.Data
             url.Append(DomainExtension());
 
             return url.ToString();
-        }
-
-        /// <summary>
-        /// Keys this instance.
-        /// </summary>
-        /// <returns>System.String.</returns>
-        public static string Key()
-        {
-            return Guid.NewGuid().ToString().Replace("-", string.Empty);
         }
 
         /// <summary>

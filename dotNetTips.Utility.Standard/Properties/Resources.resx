@@ -157,7 +157,7 @@
     <value>Strings do not match.</value>
   </data>
   <data name="StringDoesNotMatchMaximumLength" xml:space="preserve">
-    <value>String does not matach maximum length.</value>
+    <value>String does not match maximum length.</value>
   </data>
   <data name="StringDoesNotMatchMinimumLength" xml:space="preserve">
     <value>String does not match minimum length.</value>
@@ -179,5 +179,14 @@
   </data>
   <data name="AppNameAndVersion" xml:space="preserve">
     <value>{0} v{1}</value>
+  </data>
+  <data name="DirectoryCannotBeNull" xml:space="preserve">
+    <value>Directory cannot be null.</value>
+  </data>
+  <data name="DirectoryDoesNotExist" xml:space="preserve">
+    <value>Directory does not exist.</value>
+  </data>
+  <data name="FileCannotBeNull" xml:space="preserve">
+    <value>File cannot be null.</value>
   </data>
 </root>

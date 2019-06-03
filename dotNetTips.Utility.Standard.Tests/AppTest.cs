@@ -34,7 +34,6 @@ namespace dotNetTips.Tips.Utility.Standard.Tests
 
             Assert.IsTrue(info.FileVersion.HasItems());
             Assert.IsTrue(info.Version.HasItems());
-
         }
 
         /// <summary>

@@ -4,7 +4,7 @@
 // Created          : 10-15-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-03-2019
+// Last Modified On : 05-28-2019
 // ***********************************************************************
 // <copyright file="ComputerInfo.cs" company="dotNetTips.com - McCarter Consulting">
 //     dotNetTips.com - McCarter Consulting. All rights reserved.
@@ -39,14 +39,12 @@ namespace dotNetTips.Utility.Standard
         /// Gets the os version.
         /// </summary>
         /// <value>The os version.</value>
-        public string OSDescription { get; } =  App.OSDescription;
+        public string OSDescription { get; } = App.OSDescription;
 
         /// <summary>
         /// Gets the processor count.
         /// </summary>
         /// <value>The processor count.</value>
         public int ProcessorCount { get; } = Environment.ProcessorCount;
-
-
     }
 }

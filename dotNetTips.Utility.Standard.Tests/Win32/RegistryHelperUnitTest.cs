@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using System.Linq;
 using dotNetTips.Utility.Standard.Win32;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -31,6 +32,17 @@ namespace dotNetTips.Tips.Utility.Standard.Tests.Win32
             var key = RegistryHelper.GetCurrentUserRegistryKey(RegistryHelper.KeyCurrentUserOneDrive);
 
             Assert.IsNotNull(key);
+        }
+
+        /// <summary>
+        /// Loads the key sub names.
+        /// </summary>
+        [TestMethod]
+        public void LoadKeySubNames()
+        {
+            var names = RegistryHelper.GetCurrentUserRegistryKey(RegistryHelper.KeyCurrentUserOneDrive).GetSubKeyNames();
+
+            Assert.IsTrue(names?.Count() > 0);
         }
     }
 }

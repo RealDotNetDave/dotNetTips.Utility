@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-03-2019
+// Last Modified On : 06-03-2019
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -173,7 +173,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         {
             var propertyInfo = obj.GetType().GetRuntimeProperties().FirstOrDefault(p => p.Name == propertyName);
 
-            return (propertyInfo != null);
+            return propertyInfo != null;
         }
 
         /// <summary>

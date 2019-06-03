@@ -53,7 +53,6 @@ namespace dotNetTips.Utility.Standard.Extensions.Tests
             Assert.IsTrue(people.FastCount(p => p.Age == 100000) == 0);
         }
 
-
         /// <summary>
         /// Creates the person collection.
         /// </summary>

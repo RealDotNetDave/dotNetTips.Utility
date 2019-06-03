@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-24-2018
+// Last Modified On : 03-03-2019
 // ***********************************************************************
 // <copyright file="DateTimeExtensions.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -129,7 +129,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <returns><c>true</c> if [is in range] [the specified beginning date]; otherwise, <c>false</c>.</returns>
         public static bool IsInRange(this DateTime value, DateTime beginningTime, DateTime endTime)
         {
-            return (value >= beginningTime & value <= endTime);
+            return value >= beginningTime & value <= endTime;
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <returns><c>true</c> if [is in range] [the specified beginning time]; otherwise, <c>false</c>.</returns>
         public static bool IsInRange(this TimeSpan value, TimeSpan beginningTime, TimeSpan endTime)
         {
-            return (value >= beginningTime & value <= endTime);
+            return value >= beginningTime & value <= endTime;
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <returns><c>true</c> if [is in range] [the specified beginning time]; otherwise, <c>false</c>.</returns>
         public static bool IsInRange(this DateTimeOffset value, DateTimeOffset beginningTime, DateTimeOffset endTime)
         {
-            return (value >= beginningTime & value <= endTime);
+            return value >= beginningTime & value <= endTime;
         }
     }
 }

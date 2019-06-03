@@ -1,13 +1,13 @@
 // ***********************************************************************
 // Assembly         : dotNetTips.Utility.Standard.Extensions.Tests
 // Author           : David McCarter
-// Created          : 09-28-2018
+// Created          : 03-03-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-27-2018
+// Last Modified On : 03-03-2019
 // ***********************************************************************
-// <copyright file="CollectionExtensionsTest.cs" company="dotNetTips.Utility.Standard.Extensions.Tests">
-//     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
+// <copyright file="Person.cs" company="dotNetTips.Utility.Standard.Extensions.Tests">
+//     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************

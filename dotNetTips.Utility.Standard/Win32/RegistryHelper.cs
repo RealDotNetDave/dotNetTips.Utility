@@ -33,8 +33,8 @@ namespace dotNetTips.Utility.Standard.Win32
         /// </summary>
         /// <param name="name">The name.</param>
         /// <returns>RegistryKey.</returns>
-        /// <exception cref="System.PlatformNotSupportedException"></exception>
         /// <exception cref="PlatformNotSupportedException"></exception>
+        /// <exception cref="System.PlatformNotSupportedException"></exception>
         public static RegistryKey GetCurrentUserRegistryKey(string name)
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))

@@ -4,7 +4,7 @@
 // Created          : 02-11-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-24-2018
+// Last Modified On : 05-28-2019
 // ***********************************************************************
 // <copyright file="Enumeration.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -32,6 +32,7 @@ namespace dotNetTips.Utility.Standard
         /// Display name
         /// </summary>
         private readonly string _displayName;
+
         /// <summary>
         /// Value
         /// </summary>

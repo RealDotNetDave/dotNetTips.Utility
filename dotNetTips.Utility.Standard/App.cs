@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-03-2019
+// Last Modified On : 05-31-2019
 // ***********************************************************************
 // <copyright file="App.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -32,11 +32,6 @@ namespace dotNetTips.Utility.Standard
     public static class App
     {
         /// <summary>
-        /// The processor count refresh interval
-        /// </summary>
-        private const int ProcessorCountRefreshInterval = 30000;
-
-        /// <summary>
         /// The temporary ASP files location
         /// </summary>
         private const string TempAspFiles = "\\Temporary ASP.NET Files\\";
@@ -47,28 +42,99 @@ namespace dotNetTips.Utility.Standard
         private static AppInfo appInfo;
 
         /// <summary>
-        /// App information.
+        /// Gets the assembly information.
         /// </summary>
-        /// <returns>Info.</returns>
-        private static AppInfo Info()
+        /// <value>The assembly information.</value>
+        public static AppInfo AppInfo => Info();
+
+        /// <summary>
+        /// Gets the culture.
+        /// </summary>
+        /// <value>The culture.</value>
+        public static CultureInfo CurrentCulture => CultureInfo.CurrentCulture;
+
+        /// <summary>
+        /// Gets the UI culture.
+        /// </summary>
+        /// <value>The UI culture.</value>
+        public static CultureInfo CurrentUICulture => CultureInfo.CurrentUICulture;
+
+        /// <summary>
+        /// Returns a string that indicates the name of the .NET installation on which an app is running.
+        /// </summary>
+        /// <value>The framework description.</value>
+        public static string FrameworkDescription => RuntimeInformation.FrameworkDescription;
+
+        /// <summary>
+        /// Gets the installed UI culture.
+        /// </summary>
+        /// <value>The installed UI culture.</value>
+        public static CultureInfo InstalledUICulture => CultureInfo.InstalledUICulture;
+
+        /// <summary>
+        /// Gets the platform architecture on which the current app is running.
+        /// </summary>
+        /// <value>The operating system platform.</value>
+        public static Architecture OSArchitecture => RuntimeInformation.OSArchitecture;
+
+        /// <summary>
+        /// Gets a string that describes the operating system on which the app is running.
+        /// </summary>
+        /// <value>The operating system description.</value>
+        public static string OSDescription => RuntimeInformation.OSDescription;
+
+        /// <summary>
+        /// Gets the process architecture of the currently running app.
+        /// </summary>
+        /// <value>The process architecture.</value>
+        public static Architecture ProcessArchitecture => RuntimeInformation.ProcessArchitecture;
+
+        /// <summary>
+        /// Gets the stack trace.
+        /// </summary>
+        /// <value>The stack trace.</value>
+        public static string StackTrace => Environment.StackTrace;
+
+        /// <summary>
+        /// Gets the working set.
+        /// </summary>
+        /// <value>The working set.</value>
+        public static long WorkingSet => Environment.WorkingSet;
+
+        /// <summary>
+        /// Changes the culture.
+        /// </summary>
+        /// <param name="cultureName">Name of the culture.</param>
+        public static void ChangeCulture(string cultureName)
         {
-            if (appInfo == null)
+            CultureInfo.CurrentCulture = new CultureInfo(cultureName);
+        }
+
+        /// <summary>
+        /// Changes the UI culture.
+        /// </summary>
+        /// <param name="cultureName">Name of the culture.</param>
+        public static void ChangeUICulture(string cultureName)
+        {
+            CultureInfo.CurrentUICulture = new CultureInfo(cultureName);
+        }
+
+        /// <summary>
+        /// Gets the environment variables.
+        /// </summary>
+        /// <returns>IImmutableDictionary&lt;System.String, System.String&gt;.</returns>
+        public static IImmutableDictionary<string, string> GetEnvironmentVariables()
+        {
+            var variables = Environment.GetEnvironmentVariables();
+
+            var builder = ImmutableDictionary.CreateBuilder<string, string>();
+
+            foreach (DictionaryEntry variable in variables)
             {
-                appInfo = new AppInfo();
-
-                var assembly = Assembly.GetEntryAssembly();
-
-                appInfo.Company = assembly.GetCustomAttributes<AssemblyCompanyAttribute>().FirstOrDefault()?.Company;
-                appInfo.Configuration = assembly.GetCustomAttributes<AssemblyConfigurationAttribute>().FirstOrDefault()?.Configuration;
-                appInfo.Copyright = assembly.GetCustomAttributes<AssemblyCopyrightAttribute>().FirstOrDefault()?.Copyright;
-                appInfo.Description = assembly.GetCustomAttributes<AssemblyDescriptionAttribute>().FirstOrDefault()?.Description;
-                appInfo.FileVersion = assembly.GetCustomAttributes<AssemblyFileVersionAttribute>().FirstOrDefault()?.Version;
-                appInfo.Version = assembly.GetCustomAttributes<AssemblyInformationalVersionAttribute>().FirstOrDefault()?.InformationalVersion;
-                appInfo.Product = assembly.GetCustomAttributes<AssemblyProductAttribute>().FirstOrDefault()?.Product;
-                appInfo.Title = assembly.GetCustomAttributes<AssemblyTitleAttribute>().FirstOrDefault()?.Title;
+                builder.Add(variable.Key.ToString(), variable.Value.ToString());
             }
 
-            return appInfo;
+            return builder.ToImmutable();
         }
 
         /// <summary>
@@ -138,24 +204,6 @@ namespace dotNetTips.Utility.Standard
         }
 
         /// <summary>
-        /// Gets the environment variables.
-        /// </summary>
-        /// <returns>IImmutableDictionary&lt;System.String, System.String&gt;.</returns>
-        public static IImmutableDictionary<string, string> GetEnvironmentVariables()
-        {
-            var variables = Environment.GetEnvironmentVariables();
-
-            var builder = ImmutableDictionary.CreateBuilder<string, string>();
-
-            foreach (DictionaryEntry variable in variables)
-            {
-                builder.Add(variable.Key.ToString(), variable.Value.ToString());
-            }
-
-            return builder.ToImmutable();
-        }
-
-        /// <summary>
         /// Restarts an app as administrator.
         /// </summary>
         public static void RunAsAdministrator()
@@ -171,81 +219,28 @@ namespace dotNetTips.Utility.Standard
         }
 
         /// <summary>
-        /// Gets the assembly information.
+        /// App information.
         /// </summary>
-        /// <value>The assembly information.</value>
-        public static AppInfo AppInfo => Info();
-
-        /// <summary>
-        /// Gets the stack trace.
-        /// </summary>
-        /// <value>The stack trace.</value>
-        public static string StackTrace => Environment.StackTrace;
-
-        /// <summary>
-        /// Gets the working set.
-        /// </summary>
-        /// <value>The working set.</value>
-        public static long WorkingSet => Environment.WorkingSet;
-
-        /// <summary>
-        /// Gets the culture.
-        /// </summary>
-        /// <value>The culture.</value>
-        public static CultureInfo CurrentCulture => CultureInfo.CurrentCulture;
-
-        /// <summary>
-        /// Gets the UI culture.
-        /// </summary>
-        /// <value>The UI culture.</value>
-        public static CultureInfo CurrentUICulture => CultureInfo.CurrentUICulture;
-
-        /// <summary>
-        /// Changes the culture.
-        /// </summary>
-        /// <param name="cultureName">Name of the culture.</param>
-        public static void ChangeCulture(string cultureName)
+        /// <returns>Returns <seealso cref="AppInfo" /></returns>
+        private static AppInfo Info()
         {
-            CultureInfo.CurrentCulture = new CultureInfo(cultureName);
+            if (appInfo == null)
+            {
+                appInfo = new AppInfo();
+
+                var assembly = Assembly.GetEntryAssembly();
+
+                appInfo.Company = assembly.GetCustomAttributes<AssemblyCompanyAttribute>().FirstOrDefault()?.Company;
+                appInfo.Configuration = assembly.GetCustomAttributes<AssemblyConfigurationAttribute>().FirstOrDefault()?.Configuration;
+                appInfo.Copyright = assembly.GetCustomAttributes<AssemblyCopyrightAttribute>().FirstOrDefault()?.Copyright;
+                appInfo.Description = assembly.GetCustomAttributes<AssemblyDescriptionAttribute>().FirstOrDefault()?.Description;
+                appInfo.FileVersion = assembly.GetCustomAttributes<AssemblyFileVersionAttribute>().FirstOrDefault()?.Version;
+                appInfo.Version = assembly.GetCustomAttributes<AssemblyInformationalVersionAttribute>().FirstOrDefault()?.InformationalVersion;
+                appInfo.Product = assembly.GetCustomAttributes<AssemblyProductAttribute>().FirstOrDefault()?.Product;
+                appInfo.Title = assembly.GetCustomAttributes<AssemblyTitleAttribute>().FirstOrDefault()?.Title;
+            }
+
+            return appInfo;
         }
-
-        /// <summary>
-        /// Changes the UI culture.
-        /// </summary>
-        /// <param name="cultureName">Name of the culture.</param>
-        public static void ChangeUICulture(string cultureName)
-        {
-            CultureInfo.CurrentUICulture = new CultureInfo(cultureName);
-        }
-
-        /// <summary>
-        /// Gets the installed UI culture.
-        /// </summary>
-        /// <value>The installed UI culture.</value>
-        public static CultureInfo InstalledUICulture => CultureInfo.InstalledUICulture;
-
-        /// <summary>
-        /// Gets the platform architecture on which the current app is running.
-        /// </summary>
-        /// <value>The os platform.</value>
-        public static Architecture OSArchitecture => RuntimeInformation.OSArchitecture;
-
-        /// <summary>
-        /// Gets a string that describes the operating system on which the app is running.
-        /// </summary>
-        /// <value>The os version.</value>
-        public static string OSDescription => RuntimeInformation.OSDescription;
-
-        /// <summary>
-        /// Gets the process architecture of the currently running app.
-        /// </summary>
-        /// <value>The process architecture.</value>
-        public static Architecture ProcessArchitecture => RuntimeInformation.ProcessArchitecture;
-
-        /// <summary>
-        /// Returns a string that indicates the name of the .NET installation on which an app is running.
-        /// </summary>
-        /// <value>The framework description.</value>
-        public static string FrameworkDescription => RuntimeInformation.FrameworkDescription;
     }
 }

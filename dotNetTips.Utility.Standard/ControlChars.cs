@@ -4,7 +4,7 @@
 // Created          : 02-11-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-24-2018
+// Last Modified On : 05-31-2019
 // ***********************************************************************
 // <copyright file="ControlChars.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -13,7 +13,6 @@
 // ***********************************************************************
 namespace dotNetTips.Utility.Standard
 {
-
     /// <summary>
     /// Class ControlChars.
     /// </summary>
@@ -28,6 +27,11 @@ namespace dotNetTips.Utility.Standard
         /// Back Slash
         /// </summary>
         public const char BackSlash = '\\';
+
+        /// <summary>
+        /// The colon
+        /// </summary>
+        public const char Colon = ':';
 
         /// <summary>
         /// Comma
@@ -103,10 +107,5 @@ namespace dotNetTips.Utility.Standard
         /// Vertical tab
         /// </summary>
         public const char VerticalTab = '\v';
-
-        /// <summary>
-        /// The colon
-        /// </summary>
-        public const char Colon = ':';
     }
 }

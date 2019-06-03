@@ -11,9 +11,11 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using System;
+using System.IO;
 using System.Linq;
+using dotNetTips.Utility.Standard.Extensions;
 using dotNetTips.Utility.Standard.IO;
-using dotNetTips.Utility.Standard.Win32;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace dotNetTips.Tips.Utility.Standard.Tests.IO
@@ -32,18 +34,52 @@ namespace dotNetTips.Tips.Utility.Standard.Tests.IO
         {
             var folders = DirectoryHelper.LoadOneDriveFolders();
 
-            Assert.IsTrue(folders!= null && folders.Count() > 0);
+            Assert.IsTrue(folders != null && folders.Count() > 0);
         }
 
-        /// <summary>
-        /// Loads the key sub names.
-        /// </summary>
         [TestMethod]
-        public void LoadKeySubNames()
+        public void AppDataFolderTest()
         {
-            var names = RegistryHelper.GetCurrentUserRegistryKey(RegistryHelper.KeyCurrentUserOneDrive).GetSubKeyNames();
+            var folder = DirectoryHelper.AppDataFolder();
 
-            Assert.IsTrue(names?.Count() > 0);
+            Assert.IsTrue(string.IsNullOrEmpty(folder) == false);
         }
+
+        [TestMethod]
+        public void CopyAndDeleteDirectoryTest()
+        {
+            try
+            {
+                var folderToCopy = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)).GetDirectories().Randomize().FirstOrDefault();
+
+                DirectoryHelper.CopyDirectory(folderToCopy.FullName, this._tempPath.FullName, true);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
+        }
+
+        [TestInitialize]
+        public void Initialize()
+        {
+            this._tempPath = new DirectoryInfo(Path.Combine(Path.GetTempPath(), "_DOTNETTIPS-DIRECTORYHELPER-TEST"));
+
+            if (this._tempPath.Exists == false)
+            {
+                this._tempPath.Create();
+            }
+            else
+            {
+                foreach (var directory in this._tempPath.EnumerateDirectories().ToArray())
+                {
+                    directory.Delete();
+                }
+
+                FileHelper.DeleteFiles(this._tempPath.EnumerateFiles().Select(p => p.FullName));
+            }
+        }
+
+        private DirectoryInfo _tempPath;
     }
 }

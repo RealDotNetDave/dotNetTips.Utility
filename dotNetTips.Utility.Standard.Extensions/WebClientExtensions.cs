@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-24-2018
+// Last Modified On : 03-03-2019
 // ***********************************************************************
 // <copyright file="WebClientExtensions.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -35,12 +35,12 @@ namespace dotNetTips.Utility.Standard.Extensions
         {
             var data = client.DownloadString(url);
 
-            if(string.IsNullOrEmpty(data))
+            if (string.IsNullOrEmpty(data))
             {
                 return null;
             }
 
-            using(var stream = new MemoryStream(Encoding.UTF8.GetBytes(data)))
+            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(data)))
             {
                 var serializer = new DataContractJsonSerializer(typeof(T));
                 var obj = (T)serializer.ReadObject(stream);

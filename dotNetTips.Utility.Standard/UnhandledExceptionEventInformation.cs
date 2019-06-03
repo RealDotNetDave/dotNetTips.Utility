@@ -4,9 +4,9 @@
 // Created          : 07-09-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-24-2018
+// Last Modified On : 03-03-2019
 // ***********************************************************************
-// <copyright file="SystemEvents.cs" company="dotNetTips.com - David McCarter">
+// <copyright file="UnhandledExceptionEventInformation.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>

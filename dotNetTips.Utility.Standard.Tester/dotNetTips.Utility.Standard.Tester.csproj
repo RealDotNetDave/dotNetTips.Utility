@@ -2,29 +2,31 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>2019.03.03</Version>
+    <Version>2019.06.03</Version>
     <Authors>David McCarter</Authors>
     <Company>dotNetTips.com - David McCarter</Company>
     <Product>dotNetTips.Utility.Standard</Product>
     <Description>Common code used in testing.</Description>
     <Copyright>McCarter Consulting (David McCarter)</Copyright>
-    <PackageLicenseUrl>https://github.com/RealDotNetDave/dotNetTips.Utility/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/RealDotNetDave/dotNetTips.Utility</PackageProjectUrl>
     <RepositoryUrl>https://github.com/RealDotNetDave/dotNetTips.Utility</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>David McCarter, dotNetDave, dotNetTips.com</PackageTags>
-    <PackageReleaseNotes>-- JAN 2019: Initial release.</PackageReleaseNotes>
+    <PackageReleaseNotes>-- JAN 2019: Initial release.
+-- JUNE 2019: Quarterly Release</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>2019.3.3.33689</AssemblyVersion>
-    <FileVersion>2019.3.3.33689</FileVersion>
+    <AssemblyVersion>2019.6.3.33866</AssemblyVersion>
+    <FileVersion>2019.6.3.33866</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>S:\src\git\dotNetTips.Utility\dotNetTips.Utility.Standard.Tester\dotNetTips.Utility.Standard.Tester.xml</DocumentationFile>
+    <DocumentationFile>dotNetTips.Utility.Standard.Tester.xml</DocumentationFile>
+    <OutputPath>..\UtilityBin\netstandard2.0\</OutputPath>
   </PropertyGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if $(ConfigurationName) == Debug (dotnet pack &quot;$(ProjectPath)&quot; --no-build --include-source --include-symbols --output  &quot;$(ProjectDir)\..\NuGet&quot;)" />
+    <Exec Command="if $(ConfigurationName) == Release (dotnet pack &quot;$(ProjectPath)&quot; --no-build --include-source --include-symbols --output  &quot;$(ProjectDir)\..\NuGet&quot;)" />
   </Target>
 
 </Project>

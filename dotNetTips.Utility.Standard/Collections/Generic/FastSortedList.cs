@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-03-2019
+// Last Modified On : 05-31-2019
 // ***********************************************************************
 // <copyright file="FastSortedList.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -41,22 +41,6 @@ namespace dotNetTips.Utility.Standard.Collections.Generic
         }
 
         /// <summary>
-        /// Cones this instance.
-        /// </summary>
-        /// <returns>T.</returns>
-        public T Cone() => this.Clone<T>();
-
-        /// <summary>
-        /// Returns an enumerator that iterates through the <see cref="T:System.Collections.Generic.List`1"></see>.
-        /// </summary>
-        /// <returns>A <see cref="T:System.Collections.Generic.List`1.Enumerator"></see> for the <see cref="T:System.Collections.Generic.List`1"></see>.</returns>
-        public new Enumerator GetEnumerator()
-        {
-            this.SortCollection();
-            return base.GetEnumerator();
-        }
-
-        /// <summary>
         /// Adds an object to the end of the <see cref="T:System.Collections.Generic.List`1"></see>.
         /// </summary>
         /// <param name="item">The object to be added to the end of the <see cref="T:System.Collections.Generic.List`1"></see>. The value can be null for reference types.</param>
@@ -74,20 +58,24 @@ namespace dotNetTips.Utility.Standard.Collections.Generic
         public new void AddRange(IEnumerable<T> items)
         {
             base.AddRange(items);
-        
+
             this._sorted = false;
         }
 
         /// <summary>
-        /// Sorts the collection.
+        /// Cones this instance.
         /// </summary>
-        private void SortCollection()
+        /// <returns>T.</returns>
+        public T Cone() => this.Clone<T>();
+
+        /// <summary>
+        /// Returns an enumerator that iterates through the <see cref="T:System.Collections.Generic.List`1"></see>.
+        /// </summary>
+        /// <returns>A <see cref="T:System.Collections.Generic.List`1.Enumerator"></see> for the <see cref="T:System.Collections.Generic.List`1"></see>.</returns>
+        public new Enumerator GetEnumerator()
         {
-            if (this._sorted == false)
-            {
-                base.Sort();
-                this._sorted = true;
-            }
+            this.SortCollection();
+            return base.GetEnumerator();
         }
 
 
@@ -119,6 +107,18 @@ namespace dotNetTips.Utility.Standard.Collections.Generic
         {
             this.SortCollection();
             return new List<T>(base.ToArray());
+        }
+
+        /// <summary>
+        /// Sorts the collection.
+        /// </summary>
+        private void SortCollection()
+        {
+            if (this._sorted == false)
+            {
+                base.Sort();
+                this._sorted = true;
+            }
         }
     }
 }

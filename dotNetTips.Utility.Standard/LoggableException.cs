@@ -4,7 +4,7 @@
 // Created          : 06-06-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-03-2019
+// Last Modified On : 06-03-2019
 // ***********************************************************************
 // <copyright file="LoggableException.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -38,6 +38,7 @@ namespace dotNetTips.Utility.Standard
         /// <param name="message">The message.</param>
         /// <param name="ex">The ex.</param>
         /// <param name="userMessage">The user message.</param>
+        /// TODO Edit XML Comment Template for #ctor
         public LoggableException(string message, Exception ex, string userMessage) : base(message, ex)
         {
             this.UserMessage = userMessage;
@@ -46,6 +47,7 @@ namespace dotNetTips.Utility.Standard
         /// <summary>
         /// Initializes a new instance of the <see cref="LoggableException" /> class.
         /// </summary>
+        /// TODO Edit XML Comment Template for #ctor
         public LoggableException()
         {
         }
@@ -54,6 +56,7 @@ namespace dotNetTips.Utility.Standard
         /// Initializes a new instance of the <see cref="LoggableException" /> class.
         /// </summary>
         /// <param name="message">The message that describes the error.</param>
+        /// TODO Edit XML Comment Template for #ctor
         public LoggableException(string message) : base(message)
         {
         }
@@ -63,6 +66,7 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         /// <param name="message">The error message that explains the reason for the exception.</param>
         /// <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        /// TODO Edit XML Comment Template for #ctor
         public LoggableException(string message, Exception innerException) : base(message, innerException)
         {
         }
@@ -72,9 +76,10 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         /// <param name="serializationInfo">The serialization information.</param>
         /// <param name="streamingContext">The streaming context.</param>
-        /// <exception cref="System.NotImplementedException"></exception>
         /// <exception cref="NotImplementedException"></exception>
+        /// <exception cref="System.NotImplementedException"></exception>
         protected LoggableException(SerializationInfo serializationInfo, StreamingContext streamingContext)
+         : base(serializationInfo, streamingContext)
         {
             throw new NotImplementedException();
         }
@@ -83,6 +88,7 @@ namespace dotNetTips.Utility.Standard
         /// Gets the messages.
         /// </summary>
         /// <value>The messages.</value>
+        /// TODO Edit XML Comment Template for Messages
         public virtual IEnumerable<string> Messages
         {
             get
@@ -114,10 +120,11 @@ namespace dotNetTips.Utility.Standard
         public virtual string UserMessage { get; private set; }
 
         /// <summary>
-        /// When overridden in a derived class, sets the <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> with information about the exception.
+        /// When overridden in a derived class, sets the <see cref="T:System.Runtime.Serialization.SerializationInfo" /> with information about the exception.
         /// </summary>
-        /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> that holds the serialized object data about the exception being thrown.</param>
-        /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"></see> that contains contextual information about the source or destination.</param>
+        /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
+        /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
+        /// TODO Edit XML Comment Template for GetObjectData
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             base.GetObjectData(info, context);
@@ -126,7 +133,7 @@ namespace dotNetTips.Utility.Standard
         }
 
         /// <summary>
-        /// The has been logged
+        /// The exception has been logged
         /// </summary>
         private bool _hasBeenLogged;
 
@@ -134,6 +141,7 @@ namespace dotNetTips.Utility.Standard
         /// Gets or sets a value indicating whether this instance has been logged.
         /// </summary>
         /// <value><c>true</c> if this instance has been logged; otherwise, <c>false</c>.</value>
+        /// TODO Edit XML Comment Template for HasBeenLogged
         public bool HasBeenLogged
         {
             get
@@ -155,6 +163,7 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         /// <param name="ex">The ex.</param>
         /// <returns>System.String.</returns>
+        /// TODO Edit XML Comment Template for ReflectException
         private static string ReflectException(Exception ex)
         {
             var sb = new StringBuilder();
@@ -173,7 +182,9 @@ namespace dotNetTips.Utility.Standard
                 }
 
                 if ((objectValue != null) && (objectValue.ToString() != objectValue.GetType().FullName))
+                {
                     sb.AppendLine(string.Format(CultureInfo.CurrentCulture, "{0}: {1}", new object[] { current.Name, RuntimeHelpers.GetObjectValue(current) }));
+                }
             }
 
             return sb.ToString();

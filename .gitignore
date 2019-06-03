@@ -201,3 +201,7 @@ FakesAssemblies/
 /dotNetTips.Utility.Standard.iloprj
 /dotNetTips.iloprj
 /dotNetTips.Utility.Core.EntityFramework
+/dotNetTips.sln.ide
+/dotNetTips.Utility
+/dotNetTips.Utility.Core
+/dotNetTips.Utility.Portable

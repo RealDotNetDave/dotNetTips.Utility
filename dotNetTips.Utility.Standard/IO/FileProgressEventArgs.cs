@@ -4,9 +4,9 @@
 // Created          : 08-07-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-24-2018
+// Last Modified On : 05-31-2019
 // ***********************************************************************
-// <copyright file="ProgressEventArgs.cs" company="dotNetTips.com - David McCarter">
+// <copyright file="FileProgressEventArgs.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
@@ -24,10 +24,10 @@ namespace dotNetTips.Utility.Standard.IO
         /// <summary>
         /// Initializes a new instance of the <see cref="FileProgressEventArgs" /> class.
         /// </summary>
-        public FileProgressEventArgs() => Message = string.Empty;
+        public FileProgressEventArgs() => this.Message = string.Empty;
 
         /// <summary>
-        /// The message
+        /// Gets the file progres message
         /// </summary>
         /// <value>The message.</value>
         public string Message

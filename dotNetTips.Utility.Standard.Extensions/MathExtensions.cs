@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-24-2018
+// Last Modified On : 03-03-2019
 // ***********************************************************************
 // <copyright file="MathExtensions.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -81,7 +81,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="mode">The mode.</param>
         /// <returns>System.Int32.</returns>
         /// <exception cref="ArgumentNullException">value - Value is invalid.</exception>
-        /// <exception cref="System.ArgumentNullException">value</exception>
+        /// <exception cref="System.ArgumentNullException">value - Value is invalid.</exception>
         public static int Round(this decimal value, MidpointRounding mode)
         {
             if (value <= decimal.MinValue || value >= decimal.MaxValue)
@@ -100,7 +100,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="mode">The mode.</param>
         /// <returns>System.Int32.</returns>
         /// <exception cref="ArgumentNullException">value - Value is invalid.</exception>
-        /// <exception cref="System.ArgumentNullException">value</exception>
+        /// <exception cref="System.ArgumentNullException">value - Value is invalid.</exception>
         public static int Round(this decimal value, int digits, MidpointRounding mode)
         {
             if (value <= decimal.MinValue || value >= decimal.MaxValue)

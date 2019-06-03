@@ -4,9 +4,9 @@
 // Created          : 08-06-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-03-2019
+// Last Modified On : 05-31-2019
 // ***********************************************************************
-// <copyright file="Processor.cs" company="dotNetTips.com - David McCarter">
+// <copyright file="FileProcessor.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
@@ -153,8 +153,7 @@ namespace dotNetTips.Utility.Standard.IO
                             SpeedInMilliseconds = perf.TotalMilliseconds
                         });
                     }
-                    catch (Exception ex) when (ex is IOException || ex is SecurityException ||
-                      ex is UnauthorizedAccessException)
+                    catch (Exception ex) when (ex is IOException || ex is SecurityException || ex is UnauthorizedAccessException)
                     {
                         this.OnProcessed(new FileProgressEventArgs
                         {

@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-24-2018
+// Last Modified On : 05-28-2019
 // ***********************************************************************
 // <copyright file="Config.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -24,6 +24,11 @@ namespace dotNetTips.Utility.Standard
     public class Config<T> where T : class, new()
     {
         /// <summary>
+        /// The instance
+        /// </summary>
+        private static T _instance = new T();
+
+        /// <summary>
         /// Prevents a default instance of the <see cref="Config{T}" /> class from being created.
         /// </summary>
         protected Config()
@@ -40,6 +45,16 @@ namespace dotNetTips.Utility.Standard
         /// <value>The name of the configuration file.</value>
         [XmlIgnore]
         public string ConfigFileName { get; private set; }
+
+        /// <summary>
+        /// Returns instance for the object.
+        /// </summary>
+        /// <value>The instance.</value>
+        [XmlIgnore]
+        public T Instance
+        {
+            get { return _instance; }
+        }
 
         /// <summary>
         /// Loads this instance.
@@ -72,20 +87,5 @@ namespace dotNetTips.Utility.Standard
 
             return true;
         }
-
-        /// <summary>
-        /// Returns instance for the object.
-        /// </summary>
-        /// <value>The instance.</value>
-        [XmlIgnore]
-        public T Instance
-        {
-            get { return _instance; }
-        }
-
-        /// <summary>
-        /// The instance
-        /// </summary>
-        private static T _instance = new T();
     }
 }

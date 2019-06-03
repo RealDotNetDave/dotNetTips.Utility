@@ -102,9 +102,9 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="System.ArgumentNullException">list - Dictionary cannot be null.
         /// or
         /// key - Key cannot be null.</exception>
-        /// <exception cref="ArgumentException">value - value
+        /// <exception cref="ArgumentException">list - Dictionary cannot be null.
         /// or
-        /// key - key</exception>
+        /// key - Key cannot be null.</exception>
         /// <remarks>Code by: Lucas</remarks>
         public static void AddRange<T, TKey, TValue>(this IDictionary<TKey, TValue> list, IEnumerable<T> items, Func<T, TKey> key, Func<T, TValue> value)
         {
@@ -202,7 +202,9 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="System.ArgumentNullException">source
         /// or
         /// source</exception>
-        /// <exception cref="Exception">predicate</exception>
+        /// <exception cref="Exception">source
+        /// or
+        /// source</exception>
         public static int FastCount<T>(this IEnumerable<T> source, Func<T, bool> predicate)
         {
             if (predicate == null)
