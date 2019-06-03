@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-23-2019
+// Last Modified On : 06-03-2019
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -29,12 +29,13 @@ namespace dotNetTips.Utility.Standard.IO
     /// <summary>
     /// Class DirectoryHelper.
     /// </summary>
+    /// TODO Edit XML Comment Template for DirectoryHelper
     public static class DirectoryHelper
     {
         /// <summary>
         /// Applications the application data folder for Windows and Mac.
         /// </summary>
-        /// <returns>System.String.</returns>
+        /// <returns>Application data folder.</returns>
         public static string AppDataFolder()
         {
             var userPath = Environment.GetEnvironmentVariable(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "LOCALAPPDATA" : "Home");
@@ -86,18 +87,38 @@ namespace dotNetTips.Utility.Standard.IO
             }
         }
 
-        /// <summary>Deletes the directory with retry.</summary>
+        /// <summary>
+        /// Deletes the directory.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// TODO Edit XML Comment Template for DeleteDirectory
+        public static void DeleteDirectory(string path)
+        {
+            DeleteDirectory(path, 1);
+        }
+
+        /// <summary>
+        /// Deletes the directory with retry.
+        /// </summary>
         /// <param name="path">The path.</param>
         /// <param name="retries">Number of retries.</param>
+        /// <remarks>Checks for the <see cref="IOException" /> and <see cref="UnauthorizedAccessException" />.</remarks>
         public static void DeleteDirectory(string path, int retries = 10)
         {
-            retries = Math.Max(1, retries);
+            Encapsulation.TryValidateParam(path, nameof(path));
+            Encapsulation.TryValidateParam<ArgumentInvalidException>(Directory.Exists(path));
 
-            for (var retryCount = 0; retryCount < retries; retryCount++)
+            retries = Math.Max(1, retries);
+            var tries = 0;
+
+            do
             {
-                if (!Directory.Exists(path))
+                tries++;
+
+                if (tries > 1)
                 {
-                    return;
+                    // If something has a transient lock on the file waiting may resolve the issue
+                    Thread.Sleep((retries + 1) * 10);
                 }
 
                 try
@@ -109,16 +130,16 @@ namespace dotNetTips.Utility.Standard.IO
 
                     return;
                 }
-                catch (IOException) when (retryCount < retries - 1)
+                catch (IOException) when (tries >= retries)
                 {
+                    throw;
                 }
-                catch (UnauthorizedAccessException) when (retryCount < retries - 1)
+                catch (UnauthorizedAccessException) when (tries >= retries)
                 {
+                    throw;
                 }
-
-                // If something has a transient lock on the file waiting may resolve the issue
-                Thread.Sleep((retryCount + 1) * 10);
             }
+            while (retries > tries);
         }
 
         /// <summary>
@@ -151,6 +172,7 @@ namespace dotNetTips.Utility.Standard.IO
         /// <param name="searchPattern">The search pattern.</param>
         /// <param name="searchOption">The search option.</param>
         /// <returns>IEnumerable&lt;FileInfo&gt;.</returns>
+        /// TODO Edit XML Comment Template for LoadFiles
         public static IEnumerable<FileInfo> LoadFiles(string path, string searchPattern, SearchOption searchOption)
         {
             return LoadFiles(new List<DirectoryInfo> { new DirectoryInfo(path) }, searchPattern, searchOption);
@@ -163,6 +185,7 @@ namespace dotNetTips.Utility.Standard.IO
         /// <param name="searchPattern">The search pattern.</param>
         /// <param name="searchOption">The search option.</param>
         /// <returns>IEnumerable&lt;FileInfo&gt;.</returns>
+        /// TODO Edit XML Comment Template for LoadFiles
         public static IEnumerable<FileInfo> LoadFiles(DirectoryInfo directory, string searchPattern, SearchOption searchOption)
         {
             return LoadFiles(new List<DirectoryInfo> { directory }, searchPattern, searchOption);
@@ -181,7 +204,7 @@ namespace dotNetTips.Utility.Standard.IO
 
             foreach (var directory in directories)
             {
-                if ((directory.Exists))
+                if (directory.Exists)
                 {
                     var foundFiles = directory.EnumerateFiles(searchPattern, searchOption);
 
@@ -191,12 +214,12 @@ namespace dotNetTips.Utility.Standard.IO
 
             return files.Distinct().AsEnumerable();
         }
+
         /// <summary>
         /// Loads the one drive folders.
         /// </summary>
         /// <returns>IEnumerable&lt;OneDriveFolder&gt;.</returns>
-        /// <exception cref="PlatformNotSupportedException"></exception>
-        /// <exception cref="System.PlatformNotSupportedException"></exception>
+        /// <exception cref="PlatformNotSupportedException">The method only supports Windows.</exception>
         public static IEnumerable<OneDriveFolder> LoadOneDriveFolders()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) == false)
@@ -215,14 +238,14 @@ namespace dotNetTips.Utility.Standard.IO
 
             if (oneDriveKey.IsNotNull())
             {
-                //Get Accounts
+                // Get Accounts
                 var accountKey = oneDriveKey.GetSubKey(AccountsKey);
 
                 if (accountKey.IsNotNull() && accountKey.SubKeyCount > 0)
                 {
-                    foreach (var subKeyName in accountKey.GetSubKeyNames())
+                    for (var subKeyCount = 0; subKeyCount < accountKey.GetSubKeyNames().Length; subKeyCount++)
                     {
-                        var key = accountKey.GetSubKey(subKeyName);
+                        var key = accountKey.GetSubKey(accountKey.GetSubKeyNames()[subKeyCount]);
 
                         var folder = new OneDriveFolder();
                         var directoryValue = key.GetValue<string>(UserFolderKey);
@@ -238,7 +261,7 @@ namespace dotNetTips.Utility.Standard.IO
                                 folder.UserEmail = emailValue;
                             }
 
-                            //Figure out account type                           
+                            // Figure out account type                           
                             var name = key.GetValue<string>(DisplayNameKey);
 
                             if (name.HasValue())
@@ -263,22 +286,41 @@ namespace dotNetTips.Utility.Standard.IO
             return folders.AsEnumerable();
         }
 
-        /// <summary>Moves the directory.</summary>
+        /// <summary>
+        /// Moves the directory.
+        /// </summary>
+        /// <param name="sourceDirectoryName">Name of the source directory.</param>
+        /// <param name="destinationDirectoryName">Name of the destination directory.</param>
+        /// TODO Edit XML Comment Template for MoveDirectory
+        public static void MoveDirectory(string sourceDirectoryName, string destinationDirectoryName)
+        {
+            MoveDirectory(sourceDirectoryName, destinationDirectoryName, 1);
+        }
+
+        /// <summary>
+        /// Moves the directory with retry.
+        /// </summary>
         /// <param name="sourceDirectoryName">Name of the source dir.</param>
-        /// <param name="destinationDirectoryName">Name of the dest dir.</param>
+        /// <param name="destinationDirectoryName">Name of the destination dir.</param>
         /// <param name="retries">Number of retries.</param>
+        /// <remarks>Checks for the <see cref="IOException" /> and <see cref="UnauthorizedAccessException" />.</remarks>
         public static void MoveDirectory(string sourceDirectoryName, string destinationDirectoryName, int retries = 10)
         {
             Encapsulation.TryValidateParam(sourceDirectoryName, nameof(sourceDirectoryName));
             Encapsulation.TryValidateParam(destinationDirectoryName, nameof(destinationDirectoryName));
+            Encapsulation.TryValidateParam<ArgumentInvalidException>(Directory.Exists(sourceDirectoryName));
 
             retries = Math.Max(1, retries);
+            var tries = 0;
 
-            for (var retryCount = 0; retryCount < retries; retryCount++)
+            do
             {
-                if (!Directory.Exists(sourceDirectoryName) && Directory.Exists(destinationDirectoryName))
+                tries++;
+
+                if (tries > 1)
                 {
-                    return;
+                    // If something has a transient lock on the file waiting may resolve the issue
+                    Thread.Sleep((retries + 1) * 10);
                 }
 
                 try
@@ -286,19 +328,21 @@ namespace dotNetTips.Utility.Standard.IO
                     Directory.Move(sourceDirectoryName, destinationDirectoryName);
                     return;
                 }
-                catch (IOException) when (retryCount < retries - 1)
+                catch (IOException) when (tries >= retries)
                 {
+                    throw;
                 }
-                catch (UnauthorizedAccessException) when (retryCount < retries - 1)
+                catch (UnauthorizedAccessException) when (tries >= retries)
                 {
+                    throw;
                 }
-
-                // If something has a transient lock on the file waiting may resolve the issue
-                Thread.Sleep((retryCount + 1) * 10);
             }
+            while (tries < retries);
         }
 
-        /// <summary>Safe directory search.</summary>
+        /// <summary>
+        /// Safe directory search.
+        /// </summary>
         /// <param name="rootDirectory">The root directory.</param>
         /// <param name="searchPattern">The search pattern.</param>
         /// <param name="searchOption">All or Top Directory Only</param>
@@ -312,11 +356,11 @@ namespace dotNetTips.Utility.Standard.IO
                 rootDirectory
             };
 
-            foreach (var topFolder in rootDirectory.GetDirectories(searchPattern, searchOption))
+            for (int i = 0; i < rootDirectory.GetDirectories(searchPattern, searchOption).Length; i++)
             {
                 try
                 {
-                    folders.AddRange(SafeDirectorySearch(topFolder, searchPattern));
+                    folders.AddRange(SafeDirectorySearch(rootDirectory.GetDirectories(searchPattern, searchOption)[i], searchPattern));
                 }
                 catch (UnauthorizedAccessException ex)
                 {

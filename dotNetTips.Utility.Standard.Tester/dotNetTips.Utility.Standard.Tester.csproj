@@ -16,8 +16,8 @@
     <PackageReleaseNotes>-- JAN 2019: Initial release.
 -- JUNE 2019: Quarterly Release</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>2019.6.3.33867</AssemblyVersion>
-    <FileVersion>2019.6.3.33867</FileVersion>
+    <AssemblyVersion>2019.6.3.33871</AssemblyVersion>
+    <FileVersion>2019.6.3.33871</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

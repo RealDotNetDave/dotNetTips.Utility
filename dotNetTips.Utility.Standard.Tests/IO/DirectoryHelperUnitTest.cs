@@ -48,15 +48,40 @@ namespace dotNetTips.Tips.Utility.Standard.Tests.IO
         [TestMethod]
         public void CopyAndDeleteDirectoryTest()
         {
+            var destinationPath = Path.Combine(this._tempPath.FullName, nameof(CopyAndDeleteDirectoryTest));
+
             try
             {
                 var folderToCopy = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)).GetDirectories().Randomize().FirstOrDefault();
 
-                DirectoryHelper.CopyDirectory(folderToCopy.FullName, this._tempPath.FullName, true);
+                DirectoryHelper.CopyDirectory(folderToCopy.FullName, destinationPath, false);
+                DirectoryHelper.DeleteDirectory(destinationPath, 5);
             }
             catch (Exception ex)
             {
                 Assert.Fail(ex.Message);
+            }
+        }
+
+        [TestMethod]
+        public void CopyAndMoveDirectoryTest()
+        {
+            var destinationPath = Path.Combine(this._tempPath.FullName, nameof(CopyAndMoveDirectoryTest));
+
+            try
+            {
+                var folderToCopy = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)).GetDirectories().Randomize().FirstOrDefault();
+
+                DirectoryHelper.CopyDirectory(folderToCopy.FullName, this._tempPath.FullName, false);
+                DirectoryHelper.MoveDirectory(folderToCopy.FullName, destinationPath, 5);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
+            finally
+            {
+                DirectoryHelper.DeleteDirectory(destinationPath);
             }
         }
 
