@@ -60,13 +60,11 @@ namespace dotNetTips.Utility.Standard.Serialization
 
             using (var ms = new MemoryStream())
             {
-                var ser = new DataContractJsonSerializer(
-                    type: obj.GetType(),
-                    settings: new DataContractJsonSerializerSettings        { SerializeReadOnlyTypes = true, UseSimpleDictionaryFormat = true, EmitTypeInformation = EmitTypeInformation.AsNeeded });
+                var ser = new DataContractJsonSerializer(type: obj.GetType());
 
                 ser.WriteObject(ms, obj);
-
-                json = Encoding.UTF8.GetString(ms.ToArray());
+                ms.Flush();
+                json = Encoding.UTF8.GetString(ms.ToArray(),0,ms.ToArray().Length);
             }
 
             return json;

@@ -4,7 +4,7 @@
 // Created          : 12-14-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-03-2019
+// Last Modified On : 08-30-2019
 // ***********************************************************************
 // <copyright file="DistinctConcurrentBag.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using dotNetTips.Utility.Standard.OOP;
 
 namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
@@ -24,6 +25,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <seealso cref="System.Collections.Concurrent.ConcurrentBag{T}" />
+    [DebuggerDisplay("Count = {Count}")]
     public class DistinctConcurrentBag<T> : ConcurrentBag<T>
     {
         /// <summary>
@@ -59,7 +61,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         }
 
         /// <summary>
-        /// Adds an object to the <see cref="T:System.Collections.Concurrent.ConcurrentBag`1"></see>.
+        /// Adds an object to the <see cref="T:System.Collections.Concurrent.ConcurrentBag"></see>.
         /// </summary>
         /// <param name="item">The object to be added to the <see cref="T:System.Collections.Concurrent.ConcurrentBag`1"></see>. The value can be a null reference (Nothing in Visual Basic) for reference types.</param>
         public new void Add(T item)

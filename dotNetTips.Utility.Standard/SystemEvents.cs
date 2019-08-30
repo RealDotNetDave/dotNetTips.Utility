@@ -4,7 +4,7 @@
 // Created          : 07-09-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-03-2019
+// Last Modified On : 07-30-2019
 // ***********************************************************************
 // <copyright file="SystemEvents.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -22,11 +22,13 @@ namespace dotNetTips.Utility.Standard
     /// <summary>
     /// Class SystemEvents.
     /// </summary>
+    /// TODO Edit XML Comment Template for SystemEvents
     public static partial class SystemEvents
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SystemEvents" /> class.
         /// </summary>
+        /// TODO Edit XML Comment Template for #ctor
         static SystemEvents()
         {
             NetworkChange.NetworkAddressChanged += new NetworkAddressChangedEventHandler(NetworkAddressChangedCallback);
@@ -41,6 +43,7 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs" /> instance containing the event data.</param>
+        /// TODO Edit XML Comment Template for CurrentDomain_FirstChanceException
         private static void CurrentDomain_FirstChanceException(object sender, System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs e)
         {
             
@@ -51,6 +54,7 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
+        /// TODO Edit XML Comment Template for CurrentDomain_ProcessExit
         private static void CurrentDomain_ProcessExit(object sender, EventArgs e)
         {
            
@@ -61,6 +65,7 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="UnhandledExceptionEventArgs" /> instance containing the event data.</param>
+        /// TODO Edit XML Comment Template for CurrentDomain_UnhandledException
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             var eventArgs = new SystemChangedEventArgs { SystemEventType = SystemEventType.UnhandledException };
@@ -77,6 +82,7 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="NetworkAvailabilityEventArgs" /> instance containing the event data.</param>
+        /// TODO Edit XML Comment Template for NetworkChange_NetworkAvailabilityChanged
         private static void NetworkChange_NetworkAvailabilityChanged(object sender, NetworkAvailabilityEventArgs e)
         {
             var eventInfo = new List<NetworkAvailabilityChangedEventInformation>(1)
@@ -96,23 +102,19 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
+        /// TODO Edit XML Comment Template for NetworkAddressChangedCallback
         private static void NetworkAddressChangedCallback(object sender, EventArgs e)
         {
             var adapters = NetworkInterface.GetAllNetworkInterfaces();
 
             var eventInfo = new List<NetworkAddressChangedEventInformation>(adapters.Count());
 
-            foreach (NetworkInterface adapter in adapters)
+            eventInfo.AddRange(adapters.Select(adapter => new NetworkAddressChangedEventInformation
             {
-                var networkEvent = new NetworkAddressChangedEventInformation
-                {
-                    Id = adapter.Id,
-                    Name = adapter.Name,
-                    OperationalStatus = adapter.OperationalStatus
-                };
-
-                eventInfo.Add(networkEvent);
-            }
+                Id = adapter.Id,
+                Name = adapter.Name,
+                OperationalStatus = adapter.OperationalStatus
+            }));
 
             eventInfo.TrimExcess();
 
@@ -128,12 +130,14 @@ namespace dotNetTips.Utility.Standard
         /// <summary>
         /// Occurs when [system changed].
         /// </summary>
+        /// TODO Edit XML Comment Template for SystemChanged
         public static event EventHandler<SystemChangedEventArgs> SystemChanged;
 
         /// <summary>
         /// Handles the <see cref="E:SystemChanged" /> event.
         /// </summary>
         /// <param name="e">The <see cref="SystemChangedEventArgs" /> instance containing the event data.</param>
+        /// TODO Edit XML Comment Template for OnSystemChanged
         private static void OnSystemChanged(SystemChangedEventArgs e) => SystemChanged?.Invoke(AppDomain.CurrentDomain, e);
 
     }

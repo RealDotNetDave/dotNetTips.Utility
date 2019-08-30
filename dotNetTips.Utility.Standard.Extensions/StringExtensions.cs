@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-03-2019
+// Last Modified On : 07-30-2019
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -23,6 +23,7 @@ namespace dotNetTips.Utility.Standard.Extensions
     /// <summary>
     /// Class StringExtensions.
     /// </summary>
+    /// TODO Edit XML Comment Template for StringExtensions
     public static class StringExtensions
     {
         /// <summary>
@@ -54,13 +55,14 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// </summary>
         /// <param name="input">The input.</param>
         /// <returns>System.String.</returns>
-        public static string ToStringTrimmed(this string input) => input.Trim();
+        public static string ToTrimmedString(this string input) => input.Trim();
 
         /// <summary>
         /// Computes the sha256 hash.
         /// </summary>
         /// <param name="data">The data.</param>
         /// <returns>System.String.</returns>
+        /// TODO Edit XML Comment Template for ComputeSha256Hash
         public static string ComputeSha256Hash(this string data)
         {
             // Create a SHA256   
@@ -72,8 +74,9 @@ namespace dotNetTips.Utility.Standard.Extensions
                 // Convert byte array to a string   
                 var builder = new StringBuilder();
 
-                foreach (byte byteItem in bytes)
+                for (var byteCount = 0; byteCount < bytes.Length; byteCount++)
                 {
+                    var byteItem = bytes[byteCount];
                     builder.Append(byteItem.ToString("x2", CultureInfo.InvariantCulture));
                 }
 
@@ -102,6 +105,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="value">The value.</param>
         /// <param name="defaultValue">The default value.</param>
         /// <returns>System.String.</returns>
+        /// TODO Edit XML Comment Template for DefaultIfNullOrEmpty
         public static string DefaultIfNullOrEmpty(this string value, string defaultValue) => string.IsNullOrEmpty(value) ? value : defaultValue;
 
         /// <summary>
@@ -123,8 +127,9 @@ namespace dotNetTips.Utility.Standard.Extensions
 
             if (args != null && args.Any())
             {
-                foreach (var value in args)
+                for (var argCount = 0; argCount < args.Length; argCount++)
                 {
+                    var value = args[argCount];
                     if (addLineFeed)
                     {
                         sb.AppendLine(value);

@@ -96,8 +96,10 @@ namespace dotNetTips.Tips.Utility.Standard.Tests.IO
             }
             else
             {
-                foreach (var directory in this._tempPath.EnumerateDirectories().ToArray())
+                var array = this._tempPath.EnumerateDirectories().ToArray();
+                for (var i = 0; i < array.Length; i++)
                 {
+                    var directory = array[i];
                     directory.Delete();
                 }
 

@@ -11,7 +11,7 @@
           </SoftwareWatermark>
         </NineRays.ILOMD.Options.Options>
       </ObfuscationOptions>
-      <Name>UtilityBin\netcoreapp2.0\</Name>
+      <Name>..\OutputBin\netcoreapp2.0\</Name>
     </NineRays.ILOMD.Options.AssemblyFileName>
   </AssemblyList>
   <SaveToDirectory>.\Spices_output</SaveToDirectory>

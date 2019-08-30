@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-31-2019
+// Last Modified On : 07-15-2019
 // ***********************************************************************
 // <copyright file="FastSortedList.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -29,7 +29,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic
     public class FastSortedList<T> : List<T>, ICloneable<T>
     {
         /// <summary>
-        /// The sorted
+        /// True or False if the list has been sorted.
         /// </summary>
         private bool _sorted;
 
@@ -41,9 +41,19 @@ namespace dotNetTips.Utility.Standard.Collections.Generic
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="FastSortedList{T}"/> class.
+        /// </summary>
+        /// <param name="collection">The collection whose elements are copied to the new list.</param>
+        /// TODO Edit XML Comment Template for #ctor
+        public FastSortedList(IEnumerable<T> collection) : base(collection)
+        {
+        }
+
+        /// <summary>
         /// Adds an object to the end of the <see cref="T:System.Collections.Generic.List`1"></see>.
         /// </summary>
         /// <param name="item">The object to be added to the end of the <see cref="T:System.Collections.Generic.List`1"></see>. The value can be null for reference types.</param>
+        /// TODO Edit XML Comment Template for Add
         public new void Add(T item)
         {
             base.Add(item);
@@ -55,6 +65,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic
         /// Adds the range.
         /// </summary>
         /// <param name="items">The items.</param>
+        /// TODO Edit XML Comment Template for AddRange
         public new void AddRange(IEnumerable<T> items)
         {
             base.AddRange(items);
@@ -66,12 +77,14 @@ namespace dotNetTips.Utility.Standard.Collections.Generic
         /// Cones this instance.
         /// </summary>
         /// <returns>T.</returns>
+        /// TODO Edit XML Comment Template for Cone
         public T Cone() => this.Clone<T>();
 
         /// <summary>
         /// Returns an enumerator that iterates through the <see cref="T:System.Collections.Generic.List`1"></see>.
         /// </summary>
         /// <returns>A <see cref="T:System.Collections.Generic.List`1.Enumerator"></see> for the <see cref="T:System.Collections.Generic.List`1"></see>.</returns>
+        /// TODO Edit XML Comment Template for GetEnumerator
         public new Enumerator GetEnumerator()
         {
             this.SortCollection();
@@ -83,6 +96,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic
         /// Copies the elements of the <see cref="T:System.Collections.Generic.List`1"></see> to a new array.
         /// </summary>
         /// <returns>An array containing copies of the elements of the <see cref="T:System.Collections.Generic.List`1"></see>.</returns>
+        /// TODO Edit XML Comment Template for ToArray
         public new T[] ToArray()
         {
             this.SortCollection();
@@ -112,6 +126,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic
         /// <summary>
         /// Sorts the collection.
         /// </summary>
+        /// TODO Edit XML Comment Template for SortCollection
         private void SortCollection()
         {
             if (this._sorted == false)

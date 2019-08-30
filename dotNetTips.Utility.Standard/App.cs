@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-31-2019
+// Last Modified On : 06-20-2019
 // ***********************************************************************
 // <copyright file="App.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -39,6 +39,7 @@ namespace dotNetTips.Utility.Standard
         /// <summary>
         /// The application information
         /// </summary>
+        /// TODO Edit XML Comment Template for appInfo
         private static AppInfo appInfo;
 
         /// <summary>
@@ -69,6 +70,7 @@ namespace dotNetTips.Utility.Standard
         /// Gets the installed UI culture.
         /// </summary>
         /// <value>The installed UI culture.</value>
+        /// TODO Edit XML Comment Template for InstalledUICulture
         public static CultureInfo InstalledUICulture => CultureInfo.InstalledUICulture;
 
         /// <summary>
@@ -93,18 +95,21 @@ namespace dotNetTips.Utility.Standard
         /// Gets the stack trace.
         /// </summary>
         /// <value>The stack trace.</value>
+        /// TODO Edit XML Comment Template for StackTrace
         public static string StackTrace => Environment.StackTrace;
 
         /// <summary>
         /// Gets the working set.
         /// </summary>
         /// <value>The working set.</value>
+        /// TODO Edit XML Comment Template for WorkingSet
         public static long WorkingSet => Environment.WorkingSet;
 
         /// <summary>
         /// Changes the culture.
         /// </summary>
         /// <param name="cultureName">Name of the culture.</param>
+        /// TODO Edit XML Comment Template for ChangeCulture
         public static void ChangeCulture(string cultureName)
         {
             CultureInfo.CurrentCulture = new CultureInfo(cultureName);
@@ -114,6 +119,7 @@ namespace dotNetTips.Utility.Standard
         /// Changes the UI culture.
         /// </summary>
         /// <param name="cultureName">Name of the culture.</param>
+        /// TODO Edit XML Comment Template for ChangeUICulture
         public static void ChangeUICulture(string cultureName)
         {
             CultureInfo.CurrentUICulture = new CultureInfo(cultureName);
@@ -123,6 +129,7 @@ namespace dotNetTips.Utility.Standard
         /// Gets the environment variables.
         /// </summary>
         /// <returns>IImmutableDictionary&lt;System.String, System.String&gt;.</returns>
+        /// TODO Edit XML Comment Template for GetEnvironmentVariables
         public static IImmutableDictionary<string, string> GetEnvironmentVariables()
         {
             var variables = Environment.GetEnvironmentVariables();
@@ -191,16 +198,16 @@ namespace dotNetTips.Utility.Standard
         /// Loads a list of the running assembly referenced assemblies.
         /// </summary>
         /// <returns>IEnumerable(Of System.String).</returns>
-        public static IEnumerable<string> ReferencedAssemblies()
+        public static ImmutableList<string> ReferencedAssemblies()
         {
             var referencedAssemblies = new List<string>();
 
-            foreach (var assembly in Assembly.GetEntryAssembly().GetReferencedAssemblies())
+            for (int assemblyCount = 0; assemblyCount < Assembly.GetEntryAssembly().GetReferencedAssemblies().Length; assemblyCount++)
             {
-                referencedAssemblies.Add(assembly.ToString());
+                referencedAssemblies.Add(Assembly.GetEntryAssembly().GetReferencedAssemblies()[assemblyCount].ToString());
             }
 
-            return referencedAssemblies.AsEnumerable();
+            return referencedAssemblies.ToImmutable();
         }
 
         /// <summary>
@@ -231,12 +238,19 @@ namespace dotNetTips.Utility.Standard
                 var assembly = Assembly.GetEntryAssembly();
 
                 appInfo.Company = assembly.GetCustomAttributes<AssemblyCompanyAttribute>().FirstOrDefault()?.Company;
+
                 appInfo.Configuration = assembly.GetCustomAttributes<AssemblyConfigurationAttribute>().FirstOrDefault()?.Configuration;
+
                 appInfo.Copyright = assembly.GetCustomAttributes<AssemblyCopyrightAttribute>().FirstOrDefault()?.Copyright;
+
                 appInfo.Description = assembly.GetCustomAttributes<AssemblyDescriptionAttribute>().FirstOrDefault()?.Description;
+
                 appInfo.FileVersion = assembly.GetCustomAttributes<AssemblyFileVersionAttribute>().FirstOrDefault()?.Version;
+
                 appInfo.Version = assembly.GetCustomAttributes<AssemblyInformationalVersionAttribute>().FirstOrDefault()?.InformationalVersion;
+
                 appInfo.Product = assembly.GetCustomAttributes<AssemblyProductAttribute>().FirstOrDefault()?.Product;
+
                 appInfo.Title = assembly.GetCustomAttributes<AssemblyTitleAttribute>().FirstOrDefault()?.Title;
             }
 

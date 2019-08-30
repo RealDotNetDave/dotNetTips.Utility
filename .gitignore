@@ -205,3 +205,5 @@ FakesAssemblies/
 /dotNetTips.Utility
 /dotNetTips.Utility.Core
 /dotNetTips.Utility.Portable
+/Benchmarks/dotNetTips.Utility.Benchmarks
+/OutputBin

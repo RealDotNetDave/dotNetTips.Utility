@@ -4,7 +4,7 @@
 // Created          : 08-06-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-31-2019
+// Last Modified On : 07-30-2019
 // ***********************************************************************
 // <copyright file="FileProcessor.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -37,6 +37,7 @@ namespace dotNetTips.Utility.Standard.IO
         /// Handles the <see cref="E:Processed" /> event.
         /// </summary>
         /// <param name="e">The <see cref="FileProgressEventArgs" /> instance containing the event data.</param>
+        /// TODO Edit XML Comment Template for OnProcessed
         protected virtual void OnProcessed(FileProgressEventArgs e) => Processed?.Invoke(this, e);
 
         /// <summary>
@@ -129,7 +130,7 @@ namespace dotNetTips.Utility.Standard.IO
 
             var successCount = 0;
 
-            foreach (var tempFile in files.AsParallel())
+            foreach (var tempFile in files)
             {
                 if (tempFile.Exists)
                 {
@@ -184,13 +185,14 @@ namespace dotNetTips.Utility.Standard.IO
         /// </summary>
         /// <param name="folders">The folders.</param>
         /// <returns>System.Int32.</returns>
+        /// TODO Edit XML Comment Template for DeleteFolders
         public int DeleteFolders(IEnumerable<DirectoryInfo> folders)
         {
             Encapsulation.TryValidateParam(folders, nameof(folders));
 
             var successCount = 0;
 
-            foreach (var tempFolder in folders.AsParallel())
+            foreach (var tempFolder in folders)
             {
                 if (tempFolder.Exists)
                 {

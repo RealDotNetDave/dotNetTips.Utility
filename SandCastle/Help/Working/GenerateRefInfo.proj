@@ -17,7 +17,7 @@
   </PropertyGroup>
   <!-- The common targets require OutputPath to be valid -->
   <PropertyGroup>
-    <OutputPath>.\</OutputPath>
+   <OutputPath>..\OutputBin\</OutputPath>
   </PropertyGroup>
   <!-- Import the common targets -->
   <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />

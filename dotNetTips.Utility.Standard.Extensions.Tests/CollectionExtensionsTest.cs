@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 using System.Collections.Generic;
+using System.Diagnostics;
 using dotNetTips.Utility.Standard.Tester.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -35,7 +36,7 @@ namespace dotNetTips.Utility.Standard.Extensions.Tests
             Assert.IsTrue(people.FastAny(p => p.Age >= 1));
 
             //Test Finding Age not in collection
-            Assert.IsFalse(people.FastAny(p => p.Age == 100000));
+            Assert.IsFalse(people.FastAny(p => p.Age > 100));
         }
 
         /// <summary>
@@ -50,7 +51,7 @@ namespace dotNetTips.Utility.Standard.Extensions.Tests
             Assert.IsTrue(people.FastCount(p => p.Age >= 1) > 0);
 
             //Test Finding Age not in collection
-            Assert.IsTrue(people.FastCount(p => p.Age == 100000) == 0);
+            Assert.IsTrue(people.FastCount(p => p.Age > 100) == 0);
         }
 
         /// <summary>
@@ -72,6 +73,8 @@ namespace dotNetTips.Utility.Standard.Extensions.Tests
                 };
 
                 people.Add(person);
+
+                Debug.WriteLine(person.Age);
             }
 
             return people;

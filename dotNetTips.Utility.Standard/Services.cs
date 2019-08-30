@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-03-2019
+// Last Modified On : 07-30-2019
 // ***********************************************************************
 // <copyright file="Services.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -23,6 +23,7 @@ namespace dotNetTips.Utility.Standard
     /// <summary>
     /// Class Services.
     /// </summary>
+    /// TODO Edit XML Comment Template for Services
     public static class Services
     {
         /// <summary>
@@ -30,6 +31,7 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         /// <param name="serviceName">Name of the service.</param>
         /// <returns>ServiceController.</returns>
+        /// TODO Edit XML Comment Template for LoadService
         private static ServiceController LoadService(string serviceName) => ServiceController.GetServices()
             .FirstOrDefault(p => p.ServiceName == serviceName);
 
@@ -37,6 +39,7 @@ namespace dotNetTips.Utility.Standard
         /// Alls the services.
         /// </summary>
         /// <returns>IEnumerable&lt;System.String&gt;.</returns>
+        /// TODO Edit XML Comment Template for AllServices
         public static IEnumerable<string> AllServices() => ServiceController.GetServices()
             .Select(p => p.ServiceName)
             .AsEnumerable();
@@ -46,6 +49,7 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         /// <param name="serviceName">Name of the service.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        /// TODO Edit XML Comment Template for ServiceExists
         public static bool ServiceExists(string serviceName)
         {
             var service = LoadService(serviceName);
@@ -59,7 +63,7 @@ namespace dotNetTips.Utility.Standard
         /// <param name="serviceName">Name of the service.</param>
         /// <returns>ServiceControllerStatus.</returns>
         /// <exception cref="InvalidOperationException">Service not found.</exception>
-        /// <exception cref="System.InvalidOperationException"></exception>
+        /// <exception cref="System.InvalidOperationException">Service not found.</exception>
         public static ServiceControllerStatus ServiceStatus(string serviceName)
         {
             var service = LoadService(serviceName);
@@ -72,18 +76,19 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         /// <param name="serviceName">Name of the service.</param>
         /// <returns>ServiceActionResult.</returns>
+        /// TODO Edit XML Comment Template for StartService
         public static ServiceActionResult StartService(string serviceName)
         {
             var statusResult = ServiceActionResult.Error;
 
-            if(ServiceExists(serviceName) == false)
+            if (ServiceExists(serviceName) == false)
             {
                 return ServiceActionResult.NotFound;
             }
 
             var service = LoadService(serviceName);
 
-            if((service != null && service.Status == ServiceControllerStatus.Stopped))
+            if ((service != null && service.Status == ServiceControllerStatus.Stopped))
             {
                 service.Start();
                 statusResult = ServiceActionResult.Running;
@@ -96,11 +101,12 @@ namespace dotNetTips.Utility.Standard
         /// Starts the services.
         /// </summary>
         /// <param name="requests">The requests.</param>
+        /// TODO Edit XML Comment Template for StartServices
         public static void StartServices(IEnumerable<ServiceAction> requests)
         {
             Encapsulation.TryValidateParam(requests, nameof(requests));
 
-            foreach(var request in requests)
+            foreach (var request in requests)
             {
                 request.ServiceActionResult = StartService(request.ServiceName);
             }
@@ -110,16 +116,18 @@ namespace dotNetTips.Utility.Standard
         /// Starts the stop services.
         /// </summary>
         /// <param name="requests">The requests.</param>
+        /// TODO Edit XML Comment Template for StartStopServices
         public static void StartStopServices(IEnumerable<ServiceAction> requests)
         {
             Encapsulation.TryValidateParam(requests, nameof(requests));
 
-            foreach(var request in requests)
+            foreach (var request in requests)
             {
-                if(request.ServiceActionRequest == ServiceActionRequest.Start)
+                if (request.ServiceActionRequest == ServiceActionRequest.Start)
                 {
                     request.ServiceActionResult = StartService(request.ServiceName);
-                } else if(request.ServiceActionRequest == ServiceActionRequest.Stop)
+                }
+                else if (request.ServiceActionRequest == ServiceActionRequest.Stop)
                 {
                     request.ServiceActionResult = StopService(request.ServiceName);
                 }
@@ -131,18 +139,19 @@ namespace dotNetTips.Utility.Standard
         /// </summary>
         /// <param name="serviceName">Name of the service.</param>
         /// <returns>ServiceActionResult.</returns>
+        /// TODO Edit XML Comment Template for StopService
         public static ServiceActionResult StopService(string serviceName)
         {
             var statusResult = ServiceActionResult.NotFound;
 
-            if(ServiceExists(serviceName) == false)
+            if (ServiceExists(serviceName) == false)
             {
                 return statusResult;
             }
 
             var service = LoadService(serviceName);
 
-            if((service != null && service.Status == ServiceControllerStatus.Running))
+            if ((service != null && service.Status == ServiceControllerStatus.Running))
             {
                 service.Stop();
                 statusResult = ServiceActionResult.Stopped;
@@ -155,11 +164,12 @@ namespace dotNetTips.Utility.Standard
         /// Stops the services.
         /// </summary>
         /// <param name="requests">The requests.</param>
+        /// TODO Edit XML Comment Template for StopServices
         public static void StopServices(IEnumerable<ServiceAction> requests)
         {
             Encapsulation.TryValidateParam(requests, nameof(requests));
 
-            foreach(var request in requests)
+            foreach (var request in requests)
             {
                 request.ServiceActionResult = StopService(request.ServiceName);
             }

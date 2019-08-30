@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-03-2019
+// Last Modified On : 07-30-2019
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -123,7 +123,7 @@ namespace dotNetTips.Utility.Standard.IO
 
                 try
                 {
-                    // On some systems, directories/files created programmatically are created with attributes
+                    // On some systems, directories/files created are created with attributes
                     // that prevent them from being deleted. Set those attributes to be normal
                     SetAttributesNormal(path);
                     Directory.Delete(path, true);
@@ -202,14 +202,9 @@ namespace dotNetTips.Utility.Standard.IO
         {
             var files = new List<FileInfo>();
 
-            foreach (var directory in directories)
+            foreach (var directory in directories.Where(directory => directory.Exists).Select(directory => directory))
             {
-                if (directory.Exists)
-                {
-                    var foundFiles = directory.EnumerateFiles(searchPattern, searchOption);
-
-                    files.AddRange(foundFiles);
-                }
+                files.AddRange(directory.EnumerateFiles(searchPattern, searchOption));
             }
 
             return files.Distinct().AsEnumerable();
@@ -256,7 +251,7 @@ namespace dotNetTips.Utility.Standard.IO
 
                             var emailValue = key.GetValue<string>(EmailKey);
 
-                            if (emailValue.HasValue())
+                            if (emailValue.IsNotNull())
                             {
                                 folder.UserEmail = emailValue;
                             }

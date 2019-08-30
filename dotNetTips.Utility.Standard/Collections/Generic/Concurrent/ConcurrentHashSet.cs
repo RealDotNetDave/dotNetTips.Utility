@@ -4,7 +4,7 @@
 // Created          : 03-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-03-2019
+// Last Modified On : 07-30-2019
 // ***********************************************************************
 // <copyright file="ConcurrentHashSet.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -15,6 +15,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading;
 using dotNetTips.Utility.Standard.OOP;
 
@@ -235,11 +236,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
                 try
                 {
                     this.AcquireAllLocks(ref acquiredLocks);
-
-                    foreach (int countPerLock in this._tables.CountPerLock)
-                    {
-                        count += countPerLock;
-                    }
+                    count = this._tables.CountPerLock.Aggregate(count, (accumulator, countPerLock) => accumulator += countPerLock);
                 }
                 finally
                 {
@@ -265,9 +262,9 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
                 {
                     this.AcquireAllLocks(ref acquiredLocks);
 
-                    foreach (int countPerLock in this._tables.CountPerLock)
+                    for (int counter = 0; counter < this._tables.CountPerLock.Length; counter++)
                     {
-                        if (countPerLock != 0)
+                        if (this._tables.CountPerLock[counter] != 0)
                         {
                             return false;
                         }
@@ -286,12 +283,14 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// Gets the default concurrency level.
         /// </summary>
         /// <value>The default concurrency level.</value>
+        /// TODO Edit XML Comment Template for DefaultConcurrencyLevel
         private static int DefaultConcurrencyLevel => Environment.ProcessorCount;
 
         /// <summary>
         /// Gets a value indicating whether the <see cref="T:System.Collections.Generic.ICollection`1"></see> is read-only.
         /// </summary>
         /// <value><c>true</c> if this instance is read only; otherwise, <c>false</c>.</value>
+        /// TODO Edit XML Comment Template for IsReadOnly
         bool ICollection<T>.IsReadOnly => false;
 
         /// <summary>
@@ -307,6 +306,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// <summary>
         /// Removes all items from the <see cref="ConcurrentHashSet{T}" />.
         /// </summary>
+        /// TODO Edit XML Comment Template for Clear
         public void Clear()
         {
             var locksAcquired = 0;
@@ -443,6 +443,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// <param name="hashCode">The hashcode.</param>
         /// <param name="bucketCount">The bucket count.</param>
         /// <returns>System.Int32.</returns>
+        /// TODO Edit XML Comment Template for GetBucket
         private static int GetBucket(int hashCode, int bucketCount)
         {
             var bucketNo = (hashCode & 0x7fffffff) % bucketCount;
@@ -458,6 +459,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// <param name="lockNo">The lock no.</param>
         /// <param name="bucketCount">The bucket count.</param>
         /// <param name="lockCount">The lock count.</param>
+        /// TODO Edit XML Comment Template for GetBucketAndLockNo
         private static void GetBucketAndLockNo(int hashCode, out int bucketNo, out int lockNo, int bucketCount, int lockCount)
         {
             bucketNo = (hashCode & 0x7fffffff) % bucketCount;
@@ -471,6 +473,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// Acquires all locks.
         /// </summary>
         /// <param name="locksAcquired">The locks acquired.</param>
+        /// TODO Edit XML Comment Template for AcquireAllLocks
         private void AcquireAllLocks(ref int locksAcquired)
         {
             // First, acquire lock 0
@@ -489,6 +492,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// <param name="fromInclusive">From inclusive.</param>
         /// <param name="toExclusive">To exclusive.</param>
         /// <param name="locksAcquired">The locks acquired.</param>
+        /// TODO Edit XML Comment Template for AcquireLocks
         private void AcquireLocks(int fromInclusive, int toExclusive, ref int locksAcquired)
         {
             Debug.Assert(fromInclusive <= toExclusive);
@@ -515,6 +519,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// Adds an item to the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
         /// </summary>
         /// <param name="item">The object to add to the <see cref="T:System.Collections.Generic.ICollection`1"></see>.</param>
+        /// TODO Edit XML Comment Template for Add
         void ICollection<T>.Add(T item) => this.Add(item);
 
         /// <summary>
@@ -524,6 +529,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// <param name="hashCode">The hashcode.</param>
         /// <param name="acquireLock">if set to <c>true</c> [acquire lock].</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        /// TODO Edit XML Comment Template for AddInternal
         private bool AddInternal(T item, int hashCode, bool acquireLock)
         {
             Encapsulation.TryValidateParam<ArgumentNullException>(item != null, nameof(item));
@@ -617,7 +623,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         void ICollection<T>.CopyTo(T[] array, int arrayIndex)
         {
             Encapsulation.TryValidateParam(array, nameof(array));
-            Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(arrayIndex >= 0, nameof(arrayIndex));
+            Encapsulation.TryValidateParam<ArgumentOutOfRangeException>(arrayIndex < 0, nameof(arrayIndex));
 
             var locksAcquired = 0;
 
@@ -651,6 +657,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// </summary>
         /// <param name="array">The array.</param>
         /// <param name="index">The index.</param>
+        /// TODO Edit XML Comment Template for CopyToItems
         private void CopyToItems(T[] array, int index)
         {
             var buckets = this._tables.Buckets;
@@ -668,12 +675,14 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// Returns an enumerator that iterates through a collection.
         /// </summary>
         /// <returns>An <see cref="T:System.Collections.IEnumerator"></see> object that can be used to iterate through the collection.</returns>
+        /// TODO Edit XML Comment Template for GetEnumerator
         IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
 
         /// <summary>
         /// Grows the table.
         /// </summary>
         /// <param name="tables">The tables.</param>
+        /// TODO Edit XML Comment Template for GrowTable
         private void GrowTable(Tables tables)
         {
             const int maxArrayLength = 0X7FEFFFFF;
@@ -813,6 +822,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// Initializes from collection.
         /// </summary>
         /// <param name="collection">The collection.</param>
+        /// TODO Edit XML Comment Template for InitializeFromCollection
         private void InitializeFromCollection(IEnumerable<T> collection)
         {
             foreach (var item in collection)
@@ -831,6 +841,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// </summary>
         /// <param name="fromInclusive">From inclusive.</param>
         /// <param name="toExclusive">To exclusive.</param>
+        /// TODO Edit XML Comment Template for ReleaseLocks
         private void ReleaseLocks(int fromInclusive, int toExclusive)
         {
             Debug.Assert(fromInclusive <= toExclusive);
@@ -846,11 +857,13 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// </summary>
         /// <param name="item">The object to remove from the <see cref="T:System.Collections.Generic.ICollection`1"></see>.</param>
         /// <returns>true if <paramref name="item">item</paramref> was successfully removed from the <see cref="T:System.Collections.Generic.ICollection`1"></see>; otherwise, false. This method also returns false if <paramref name="item">item</paramref> is not found in the original <see cref="T:System.Collections.Generic.ICollection`1"></see>.</returns>
+        /// TODO Edit XML Comment Template for Remove
         bool ICollection<T>.Remove(T item) => this.TryRemove(item);
 
         /// <summary>
         /// Class Node.
         /// </summary>
+        /// TODO Edit XML Comment Template for Node
         private class Node
         {
             /// <summary>
@@ -861,11 +874,13 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
             /// <summary>
             /// The item
             /// </summary>
+            /// TODO Edit XML Comment Template for Item
             internal readonly T Item;
 
             /// <summary>
             /// The next
             /// </summary>
+            /// TODO Edit XML Comment Template for Next
             internal volatile Node Next;
 
             /// <summary>
@@ -874,6 +889,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
             /// <param name="item">The item.</param>
             /// <param name="hashcode">The hashcode.</param>
             /// <param name="next">The next.</param>
+            /// TODO Edit XML Comment Template for #ctor
             internal Node(T item, int hashcode, Node next)
             {
                 this.Item = item;
@@ -885,21 +901,25 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
         /// <summary>
         /// Class Tables.
         /// </summary>
+        /// TODO Edit XML Comment Template for Tables
         private class Tables
         {
             /// <summary>
             /// The buckets
             /// </summary>
+            /// TODO Edit XML Comment Template for Buckets
             internal readonly Node[] Buckets;
 
             /// <summary>
             /// The count per lock
             /// </summary>
+            /// TODO Edit XML Comment Template for CountPerLock
             internal volatile int[] CountPerLock;
 
             /// <summary>
             /// The locks
             /// </summary>
+            /// TODO Edit XML Comment Template for Locks
             internal readonly object[] Locks;
 
             /// <summary>
@@ -908,6 +928,7 @@ namespace dotNetTips.Utility.Standard.Collections.Generic.Concurrent
             /// <param name="buckets">The buckets.</param>
             /// <param name="locks">The locks.</param>
             /// <param name="countPerLock">The count per lock.</param>
+            /// TODO Edit XML Comment Template for #ctor
             internal Tables(Node[] buckets, object[] locks, int[] countPerLock)
             {
                 this.Buckets = buckets;

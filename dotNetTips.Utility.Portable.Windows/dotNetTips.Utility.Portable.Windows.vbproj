@@ -22,7 +22,7 @@
     </SccProvider>
     <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <AssemblyVersion>2019.2.18.34933</AssemblyVersion>
+    <AssemblyVersion>2019.8.23.34934</AssemblyVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -43,7 +43,7 @@
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <OutputPath>..\bin\</OutputPath>
+    <OutputPath>..\OutputBin\</OutputPath>
     <DocumentationFile>dotNetTips.Utility.Portable.Windows.xml</DocumentationFile>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
     <WarningsAsErrors>
@@ -102,7 +102,7 @@
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
-    <OutputPath>..\UtilityBin\</OutputPath>
+    <OutputPath>..\OutputBin\</OutputPath>
     <DocumentationFile>dotNetTips.Utility.Portable.Windows.xml</DocumentationFile>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
     <WarningsAsErrors>

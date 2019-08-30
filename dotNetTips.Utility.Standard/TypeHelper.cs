@@ -4,7 +4,7 @@
 // Created          : 08-09-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-03-2019
+// Last Modified On : 07-30-2019
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -23,6 +23,7 @@ namespace dotNetTips.Utility.Standard
     /// <summary>
     /// Class TypeHelper.
     /// </summary>
+    /// TODO Edit XML Comment Template for TypeHelper
     public static class TypeHelper
     {
         /// <summary>
@@ -32,6 +33,7 @@ namespace dotNetTips.Utility.Standard
         /// <param name="baseType">Type of the base.</param>
         /// <param name="classOnly">if set to <c>true</c> [class only].</param>
         /// <returns>IEnumerable&lt;Type&gt;.</returns>
+        /// TODO Edit XML Comment Template for LoadDerivedTypes
         private static IEnumerable<Type> LoadDerivedTypes(IEnumerable<TypeInfo> types, Type baseType, bool classOnly)
         {
             // works out the derived types
@@ -79,6 +81,7 @@ namespace dotNetTips.Utility.Standard
         /// <typeparam name="T"></typeparam>
         /// <param name="paramArray">The parameter array.</param>
         /// <returns>T.</returns>
+        /// TODO Edit XML Comment Template for Create`1
         public static T Create<T>(params object[] paramArray)
         {
             var instance = (T)Activator.CreateInstance(typeof(T), args: paramArray);
@@ -105,6 +108,7 @@ namespace dotNetTips.Utility.Standard
         /// <param name="baseType">Type of the base.</param>
         /// <param name="classOnly">if set to <c>true</c> [class only].</param>
         /// <returns>IEnumerable&lt;Type&gt;.</returns>
+        /// TODO Edit XML Comment Template for FindDerivedTypes
         public static IEnumerable<Type> FindDerivedTypes(Type baseType, bool classOnly)
         {
             var path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
@@ -120,16 +124,19 @@ namespace dotNetTips.Utility.Standard
         /// <param name="baseType">Type of the base.</param>
         /// <param name="classOnly">if set to <c>true</c> [class only].</param>
         /// <returns>IEnumerable&lt;Type&gt;.</returns>
+        /// TODO Edit XML Comment Template for FindDerivedTypes
         public static IEnumerable<Type> FindDerivedTypes(AppDomain currentDomain, Type baseType, bool classOnly)
         {
             Encapsulation.TryValidateParam<ArgumentNullException>(currentDomain != null, nameof(currentDomain));
-
             Encapsulation.TryValidateParam<ArgumentNullException>(baseType != null, nameof(baseType));
 
             List<Type> types = null;
 
-            foreach (var assembly in currentDomain.GetAssemblies().AsParallel())
+            var array = currentDomain.GetAssemblies();
+
+            for (var assemblyCount = 0; assemblyCount < array.Length; assemblyCount++)
             {
+                var assembly = array[assemblyCount];
                 var tempTypes = LoadDerivedTypes(assembly.DefinedTypes, baseType, classOnly).ToList();
 
                 if (tempTypes.Count() > 0)
@@ -156,13 +163,13 @@ namespace dotNetTips.Utility.Standard
         /// <param name="baseType">Type of the base.</param>
         /// <param name="classOnly">if set to <c>true</c> [class only].</param>
         /// <returns>IEnumerable&lt;Type&gt;.</returns>
+        /// <exception cref="DirectoryNotFoundException">Could not find path.</exception>
         /// <exception cref="dotNetTips.Utility.Standard.DirectoryNotFoundException">Could not find path.</exception>
         /// <exception cref="System.IO.DirectoryNotFoundException">Could not find path.</exception>
         /// <exception cref="ArgumentNullException">Could not find path.</exception>
         public static IEnumerable<Type> FindDerivedTypes(string path, SearchOption searchOption, Type baseType, bool classOnly)
         {
             Encapsulation.TryValidateParam(path, nameof(path), "Must pass in path and file name to the assembly.");
-
             Encapsulation.TryValidateParam<ArgumentNullException>(baseType != null, nameof(baseType), "Parent Type must be defined");
 
             var foundTypes = new List<Type>();
@@ -211,15 +218,7 @@ namespace dotNetTips.Utility.Standard
         {
             var hash = -1;
 
-            foreach (var prop in instance.GetType().GetRuntimeProperties().Where(p => p != null))
-            {
-                var value = prop.GetValue(instance);
-
-                if (value != null)
-                {
-                    hash = hash ^ value.GetHashCode();
-                }
-            }
+            hash = instance.GetType().GetRuntimeProperties().Where(p => p != null).Select(prop => prop.GetValue(instance)).Where(value => value != null).Aggregate(-1, (accumulator, value) => accumulator ^ value.GetHashCode());
 
             return hash;
         }

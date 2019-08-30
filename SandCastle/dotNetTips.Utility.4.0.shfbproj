@@ -15,7 +15,7 @@
     <RootNamespace>Documentation</RootNamespace>
     <Name>Documentation</Name>
     <!-- SHFB properties -->
-    <OutputPath>.\Help\</OutputPath>
+    <OutputPath>..\OutputBin\Help</OutputPath>
     <HtmlHelpName>dotNetTips.Utility</HtmlHelpName>
     <FrameworkVersion>.NET Framework 4.5.1</FrameworkVersion>
     <NewProperty1>

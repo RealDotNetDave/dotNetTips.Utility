@@ -9,37 +9,27 @@
     ".NETPortable,Version=v4.5,Profile=Profile7": []
   },
   "packageFolders": {
-    "C:\\Users\\dotnetdave\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {}
+    "C:\\Users\\david\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
-      "projectUniqueName": "S:\\src\\git\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj",
+      "projectUniqueName": "C:\\src\\git\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj",
       "projectName": "dotNetTips.Utility.Portable",
-      "projectPath": "S:\\src\\git\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj",
-      "projectJsonPath": "S:\\src\\git\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\project.json",
-      "packagesPath": "C:\\Users\\dotnetdave\\.nuget\\packages\\",
-      "outputPath": "S:\\src\\git\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\obj\\",
+      "projectPath": "C:\\src\\git\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\dotNetTips.Utility.Portable.csproj",
+      "projectJsonPath": "C:\\src\\git\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\project.json",
+      "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
+      "outputPath": "C:\\src\\git\\dotNetTips.Utility\\dotNetTips.Utility.Portable\\obj\\",
       "projectStyle": "ProjectJson",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\dotnetdave\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 18.1.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\ServiceFabricSDK.config"
+        "C:\\Users\\david\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
-        "S:\\src\\git\\dotNetTips.Utility\\NuGet": {},
-        "http://nuget.grapecity.com/nuget": {},
+        "C:\\dotNetTips.com\\NuGet": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://ci.appveyor.com/nuget/benchmarkdotnet": {},
-        "https://www.nuget.org/api/v2/": {},
-        "p:\\Program Files (x86)\\DevExpress 18.1\\Components\\System\\Components\\Packages": {}
+        "https://www.nuget.org/api/v2/": {}
       }
     },
     "frameworks": {

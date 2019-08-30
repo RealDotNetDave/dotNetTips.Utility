@@ -4,7 +4,7 @@
 // Created          : 06-06-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-03-2019
+// Last Modified On : 07-30-2019
 // ***********************************************************************
 // <copyright file="LoggableException.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)

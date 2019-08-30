@@ -4,7 +4,7 @@
 // Created          : 02-11-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-31-2019
+// Last Modified On : 06-03-2019
 // ***********************************************************************
 // <copyright file="FileHelper.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -27,6 +27,7 @@ namespace dotNetTips.Utility.Standard.IO
     /// <summary>
     /// Class FileHelper.
     /// </summary>
+    /// TODO Edit XML Comment Template for FileHelper
     public static class FileHelper
     {
         /// <summary>
@@ -87,6 +88,7 @@ namespace dotNetTips.Utility.Standard.IO
         /// </summary>
         /// <param name="files">The files.</param>
         /// <returns>IEnumerable&lt;KeyValuePair&lt;System.String, System.String&gt;&gt;.</returns>
+        /// TODO Edit XML Comment Template for DeleteFiles
         public static IEnumerable<KeyValuePair<string, string>> DeleteFiles(this IEnumerable<string> files)
         {
             var errors = new Dictionary<string, string>();
@@ -141,6 +143,7 @@ namespace dotNetTips.Utility.Standard.IO
         /// </summary>
         /// <param name="sourceFileName">Name of the source file.</param>
         /// <param name="destinationFileName">Name of the destination file.</param>
+        /// TODO Edit XML Comment Template for MoveFile
         public static void MoveFile(string sourceFileName, string destinationFileName)
         {
             for (var retryCount = 0; retryCount < Retries; retryCount++)
@@ -174,6 +177,7 @@ namespace dotNetTips.Utility.Standard.IO
         /// <param name="expandedFilePath">The expanded file path.</param>
         /// <param name="deleteGZipFile">if set to <c>true</c> [delete g zip file].</param>
         /// <returns>Task.</returns>
+        /// TODO Edit XML Comment Template for UnGZipAsync
         public async static Task UnGZipAsync(string gzipPath, string expandedFilePath, bool deleteGZipFile)
         {
             Encapsulation.TryValidateParam(gzipPath, nameof(gzipPath));
@@ -194,6 +198,7 @@ namespace dotNetTips.Utility.Standard.IO
         /// <param name="gzipPath">The gzip path.</param>
         /// <param name="expandedFilePath">The expanded file path.</param>
         /// <returns>Task.</returns>
+        /// TODO Edit XML Comment Template for UnGZipAsync
         public async static Task UnGZipAsync(string gzipPath, string expandedFilePath)
         {
             using (var gzipStream = File.OpenRead(gzipPath))

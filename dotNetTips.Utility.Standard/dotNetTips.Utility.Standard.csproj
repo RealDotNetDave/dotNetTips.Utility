@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <DocumentationFile>dotNetTips.Utility.Standard.xml</DocumentationFile>
-    <OutputPath>..\UtilityBin\netstandard2.0\</OutputPath>
-    <AssemblyVersion>2019.6.3.33712</AssemblyVersion>
-    <FileVersion>2019.6.3.33712</FileVersion>
+    <DocumentationFile>..\OutputBin\dotNetTips.Utility.Standard.xml</DocumentationFile>
+    <OutputPath>..\OutputBin\</OutputPath>
+    <AssemblyVersion>2019.8.30.27812</AssemblyVersion>
+    <FileVersion>2019.8.30.27812</FileVersion>
     <NeutralLanguage>en</NeutralLanguage>
     <Authors>David McCarter</Authors>
     <Company>dotNetTips.com - David McCarter</Company>
@@ -19,13 +19,16 @@
     <AssemblyOriginatorKeyFile>dotNetTips.Utility.Standard.snk</AssemblyOriginatorKeyFile>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2019.06.03</Version>
+    <Version>2019.08.31.01</Version>
     <PackageTags>David McCarter, dotNetDave, dotNetTips.com</PackageTags>
     <Configurations>Debug;Release;Full Build</Configurations>
     <PackageLicenseUrl></PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <PackageReleaseNotes>-- JUNE 2019: Quarterly Release - New methods for DirectoryHelper and FileHelper. Code cleanup.</PackageReleaseNotes>
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <PackageReleaseNotes>-- JUNE 2019: Quarterly Release - New methods for DirectoryHelper and FileHelper. Code cleanup.
+-- AUG 2019: Quarterly Release - Code &amp; documentation cleanup. Code fixes. New code in LoggingHelper, ComputerInfo.</PackageReleaseNotes>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -62,7 +65,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.2.4" />
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
@@ -71,7 +74,7 @@
     <PackageReference Include="Microsoft.Win32.Registry" Version="4.5.0" />
     <PackageReference Include="System.Collections.Immutable" Version="1.5.0" />
     <PackageReference Include="System.Diagnostics.Process" Version="4.3.0" />
-    <PackageReference Include="System.Memory" Version="4.5.2" />
+    <PackageReference Include="System.Memory" Version="4.5.3" />
     <PackageReference Include="System.Runtime.Serialization.Json" Version="4.3.0" />
     <PackageReference Include="System.Security.AccessControl" Version="4.5.0" />
     <PackageReference Include="System.Security.Principal">
@@ -100,6 +103,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if $(ConfigurationName) ==  Release (dotnet pack &quot;$(ProjectPath)&quot; --no-build --include-source --include-symbols --output  &quot;$(ProjectDir)\..\NuGet&quot;)" />
+    <Exec Command="if $(ConfigurationName) == Release (dotnet pack &quot;$(ProjectPath)&quot; --no-build --include-source --include-symbols --output  &quot;c:\dotNetTips.com\NuGet&quot;)" />
   </Target>
 </Project>

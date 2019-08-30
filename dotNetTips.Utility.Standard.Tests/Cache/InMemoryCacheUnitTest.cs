@@ -12,7 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 using dotNetTips.Utility.Standard.Cache;
-using dotNetTips.Utility.Standard.Tester.Data;
+using dotNetTips.Utility.Standard.Tester;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace dotNetTips.Tips.Utility.Standard.Tests.Cache
@@ -38,7 +38,7 @@ namespace dotNetTips.Tips.Utility.Standard.Tests.Cache
 
             for (int i = 0; i < TestCount; i++)
             {
-                cache.AddCacheItem<int>(RandomData.Key(), RandomData.Integer(i, 1000000));
+                cache.AddCacheItem<int>(RandomData.GenerateKey(), RandomData.GenerateInteger(i, 1000000));
             }
 
             Assert.IsTrue(cache.Count == TestCount);

@@ -4,20 +4,20 @@
 // Created          : 01-23-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-03-2017
+// Last Modified On : 07-30-2019
 // ***********************************************************************
 // <copyright file="DistinctBlockingCollection.cs" company="dotNetTips.Utility.Standard">
 //     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using dotNetTips.Utility.Standard.Extensions;
-using dotNetTips.Utility.Standard.OOP;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using dotNetTips.Utility.Standard.Extensions;
+using dotNetTips.Utility.Standard.OOP;
 
 namespace dotNetTips.Utility.Standard.Collections
 {
@@ -34,6 +34,7 @@ namespace dotNetTips.Utility.Standard.Collections
         /// Initializes a new instance of the <see cref="DistinctBlockingCollection{T}" /> class.
         /// </summary>
         /// <param name="collection">The collection.</param>
+        /// TODO Edit XML Comment Template for #ctor
         public DistinctBlockingCollection(IEnumerable<T> collection)
         {
             if (collection.HasItems())
@@ -48,6 +49,7 @@ namespace dotNetTips.Utility.Standard.Collections
         /// <summary>
         /// Initializes a new instance of the <see cref="DistinctBlockingCollection{T}" /> class.
         /// </summary>
+        /// TODO Edit XML Comment Template for #ctor
         public DistinctBlockingCollection()
         { }
 
@@ -55,9 +57,10 @@ namespace dotNetTips.Utility.Standard.Collections
         /// Adds the item to the <see cref="T:System.Collections.Concurrent.BlockingCollection`1" />.
         /// </summary>
         /// <param name="item">The item to be added to the collection. The value can be a null reference.</param>
+        /// TODO Edit XML Comment Template for Add
         public new void Add(T item)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(item == null, "Item is requried.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(item != null, "Item is required.");
 
             if ((this.ItemNotInCollection(item)))
             {
@@ -70,10 +73,11 @@ namespace dotNetTips.Utility.Standard.Collections
         /// </summary>
         /// <param name="item">The item to be added to the collection. The value can be a null reference.</param>
         /// <param name="cancellationToken">A cancellation token to observe.</param>
+        /// TODO Edit XML Comment Template for Add
         public new void Add(T item, CancellationToken cancellationToken)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(item == null, "Item is requried.");
-            Encapsulation.TryValidateParam<ArgumentNullException>(cancellationToken == null, "Token is requried.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(item != null, "Item is required.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(cancellationToken != null, "Token is required.");
 
             if ((ItemNotInCollection(item)))
             {
@@ -85,6 +89,7 @@ namespace dotNetTips.Utility.Standard.Collections
         /// Cones this instance.
         /// </summary>
         /// <returns>T.</returns>
+        /// TODO Edit XML Comment Template for Cone
         public T Cone()
         {
             return (T)this.MemberwiseClone();
@@ -149,6 +154,7 @@ namespace dotNetTips.Utility.Standard.Collections
         /// </summary>
         /// <param name="item">The item.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        /// TODO Edit XML Comment Template for ItemNotInCollection
         private bool ItemNotInCollection(T item)
         {
             return (item == null && this.Contains(item) == false);
@@ -159,26 +165,12 @@ namespace dotNetTips.Utility.Standard.Collections
         /// </summary>
         /// <param name="match">The match.</param>
         /// <returns>System.Int32.</returns>
+        /// TODO Edit XML Comment Template for RemoveAll
         public int RemoveAll(Predicate<T> match)
         {
-            Encapsulation.TryValidateParam<ArgumentNullException>(match == null, "Match is requried.");
+            Encapsulation.TryValidateParam<ArgumentNullException>(match != null, "Match is required.");
 
-            var itemsToRemove = new List<T>();
-
-            foreach (var item in base.ToArray())
-            {
-                if (match?.Invoke(item) ?? default(bool))
-                {
-                    itemsToRemove.Add(item);
-                }
-            }
-
-            //foreach (var item in itemsToRemove.AsParallel())
-            //{   //TODO: FIX TRYTAKE
-            //    //base.TryTake(item);
-            //}
-
-            return 0;// itemsToRemove.Count;
+            return this.RemoveAll(match);
         }
     }
 }

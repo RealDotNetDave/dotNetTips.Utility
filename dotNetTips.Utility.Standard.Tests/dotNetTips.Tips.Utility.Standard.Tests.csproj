@@ -1,13 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
 
-    <AssemblyVersion>2019.6.3.33875</AssemblyVersion>
+    <AssemblyVersion>2019.8.30.27812</AssemblyVersion>
 
-    <FileVersion>2019.6.3.33875</FileVersion>
+    <FileVersion>2019.8.30.27812</FileVersion>
 
     <Authors>David McCarter - dotNetTips.com</Authors>
 
@@ -28,14 +28,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.0.0" />
+    <PackageReference Include="dotNetTips.Utility.Standard.Tester" Version="2019.8.14" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
     <PackageReference Include="Microsoft.Win32.Registry" Version="4.5.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.4.0" />
     <PackageReference Include="MSTest.TestFramework" Version="1.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\dotNetTips.Utility.Standard.Tester\dotNetTips.Utility.Standard.Tester.csproj" />
     <ProjectReference Include="..\dotNetTips.Utility.Standard\dotNetTips.Utility.Standard.csproj" />
   </ItemGroup>
 

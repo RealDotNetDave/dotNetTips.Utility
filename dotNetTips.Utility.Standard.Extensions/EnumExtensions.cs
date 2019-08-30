@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-03-2019
+// Last Modified On : 07-30-2019
 // ***********************************************************************
 // <copyright file="EnumExtensions.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -20,6 +20,7 @@ namespace dotNetTips.Utility.Standard.Extensions
     /// <summary>
     /// Class EnumExtensions.
     /// </summary>
+    /// TODO Edit XML Comment Template for EnumExtensions
     public static class EnumExtensions
     {
         /// <summary>
@@ -59,8 +60,11 @@ namespace dotNetTips.Utility.Standard.Extensions
             var values = Enum.GetValues(enumType);
             var items = new List<EnumItem<T>>();
 
-            foreach (var v in values)
+            var list = (System.Collections.IList)values;
+
+            for (var itemCount = 0; itemCount < list.Count; itemCount++)
             {
+                var v = list[itemCount];
                 var enumValue = Enum.Parse(enumType, v.ToString());
                 items.Add(GetDescriptionInternal<T>(enumValue));
             }
@@ -76,7 +80,9 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <returns>T.</returns>
         public static T Parse<T>(this string name) where T : struct => (T)Enum.Parse(typeof(T), name);
 
-        /// <summary>Gets the description of the enum value.</summary>
+        /// <summary>
+        /// Gets the description of the enum value.
+        /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="val">The value.</param>
         /// <returns>EnumItem&lt;T&gt;.</returns>

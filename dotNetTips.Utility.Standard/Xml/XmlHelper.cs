@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-03-2019
+// Last Modified On : 08-30-2019
 // ***********************************************************************
 // <copyright file="XmlHelper.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -12,7 +12,6 @@
 // <summary></summary>
 // ***********************************************************************
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
@@ -21,7 +20,7 @@ using dotNetTips.Utility.Standard.OOP;
 namespace dotNetTips.Utility.Standard.Xml
 {
     /// <summary>
-    /// Class XmlHelper.
+    /// XML Serialization helper methods.
     /// </summary>
     public static class XmlHelper
     {
@@ -36,18 +35,10 @@ namespace dotNetTips.Utility.Standard.Xml
         {
             Encapsulation.TryValidateParam(xml, nameof(xml));
 
-            try
+            using (var sr = new StringReader(xml))
             {
-                using(var sr = new StringReader(xml))
-                {
-                    var xs = new XmlSerializer(typeof(T));
-                    return (T)xs.Deserialize(sr);
-                }
-            } catch(InvalidOperationException ex)
-            {
-                Trace.WriteLine(ex.Message);
-
-                return default(T);
+                var xs = new XmlSerializer(typeof(T));
+                return (T)xs.Deserialize(sr);
             }
         }
 
@@ -63,7 +54,7 @@ namespace dotNetTips.Utility.Standard.Xml
         {
             Encapsulation.TryValidateParam(fileName, nameof(fileName));
 
-            if(File.Exists(fileName) == false)
+            if (File.Exists(fileName) == false)
             {
                 throw new FileNotFoundException("File not found. Cannot deserialize from XML.", fileName);
             }
@@ -81,23 +72,15 @@ namespace dotNetTips.Utility.Standard.Xml
         {
             Encapsulation.TryValidateParam<ArgumentNullException>(obj != null, nameof(obj));
 
-            try
+            using (var writer = new StringWriter())
             {
-                using(var writer = new StringWriter())
+                using (var xmlWriter = XmlWriter.Create(writer))
                 {
-                    using(var xmlWriter = XmlWriter.Create(writer))
-                    {
-                        var serializer = new XmlSerializer(obj.GetType());
-                        serializer.Serialize(xmlWriter, obj);
+                    var serializer = new XmlSerializer(obj.GetType());
+                    serializer.Serialize(xmlWriter, obj);
 
-                        return writer.ToString();
-                    }
+                    return writer.ToString();
                 }
-            } catch(InvalidOperationException ex)
-            {
-                Trace.WriteLine(ex.Message);
-
-                return string.Empty;
             }
         }
 
@@ -111,7 +94,7 @@ namespace dotNetTips.Utility.Standard.Xml
             Encapsulation.TryValidateParam<ArgumentNullException>(obj != null, nameof(obj));
             Encapsulation.TryValidateParam(fileName, nameof(fileName));
 
-            if(File.Exists(fileName))
+            if (File.Exists(fileName))
             {
                 File.Delete(fileName);
             }

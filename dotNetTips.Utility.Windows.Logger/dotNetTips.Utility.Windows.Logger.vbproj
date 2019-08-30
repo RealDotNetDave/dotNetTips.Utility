@@ -13,7 +13,7 @@
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
     <TargetFrameworkProfile />
-    <AssemblyVersion>2019.2.18.34933</AssemblyVersion>
+    <AssemblyVersion>2019.8.23.34934</AssemblyVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -37,7 +37,7 @@
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <OutputPath>..\bin\</OutputPath>
+    <OutputPath>..\OutputBin\</OutputPath>
     <DocumentationFile>dotNetTips.Utility.Windows.Logger.xml</DocumentationFile>
     <NoWarn>
     </NoWarn>
@@ -93,7 +93,7 @@
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
-    <OutputPath>..\UtilityBin\</OutputPath>
+    <OutputPath>..\OutputBin\</OutputPath>
     <DocumentationFile>dotNetTips.Utility.Windows.Logger.xml</DocumentationFile>
     <NoWarn>
     </NoWarn>

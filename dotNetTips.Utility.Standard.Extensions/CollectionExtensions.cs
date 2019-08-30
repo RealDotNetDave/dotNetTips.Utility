@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-03-2019
+// Last Modified On : 07-20-2019
 // ***********************************************************************
 // <copyright file="CollectionExtensions.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -27,6 +27,7 @@ namespace dotNetTips.Utility.Standard.Extensions
     /// <summary>
     /// Class CollectionExtensions.
     /// </summary>
+    /// TODO Edit XML Comment Template for CollectionExtensions
     public static class CollectionExtensions
     {
         /// <summary>
@@ -34,20 +35,25 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list">The list.</param>
-        /// <param name="value">The value.</param>
+        /// <param name="item">The value.</param>
+        /// <exception cref="ArgumentException">list - List cannot be read-only.</exception>
         /// <exception cref="ArgumentNullException">list - List cannot be null.
         /// or
         /// value - Value cannot be null.</exception>
-        /// <exception cref="ArgumentException">list - List cannot be read-only.</exception>
-        public static void AddIfNotExists<T>(this ICollection<T> list, T value)
+        public static void AddIfNotExists<T>(this ICollection<T> list, T item)
         {
-            if (list.Contains(value))
+            if (list.IsReadOnly)
+            {
+                throw new ArgumentException("List cannot be read-only.", nameof(list));
+            }
+
+            if (list.Contains(item))
             {
                 return;
             }
             else
             {
-                list.Add(value);
+                list.Add(item);
             }
         }
 
@@ -56,33 +62,50 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list">The list.</param>
-        /// <param name="values">The values.</param>
+        /// <param name="items">The values.</param>
         /// <exception cref="ArgumentNullException">list - List cannot be null.
         /// or
         /// values - Values cannot be null.</exception>
         /// <exception cref="ArgumentException">list - List cannot be read-only.</exception>
-        public static void AddIfNotExists<T>(this ICollection<T> list, params T[] values)
+        public static void AddIfNotExists<T>(this ICollection<T> list, params T[] items)
         {
-            if (values.HasItems())
+            if (items.HasItems())
             {
-                foreach (var value in values)
+                for (int i = 0; i < items.Length; i++)
                 {
-                    list.AddIfNotExists(value);
+                    list.AddIfNotExists(items[i]);
                 }
             }
         }
 
         /// <summary>
-        /// Adds the range.
+        /// Adds the items to the collection.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list">The list.</param>
-        /// <param name="newItems">The new items.</param>
-        public static void AddRange<T>(this ICollection<T> list, IEnumerable<T> newItems)
+        /// <param name="items">The new items.</param>
+        /// <param name="insureUnique">Set to true if items added to list are unique.</param>
+        /// <exception cref="ArgumentException">List cannot be read-only. - list</exception>
+        public static void AddRange<T>(this ICollection<T> list, IEnumerable<T> items, bool insureUnique = false)
         {
-            if (newItems.HasItems())
+            if (list.IsReadOnly)
             {
-                Parallel.ForEach(newItems, (item) => { list.Add(item); });
+                throw new ArgumentException("List cannot be read-only.", nameof(list));
+            }
+
+            if (items.HasItems())
+            {
+                foreach (var item in items)
+                {
+                    if (insureUnique)
+                    {
+                        list.AddIfNotExists(item);
+                    }
+                    else
+                    {
+                        list.Add(item);
+                    }
+                }
             }
         }
 
@@ -96,18 +119,23 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="items">The items.</param>
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
+        /// <exception cref="ArgumentException">list - Dictionary cannot be null.
+        /// or
+        /// key - Key cannot be null.</exception>
         /// <exception cref="ArgumentNullException">list - Dictionary cannot be null.
         /// or
         /// key - Key cannot be null.</exception>
         /// <exception cref="System.ArgumentNullException">list - Dictionary cannot be null.
         /// or
         /// key - Key cannot be null.</exception>
-        /// <exception cref="ArgumentException">list - Dictionary cannot be null.
-        /// or
-        /// key - Key cannot be null.</exception>
         /// <remarks>Code by: Lucas</remarks>
         public static void AddRange<T, TKey, TValue>(this IDictionary<TKey, TValue> list, IEnumerable<T> items, Func<T, TKey> key, Func<T, TValue> value)
         {
+            if (list.IsReadOnly)
+            {
+                throw new ArgumentException("List cannot be read-only.", nameof(list));
+            }
+
             if (value == null)
             {
                 throw new ArgumentNullException(nameof(value), $"{nameof(value)} is null.");
@@ -143,6 +171,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// </summary>
         /// <param name="list">The list.</param>
         /// <returns>System.Int32.</returns>
+        /// TODO Edit XML Comment Template for Count
         public static int Count(this IEnumerable list)
         {
             if (list is ICollection collection)
@@ -168,6 +197,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <typeparam name="TKey">The type of the t key.</typeparam>
         /// <typeparam name="TValue">The type of the t value.</typeparam>
         /// <param name="items">The items.</param>
+        /// TODO Edit XML Comment Template for DisposeCollection`2
         public static void DisposeCollection<TKey, TValue>(this IDictionary<TKey, TValue> items) => ProcessCollectionToDispose(items.Select(p => p.Value));
 
         /// <summary>
@@ -214,18 +244,18 @@ namespace dotNetTips.Utility.Standard.Extensions
 
             if (source is List<T>)
             {
-                var finalCount = 0;
+                var count = 0;
                 var list = (List<T>)source;
 
-                for (var j = 0; j < list.Count; j++)
+                for (var listCount = 0; listCount < list.Count; listCount++)
                 {
-                    if (predicate(list[j]))
+                    if (predicate(list[listCount]))
                     {
-                        finalCount++;
+                        count++;
                     }
                 }
 
-                return finalCount;
+                return count;
             }
             else
             {
@@ -243,8 +273,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <exception cref="ArgumentNullException">list - Source cannot be null.
         /// or
         /// match - Match cannot be null.</exception>
-        public static T? FirstOrNull<T>(this IEnumerable<T> list, Func<T, bool> match)
-            where T : struct
+        public static T? FirstOrNull<T>(this IEnumerable<T> list, Func<T, bool> match) where T : struct
         {
             foreach (var local in list)
             {
@@ -276,6 +305,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns><c>true</c> if the specified source has items; otherwise, <c>false</c>.</returns>
+        /// TODO Edit XML Comment Template for HasItems
         public static bool HasItems(this IEnumerable source) => source?.Count() > 0;
 
         /// <summary>
@@ -283,6 +313,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns><c>true</c> if the specified source has items; otherwise, <c>false</c>.</returns>
+        /// TODO Edit XML Comment Template for HasItems
         public static bool HasItems(this ICollection source) => source?.Count > 0;
 
         /// <summary>
@@ -291,6 +322,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="source">The source.</param>
         /// <returns><c>true</c> if the specified source has items; otherwise, <c>false</c>.</returns>
+        /// TODO Edit XML Comment Template for HasItems`1
         public static bool HasItems<T>(this ObservableCollection<T> source) => source?.Count > 0;
 
         /// <summary>
@@ -488,12 +520,14 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <typeparam name="TValue">The type of the t value.</typeparam>
         /// <param name="values">The values.</param>
         /// <returns>IImmutableDictionary&lt;TKey, TValue&gt;.</returns>
-        public static IImmutableDictionary<TKey, TValue> ToImmutable<TKey, TValue>(this Dictionary<TKey, TValue> values)
+        public static ImmutableDictionary<TKey, TValue> ToImmutable<TKey, TValue>(this Dictionary<TKey, TValue> values)
         {
             var builder = ImmutableDictionary.CreateRange<TKey, TValue>(values);
 
             return builder.ToImmutableDictionary();
         }
+
+
 
         /// <summary>
         /// To the immutable.
@@ -501,7 +535,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="values">The values.</param>
         /// <returns>IImmutableList&lt;T&gt;.</returns>
-        public static IImmutableList<T> ToImmutable<T>(this List<T> values)
+        public static ImmutableList<T> ToImmutable<T>(this IEnumerable<T> values)
         {
             var builder = ImmutableList.CreateRange<T>(values);
 
@@ -509,7 +543,60 @@ namespace dotNetTips.Utility.Standard.Extensions
         }
 
         /// <summary>
-        /// Creates a Generic.List.
+        /// Converts to linkedlist.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="values">The values.</param>
+        /// <returns>LinkedList&lt;T&gt;.</returns>
+        /// <remarks>NEW: Added July 2019</remarks>
+        public static LinkedList<T> ToLinkedList<T>(this IEnumerable<T> values) => new LinkedList<T>(values);
+
+        /// <summary>
+        /// Converts to ImmutableHashSet<typeparamref name="T" />&gt;.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="values">The values.</param>
+        /// <returns>ImmutableHashSet<typeparamref name="T" />&gt;.</returns>
+        /// <remarks>NEW: Added July 2019</remarks>
+        public static ImmutableHashSet<T> ToImmutable<T>(this HashSet<T> values)
+        {
+            var builder = ImmutableHashSet.CreateRange<T>(values);
+
+            return builder.ToImmutableHashSet();
+        }
+
+        /// <summary>
+        /// Converts to immutable Dictionary.
+        /// </summary>
+        /// <typeparam name="TKey">The type of the t key.</typeparam>
+        /// <typeparam name="TValue">The type of the t value.</typeparam>
+        /// <param name="values">The values.</param>
+        /// <returns>ImmutableSortedDictionary&lt;TKey, TValue&gt;.</returns>
+        /// <remarks>NEW: Added July 2019</remarks>
+        public static ImmutableSortedDictionary<TKey, TValue> ToImmutable<TKey, TValue>(this SortedDictionary<TKey, TValue> values)
+        {
+            var builder = ImmutableSortedDictionary.CreateRange<TKey, TValue>(values);
+
+            return builder.ToImmutableSortedDictionary();
+        }
+
+        /// <summary>
+        /// Converts to immutable SortedSet.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="values">The values.</param>
+        /// <returns>ImmutableSortedSet&lt;T&gt;.</returns>
+        /// <remarks>NEW: Added July 2019</remarks>
+        public static ImmutableSortedSet<T> ToImmutable<T>(this SortedSet<T> values)
+        {
+            var builder = ImmutableSortedSet.CreateRange<T>(values);
+
+            return builder.ToImmutableSortedSet();
+        }
+
+
+        /// <summary>
+        /// Creates a Generic List async.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list">The list.</param>
@@ -521,13 +608,25 @@ namespace dotNetTips.Utility.Standard.Extensions
         }
 
         /// <summary>
-        /// To the observable list.
+        /// To the enumeration to ObservableCollection.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list">The list.</param>
-        /// <returns>ObservableCollection&lt;T&gt;.</returns>
+        /// <returns>ObservableCollection.</returns>
         /// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value.</exception>
         public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> list)
+        {
+            return new ObservableCollection<T>(list);
+        }
+
+        /// <summary>
+        /// Converts List to ObservableCollection.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list">The list.</param>
+        /// <returns>ObservableCollection.</returns>
+        /// <remarks>NEW: Added July 2019</remarks>
+        public static ObservableCollection<T> ToObservableCollection<T>(this IList<T> list)
         {
             return new ObservableCollection<T>(list);
         }
@@ -579,6 +678,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="items">The items.</param>
+        /// TODO Edit XML Comment Template for DisposeCollection`1
         internal static void DisposeCollection<T>(this IEnumerable<T> items) => ProcessCollectionToDispose(items);
 
         /// <summary>
@@ -591,6 +691,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// Processes the collection to dispose.
         /// </summary>
         /// <param name="items">The items.</param>
+        /// TODO Edit XML Comment Template for ProcessCollectionToDispose
         private static void ProcessCollectionToDispose(IEnumerable items)
         {
             if (items.HasItems())

@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-03-2019
+// Last Modified On : 07-30-2019
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -27,6 +27,7 @@ namespace dotNetTips.Utility.Standard.Extensions
     /// <summary>
     /// Class ObjectExtensions.
     /// </summary>
+    /// TODO Edit XML Comment Template for ObjectExtensions
     public static class ObjectExtensions
     {
         /// <summary>
@@ -44,6 +45,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="obj">The object.</param>
         /// <returns>T.</returns>
+        /// TODO Edit XML Comment Template for Clone`1
         public static T Clone<T>(this object obj)
         {
             using (var stream = new MemoryStream())
@@ -62,6 +64,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// </summary>
         /// <param name="data">The data.</param>
         /// <returns>System.String.</returns>
+        /// TODO Edit XML Comment Template for ComputeMD5Hash
         public static string ComputeMD5Hash(this object data)
         {
             // Create a MD5   
@@ -87,6 +90,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// </summary>
         /// <param name="data">The data.</param>
         /// <returns>System.String.</returns>
+        /// TODO Edit XML Comment Template for ComputeSha256Hash
         public static string ComputeSha256Hash(this object data)
         {
             // Create a SHA256   
@@ -111,11 +115,12 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// Disposes the fields.
         /// </summary>
         /// <param name="obj">The object.</param>
+        /// TODO Edit XML Comment Template for DisposeFields
         public static void DisposeFields(this IDisposable obj)
         {
             var fieldInfos = obj.GetType().GetRuntimeFields();
 
-            foreach (var fieldInfo in fieldInfos.Where(p => p.IsStatic == false).AsParallel())
+            foreach (var fieldInfo in fieldInfos.Where(p => p.IsStatic == false))
             {
                 var value = fieldInfo.GetValue(obj);
 
@@ -193,11 +198,12 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// Initializes the fields.
         /// </summary>
         /// <param name="obj">The object.</param>
+        /// TODO Edit XML Comment Template for InitializeFields
         public static void InitializeFields(this object obj)
         {
             var fieldInfos = obj.GetType().GetRuntimeFields();
 
-            foreach (var fieldInfo in fieldInfos.AsParallel())
+            foreach (var fieldInfo in fieldInfos)
             {
                 var objectValue = fieldInfo.GetValue(obj);
                 var runtimeField = obj.GetType().GetRuntimeField(fieldInfo.Name);
@@ -225,6 +231,7 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// </summary>
         /// <param name="obj">The object.</param>
         /// <returns><count>true</count> if the specified object is null; otherwise, <count>false</count>.</returns>
+        /// TODO Edit XML Comment Template for IsNull
         public static bool IsNull(this object obj) => obj is null;
 
         /// <summary>

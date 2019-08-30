@@ -56,5 +56,13 @@
 <GeneralProperties>
   <SearchInheritedCommentsOnlyWithinProject>False</SearchInheritedCommentsOnlyWithinProject>
   <UseWYSIWYGForDocumentThis>True</UseWYSIWYGForDocumentThis>
+  <AddTODOTask description="Add TODO task to edit auto-generated comments" type="Boolean">True</AddTODOTask>
+  <WYSIWYGKeepSingleLineLineChars description="Number of characters to keep on single line" type="Integer">125</WYSIWYGKeepSingleLineLineChars>
+  <FindMissingDocumentationProtected description="Find Missing Documentation scope - include Protected" type="Boolean">True</FindMissingDocumentationProtected>
+  <FindMissingDocumentationInherited description="Find Missing Documentation scope - include Inherited" type="Boolean">True</FindMissingDocumentationInherited>
+  <SyncWithMemberSignatureProtected description="Syncronize with member signature scope - include Protected" type="Boolean">True</SyncWithMemberSignatureProtected>
+  <GlobalProperties type="String">[{"Name":"UserName","Value":"David McCarter"},{"Name":"CompanyName","Value":"McCarter Consulting"},{"Name":"DefaultBlankRemarksText","Value":""}]</GlobalProperties>
+  <EnableSpellChecking description="Enable spell checker" type="Boolean">False</EnableSpellChecking>
+  <HelpFileDocumentFilePrivates description="Include Private scope when Document File/Type" type="Boolean">False</HelpFileDocumentFilePrivates>
 </GeneralProperties>
 </GhostDoc>

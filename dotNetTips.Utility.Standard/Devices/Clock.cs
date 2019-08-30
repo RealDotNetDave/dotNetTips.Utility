@@ -24,9 +24,7 @@ namespace dotNetTips.Utility.Standard.Devices
         /// Gets the local time.
         /// </summary>
         /// <value>The local time.</value>
-        public static DateTime LocalTime =>
-                DateTime.Now;
-
+        public static DateTime LocalTime => DateTime.Now.ToLocalTime();
 
         /// <summary>
         /// Gets the UTC time.
@@ -38,7 +36,7 @@ namespace dotNetTips.Utility.Standard.Devices
         /// Gets the tick count.
         /// </summary>
         /// <value>The tick count.</value>
-        public static int TickCount =>Environment.TickCount;
+        public static int TickCount => Environment.TickCount;
 
         /// <summary>
         /// Gets the days in the current month (local time).

@@ -13,7 +13,7 @@
   </SpellChecker>
 <HelpConfigurations selected="HelpFile">
   <HelpConfiguration name="HelpFile">
-    <OutputPath>..\..\..\Help</OutputPath>
+    <OutputPath>..\OutputBin\Help</OutputPath>
     <CleanupOutputPath>true</CleanupOutputPath>
     <HelpFileNamingMethod>MemberName</HelpFileNamingMethod>
     <ImageFolderPath />
