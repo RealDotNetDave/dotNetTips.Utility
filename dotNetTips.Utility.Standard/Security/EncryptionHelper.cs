@@ -21,6 +21,7 @@ namespace dotNetTips.Utility.Standard.Security
     /// </summary>
     public static class EncryptionHelper
     {
+        //TODO: ADD AES AND SHA-2 ENCRYPTION. OBSOLETE TRIPLEDES
         /// <summary>
         /// Triples the DES decrypt.
         /// </summary>

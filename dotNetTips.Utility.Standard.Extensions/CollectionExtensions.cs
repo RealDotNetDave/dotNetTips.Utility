@@ -30,6 +30,7 @@ namespace dotNetTips.Utility.Standard.Extensions
     /// TODO Edit XML Comment Template for CollectionExtensions
     public static class CollectionExtensions
     {
+
         /// <summary>
         /// Adds if not exists.
         /// </summary>
@@ -316,14 +317,31 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// TODO Edit XML Comment Template for HasItems
         public static bool HasItems(this ICollection source) => source?.Count > 0;
 
+        /// <summary>Determines whether the specified collection has items based on the Predicate.</summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source">The source.</param>
+        /// <param name="action">The action.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified action has items; otherwise, <c>false</c>.</returns>
+        /// <exception cref="ArgumentNullException">action</exception>
+        public static bool HasItems<T>(this List<T> source, Predicate<T> action)
+        {
+            if (action == null)
+            {
+                throw new ArgumentNullException(nameof(action), $"{nameof(action)} is null.");
+            }
+
+            return source.TrueForAll(action);
+        }
+
         /// <summary>
         /// Determines whether the specified source has items.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="source">The source.</param>
         /// <returns><c>true</c> if the specified source has items; otherwise, <c>false</c>.</returns>
-        /// TODO Edit XML Comment Template for HasItems`1
         public static bool HasItems<T>(this ObservableCollection<T> source) => source?.Count > 0;
+
 
         /// <summary>
         /// Orders a list based on a sort expression. Useful in object data binding scenarios where
@@ -543,15 +561,6 @@ namespace dotNetTips.Utility.Standard.Extensions
         }
 
         /// <summary>
-        /// Converts to linkedlist.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="values">The values.</param>
-        /// <returns>LinkedList&lt;T&gt;.</returns>
-        /// <remarks>NEW: Added July 2019</remarks>
-        public static LinkedList<T> ToLinkedList<T>(this IEnumerable<T> values) => new LinkedList<T>(values);
-
-        /// <summary>
         /// Converts to ImmutableHashSet<typeparamref name="T" />&gt;.
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -593,6 +602,15 @@ namespace dotNetTips.Utility.Standard.Extensions
 
             return builder.ToImmutableSortedSet();
         }
+
+        /// <summary>
+        /// Converts to linkedlist.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="values">The values.</param>
+        /// <returns>LinkedList&lt;T&gt;.</returns>
+        /// <remarks>NEW: Added July 2019</remarks>
+        public static LinkedList<T> ToLinkedList<T>(this IEnumerable<T> values) => new LinkedList<T>(values);
 
 
         /// <summary>
@@ -709,5 +727,6 @@ namespace dotNetTips.Utility.Standard.Extensions
                 }
             }
         }
+
     }
 }
