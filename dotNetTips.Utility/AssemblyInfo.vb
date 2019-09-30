@@ -7,7 +7,7 @@ Imports System.Security.Permissions
 <Assembly: AssemblyDescription("General .NET Utilities")>
 <Assembly: AssemblyCompany("McCarter Consulting - David McCarter")>
 <Assembly: AssemblyProduct("dotNetTips.com Utility")>
-<Assembly: AssemblyCopyright("David McCarter - dotNetTips.com © 2017")>
+<Assembly: AssemblyCopyright("David McCarter - dotNetTips.com © 2019")>
 <Assembly: AssemblyTrademark("David McCarter - dotNetTips.com")>
 <Assembly: CLSCompliant(True)>
 <Assembly: AssemblyVersion("2017.5.6352.41619")>

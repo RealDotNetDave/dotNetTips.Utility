@@ -20,9 +20,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using dotNetTips.Utility.Standard.Extensions;
 using dotNetTips.Utility.Standard.OOP;
-using dotNetTips.Utility.Standard.Win32;
 
 namespace dotNetTips.Utility.Standard.IO
 {
@@ -210,75 +208,29 @@ namespace dotNetTips.Utility.Standard.IO
             return files.Distinct().AsEnumerable();
         }
 
-        /// <summary>
-        /// Loads the one drive folders.
-        /// </summary>
-        /// <returns>IEnumerable&lt;OneDriveFolder&gt;.</returns>
-        /// <exception cref="PlatformNotSupportedException">The method only supports Windows.</exception>
-        public static IEnumerable<OneDriveFolder> LoadOneDriveFolders()
+        /// <summary>load files as an asynchronous operation.</summary>
+        /// <param name="directories">The directories.</param>
+        /// <param name="searchPattern">The search pattern.</param>
+        /// <param name="searchOption">The search option.</param>
+        /// <returns>IAsyncEnumerable&lt;IEnumerable&lt;FileInfo&gt;&gt;.</returns>
+        /// TODO Edit XML Comment Template for LoadFilesAsync
+        public static async IAsyncEnumerable<IEnumerable<FileInfo>> LoadFilesAsync(IEnumerable<DirectoryInfo> directories, string searchPattern, SearchOption searchOption)
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) == false)
+            var options = new EnumerationOptions();
+            options.IgnoreInaccessible = true;
+
+            if (searchOption == SearchOption.AllDirectories)
             {
-                throw new PlatformNotSupportedException();
+                options.RecurseSubdirectories = true;
             }
 
-            const string DisplayNameKey = "DisplayName";
-            const string UserFolderKey = "UserFolder";
-            const string AccountsKey = "Accounts";
-            const string EmailKey = "UserEmail";
+            var existingDirectories = directories.Where(directory => directory.Exists).Select(directory => directory);
 
-            var folders = new List<OneDriveFolder>();
-
-            var oneDriveKey = RegistryHelper.GetCurrentUserRegistryKey(RegistryHelper.KeyCurrentUserOneDrive);
-
-            if (oneDriveKey.IsNotNull())
+            foreach (var directory in existingDirectories)
             {
-                // Get Accounts
-                var accountKey = oneDriveKey.GetSubKey(AccountsKey);
-
-                if (accountKey.IsNotNull() && accountKey.SubKeyCount > 0)
-                {
-                    for (var subKeyCount = 0; subKeyCount < accountKey.GetSubKeyNames().Length; subKeyCount++)
-                    {
-                        var key = accountKey.GetSubKey(accountKey.GetSubKeyNames()[subKeyCount]);
-
-                        var folder = new OneDriveFolder();
-                        var directoryValue = key.GetValue<string>(UserFolderKey);
-
-                        if (directoryValue.HasValue())
-                        {
-                            folder.DirectoryInfo = new DirectoryInfo(directoryValue);
-
-                            var emailValue = key.GetValue<string>(EmailKey);
-
-                            if (emailValue.IsNotNull())
-                            {
-                                folder.UserEmail = emailValue;
-                            }
-
-                            // Figure out account type                           
-                            var name = key.GetValue<string>(DisplayNameKey);
-
-                            if (name.HasValue())
-                            {
-                                folder.AccountType = OneDriveAccountType.Business;
-                                folder.AccountName = name;
-                            }
-                            else
-                            {
-                                folder.AccountName = key.GetValue<string>(string.Empty);
-                            }
-
-                            if (folder.AccountName.HasValue() && folder.DirectoryInfo.IsNotNull())
-                            {
-                                folders.Add(folder);
-                            }
-                        }
-                    }
-                }
+                var files = await Task.Run(() => directory.EnumerateFiles(searchPattern, options));
+                yield return files;
             }
-
-            return folders.AsEnumerable();
         }
 
         /// <summary>

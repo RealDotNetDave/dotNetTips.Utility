@@ -1,19 +1,42 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
-    <AssemblyVersion>2019.1.19.32165</AssemblyVersion>
-    <FileVersion>2019.1.19.32165</FileVersion>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <AssemblyVersion>2019.9.30.41260</AssemblyVersion>
+    <FileVersion>2019.9.30.41260</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>2019.01.0</Version>
+    <Authors>David McCarter</Authors>
+    <Company>dotNetTips.com - David McCarter</Company>
+    <Description>Common .NET Core Code for Windows</Description>
+    <Copyright>McCarter Consulting (David McCarter)</Copyright>
+    <PackageProjectUrl>https://github.com/RealDotNetDave/dotNetTips.Utility</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/RealDotNetDave/dotNetTips.Utility</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>David McCarter, dotNetDave, dotNetTips.com</PackageTags>
+    <PackageReleaseNotes>-- OCTOBER 2019: Initial Release</PackageReleaseNotes>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+    <DocumentationFile>..\OutputBin\dotNetTips.Utility.Core.Windows.xml</DocumentationFile>
+    <OutputPath>..\OutputBin\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="2.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\dotNetTips.Utility.Standard.Extensions\dotNetTips.Utility.Standard.Extensions.csproj" />
+    <ProjectReference Include="..\dotNetTips.Utility.Standard\dotNetTips.Utility.Standard.csproj" />
+  </ItemGroup>
+
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if $(ConfigurationName) == Debug (dotnet pack &quot;$(ProjectPath)&quot; --no-build --include-source --include-symbols --output  &quot;$(ProjectDir)\..\NuGet&quot;)" />
+    <Exec Command="if $(ConfigurationName) == Release (dotnet pack &quot;$(ProjectPath)&quot; --no-build --include-source --include-symbols --output  &quot;c:\dotNetTips.com\NuGet&quot;)" />
   </Target>
 
 </Project>

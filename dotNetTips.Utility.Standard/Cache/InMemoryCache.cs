@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-31-2019
+// Last Modified On : 09-23-2019
 // ***********************************************************************
 // <copyright file="InMemoryCache.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -57,13 +57,7 @@ namespace dotNetTips.Utility.Standard.Cache
         /// Gets the count.
         /// </summary>
         /// <value>The count.</value>
-        public int Count
-        {
-            get
-            {
-                return _instance.Cache.Count;
-            }
-        }
+        public int Count => _instance.Cache.Count;
 
         /// <summary>
         /// Adds item to the cache.
@@ -71,10 +65,7 @@ namespace dotNetTips.Utility.Standard.Cache
         /// <typeparam name="T"></typeparam>
         /// <param name="key">The key.</param>
         /// <param name="item">The item.</param>
-        public void AddCacheItem<T>(string key, T item)
-        {
-            this.Cache.Set(key, item);
-        }
+        public void AddCacheItem<T>(string key, T item) => this.Cache.Set(key, item);
 
         /// <summary>
         /// Gets the cache item.

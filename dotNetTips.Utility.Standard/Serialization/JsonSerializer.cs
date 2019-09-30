@@ -13,7 +13,6 @@
 // ***********************************************************************
 using System;
 using System.IO;
-using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using dotNetTips.Utility.Standard.OOP;
@@ -40,7 +39,7 @@ namespace dotNetTips.Utility.Standard.Serialization
 
             using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(json)))
             {
-                var ser = new DataContractJsonSerializer(obj.GetType());
+                var ser = new DataContractJsonSerializer(typeof(T));
                 obj = ser.ReadObject(ms) as T;
             }
 
@@ -64,7 +63,7 @@ namespace dotNetTips.Utility.Standard.Serialization
 
                 ser.WriteObject(ms, obj);
                 ms.Flush();
-                json = Encoding.UTF8.GetString(ms.ToArray(),0,ms.ToArray().Length);
+                json = Encoding.UTF8.GetString(ms.ToArray(), 0, ms.ToArray().Length);
             }
 
             return json;

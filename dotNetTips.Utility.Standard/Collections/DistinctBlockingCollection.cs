@@ -79,7 +79,7 @@ namespace dotNetTips.Utility.Standard.Collections
             Encapsulation.TryValidateParam<ArgumentNullException>(item != null, "Item is required.");
             Encapsulation.TryValidateParam<ArgumentNullException>(cancellationToken != null, "Token is required.");
 
-            if ((ItemNotInCollection(item)))
+            if (this.ItemNotInCollection(item))
             {
                 base.Add(item, cancellationToken);
             }

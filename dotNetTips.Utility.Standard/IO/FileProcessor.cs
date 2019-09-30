@@ -14,7 +14,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Security;
 using System.Threading;
 using dotNetTips.Utility.Standard.Diagnostics;
@@ -37,7 +36,6 @@ namespace dotNetTips.Utility.Standard.IO
         /// Handles the <see cref="E:Processed" /> event.
         /// </summary>
         /// <param name="e">The <see cref="FileProgressEventArgs" /> instance containing the event data.</param>
-        /// TODO Edit XML Comment Template for OnProcessed
         protected virtual void OnProcessed(FileProgressEventArgs e) => Processed?.Invoke(this, e);
 
         /// <summary>
@@ -185,7 +183,6 @@ namespace dotNetTips.Utility.Standard.IO
         /// </summary>
         /// <param name="folders">The folders.</param>
         /// <returns>System.Int32.</returns>
-        /// TODO Edit XML Comment Template for DeleteFolders
         public int DeleteFolders(IEnumerable<DirectoryInfo> folders)
         {
             Encapsulation.TryValidateParam(folders, nameof(folders));

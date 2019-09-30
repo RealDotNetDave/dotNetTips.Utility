@@ -85,7 +85,7 @@ namespace dotNetTips.Tips.Utility.Standard.Tests.IO
             {
                 const string fileToDownload = @"https://dotnettips.files.wordpress.com/2018/03/cropped-rtw-dotnettips-com-logo05x1.png";
 
-                FileHelper.DownloadFileFromWeb(fileToDownload, Path.Combine(this._tempPath.FullName, "dotNetTips.Com.logo.png"));
+                FileHelper.DownloadFileFromWeb(new Uri(fileToDownload), Path.Combine(this._tempPath.FullName, "dotNetTips.Com.logo.png"));
             }
             catch (Exception ex)
             {

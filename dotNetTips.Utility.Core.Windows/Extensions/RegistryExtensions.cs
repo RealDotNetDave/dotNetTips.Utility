@@ -4,7 +4,7 @@
 // Created          : 06-16-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-03-2019
+// Last Modified On : 09-25-2019
 // ***********************************************************************
 // <copyright file="RegistryExtensions.cs" company="dotNetTips.com - David McCarter">
 //     dotNetTips.com - David McCarter
@@ -13,6 +13,7 @@
 // ***********************************************************************
 using System;
 using System.Runtime.InteropServices;
+using dotNetTips.Utility.Standard.OOP;
 using Microsoft.Win32;
 
 namespace dotNetTips.Utility.Standard.Extensions
@@ -28,10 +29,13 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <param name="key">The key.</param>
         /// <param name="name">The name.</param>
         /// <returns>RegistryKey.</returns>
-        /// <exception cref="PlatformNotSupportedException"></exception>
-        /// <exception cref="System.PlatformNotSupportedException"></exception>
+        /// <exception cref="System.PlatformNotSupportedException">The exception.</exception>
+        /// <exception cref="PlatformNotSupportedException">The exception.</exception>
         public static RegistryKey GetSubKey(this RegistryKey key, string name)
         {
+            Encapsulation.TryValidateParam<ArgumentNullException>(key != null, nameof(key));
+            Encapsulation.TryValidateParam(name, nameof(name));
+
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 return key.OpenSubKey(name);
@@ -45,14 +49,17 @@ namespace dotNetTips.Utility.Standard.Extensions
         /// <summary>
         /// Gets the registry key value.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T">The type of T.</typeparam>
         /// <param name="key">The key.</param>
         /// <param name="name">The name.</param>
         /// <returns>T.</returns>
-        /// <exception cref="PlatformNotSupportedException"></exception>
-        /// <exception cref="System.PlatformNotSupportedException"></exception>
+        /// <exception cref="System.PlatformNotSupportedException">The exception.</exception>
+        /// <exception cref="PlatformNotSupportedException">The exception.</exception>
         public static T GetValue<T>(this RegistryKey key, string name)
         {
+            Encapsulation.TryValidateParam<ArgumentNullException>(key != null, nameof(key));
+            Encapsulation.TryValidateParam(name, nameof(name));
+
             var returnValue = default(T);
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))

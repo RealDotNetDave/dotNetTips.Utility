@@ -4,7 +4,7 @@
 // Created          : 02-11-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-03-2019
+// Last Modified On : 09-23-2019
 // ***********************************************************************
 // <copyright file="FileHelper.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -21,13 +21,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using dotNetTips.Utility.Standard.Extensions;
 using dotNetTips.Utility.Standard.OOP;
+using dotNetTips.Utility.Standard.Properties;
 
 namespace dotNetTips.Utility.Standard.IO
 {
     /// <summary>
     /// Class FileHelper.
     /// </summary>
-    /// TODO Edit XML Comment Template for FileHelper
     public static class FileHelper
     {
         /// <summary>
@@ -73,10 +73,13 @@ namespace dotNetTips.Utility.Standard.IO
         /// <param name="remoteFileUrl">The remote file URL.</param>
         /// <param name="localExpandedDirPath">The local expanded dir path.</param>
         /// <returns>Task.</returns>
-        public async static Task DownloadFileFromWebAndUnzipAsync(string remoteFileUrl, string localExpandedDirPath)
+        public async static Task DownloadFileFromWebAndUnzipAsync(Uri remoteFileUrl, string localExpandedDirPath)
         {
+            Encapsulation.TryValidateParam(remoteFileUrl, nameof(remoteFileUrl));
+            Encapsulation.TryValidateParam(remoteFileUrl, nameof(localExpandedDirPath));
+
             var tempFileNameBase = Guid.NewGuid().ToString();
-            var tempDownloadPath = Path.Combine(Path.GetTempPath(), tempFileNameBase + Path.GetExtension(remoteFileUrl));
+            var tempDownloadPath = Path.Combine(Path.GetTempPath(), tempFileNameBase + Path.GetExtension(remoteFileUrl.ToString()));
 
             DownloadFileFromWeb(remoteFileUrl, tempDownloadPath);
 
@@ -88,7 +91,6 @@ namespace dotNetTips.Utility.Standard.IO
         /// </summary>
         /// <param name="files">The files.</param>
         /// <returns>IEnumerable&lt;KeyValuePair&lt;System.String, System.String&gt;&gt;.</returns>
-        /// TODO Edit XML Comment Template for DeleteFiles
         public static IEnumerable<KeyValuePair<string, string>> DeleteFiles(this IEnumerable<string> files)
         {
             var errors = new Dictionary<string, string>();
@@ -117,7 +119,7 @@ namespace dotNetTips.Utility.Standard.IO
         /// </summary>
         /// <param name="remoteFileUrl">The remote file URL.</param>
         /// <param name="localFilePath">The local file path.</param>
-        public static void DownloadFileFromWeb(string remoteFileUrl, string localFilePath)
+        public static void DownloadFileFromWeb(Uri remoteFileUrl, string localFilePath)
         {
             Encapsulation.TryValidateParam(remoteFileUrl, nameof(remoteFileUrl));
             Encapsulation.TryValidateParam(localFilePath, nameof(localFilePath));
@@ -143,7 +145,6 @@ namespace dotNetTips.Utility.Standard.IO
         /// </summary>
         /// <param name="sourceFileName">Name of the source file.</param>
         /// <param name="destinationFileName">Name of the destination file.</param>
-        /// TODO Edit XML Comment Template for MoveFile
         public static void MoveFile(string sourceFileName, string destinationFileName)
         {
             for (var retryCount = 0; retryCount < Retries; retryCount++)
@@ -177,7 +178,6 @@ namespace dotNetTips.Utility.Standard.IO
         /// <param name="expandedFilePath">The expanded file path.</param>
         /// <param name="deleteGZipFile">if set to <c>true</c> [delete g zip file].</param>
         /// <returns>Task.</returns>
-        /// TODO Edit XML Comment Template for UnGZipAsync
         public async static Task UnGZipAsync(string gzipPath, string expandedFilePath, bool deleteGZipFile)
         {
             Encapsulation.TryValidateParam(gzipPath, nameof(gzipPath));
@@ -198,7 +198,6 @@ namespace dotNetTips.Utility.Standard.IO
         /// <param name="gzipPath">The gzip path.</param>
         /// <param name="expandedFilePath">The expanded file path.</param>
         /// <returns>Task.</returns>
-        /// TODO Edit XML Comment Template for UnGZipAsync
         public async static Task UnGZipAsync(string gzipPath, string expandedFilePath)
         {
             using (var gzipStream = File.OpenRead(gzipPath))
@@ -223,9 +222,9 @@ namespace dotNetTips.Utility.Standard.IO
         {
             Encapsulation.TryValidateParam(zipPath, nameof(zipPath));
             Encapsulation.TryValidateParam(expandToDirectory, nameof(expandToDirectory));
-            Encapsulation.TryValidateParam<ArgumentInvalidException>(File.Exists(zipPath), nameof(zipPath), "Zip file not found.");
+            Encapsulation.TryValidateParam<ArgumentInvalidException>(File.Exists(zipPath), nameof(zipPath), Resources.ZipFileNotFound);
 
-            await UnWinZipAsync(zipPath, expandToDirectory);
+            await UnWinZipAsync(zipPath, expandToDirectory).ConfigureAwait(true);
         }
 
         /// <summary>
@@ -237,7 +236,7 @@ namespace dotNetTips.Utility.Standard.IO
         /// <returns>Task.</returns>
         public static async Task UnZipAsync(string zipPath, string expandToDirectory, bool deleteZipFile)
         {
-            await UnZipAsync(zipPath, expandToDirectory);
+            await UnZipAsync(zipPath, expandToDirectory).ConfigureAwait(true);
 
             if (deleteZipFile)
             {
@@ -274,7 +273,7 @@ namespace dotNetTips.Utility.Standard.IO
                         {
                             using (var extractedFileStream = File.OpenWrite(extractedFilePath))
                             {
-                                await zipStream.CopyToAsync(extractedFileStream);
+                                await zipStream.CopyToAsync(extractedFileStream).ConfigureAwait(true);
                             }
                         }
                     }

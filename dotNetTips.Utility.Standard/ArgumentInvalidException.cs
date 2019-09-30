@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-31-2019
+// Last Modified On : 09-23-2019
 // ***********************************************************************
 // <copyright file="ArgumentInvalidException.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -25,7 +25,7 @@ namespace dotNetTips.Utility.Standard
         /// <summary>
         /// Initializes a new instance of the <see cref="ArgumentInvalidException" /> class.
         /// </summary>
-        public ArgumentInvalidException() : base("Go to dotNetTips.com!")
+        public ArgumentInvalidException() : base("Go to dotNetTips.com for help.")
         {
         }
 
@@ -62,9 +62,7 @@ namespace dotNetTips.Utility.Standard
         /// <param name="message">The error message that explains the reason for the exception.</param>
         /// <param name="paramName">The name of the parameter that caused the current exception.</param>
         /// <param name="innerException">The exception that is the cause of the current exception. If the <paramref name="innerException" /> parameter is not a null reference, the current exception is raised in a catch block that handles the inner exception.</param>
-        public ArgumentInvalidException(string message, string paramName, Exception innerException) : base(message,
-                                                                                                           paramName,
-                                                                                                           innerException)
+        public ArgumentInvalidException(string message, string paramName, Exception innerException) : base(message, paramName, innerException)
         {
         }
     }

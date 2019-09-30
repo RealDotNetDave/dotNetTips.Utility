@@ -12,7 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 using System.Linq;
-using dotNetTips.Utility.Standard.Win32;
+using dotNetTips.Utility.Core.Windows.Win32;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace dotNetTips.Tips.Utility.Standard.Tests.Win32

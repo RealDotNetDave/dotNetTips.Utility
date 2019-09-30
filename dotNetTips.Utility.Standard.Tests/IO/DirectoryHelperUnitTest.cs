@@ -12,8 +12,10 @@
 // <summary></summary>
 // ***********************************************************************
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using dotNetTips.Utility.Standard.Extensions;
 using dotNetTips.Utility.Standard.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -32,7 +34,7 @@ namespace dotNetTips.Tips.Utility.Standard.Tests.IO
         [TestMethod]
         public void LoadOneDriveFoldersTest()
         {
-            var folders = DirectoryHelper.LoadOneDriveFolders();
+            var folders = dotNetTips.Utility.Core.Windows.IO.DirectoryHelper.LoadOneDriveFolders();
 
             Assert.IsTrue(folders != null && folders.Count() > 0);
         }
@@ -56,6 +58,35 @@ namespace dotNetTips.Tips.Utility.Standard.Tests.IO
 
                 DirectoryHelper.CopyDirectory(folderToCopy.FullName, destinationPath, false);
                 DirectoryHelper.DeleteDirectory(destinationPath, 5);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
+        }
+
+        [TestMethod]
+        public async Task LoadFilesAsysncTest()
+        {
+            var searchFolders = new List<DirectoryInfo>();
+
+            try
+            {
+                searchFolders.Add(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.CommonProgramFiles)));
+                searchFolders.Add(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.CommonProgramFilesX86)));
+                searchFolders.Add(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)));
+
+                var returnCount = 0;
+
+                await foreach (var files in DirectoryHelper.LoadFilesAsync(searchFolders, "*.*", SearchOption.AllDirectories))
+                {
+                    if (files.Count() > 0)
+                    {
+                        returnCount++;
+                    }
+                }
+
+                Assert.IsTrue(returnCount == 3);
             }
             catch (Exception ex)
             {

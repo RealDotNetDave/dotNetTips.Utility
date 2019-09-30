@@ -189,4 +189,10 @@
   <data name="FileCannotBeNull" xml:space="preserve">
     <value>File cannot be null.</value>
   </data>
+  <data name="ZipFileNotFound" xml:space="preserve">
+    <value>Zip file not found.</value>
+  </data>
+  <data name="UriCannotBeNull" xml:space="preserve">
+    <value>Uri cannot be null.</value>
+  </data>
 </root>

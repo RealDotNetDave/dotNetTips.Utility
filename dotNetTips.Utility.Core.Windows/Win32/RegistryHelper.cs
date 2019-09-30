@@ -4,7 +4,7 @@
 // Created          : 06-15-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-03-2019
+// Last Modified On : 09-25-2019
 // ***********************************************************************
 // <copyright file="RegistryHelper.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -13,11 +13,11 @@
 // ***********************************************************************
 using System;
 using System.Runtime.InteropServices;
+using dotNetTips.Utility.Standard.OOP;
 using Microsoft.Win32;
 
-namespace dotNetTips.Utility.Standard.Win32
+namespace dotNetTips.Utility.Core.Windows.Win32
 {
-
     /// <summary>
     /// Class RegistryHelper.
     /// </summary>
@@ -33,10 +33,12 @@ namespace dotNetTips.Utility.Standard.Win32
         /// </summary>
         /// <param name="name">The name.</param>
         /// <returns>RegistryKey.</returns>
-        /// <exception cref="PlatformNotSupportedException"></exception>
-        /// <exception cref="System.PlatformNotSupportedException"></exception>
+        /// <exception cref="System.PlatformNotSupportedException">The exception.</exception>
+        /// <exception cref="PlatformNotSupportedException"></exception><exception cref="PlatformNotSupportedException">The exception.</exception>
         public static RegistryKey GetCurrentUserRegistryKey(string name)
         {
+            Encapsulation.TryValidateParam(name, nameof(name));
+
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 return Registry.CurrentUser.OpenSubKey(name);
